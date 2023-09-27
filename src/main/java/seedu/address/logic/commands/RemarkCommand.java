@@ -6,8 +6,8 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
 
-import seedu.address.logic.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
@@ -17,7 +17,6 @@ import seedu.address.model.person.Remark;
  * Changes the remark of an existing person in the address book.
  *
  * Adapted from CS2103 website: https://nus-cs2103-ay2324s1.github.io/tp/tutorials/AddRemark.html
- *                            : https://github.com/se-edu/addressbook-level3/commit/dc6d5139d08f6403da0ec624ea32bd79a2ae0cbf#diff-a8e35af8f9c251525063fae36c9852922a7e7195763018eacec60f3a4d87c594
  */
 public class RemarkCommand extends Command {
 
