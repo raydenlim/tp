@@ -14,26 +14,26 @@ import seedu.address.commons.util.ToStringBuilder;
 public class Task {
 
     // Identity fields
-    private final Name name;
+    private final TaskName taskName;
 
     // Data fields
-    private final Description description;
+    private final TaskDescription taskDescription;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Description description) {
-        requireAllNonNull(name, description);
-        this.name = name;
-        this.description = description;
+    public Task(TaskName taskName, TaskDescription taskDescription) {
+        requireAllNonNull(taskName, taskDescription);
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
     }
 
-    public Name getName() {
-        return name;
+    public TaskName getName() {
+        return taskName;
     }
 
-    public Description getDescription() {
-        return description;
+    public TaskDescription getDescription() {
+        return taskDescription;
     }
 
 
@@ -66,21 +66,21 @@ public class Task {
         }
 
         seedu.address.model.task.Task otherTask = (seedu.address.model.task.Task) other;
-        return name.equals(otherTask.name)
-                && description.equals(otherTask.description);
+        return taskName.equals(otherTask.taskName)
+                && taskDescription.equals(otherTask.taskDescription);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, description);
+        return Objects.hash(taskName, taskDescription);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("name", name)
-                .add("description", description)
+                .add("name", taskName)
+                .add("description", taskDescription)
                 .toString();
     }
 

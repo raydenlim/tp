@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Description in the address book.
  * Guarantees: immutable; name is valid as declared in {@link #isValidDescription(String)}
  */
-public class Description {
+public class TaskDescription {
 
     public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
@@ -19,7 +19,7 @@ public class Description {
      *
      * @param description A valid description.
      */
-    public Description(String description) {
+    public TaskDescription(String description) {
         requireNonNull(description);
         checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
         this.description = description;
@@ -39,12 +39,12 @@ public class Description {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Description)) {
+        if (!(other instanceof TaskDescription)) {
             return false;
         }
 
-        Description otherDescription = (Description) other;
-        return description.equals(otherDescription.description);
+        TaskDescription otherTaskDescription = (TaskDescription) other;
+        return description.equals(otherTaskDescription.description);
     }
 
     @Override

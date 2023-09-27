@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.task.Task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
@@ -24,25 +25,22 @@ public class AddTaskCommand extends Command {
             + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket";
 
     public static final String MESSAGE_ARGUMENTS = "Name: %1$s, Description: %2$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
-    private final String name;
-    private final String description;
+    private final Task task;
 
     /**
-     * @param name of the task to be added
-     * @param description of the task to be added
+     * Creates an AddTaskCommand to add the specified {@code Task}
      */
-    public AddTaskCommand(String name, String description) {
-        requireAllNonNull(name, description);
-
-        this.name = name;
-        this.description = description;
+    public AddTaskCommand(Task task) {
+        requireAllNonNull(task);
+        this.task = task;
     }
 
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException(String.format(MESSAGE_ARGUMENTS, name, description));
+        throw new CommandException(String.format(MESSAGE_ARGUMENTS, task.getName(), task.getDescription()));
     }
 
     @Override
@@ -57,8 +55,7 @@ public class AddTaskCommand extends Command {
         }
 
         AddTaskCommand e = (AddTaskCommand) other;
-        return name.equals(e.name)
-                && description.equals(e.description);
+        return task.equals(e.task);
     }
 
 

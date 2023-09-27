@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Task's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
  */
-public class Name {
+public class TaskName {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Task Names should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -25,7 +25,7 @@ public class Name {
      *
      * @param name A valid name.
      */
-    public Name(String name) {
+    public TaskName(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
         taskName = name;
@@ -51,12 +51,12 @@ public class Name {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Name)) {
+        if (!(other instanceof TaskName)) {
             return false;
         }
 
-        Name otherName = (Name) other;
-        return taskName.equals(otherName.taskName);
+        TaskName otherTaskName = (TaskName) other;
+        return taskName.equals(otherTaskName.taskName);
     }
 
     @Override
