@@ -11,6 +11,11 @@ import static java.util.Objects.requireNonNull;
 public class Remark {
     public final String value;
 
+    /**
+     * Constructs a Remark with the specified text value.
+     *
+     * @param remark The text value of the Remark. Must not be null.
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;

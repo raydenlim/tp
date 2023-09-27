@@ -41,7 +41,6 @@ task coverage(type: JacocoReport) {
 }
 
 dependencies {
-    implementation project(path: ':')
     String jUnitVersion = '5.4.0'
     String javaFxVersion = '17.0.7'
 
@@ -64,6 +63,10 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: jUnitVersion
 
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: jUnitVersion
+}
+
+application {
+    mainClass.set("Main.java")
 }
 
 shadowJar {
