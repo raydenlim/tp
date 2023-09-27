@@ -65,10 +65,6 @@ dependencies {
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: jUnitVersion
 }
 
-application {
-    mainClass.set("Main.java")
-}
-
 shadowJar {
     archiveFileName = 'addressbook.jar'
 }
