@@ -12,7 +12,7 @@ Given below are my contributions to the project.
 
 * **New Feature**: To be added
 
-* **Code contributed**: To be added
+* **Code contributed**: [RepoSense](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=respirayson&breakdown=true)
 
 * **Project management**: To be added
 
