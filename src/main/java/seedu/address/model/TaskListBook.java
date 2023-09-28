@@ -62,7 +62,7 @@ public class TaskListBook implements ReadOnlyTaskList {
     /**
      * Returns true if a task with the same identity as {@code task} exists in the task list.
      */
-    public boolean hasTasks(Task task) {
+    public boolean hasTask(Task task) {
         requireNonNull(task);
         return tasks.contains(task);
     }
