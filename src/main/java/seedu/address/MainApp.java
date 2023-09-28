@@ -79,6 +79,7 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
+        logger.info("Using task list file : " + storage.getTaskListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
@@ -92,7 +93,13 @@ public class MainApp extends Application {
                         + " populated with a sample AddressBook.");
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
+                    + " Will be starting with an empty AddressBook.");
+            initialData = new AddressBook();
+        }
 
+        try {
             taskListOptional = storage.readTaskList();
             if (!taskListOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getTaskListFilePath()
@@ -102,7 +109,6 @@ public class MainApp extends Application {
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
-            initialData = new AddressBook();
             initialTaskList = new TaskListBook();
         }
 
