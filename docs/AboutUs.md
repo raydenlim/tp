@@ -14,7 +14,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Yeap Rayson
 
-<img src="images/respirayson.png.jpg" width="200px">
+<img src="images/respirayson.png" width="200px">
 
 [[homepage](http://linkedin.com/in/rayson-yeap)]
 [[github](https://github.com/respirayson)]
