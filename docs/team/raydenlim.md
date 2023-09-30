@@ -15,7 +15,7 @@ title: "Jian Song (rayden)'s Project Portfolio Page"
 ### Project: FAKEJARVIS
 ![Logo](images/fakejarvis.png)
 
-FAKEJARVIS is a greenfield project built on Address Book 3 (AB3), with the intention to help CS1101S Avengers manage their Teaching Assistant (TA) duties.
+FAKEJARVIS is a brownfield project built on Address Book 3 (AB3), with the intention to help CS1101S Avengers manage their Teaching Assistant (TA) duties.
 
 Given below are my contributions to the project.
 
@@ -26,7 +26,7 @@ Given below are my contributions to the project.
 
 * **New Feature 2**:
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://tinyurl.com/CS2103T15raydenlim)
 
 * **Project management**:
 
