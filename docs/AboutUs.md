@@ -41,22 +41,22 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Ryan Pang
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/originalidk.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Originalidk)]
+[[portfolio](team/originalidk.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Fullstack
 
-### James Doe
+### Ho Jia Cheng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/wesho1107.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/wesho1107)]
+[[portfolio](team/wesho1107.md)]
 
 * Role: Developer
 * Responsibilities: UI
