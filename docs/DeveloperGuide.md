@@ -269,13 +269,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* CS1101S Avengers
+* has a need to manage a significant number of classes, tutorials and assignments
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**:  track assignment gradings, student participation and plan their tutorials, consultations and mastery checks
 
 
 ### User stories
