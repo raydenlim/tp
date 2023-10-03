@@ -4,9 +4,12 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# F.A.K.E.J.A.R.V.I.S. User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+<img src="images/fakejarvis.png" width="200px">
+Say goodbye to chaos and hello to an organized and efficient classroom experience._
+
+F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
 <!-- * Table of Contents -->
 <page-nav-print />
