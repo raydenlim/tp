@@ -22,7 +22,6 @@ Given below are my contributions to the project.
 
 * **Documentation**:
     * User Guide: To be added
-    
     * Developer Guide: To be added
 
 * **Review/mentoring contributions**: To be added
