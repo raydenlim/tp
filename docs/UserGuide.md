@@ -7,7 +7,8 @@
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
 <img src="images/fakejarvis.png" width="200px">
-Say goodbye to chaos and hello to an organized and efficient classroom experience._
+
+_Say goodbye to chaos and hello to an organized and efficient classroom experience._
 
 F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
@@ -177,6 +178,81 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 ### Archiving data files `[coming in v2.0]`
 
 _Details coming soon ..._
+
+
+### Adding a Task: `addtask`
+Adds a task to your tasklist
+
+Format: `addtask n/TASK_NAME d/DUE_DATE p/PRIORITY`
+
+Parameters:
+* TASK_NAME The name or description of the task.
+* DUE_DATE The due date or deadline for the task.
+* PRIORITY The priority level of the task (e.g., high, medium, low).
+
+Examples:
+* `addtask n/Prepare Lecture slides d/2023-09-30 p/high` creates a task to prepare lecture slides with a high priority due on September 30, 2023.
+* `addtask n/Read Chapter 5` creates a task to read Chapter 5 without specifying a due date or priority.
+
+
+### Viewing Tasks: `viewtasks`
+Views the list of tasks
+
+Format: `viewtasks d/DUE_DATE p/PRIORITY`
+
+Parameters:
+* DUE_DATE The due date or deadline for the task.
+* PRIORITY The priority level of the task (e.g., high, medium, low).
+
+Examples:
+* `viewtasks` displays all tasks in the user's task list.
+* `viewtasks p/high` displays only high-priority tasks.
+* `viewtasks d/2023-09-30` displays tasks due on September 30, 2023.
+
+### Completing a Task: `completetask`
+Marks a task as completed.
+
+Format: `completetask TASK_INDEX`
+
+Parameters:
+* TASK_INDEX The index of the task to mark as completed.
+
+Examples:
+* `completetask 1` marks the task with index 1 as completed.
+* `completetask 3` marks the task with index 1 as completed.
+
+
+### Editing a Task: `edittask`
+Edits the details of a task
+
+Format: `edittask TASK_INDEX n/NEW_TASK_NAME d/NEW_DUE_DATE p/NEW_PRIORITY`
+
+Parameters:
+* TASK_INDEX The index of the task to edit.
+* NEW_TASK_NAME The new name or description for the task.
+* NEW_DUE_DATE The new due date or deadline for the task.
+* NEW_PRIORITY The new priority level for the task.
+
+Examples:
+* `edittask 1 n/Updated TaskName` edits the name of the task with index 1.
+* `edittask 2 d/2023-10-15` updates the due date of the task with index 2 to October 15, 2023.
+
+
+### Deleting a Task: `deletetask`
+Deletes a task from the tasklist
+
+Format: `deletetask TASK_INDEX`
+
+Parameters:
+* TASK_INDEX The index of the task to delete.
+
+Examples:
+* `deletetask 3` deletes the task with index 3 from the task list.
+* `deletetask 2` deletes the task with index 2 from the task list.
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
