@@ -43,10 +43,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Ryan Pang
 
-<img src="images/Originalidk.png" width="200px">
+<img src="images/originalidk.png" width="200px">
 
 [[github](https://github.com/Originalidk)]
-[[portfolio](team/Originalidk.md)]
+[[portfolio](team/originalidk.md)]
 
 * Role: Developer
 * Responsibilities: Fullstack
