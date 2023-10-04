@@ -32,11 +32,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Morale Booster, Debugger
 * Responsibilities: *
 
-### Johnny Doe
+### Ding Han
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ldinghan.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/ldinghan)] [[portfolio](team/ldinghan.md)]
 
 * Role: Developer
 * Responsibilities: Data
