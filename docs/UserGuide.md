@@ -251,6 +251,122 @@ Examples:
 * `deletetask 2` deletes the task with index 2 from the task list.
 
 
+### Grading an assignment: `grade`
+Grades a student’s assignment.
+
+Format: `grade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+* GRADE The grade of the student.
+
+Examples:
+* `grade n/Rayson a/Functional Expressionism g/1300` grades Rayson’s Functional Expressionism assignment as 1300.
+* `grade n/Wesley a/Rune Reading g/600` grades Wesley’s Rune Reading assignment as 600.
+
+
+### Viewing an assignment grade: `viewgrade`
+Shows a student’s assignment grade.
+
+Format: `viewgrade n/STUDENT_NAME a/ASSIGNMENT`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+
+Examples:
+* `viewgrade n/Rayson a/Functional Expressionism` shows Rayson’s Functional Expressionism grade.
+* `viewgrade n/Wesley a/Rune Reading` shows Wesley’s Rune Reading grade.
+
+
+### Editing an assignment grade: `editgrade`
+Edits a student’s assignment grade.
+
+Format: `editgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+* GRADE The score of the student.
+
+Examples:
+* `editgrade n/Rayson a/Functional Expressionism g/1200` edits the grade of Rayson’s Functional Expressionism assignment to 1200.
+* `editgrade n/Wesley a/Rune Reading g/1000` edits the grade of Wesley’s Rune Reading assignment to 1000.
+
+
+### Deleting an assignment grade: `deletegrade`
+Deletes a student’s assignment grade.
+
+Format: `deletegrade n/STUDENT_NAME a/ASSIGNMENT`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+
+Examples:
+* `deletegrade n/Rayson a/Functional Expressionism` deletes Rayson’s Functional Expressionism grade.
+* `deletegrade n/Wesley a/Rune Reading` deletes Wesley’s Rune Reading grade.
+
+
+### Commenting on an assignment: `comment`
+Adds a comment to a student’s assignment.
+
+Format: `comment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+* COMMENT The comment.
+
+Examples:
+* `comment n/Rayson a/Functional Expressionism c/Excellent` adds the comment “Excellent” on Rayson’s Functional Expressionism assignment.
+* `comment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
+
+
+### Viewing a comment: `viewcomment`
+Shows the comment tagged to a student’s assignment.
+
+Format: `viewcomment n/STUDENT_NAME a/ASSIGNMENT`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+
+Examples:
+* `viewcomment n/Rayson a/Functional Expressionism` shows the comment on Rayson’s Functional Expressionism assignment.
+* `viewcomment n/Wesley a/Rune Reading` shows the comment on Wesley’s Rune Reading assignment.
+
+
+### Editing a comment: `editcomment`
+Edits the comment on a student’s assignment.
+
+Format: `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+* COMMENT The new comment.
+
+Examples:
+* `editcomment n/Rayson a/Functional Expressionism c/Decent` changes the comment on Rayson’s Functional Expressionism assignment to “Decent”.
+* `editcomment n/Wesley a/Rune Reading c/Great` changes the comment on Wesley’s Rune Reading assignment to “Great”.
+
+
+### Deleting a comment: `deletecomment`
+Deletes the comment tagged to a student’s assignment.
+
+Format: `deletecomment n/STUDENT_NAME a/ASSIGNMENT`
+
+Parameters:
+* STUDENT_NAME The name of the student.
+* ASSIGNMENT The name of the assignment.
+
+Examples:
+* `deletecomment n/Rayson a/Functional Expressionism` deletes the comment on Rayson’s Functional Expressionism assignment.
+* `deletecomment n/Wesley a/Rune Reading` deletes the comment on Wesley’s Rune Reading assignment.
+
+
 ### Creating a Consult: `createconsult`
 Creates a consultation into upcoming consultations.
 

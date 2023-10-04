@@ -346,6 +346,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+
+**Use case: Grade an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  FAKEJARVIS shows a list of persons
+3.  User requests to grade an assignment for a specific person in the list
+4.  FAKEJARVIS grades the assignment for that person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. FAKEJARVIS shows an error message.
+
+      Use case resumes at step 2.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
