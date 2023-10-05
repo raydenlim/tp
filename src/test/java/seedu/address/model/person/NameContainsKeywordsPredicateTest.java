@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.PersonBuilder;
 
-public class TaskNameContainsKeywordsPredicateTest {
+public class NameContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
