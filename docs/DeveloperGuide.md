@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# F.A.K.E.J.A.R.V.I.S. Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -377,6 +377,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. System should respond within 2 seconds to ensure smooth and efficient user interactions.
+5. The system should be able to handle an increasing number of users and data without a significant decrease in performance.
+6. The system should be user-friendly, with a clean and intuitive interface.
+7. Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
 
 *{More to be added}*
 
