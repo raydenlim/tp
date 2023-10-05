@@ -14,38 +14,38 @@ public class TaskDescriptionTest {
     }
 
     @Test
-    public void isValidAddress() {
-        // null address
+    public void isValidDescription() {
+        // null description
         assertThrows(NullPointerException.class, () -> TaskDescription.isValidDescription(null));
 
-        // invalid addresses
+        // invalid descriptions
         assertFalse(TaskDescription.isValidDescription(" ")); // spaces only
 
-        // valid addresses
+        // valid descriptions
         assertTrue(TaskDescription.isValidDescription("")); // empty string
         assertTrue(TaskDescription.isValidDescription("complete by friday"));
         assertTrue(TaskDescription.isValidDescription("-")); // one character
         assertTrue(TaskDescription.isValidDescription("complete the work and do "
-                + "the 5 quizzes and all the projects user guide developer guide")); // long address
+                + "the 5 quizzes and all the projects user guide developer guide")); // long description
     }
 
     @Test
     public void equals() {
-        TaskDescription address = new TaskDescription("Valid Description");
+        TaskDescription description = new TaskDescription("Valid Description");
 
         // same values -> returns true
-        assertTrue(address.equals(new TaskDescription("Valid Description")));
+        assertTrue(description.equals(new TaskDescription("Valid Description")));
 
         // same object -> returns true
-        assertTrue(address.equals(address));
+        assertTrue(description.equals(description));
 
         // null -> returns false
-        assertFalse(address.equals(null));
+        assertFalse(description.equals(null));
 
         // different types -> returns false
-        assertFalse(address.equals(5.0f));
+        assertFalse(description.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(address.equals(new TaskDescription("Other Valid Description")));
+        assertFalse(description.equals(new TaskDescription("Other Valid Description")));
     }
 }
