@@ -309,10 +309,10 @@ Examples:
 * `deletegrade n/Wesley a/Rune Reading` deletes Wesley’s Rune Reading grade.
 
 
-### Commenting on an assignment: `comment`
+### Commenting on an assignment: `addcomment`
 Adds a comment to a student’s assignment.
 
-Format: `comment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
+Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
 * STUDENT_NAME The name of the student.
@@ -320,8 +320,8 @@ Parameters:
 * COMMENT The comment.
 
 Examples:
-* `comment n/Rayson a/Functional Expressionism c/Excellent` adds the comment “Excellent” on Rayson’s Functional Expressionism assignment.
-* `comment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
+* `addcomment n/Rayson a/Functional Expressionism c/Excellent` adds the comment “Excellent” on Rayson’s Functional Expressionism assignment.
+* `addcomment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
 
 
 ### Viewing a comment: `viewcomment`

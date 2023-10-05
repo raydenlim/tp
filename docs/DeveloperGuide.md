@@ -354,7 +354,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to list persons
 2.  FAKEJARVIS shows a list of persons
 3.  User requests to grade an assignment for a specific person in the list
-4.  FAKEJARVIS grades the assignment for that person
+4.  FAKEJARVIS assigns given grade to the student
 
     Use case ends.
 
