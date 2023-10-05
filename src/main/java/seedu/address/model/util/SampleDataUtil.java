@@ -47,9 +47,9 @@ public class SampleDataUtil {
 
     public static Task[] getSampleTasks() {
         return new Task[] {
-                new Task(new TaskName("Do 2103T"), new TaskDescription("Homework assignment")),
-                new Task(new TaskName("Do cs2101"), new TaskDescription("Practice script")),
-                new Task(new TaskName("Do cs2100"), new TaskDescription("Remember mips"))
+            new Task(new TaskName("Do 2103T"), new TaskDescription("Homework assignment")),
+            new Task(new TaskName("Do cs2101"), new TaskDescription("Practice script")),
+            new Task(new TaskName("Do cs2100"), new TaskDescription("Remember mips"))
         };
     }
 

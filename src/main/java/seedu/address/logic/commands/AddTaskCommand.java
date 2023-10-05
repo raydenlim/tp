@@ -1,12 +1,12 @@
 package seedu.address.logic.commands;
 
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.task.Task;
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
+
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.task.Task;
 
 /**
  * Adds a task to the address book.
