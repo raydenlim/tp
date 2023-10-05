@@ -38,8 +38,7 @@ public class Task {
 
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both tasks have the same name and description.
      */
     public boolean isSameTask(seedu.address.model.task.Task otherTask) {
         if (otherTask == this) {
@@ -47,12 +46,13 @@ public class Task {
         }
 
         return otherTask != null
-                && otherTask.getName().equals(getName());
+                && otherTask.getName().equals(getName())
+                && otherTask.getDescription().equals(getDescription());
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both tasks have the same identity and data fields.
+     * This defines a stronger notion of equality between two tasks.
      */
     @Override
     public boolean equals(Object other) {
