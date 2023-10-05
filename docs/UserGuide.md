@@ -6,11 +6,13 @@ pageNav: 3
 
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
-<img src="images/fakejarvis.png" width="200px">
+<p align="center">
+  <img src="images/fakejarvis.png" width="200px">
+</p>
 
 _Say goodbye to chaos and hello to an organized and efficient classroom experience._
 
-F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
+F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participatsion, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -84,8 +86,6 @@ Format: `help`
 Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
-
-<box type="tip" seamless>
 
 **Tip:** A person can have any number of tags (including 0)
 </box>
@@ -169,8 +169,6 @@ FAKEJARVIS data are saved in the hard disk automatically after any command that 
 
 FAKEJARVIS data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
-
 **Caution:**
 If your changes to the data file makes its format invalid, FAKEJARVIS will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
@@ -180,7 +178,7 @@ If your changes to the data file makes its format invalid, FAKEJARVIS will disca
 _Details coming soon ..._
 
 
-### Adding a Task: `addtask`
+### 📝Adding a Task: `addtask`
 Adds a task to your tasklist
 
 Format: `addtask n/TASK_NAME d/DUE_DATE p/PRIORITY`
@@ -195,7 +193,7 @@ Examples:
 * `addtask n/Read Chapter 5` creates a task to read Chapter 5 without specifying a due date or priority.
 
 
-### Viewing Tasks: `viewtasks`
+### 👀Viewing Tasks: `viewtasks`
 Views the list of tasks
 
 Format: `viewtasks d/DUE_DATE p/PRIORITY`
@@ -209,7 +207,7 @@ Examples:
 * `viewtasks p/high` displays only high-priority tasks.
 * `viewtasks d/2023-09-30` displays tasks due on September 30, 2023.
 
-### Completing a Task: `completetask`
+### ✅Completing a Task: `completetask`
 Marks a task as completed.
 
 Format: `completetask TASK_INDEX`
@@ -222,7 +220,7 @@ Examples:
 * `completetask 3` marks the task with index 1 as completed.
 
 
-### Editing a Task: `edittask`
+### 🛠️Editing a Task: `edittask`
 Edits the details of a task
 
 Format: `edittask TASK_INDEX n/NEW_TASK_NAME d/NEW_DUE_DATE p/NEW_PRIORITY`
@@ -238,7 +236,7 @@ Examples:
 * `edittask 2 d/2023-10-15` updates the due date of the task with index 2 to October 15, 2023.
 
 
-### Deleting a Task: `deletetask`
+### ❌Deleting a Task: `deletetask`
 Deletes a task from the tasklist
 
 Format: `deletetask TASK_INDEX`
@@ -250,8 +248,64 @@ Examples:
 * `deletetask 3` deletes the task with index 3 from the task list.
 * `deletetask 2` deletes the task with index 2 from the task list.
 
+### 📆Taking attendance: `takeattendance`
+Takes the attendance of a student
 
-### Grading an assignment: `grade`
+Format: `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`
+
+Parameters:
+* STUDENT_NAME - The name of the student. 
+* SESSION - The session number. 
+* PRESENCE - The attendance status of the student (e.g., present, absent).
+
+Examples:
+* `takeattendance n/John Doe s/5 present` Marks John Doe as present on the 5th session.
+* `takeattendance n/Foo Bar s/2 absent` Marks Foo Bar as absent on the 2nd session.
+
+### 👀Viewing attendance: viewattendance
+Views the attendance list
+
+Format: `viewattendance n/STUDENT_NAME s/SESSION`
+
+Parameters:
+* STUDENT_NAME - The name of the student. 
+* SESSION - The session number.
+
+Examples:
+* `viewattendance` Displays the overall attendance across all students and sessions. 
+* `viewattendance n/Rayan` Displays Rayan’s overall attendance. 
+* `viewattendance s/3` Displays all students’ attendance for the 3rd session.
+
+### 🔎Finding a Student: find
+Finds a student’s profile
+
+Format: `find n/STUDENT_NAME`
+
+Parameters:
+* STUDENT_NAME - The name of the student you want to find.
+
+Examples:
+* `find n/John Doe` Finds and displays the profile of students with the name “John Doe.” 
+* `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe.”
+
+### 🥅Filtering results: filter
+Filters the results displayed on the dashboard
+
+Format:
+* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION` 
+* `filter_delete n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`
+
+Parameters:
+* `FILTER_ATTRIBUTE` - The filter type filter_studentScores 
+  * `filter_studentScores`
+  * `filter_studentGrades`
+* `FILTER_DESCRIPTION` - The conditions for the filter
+
+Examples:
+* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade. 
+* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.
+
+### 📝Grading an assignment: `grade`
 Grades a student’s assignment.
 
 Format: `grade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
@@ -266,7 +320,7 @@ Examples:
 * `grade n/Wesley a/Rune Reading g/600` grades Wesley’s Rune Reading assignment as 600.
 
 
-### Viewing an assignment grade: `viewgrade`
+### 👀Viewing an assignment grade: `viewgrade`
 Shows a student’s assignment grade.
 
 Format: `viewgrade n/STUDENT_NAME a/ASSIGNMENT`
@@ -280,7 +334,7 @@ Examples:
 * `viewgrade n/Wesley a/Rune Reading` shows Wesley’s Rune Reading grade.
 
 
-### Editing an assignment grade: `editgrade`
+### 🛠️Editing an assignment grade: `editgrade`
 Edits a student’s assignment grade.
 
 Format: `editgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
@@ -295,7 +349,7 @@ Examples:
 * `editgrade n/Wesley a/Rune Reading g/1000` edits the grade of Wesley’s Rune Reading assignment to 1000.
 
 
-### Deleting an assignment grade: `deletegrade`
+### ❌Deleting an assignment grade: `deletegrade`
 Deletes a student’s assignment grade.
 
 Format: `deletegrade n/STUDENT_NAME a/ASSIGNMENT`
@@ -309,7 +363,7 @@ Examples:
 * `deletegrade n/Wesley a/Rune Reading` deletes Wesley’s Rune Reading grade.
 
 
-### Commenting on an assignment: `addcomment`
+### 📝Commenting on an assignment: `addcomment`
 Adds a comment to a student’s assignment.
 
 Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
@@ -324,7 +378,7 @@ Examples:
 * `addcomment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
 
 
-### Viewing a comment: `viewcomment`
+### 👀Viewing a comment: `viewcomment`
 Shows the comment tagged to a student’s assignment.
 
 Format: `viewcomment n/STUDENT_NAME a/ASSIGNMENT`
@@ -338,7 +392,7 @@ Examples:
 * `viewcomment n/Wesley a/Rune Reading` shows the comment on Wesley’s Rune Reading assignment.
 
 
-### Editing a comment: `editcomment`
+### 🛠️Editing a comment: `editcomment`
 Edits the comment on a student’s assignment.
 
 Format: `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
@@ -353,7 +407,7 @@ Examples:
 * `editcomment n/Wesley a/Rune Reading c/Great` changes the comment on Wesley’s Rune Reading assignment to “Great”.
 
 
-### Deleting a comment: `deletecomment`
+### ❌Deleting a comment: `deletecomment`
 Deletes the comment tagged to a student’s assignment.
 
 Format: `deletecomment n/STUDENT_NAME a/ASSIGNMENT`
@@ -367,7 +421,7 @@ Examples:
 * `deletecomment n/Wesley a/Rune Reading` deletes the comment on Wesley’s Rune Reading assignment.
 
 
-### Creating a Consult: `createconsult`
+### 📆Creating a Consult: `createconsult`
 Creates a consultation into upcoming consultations.
 
 Format: `addconsult d/DATE t/TIME n/STUDENT_NAME n/STUDENT_NAME …`
@@ -383,7 +437,7 @@ Examples:
   , Rayson and Wesley on 2023-09-30 15:30.
 
 
-### Showing list of consultations: `showconsults`
+### 👀Showing list of consultations: `showconsults`
 Shows the list of upcoming consultations.
 
 Format: `showconsults`
@@ -392,7 +446,7 @@ Examples:
 * `showconsults` displays a list of upcoming consultations
 
 
-### Viewing details of a consultation: `viewconsult`
+### 👀Viewing details of a consultation: `viewconsult`
 Shows the details of a consultation.
 
 Format: `viewconsult INDEX`
@@ -410,7 +464,7 @@ Examples:
 * `viewconsult -1`shows an error message “Consultation not found” (if there is no consult scheduled).
 
 
-### Adding students to a consultation: `addtoconsult`
+### 🛠️Adding students to a consultation: `addtoconsult`
 Adds student(s) into a consultation.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
@@ -425,7 +479,7 @@ Examples:
 * `addtoconsult -1 n/Foo Bar`shows an error message “Consultation not found”.
 
 
-### Remove students from a consultation: `removefromconsult`
+### ❌Remove students from a consultation: `removefromconsult`
 Removes student(s) from a consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
@@ -439,7 +493,7 @@ Examples:
 * `removefromconsult 1 n/NOTINCONSULT` shows an error message “Student not found”.
 
 
-### Deleting a consultation: `deleteconsult`
+### ❌Deleting a consultation: `deleteconsult`
 Deletes the consultation specified by the index.
 
 Format: `deleteconsult INDEX`
