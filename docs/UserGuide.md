@@ -1,7 +1,7 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: default.md
+title: "User Guide"
+pageNav: 3
 ---
 
 # F.A.K.E.J.A.R.V.I.S. User Guide
@@ -32,15 +32,15 @@ F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `clear` : Deletes all contacts.
+    * `clear` : Deletes all contacts.
 
-   * `exit` : Exits the app.
+    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -68,7 +68,7 @@ F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage 
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-</box>
+  </box>
 
 ### Viewing help : `help`
 
@@ -111,7 +111,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+  specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
@@ -251,7 +251,89 @@ Examples:
 * `deletetask 2` deletes the task with index 2 from the task list.
 
 
+### Creating a Consult: `createconsult`
+Creates a consultation into upcoming consultations.
 
+Format: `addconsult d/DATE t/TIME n/STUDENT_NAME n/STUDENT_NAME …`
+
+Parameters:
+* DATE The date of consultation
+* TIME The time of consultation
+* STUDENT_NAME The name of the student(s)
+
+Examples:
+* `addconsult d/2023-10-30 t/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
+* `addconsult d/2023-09-30 t/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar
+  , Rayson and Wesley on 2023-09-30 15:30.
+
+
+### Showing list of consultations: `showconsults`
+Shows the list of upcoming consultations.
+
+Format: `showconsults`
+
+Examples:
+* `showconsults` displays a list of upcoming consultations
+
+
+### Viewing details of a consultation: `viewconsult`
+Shows the details of a consultation.
+
+Format: `viewconsult INDEX`
+
+Parameters:
+* INDEX The index of the consultation in the upcoming consultations.
+
+Examples:
+* `viewconsult 1` shows the details of the consultation (if there is a consult scheduled).
+  <br>2023-09-30 15:30
+  <br>John Doe
+  <br>Foo Bar
+  <br>Rayson
+  <br>Wesley
+* `viewconsult -1`shows an error message “Consultation not found” (if there is no consult scheduled).
+
+
+### Adding students to a consultation: `addtoconsult`
+Adds student(s) into a consultation.
+
+Format: `addtoconsult INDEX n/STUDENT_NAME …`
+
+Parameters:
+* INDEX The index of the consultation in the upcoming consultations.
+* STUDENT_NAME The name of student to be added into the consultation.
+
+Examples:
+* `addtoconsult 2 n/Foo Bar`.
+* `addtoconsult 1 n/Rayson n/Ryan Pang`.
+* `addtoconsult -1 n/Foo Bar`shows an error message “Consultation not found”.
+
+
+### Remove students from a consultation: `removefromconsult`
+Removes student(s) from a consultation.
+
+Format: `removefromconsult INDEX n/STUDENT_NAME …`
+
+Parameters:
+* INDEX The index of the consultation in the upcoming consultations.
+* STUDENT_NAME The name of student to be added into the consultation.
+
+Examples:
+* `removefromconsult 2 n/Foo Bar`.
+* `removefromconsult 1 n/NOTINCONSULT` shows an error message “Student not found”.
+
+
+### Deleting a consultation: `deleteconsult`
+Deletes the consultation specified by the index.
+
+Format: `deleteconsult INDEX`
+
+Parameters:
+* INDEX The index of the consultation in the upcoming consultations.
+
+Examples:
+* `deleteconsult 1` deletes the first consultation.
+* `deleteconsult -1` shows an error message “Consultation not found”.
 
 
 --------------------------------------------------------------------------------------------------------------------
