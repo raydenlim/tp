@@ -38,7 +38,7 @@ public class TaskNameContainsKeywordsPredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different person -> returns false
+        // different task -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
@@ -79,7 +79,8 @@ public class TaskNameContainsKeywordsPredicateTest {
         List<String> keywords = List.of("keyword1", "keyword2");
         TaskNameContainsKeywordsPredicate predicate = new TaskNameContainsKeywordsPredicate(keywords);
 
-        String expected = TaskNameContainsKeywordsPredicate.class.getCanonicalName() + "{task keywords=" + keywords + "}";
+        String expected = TaskNameContainsKeywordsPredicate.class.getCanonicalName()
+                + "{task keywords=" + keywords + "}";
         assertEquals(expected, predicate.toString());
     }
 }

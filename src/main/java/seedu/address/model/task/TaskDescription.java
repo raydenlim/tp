@@ -9,7 +9,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class TaskDescription {
 
-    public static final String MESSAGE_CONSTRAINTS = "Description should be alphanumeric";
+    public static final String MESSAGE_CONSTRAINTS = "Description should not only consist of whitespace";
     public static final String VALIDATION_REGEX = "^(?!\\s+$).*$";
 
     public final String description;
