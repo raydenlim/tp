@@ -16,7 +16,7 @@ public class TaskName {
      * The task names should ony consist of letters (both uppercase and lowercase),
      * digits, spaces, underscores, and hyphens
      */
-    public static final String VALIDATION_REGEX = "[A-Za-z0-9\\s_-]+";
+    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z0-9_-])[-A-Za-z0-9\\s_-]*$";
 
     public final String taskName;
 
