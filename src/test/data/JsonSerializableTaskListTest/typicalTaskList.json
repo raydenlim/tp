@@ -1,0 +1,9 @@
+{
+  "tasks" : [ {
+    "name" : "Do cs2103t",
+    "description" : "Complete PRS"
+  }, {
+    "name" : "Read quant guide",
+    "description" : "The green book"
+  } ]
+}

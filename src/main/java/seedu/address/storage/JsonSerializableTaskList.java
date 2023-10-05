@@ -19,7 +19,7 @@ import seedu.address.model.task.Task;
 @JsonRootName(value = "tasklist")
 class JsonSerializableTaskList {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Task list contains duplicate task(s).";
+    public static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
 
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
 
@@ -50,7 +50,7 @@ class JsonSerializableTaskList {
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (taskList.hasTask(task)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
             }
             taskList.addTask(task);
         }
