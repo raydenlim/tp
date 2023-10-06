@@ -18,9 +18,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskDescription;
-import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 
@@ -33,6 +30,7 @@ public class ModelManagerTest {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
+        assertEquals(new TaskListBook(), new TaskListBook(modelManager.getTaskList()));
     }
 
     @Test
@@ -100,12 +98,45 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void setTaskListFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setTaskListFilePath(null));
+    }
+
+    @Test
+    public void setTaskListFilePath_validPath_setsAddressBookFilePath() {
+        Path path = Paths.get("task/list/file/path");
+        modelManager.setTaskListFilePath(path);
+        assertEquals(path, modelManager.getTaskListFilePath());
+    }
+
+    @Test
+    public void hasTask_nullTask_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
+    }
+
+    @Test
+    public void hasTask_taskNotInTaskList_returnsFalse() {
+        assertFalse(modelManager.hasTask(TASK1));
+    }
+
+    @Test
+    public void hasTask_taskInTaskList_returnsTrue() {
+        modelManager.addTask(TASK1);
+        assertTrue(modelManager.hasTask(TASK1));
+    }
+
+    @Test
+    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
     public void equals() {
         AddressBook addressBook = new AddressBookBuilder().withPerson(ALICE).withPerson(BENSON).build();
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
         TaskListBook taskList = new TaskListBook();
-        taskList.addTask(new Task(new TaskName("Do cs2103t"), new TaskDescription("Complete PRS")));
+        taskList.addTask(TASK1);
 
 
         // same values -> returns true

@@ -49,6 +49,16 @@ public interface Model {
     void setAddressBookFilePath(Path addressBookFilePath);
 
     /**
+     * Returns the user prefs' task list file path.
+     */
+    Path getTaskListFilePath();
+
+    /**
+     * Sets the user prefs' task list file path.
+     */
+    void setTaskListFilePath(Path taskListFilePath);
+
+    /**
      * Replaces address book data with the data in {@code addressBook}.
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);

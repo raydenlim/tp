@@ -80,6 +80,17 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
+    @Override
+    public Path getTaskListFilePath() {
+        return userPrefs.getTaskListFilePath();
+    }
+
+    @Override
+    public void setTaskListFilePath(Path taskListFilePath) {
+        requireNonNull(taskListFilePath);
+        userPrefs.setTaskListFilePath(taskListFilePath);
+    }
+
     //=========== AddressBook ================================================================================
 
     @Override
