@@ -25,7 +25,6 @@ public class AddTaskCommand extends Command {
             + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket";
 
     public static final String MESSAGE_ARGUMENTS = "Name: %1$s, Description: %2$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
 
     private final Task task;
 

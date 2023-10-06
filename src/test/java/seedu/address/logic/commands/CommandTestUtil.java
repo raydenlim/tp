@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -36,6 +38,9 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_TASK_NAME = "Do cs2103t";
+    public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
+
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -53,6 +58,14 @@ public class CommandTestUtil {
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+
+    public static final String TASK_NAME_TASK1 = " " + PREFIX_TASK_NAME + VALID_TASK_NAME;
+    public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
+    public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
+    public static final String TASK_DESCRIPTION_TASK2 = " " + PREFIX_TASK_DESCRIPTION + "The green book";
+    public static final String INVALID_TASK_NAME = " " + PREFIX_TASK_NAME + "@@@@HER";
+    public static final String INVALID_TASK_DESCRIPTION = " " + PREFIX_TASK_DESCRIPTION + "\\    ";
+
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
