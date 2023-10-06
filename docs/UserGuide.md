@@ -12,7 +12,7 @@ pageNav: 3
 
 _Say goodbye to chaos and hello to an organized and efficient classroom experience._
 
-F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participatsion, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
+F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -87,6 +87,8 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
+
+<box type="tip" seamless>
 **Tip:** A person can have any number of tags (including 0)
 </box>
 
@@ -285,8 +287,8 @@ Parameters:
 * STUDENT_NAME - The name of the student you want to find.
 
 Examples:
-* `find n/John Doe` Finds and displays the profile of students with the name “John Doe.” 
-* `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe.”
+* `find n/John Doe` Finds and displays the profile of students with the name “John Doe”. 
+* `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.
 
 ### 🥅Filtering results: filter
 Filters the results displayed on the dashboard
