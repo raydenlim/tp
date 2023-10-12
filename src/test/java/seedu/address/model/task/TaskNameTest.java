@@ -32,7 +32,7 @@ public class TaskNameTest {
 
         // valid name
         assertTrue(TaskName.isValidName("do work")); // alphabets only
-        assertTrue(TaskName.isValidName("2103t")); // numbers only
+        assertTrue(TaskName.isValidName("2103")); // numbers only
         assertTrue(TaskName.isValidName("do the 2nd paper")); // alphanumeric characters
         assertTrue(TaskName.isValidName("Read Script")); // with capital letters
         assertTrue(TaskName.isValidName("Read the script and memorise everything fully")); // long names
