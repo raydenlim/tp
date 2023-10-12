@@ -1,9 +1,11 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.task.Task;
@@ -24,7 +26,9 @@ public class AddTaskCommand extends Command {
             + PREFIX_TASK_NAME + "Do laundry "
             + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket";
 
-    public static final String MESSAGE_ARGUMENTS = "Name: %1$s, Description: %2$s";
+    public static final String MESSAGE_SUCCESS = "Task has been added: %1$s";
+
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
 
     private final Task task;
 
@@ -39,7 +43,14 @@ public class AddTaskCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException(String.format(MESSAGE_ARGUMENTS, task.getName(), task.getDescription()));
+        requireNonNull(model);
+
+        if (model.hasTask(task)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        }
+
+        model.addTask(task);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(task)));
     }
 
     @Override

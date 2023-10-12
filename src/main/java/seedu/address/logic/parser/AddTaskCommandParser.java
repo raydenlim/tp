@@ -34,7 +34,8 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION);
         TaskName name = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_TASK_NAME).get());
         TaskDescription taskDescription = ParserUtil
-                .parseTaskDescription(argMultimap.getValue(PREFIX_TASK_DESCRIPTION).orElse(""));
+                .parseTaskDescription(argMultimap
+                        .getValue(PREFIX_TASK_DESCRIPTION).orElse(""));
 
         Task task = new Task(name, taskDescription);
 

@@ -56,7 +56,7 @@ public class TaskDescription {
      * Format state as text for viewing.
      */
     public String toString() {
-        return '[' + description + ']';
+        return description.equals("") ? "No Description Provided" : description;
     }
 
 }
