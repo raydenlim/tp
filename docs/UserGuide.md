@@ -96,9 +96,9 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
-### Listing all people : `list`
+### Listing all persons : `list`
 
-Shows a list of all people in the address book.
+Shows a list of all persons in the address book.
 
 Format: `list`
 
@@ -119,9 +119,9 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating people by name: `find`
+### Locating persons by name: `find`
 
-Finds people whose names contain any of the given keywords.
+Finds persons whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
