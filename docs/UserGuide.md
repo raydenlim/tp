@@ -12,7 +12,7 @@ pageNav: 3
 
 _Say goodbye to chaos and hello to an organized and efficient classroom experience._
 
-F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor person participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and people as a CS1101S Avenger!
+F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -251,14 +251,14 @@ Examples:
 * `deletetask 2` deletes the task with index 2 from the task list.
 
 ### 📆Taking attendance: `takeattendance`
-Takes the attendance of a person
+Takes the attendance of a student
 
 Format: `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`
 
 Parameters:
-* STUDENT_NAME - The name of the person. 
-* SESSION - The session number. 
-* PRESENCE - The attendance status of the person (e.g., present, absent).
+* STUDENT_NAME - The name of the student.
+* SESSION - The session number.
+* PRESENCE - The attendance status of the student (e.g., present, absent).
 
 Examples:
 * `takeattendance n/John Doe s/5 present` Marks John Doe as present on the 5th session.
@@ -270,52 +270,52 @@ Views the attendance list
 Format: `viewattendance n/STUDENT_NAME s/SESSION`
 
 Parameters:
-* STUDENT_NAME - The name of the person. 
+* STUDENT_NAME - The name of the student.
 * SESSION - The session number.
 
 Examples:
-* `viewattendance` Displays the overall attendance across all people and sessions. 
-* `viewattendance n/Rayan` Displays Rayan’s overall attendance. 
-* `viewattendance s/3` Displays all people’ attendance for the 3rd session.
+* `viewattendance` Displays the overall attendance across all students and sessions.
+* `viewattendance n/Rayan` Displays Rayan’s overall attendance.
+* `viewattendance s/3` Displays all students’ attendance for the 3rd session.
 
 ### 🔎Finding a Student: find
-Finds a person’s profile
+Finds a student’s profile
 
 Format: `find n/STUDENT_NAME`
 
 Parameters:
-* STUDENT_NAME - The name of the person you want to find.
+* STUDENT_NAME - The name of the student you want to find.
 
 Examples:
-* `find n/John Doe` Finds and displays the profile of people with the name “John Doe”. 
-* `find n/Jane Doe` Finds and displays the profile of people with the name “Jane Doe”.
+* `find n/John Doe` Finds and displays the profile of students with the name “John Doe”.
+* `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.
 
 ### 🥅Filtering results: filter
 Filters the results displayed on the dashboard
 
 Format:
-* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION` 
+* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`
 * `filter_delete n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`
 
 Parameters:
-* `FILTER_ATTRIBUTE` - The filter type filter_studentScores 
-  * `filter_studentScores`
-  * `filter_studentGrades`
+* `FILTER_ATTRIBUTE` - The filter type filter_studentScores
+    * `filter_studentScores`
+    * `filter_studentGrades`
 * `FILTER_DESCRIPTION` - The conditions for the filter
 
 Examples:
-* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display people who have an “A” grade. 
-* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show people with test scores above 80.
+* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade.
+* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.
 
 ### 📝Adding a grade to an assignment: `addgrade`
-Adds a grade to a person’s assignment.
+Adds a grade to a student’s assignment.
 
 Format: `addgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
-* GRADE The grade of the person.
+* GRADE The grade of the student.
 
 Examples:
 * `addgrade n/Rayson a/Functional Expressionism g/1300` adds a grade of 1300 to Rayson’s Functional Expressionism assignment.
@@ -323,12 +323,12 @@ Examples:
 
 
 ### 👀Viewing an assignment grade: `viewgrade`
-Shows a person’s assignment grade.
+Shows a student’s assignment grade.
 
 Format: `viewgrade n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -337,14 +337,14 @@ Examples:
 
 
 ### 🛠️Editing an assignment grade: `editgrade`
-Edits a person’s assignment grade.
+Edits a student’s assignment grade.
 
 Format: `editgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
-* GRADE The score of the person.
+* GRADE The score of the student.
 
 Examples:
 * `editgrade n/Rayson a/Functional Expressionism g/1200` edits the grade of Rayson’s Functional Expressionism assignment to 1200.
@@ -352,12 +352,12 @@ Examples:
 
 
 ### ❌Deleting an assignment grade: `deletegrade`
-Deletes a person’s assignment grade.
+Deletes a student’s assignment grade.
 
 Format: `deletegrade n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -366,12 +366,12 @@ Examples:
 
 
 ### 📝Adding a comment to an assignment: `addcomment`
-Adds a comment to a person’s assignment.
+Adds a comment to a student’s assignment.
 
 Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 * COMMENT The comment.
 
@@ -381,12 +381,12 @@ Examples:
 
 
 ### 👀Viewing a comment: `viewcomment`
-Shows the comment tagged to a person’s assignment.
+Shows the comment tagged to a student’s assignment.
 
 Format: `viewcomment n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -395,12 +395,12 @@ Examples:
 
 
 ### 🛠️Editing a comment: `editcomment`
-Edits the comment on a person’s assignment.
+Edits the comment on a student’s assignment.
 
 Format: `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 * COMMENT The new comment.
 
@@ -410,12 +410,12 @@ Examples:
 
 
 ### ❌Deleting a comment: `deletecomment`
-Deletes the comment tagged to a person’s assignment.
+Deletes the comment tagged to a student’s assignment.
 
 Format: `deletecomment n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -431,7 +431,7 @@ Format: `addconsult d/DATE t/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 Parameters:
 * DATE The date of consultation
 * TIME The time of consultation
-* STUDENT_NAME The name of the person(s)
+* STUDENT_NAME The name of the student(s)
 
 Examples:
 * `addconsult d/2023-10-30 t/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
@@ -466,14 +466,14 @@ Examples:
 * `viewconsult -1`shows an error message “Consultation not found” (if there is no consult scheduled).
 
 
-### 🛠️Adding people to a consultation: `addtoconsult`
-Adds person(s) into a consultation.
+### 🛠️Adding students to a consultation: `addtoconsult`
+Adds student(s) into a consultation.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
 Parameters:
 * INDEX The index of the consultation in the upcoming consultations.
-* STUDENT_NAME The name of person to be added into the consultation.
+* STUDENT_NAME The name of student to be added into the consultation.
 
 Examples:
 * `addtoconsult 2 n/Foo Bar`.
@@ -481,14 +481,14 @@ Examples:
 * `addtoconsult -1 n/Foo Bar`shows an error message “Consultation not found”.
 
 
-### ❌Remove people from a consultation: `removefromconsult`
-Removes person(s) from a consultation.
+### ❌Remove students from a consultation: `removefromconsult`
+Removes student(s) from a consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
 Parameters:
 * INDEX The index of the consultation in the upcoming consultations.
-* STUDENT_NAME The name of person to be added into the consultation.
+* STUDENT_NAME The name of student to be added into the consultation.
 
 Examples:
 * `removefromconsult 2 n/Foo Bar`.
