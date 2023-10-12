@@ -2,13 +2,12 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.person.assignment.AssignmentManager;
 
 /**
  * Represents a Person in the address book.
@@ -24,6 +23,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final HashMap<String, Assignment> assignments = new HashMap<>();
 
     /**
      * Every field must be present and not null.
@@ -35,6 +35,12 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        AssignmentManager assignmentManager = new AssignmentManager();
+        for (int i = 0; i < assignmentManager.size(); i++) {
+            String assignmentName = assignmentManager.getAssignmentName(i);
+            String assignmentMaxGrade = assignmentManager.getAssignmentMaxGrade(i);
+            assignments.put(assignmentName, new Assignment(assignmentName, assignmentMaxGrade));
+        }
     }
 
     public Name getName() {
@@ -59,6 +65,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Assignment getAssignment(String assignmentName) {
+        return assignments.get(assignmentName);
     }
 
     /**

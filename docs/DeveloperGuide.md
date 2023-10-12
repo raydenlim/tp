@@ -276,7 +276,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**:  track assignment gradings, student participation and plan their tutorials, consultations and mastery checks
+**Value proposition**:  track assignment gradings, person participation and plan their tutorials, consultations and mastery checks
 
 
 ### User stories
@@ -288,10 +288,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                                   | see usage instructions              | refer to instructions when I forget how to use the App                 |
 | `* * *`  | user                                       | add a new person                    |                                                                        |
 | `* * *`  | user                                       | delete a person                     | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name               | locate details of persons without having to go through the entire list |
-| `* * *`  | busy avenger                               | keep track of what needs to be done | better guide my students.                                              |
+| `* * *`  | user                                       | find a person by name               | locate details of people without having to go through the entire list |
+| `* * *`  | busy avenger                               | keep track of what needs to be done | better guide my people.                                              |
 | `* *`    | user                                       | hide private contact details        | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                | locate a person easily                                                 |
+| `*`      | user with many people in the address book | sort people by name                | locate a person easily                                                 |
 
 *{More to be added}*
 
@@ -303,8 +303,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+1.  User requests to list people
+2.  FAKEJARVIS shows a list of people
 3.  User requests to delete a specific person in the list
 4.  FAKEJARVIS deletes the person
 
@@ -327,8 +327,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+1.  User requests to list people
+2.  FAKEJARVIS shows a list of people
 3.  User requests to delete a specific person in the list
 4.  FAKEJARVIS deletes the person
 
@@ -351,10 +351,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+1.  User requests to list people
+2.  FAKEJARVIS shows a list of people
 3.  User requests to grade an assignment for a specific person in the list
-4.  FAKEJARVIS assigns given grade to the student
+4.  FAKEJARVIS assigns given grade to the person
 
     Use case ends.
 
@@ -374,9 +374,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons 
-3.  User request a search query to find a student's profile 
+1.  User requests to list people
+2.  FAKEJARVIS shows a list of people 
+3.  User request a search query to find a person's profile 
 4.  FAKEJARVIS returns matching results from the database
 
     Use case ends.
@@ -397,8 +397,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list persons. 
-2.  FAKEJARVIS shows a list of persons. 
+1.  User requests to list people. 
+2.  FAKEJARVIS shows a list of people. 
 3.  User requests to apply filters to the results via attribute `FILTER_ATTRIBUTE`, or description `FILTER_DESCRIPTION`. 
 4.  FAKEJARVIS shows the filter results. 
 
@@ -421,7 +421,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 people without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. System should respond within 2 seconds to ensure smooth and efficient user interactions.
 5. The system should be able to handle an increasing number of users and data without a significant decrease in performance.
@@ -467,9 +467,9 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting a person
 
-1. Deleting a person while all persons are being shown
+1. Deleting a person while all people are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all people using the `list` command. Multiple people in the list.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
