@@ -370,6 +370,52 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Find Student Profile**
+
+**MSS**
+
+1.  User requests to list persons
+2.  FAKEJARVIS shows a list of persons 
+3.  User request a search query to find a student's profile 
+4.  FAKEJARVIS returns matching results from the database
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+    Use case ends.
+
+* 3a. No matching profiles.
+
+    * 3a1. FAKEJARVIS shows an error message. 
+  
+        Use case resumes at step 2.
+
+**Use case: Filter Results**
+
+**MSS**
+
+1.  User requests to list persons. 
+2.  FAKEJARVIS shows a list of persons. 
+3.  User requests to apply filters to the results via attribute `FILTER_ATTRIBUTE`, or description `FILTER_DESCRIPTION`. 
+4.  FAKEJARVIS shows the filter results. 
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. No filtered results.
+
+    * 3a1. FAKEJARVIS shows an error message.
+
+      Use case resumes at step 2.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
