@@ -307,28 +307,28 @@ Examples:
 * `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade. 
 * `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.
 
-### 📝Grading an assignment: `grade`
-Grades a student’s assignment.
+### 📝Adding a grade to an assignment: `addgrade`
+Adds a grade to a person’s assignment.
 
-Format: `grade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
+Format: `addgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
-* GRADE The grade of the student.
+* GRADE The grade of the person.
 
 Examples:
-* `grade n/Rayson a/Functional Expressionism g/1300` grades Rayson’s Functional Expressionism assignment as 1300.
-* `grade n/Wesley a/Rune Reading g/600` grades Wesley’s Rune Reading assignment as 600.
+* `addgrade n/Rayson a/Functional Expressionism g/1300` adds a grade of 1300 to Rayson’s Functional Expressionism assignment.
+* `addgrade n/Wesley a/Rune Reading g/600` adds a grade of 600 to Wesley’s Rune Reading assignment.
 
 
 ### 👀Viewing an assignment grade: `viewgrade`
-Shows a student’s assignment grade.
+Shows a person’s assignment grade.
 
 Format: `viewgrade n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -337,14 +337,14 @@ Examples:
 
 
 ### 🛠️Editing an assignment grade: `editgrade`
-Edits a student’s assignment grade.
+Edits a person’s assignment grade.
 
 Format: `editgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
-* GRADE The score of the student.
+* GRADE The score of the person.
 
 Examples:
 * `editgrade n/Rayson a/Functional Expressionism g/1200` edits the grade of Rayson’s Functional Expressionism assignment to 1200.
@@ -352,12 +352,12 @@ Examples:
 
 
 ### ❌Deleting an assignment grade: `deletegrade`
-Deletes a student’s assignment grade.
+Deletes a person’s assignment grade.
 
 Format: `deletegrade n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -365,13 +365,13 @@ Examples:
 * `deletegrade n/Wesley a/Rune Reading` deletes Wesley’s Rune Reading grade.
 
 
-### 📝Commenting on an assignment: `addcomment`
-Adds a comment to a student’s assignment.
+### 📝Adding a comment to an assignment: `addcomment`
+Adds a comment to a person’s assignment.
 
 Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
 * COMMENT The comment.
 
@@ -381,12 +381,12 @@ Examples:
 
 
 ### 👀Viewing a comment: `viewcomment`
-Shows the comment tagged to a student’s assignment.
+Shows the comment tagged to a person’s assignment.
 
 Format: `viewcomment n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -395,12 +395,12 @@ Examples:
 
 
 ### 🛠️Editing a comment: `editcomment`
-Edits the comment on a student’s assignment.
+Edits the comment on a person’s assignment.
 
 Format: `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
 * COMMENT The new comment.
 
@@ -410,12 +410,12 @@ Examples:
 
 
 ### ❌Deleting a comment: `deletecomment`
-Deletes the comment tagged to a student’s assignment.
+Deletes the comment tagged to a person’s assignment.
 
 Format: `deletecomment n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* STUDENT_NAME The name of the person.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
