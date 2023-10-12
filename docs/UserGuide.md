@@ -307,10 +307,10 @@ Examples:
 * `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade. 
 * `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.
 
-### 📝Grading an assignment: `grade`
-Grades a student’s assignment.
+### 📝Adding a grade to an assignment: `addgrade`
+Adds a grade to a student’s assignment.
 
-Format: `grade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
+Format: `addgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
 * STUDENT_NAME The name of the student.
@@ -318,8 +318,8 @@ Parameters:
 * GRADE The grade of the student.
 
 Examples:
-* `grade n/Rayson a/Functional Expressionism g/1300` grades Rayson’s Functional Expressionism assignment as 1300.
-* `grade n/Wesley a/Rune Reading g/600` grades Wesley’s Rune Reading assignment as 600.
+* `addgrade n/Rayson a/Functional Expressionism g/1300` adds a grade of 1300 to Rayson’s Functional Expressionism assignment.
+* `addgrade n/Wesley a/Rune Reading g/600` adds a grade of 600 to Wesley’s Rune Reading assignment.
 
 
 ### 👀Viewing an assignment grade: `viewgrade`
@@ -365,7 +365,7 @@ Examples:
 * `deletegrade n/Wesley a/Rune Reading` deletes Wesley’s Rune Reading grade.
 
 
-### 📝Commenting on an assignment: `addcomment`
+### 📝Adding a comment to an assignment: `addcomment`
 Adds a comment to a student’s assignment.
 
 Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
