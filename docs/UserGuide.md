@@ -308,14 +308,14 @@ Examples:
 * `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.
 
 ### 📝Adding a grade to an assignment: `addgrade`
-Adds a grade to a person’s assignment.
+Adds a grade to a student’s assignment.
 
 Format: `addgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
-* GRADE The grade of the person.
+* GRADE The grade of the student.
 
 Examples:
 * `addgrade n/Rayson a/Functional Expressionism g/1300` adds a grade of 1300 to Rayson’s Functional Expressionism assignment.
@@ -323,12 +323,12 @@ Examples:
 
 
 ### 👀Viewing an assignment grade: `viewgrade`
-Shows a person’s assignment grade.
+Shows a student’s assignment grade.
 
 Format: `viewgrade n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -337,14 +337,14 @@ Examples:
 
 
 ### 🛠️Editing an assignment grade: `editgrade`
-Edits a person’s assignment grade.
+Edits a student’s assignment grade.
 
 Format: `editgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
-* GRADE The score of the person.
+* GRADE The score of the student.
 
 Examples:
 * `editgrade n/Rayson a/Functional Expressionism g/1200` edits the grade of Rayson’s Functional Expressionism assignment to 1200.
@@ -352,12 +352,12 @@ Examples:
 
 
 ### ❌Deleting an assignment grade: `deletegrade`
-Deletes a person’s assignment grade.
+Deletes a student’s assignment grade.
 
 Format: `deletegrade n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -366,12 +366,12 @@ Examples:
 
 
 ### 📝Adding a comment to an assignment: `addcomment`
-Adds a comment to a person’s assignment.
+Adds a comment to a student’s assignment.
 
 Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 * COMMENT The comment.
 
@@ -381,12 +381,12 @@ Examples:
 
 
 ### 👀Viewing a comment: `viewcomment`
-Shows the comment tagged to a person’s assignment.
+Shows the comment tagged to a student’s assignment.
 
 Format: `viewcomment n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
@@ -395,12 +395,12 @@ Examples:
 
 
 ### 🛠️Editing a comment: `editcomment`
-Edits the comment on a person’s assignment.
+Edits the comment on a student’s assignment.
 
 Format: `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 * COMMENT The new comment.
 
@@ -410,12 +410,12 @@ Examples:
 
 
 ### ❌Deleting a comment: `deletecomment`
-Deletes the comment tagged to a person’s assignment.
+Deletes the comment tagged to a student’s assignment.
 
 Format: `deletecomment n/STUDENT_NAME a/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the person.
+* STUDENT_NAME The name of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
