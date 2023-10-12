@@ -11,6 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.ConsultationList;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
 /**
@@ -20,6 +23,7 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final ConsultationList consultations;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
 
@@ -32,6 +36,7 @@ public class ModelManager implements Model {
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.consultations = new ConsultationList();
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
@@ -126,6 +131,24 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    //=========== Consultations ================================================================================
+    @Override
+    public void addConsultation(Consultation consultation) {
+        consultations.addConsultation(consultation);
+    }
+
+
+    @Override
+    public Person getConsultationStudentsList(Name name) {
+        return null;
+    }
+
+    @Override
+    public Person getMatchingStudentName(Name name) {
+        requireNonNull(name);
+        return addressBook.matchName(name);
     }
 
     @Override

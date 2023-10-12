@@ -75,6 +75,18 @@ public class Person {
     }
 
     /**
+     * Returns true if both persons have the same name.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSameName(Name otherName) {
+        if (otherName == this.getName()) {
+            return true;
+        }
+
+        return otherName.equals(getName());
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */

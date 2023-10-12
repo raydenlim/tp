@@ -2,6 +2,9 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,10 +12,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.*;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -48,6 +48,18 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses {@code Collection<String> names} into a {@code Set<Name>}.
+     */
+    public static Set<Name> parseNames(Collection<String> names) throws ParseException {
+        requireNonNull(names);
+        final Set<Name> nameSet = new HashSet<>();
+        for (String studentName : names) {
+            nameSet.add(parseName(studentName));
+        }
+        return nameSet;
     }
 
     /**
@@ -120,5 +132,47 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /// Consultation parsers
+
+    public static Person parseStudent(String studentName) throws ParseException {
+        requireNonNull(studentName);
+        String trimmedName = studentName.trim();
+        return null;
+    }
+
+    /**
+     * Parses {@code Collection<String> names} into a {@code Set<Person>}.
+     */
+    public static Set<Person> parseStudents(Collection<String> names) throws ParseException {
+        requireNonNull(names);
+        final Set<Person> studentSet = new HashSet<>();
+        for (String studentName : names) {
+            studentSet.add(parseStudent(studentName));
+        }
+        return studentSet;
+    }
+
+    /**
+     * Parses {@code String date} into an {@code LocalDate} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static LocalDate parseDate(String date) {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(trimmedDate, formatter);
+    }
+
+    /**
+     * Parses {@code String time} into an {@code LocalTime} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static LocalTime parseTime(String time) {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return LocalTime.parse(trimmedTime, formatter);
     }
 }
