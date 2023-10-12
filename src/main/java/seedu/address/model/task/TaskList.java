@@ -37,6 +37,17 @@ public class TaskList implements Iterable<Task> {
     }
 
     /**
+     * Returns the task at the given index.
+     */
+    public Task getTask(int index) {
+        if (index >= internalList.size()) {
+            throw new IllegalArgumentException("Index is out of bounds");
+        }
+
+        return internalList.get(index);
+    }
+
+    /**
      * Adds a task to the list.
      * The task must not already exist in the list.
      */

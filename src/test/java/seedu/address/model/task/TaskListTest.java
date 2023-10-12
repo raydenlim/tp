@@ -147,6 +147,17 @@ public class TaskListTest {
     }
 
     @Test
+    public void getTask_indexWithinBounds_success() {
+        taskList.add(TASK1);
+        assertEquals(TASK1, taskList.getTask(0));
+    }
+
+    @Test
+    public void getTask_indexOutsideBounds_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> taskList.getTask(0));
+    }
+
+    @Test
     public void toStringMethod() {
         assertEquals(taskList.asUnmodifiableObservableList().toString(), taskList.toString());
     }

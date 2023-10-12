@@ -36,7 +36,6 @@ public class Task {
         return taskDescription;
     }
 
-
     /**
      * Returns true if both tasks have the same name and description.
      */

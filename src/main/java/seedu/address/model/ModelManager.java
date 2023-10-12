@@ -147,6 +147,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Task getTask(int index) {
+        return taskList.getTask(index);
+    }
+
+    @Override
     public void deleteTask(Task target) {
         taskList.removeTask(target);
     }

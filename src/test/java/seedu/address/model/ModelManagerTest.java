@@ -9,6 +9,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalTasks.TASK1;
+import static seedu.address.testutil.TypicalTasks.TASK2;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -123,6 +124,16 @@ public class ModelManagerTest {
     public void hasTask_taskInTaskList_returnsTrue() {
         modelManager.addTask(TASK1);
         assertTrue(modelManager.hasTask(TASK1));
+    }
+
+    @Test
+    public void getTask_indexWithinBounds_success() {
+        modelManager.addTask(TASK2);
+        assertEquals(modelManager.getTask(0), TASK2);
+    }
+    @Test
+    public void getTask_indexOutsideBounds_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> modelManager.getTask(0));
     }
 
     @Test

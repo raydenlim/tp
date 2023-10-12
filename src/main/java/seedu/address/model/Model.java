@@ -116,6 +116,12 @@ public interface Model {
     void addTask(Task task);
 
     /**
+     * Returns task at the given index.
+     * {@code index} must be within the size of the task list.
+     */
+    Task getTask(int index);
+
+    /**
      * Replaces the given task {@code target} with {@code editedTask}.
      * {@code target} must exist in the address book.
      * The task identity of {@code editedTask} must not be the same as another existing task in the task list.

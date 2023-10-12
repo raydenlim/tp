@@ -60,6 +60,13 @@ public class TaskListBook implements ReadOnlyTaskList {
     //// task-level operations
 
     /**
+     * Returns the task at the given index.
+     */
+    public Task getTask(int index) {
+        return tasks.getTask(index);
+    }
+
+    /**
      * Returns true if a task with the same identity as {@code task} exists in the task list.
      */
     public boolean hasTask(Task task) {
