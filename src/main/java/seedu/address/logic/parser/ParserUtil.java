@@ -134,26 +134,6 @@ public class ParserUtil {
         return tagSet;
     }
 
-    /// Consultation parsers
-
-    public static Person parseStudent(String studentName) throws ParseException {
-        requireNonNull(studentName);
-        String trimmedName = studentName.trim();
-        return null;
-    }
-
-    /**
-     * Parses {@code Collection<String> names} into a {@code Set<Person>}.
-     */
-    public static Set<Person> parseStudents(Collection<String> names) throws ParseException {
-        requireNonNull(names);
-        final Set<Person> studentSet = new HashSet<>();
-        for (String studentName : names) {
-            studentSet.add(parseStudent(studentName));
-        }
-        return studentSet;
-    }
-
     /**
      * Parses {@code String date} into an {@code LocalDate} and returns it. Leading and trailing whitespaces will be
      * trimmed.

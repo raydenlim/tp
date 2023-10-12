@@ -2,9 +2,7 @@ package seedu.address.logic.parser;
 
 import seedu.address.logic.commands.consultation.CreateConsultCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

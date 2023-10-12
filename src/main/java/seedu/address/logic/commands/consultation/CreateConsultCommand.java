@@ -31,8 +31,8 @@ public class CreateConsultCommand extends Command {
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
-    private LocalDate date;
-    private LocalTime time;
+    private final LocalDate date;
+    private final LocalTime time;
     private Name name;
     private Set<Name> names;
     private Consultation consultationToAdd;

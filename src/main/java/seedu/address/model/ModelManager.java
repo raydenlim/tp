@@ -139,7 +139,6 @@ public class ModelManager implements Model {
         consultations.addConsultation(consultation);
     }
 
-
     @Override
     public Person getConsultationStudentsList(Name name) {
         return null;
