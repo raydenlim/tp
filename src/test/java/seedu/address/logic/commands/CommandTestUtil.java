@@ -63,8 +63,9 @@ public class CommandTestUtil {
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
     public static final String TASK_DESCRIPTION_TASK2 = " " + PREFIX_TASK_DESCRIPTION + "The green book";
-    public static final String INVALID_TASK_NAME = " " + PREFIX_TASK_NAME + "@@@@HER";
-    public static final String INVALID_TASK_DESCRIPTION = " " + PREFIX_TASK_DESCRIPTION + "\\    ";
+    public static final String INVALID_TASK_NAME = " " + PREFIX_TASK_NAME + "@@@@HER"; // '@' not allowed in name
+    public static final String INVALID_TASK_DESCRIPTION = " "
+            + PREFIX_TASK_DESCRIPTION + "\\    "; // whitespaces only not allowed in description
 
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

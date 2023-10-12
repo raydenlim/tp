@@ -26,7 +26,7 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION)
+        if (!arePrefixesPresent(argMultimap, PREFIX_TASK_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
@@ -34,7 +34,7 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION);
         TaskName name = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_TASK_NAME).get());
         TaskDescription taskDescription = ParserUtil
-                .parseTaskDescription(argMultimap.getValue(PREFIX_TASK_DESCRIPTION).get());
+                .parseTaskDescription(argMultimap.getValue(PREFIX_TASK_DESCRIPTION).orElse(""));
 
         Task task = new Task(name, taskDescription);
 

@@ -19,7 +19,7 @@ public class AddTaskCommand extends Command {
             + ": Adds a new task with the specified description.\n"
             + "Parameters: "
             + PREFIX_TASK_NAME + "NAME "
-            + PREFIX_TASK_DESCRIPTION + "DESCRIPTION "
+            + "[" + PREFIX_TASK_DESCRIPTION + "DESCRIPTION]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TASK_NAME + "Do laundry "
             + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket";

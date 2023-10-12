@@ -80,13 +80,16 @@ public class AddTaskCommandParserTest {
         assertParseFailure(parser, VALID_TASK_NAME + TASK_DESCRIPTION_TASK1,
                 expectedMessage);
 
-        // missing description prefix
-        assertParseFailure(parser, TASK_NAME_TASK1 + VALID_TASK_DESCRIPTION,
-                expectedMessage);
-
         // all prefixes missing
         assertParseFailure(parser, VALID_TASK_NAME + VALID_TASK_DESCRIPTION,
                 expectedMessage);
+    }
+
+    @Test
+    public void parse_optionalFieldsMissing_success() {
+        // no description
+        Task expectedTask = new TaskBuilder(TASK1).withDescription("").build();
+        assertParseSuccess(parser, TASK_NAME_TASK1, new AddTaskCommand(expectedTask));
     }
 
     @Test
