@@ -61,7 +61,7 @@ public class ConsultationBuilder {
     }
 
     /**
-     * Sets the {@code Time} of the {@code Consultation} that we are building.
+     * Get the set of students for the {@code Consultation} that we are building.
      */
     public ConsultationBuilder withStudents(Person ... students) {
         this.students = SampleDataUtil.getStudentSet(students);

@@ -143,7 +143,7 @@ public class ParserUtil {
      * Parses {@code String date} into an {@code LocalDate} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      */
-    public static LocalDate parseDate(String date) {
+    public static LocalDate parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -154,7 +154,7 @@ public class ParserUtil {
      * Parses {@code String time} into an {@code LocalTime} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      */
-    public static LocalTime parseTime(String time) {
+    public static LocalTime parseTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");

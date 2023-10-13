@@ -79,10 +79,19 @@ public class SampleDataUtil {
     }
 
     /**
-     * Returns a student set containing the list of string names given.
+     * Returns a student set containing the list of person given.
      */
     public static Set<Person> getStudentSet(Person ... students) {
         return Arrays.stream(students)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a names set containing the list of string names given.
+     */
+    public static Set<Name> getNamesSet(String ... names) {
+        return Arrays.stream(names)
+                .map(Name::new)
                 .collect(Collectors.toSet());
     }
 

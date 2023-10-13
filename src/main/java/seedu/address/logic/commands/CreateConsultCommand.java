@@ -72,7 +72,9 @@ public class CreateConsultCommand extends Command {
         }
 
         CreateConsultCommand otherCreateConsultCommand = (CreateConsultCommand) other;
-        return this.consultationToAdd.equals(otherCreateConsultCommand.consultationToAdd);
+        return this.date.equals(otherCreateConsultCommand.date)
+                && this.time.equals(otherCreateConsultCommand.time)
+                && this.names.equals(otherCreateConsultCommand.names);
     }
 
     @Override

@@ -29,6 +29,7 @@ public class CreateConsultCommandParser implements Parser<CreateConsultCommand> 
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DATE, PREFIX_TIME);
+
         LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         LocalTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
         Set<Name> names = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
