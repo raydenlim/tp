@@ -49,14 +49,7 @@ public class Attendance {
      * @param student The student for which attendance records are requested.
      * @return A string representation of the sessions attended by the student.
      */
-    public static String getAttendanceByStudent(Person student) {
-        StringBuilder stb = new StringBuilder();
-        for (Session session : student.getSessions()) {
-            stb.append(String.format("Session %d\n", session.getSessionNumber()));
-        }
-        return stb.toString();
+    public static Set<Session> getAttendanceByStudent(Person student) {
+        return student.getSessions();
     }
-
-
-
 }

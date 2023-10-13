@@ -22,7 +22,8 @@ public class SessionTest {
 
         assertFalse(SESSION2.isSameSession(SESSION3A));
 
-        assertTrue(SESSION3B.addStudent(TypicalPersons.BOB).isSameSession(SESSION3A));
+        SESSION3B.addStudent(TypicalPersons.BOB);
+        assertTrue(SESSION3B.isSameSession(SESSION3A));
     }
 
     @Test
@@ -44,8 +45,9 @@ public class SessionTest {
         assertFalse(SESSION2.equals(SESSION3A));
 
         // different students -> returns false
-        Session editedSession = SESSION1B.addStudent(TypicalPersons.CARL);
-        assertFalse(SESSION1B.equals(editedSession));
+        Session tempSession = new Session(SESSION1B.getSessionNumber(), SESSION1B.getStudents());
+        tempSession.addStudent(TypicalPersons.CARL);
+        assertFalse(SESSION1B.equals(tempSession));
     }
 
 

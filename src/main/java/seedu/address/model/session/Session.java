@@ -59,11 +59,8 @@ public class Session {
      * @param p The student to add.
      * @return
      */
-    public Session addStudent(Person p) {
-        Set<Person> newStudents = new HashSet<>();
-        newStudents.addAll(students);
-        newStudents.add(p);
-        return new Session(sessionNumber, newStudents);
+    public void addStudent(Person p) {
+        this.students.add(p);
     }
 
     /**
@@ -72,7 +69,7 @@ public class Session {
      * @param key The student to remove.
      */
     public void removeStudent(Person key) {
-        students.remove(key);
+        this.students.remove(key);
     }
 
     /**
@@ -116,7 +113,11 @@ public class Session {
      * @return The set of students.
      */
     public Set<Person> getStudents() {
-        return students;
+        Set<Person> anotherSet = new HashSet<>();
+        for (Person student : students) {
+            anotherSet.add(student);
+        }
+        return anotherSet;
     }
 
     /**
@@ -134,7 +135,11 @@ public class Session {
      * @return A string representation of the session.
      */
     public String getSessionInfo() {
-        return String.format("%s - %s", sessionNumber, students);
+        StringBuilder studentNames = new StringBuilder();
+        for (Person student : students) {
+            studentNames.append(String.format("%s ", student.getName()));
+        }
+        return String.format("%s - %s", sessionNumber, studentNames);
     }
 
     public static boolean isValidSessionNumber(String test) {

@@ -11,10 +11,18 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
+import static seedu.address.testutil.TypicalSessions.SESSION1A;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.session.Session;
 import seedu.address.testutil.PersonBuilder;
+
+
 
 public class PersonTest {
 
@@ -22,6 +30,22 @@ public class PersonTest {
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         Person person = new PersonBuilder().build();
         assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
+    }
+
+    @Test
+    public void studentAttendSession() {
+        Session emptySession = EMPTY_SESSION;
+        ALICE.attendSession(emptySession);
+
+        assertTrue(emptySession.getStudents().contains(ALICE));
+    }
+
+    @Test
+    public void studentMissSession() {
+        Session sessionWithAlice = new Session(SESSION1A.getSessionNumber(), new HashSet<>(SESSION1A.getStudents()));
+        ALICE.missSession(sessionWithAlice);
+
+        assertFalse(sessionWithAlice.getStudents().contains(ALICE));
     }
 
     @Test
@@ -92,9 +116,14 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
+        Set<Session> sessions = ALICE.getSessions();
+        StringBuilder allSessions = new StringBuilder();
+        for (Session session : sessions) {
+            allSessions.append(session.getSessionNumber());
+        }
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
-                + ", sessions=" + ALICE.getSessions() + "}";
+                + ", sessions=" + allSessions + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
