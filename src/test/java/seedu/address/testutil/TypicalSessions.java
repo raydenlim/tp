@@ -1,7 +1,6 @@
 package seedu.address.testutil;
 
 import seedu.address.model.session.Session;
-import seedu.address.testutil.TypicalPersons;
 
 
 public class TypicalSessions {

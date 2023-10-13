@@ -1,23 +1,14 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.SESSION_NUMBER_SESSION1;
+import static seedu.address.logic.commands.CommandTestUtil.SESSION_STUDENTS_STUDENTS1;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+
 import org.junit.jupiter.api.Test;
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.AddTaskCommand;
+
 import seedu.address.logic.commands.session.CreateSessionCommand;
 import seedu.address.model.person.Name;
-import seedu.address.model.session.Session;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskName;
-import seedu.address.testutil.TaskBuilder;
-import seedu.address.testutil.TypicalPersons;
-
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalTasks.TASK1;
 
 public class CreateSessionCommandParserTest {
     private CreateSessionCommandParser parser = new CreateSessionCommandParser();

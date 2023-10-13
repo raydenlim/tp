@@ -1,11 +1,5 @@
 package seedu.address.model.session;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.session.Session;
-import seedu.address.testutil.TypicalPersons;
-import seedu.address.testutil.TypicalSessions;
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,6 +9,9 @@ import static seedu.address.testutil.TypicalSessions.SESSION2;
 import static seedu.address.testutil.TypicalSessions.SESSION3A;
 import static seedu.address.testutil.TypicalSessions.SESSION3B;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.TypicalPersons;
 
 public class SessionTest {
     @Test
