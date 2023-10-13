@@ -1,8 +1,8 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.SESSION_NUMBER_SESSION1;
-import static seedu.address.logic.commands.CommandTestUtil.SESSION_STUDENTS_STUDENTS1;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,8 @@ public class CreateSessionCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE
-                + SESSION_NUMBER_SESSION1 + SESSION_STUDENTS_STUDENTS1, new CreateSessionCommand(1, new Name("Bob")));
+                + SESSION_NUMBER_SESSION1 + SESSION_STUDENTS_STUDENTS1, new CreateSessionCommand("1", new Name("Bob")));
     }
+
 
 }

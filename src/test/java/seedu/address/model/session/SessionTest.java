@@ -26,9 +26,35 @@ public class SessionTest {
     }
 
     @Test
+    public void equalsMethod() {
+        // same values -> returns true
+        Session otherSession = new Session(SESSION1A.getSessionNumber(), SESSION1A.getStudents());
+        assertTrue(SESSION1A.equals(otherSession));
+
+        // same object -> returns true
+        assertTrue(SESSION2.equals(SESSION2));
+
+        // null -> returns false
+        assertFalse(SESSION3A.equals(null));
+
+        // different type -> returns false
+        assertFalse(SESSION3B.equals("test"));
+
+        // different task -> returns false
+        assertFalse(SESSION2.equals(SESSION3A));
+
+        // different students -> returns false
+        Session editedSession = SESSION1B.addStudent(TypicalPersons.CARL);
+        assertFalse(SESSION1B.equals(editedSession));
+    }
+
+    @Test
     public void toStringMethod() {
-        String expected = String.format("%d - %s",
+        String expected1 = String.format("%s - %s",
                 SESSION2.getSessionNumber(), SESSION2.getStudents());
-        assertEquals(expected, SESSION2.toString());
+        assertEquals(expected1, SESSION2.toString());
+
+        String expected2 = String.format("%s - %s", SESSION3A.getSessionNumber(), SESSION3A.getStudents());
+        assertEquals(expected2, SESSION3A.toString());
     }
 }

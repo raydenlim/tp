@@ -32,7 +32,7 @@ public class CreateSessionCommand extends Command {
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";
 
-    private int sessionNumber;
+    private String sessionNumber;
     private Name name;
     private Set<Name> names;
     private Session sessionToAdd;
@@ -43,7 +43,7 @@ public class CreateSessionCommand extends Command {
      * @param sessionNumber The session number to create.
      * @param name The name of the student to add to the session.
      */
-    public CreateSessionCommand(int sessionNumber, Name name) {
+    public CreateSessionCommand(String sessionNumber, Name name) {
         requireAllNonNull(sessionNumber, name);
 
         this.sessionNumber = sessionNumber;
@@ -56,7 +56,7 @@ public class CreateSessionCommand extends Command {
      * @param sessionNumber The session number to create.
      * @param names A set of names of the students to add to the session.
      */
-    public CreateSessionCommand(int sessionNumber, Set<Name> names) {
+    public CreateSessionCommand(String sessionNumber, Set<Name> names) {
         requireAllNonNull(sessionNumber, names);
 
         this.sessionNumber = sessionNumber;

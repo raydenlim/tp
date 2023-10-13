@@ -42,7 +42,7 @@ public class JsonAdaptedSession {
      * @throws IllegalValueException if there were any data constraints violated in the adapted session.
      */
     public Session toModelType() throws IllegalValueException {
-        int sessionNumber = Integer.parseInt(sessionInfo.split(" - ")[0]);
+        String sessionNumber = sessionInfo.split(" - ")[0];
         //TODO: convert storage students to studentList
         Set<Person> studentList = new HashSet<>();
 

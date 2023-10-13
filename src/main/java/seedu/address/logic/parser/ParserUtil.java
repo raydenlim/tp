@@ -168,10 +168,10 @@ public class ParserUtil {
      * @return The parsed session number as an integer.
      * @throws NumberFormatException If the session number is not a valid integer.
      */
-    public static int parseSessionNumber(String sessionNumber) {
+    public static String parseSessionNumber(String sessionNumber) {
         requireNonNull(sessionNumber);
         String trimmedSessionNumber = sessionNumber.trim();
-        return Integer.parseInt(trimmedSessionNumber);
+        return trimmedSessionNumber;
     }
 
     /**

@@ -33,7 +33,7 @@ public class CreateSessionCommandParser implements Parser<CreateSessionCommand> 
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
-        int sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
+        String sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
 
         return new CreateSessionCommand(sessionNumber, name);

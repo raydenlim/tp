@@ -72,7 +72,7 @@ public class PersonBuilder {
     /**
      * Parses the {@code sessions} into a {@code Set<Session>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withSessions(int ... sessionNumbers) {
+    public PersonBuilder withSessions(String ... sessionNumbers) {
         this.sessions = SampleDataUtil.getSessionSet(sessionNumbers);
         return this;
     }

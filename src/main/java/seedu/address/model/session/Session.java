@@ -12,7 +12,7 @@ import seedu.address.model.person.Person;
  * Represents a class for managing a session, which can hold a list of students and session-specific details.
  */
 public class Session {
-    private final int sessionNumber;
+    private final String sessionNumber;
     private Set<Person> students = new HashSet<>();
 
     /**
@@ -21,9 +21,10 @@ public class Session {
      * @param sessionNumber The unique identifier for this session.
      * @param presentStudents The set of students present in this session.
      */
-    public Session(int sessionNumber, Set<Person> presentStudents) {
+    public Session(String sessionNumber, Set<Person> presentStudents) {
         requireAllNonNull(sessionNumber, presentStudents);
         this.sessionNumber = sessionNumber;
+        this.students = presentStudents;
     }
 
     /**
@@ -32,7 +33,7 @@ public class Session {
      * @param sessionNumber The unique identifier for this session.
      * @param student The student to add to this session.
      */
-    public Session(int sessionNumber, Person student) {
+    public Session(String sessionNumber, Person student) {
         requireAllNonNull(sessionNumber, student);
         this.sessionNumber = sessionNumber;
         this.students.add(student);
@@ -43,7 +44,7 @@ public class Session {
      *
      * @param sessionNumber The unique identifier for this session.
      */
-    public Session(int sessionNumber) {
+    public Session(String sessionNumber) {
         requireNonNull(sessionNumber);
         this.sessionNumber = sessionNumber;
     }
@@ -55,8 +56,10 @@ public class Session {
      * @return
      */
     public Session addStudent(Person p) {
-        students.add(p);
-        return new Session(sessionNumber, students);
+        Set<Person> newStudents = new HashSet<>();
+        newStudents.addAll(students);
+        newStudents.add(p);
+        return new Session(sessionNumber, newStudents);
     }
 
     /**
@@ -79,9 +82,12 @@ public class Session {
         if (other == this) {
             return true;
         }
+        if (!(other instanceof Session)) {
+            return false;
+        }
         Session otherSession = (Session) other;
         return students.equals(otherSession.students)
-                && otherSession.sessionNumber == sessionNumber;
+                && otherSession.sessionNumber.equals(sessionNumber);
     }
 
     /**
@@ -96,7 +102,7 @@ public class Session {
         }
 
         return other != null
-                && other.getSessionNumber() == sessionNumber
+                && other.getSessionNumber().equals(sessionNumber)
                 && other.getStudents().equals(students);
     }
 
@@ -114,7 +120,7 @@ public class Session {
      *
      * @return The session number.
      */
-    public int getSessionNumber() {
+    public String getSessionNumber() {
         return sessionNumber;
     }
 
@@ -124,7 +130,7 @@ public class Session {
      * @return A string representation of the session.
      */
     public String getSessionInfo() {
-        return String.format("%d - %s", sessionNumber, students);
+        return String.format("%s - %s", sessionNumber, students);
     }
 
     @Override
