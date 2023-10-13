@@ -14,6 +14,12 @@ public class Session {
         this.sessionNumber = sessionNumber;
     }
 
+    public Session(int sessionNumber, Person student) {
+        requireAllNonNull(sessionNumber, student);
+        this.sessionNumber = sessionNumber;
+        this.students.add(student);
+    }
+
     public void addStudent(Person p) {
         students.add(p);
     }

@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
 
 /**
  * Container for user visible messages.
@@ -47,5 +48,18 @@ public class Messages {
         person.getTags().forEach(builder::append);
         return builder.toString();
     }
+
+    /**
+     * Formats the {@code session} for display to the user.
+     */
+    public static String format(Session session) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Session: ")
+                .append(session.getSessionNumber())
+                .append(";");
+        session.getStudents().forEach(builder::append);
+        return builder.toString();
+    }
+
 
 }

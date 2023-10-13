@@ -158,4 +158,10 @@ public class ParserUtil {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return LocalTime.parse(trimmedTime, formatter);
     }
+
+    public static int parseSessionNumber(String sessionNumber) {
+        requireNonNull(sessionNumber);
+        String trimmedSessionNumber = sessionNumber.trim();
+        return Integer.parseInt(trimmedSessionNumber);
+    }
 }
