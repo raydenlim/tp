@@ -68,4 +68,5 @@ public class JsonAdaptedConsultation {
 
         return new Consultation(formattedDate, formattedTime, studentSet);
     }
+
 }
