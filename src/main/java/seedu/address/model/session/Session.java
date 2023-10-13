@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
 /**
@@ -13,6 +14,9 @@ import seedu.address.model.person.Person;
  */
 public class Session {
     private final String sessionNumber;
+    private static final String SESSION_NUMBER_VALIDATION_REGEX = "^[1-9]\\d*$";
+    public static final String MESSAGE_CONSTRAINTS =
+            "Session numbers should only contain numbers, and it should not be blank.";
     private Set<Person> students = new HashSet<>();
 
     /**
@@ -131,6 +135,10 @@ public class Session {
      */
     public String getSessionInfo() {
         return String.format("%s - %s", sessionNumber, students);
+    }
+
+    public static boolean isValidSessionNumber(String test) {
+        return test.matches(SESSION_NUMBER_VALIDATION_REGEX);
     }
 
     @Override
