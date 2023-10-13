@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -25,16 +26,19 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
+    private final Set<Session> sessions;
+
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Session> sessions) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.sessions = new HashSet<>(sessions);
     }
 
     public Name getName() {
@@ -61,6 +65,18 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+    public Set<Session> getSessions() {
+        return Collections.unmodifiableSet(sessions);
+    }
+
+    public void attendSession(Session session) {
+        sessions.add(session);
+    }
+
+    public void missSession(Session session) {
+        sessions.remove(session);
+    }
+
     /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
@@ -72,6 +88,18 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both persons have the same name.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSameName(Name otherName) {
+        if (otherName == this.getName()) {
+            return true;
+        }
+
+        return otherName.equals(getName());
     }
 
     /**
