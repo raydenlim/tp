@@ -48,6 +48,7 @@ public class SessionTest {
         assertFalse(SESSION1B.equals(editedSession));
     }
 
+
     @Test
     public void toStringMethod() {
         String expected1 = String.format("%s - %s",

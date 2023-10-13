@@ -37,6 +37,9 @@ public class SessionList implements Iterable<Session> {
      */
     public void addSession(Session toAdd) {
         requireNonNull(toAdd);
+        if (this.contains(toAdd)) {
+            throw new DuplicateSessionException();
+        }
         internalList.add(toAdd);
     }
 
@@ -62,6 +65,7 @@ public class SessionList implements Iterable<Session> {
 
         internalList.set(index, editedSession);
     }
+
 
     /**
      * Removes a session from the list.
