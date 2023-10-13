@@ -3,6 +3,7 @@ package seedu.address.model.session;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Person;
@@ -12,7 +13,7 @@ import seedu.address.model.person.Person;
  */
 public class Session {
     private final int sessionNumber;
-    private Set<Person> students;
+    private Set<Person> students = new HashSet<>();
 
     /**
      * Creates a session with a session number and an initial set of students.
@@ -51,9 +52,11 @@ public class Session {
      * Adds a student to the session.
      *
      * @param p The student to add.
+     * @return
      */
-    public void addStudent(Person p) {
+    public Session addStudent(Person p) {
         students.add(p);
+        return new Session(sessionNumber, students);
     }
 
     /**
@@ -88,7 +91,13 @@ public class Session {
      * @return True if the sessions are the same, false otherwise.
      */
     public boolean isSameSession(Session other) {
-        return other.equals(this);
+        if (other == this) {
+            return true;
+        }
+
+        return other != null
+                && other.getSessionNumber() == sessionNumber
+                && other.getStudents().equals(students);
     }
 
     /**
@@ -116,5 +125,10 @@ public class Session {
      */
     public String getSessionInfo() {
         return String.format("%d - %s", sessionNumber, students);
+    }
+
+    @Override
+    public String toString() {
+        return this.getSessionInfo();
     }
 }

@@ -9,6 +9,7 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -104,8 +105,20 @@ public class CreateSessionCommand extends Command {
             return false;
         }
 
-        CreateSessionCommand otherCreateConsultCommand = (CreateSessionCommand) other;
-        return this.sessionToAdd.equals(otherCreateConsultCommand.sessionToAdd);
+        CreateSessionCommand otherCreateSessionCommand = (CreateSessionCommand) other;
+        if (names != null && otherCreateSessionCommand.names != null) {
+            // Compare when both 'names' are not null
+            return this.names.equals(otherCreateSessionCommand.names)
+                    && this.sessionNumber == otherCreateSessionCommand.sessionNumber;
+        } else if (names == null && otherCreateSessionCommand.names == null) {
+            // Compare when both 'names' are null
+            return this.name.equals(otherCreateSessionCommand.name)
+                    && this.sessionNumber == otherCreateSessionCommand.sessionNumber;
+        } else {
+            // 'names' is null in one of the objects
+            return false;
+        }
+
     }
 
     /**
