@@ -34,25 +34,25 @@ public class ConsultationList implements Iterable<Consultation> {
         internalList.add(toAdd);
     }
 
-    /**
-     * Replaces the consultation {@code target} in the list with {@code editedConsultation}.
-     * {@code target} must exist in the list.
-     * The consultation {@code editedConsultation} must not be the same as another existing consultation in the list.
-     */
-    public void setConsult(Consultation target, Consultation editedConsultation) {
-        requireAllNonNull(target, editedConsultation);
-
-        int index = internalList.indexOf(target);
-        if (index == -1) {
-            throw new ConsultationNotFoundException();
-        }
-
-        if (!target.isSameConsultation(editedConsultation) && contains(editedConsultation)) {
-            throw new DuplicateConsultationException();
-        }
-
-        internalList.set(index, editedConsultation);
-    }
+//    /**
+//     * Replaces the consultation {@code target} in the list with {@code editedConsultation}.
+//     * {@code target} must exist in the list.
+//     * The consultation {@code editedConsultation} must not be the same as another existing consultation in the list.
+//     */
+//    public void setConsult(Consultation target, Consultation editedConsultation) {
+//        requireAllNonNull(target, editedConsultation);
+//
+//        int index = internalList.indexOf(target);
+//        if (index == -1) {
+//            throw new ConsultationNotFoundException();
+//        }
+//
+//        if (!target.isSameConsultation(editedConsultation) && contains(editedConsultation)) {
+//            throw new DuplicateConsultationException();
+//        }
+//
+//        internalList.set(index, editedConsultation);
+//    }
 
     /**
      * Removes the equivalent consultation from the list.
