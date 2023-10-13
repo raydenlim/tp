@@ -20,6 +20,7 @@ import seedu.address.model.person.Person;
  * Jackson-friendly version of {@link Consultation}.
  */
 public class JsonAdaptedConsultation {
+
     private final String date;
     private final String time;
     private final List<JsonAdaptedPerson> students = new ArrayList<>();

@@ -34,10 +34,6 @@ public class Messages {
         return MESSAGE_DUPLICATE_FIELDS + String.join(" ", duplicateFields);
     }
 
-    public static String getErrorMessageForInvalidDateTime() {
-        return MESSAGE_INVALID_DATE_TIME;
-    }
-
     /**
      * Formats the {@code person} for display to the user.
      */
