@@ -1,17 +1,22 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.stream.Stream;
+import java.util.Set;
+
 import seedu.address.logic.commands.consultation.CreateConsultCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Set;
-import java.util.stream.Stream;
-
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
-
+/**
+ * Parses input arguments and creates a new CreateConsultationCommand object
+ */
 public class CreateConsultCommandParser implements Parser<CreateConsultCommand> {
     @Override
     public CreateConsultCommand parse(String args) throws ParseException {

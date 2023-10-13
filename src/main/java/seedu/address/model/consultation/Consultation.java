@@ -2,15 +2,25 @@ package seedu.address.model.consultation;
 
 import seedu.address.model.person.Person;
 
+import java.util.Set;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Set;
 
+/**
+ * Represents a Consultation with a date, time and specified students.
+ */
 public class Consultation {
     private LocalDate date;
     private LocalTime time;
     private Set<Person> students;
 
+    /**
+     * Constructs an {@code Consultation}.
+     *
+     * @param date A valid date object.
+     * @param time A valid time object.
+     * @param students A set of students.
+     */
     public Consultation(LocalDate date, LocalTime time, Set<Person> students) {
         this.date = date;
         this.time = time;

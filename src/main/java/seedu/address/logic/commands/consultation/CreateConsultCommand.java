@@ -2,7 +2,9 @@ package seedu.address.logic.commands.consultation;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -19,6 +21,9 @@ import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
+/**
+ * Creates a consultation to the consultation list.
+ */
 public class CreateConsultCommand extends Command {
     public static final String COMMAND_WORD = "createconsult";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a consultation with the student(s). "
@@ -37,6 +42,9 @@ public class CreateConsultCommand extends Command {
     private Set<Name> names;
     private Consultation consultationToAdd;
 
+    /**
+     * Creates an CreateConsultCommand to with the specified {@code date, time, names}
+     */
     public CreateConsultCommand(LocalDate date, LocalTime time, Set<Name> names) {
         requireAllNonNull(date, time, names);
 
