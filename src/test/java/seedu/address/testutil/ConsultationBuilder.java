@@ -20,8 +20,8 @@ public class ConsultationBuilder {
             TypicalPersons.BOB,
             TypicalPersons.CARL
     );
-    public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    public DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
     private LocalDate date;
     private LocalTime time;
     private Set<Person> students;
@@ -30,8 +30,8 @@ public class ConsultationBuilder {
      * Creates a {@code ConsultationBuilder} with the default details.
      */
     public ConsultationBuilder() {
-        this.date = LocalDate.parse(DEFAULT_DATE, DATE_FORMATTER);
-        this.time = LocalTime.parse(DEFAULT_TIME, TIME_FORMATTER);
+        this.date = LocalDate.parse(DEFAULT_DATE, dateFormatter);
+        this.time = LocalTime.parse(DEFAULT_TIME, timeFormatter);
         this.students = DEFAULT_STUDENTS;
     }
 
@@ -48,7 +48,7 @@ public class ConsultationBuilder {
      * Sets the {@code Date} of the {@code Consultation} that we are building.
      */
     public ConsultationBuilder withDate(String date) {
-        this.date = LocalDate.parse(date, DATE_FORMATTER);;
+        this.date = LocalDate.parse(date.trim(), dateFormatter);;
         return this;
     }
 
@@ -56,7 +56,7 @@ public class ConsultationBuilder {
      * Sets the {@code Time} of the {@code Consultation} that we are building.
      */
     public ConsultationBuilder withTime(String time) {
-        this.time = LocalTime.parse(time, TIME_FORMATTER);;
+        this.time = LocalTime.parse(time.trim(), timeFormatter);;
         return this;
     }
 

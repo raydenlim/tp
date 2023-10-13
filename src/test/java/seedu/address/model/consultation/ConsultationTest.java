@@ -25,7 +25,7 @@ public class ConsultationTest {
         assertTrue(CONSULTATION1.isSameConsultation(editedConsultation));
 
         // different date, same time, same set of students -> returns false
-        editedConsultation = new ConsultationBuilder(CONSULTATION1).withDate("1/1/2002").build();
+        editedConsultation = new ConsultationBuilder(CONSULTATION1).withDate("01/01/2002").build();
         assertFalse(CONSULTATION1.isSameConsultation(editedConsultation));
 
         // different time, same date, same set of students -> returns false

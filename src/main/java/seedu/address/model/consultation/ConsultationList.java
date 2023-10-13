@@ -8,6 +8,8 @@ import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.exceptions.ConsultationNotFoundException;
+import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
+import seedu.address.model.task.exceptions.DuplicateTaskException;
 //import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 
 /**
@@ -31,6 +33,9 @@ public class ConsultationList implements Iterable<Consultation> {
      */
     public void addConsultation(Consultation toAdd) {
         requireNonNull(toAdd);
+        if (contains(toAdd)) {
+            throw new DuplicateConsultationException();
+        }
         internalList.add(toAdd);
     }
 

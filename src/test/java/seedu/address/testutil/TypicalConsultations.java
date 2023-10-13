@@ -8,7 +8,7 @@ import seedu.address.model.consultation.Consultation;
 public class TypicalConsultations {
     public static final Consultation CONSULTATION1 = new ConsultationBuilder()
             .withDate("11/11/2002")
-            .withTime("00:00")
+            .withTime("10:00")
             .withStudents(TypicalPersons.AMY, TypicalPersons.GEORGE)
             .build();
 
@@ -19,13 +19,13 @@ public class TypicalConsultations {
             .build();
 
     public static final Consultation CONSULTATION3 = new ConsultationBuilder()
-            .withDate("3/7/2023")
+            .withDate("03/07/2023")
             .withTime("12:00")
             .withStudents(TypicalPersons.CARL, TypicalPersons.BOB, TypicalPersons.BENSON)
             .build();
 
     public static final Consultation CONSULTATION4 = new ConsultationBuilder()
-            .withDate("3/3/2023")
+            .withDate("03/03/2023")
             .withTime("13:30")
             .withStudents(TypicalPersons.ELLE)
             .build();

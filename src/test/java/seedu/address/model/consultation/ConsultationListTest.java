@@ -58,8 +58,7 @@ public class ConsultationListTest {
     public void remove_existingConsultation_removesConsultation() {
         consultations.addConsultation(CONSULTATION3);
         consultations.remove(CONSULTATION3);
-        ConsultationList emptyConsultationList = new ConsultationList();
-        assertEquals(emptyConsultationList, consultations);
+        assertFalse(consultations.contains(CONSULTATION3));
     }
 
     @Test

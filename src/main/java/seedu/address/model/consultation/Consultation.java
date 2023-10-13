@@ -69,7 +69,14 @@ public class Consultation {
     }
 
     public boolean isSameConsultation(Consultation other) {
-        return other.equals(this);
+        if (other == this) {
+            return true;
+        }
+
+        return other != null
+                && other.getDate().equals(getDate())
+                && other.getTime().equals(getTime())
+                && other.getStudents().equals(getStudents());
     }
 
     public LocalDate getDate() {
