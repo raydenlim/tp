@@ -68,6 +68,9 @@ public class Consultation {
                 && time.equals(otherConsultation.time);
     }
 
+    /**
+     * Returns true if both consultations have the same details.
+     */
     public boolean isSameConsultation(Consultation other) {
         if (other == this) {
             return true;
