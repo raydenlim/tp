@@ -1,14 +1,14 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.session.CreateSessionCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Name;
-
-import java.util.stream.Stream;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
+
+import java.util.stream.Stream;
+
+import seedu.address.logic.commands.session.CreateSessionCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Name;
 
 public class CreateSessionCommandParser implements Parser<CreateSessionCommand> {
 

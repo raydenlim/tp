@@ -1,14 +1,15 @@
 package seedu.address.model.session;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Iterator;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.session.exceptions.DuplicateSessionException;
 import seedu.address.model.session.exceptions.SessionNotFoundException;
 
-import java.util.Iterator;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * A list of sessions that can be used to manage and manipulate session data.

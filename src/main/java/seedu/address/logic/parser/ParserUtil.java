@@ -161,6 +161,13 @@ public class ParserUtil {
         return LocalTime.parse(trimmedTime, formatter);
     }
 
+    /**
+     * Parses the input session number as a string and returns it as an integer.
+     *
+     * @param sessionNumber The session number to be parsed.
+     * @return The parsed session number as an integer.
+     * @throws NumberFormatException If the session number is not a valid integer.
+     */
     public static int parseSessionNumber(String sessionNumber) {
         requireNonNull(sessionNumber);
         String trimmedSessionNumber = sessionNumber.trim();

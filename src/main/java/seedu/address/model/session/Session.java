@@ -1,11 +1,11 @@
 package seedu.address.model.session;
 
-import seedu.address.model.person.Person;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Set;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import seedu.address.model.person.Person;
 
 /**
  * Represents a class for managing a session, which can hold a list of students and session-specific details.

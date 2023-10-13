@@ -13,9 +13,10 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.session.Session;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
+
 
 /**
  * Command to create a session with the specified student(s).
@@ -36,6 +37,12 @@ public class CreateSessionCommand extends Command {
     private Set<Name> names;
     private Session sessionToAdd;
 
+    /**
+     * Creates a new CreateSessionCommand with a single student to be added to the session.
+     *
+     * @param sessionNumber The session number to create.
+     * @param name The name of the student to add to the session.
+     */
     public CreateSessionCommand(int sessionNumber, Name name) {
         requireAllNonNull(sessionNumber, name);
 
@@ -43,6 +50,12 @@ public class CreateSessionCommand extends Command {
         this.name = name;
     }
 
+    /**
+     * Creates a new CreateSessionCommand with multiple students to be added to the session.
+     *
+     * @param sessionNumber The session number to create.
+     * @param names A set of names of the students to add to the session.
+     */
     public CreateSessionCommand(int sessionNumber, Set<Name> names) {
         requireAllNonNull(sessionNumber, names);
 

@@ -1,13 +1,14 @@
 package seedu.address.storage;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Jackson-friendly version of {@link Session}.
@@ -41,9 +42,6 @@ public class JsonAdaptedSession {
      * @throws IllegalValueException if there were any data constraints violated in the adapted session.
      */
     public Session toModelType() throws IllegalValueException {
-//        if (!Session.isValidSessionInfo(sessionInfo)) {
-//            throw new IllegalValueException(Session.MESSAGE_CONSTRAINTS);
-//        }
         int sessionNumber = Integer.parseInt(sessionInfo.split(" - ")[0]);
         //TODO: convert storage students to studentList
         Set<Person> studentList = new HashSet<>();
