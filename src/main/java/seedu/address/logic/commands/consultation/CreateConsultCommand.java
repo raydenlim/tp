@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.consultation;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.*;
 
 import java.time.LocalDate;
@@ -33,24 +34,11 @@ public class CreateConsultCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
     private final LocalDate date;
     private final LocalTime time;
-    private Name name;
     private Set<Name> names;
     private Consultation consultationToAdd;
 
-    public CreateConsultCommand(LocalDate date, LocalTime time, Name name) {
-        requireNonNull(date);
-        requireNonNull(time);
-        requireNonNull(name);
-
-        this.date = date;
-        this.time = time;
-        this.name = name;
-    }
-
     public CreateConsultCommand(LocalDate date, LocalTime time, Set<Name> names) {
-        requireNonNull(date);
-        requireNonNull(time);
-        requireNonNull(names);
+        requireAllNonNull(date, time, names);
 
         this.date = date;
         this.time = time;
