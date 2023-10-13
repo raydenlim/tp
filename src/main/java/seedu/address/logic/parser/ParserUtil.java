@@ -9,6 +9,11 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.gradedtest.Finals;
+import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.gradedtest.MidTerms;
+import seedu.address.model.gradedtest.PracticalExam;
+import seedu.address.model.gradedtest.ReadingAssessment;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -152,5 +157,42 @@ public class ParserUtil {
             throw new ParseException(TaskDescription.MESSAGE_CONSTRAINTS);
         }
         return new TaskDescription(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String gradedTest} into a {@code GradedTest}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code gradedTest} is invalid.
+     */
+    public static GradedTest parseGradedTest(String gradedTest) throws ParseException {
+        requireNonNull(gradedTest);
+        String trimmedGradedTest = gradedTest.trim();
+
+        String[] components = trimmedGradedTest.split("\\s+");
+
+        if (components.length != 5) {
+            throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+        }
+
+        ReadingAssessment readingAssessment1 = new ReadingAssessment(components[0]);
+        ReadingAssessment readingAssessment2 = new ReadingAssessment(components[1]);
+        MidTerms midTerms = new MidTerms(components[2]);
+        Finals finals = new Finals(components[3]);
+        PracticalExam practicalExam = new PracticalExam(components[4]);
+
+        return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
+    }
+
+    /**
+     * Parses {@code Collection<String> gradedTest} into a {@code Set<GradedTest>}.
+     */
+    public static Set<GradedTest> parseGradedTests(Collection<String> gradedTests) throws ParseException {
+        requireNonNull(gradedTests);
+        final Set<GradedTest> gradedTestSet = new HashSet<>();
+        for (String gradedTestName : gradedTests) {
+            gradedTestSet.add(parseGradedTest(gradedTestName));
+        }
+        return gradedTestSet;
     }
 }
