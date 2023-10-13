@@ -11,6 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
 import static seedu.address.testutil.TypicalSessions.SESSION1A;
 
@@ -35,17 +36,19 @@ public class PersonTest {
     @Test
     public void studentAttendSession() {
         Session emptySession = EMPTY_SESSION;
-        ALICE.attendSession(emptySession);
+        Person alice = new PersonBuilder(ALICE).build();
+        alice.attendSession(emptySession);
 
-        assertTrue(emptySession.getStudents().contains(ALICE));
+        assertTrue(emptySession.getStudents().contains(alice));
     }
 
     @Test
     public void studentMissSession() {
-        Session sessionWithAlice = new Session(SESSION1A.getSessionNumber(), new HashSet<>(SESSION1A.getStudents()));
-        ALICE.missSession(sessionWithAlice);
+        Session sessionWithCarl = new Session(SESSION1A.getSessionNumber(), new HashSet<>(SESSION1A.getStudents()));
+        Person carl = new PersonBuilder(CARL).build();
+        carl.missSession(sessionWithCarl);
 
-        assertFalse(sessionWithAlice.getStudents().contains(ALICE));
+        assertFalse(sessionWithCarl.getStudents().contains(carl));
     }
 
     @Test
