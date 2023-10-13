@@ -71,4 +71,7 @@ public class Consultation {
     public Set<Person> getStudents() {
         return students;
     }
+    public String getConsultationInfo() {
+        return String.format("%s, %s - %s", date, time, students);
+    }
 }
