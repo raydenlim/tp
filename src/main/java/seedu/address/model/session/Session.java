@@ -12,11 +12,11 @@ import seedu.address.model.person.Person;
  * Represents a class for managing a session, which can hold a list of students and session-specific details.
  */
 public class Session {
-    private final String sessionNumber;
     public static final String MESSAGE_CONSTRAINTS =
             "Session numbers should only contain numbers, and it should not be blank.";
     private static final String SESSION_NUMBER_VALIDATION_REGEX = "^[1-9]\\d*$";
 
+    private final String sessionNumber;
     private Set<Person> students = new HashSet<>();
 
     /**
