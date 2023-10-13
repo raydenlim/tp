@@ -165,6 +165,7 @@ public class ParserUtil {
         requireNonNull(sessionNumber);
         String trimmedSessionNumber = sessionNumber.trim();
         return Integer.parseInt(trimmedSessionNumber);
+    }
 
     /**
      * Parses a {@code String taskName} into a {@code taskName}.

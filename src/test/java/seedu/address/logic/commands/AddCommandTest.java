@@ -209,6 +209,8 @@ public class AddCommandTest {
 
         @Override
         public Person getMatchingStudentName(Name name) {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
         public ObservableList<Task> getFilteredTaskList() {
@@ -217,6 +219,8 @@ public class AddCommandTest {
 
         @Override
         public void addSession(Session session) {
+            throw new AssertionError("This method should not be called.");
+        }
           
         @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {

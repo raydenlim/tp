@@ -256,8 +256,8 @@ Takes the attendance of a student
 Format: `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`
 
 Parameters:
-* STUDENT_NAME - The name of the student. 
-* SESSION - The session number. 
+* STUDENT_NAME - The name of the student.
+* SESSION - The session number.
 * PRESENCE - The attendance status of the student (e.g., present, absent).
 
 Examples:
@@ -270,12 +270,12 @@ Views the attendance list
 Format: `viewattendance n/STUDENT_NAME s/SESSION`
 
 Parameters:
-* STUDENT_NAME - The name of the student. 
+* STUDENT_NAME - The name of the student.
 * SESSION - The session number.
 
 Examples:
-* `viewattendance` Displays the overall attendance across all students and sessions. 
-* `viewattendance n/Rayan` Displays Rayan’s overall attendance. 
+* `viewattendance` Displays the overall attendance across all students and sessions.
+* `viewattendance n/Rayan` Displays Rayan’s overall attendance.
 * `viewattendance s/3` Displays all students’ attendance for the 3rd session.
 
 ### 🔎Finding a Student: find
@@ -287,24 +287,24 @@ Parameters:
 * STUDENT_NAME - The name of the student you want to find.
 
 Examples:
-* `find n/John Doe` Finds and displays the profile of students with the name “John Doe”. 
+* `find n/John Doe` Finds and displays the profile of students with the name “John Doe”.
 * `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.
 
 ### 🥅Filtering results: filter
 Filters the results displayed on the dashboard
 
 Format:
-* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION` 
+* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`
 * `filter_delete n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`
 
 Parameters:
-* `FILTER_ATTRIBUTE` - The filter type filter_studentScores 
+* `FILTER_ATTRIBUTE` - The filter type filter_studentScores
   * `filter_studentScores`
   * `filter_studentGrades`
 * `FILTER_DESCRIPTION` - The conditions for the filter
 
 Examples:
-* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade. 
+* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade.
 * `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.
 
 ### 📝Adding a grade to an assignment: `addgrade`
