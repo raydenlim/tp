@@ -4,6 +4,7 @@ import seedu.address.model.person.Person;
 
 import java.util.Set;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 public class Session {
     private final int sessionNumber;
@@ -18,6 +19,11 @@ public class Session {
         requireAllNonNull(sessionNumber, student);
         this.sessionNumber = sessionNumber;
         this.students.add(student);
+    }
+
+    public Session(int sessionNumber) {
+        requireNonNull(sessionNumber);
+        this.sessionNumber = sessionNumber;
     }
 
     public void addStudent(Person p) {
@@ -48,6 +54,10 @@ public class Session {
 
     public int getSessionNumber() {
         return sessionNumber;
+    }
+
+    public String getSessionInfo() {
+        return String.format("%d - %s", sessionNumber, students);
     }
 
 }

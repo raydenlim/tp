@@ -11,7 +11,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -128,6 +130,7 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -144,5 +147,18 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons);
     }
+
+
+    @Override
+    public Person getMatchingStudentName(Name name) {
+        requireNonNull(name);
+        return addressBook.matchName(name);
+    }
+
+    @Override
+    public void addSession(Session session) {
+        //TODO: implement addSession
+    }
+
 
 }

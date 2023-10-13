@@ -96,11 +96,9 @@ public interface Model {
 
 
     /**
-     * Adds the given consultation.
+     * Adds the given sesssion.
      */
-    void addSession(Session consultation);
-
-    Person getSessionStudentsList(Name name);
+    void addSession(Session session);
 
     Person getMatchingStudentName(Name name);
 }
