@@ -13,4 +13,3 @@ public interface ReadOnlySession {
      */
     ObservableList<Person> getPersonList();
 }
-

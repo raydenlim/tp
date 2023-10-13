@@ -26,7 +26,7 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
-    private final Set<Session> sessions;
+    private final Set<Session> sessions = new HashSet<>();
 
     /**
      * Every field must be present and not null.
@@ -38,7 +38,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.sessions = new HashSet<>(sessions);
+        this.sessions.addAll(sessions);
     }
 
     public Name getName() {
