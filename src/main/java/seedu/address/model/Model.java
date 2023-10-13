@@ -144,8 +144,6 @@ public interface Model {
      */
     void addConsultation(Consultation consultation);
 
-    Person getConsultationStudentsList(Name name);
-
     Person getMatchingStudentName(Name name);
 
     /** Returns an unmodifiable view of the filtered task list */

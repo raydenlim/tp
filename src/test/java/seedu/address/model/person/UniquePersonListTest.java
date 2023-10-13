@@ -48,6 +48,22 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void matchName_nullName_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniquePersonList.matchName(null));
+    }
+
+    @Test
+    public void matchName_personWithSameName_returnsTrue() {
+        uniquePersonList.add(ALICE);
+        assertEquals(uniquePersonList.matchName(ALICE.getName()), ALICE);
+    }
+
+    @Test
+    public void matchName_noMatchingNameFound_throwsPersonNotFoundException() {
+        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.matchName(ALICE.getName()));
+    }
+
+    @Test
     public void add_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniquePersonList.add(null));
     }

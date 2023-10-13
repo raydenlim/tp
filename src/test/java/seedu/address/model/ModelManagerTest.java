@@ -8,6 +8,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 
@@ -134,6 +136,20 @@ public class ModelManagerTest {
     @Test
     public void getTask_indexOutsideBounds_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> modelManager.getTask(0));
+    }
+
+    @Test
+    public void matchName_personWithMatchingName_returnsTrue() {
+        // matching name
+        modelManager.addPerson(ALICE);
+        assertEquals(modelManager.getMatchingStudentName(ALICE.getName()), ALICE);
+    }
+
+    @Test
+    public void matchName_noMatchingNameFound_throwsPersonNotFoundException() {
+        // no matching name
+        modelManager.addPerson(ALICE);
+        assertThrows(PersonNotFoundException.class, () -> modelManager.getMatchingStudentName(BOB.getName()));
     }
 
     @Test

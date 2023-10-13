@@ -52,6 +52,18 @@ public class PersonTest {
     }
 
     @Test
+    public void isSameName() {
+        // person shares same name object
+        Name aliceName = ALICE.getName();
+        assertTrue(ALICE.isSameName(aliceName));
+
+        // different person share same name
+        Person personA = new PersonBuilder().withName("Alice").build();
+        Person personB = new PersonBuilder().withName("Alice").build();
+        assertTrue(personA.isSameName(personB.getName()));
+    }
+
+    @Test
     public void equals() {
         // same values -> returns true
         Person aliceCopy = new PersonBuilder(ALICE).build();

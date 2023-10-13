@@ -198,11 +198,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Person getConsultationStudentsList(Name name) {
-        return null;
-    }
-
-    @Override
     public Person getMatchingStudentName(Name name) {
         requireNonNull(name);
         return addressBook.matchName(name);

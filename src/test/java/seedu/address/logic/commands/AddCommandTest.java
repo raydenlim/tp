@@ -213,11 +213,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public Person getConsultationStudentsList(Name name) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public Person getMatchingStudentName(Name name) {
             throw new AssertionError("This method should not be called.");
         }

@@ -27,29 +27,29 @@ public class Consultation {
         this.students = students;
     }
 
-    /**
-     * Adds a student to the consultation.
-     * The person must not already exist in the consultation.
-     */
-    public void addStudent(Person p) {
-        students.add(p);
-    }
+    //    /**
+    //     * Adds a student to the consultation.
+    //     * The person must not already exist in the consultation.
+    //     */
+    //    public void addStudent(Person p) {
+    //        students.add(p);
+    //    }
 
-    /**
-     * Removes {@code key} from this {@code Consultation}.
-     * {@code key} must exist in the consultation.
-     */
-    public void removeStudent(Person key) {
-        students.remove(key);
-    }
+    //    /**
+    //     * Removes {@code key} from this {@code Consultation}.
+    //     * {@code key} must exist in the consultation.
+    //     */
+    //    public void removeStudent(Person key) {
+    //        students.remove(key);
+    //    }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
+    //    public void setDate(LocalDate date) {
+    //        this.date = date;
+    //    }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
+    //    public void setTime(LocalTime time) {
+    //        this.time = time;
+    //    }
 
     @Override
     public boolean equals(Object other) {
