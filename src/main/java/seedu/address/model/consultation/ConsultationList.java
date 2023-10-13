@@ -10,6 +10,9 @@ import javafx.collections.ObservableList;
 import seedu.address.model.consultation.exceptions.ConsultationNotFoundException;
 import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 
+/**
+ * A list of Consultation.
+ */
 public class ConsultationList implements Iterable<Consultation> {
     private ObservableList<Consultation> internalList = FXCollections.observableArrayList();
     private final ObservableList<Consultation> internalUnmodifiableList =

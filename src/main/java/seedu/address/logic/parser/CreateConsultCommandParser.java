@@ -7,8 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.stream.Stream;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.logic.commands.consultation.CreateConsultCommand;
 import seedu.address.logic.parser.exceptions.ParseException;

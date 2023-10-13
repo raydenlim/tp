@@ -2,9 +2,9 @@ package seedu.address.model.consultation;
 
 import seedu.address.model.person.Person;
 
-import java.util.Set;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Set;
 
 /**
  * Represents a Consultation with a date, time and specified students.
