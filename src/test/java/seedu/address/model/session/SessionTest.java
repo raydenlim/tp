@@ -53,11 +53,10 @@ public class SessionTest {
 
     @Test
     public void toStringMethod() {
-        String expected1 = String.format("%s - %s",
-                SESSION2.getSessionNumber(), SESSION2.getStudents());
+        String expected1 = "2 - Bob Choo";
         assertEquals(expected1, SESSION2.toString());
 
-        String expected2 = String.format("%s - %s", SESSION3A.getSessionNumber(), SESSION3A.getStudents());
+        String expected2 = "3 - Bob Choo, Alice Pauline";
         assertEquals(expected2, SESSION3A.toString());
     }
 }

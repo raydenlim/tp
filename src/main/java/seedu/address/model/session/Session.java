@@ -137,7 +137,10 @@ public class Session {
     public String getSessionInfo() {
         StringBuilder studentNames = new StringBuilder();
         for (Person student : students) {
-            studentNames.append(String.format("%s ", student.getName()));
+            studentNames.append(String.format("%s, ", student.getName()));
+        }
+        if (!students.isEmpty()) {
+            studentNames.delete(studentNames.length() - 2, studentNames.length());
         }
         return String.format("%s - %s", sessionNumber, studentNames);
     }
