@@ -3,10 +3,6 @@ package seedu.address.storage;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.consultation.Consultation;
-import seedu.address.model.person.Person;
-
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,6 +11,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.consultation.Consultation;
+import seedu.address.model.person.Person;
 
 /**
  * Jackson-friendly version of {@link Consultation}.
