@@ -6,7 +6,6 @@ import seedu.address.model.person.Name;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Set;
 import java.util.stream.Stream;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;

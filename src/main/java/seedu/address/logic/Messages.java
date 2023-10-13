@@ -57,8 +57,10 @@ public class Messages {
         builder.append(consultation.getDate())
                 .append("; Date: ")
                 .append(consultation.getTime())
-                .append("; Time: ");
-        consultation.getStudents().forEach(builder::append);
+                .append("; Time: ")
+                .append(consultation.getStudent())
+                .append("; Student:");
+//        consultation.getStudents().forEach(builder::append);
         return builder.toString();
     }
 

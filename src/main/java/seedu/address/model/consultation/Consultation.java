@@ -1,7 +1,6 @@
 package seedu.address.model.consultation;
 
 import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -75,6 +74,9 @@ public class Consultation {
     }
     public LocalTime getTime() {
         return time;
+    }
+    public Person getStudent() {
+        return student;
     }
     public Set<Person> getStudents() {
         return students;

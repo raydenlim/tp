@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
