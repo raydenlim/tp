@@ -48,7 +48,8 @@ public class CommandTestUtil {
     public static final String VALID_DATE = "11/11/2023";
     public static final String VALID_TIME = "11:11";
 
-    public static final LocalDate VALID_DATE_OBJ = LocalDate.parse(VALID_DATE, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    public static final LocalDate VALID_DATE_OBJ = LocalDate.parse(VALID_DATE,
+            DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     public static final LocalTime VALID_TIME_OBJ = LocalTime.parse(VALID_TIME,
             DateTimeFormatter.ofPattern("HH:mm"));
 

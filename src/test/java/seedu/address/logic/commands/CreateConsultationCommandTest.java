@@ -1,8 +1,9 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.testutil.Assert.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
-import static seedu.address.testutil.Assert.assertThrows;
 
 public class CreateConsultationCommandTest {
     @Test
