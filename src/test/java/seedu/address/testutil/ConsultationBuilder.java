@@ -20,8 +20,8 @@ public class ConsultationBuilder {
             TypicalPersons.BOB,
             TypicalPersons.CARL
     );
-    public DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    public DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
     private LocalDate date;
     private LocalTime time;
     private Set<Person> students;
