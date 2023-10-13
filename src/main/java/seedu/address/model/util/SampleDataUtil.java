@@ -78,4 +78,12 @@ public class SampleDataUtil {
                 .collect(Collectors.toSet());
     }
 
+    /**
+     * Returns a student set containing the list of string names given.
+     */
+    public static Set<Person> getStudentSet(Person ... students) {
+        return Arrays.stream(students)
+                .collect(Collectors.toSet());
+    }
+
 }
