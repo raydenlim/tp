@@ -9,14 +9,7 @@ import java.util.Set;
 public class Consultation {
     private LocalDate date;
     private LocalTime time;
-    private Person student;
     private Set<Person> students;
-
-    public Consultation(LocalDate date, LocalTime time, Person student) {
-        this.date = date;
-        this.time = time;
-        this.student = student;
-    }
 
     public Consultation(LocalDate date, LocalTime time, Set<Person> students) {
         this.date = date;
@@ -74,9 +67,6 @@ public class Consultation {
     }
     public LocalTime getTime() {
         return time;
-    }
-    public Person getStudent() {
-        return student;
     }
     public Set<Person> getStudents() {
         return students;

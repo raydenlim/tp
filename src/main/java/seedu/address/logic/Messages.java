@@ -54,13 +54,12 @@ public class Messages {
      */
     public static String format(Consultation consultation) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(consultation.getDate())
-                .append("; Date: ")
-                .append(consultation.getTime())
+        builder.append("; Date: ")
+                .append(consultation.getDate())
                 .append("; Time: ")
-                .append(consultation.getStudent())
-                .append("; Student:");
-//        consultation.getStudents().forEach(builder::append);
+                .append(consultation.getTime())
+                .append("; Students:");
+        consultation.getStudents().forEach(builder::append);
         return builder.toString();
     }
 

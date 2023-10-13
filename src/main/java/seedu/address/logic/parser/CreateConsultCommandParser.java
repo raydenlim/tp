@@ -6,6 +6,7 @@ import seedu.address.model.person.Name;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -25,10 +26,9 @@ public class CreateConsultCommandParser implements Parser<CreateConsultCommand> 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DATE, PREFIX_TIME);
         LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         LocalTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_TIME).get());
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-//        Set<Name> namesList = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
+        Set<Name> names = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
 
-        return new CreateConsultCommand(date, time, name);
+        return new CreateConsultCommand(date, time, names);
     }
 
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {

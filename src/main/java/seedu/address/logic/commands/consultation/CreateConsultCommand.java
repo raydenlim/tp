@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -59,9 +60,8 @@ public class CreateConsultCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Person studentToAdd = model.getMatchingStudentName(name);
-        this.consultationToAdd = new Consultation(date, time, studentToAdd);
-
+        Set<Person> studentsToAdd = names.stream().map(model::getMatchingStudentName).collect(Collectors.toSet());
+        this.consultationToAdd = new Consultation(date, time, studentsToAdd);
         model.addConsultation(this.consultationToAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)));
     }
