@@ -1,9 +1,5 @@
 package seedu.address.model.consultation;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.consultation.exceptions.ConsultationNotFoundException;
-import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -12,6 +8,11 @@ import static seedu.address.testutil.TypicalConsultations.CONSULTATION1;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION2;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION3;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION4;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.consultation.exceptions.ConsultationNotFoundException;
+import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 
 public class ConsultationListTest {
     private final ConsultationList consultations = new ConsultationList();
@@ -63,8 +64,8 @@ public class ConsultationListTest {
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class,
-                () -> consultations.asUnmodifiableObservableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                consultations.asUnmodifiableObservableList().remove(0));
     }
 
     @Test

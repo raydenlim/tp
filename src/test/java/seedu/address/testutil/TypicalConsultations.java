@@ -6,7 +6,6 @@ import seedu.address.model.consultation.Consultation;
  * A utility class containing a list of {@code Consultation} objects to be used in tests.
  */
 public class TypicalConsultations {
-    private TypicalConsultations() {} // prevents instantiation
     public static final Consultation CONSULTATION1 = new ConsultationBuilder()
             .withDate("11/11/2002")
             .withTime("00:00")
@@ -30,4 +29,6 @@ public class TypicalConsultations {
             .withTime("13:30")
             .withStudents(TypicalPersons.ELLE)
             .build();
+
+    private TypicalConsultations() {} // prevents instantiation
 }

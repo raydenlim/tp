@@ -1,14 +1,15 @@
 package seedu.address.model.consultation;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.ConsultationBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION1;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION2;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION3;
 import static seedu.address.testutil.TypicalConsultations.CONSULTATION4;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.ConsultationBuilder;
 
 public class ConsultationTest {
     @Test
