@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -14,13 +15,15 @@ import seedu.address.model.session.Session;
  * Jackson-friendly version of {@link Session}.
  */
 public class JsonAdaptedSession {
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Session's fields are missing!";
     private final String sessionInfo;
+
 
     /**
      * Constructs a {@code JsonAdaptedSession} with the given {@code sessionInfo}.
      */
     @JsonCreator
-    public JsonAdaptedSession(String sessionInfo) {
+    public JsonAdaptedSession(@JsonProperty("sessionInfo") String sessionInfo) {
         this.sessionInfo = sessionInfo;
     }
 
@@ -28,7 +31,7 @@ public class JsonAdaptedSession {
      * Converts a given {@code Session} into this class for Jackson use.
      */
     public JsonAdaptedSession(Session source) {
-        sessionInfo = source.getSessionInfo();
+        sessionInfo = source.toSaveState();
     }
 
     @JsonValue
@@ -42,11 +45,19 @@ public class JsonAdaptedSession {
      * @throws IllegalValueException if there were any data constraints violated in the adapted session.
      */
     public Session toModelType() throws IllegalValueException {
-        String sessionNumber = sessionInfo.split(" - ")[0];
+        if (sessionInfo == null) {
+            throw new IllegalValueException(MISSING_FIELD_MESSAGE_FORMAT);
+        }
+        String modelSessionNumber = sessionInfo.split(" - ")[0];
         //TODO: convert storage students to studentList
         Set<Person> studentList = new HashSet<>();
+        String[] students = sessionInfo.split(" - ")[1].split(", ");
+        for (String student : students) {
 
-        return new Session(sessionNumber, studentList);
+
+
+        }
+        return new Session(modelSessionNumber, studentList);
     }
 
 }

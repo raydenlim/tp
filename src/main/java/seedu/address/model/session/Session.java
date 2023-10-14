@@ -3,7 +3,10 @@ package seedu.address.model.session;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.model.person.Person;
@@ -86,10 +89,19 @@ public class Session {
         if (!(other instanceof Session)) {
             return false;
         }
+
         Session otherSession = (Session) other;
-        return students.equals(otherSession.students)
-                && otherSession.sessionNumber.equals(sessionNumber);
+
+        // Sort the students by name
+        List<Person> thisStudents = new ArrayList<>(students);
+        List<Person> otherStudents = new ArrayList<>(otherSession.students);
+
+        thisStudents.sort(Comparator.comparing(p -> p.getName().toString()));
+        otherStudents.sort(Comparator.comparing(p -> p.getName().toString()));
+
+        return sessionNumber.equals(otherSession.sessionNumber) && thisStudents.equals(otherStudents);
     }
+
 
     /**
      * Checks if this session is the same as another session.
@@ -143,6 +155,10 @@ public class Session {
             studentNames.delete(studentNames.length() - 2, studentNames.length());
         }
         return String.format("%s - %s", sessionNumber, studentNames);
+    }
+
+    public String toSaveState() {
+        return String.format("%s - %s", sessionNumber, students);
     }
 
     public static boolean isValidSessionNumber(String test) {

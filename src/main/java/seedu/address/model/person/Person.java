@@ -69,6 +69,14 @@ public class Person {
         return Collections.unmodifiableSet(sessions);
     }
 
+    public String getSessionString() {
+        StringBuilder allSessionsBuilder = new StringBuilder();
+        for (Session session : sessions) {
+            allSessionsBuilder.append(String.format("%s ", session.getSessionNumber()));
+        }
+        return allSessionsBuilder.toString().trim();
+    }
+
     /**
      * Adds a student to a session and a session to a student.
      *
@@ -146,18 +154,13 @@ public class Person {
 
     @Override
     public String toString() {
-        StringBuilder allSessionsBuilder = new StringBuilder();
-        for (Session session : sessions) {
-            allSessionsBuilder.append(String.format("%s ", session.getSessionNumber()));
-        }
-        String allSessions = allSessionsBuilder.toString().trim();
         return new ToStringBuilder(this)
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("sessions", allSessions)
+                .add("sessions", sessions)
                 .toString();
     }
 

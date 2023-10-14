@@ -56,7 +56,8 @@ public class SessionTest {
         String expected1 = "2 - Bob Choo";
         assertEquals(expected1, SESSION2.toString());
 
+        Session tempSession3A = new Session(SESSION3A.getSessionNumber(), SESSION3A.getStudents());
         String expected2 = "3 - Bob Choo, Alice Pauline";
-        assertEquals(expected2, SESSION3A.toString());
+        assertEquals(expected2, tempSession3A.toString());
     }
 }
