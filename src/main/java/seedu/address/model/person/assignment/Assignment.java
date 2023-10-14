@@ -1,21 +1,30 @@
 package seedu.address.model.person.assignment;
 
-import seedu.address.logic.commands.exceptions.CommandException;
-
 public class Assignment {
 
     // Identity fields
-    private String name;
-    private Grade grade;
+    private final AssignmentName assignmentName;
+    private final Grade grade;
     private Comment comment;
 
-    public Assignment(String name, String maxGrade) {
-        this.name = name;
-        this.grade = new Grade(maxGrade);
+    public Assignment(AssignmentName name, Grade grade) {
+        this.assignmentName = name;
+        this.grade = grade;
     }
 
-    public void addGrade(String actualGrade) throws CommandException {
-        this.grade.addActualGrade(actualGrade);
+    public String name() {
+        return this.assignmentName.toString();
+    }
+    public String gradeToString() {
+        return this.grade.toString();
+    }
+
+    public String maxGrade() {
+        return this.grade.getMax();
+    }
+
+    public Assignment copyAssignment() {
+        return new Assignment(this.assignmentName, this.grade.copyGrade());
     }
 
     public void addComment(String commentBody) {

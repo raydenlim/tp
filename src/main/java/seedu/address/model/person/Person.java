@@ -6,8 +6,11 @@ import java.util.*;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.assignment.Assignment;
+import seedu.address.model.person.assignment.AssignmentMap;
+import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.person.assignment.Grade;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.person.assignment.AssignmentManager;
+import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 
 /**
  * Represents a Person in the address book.
@@ -23,7 +26,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-    private final HashMap<String, Assignment> assignments = new HashMap<>();
+    private final AssignmentMap assignments;
 
     /**
      * Every field must be present and not null.
@@ -35,12 +38,17 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        AssignmentManager assignmentManager = new AssignmentManager();
-        for (int i = 0; i < assignmentManager.size(); i++) {
-            String assignmentName = assignmentManager.getAssignmentName(i);
-            String assignmentMaxGrade = assignmentManager.getAssignmentMaxGrade(i);
-            assignments.put(assignmentName, new Assignment(assignmentName, assignmentMaxGrade));
-        }
+        this.assignments = new AssignmentMap();
+    }
+
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, AssignmentMap assignments) {
+        requireAllNonNull(name, phone, email, address, tags, assignments);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.assignments = assignments;
     }
 
     public Name getName() {
@@ -67,7 +75,11 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
-    public Assignment getAssignment(String assignmentName) {
+    public AssignmentMap getAllAssignments() {
+        return assignments;
+    }
+
+    public Assignment getAssignment(AssignmentName assignmentName) {
         return assignments.get(assignmentName);
     }
 

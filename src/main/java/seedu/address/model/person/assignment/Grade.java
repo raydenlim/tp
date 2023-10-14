@@ -13,29 +13,21 @@ public class Grade {
         this.isGraded = false;
     }
 
-    public void addActualGrade(String actualGrade) throws CommandException {
-        if (this.isGraded) {
-            throw new CommandException(Messages.MESSAGE_ASSIGNMENT_GRADED);
-        } else {
-            this.actualGrade = actualGrade;
-            this.isGraded = true;
-        }
+    public Grade(String actualGrade, String maxGrade) {
+        this.actualGrade = actualGrade;
+        this.maxGrade = maxGrade;
+        this.isGraded = true;
     }
 
-    public void editGrade(String newGrade) throws CommandException {
-        if (this.isGraded) {
-            this.actualGrade = newGrade;
-        } else {
-            throw new CommandException(Messages.MESSAGE_ASSIGNMENT_UNGRADED);
-        }
+    public String getMax() {
+        return this.maxGrade;
     }
 
-    public void deleteGrade() throws CommandException {
+    public Grade copyGrade() {
         if (this.isGraded) {
-            this.isGraded = false;
-            this.actualGrade = "";
+            return new Grade(this.actualGrade, this.maxGrade);
         } else {
-            throw new CommandException(Messages.MESSAGE_ASSIGNMENT_UNGRADED);
+            return new Grade(this.maxGrade);
         }
     }
 
@@ -44,7 +36,7 @@ public class Grade {
         if (this.isGraded) {
             return this.actualGrade + "/" + this.maxGrade;
         } else {
-            return "UNGRADED";
+            return "UNGRADED/" + this.maxGrade;
         }
     }
 }

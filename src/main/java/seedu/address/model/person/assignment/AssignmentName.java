@@ -1,44 +1,48 @@
 package seedu.address.model.person.assignment;
 
-import java.util.ArrayList;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class AssignmentName {
-    private ArrayList<String> assignments = new ArrayList<>();
 
-    public void initMissions() {
-        this.assignments.add("Rune Trials");
-        this.assignments.add("Rune Reading");
-        this.assignments.add("Beyond the Second Dimension");
-        this.assignments.add("Curve Introduction");
-        this.assignments.add("Curve Manipulation");
-        this.assignments.add("Beyond the First Dimension");
-        this.assignments.add("Premorseal Communications");
-        this.assignments.add("POTS and Pans");
-        this.assignments.add("Musical Diversions");
-        this.assignments.add("Search and Rescue");
-        this.assignments.add("Sorting Things Out");
-        this.assignments.add("Robotic Trials");
-        this.assignments.add("Moving about on Planet Y");
-        this.assignments.add("Finding ELDRIC");
-        this.assignments.add("Know Your Environment");
+    public static final String MESSAGE_CONSTRAINTS =
+            "Assignment Names should only contain alphanumeric characters and spaces, and it should not be blank";
+
+    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z0-9_-])[-A-Za-z0-9\\s_-]*$";
+
+    public final String assignmentName;
+
+    public AssignmentName(String name) {
+        requireNonNull(name);
+        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
+        this.assignmentName = name;
     }
 
-    public void initQuests() {
-        this.assignments.add("Runic Carpets");
-        this.assignments.add("Colorful Carpets");
-        this.assignments.add("Functional Expressionism");
-        this.assignments.add("Cardioid Arrest");
-        this.assignments.add("Curvaceous Wizardry");
-        this.assignments.add("The Magical Tone Matrix");
-        this.assignments.add("Echoes of the Past");
-        this.assignments.add("Grading a Sort");
+    public static boolean isValidName(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
-    public String getName(int index) {
-        return this.assignments.get(index);
+    @Override
+    public String toString() {
+        return this.assignmentName;
     }
 
-    public int size() {
-        return this.assignments.size();
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof AssignmentName)) {
+            return false;
+        }
+
+        AssignmentName otherName = (AssignmentName) other;
+        return assignmentName.equals(otherName.assignmentName);
+    }
+
+    @Override
+    public int hashCode() {
+        return assignmentName.hashCode();
     }
 }
