@@ -13,7 +13,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.ReadOnlyGradedTestList;
-import seedu.address.model.ReadOnlyTaskList;
 
 /**
  * A class to access GradedTestList data stored as a json file on the hard disk.

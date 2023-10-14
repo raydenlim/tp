@@ -15,9 +15,27 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.*;
+import seedu.address.model.AddressBook;
+import seedu.address.model.GradedTestListBook;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyGradedTestList;
+import seedu.address.model.ReadOnlyTaskList;
+import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.TaskListBook;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.*;
+import seedu.address.storage.AddressBookStorage;
+import seedu.address.storage.GradedTestListStorage;
+import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonGradedTestListStorage;
+import seedu.address.storage.JsonTaskListStorage;
+import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.Storage;
+import seedu.address.storage.StorageManager;
+import seedu.address.storage.TaskListStorage;
+import seedu.address.storage.UserPrefsStorage;
 import seedu.address.ui.Ui;
 import seedu.address.ui.UiManager;
 
@@ -49,7 +67,8 @@ public class MainApp extends Application {
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         TaskListStorage taskListStorage = new JsonTaskListStorage(userPrefs.getTaskListFilePath());
-        GradedTestListStorage gradedTestListStorage = new JsonGradedTestListStorage(userPrefs.getGradedTestListFilePath());
+        GradedTestListStorage gradedTestListStorage =
+                new JsonGradedTestListStorage(userPrefs.getGradedTestListFilePath());
         storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage, gradedTestListStorage);
 
         model = initModelManager(storage, userPrefs);

@@ -12,7 +12,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.gradedtest.GradedTest;
-import seedu.address.model.gradedtest.GradedTestList;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -46,6 +45,9 @@ public class ModelManager implements Model {
         filteredTasks = new FilteredList<>(this.taskList.getTaskList());
     }
 
+    /**
+     * Initializes a ModelManager with default data.
+     */
     public ModelManager() {
         this(new AddressBook(), new UserPrefs(),
                 new TaskListBook(), new GradedTestListBook());
@@ -297,6 +299,11 @@ public class ModelManager implements Model {
         return filteredGradedTest;
     }
 
+    /**
+     * Updates the filtered task list with the given predicate.
+     *
+     * @param predicate The filtering predicate to apply.
+     */
     public void updateFilteredGradedTest(Predicate<GradedTest> predicate) {
         requireNonNull(predicate);
         filteredGradedTest.setPredicate(predicate);

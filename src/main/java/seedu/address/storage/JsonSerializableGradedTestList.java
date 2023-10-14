@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import com.fasterxml.jackson.annotation.JsonRootName;
+
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.GradedTestListBook;
 import seedu.address.model.ReadOnlyGradedTestList;
+import seedu.address.model.gradedtest.GradedTest;
 
 /**
  * An Immutable TaskList that is serializable to JSON format.
@@ -38,7 +38,8 @@ public class JsonSerializableGradedTestList {
      * @param source future changes to this will not affect the created {@code JsonSerializableGradedTestList}.
      */
     public JsonSerializableGradedTestList(ReadOnlyGradedTestList source) {
-        gradedTests.addAll(source.getGradedTestList().stream().map(JsonAdaptedGradedTest::new).collect(Collectors.toList()));
+        gradedTests.addAll(source.getGradedTestList().stream().map(JsonAdaptedGradedTest::new)
+                .collect(Collectors.toList()));
     }
 
     /**
