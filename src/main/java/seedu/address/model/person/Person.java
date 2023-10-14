@@ -2,8 +2,10 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -69,12 +71,12 @@ public class Person {
         return Collections.unmodifiableSet(sessions);
     }
 
-    public String getSessionString() {
-        StringBuilder allSessionsBuilder = new StringBuilder();
+    public List<String> getSessionNumberArray() {
+        List<String> sessionNumberArray = new ArrayList<>();
         for (Session session : sessions) {
-            allSessionsBuilder.append(String.format("%s ", session.getSessionNumber()));
+            sessionNumberArray.add(session.getSessionNumber());
         }
-        return allSessionsBuilder.toString().trim();
+        return sessionNumberArray;
     }
 
     /**
@@ -160,7 +162,7 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("sessions", sessions)
+                .add("sessions", getSessionNumberArray())
                 .toString();
     }
 

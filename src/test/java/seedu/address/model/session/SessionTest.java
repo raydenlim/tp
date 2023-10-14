@@ -11,6 +11,8 @@ import static seedu.address.testutil.TypicalSessions.SESSION3B;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.person.Person;
+import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TypicalPersons;
 
 public class SessionTest {
@@ -22,7 +24,8 @@ public class SessionTest {
 
         assertFalse(SESSION2.isSameSession(SESSION3A));
 
-        SESSION3B.addStudent(TypicalPersons.BOB);
+        Person bob = new PersonBuilder(TypicalPersons.BOB).build();
+        SESSION3B.addStudent(bob);
         assertTrue(SESSION3B.isSameSession(SESSION3A));
     }
 
@@ -46,7 +49,8 @@ public class SessionTest {
 
         // different students -> returns false
         Session tempSession = new Session(SESSION1B.getSessionNumber(), SESSION1B.getStudents());
-        tempSession.addStudent(TypicalPersons.CARL);
+        Person carl = new PersonBuilder(TypicalPersons.CARL).build();
+        tempSession.addStudent(carl);
         assertFalse(SESSION1B.equals(tempSession));
     }
 
@@ -57,7 +61,7 @@ public class SessionTest {
         assertEquals(expected1, SESSION2.toString());
 
         Session tempSession3A = new Session(SESSION3A.getSessionNumber(), SESSION3A.getStudents());
-        String expected2 = "3 - Bob Choo, Alice Pauline";
+        String expected2 = "3 - Alice Pauline, Bob Choo";
         assertEquals(expected2, tempSession3A.toString());
     }
 }

@@ -96,6 +96,9 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+    //=========== SessionList =================================================================================
+    Session findSessionBySessionNumber(String sessionNumber);
+
     /**
      * Replaces task list data with the data in {@code taskList}.
      */

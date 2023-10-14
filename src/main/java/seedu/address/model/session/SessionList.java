@@ -66,6 +66,25 @@ public class SessionList implements Iterable<Session> {
         internalList.set(index, editedSession);
     }
 
+    /**
+     * Finds a session in the list based on its session number.
+     *
+     * @param sessionNumber The session number to search for.
+     * @return The session with the specified session number, or null if not found.
+     */
+    public Session findSessionBySessionNumber(String sessionNumber) {
+        requireNonNull(sessionNumber);
+
+        for (Session session : internalList) {
+            if (session.getSessionNumber().equals(sessionNumber)) {
+                return session;
+            }
+        }
+
+        // Session not found, return null or handle the situation as needed.
+        return null;
+    }
+
 
     /**
      * Removes a session from the list.

@@ -79,9 +79,9 @@ class JsonAdaptedPerson {
         for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
         }
-        final List<Session> sessionList = new ArrayList<>();
+        final List<Session> sessionArray = new ArrayList<>();
         for (JsonAdaptedSession session : sessions) {
-            sessionList.add(session.toModelType());
+            //TODO: STUFF
         }
 
 
@@ -119,7 +119,7 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        final Set<Session> modelSessions = new HashSet<>(sessionList);
+        final Set<Session> modelSessions = new HashSet<>(sessionArray);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelSessions);
     }
 

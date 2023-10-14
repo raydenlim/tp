@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import seedu.address.model.person.Person;
 
@@ -55,6 +56,7 @@ public class Session {
         requireNonNull(sessionNumber);
         this.sessionNumber = sessionNumber;
     }
+
 
     /**
      * Adds a student to the session.
@@ -147,18 +149,16 @@ public class Session {
      * @return A string representation of the session.
      */
     public String getSessionInfo() {
+        List<Person> studentsArray = new ArrayList<>(students);
+        studentsArray.sort(Comparator.comparing(p -> p.getName().toString()));
         StringBuilder studentNames = new StringBuilder();
-        for (Person student : students) {
+        for (Person student : studentsArray) {
             studentNames.append(String.format("%s, ", student.getName()));
         }
         if (!students.isEmpty()) {
             studentNames.delete(studentNames.length() - 2, studentNames.length());
         }
         return String.format("%s - %s", sessionNumber, studentNames);
-    }
-
-    public String toSaveState() {
-        return String.format("%s - %s", sessionNumber, students);
     }
 
     public static boolean isValidSessionNumber(String test) {

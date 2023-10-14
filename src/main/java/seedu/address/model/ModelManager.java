@@ -14,6 +14,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
 import seedu.address.model.task.Task;
 
 /**
@@ -23,6 +24,7 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final SessionList sessionList;
     private final TaskListBook taskList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
@@ -37,6 +39,7 @@ public class ModelManager implements Model {
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.sessionList = new SessionList();
         this.taskList = new TaskListBook(taskList);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
@@ -129,6 +132,11 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    //=========== SessionList =================================================================================
+    @Override
+    public Session findSessionBySessionNumber(String sessionNumber) {
+        return sessionList.findSessionBySessionNumber(sessionNumber);
+    }
 
     //=========== TaskListBook ================================================================================
 

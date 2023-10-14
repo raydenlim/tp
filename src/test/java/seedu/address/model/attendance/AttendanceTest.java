@@ -13,22 +13,26 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.testutil.PersonBuilder;
 
 public class AttendanceTest {
     @Test
     public void markPresentTest() {
+        Person alice = new PersonBuilder(ALICE).build();
         Session emptySession = EMPTY_SESSION;
-        Attendance.markPresent(emptySession, ALICE);
-        assertTrue(emptySession.getStudents().contains(ALICE));
+        Attendance.markPresent(emptySession, alice);
+        assertTrue(emptySession.getStudents().contains(alice));
     }
 
     @Test
     public void markAbsentTest() {
+        Person alice = new PersonBuilder(ALICE).build();
         Session sessionWithAlice = new Session(SESSION1A.getSessionNumber(), new HashSet<>(SESSION1A.getStudents()));
-        Attendance.markAbsent(sessionWithAlice, ALICE);
+        Attendance.markAbsent(sessionWithAlice, alice);
 
-        assertFalse(sessionWithAlice.getStudents().contains(ALICE));
+        assertFalse(sessionWithAlice.getStudents().contains(alice));
     }
 
     @Test
@@ -38,14 +42,16 @@ public class AttendanceTest {
 
     @Test
     public void getAttendanceByStudentTest() {
-        Set<Session> attendanceBefore = Attendance.getAttendanceByStudent(BOB);
-        // BOB has not attended SESSION3A
-        assertFalse(attendanceBefore.contains(SESSION3A));
+        Person bob = new PersonBuilder(BOB).build();
+        Session tempSession3a = new Session(SESSION3A.getSessionNumber(), SESSION3A.getStudents());
+        Set<Session> attendanceBefore = Attendance.getAttendanceByStudent(bob);
+        // bob has not attended SESSION3A
+        assertFalse(attendanceBefore.contains(tempSession3a));
 
-        BOB.attendSession(SESSION3A);
+        bob.attendSession(tempSession3a);
 
-        Set<Session> attendanceAfter = Attendance.getAttendanceByStudent(BOB);
+        Set<Session> attendanceAfter = Attendance.getAttendanceByStudent(bob);
         // Check if the list contains the expected session
-        assertTrue(attendanceAfter.contains(SESSION3A));
+        assertTrue(attendanceAfter.contains(tempSession3a));
     }
 }

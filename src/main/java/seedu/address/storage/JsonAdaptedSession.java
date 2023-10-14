@@ -1,11 +1,13 @@
 package seedu.address.storage;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Person;
@@ -16,27 +18,27 @@ import seedu.address.model.session.Session;
  */
 public class JsonAdaptedSession {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Session's fields are missing!";
-    private final String sessionInfo;
-
+    private final String sessionNumber;
+    private final List<JsonAdaptedPerson> students = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedSession} with the given {@code sessionInfo}.
      */
     @JsonCreator
-    public JsonAdaptedSession(@JsonProperty("sessionInfo") String sessionInfo) {
-        this.sessionInfo = sessionInfo;
+    public JsonAdaptedSession(@JsonProperty("sessionNumber") String sessionNumber,
+            @JsonProperty("students") List<JsonAdaptedPerson> students) {
+        this.sessionNumber = sessionNumber;
+        this.students.addAll(students);
     }
 
     /**
      * Converts a given {@code Session} into this class for Jackson use.
      */
     public JsonAdaptedSession(Session source) {
-        sessionInfo = source.toSaveState();
-    }
-
-    @JsonValue
-    public String getSessionInfo() {
-        return sessionInfo;
+        this.sessionNumber = source.getSessionNumber();
+        students.addAll(source.getStudents().stream()
+                .map(JsonAdaptedPerson::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -45,19 +47,20 @@ public class JsonAdaptedSession {
      * @throws IllegalValueException if there were any data constraints violated in the adapted session.
      */
     public Session toModelType() throws IllegalValueException {
-        if (sessionInfo == null) {
+        if (sessionNumber == null) {
             throw new IllegalValueException(MISSING_FIELD_MESSAGE_FORMAT);
         }
-        String modelSessionNumber = sessionInfo.split(" - ")[0];
-        //TODO: convert storage students to studentList
-        Set<Person> studentList = new HashSet<>();
-        String[] students = sessionInfo.split(" - ")[1].split(", ");
-        for (String student : students) {
 
+        final String modelSessionNumber = sessionNumber;
 
-
+        final List<Person> studentsList = new ArrayList<>();
+        for (JsonAdaptedPerson student : students) {
+            studentsList.add(student.toModelType());
         }
-        return new Session(modelSessionNumber, studentList);
+        final Set<Person> studentSet = new HashSet<>(studentsList);
+
+
+        return new Session(modelSessionNumber, studentSet);
     }
 
 }
