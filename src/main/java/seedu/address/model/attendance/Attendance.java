@@ -9,7 +9,7 @@ import seedu.address.model.session.Session;
 /**
  * Utility class for managing attendance records.
  */
-public class Attendance {
+public abstract class Attendance {
 
     /**
      * Marks a student as present in a specific session and updates their attendance record.

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -49,6 +50,12 @@ public class PersonTest {
         carl.missSession(sessionWithCarl);
 
         assertFalse(sessionWithCarl.getStudents().contains(carl));
+    }
+
+    @Test
+    public void isSameName() {
+        Person otherBob = new PersonBuilder().withName(VALID_NAME_BOB).withAddress(VALID_EMAIL_AMY).build();
+        assertTrue(BOB.isSameName(otherBob.getName()));
     }
 
     @Test

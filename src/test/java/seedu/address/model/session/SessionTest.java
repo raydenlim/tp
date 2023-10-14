@@ -54,6 +54,12 @@ public class SessionTest {
         assertFalse(SESSION1B.equals(tempSession));
     }
 
+    @Test
+    public void createSessionWithoutStudents() {
+        Session sessionWithoutStudents = new Session("5");
+        assertTrue("5 - ".equals(sessionWithoutStudents.toString()));
+    }
+
 
     @Test
     public void toStringMethod() {

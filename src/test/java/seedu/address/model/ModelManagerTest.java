@@ -19,8 +19,13 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.TypicalPersons;
 
 public class ModelManagerTest {
 
@@ -140,6 +145,16 @@ public class ModelManagerTest {
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
     }
+
+    @Test
+    public void findSessionBySessionNumber_successful() {
+        SessionList sessionList = new SessionList();
+        Person student = new PersonBuilder(TypicalPersons.ALICE).build();
+        Session toAdd = new Session("0", student);
+        sessionList.addSession(toAdd);
+        assertTrue(toAdd.equals(sessionList.findSessionBySessionNumber("0")));
+    }
+
 
     @Test
     public void equals() {

@@ -48,6 +48,14 @@ public class SessionListTest {
     }
 
     @Test
+    public void remove_addedSession_successful() {
+        sessionList.addSession(SESSION1A);
+        assertTrue(sessionList.contains(SESSION1A));
+        sessionList.remove(SESSION1A);
+        assertFalse(sessionList.contains(SESSION1A));
+    }
+
+    @Test
     public void toStringMethod() {
         assertEquals(sessionList.asUnmodifiableObservableList().toString(), sessionList.toString());
     }
