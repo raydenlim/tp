@@ -48,11 +48,30 @@ public class SessionListTest {
     }
 
     @Test
+    public void set_setSession_throwsDuplicateSessionException() {
+        sessionList.addSession(SESSION1A);
+        sessionList.addSession(SESSION2);
+        assertThrows(DuplicateSessionException.class, () -> sessionList.setSession(SESSION1A, SESSION2));
+    }
+
+    @Test
+    public void set_setSession_successful() {
+        sessionList.addSession(SESSION3A);
+        assertTrue(sessionList.contains(SESSION3A));
+    }
+
+    @Test
     public void remove_addedSession_successful() {
         sessionList.addSession(SESSION1A);
         assertTrue(sessionList.contains(SESSION1A));
         sessionList.remove(SESSION1A);
         assertFalse(sessionList.contains(SESSION1A));
+    }
+
+    @Test
+    public void remove_throwsSessionNotFoundException() {
+        sessionList.addSession(SESSION1A);
+        assertThrows(SessionNotFoundException.class, () -> sessionList.remove(SESSION2));
     }
 
     @Test
