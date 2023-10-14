@@ -11,7 +11,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class MidTerms {
     public static final String MESSAGE_CONSTRAINTS =
             "Scores should be a positive number";
-    public static final String VALIDATION_REGEX = "\\d+(\\.\\d+)?";
+    public static final String VALIDATION_REGEX = "(-|\\d+(\\.\\d+)?)";
+
     public final String value;
 
     /**
@@ -22,7 +23,7 @@ public class MidTerms {
     public MidTerms(String midTermResults) {
         requireNonNull(midTermResults);
         checkArgument(isValidMidTermResult(midTermResults), MESSAGE_CONSTRAINTS);
-        value = midTermResults;
+        this.value = midTermResults;
     }
 
     /**
@@ -32,9 +33,12 @@ public class MidTerms {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Format state as text for viewing.
+     */
     @Override
     public String toString() {
-        return value;
+        return value.equals("") ? "No Score Provided" : value;
     }
 
     @Override
@@ -56,5 +60,4 @@ public class MidTerms {
     public int hashCode() {
         return value.hashCode();
     }
-
 }

@@ -23,6 +23,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -30,6 +31,7 @@ import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonGradedTestListStorage;
 import seedu.address.storage.JsonTaskListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
@@ -51,7 +53,10 @@ public class LogicManagerTest {
                 new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         JsonTaskListStorage taskListStorage = new JsonTaskListStorage(temporaryFolder.resolve("taskList.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage);
+        JsonGradedTestListStorage gradedTestListStorage = new JsonGradedTestListStorage(
+                temporaryFolder.resolve("gradedTestList.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
+                taskListStorage, gradedTestListStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -126,7 +131,8 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
+                new TaskListBook(), new GradedTestListBook());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -165,7 +171,10 @@ public class LogicManagerTest {
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
         JsonTaskListStorage taskListStorage =
                 new JsonTaskListStorage(temporaryFolder.resolve("ExceptionTaskList.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage);
+        JsonGradedTestListStorage gradedTestListStorage =
+                new JsonGradedTestListStorage(temporaryFolder.resolve("ExceptionGradedTestList.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
+                taskListStorage, gradedTestListStorage);
 
         logic = new LogicManager(model, storage);
 

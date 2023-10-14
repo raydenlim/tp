@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -52,12 +53,26 @@ public class Messages {
     }
 
     /**
-     * Formats the {@code person} for display to the user.
+     * Formats the {@code task} for display to the user.
      */
     public static String format(Task task) {
         String builder = task.getName()
                 + "; Description: "
                 + task.getDescription();
+        return builder;
+    }
+
+    /**
+     * Formats the {@code gradedTest} for display to the user.
+     */
+    public static String format(GradedTest gradedTest) {
+        String builder = gradedTest.getGradedTestName()
+                + "; Graded Tests: "
+                + gradedTest.getRA1()
+                + gradedTest.getRA2()
+                + gradedTest.getMidTerms()
+                + gradedTest.getFinals()
+                + gradedTest.getPracticalExam();
         return builder;
     }
 

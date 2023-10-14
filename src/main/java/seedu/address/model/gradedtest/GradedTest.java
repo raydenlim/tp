@@ -14,17 +14,18 @@ import seedu.address.model.expectedgrade.ExpectedGrade;
 
 public class GradedTest {
     public static final String MESSAGE_CONSTRAINTS = "Graded Test Scores should be Alphanumeric";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String VALIDATION_REGEX = "[-\\p{Alnum}]+";
+    public static final String DEFAULT_VALUE = "-";
     // Identity fields
     private String gradedTestName;
-    private ReadingAssessment readingAssessment1;
-    private ReadingAssessment readingAssessment2;
-    private MidTerms midTerms;
-    private Finals finals;
-    private PracticalExam practicalExam;
 
     // Data fields
     private final Set<ExpectedGrade> expectedGrades = new HashSet<>();
+    private final ReadingAssessment readingAssessment1;
+    private final ReadingAssessment readingAssessment2;
+    private final MidTerms midTerms;
+    private final Finals finals;
+    private final PracticalExam practicalExam;
 
     /**
      * Constructs a {@code GradedTest}.
@@ -54,6 +55,11 @@ public class GradedTest {
         requireNonNull(gradedTestName);
         checkArgument(isValidGradeTestName(gradedTestName), MESSAGE_CONSTRAINTS);
         this.gradedTestName = gradedTestName;
+        this.readingAssessment1 = new ReadingAssessment(DEFAULT_VALUE);
+        this.readingAssessment2 = new ReadingAssessment(DEFAULT_VALUE);
+        this.midTerms = new MidTerms(DEFAULT_VALUE);
+        this.finals = new Finals(DEFAULT_VALUE);
+        this.practicalExam = new PracticalExam(DEFAULT_VALUE);
     }
 
     public ReadingAssessment getRA1() {
@@ -96,6 +102,23 @@ public class GradedTest {
     }
 
     /**
+     * Returns true if both tasks have the same name and description.
+     */
+    public boolean isSameGradedTest(GradedTest otherTask) {
+        if (otherTask == this) {
+            return true;
+        }
+
+        return otherTask != null
+                && otherTask.getGradedTestName().equals(getGradedTestName())
+                && otherTask.getRA1().equals(getRA1())
+                && otherTask.getRA2().equals(getRA2())
+                && otherTask.getMidTerms().equals(getMidTerms())
+                && otherTask.getFinals().equals(getFinals())
+                && otherTask.getPracticalExam().equals(getPracticalExam());
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */
@@ -127,11 +150,11 @@ public class GradedTest {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("readingAssessment1", readingAssessment1)
-                .add("readingAssessment2", readingAssessment2)
-                .add("midTerms", midTerms)
-                .add("finals", finals)
-                .add("practicalExam", practicalExam)
+                .add("Reading Assessment 1: ", readingAssessment1)
+                .add("Reading Assessment 2: ", readingAssessment2)
+                .add("MidTerms: ", midTerms)
+                .add("Finals: ", finals)
+                .add("Practical Exam: ", practicalExam)
                 .toString();
     }
 

@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Finals {
     public static final String MESSAGE_CONSTRAINTS =
             "Scores should be a positive number";
-    public static final String VALIDATION_REGEX = "\\d+(\\.\\d+)?";
+    public static final String VALIDATION_REGEX = "(-|\\d+(\\.\\d+)?)";
     public final String value;
 
     /**
@@ -22,7 +22,7 @@ public class Finals {
     public Finals(String finalResults) {
         requireNonNull(finalResults);
         checkArgument(isValidFinalsResult(finalResults), MESSAGE_CONSTRAINTS);
-        value = finalResults;
+        this.value = finalResults;
     }
 
     /**
@@ -32,9 +32,12 @@ public class Finals {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Format state as text for viewing.
+     */
     @Override
     public String toString() {
-        return value;
+        return value.equals("") ? "No Score Provided" : value;
     }
 
     @Override

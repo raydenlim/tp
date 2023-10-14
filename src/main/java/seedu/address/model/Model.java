@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -130,6 +131,52 @@ public interface Model {
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
+
+    /**
+     * Replaces task list data with the data in {@code taskList}.
+     */
+    void setGradedTestList(ReadOnlyGradedTestList gradedTestList);
+
+    /** Returns the GradeTestList */
+    ReadOnlyGradedTestList getGradedTestList();
+
+    /**
+     * Returns true if a task with the same identity as {@code task} exists in the task list.
+     */
+    boolean hasGradedTest(GradedTest gradedTest);
+
+    /**
+     * Deletes the given gradedTest.
+     * The gradedTest must exist in the gradedTest list.
+     */
+    void deleteGradedTest(GradedTest target);
+
+    /**
+     * Adds the given task.
+     * {@code gradedTest} must not already exist in the gradedTest list.
+     */
+    void addGradedTest(GradedTest gradedTest);
+
+    /**
+     * Returns gradedTest at the given index.
+     * {@code index} must be within the size of the gradedTest list.
+     */
+    GradedTest getGradedTest(int index);
+
+    /**
+     * Replaces the given task {@code target} with {@code editedGradedTest}.
+     * {@code target} must exist in the address book.
+     * The gradedTest identity of {@code editedGradedTest} must not be the same
+     * as another existing gradedTest in the gradedTest List.
+     */
+    void setGradedTest(GradedTest target, GradedTest editedGradedTest);
+
+    /**
+     * Returns the user prefs' gradedTest list file path.
+     */
+    Path getGradedTestListFilePath();
+
+    void setGradedTestListFilePath(Path gradedTestListFilePath);
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.

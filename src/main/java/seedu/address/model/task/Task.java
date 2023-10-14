@@ -39,7 +39,7 @@ public class Task {
     /**
      * Returns true if both tasks have the same name and description.
      */
-    public boolean isSameTask(seedu.address.model.task.Task otherTask) {
+    public boolean isSameTask(Task otherTask) {
         if (otherTask == this) {
             return true;
         }

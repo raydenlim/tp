@@ -5,15 +5,13 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyTaskList;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, UserPrefsStorage, TaskListStorage {
+public interface Storage extends AddressBookStorage, UserPrefsStorage,
+        TaskListStorage, GradedTestListStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
@@ -35,5 +33,11 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage, TaskListS
 
     @Override
     void saveTaskList(ReadOnlyTaskList taskList) throws IOException;
+
+    @Override
+    Optional<ReadOnlyGradedTestList> readGradedTestList() throws DataLoadingException;
+
+    @Override
+    void saveGradedTestList(ReadOnlyGradedTestList gradedTestList, Path filePath) throws IOException;
 
 }

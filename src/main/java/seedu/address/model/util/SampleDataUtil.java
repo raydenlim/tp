@@ -4,11 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyTaskList;
-import seedu.address.model.TaskListBook;
-import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.*;
+import seedu.address.model.gradedtest.*;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -54,6 +51,13 @@ public class SampleDataUtil {
         };
     }
 
+    public static GradedTest[] getSampleGradedTest() {
+        return new GradedTest[] {
+                new GradedTest(new ReadingAssessment("1"), new ReadingAssessment("2"),
+                        new MidTerms("3"), new Finals("4"), new PracticalExam("5"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -77,6 +81,14 @@ public class SampleDataUtil {
         return Arrays.stream(strings)
                 .map(Tag::new)
                 .collect(Collectors.toSet());
+    }
+
+    public static ReadOnlyGradedTestList getSampleGradedTestList() {
+        GradedTestListBook sampleTl = new GradedTestListBook();
+        for (GradedTest sampleGradedTest : getSampleGradedTest()) {
+            sampleTl.addGradedTest(sampleGradedTest);
+        }
+        return sampleTl;
     }
 
     /**
