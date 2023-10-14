@@ -45,7 +45,7 @@ public class AttendanceTest {
         Person bob = new PersonBuilder(BOB).build();
         Session tempSession3a = new Session(SESSION3A.getSessionNumber(), SESSION3A.getStudents());
         Set<Session> attendanceBefore = Attendance.getAttendanceByStudent(bob);
-        // bob has not attended SESSION3A
+        // bob has not attended tempSession3a
         assertFalse(attendanceBefore.contains(tempSession3a));
 
         bob.attendSession(tempSession3a);
