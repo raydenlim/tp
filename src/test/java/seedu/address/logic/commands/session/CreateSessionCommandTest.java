@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.session;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
@@ -61,7 +61,7 @@ public class CreateSessionCommandTest {
         CreateSessionCommand command1 = new CreateSessionCommand("S1", new Name("Alice"));
         CreateSessionCommand command2 = new CreateSessionCommand("S1", new Name("Alice"));
 
-        assertEquals(command1, command2);
+        assertTrue(command1.equals(command2));
     }
 
     @Test
@@ -69,6 +69,29 @@ public class CreateSessionCommandTest {
         CreateSessionCommand command1 = new CreateSessionCommand("S1", new Name("Alice"));
         CreateSessionCommand command2 = new CreateSessionCommand("S2", new Name("Bob"));
 
-        assertNotEquals(command1, command2);
+        assertFalse(command1.equals(command2));
+    }
+
+    @Test
+    public void toStringMethod() throws CommandException {
+        Model model = new ModelManager();
+        String name = "Bob";
+        Person bob = new PersonBuilder().withName(name).build();
+        String sessionNumber = "1";
+        model.addPerson(bob);
+        CreateSessionCommand command = new CreateSessionCommand(sessionNumber, new Name(name));
+
+        // Before execution, session has not been created and is null
+        String expectedBeforeExecute = CreateSessionCommand.class.getCanonicalName()
+                + "{toCreate=null}";
+        assertEquals(expectedBeforeExecute, command.toString());
+
+
+        // Execute creates the session to be added
+        command.execute(model);
+        String expectedAfterExecute = CreateSessionCommand.class.getCanonicalName()
+                + "{toCreate=" + sessionNumber + " - " + name + "}";
+        assertEquals(expectedAfterExecute, command.toString());
+
     }
 }

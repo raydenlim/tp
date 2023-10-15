@@ -96,6 +96,16 @@ public class PersonTest {
     }
 
     @Test
+    public void isSameName_sameNameDifferentObject_returnsTrue() {
+        Name name1 = new Name("James");
+        Name name2 = new Name("James");
+        Person person1 = new PersonBuilder().withName(name1.toString()).withPhone("99999999").build();
+        Person person2 = new PersonBuilder().withName(name2.toString()).withPhone("12345678").build();
+
+        assertTrue(person1.isSameName(person2.getName()));
+    }
+
+    @Test
     public void isSameName_differentName_returnsFalse() {
         Name name1 = new Name("Green Blue");
         Name name2 = new Name("Blue Green");

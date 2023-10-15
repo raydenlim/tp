@@ -7,6 +7,7 @@ import java.util.List;
 
 import seedu.address.model.SessionListBook;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
 
 /**
  * A utility class containing a set of typical sessions for testing purposes.
@@ -44,6 +45,16 @@ public class TypicalSessions {
      */
     public static final Session SESSION3B = new Session("3", TypicalPersons.ALICE);
 
+    /**
+     * A typical session with session number 2, attended by Alice.
+     */
+    public static final Session SESSION_TYPICAL1 = new Session("2", TypicalPersons.ALICE);
+
+    /**
+     * A typical session with session number 3, attended by Benson.
+     */
+    public static final Session SESSION_TYPICAL2 = new Session("3", TypicalPersons.BENSON);
+
     public static SessionListBook getTypicalSessionList() {
         SessionListBook sb = new SessionListBook();
         for (Session session : getTypicalSessions()) {
@@ -52,8 +63,11 @@ public class TypicalSessions {
         return sb;
     }
 
-    public static List<Session> getTypicalSessions() {
-        return new ArrayList<>(Arrays.asList(SESSION2, SESSION3B));
+    public static SessionList getTypicalSessions() {
+        SessionList typicalSessions = new SessionList();
+        List<Session> sessionsList = new ArrayList<>(Arrays.asList(SESSION_TYPICAL1, SESSION_TYPICAL2));
+        typicalSessions.setSessionList(sessionsList);
+        return typicalSessions;
     }
 }
 

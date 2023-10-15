@@ -74,8 +74,8 @@ public class StorageManagerTest {
         assertNotNull(storageManager.getAddressBookFilePath());
     }
 
-
-    private void sessionListReadSave() throws Exception {
+    @Test
+    public void sessionListReadSave() throws Exception {
         SessionListBook original = getTypicalSessionList();
         storageManager.saveSessionList(original);
         ReadOnlySessionList retrieved = storageManager.readSessionList().get();

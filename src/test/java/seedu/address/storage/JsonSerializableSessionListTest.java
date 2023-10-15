@@ -22,9 +22,8 @@ public class JsonSerializableSessionListTest {
     private static final Path INVALID_SESSION_FILE = TEST_DATA_FOLDER.resolve("invalidSessionList.json");
     private static final Path DUPLICATE_SESSION_FILE = TEST_DATA_FOLDER.resolve("duplicateSessionList.json");
 
-    // TODO: Fix equality of sessionLists
-
-    private void toModelType_typicalSessionsFile_success() throws Exception {
+    @Test
+    public void toModelType_typicalSessionsFile_success() throws Exception {
         JsonSerializableSessionList dataFromFile = JsonUtil.readJsonFile(TYPICAL_SESSIONS_FILE,
                 JsonSerializableSessionList.class).get();
         SessionListBook sessionListFromFile = dataFromFile.toModelType();

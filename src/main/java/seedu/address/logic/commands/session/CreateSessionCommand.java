@@ -140,7 +140,7 @@ public class CreateSessionCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("toAdd", sessionToAdd)
+                .add("toCreate", sessionToAdd)
                 .toString();
     }
 }

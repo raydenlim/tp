@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalSessions.SESSION1A;
-import static seedu.address.testutil.TypicalSessions.SESSION2;
 import static seedu.address.testutil.TypicalSessions.SESSION3A;
+import static seedu.address.testutil.TypicalSessions.SESSION_TYPICAL1;
 import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 
 import java.io.IOException;
@@ -60,9 +60,8 @@ public class JsonSessionListStorageTest {
         assertThrows(DataLoadingException.class, () -> readSessionList("invalidAndValidSessionList.json"));
     }
 
-    // TODO: fix this test
-    //    @Test
-    private void readAndSaveSessionList_allInOrder_success() throws Exception {
+    @Test
+    public void readAndSaveSessionList_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempSessionList.json");
         SessionListBook original = getTypicalSessionList();
         JsonSessionListStorage jsonSessionListStorage = new JsonSessionListStorage(filePath);
@@ -74,7 +73,7 @@ public class JsonSessionListStorageTest {
 
         // Modify data, overwrite exiting file, and read back
         original.addSession(SESSION1A);
-        original.removeSession(SESSION2);
+        original.removeSession(SESSION_TYPICAL1);
         jsonSessionListStorage.saveSessionList(original, filePath);
         readBack = jsonSessionListStorage.readSessionList(filePath).get();
         assertEquals(original, new SessionListBook(readBack));

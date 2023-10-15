@@ -2,9 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -141,28 +138,6 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
-    }
-
-    /**
-     * Parses {@code String date} into an {@code LocalDate} and returns it. Leading and trailing whitespaces will be
-     * trimmed.
-     */
-    public static LocalDate parseDate(String date) {
-        requireNonNull(date);
-        String trimmedDate = date.trim();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(trimmedDate, formatter);
-    }
-
-    /**
-     * Parses {@code String time} into an {@code LocalTime} and returns it. Leading and trailing whitespaces will be
-     * trimmed.
-     */
-    public static LocalTime parseTime(String time) {
-        requireNonNull(time);
-        String trimmedTime = time.trim();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        return LocalTime.parse(trimmedTime, formatter);
     }
 
     /**
