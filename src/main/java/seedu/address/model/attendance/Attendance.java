@@ -4,6 +4,7 @@ import java.util.Set;
 
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
 
 
 /**
@@ -49,7 +50,7 @@ public abstract class Attendance {
      * @param student The student for which attendance records are requested.
      * @return A string representation of the sessions attended by the student.
      */
-    public static Set<Session> getAttendanceByStudent(Person student) {
-        return student.getSessions();
+    public static Set<Session> getAttendanceByStudent(Person student, SessionList sessionList) {
+        return sessionList.findSessionsByStudent(student);
     }
 }

@@ -3,7 +3,7 @@ package seedu.address.model.attendance;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
 import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalSessions.SESSION3A;
@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
 import seedu.address.testutil.PersonBuilder;
 
 public class AttendanceTest {
@@ -42,15 +43,18 @@ public class AttendanceTest {
 
     @Test
     public void getAttendanceByStudentTest() {
-        Person bob = new PersonBuilder(BOB).build();
+
+        SessionList sessionList = new SessionList();
+        Person carl = new PersonBuilder(CARL).build();
         Session tempSession3a = new Session(SESSION3A.getSessionNumber(), SESSION3A.getStudents());
-        Set<Session> attendanceBefore = Attendance.getAttendanceByStudent(bob);
+        sessionList.addSession(tempSession3a);
+        Set<Session> attendanceBefore = Attendance.getAttendanceByStudent(carl, sessionList);
         // bob has not attended tempSession3a
         assertFalse(attendanceBefore.contains(tempSession3a));
 
-        bob.attendSession(tempSession3a);
+        carl.attendSession(tempSession3a);
 
-        Set<Session> attendanceAfter = Attendance.getAttendanceByStudent(bob);
+        Set<Session> attendanceAfter = Attendance.getAttendanceByStudent(carl, sessionList);
         // Check if the list contains the expected session
         assertTrue(attendanceAfter.contains(tempSession3a));
     }

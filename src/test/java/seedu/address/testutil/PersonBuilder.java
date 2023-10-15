@@ -50,7 +50,6 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
-        sessions = new HashSet<>(personToCopy.getSessions());
     }
 
     /**
@@ -69,13 +68,6 @@ public class PersonBuilder {
         return this;
     }
 
-    /**
-     * Parses the {@code sessions} into a {@code Set<Session>} and set it to the {@code Person} that we are building.
-     */
-    public PersonBuilder withSessions(String ... sessionNumbers) {
-        this.sessions = SampleDataUtil.getSessionSet(sessionNumbers);
-        return this;
-    }
 
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.
@@ -102,7 +94,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags, sessions);
+        return new Person(name, phone, email, address, tags);
     }
 
 }

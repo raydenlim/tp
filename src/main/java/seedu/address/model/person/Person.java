@@ -2,10 +2,8 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,19 +26,17 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
-    private final Set<Session> sessions = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Session> sessions) {
-        requireAllNonNull(name, phone, email, address, tags, sessions);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.sessions.addAll(sessions);
     }
 
     public Name getName() {
@@ -67,17 +63,6 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
-    public Set<Session> getSessions() {
-        return Collections.unmodifiableSet(sessions);
-    }
-
-    public List<String> getSessionNumberArray() {
-        List<String> sessionNumberArray = new ArrayList<>();
-        for (Session session : sessions) {
-            sessionNumberArray.add(session.getSessionNumber());
-        }
-        return sessionNumberArray;
-    }
 
     /**
      * Adds a student to a session and a session to a student.
@@ -85,7 +70,6 @@ public class Person {
      * @param session The session to attend.
      */
     public void attendSession(Session session) {
-        sessions.add(session);
         session.addStudent(this);
     }
 
@@ -95,7 +79,6 @@ public class Person {
      * @param session The session to miss.
      */
     public void missSession(Session session) {
-        sessions.remove(session);
         session.removeStudent(this);
     }
 
@@ -144,14 +127,13 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags)
-                && sessions.equals(otherPerson.sessions);
+                && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, sessions);
+        return Objects.hash(name, phone, email, address, tags);
     }
 
     @Override
@@ -162,7 +144,6 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("sessions", getSessionNumberArray())
                 .toString();
     }
 

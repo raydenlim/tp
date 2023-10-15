@@ -3,10 +3,13 @@ package seedu.address.model.session;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Person;
 import seedu.address.model.session.exceptions.DuplicateSessionException;
 import seedu.address.model.session.exceptions.SessionNotFoundException;
 
@@ -83,6 +86,22 @@ public class SessionList implements Iterable<Session> {
 
         // Session not found, return null or handle the situation as needed.
         return null;
+    }
+
+    /**
+     * Finds and returns a set of sessions attended by a specific student.
+     *
+     * @param student The student for whom to find attended sessions.
+     * @return A set of sessions that the specified student has attended.
+     */
+    public Set<Session> findSessionsByStudent(Person student) {
+        Set<Session> sessionsAttendedByStudent = new HashSet<>();
+        for (Session session : internalList) {
+            if (session.getStudents().contains(student)) {
+                sessionsAttendedByStudent.add(session);
+            }
+        }
+        return sessionsAttendedByStudent;
     }
 
 

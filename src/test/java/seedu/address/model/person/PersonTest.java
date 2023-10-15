@@ -17,7 +17,6 @@ import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
 import static seedu.address.testutil.TypicalSessions.SESSION1A;
 
 import java.util.HashSet;
-import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -126,14 +125,9 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
-        Set<Session> sessions = ALICE.getSessions();
-        StringBuilder allSessions = new StringBuilder();
-        for (Session session : sessions) {
-            allSessions.append(session.getSessionNumber());
-        }
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
-                + ", sessions=" + ALICE.getSessions() + "}";
+                + "}";
         assertEquals(expected, ALICE.toString());
     }
 }
