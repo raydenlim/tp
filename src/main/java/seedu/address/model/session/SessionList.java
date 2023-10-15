@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javafx.collections.FXCollections;
@@ -21,6 +22,11 @@ public class SessionList implements Iterable<Session> {
     private ObservableList<Session> internalList = FXCollections.observableArrayList();
     private final ObservableList<Session> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+
+    public void setSessionList(List<Session> sessionList) {
+        requireAllNonNull(sessionList);
+        internalList.setAll(sessionList);
+    }
 
     /**
      * Checks if the list contains a specific session.

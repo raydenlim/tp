@@ -138,6 +138,12 @@ public class ModelManager implements Model {
         return sessionList.findSessionBySessionNumber(sessionNumber);
     }
 
+    @Override
+    public void addSession(Session session) {
+        requireNonNull(session);
+        sessionList.addSession(session);
+    }
+
     //=========== TaskListBook ================================================================================
 
     @Override
@@ -241,10 +247,7 @@ public class ModelManager implements Model {
         return addressBook.matchName(name);
     }
 
-    @Override
-    public void addSession(Session session) {
-        //TODO: implement addSession
-    }
+
 
 
 }

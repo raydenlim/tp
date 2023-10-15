@@ -100,6 +100,11 @@ public interface Model {
     Session findSessionBySessionNumber(String sessionNumber);
 
     /**
+     * Adds the given sesssion.
+     */
+    void addSession(Session session);
+
+    /**
      * Replaces task list data with the data in {@code taskList}.
      */
     void setTaskList(ReadOnlyTaskList taskList);
@@ -147,11 +152,6 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
-
-    /**
-     * Adds the given sesssion.
-     */
-    void addSession(Session session);
 
     Person getMatchingStudentName(Name name);
 
