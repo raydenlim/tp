@@ -173,7 +173,7 @@ public class ParserUtil {
         requireNonNull(sessionNumber);
         String trimmedSessionNumber = sessionNumber.trim();
         if (!Session.isValidSessionNumber(trimmedSessionNumber)) {
-            throw new ParseException(Session.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS);
         }
         return trimmedSessionNumber;
     }

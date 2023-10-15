@@ -1,8 +1,11 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
+import seedu.address.model.SessionListBook;
 import seedu.address.model.session.Session;
 
 /**
@@ -40,6 +43,18 @@ public class TypicalSessions {
      * A typical session with session number 3, attended by Alice.
      */
     public static final Session SESSION3B = new Session("3", TypicalPersons.ALICE);
+
+    public static SessionListBook getTypicalSessionList() {
+        SessionListBook sb = new SessionListBook();
+        for (Session session : getTypicalSessions()) {
+            sb.addSession(session);
+        }
+        return sb;
+    }
+
+    public static List<Session> getTypicalSessions() {
+        return new ArrayList<>(Arrays.asList(SESSION2, SESSION3B));
+    }
 }
 
 

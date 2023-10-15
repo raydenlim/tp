@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.model.person.Person;
@@ -15,8 +16,8 @@ import seedu.address.model.person.Person;
  * Represents a class for managing a session, which can hold a list of students and session-specific details.
  */
 public class Session {
-    public static final String MESSAGE_CONSTRAINTS =
-            "Session numbers should only contain numbers, and it should not be blank.";
+    public static final String SESSIONNUMBER_MESSAGE_CONSTRAINTS =
+            "Session numbers should only contain numbers, and it should not be blank.";;
     private static final String SESSION_NUMBER_VALIDATION_REGEX = "^[1-9]\\d*$";
 
     private final String sessionNumber;
@@ -167,5 +168,10 @@ public class Session {
     @Override
     public String toString() {
         return this.getSessionInfo();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sessionNumber, students);
     }
 }

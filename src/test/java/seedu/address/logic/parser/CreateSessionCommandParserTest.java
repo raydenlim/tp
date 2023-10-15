@@ -29,7 +29,7 @@ public class CreateSessionCommandParserTest {
     public void parse_invalidValue_failure() {
         // invalid session number
         assertParseFailure(parser, INVALID_SESSION_NUMBER + SESSION_STUDENTS_STUDENTS1,
-                Session.MESSAGE_CONSTRAINTS);
+                Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS);
 
         //invalid names
         assertParseFailure(parser, SESSION_NUMBER_SESSION1 + INVALID_SESSION_STUDENTS,
@@ -37,7 +37,7 @@ public class CreateSessionCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_SESSION_NUMBER + INVALID_SESSION_STUDENTS,
-                Session.MESSAGE_CONSTRAINTS);
+                Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS);
     }
 
 

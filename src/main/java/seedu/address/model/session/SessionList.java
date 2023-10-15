@@ -152,4 +152,9 @@ public class SessionList implements Iterable<Session> {
     public String toString() {
         return internalList.toString();
     }
+
+    @Override
+    public int hashCode() {
+        return internalList.hashCode();
+    }
 }

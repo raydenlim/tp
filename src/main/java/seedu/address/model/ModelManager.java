@@ -135,6 +135,7 @@ public class ModelManager implements Model {
     //=========== SessionList =================================================================================
     @Override
     public Session findSessionBySessionNumber(String sessionNumber) {
+        requireNonNull(sessionNumber);
         return sessionList.findSessionBySessionNumber(sessionNumber);
     }
 

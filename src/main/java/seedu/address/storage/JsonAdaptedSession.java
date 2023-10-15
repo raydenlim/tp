@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static seedu.address.model.session.Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +19,6 @@ import seedu.address.model.session.Session;
  * Jackson-friendly version of {@link Session}.
  */
 public class JsonAdaptedSession {
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Session's fields are missing!";
     private final String sessionNumber;
     private final List<JsonAdaptedPerson> students = new ArrayList<>();
 
@@ -48,7 +49,7 @@ public class JsonAdaptedSession {
      */
     public Session toModelType() throws IllegalValueException {
         if (sessionNumber == null) {
-            throw new IllegalValueException(MISSING_FIELD_MESSAGE_FORMAT);
+            throw new IllegalValueException(SESSIONNUMBER_MESSAGE_CONSTRAINTS);
         }
 
         final String modelSessionNumber = sessionNumber;
