@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.session.Session;
+import seedu.address.testutil.TypicalPersons;
 
 
 public class JsonAdaptedSessionTest {
@@ -17,6 +18,12 @@ public class JsonAdaptedSessionTest {
     public void toModelType_validSessionDetails_returnsSession() throws Exception {
         JsonAdaptedSession session = new JsonAdaptedSession(new Session("0"));
         assertEquals(new Session("0"), session.toModelType());
+    }
+
+    @Test
+    public void toModelType_validSessionDetailsWithMultipleStudents_returnsSession() throws Exception {
+        JsonAdaptedSession session = new JsonAdaptedSession(new Session("1", TypicalPersons.BOB));
+        assertEquals(new Session("1", TypicalPersons.BOB), session.toModelType());
     }
 
     @Test

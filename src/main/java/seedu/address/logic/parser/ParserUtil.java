@@ -63,6 +63,9 @@ public class ParserUtil {
         requireNonNull(names);
         final Set<Name> nameSet = new HashSet<>();
         for (String studentName : names) {
+            if (!Name.isValidName(studentName)) {
+                throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            }
             nameSet.add(parseName(studentName));
         }
         return nameSet;

@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -74,11 +75,21 @@ public class CreateSessionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        // Get the student to add to the session
-        Person studentToAdd = model.getMatchingStudentName(name);
+        if (name != null) {
+            // Get the student to add to the session
+            Person studentToAdd = model.getMatchingStudentName(name);
+            // Create the session to add
+            this.sessionToAdd = new Session(sessionNumber, studentToAdd);
+        }
+        if (names != null && !names.isEmpty()) {
+            Set<Person> studentsToAdd = new HashSet<>();
+            for (Name name : names) {
+                Person studentToAdd = model.getMatchingStudentName(name);
+                studentsToAdd.add(studentToAdd);
+            }
+            this.sessionToAdd = new Session(sessionNumber, studentsToAdd);
+        }
 
-        // Create the session to add
-        this.sessionToAdd = new Session(sessionNumber, studentToAdd);
 
         // Add the session to the model
         model.addSession(this.sessionToAdd);

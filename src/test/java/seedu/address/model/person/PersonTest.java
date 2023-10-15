@@ -85,6 +85,28 @@ public class PersonTest {
     }
 
     @Test
+    public void isSameName_sameName_returnsTrue() {
+        Name name = new Name("Jeremy");
+        Person person = new PersonBuilder().withName(name.toString()).withPhone("12345678").build();
+
+        // Create another person with the same name
+        Person anotherPerson = new PersonBuilder().withName(name.toString()).withPhone("98765432").build();
+
+        assertTrue(person.isSameName(anotherPerson.getName()));
+    }
+
+    @Test
+    public void isSameName_differentName_returnsFalse() {
+        Name name1 = new Name("Green Blue");
+        Name name2 = new Name("Blue Green");
+        Person person = new PersonBuilder().withName(name1.toString()).withPhone("12345678").build();
+        // Create another person with a different name
+        Person anotherPerson = new PersonBuilder().withName(name2.toString()).withPhone("12345678").build();
+
+        assertFalse(person.isSameName(anotherPerson.getName()));
+    }
+
+    @Test
     public void equals() {
         // same values -> returns true
         Person aliceCopy = new PersonBuilder(ALICE).build();

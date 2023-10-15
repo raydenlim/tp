@@ -29,10 +29,12 @@ public class StorageManager implements Storage {
      * and {@code UserPrefStorage} and {@code TaskListStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage,
-                          UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage) {
+                          UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage,
+                          SessionListStorage sessionListStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.taskListStorage = taskListStorage;
+        this.sessionListStorage = sessionListStorage;
     }
 
     // ================ UserPrefs methods ==============================
