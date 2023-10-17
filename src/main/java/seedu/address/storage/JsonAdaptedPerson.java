@@ -32,6 +32,7 @@ class JsonAdaptedPerson {
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
     private final List<JsonAdaptedGradedTest> gradedTests = new ArrayList<>();
 
+
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
@@ -83,6 +84,7 @@ class JsonAdaptedPerson {
         for (JsonAdaptedGradedTest gradedTest : gradedTests) {
             personGradedTests.add(gradedTest.toModelType());
         }
+
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));

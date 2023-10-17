@@ -13,6 +13,7 @@ import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
 import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -76,6 +77,25 @@ public class Person {
         return Collections.unmodifiableSet(gradedTests);
     }
 
+
+    /**
+     * Adds a student to a session and a session to a student.
+     *
+     * @param session The session to attend.
+     */
+    public void attendSession(Session session) {
+        session.addStudent(this);
+    }
+
+    /**
+     * Removes a student from a session and a session from a student.
+     *
+     * @param session The session to miss.
+     */
+    public void missSession(Session session) {
+        session.removeStudent(this);
+    }
+
     /**
      * Returns true if both persons have the same name.
      * This defines a weaker notion of equality between two persons.
@@ -87,6 +107,18 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both persons have the same name.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSameName(Name otherName) {
+        if (otherName == this.getName()) {
+            return true;
+        }
+
+        return otherName.equals(getName());
     }
 
     /**

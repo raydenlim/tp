@@ -7,8 +7,10 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -193,4 +195,31 @@ public class ParserUtilTest {
 
         assertEquals(expectedTagSet, actualTagSet);
     }
+
+    @Test
+    public void parseNames_validNames_returnsSetOfNames() throws ParseException {
+        Collection<String> names = Collections.singletonList("Alice");
+        Set<Name> expectedNameSet = Collections.singleton(new Name("Alice"));
+
+        Set<Name> parsedNameSet = ParserUtil.parseNames(names);
+        assertEquals(expectedNameSet, parsedNameSet);
+    }
+
+    @Test
+    public void parseNames_multipleValidNames_returnsSetOfNames() throws ParseException {
+        Collection<String> names = List.of("Alice", "Bob", "Charlie");
+        Set<Name> expectedNameSet = Set.of(new Name("Alice"), new Name("Bob"), new Name("Charlie"));
+
+        Set<Name> parsedNameSet = ParserUtil.parseNames(names);
+        assertEquals(expectedNameSet, parsedNameSet);
+    }
+
+    @Test
+    public void parseNames_mixedValidAndInvalidNames_throwsParseException() {
+        Collection<String> names = List.of("Alice", "abc_help", "Charlie");
+
+        // When there's an invalid name, a ParseException should be thrown
+        assertThrows(ParseException.class, () -> ParserUtil.parseNames(names));
+    }
+
 }

@@ -9,6 +9,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -28,6 +29,7 @@ public class PersonBuilder {
     private Address address;
     private Set<Tag> tags;
     private Set<GradedTest> gradedTests;
+    private Set<Session> sessions;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -39,6 +41,7 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
         gradedTests = new HashSet<>();
+        sessions = new HashSet<>();
     }
 
     /**
@@ -68,6 +71,7 @@ public class PersonBuilder {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
+
 
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.

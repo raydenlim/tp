@@ -25,7 +25,10 @@ import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
 
@@ -254,10 +257,24 @@ public class AddCommandTest {
         }
 
         @Override
+        public Person getMatchingStudentName(Name name) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Task> getFilteredTaskList() {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void addSession(Session session) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
+            throw new AssertionError("This method should not be called.");
+        }
         @Override
         public void updateFilteredTaskList(Predicate<Task> predicate) {
             throw new AssertionError("This method should not be called.");

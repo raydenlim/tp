@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
 
 /**
@@ -51,6 +52,19 @@ public class Messages {
         person.getGradedTest().forEach(gradedTest -> builder.append(person.getGradedTest()).append(", "));
         return builder.toString();
     }
+
+    /**
+     * Formats the {@code session} for display to the user.
+     */
+    public static String format(Session session) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Session: ")
+                .append(session.getSessionNumber())
+                .append(";");
+        session.getStudents().forEach(builder::append);
+        return builder.toString();
+    }
+
 
     /**
      * Formats the {@code task} for display to the user.

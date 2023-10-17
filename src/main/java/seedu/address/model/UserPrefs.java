@@ -16,6 +16,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private GuiSettings guiSettings = new GuiSettings();
     private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
     private Path taskListFilePath = Paths.get("data" , "tasklist.json");
+    private Path sessionListFilePath = Paths.get("data", "sessionlist.json");
     private Path gradedTestListFilePath = Paths.get("data" , "gradedtestlist.json");
 
     /**
@@ -56,6 +57,15 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         this.addressBookFilePath = addressBookFilePath;
+    }
+
+    public Path getSessionListFilePath() {
+        return sessionListFilePath;
+    }
+
+    public void setSessionListFilePath(Path sessionListFilePath) {
+        requireNonNull(sessionListFilePath);
+        this.sessionListFilePath = sessionListFilePath;
     }
 
     public Path getTaskListFilePath() {
@@ -103,6 +113,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         sb.append("Gui Settings : " + guiSettings);
         sb.append("\nLocal data file location : " + addressBookFilePath);
         sb.append("\nTask list file location : " + taskListFilePath);
+        sb.append("\nSession list file location : " + sessionListFilePath);
         sb.append("\nGradedTask list file location : " + gradedTestListFilePath);
         return sb.toString();
     }

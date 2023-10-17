@@ -32,6 +32,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonGradedTestListStorage;
+import seedu.address.storage.JsonSessionListStorage;
 import seedu.address.storage.JsonTaskListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
@@ -55,8 +56,10 @@ public class LogicManagerTest {
         JsonTaskListStorage taskListStorage = new JsonTaskListStorage(temporaryFolder.resolve("taskList.json"));
         JsonGradedTestListStorage gradedTestListStorage = new JsonGradedTestListStorage(
                 temporaryFolder.resolve("gradedTestList.json"));
+        JsonSessionListStorage sessionListStorage = new JsonSessionListStorage(
+                temporaryFolder.resolve("sessionList.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, gradedTestListStorage);
+                taskListStorage, sessionListStorage, gradedTestListStorag);
         logic = new LogicManager(model, storage);
     }
 
@@ -173,8 +176,10 @@ public class LogicManagerTest {
                 new JsonTaskListStorage(temporaryFolder.resolve("ExceptionTaskList.json"));
         JsonGradedTestListStorage gradedTestListStorage =
                 new JsonGradedTestListStorage(temporaryFolder.resolve("ExceptionGradedTestList.json"));
+        JsonSessionListStorage sessionListStorage =
+                new JsonSessionListStorage(temporaryFolder.resolve("ExceptionSessionList.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, gradedTestListStorage);
+                taskListStorage, sessionListStorage, gradedTestListStorage);
 
         logic = new LogicManager(model, storage);
 

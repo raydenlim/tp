@@ -9,6 +9,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyGradedTestList;
+import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
@@ -23,6 +24,7 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
     private TaskListStorage taskListStorage;
     private GradedTestListStorage gradedTestListStorage;
+    private SessionListStorage sessionListStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage}
@@ -30,10 +32,11 @@ public class StorageManager implements Storage {
      */
     public StorageManager(AddressBookStorage addressBookStorage,
                           UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage,
-                          GradedTestListStorage gradedTestListStorage) {
+                          SessionListStorage sessionListStorage,  GradedTestListStorage gradedTestListStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.taskListStorage = taskListStorage;
+        this.sessionListStorage = sessionListStorage;
         this.gradedTestListStorage = gradedTestListStorage;
     }
 
@@ -84,6 +87,34 @@ public class StorageManager implements Storage {
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
 
+    // ================ SessionList methods ===========================
+
+    @Override
+    public Path getSessionListFilePath() {
+        return sessionListStorage.getSessionListFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlySessionList> readSessionList() throws DataLoadingException {
+        return readSessionList(sessionListStorage.getSessionListFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlySessionList> readSessionList(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return sessionListStorage.readSessionList(filePath);
+    }
+
+    @Override
+    public void saveSessionList(ReadOnlySessionList sessionList) throws IOException {
+        saveSessionList(sessionList, sessionListStorage.getSessionListFilePath());
+    }
+
+    @Override
+    public void saveSessionList(ReadOnlySessionList sessionList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        sessionListStorage.saveSessionList(sessionList, filePath);
+    }
 
     // ================ TaskList methods ==============================
 
