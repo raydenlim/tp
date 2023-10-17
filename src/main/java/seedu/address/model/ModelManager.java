@@ -15,6 +15,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 
 /**
@@ -134,7 +135,7 @@ public class ModelManager implements Model {
 
     //=========== SessionList =================================================================================
     @Override
-    public Session findSessionBySessionNumber(String sessionNumber) {
+    public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
         requireNonNull(sessionNumber);
         return sessionList.findSessionBySessionNumber(sessionNumber);
     }

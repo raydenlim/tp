@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 
 /**
@@ -97,7 +98,7 @@ public interface Model {
     void setPerson(Person target, Person editedPerson);
 
     //=========== SessionList =================================================================================
-    Session findSessionBySessionNumber(String sessionNumber);
+    Session findSessionBySessionNumber(SessionNumber sessionNumber);
 
     /**
      * Adds the given sesssion.

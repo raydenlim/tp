@@ -1,6 +1,6 @@
 package seedu.address.storage;
 
-import static seedu.address.model.session.Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS;
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionStudents;
 
 /**
  * Jackson-friendly version of {@link Session}.
@@ -36,10 +38,12 @@ public class JsonAdaptedSession {
      * Converts a given {@code Session} into this class for Jackson use.
      */
     public JsonAdaptedSession(Session source) {
-        this.sessionNumber = source.getSessionNumber();
-        students.addAll(source.getStudents().stream()
-                .map(JsonAdaptedPerson::new)
-                .collect(Collectors.toList()));
+        this.sessionNumber = source.getSessionNumber().toString();
+        if (source.getStudents() != null) {
+            students.addAll(source.getStudents().stream()
+                    .map(JsonAdaptedPerson::new)
+                    .collect(Collectors.toList()));
+        }
     }
 
     /**
@@ -49,19 +53,22 @@ public class JsonAdaptedSession {
      */
     public Session toModelType() throws IllegalValueException {
         if (sessionNumber == null) {
-            throw new IllegalValueException(SESSIONNUMBER_MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(SessionNumber.MESSAGE_CONSTRAINTS);
         }
 
-        final String modelSessionNumber = sessionNumber;
+        final SessionNumber modelSessionNumber = new SessionNumber(sessionNumber);
 
         final List<Person> studentsList = new ArrayList<>();
-        for (JsonAdaptedPerson student : students) {
-            studentsList.add(student.toModelType());
+        SessionStudents sessionStudents = new SessionStudents();
+        if (students != null) {
+            for (JsonAdaptedPerson student : students) {
+                studentsList.add(student.toModelType());
+            }
+            final Set<Person> studentSet = new HashSet<>(studentsList);
+            sessionStudents = new SessionStudents(studentSet);
         }
-        final Set<Person> studentSet = new HashSet<>(studentsList);
 
-
-        return new Session(modelSessionNumber, studentSet);
+        return new Session(modelSessionNumber, sessionStudents);
     }
 
 }

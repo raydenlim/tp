@@ -81,7 +81,7 @@ public class SessionList implements Iterable<Session> {
      * @param sessionNumber The session number to search for.
      * @return The session with the specified session number, or null if not found.
      */
-    public Session findSessionBySessionNumber(String sessionNumber) {
+    public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
         requireNonNull(sessionNumber);
 
         for (Session session : internalList) {

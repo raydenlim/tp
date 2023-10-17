@@ -15,6 +15,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.testutil.PersonBuilder;
 
 
@@ -24,12 +25,13 @@ public class CreateSessionCommandTest {
     public void execute_createSessionWithSingleStudent_success() throws CommandException {
         Model model = new ModelManager();
         Person student = new PersonBuilder().withName("Alice").build();
+        SessionNumber sessionNumber = new SessionNumber("1");
         model.addPerson(student);
 
-        CreateSessionCommand command = new CreateSessionCommand("1", new Name("Alice"));
+        CreateSessionCommand command = new CreateSessionCommand(sessionNumber, new Name("Alice"));
         command.execute(model);
 
-        Session createdSession = model.findSessionBySessionNumber("1");
+        Session createdSession = model.findSessionBySessionNumber(sessionNumber);
         assertEquals(1, createdSession.getStudents().size());
         assertTrue(createdSession.getStudents().contains(student));
     }
@@ -46,10 +48,10 @@ public class CreateSessionCommandTest {
         studentNames.add(new Name("Alice"));
         studentNames.add(new Name("Bob"));
 
-        CreateSessionCommand command = new CreateSessionCommand("1", studentNames);
+        CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), studentNames);
         command.execute(model);
 
-        Session createdSession = model.findSessionBySessionNumber("1");
+        Session createdSession = model.findSessionBySessionNumber(new SessionNumber("1"));
         assertEquals(2, createdSession.getStudents().size());
         assertTrue(createdSession.getStudents().contains(alice));
         assertTrue(createdSession.getStudents().contains(bob));
@@ -58,16 +60,16 @@ public class CreateSessionCommandTest {
 
     @Test
     public void equals_sameCommands_returnsTrue() {
-        CreateSessionCommand command1 = new CreateSessionCommand("S1", new Name("Alice"));
-        CreateSessionCommand command2 = new CreateSessionCommand("S1", new Name("Alice"));
+        CreateSessionCommand command1 = new CreateSessionCommand(new SessionNumber("1"), new Name("Alice"));
+        CreateSessionCommand command2 = new CreateSessionCommand(new SessionNumber("1"), new Name("Alice"));
 
         assertTrue(command1.equals(command2));
     }
 
     @Test
     public void equals_differentCommands_returnsFalse() {
-        CreateSessionCommand command1 = new CreateSessionCommand("S1", new Name("Alice"));
-        CreateSessionCommand command2 = new CreateSessionCommand("S2", new Name("Bob"));
+        CreateSessionCommand command1 = new CreateSessionCommand(new SessionNumber("1"), new Name("Alice"));
+        CreateSessionCommand command2 = new CreateSessionCommand(new SessionNumber("1"), new Name("Bob"));
 
         assertFalse(command1.equals(command2));
     }
@@ -77,7 +79,7 @@ public class CreateSessionCommandTest {
         Model model = new ModelManager();
         String name = "Bob";
         Person bob = new PersonBuilder().withName(name).build();
-        String sessionNumber = "1";
+        SessionNumber sessionNumber = new SessionNumber("1");
         model.addPerson(bob);
         CreateSessionCommand command = new CreateSessionCommand(sessionNumber, new Name(name));
 
@@ -85,7 +87,6 @@ public class CreateSessionCommandTest {
         String expectedBeforeExecute = CreateSessionCommand.class.getCanonicalName()
                 + "{toCreate=null}";
         assertEquals(expectedBeforeExecute, command.toString());
-
 
         // Execute creates the session to be added
         command.execute(model);

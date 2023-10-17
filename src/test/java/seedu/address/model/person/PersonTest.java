@@ -16,13 +16,11 @@ import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
 import static seedu.address.testutil.TypicalSessions.SESSION1A;
 
-import java.util.HashSet;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.session.Session;
 import seedu.address.testutil.PersonBuilder;
-
+import seedu.address.testutil.SessionBuilder;
 
 
 public class PersonTest {
@@ -44,7 +42,8 @@ public class PersonTest {
 
     @Test
     public void studentMissSession() {
-        Session sessionWithCarl = new Session(SESSION1A.getSessionNumber(), new HashSet<>(SESSION1A.getStudents()));
+        Session sessionWithCarl = new SessionBuilder()
+                .withSessionNumber("1").withStudents(SESSION1A.getStudents()).build();
         Person carl = new PersonBuilder(CARL).build();
         carl.missSession(sessionWithCarl);
 

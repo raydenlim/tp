@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.session.CreateSessionCommand;
 import seedu.address.model.person.Name;
-import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
 
 public class CreateSessionCommandParserTest {
     private CreateSessionCommandParser parser = new CreateSessionCommandParser();
@@ -22,14 +22,14 @@ public class CreateSessionCommandParserTest {
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE
                 + SESSION_NUMBER_SESSION1 + SESSION_STUDENTS_STUDENTS1,
-                new CreateSessionCommand("1", new Name("Bob")));
+                new CreateSessionCommand(new SessionNumber("1"), new Name("Bob")));
     }
 
     @Test
     public void parse_invalidValue_failure() {
         // invalid session number
         assertParseFailure(parser, INVALID_SESSION_NUMBER + SESSION_STUDENTS_STUDENTS1,
-                Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS);
+                SessionNumber.MESSAGE_CONSTRAINTS);
 
         //invalid names
         assertParseFailure(parser, SESSION_NUMBER_SESSION1 + INVALID_SESSION_STUDENTS,
@@ -37,7 +37,7 @@ public class CreateSessionCommandParserTest {
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_SESSION_NUMBER + INVALID_SESSION_STUDENTS,
-                Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS);
+                SessionNumber.MESSAGE_CONSTRAINTS);
     }
 
 

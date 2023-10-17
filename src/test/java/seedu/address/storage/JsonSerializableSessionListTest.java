@@ -39,7 +39,7 @@ public class JsonSerializableSessionListTest {
     }
 
     @Test
-    public void toModelType_duplicateTasks_throwsIllegalValueException() throws Exception {
+    public void toModelType_duplicateSessions_throwsIllegalValueException() throws Exception {
         JsonSerializableSessionList dataFromFile = JsonUtil.readJsonFile(DUPLICATE_SESSION_FILE,
                 JsonSerializableSessionList.class).get();
         assertThrows(IllegalValueException.class, JsonSerializableSessionList.MESSAGE_DUPLICATE_SESSION,

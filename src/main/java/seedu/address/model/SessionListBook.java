@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
-
+import seedu.address.model.session.SessionNumber;
 
 
 /**
@@ -61,7 +61,7 @@ public class SessionListBook implements ReadOnlySessionList {
      * @param sessionNumber The session number to search for.
      * @return The session with the specified session number, or null if not found.
      */
-    public Session getSession(String sessionNumber) {
+    public Session getSession(SessionNumber sessionNumber) {
         return sessionList.findSessionBySessionNumber(sessionNumber);
     }
 

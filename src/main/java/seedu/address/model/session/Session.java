@@ -3,12 +3,7 @@ package seedu.address.model.session;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.model.person.Person;
 
@@ -16,12 +11,9 @@ import seedu.address.model.person.Person;
  * Represents a class for managing a session, which can hold a list of students and session-specific details.
  */
 public class Session {
-    public static final String SESSIONNUMBER_MESSAGE_CONSTRAINTS =
-            "Session numbers should only contain numbers, and it should not be blank.";;
-    private static final String SESSION_NUMBER_VALIDATION_REGEX = "^[1-9]\\d*$";
 
-    private final String sessionNumber;
-    private Set<Person> students = new HashSet<>();
+    private final SessionNumber sessionNumber;
+    private SessionStudents students;
 
     /**
      * Creates a session with a session number and an initial set of students.
@@ -29,7 +21,7 @@ public class Session {
      * @param sessionNumber The unique identifier for this session.
      * @param presentStudents The set of students present in this session.
      */
-    public Session(String sessionNumber, Set<Person> presentStudents) {
+    public Session(SessionNumber sessionNumber, SessionStudents presentStudents) {
         requireAllNonNull(sessionNumber, presentStudents);
         this.sessionNumber = sessionNumber;
         this.students = presentStudents;
@@ -41,10 +33,10 @@ public class Session {
      * @param sessionNumber The unique identifier for this session.
      * @param student The student to add to this session.
      */
-    public Session(String sessionNumber, Person student) {
+    public Session(SessionNumber sessionNumber, Person student) {
         requireAllNonNull(sessionNumber, student);
         this.sessionNumber = sessionNumber;
-        this.students.add(student);
+        this.students = new SessionStudents(student);
     }
 
     /**
@@ -52,7 +44,7 @@ public class Session {
      *
      * @param sessionNumber The unique identifier for this session.
      */
-    public Session(String sessionNumber) {
+    public Session(SessionNumber sessionNumber) {
         requireNonNull(sessionNumber);
         this.sessionNumber = sessionNumber;
     }
@@ -61,20 +53,20 @@ public class Session {
     /**
      * Adds a student to the session.
      *
-     * @param p The student to add.
+     * @param student The student to add.
      * @return
      */
-    public void addStudent(Person p) {
-        this.students.add(p);
+    public void addStudent(Person student) {
+        this.students.add(student);
     }
 
     /**
      * Removes a student from the session.
      *
-     * @param key The student to remove.
+     * @param student The student to remove.
      */
-    public void removeStudent(Person key) {
-        this.students.remove(key);
+    public void removeStudent(Person student) {
+        this.students.remove(student);
     }
 
     /**
@@ -94,14 +86,7 @@ public class Session {
 
         Session otherSession = (Session) other;
 
-        // Sort the students by name
-        List<Person> thisStudents = new ArrayList<>(students);
-        List<Person> otherStudents = new ArrayList<>(otherSession.students);
-
-        thisStudents.sort(Comparator.comparing(p -> p.getName().toString()));
-        otherStudents.sort(Comparator.comparing(p -> p.getName().toString()));
-
-        return sessionNumber.equals(otherSession.sessionNumber) && thisStudents.equals(otherStudents);
+        return sessionNumber.equals(otherSession.sessionNumber) && students.equals(otherSession.students);
     }
 
 
@@ -126,12 +111,11 @@ public class Session {
      *
      * @return The set of students.
      */
-    public Set<Person> getStudents() {
-        Set<Person> anotherSet = new HashSet<>();
-        for (Person student : students) {
-            anotherSet.add(student);
+    public SessionStudents getStudents() {
+        if (students == null) {
+            students = new SessionStudents();
         }
-        return anotherSet;
+        return students.getStudents();
     }
 
     /**
@@ -139,7 +123,7 @@ public class Session {
      *
      * @return The session number.
      */
-    public String getSessionNumber() {
+    public SessionNumber getSessionNumber() {
         return sessionNumber;
     }
 
@@ -149,20 +133,11 @@ public class Session {
      * @return A string representation of the session.
      */
     public String getSessionInfo() {
-        List<Person> studentsArray = new ArrayList<>(students);
-        studentsArray.sort(Comparator.comparing(p -> p.getName().toString()));
-        StringBuilder studentNames = new StringBuilder();
-        for (Person student : studentsArray) {
-            studentNames.append(String.format("%s, ", student.getName()));
-        }
-        if (!students.isEmpty()) {
-            studentNames.delete(studentNames.length() - 2, studentNames.length());
+        String studentNames = "";
+        if (students != null) {
+            studentNames = students.toStudentNames();
         }
         return String.format("%s - %s", sessionNumber, studentNames);
-    }
-
-    public static boolean isValidSessionNumber(String test) {
-        return test.matches(SESSION_NUMBER_VALIDATION_REGEX);
     }
 
     @Override

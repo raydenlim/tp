@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
 import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalSessions.SESSION3A;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -30,7 +29,7 @@ public class AttendanceTest {
     @Test
     public void markAbsentTest() {
         Person alice = new PersonBuilder(ALICE).build();
-        Session sessionWithAlice = new Session(SESSION1A.getSessionNumber(), new HashSet<>(SESSION1A.getStudents()));
+        Session sessionWithAlice = new Session(SESSION1A.getSessionNumber(), SESSION1A.getStudents());
         Attendance.markAbsent(sessionWithAlice, alice);
 
         assertFalse(sessionWithAlice.getStudents().contains(alice));

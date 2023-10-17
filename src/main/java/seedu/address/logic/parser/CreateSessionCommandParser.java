@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 import seedu.address.logic.commands.session.CreateSessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
+import seedu.address.model.session.SessionNumber;
 
 /**
  * Parses input arguments and creates a new CreateSessionCommand object.
@@ -33,7 +34,7 @@ public class CreateSessionCommandParser implements Parser<CreateSessionCommand> 
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
-        String sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
+        SessionNumber sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
 
         return new CreateSessionCommand(sessionNumber, name);

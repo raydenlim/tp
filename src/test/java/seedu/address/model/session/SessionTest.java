@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.SessionBuilder;
 import seedu.address.testutil.TypicalPersons;
 
 public class SessionTest {
@@ -56,18 +57,21 @@ public class SessionTest {
 
     @Test
     public void createSessionWithoutStudents() {
-        Session sessionWithoutStudents = new Session("5");
-        assertTrue("5 - ".equals(sessionWithoutStudents.toString()));
+        Session sessionWithoutStudents = new SessionBuilder().withSessionNumber("99").build();
+        assertTrue("99 - ".equals(sessionWithoutStudents.toString()));
     }
 
 
     @Test
     public void toStringMethod() {
-        String expected1 = "2 - Bob Choo";
-        assertEquals(expected1, SESSION2.toString());
+        String expected1 = "15 - Bob Choo";
+        Session session2 = new SessionBuilder()
+                .withSessionNumber("15").withStudents(TypicalPersons.BOB).build();
+        assertEquals(expected1, session2.toString());
 
-        Session tempSession3A = new Session(SESSION3A.getSessionNumber(), SESSION3A.getStudents());
-        String expected2 = "3 - Alice Pauline, Bob Choo";
+        Session tempSession3A = new SessionBuilder()
+                .withSessionNumber("73").withStudents(TypicalPersons.ALICE, TypicalPersons.BOB).build();
+        String expected2 = "73 - Alice Pauline, Bob Choo";
         assertEquals(expected2, tempSession3A.toString());
     }
 }

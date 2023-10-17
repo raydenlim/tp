@@ -84,13 +84,13 @@ public class SessionListTest {
     @Test
     public void find_findSessionByNumber_notInSessionList() {
         sessionList.addSession(SESSION1B);
-        assertEquals(sessionList.findSessionBySessionNumber("5"), null);
+        assertEquals(sessionList.findSessionBySessionNumber(new SessionNumber("5")), null);
     }
 
     @Test
     public void find_findSessionByNumber_successfulFind() {
         sessionList.addSession(SESSION3A);
-        assertEquals(SESSION3A, sessionList.findSessionBySessionNumber("3"));
+        assertEquals(SESSION3A, sessionList.findSessionBySessionNumber(new SessionNumber("3")));
     }
 
     @Test

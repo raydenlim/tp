@@ -5,7 +5,6 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -17,6 +16,8 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionStudents;
 
 
 /**
@@ -33,7 +34,7 @@ public class CreateSessionCommand extends Command {
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";
 
-    private String sessionNumber;
+    private SessionNumber sessionNumber;
     private Name name;
     private Set<Name> names;
     private Session sessionToAdd;
@@ -44,7 +45,7 @@ public class CreateSessionCommand extends Command {
      * @param sessionNumber The session number to create.
      * @param name The name of the student to add to the session.
      */
-    public CreateSessionCommand(String sessionNumber, Name name) {
+    public CreateSessionCommand(SessionNumber sessionNumber, Name name) {
         requireAllNonNull(sessionNumber, name);
 
         this.sessionNumber = sessionNumber;
@@ -57,7 +58,7 @@ public class CreateSessionCommand extends Command {
      * @param sessionNumber The session number to create.
      * @param names A set of names of the students to add to the session.
      */
-    public CreateSessionCommand(String sessionNumber, Set<Name> names) {
+    public CreateSessionCommand(SessionNumber sessionNumber, Set<Name> names) {
         requireAllNonNull(sessionNumber, names);
 
         this.sessionNumber = sessionNumber;
@@ -74,6 +75,7 @@ public class CreateSessionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        this.sessionToAdd = new Session(sessionNumber);
 
         if (name != null) {
             // Get the student to add to the session
@@ -82,7 +84,7 @@ public class CreateSessionCommand extends Command {
             this.sessionToAdd = new Session(sessionNumber, studentToAdd);
         }
         if (names != null && !names.isEmpty()) {
-            Set<Person> studentsToAdd = new HashSet<>();
+            SessionStudents studentsToAdd = new SessionStudents();
             for (Name name : names) {
                 Person studentToAdd = model.getMatchingStudentName(name);
                 studentsToAdd.add(studentToAdd);

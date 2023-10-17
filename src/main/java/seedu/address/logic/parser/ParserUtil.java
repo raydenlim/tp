@@ -13,7 +13,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
@@ -147,13 +147,13 @@ public class ParserUtil {
      * @return The parsed session number as an integer.
      * @throws NumberFormatException If the session number is not a valid integer.
      */
-    public static String parseSessionNumber(String sessionNumber) throws ParseException {
+    public static SessionNumber parseSessionNumber(String sessionNumber) throws ParseException {
         requireNonNull(sessionNumber);
         String trimmedSessionNumber = sessionNumber.trim();
-        if (!Session.isValidSessionNumber(trimmedSessionNumber)) {
-            throw new ParseException(Session.SESSIONNUMBER_MESSAGE_CONSTRAINTS);
+        if (!SessionNumber.isValidSessionNumber(trimmedSessionNumber)) {
+            throw new ParseException(SessionNumber.MESSAGE_CONSTRAINTS);
         }
-        return trimmedSessionNumber;
+        return new SessionNumber(trimmedSessionNumber);
     }
 
     /**

@@ -1,6 +1,6 @@
 {
   "sessions": [ {
-    "sessionNumber": "abc",
+    "sessionNumber": null,
     "students": [{
 
     }]

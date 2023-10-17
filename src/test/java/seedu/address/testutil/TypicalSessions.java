@@ -2,7 +2,6 @@ package seedu.address.testutil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 import seedu.address.model.SessionListBook;
@@ -16,44 +15,50 @@ public class TypicalSessions {
     /**
      * A typical empty session with session number 9, with no students.
      */
-    public static final Session EMPTY_SESSION = new Session("9", new HashSet<>());
+    public static final Session EMPTY_SESSION = new SessionBuilder().withSessionNumber("9").build();
 
     /**
      * A typical session with session number 1, attended by Alice.
      */
-    public static final Session SESSION1A = new Session("1", TypicalPersons.ALICE);
+    public static final Session SESSION1A = new SessionBuilder()
+            .withSessionNumber("1").withStudent(TypicalPersons.ALICE).build();
 
     /**
      * A typical session with session number 1, attended by Alice.
      */
-    public static final Session SESSION1B = new Session("1", TypicalPersons.ALICE);
+    public static final Session SESSION1B = new SessionBuilder()
+            .withSessionNumber("1").withStudent(TypicalPersons.ALICE).build();
 
     /**
      * A typical session with session number 2, attended by Bob.
      */
-    public static final Session SESSION2 = new Session("2", TypicalPersons.BOB);
+    public static final Session SESSION2 = new SessionBuilder()
+            .withSessionNumber("2").withStudent(TypicalPersons.BOB).build();
 
     /**
      * A typical session with session number 3, attended by Alice and Bob.
      */
-    public static final Session SESSION3A = new Session("3",
-            new HashSet<>(Arrays.asList(TypicalPersons.ALICE, TypicalPersons.BOB)));
+    public static final Session SESSION3A = new SessionBuilder()
+            .withSessionNumber("3").withStudents(TypicalPersons.ALICE, TypicalPersons.BOB).build();
 
 
     /**
      * A typical session with session number 3, attended by Alice.
      */
-    public static final Session SESSION3B = new Session("3", TypicalPersons.ALICE);
+    public static final Session SESSION3B = new SessionBuilder()
+            .withSessionNumber("3").withStudent(TypicalPersons.ALICE).build();
 
     /**
      * A typical session with session number 2, attended by Alice.
      */
-    public static final Session SESSION_TYPICAL1 = new Session("2", TypicalPersons.ALICE);
+    public static final Session SESSION_TYPICAL1 = new SessionBuilder()
+            .withSessionNumber("5").withStudent(TypicalPersons.ALICE).build();
 
     /**
      * A typical session with session number 3, attended by Benson.
      */
-    public static final Session SESSION_TYPICAL2 = new Session("3", TypicalPersons.BENSON);
+    public static final Session SESSION_TYPICAL2 = new SessionBuilder()
+            .withSessionNumber("6").withStudent(TypicalPersons.BENSON).build();
 
     public static SessionListBook getTypicalSessionList() {
         SessionListBook sb = new SessionListBook();

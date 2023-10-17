@@ -26,6 +26,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.PersonBuilder;
 
@@ -223,7 +224,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public Session findSessionBySessionNumber(String sessionNumber) {
+        public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
             throw new AssertionError("This method should not be called.");
         }
         @Override
