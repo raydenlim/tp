@@ -22,7 +22,11 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.gradedtest.MidTerms;
+import seedu.address.model.gradedtest.PracticalExam;
+import seedu.address.model.gradedtest.ReadingAssessment;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -141,6 +145,11 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
+        private ReadingAssessment ra1;
+        private ReadingAssessment ra2;
+        private MidTerms midTerms;
+        private Finals finals;
+        private PracticalExam pe;
         private Set<Tag> tags;
         private Set<GradedTest> gradedTests;
 
@@ -196,6 +205,45 @@ public class EditCommand extends Command {
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
+        }
+
+        public void setReadingAssessment1(ReadingAssessment ra1) {
+            this.ra1 = ra1;
+        }
+
+        public Optional<ReadingAssessment> getReadingAssessment1() {
+            return Optional.ofNullable(ra1);
+        }
+
+        public void setReadingAssessment2(ReadingAssessment ra2) {
+            this.ra2 = ra2;
+        }
+
+        public Optional<ReadingAssessment> getReadingAssessment2() {
+            return Optional.ofNullable(ra2);
+        }
+
+        public void setMidTerms(MidTerms midTerms) {
+            this.midTerms = midTerms;
+        }
+
+        public Optional<MidTerms> getMidTerms() {
+            return Optional.ofNullable(midTerms);
+        }
+
+        public void setFinals(Finals finals) {
+            this.finals = finals;
+        }
+
+        public Optional<Finals> getFinals() {
+            return Optional.ofNullable(finals);
+        }
+        public void setPracticalExam(PracticalExam pe) {
+            this.pe = pe;
+        }
+
+        public Optional<PracticalExam> getPracticalExam() {
+            return Optional.ofNullable(pe);
         }
 
         /**

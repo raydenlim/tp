@@ -19,6 +19,9 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<GradedTest> PREDICATE_SHOW_ALL_GRADED_TEST = unused -> true;
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */

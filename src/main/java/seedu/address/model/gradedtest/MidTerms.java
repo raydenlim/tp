@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class MidTerms {
     public static final String MESSAGE_CONSTRAINTS =
             "Scores should be a positive number";
-    public static final String VALIDATION_REGEX = "(-|\\d+(\\.\\d+)?)";
+    public static final String VALIDATION_REGEX = "(?:-|\\d+(\\.\\d+)?)";
 
     public final String value;
 

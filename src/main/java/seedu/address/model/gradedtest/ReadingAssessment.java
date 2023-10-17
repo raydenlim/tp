@@ -11,7 +11,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class ReadingAssessment {
     public static final String MESSAGE_CONSTRAINTS =
             "Scores should be a positive number";
-    public static final String VALIDATION_REGEX = "(-|\\d+(\\.\\d+)?)";
+    public static final String VALIDATION_REGEX = "(?:-|\\d+(\\.\\d+)?)";
 
     public final String value;
 
@@ -27,7 +27,7 @@ public class ReadingAssessment {
     }
 
     /**
-     * Returns true if a given string is a valid PE result.
+     * Returns true if a given string is a valid RA result.
      */
     public static boolean isValidRaResult(String test) {
         return test.matches(VALIDATION_REGEX);

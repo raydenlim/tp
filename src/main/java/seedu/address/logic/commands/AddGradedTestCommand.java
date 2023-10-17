@@ -2,63 +2,58 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.commands.AddTaskCommand.MESSAGE_DUPLICATE_TASK;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PRACTICAL_EXAM;
 
-import java.util.Set;
-
-import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Name;
 
+
 /**
  * Represents a command for adding a new Graded Test to the application.
  * Users can add a Graded Test with a name and associate it with a student's name or names.
  * It can add a Graded Test for a single student or multiple students.
  */
-public class AddGradedTestCommand {
+public class AddGradedTestCommand extends Command{
     public static final String COMMAND_WORD = "addGT";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a session with the student(s). "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Adds a new GradedTest with specified scores.\n"
             + "Parameters: "
-            + PREFIX_GRADED_TEST + "GRADED_TEST_NUMBER "
-            + "[" + PREFIX_NAME + "NAME]...\n"
+            + PREFIX_READING_ASSESSMENT + "RA1 "
+            + PREFIX_READING_ASSESSMENT + "RA2 "
+            + PREFIX_MIDTERMS + "MIDTERMS "
+            + PREFIX_FINALS + "FINALS "
+            + PREFIX_PRACTICAL_EXAM + "PRACTICALEXAMS "
+            + "[" + PREFIX_GRADED_TEST + "GRADEDTEST]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "John Doe "
-            + PREFIX_NAME + "Foo Bar";
-    public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
-    private String gradedTestName;
-    private Name name;
-    private Set<Name> names;
-    private GradedTest gradedTestToAdd;
+            + PREFIX_READING_ASSESSMENT + "0 "
+            + PREFIX_READING_ASSESSMENT + "1 "
+            + PREFIX_MIDTERMS + "2 "
+            + PREFIX_FINALS + "3 "
+            + PREFIX_PRACTICAL_EXAM + "4 ";
+
+    public static final String MESSAGE_SUCCESS = "Scores have been added: %1$s";
+    public static final String MESSAGE_DUPLICATE_GRADED_TEST = "This graded test already exists in the graded test book";
+    private final Name name;
+    private final GradedTest gradedTest;
 
     /**
      * Creates an AddGradedTestCommand to add a Graded Test associated with a single student.
      *
-     * @param gradedTestName The name of the Graded Test to add.
+     * @param gradedTest The name of the Graded Test to add.
      * @param name The student's name to associate with the Graded Test.
      */
-    public AddGradedTestCommand(String gradedTestName, Name name) {
-        requireAllNonNull(gradedTestName, name);
+    public AddGradedTestCommand(GradedTest gradedTest, Name name) {
+        requireAllNonNull(gradedTest, name);
 
-        this.gradedTestName = gradedTestName;
+        this.gradedTest = gradedTest;
         this.name = name;
-    }
-
-    /**
-     * Creates an AddGradedTestCommand to add a Graded Test associated with multiple students.
-     *
-     * @param gradedTestName The name of the Graded Test to add.
-     * @param names The set of student names to associate with the Graded Test.
-     */
-    public AddGradedTestCommand(String gradedTestName, Set<Name> names) {
-        requireAllNonNull(gradedTestName, names);
-
-        this.gradedTestName = gradedTestName;
-        this.names = names;
     }
 
     /**
@@ -70,11 +65,11 @@ public class AddGradedTestCommand {
      */
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (model.hasGradedTest(gradedTestToAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        if (model.hasGradedTest(gradedTest)) {
+            throw new CommandException(MESSAGE_DUPLICATE_GRADED_TEST);
         }
-        model.addGradedTest(gradedTestToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(gradedTestToAdd)));
+        model.addGradedTest(gradedTest);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(gradedTest)));
     }
 
     /**
@@ -96,18 +91,6 @@ public class AddGradedTestCommand {
         }
 
         AddGradedTestCommand otherTest = (AddGradedTestCommand) other;
-        return this.gradedTestToAdd.equals(otherTest.gradedTestToAdd);
-    }
-
-    /**
-     * Generates a string representation of this AddGradedTestCommand.
-     *
-     * @return A string representation of the command.
-     */
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("toAdd", gradedTestToAdd)
-                .toString();
+        return this.gradedTest.equals(otherTest.gradedTest);
     }
 }

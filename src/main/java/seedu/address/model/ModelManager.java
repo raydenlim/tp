@@ -26,7 +26,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
-    private FilteredList<GradedTest> filteredGradedTest;
+    private final FilteredList<GradedTest> filteredGradedTest;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -43,6 +43,7 @@ public class ModelManager implements Model {
         this.gradedTestList = new GradedTestListBook(gradedTestList);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.taskList.getTaskList());
+        filteredGradedTest = new FilteredList<>(this.gradedTestList.getGradedTestList());
     }
 
     /**
@@ -304,7 +305,7 @@ public class ModelManager implements Model {
      *
      * @param predicate The filtering predicate to apply.
      */
-    public void updateFilteredGradedTest(Predicate<GradedTest> predicate) {
+    public void updateFilteredGradedTestList(Predicate<GradedTest> predicate) {
         requireNonNull(predicate);
         filteredGradedTest.setPredicate(predicate);
     }

@@ -12,7 +12,6 @@ import seedu.address.model.gradedtest.GradedTest;
  */
 public class TypicalGradedTest {
 
-    // Pass
     public static final GradedTest GT1 = new GradedTestBuilder()
             .withReadingAssessment1("1")
             .withReadingAssessment2("2")
@@ -21,13 +20,12 @@ public class TypicalGradedTest {
             .withPe("5")
             .build();
 
-    // Fail, no negative score
     public static final GradedTest GT2 = new GradedTestBuilder()
-            .withReadingAssessment1("-1")
-            .withReadingAssessment2("-2")
-            .withMidTerms("-3")
-            .withFinals("-4")
-            .withPe("-5")
+            .withReadingAssessment1("-")
+            .withReadingAssessment2("-")
+            .withMidTerms("-")
+            .withFinals("-")
+            .withPe("-")
             .build();
 
     // Pass, floats allowed
@@ -39,19 +37,18 @@ public class TypicalGradedTest {
             .withPe("5.0")
             .build();
 
-    // Fail, no alphabets
     public static final GradedTest GT4 = new GradedTestBuilder()
-            .withReadingAssessment1("1a")
-            .withReadingAssessment2("2b")
-            .withMidTerms("3c")
-            .withFinals("4d")
-            .withPe("5e")
+            .withReadingAssessment1("1")
+            .withReadingAssessment2("2.0")
+            .withMidTerms("3")
+            .withFinals("4.0")
+            .withPe("5")
             .build();
 
     private TypicalGradedTest() {} // prevents instantiation
 
     /**
-     * Returns an {@code TaskListBook} with all the typical tasks.
+     * Returns an {@code GradedTestBook} with all the typical gradedTest.
      */
     public static GradedTestListBook getTypicalGradedTestList() {
         GradedTestListBook ab = new GradedTestListBook();
@@ -62,7 +59,7 @@ public class TypicalGradedTest {
     }
 
     public static List<GradedTest> getTypicalGradedTest() {
-        return new ArrayList<>(Arrays.asList(GT1, GT2));
+        return new ArrayList<>(Arrays.asList(GT1, GT3));
     }
 
 }

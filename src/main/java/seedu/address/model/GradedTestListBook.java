@@ -14,7 +14,7 @@ import seedu.address.model.gradedtest.GradedTestList;
  * Duplicates are not allowed (by .isSameTask comparison)
  */
 public class GradedTestListBook implements ReadOnlyGradedTestList {
-    private GradedTestList gradedTests;
+    private final GradedTestList gradedTests;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -67,17 +67,17 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
         setGradedTests(newData.getGradedTestList());
     }
 
-    //// task-level operations
+    //// gradedTest-level operations
 
     /**
-     * Returns the task at the given index.
+     * Returns the gradedTest at the given index.
      */
     public GradedTest getGradedTest(int index) {
         return gradedTests.getGradedTest(index);
     }
 
     /**
-     * Returns true if a task with the same identity as {@code gradedTest} exists in the task list.
+     * Returns true if a gradedTest with the same identity as {@code gradedTest} exists in the gradedTest list.
      */
     public boolean hasGradedTest(GradedTest gradedTest) {
         requireNonNull(gradedTest);
@@ -85,8 +85,8 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
     }
 
     /**
-     * Adds a task to the task list.
-     * The task must not already exist in the task list.
+     * Adds a gradedTest to the gradedTest list.
+     * The task must not already exist in the gradedTest list.
      */
     public void addGradedTest(GradedTest gt) {
         gradedTests.add(gt);
@@ -96,7 +96,7 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
 
     /**
      * Removes {@code key} from this {@code GradedTestListBook}.
-     * {@code key} must exist in the task list book.
+     * {@code key} must exist in the gradedTest list book.
      */
     public void removeGradedTest(GradedTest key) {
         gradedTests.remove(key);

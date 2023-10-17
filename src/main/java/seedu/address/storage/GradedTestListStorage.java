@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyGradedTestList;
-import seedu.address.model.ReadOnlyTaskList;
+
 
 /**
  * Represents a storage for {@link seedu.address.model.GradedTestListBook}.
@@ -19,7 +19,7 @@ public interface GradedTestListStorage {
     Path getGradedTestListFilePath();
 
     /**
-     * Returns TaskList data as a {@link ReadOnlyTaskList}.
+     * Returns GradedTest data as a {@link ReadOnlyGradedTestList}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataLoadingException if loading the data from storage failed.
@@ -32,7 +32,7 @@ public interface GradedTestListStorage {
     Optional<ReadOnlyGradedTestList> readGradedTestList(Path filePath) throws DataLoadingException;
 
     /**
-     * Saves the given {@link ReadOnlyTaskList} to the storage.
+     * Saves the given {@link ReadOnlyGradedTestList} to the storage.
      * @param gradedTestList cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */

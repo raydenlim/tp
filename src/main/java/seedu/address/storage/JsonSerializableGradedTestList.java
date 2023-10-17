@@ -13,11 +13,13 @@ import seedu.address.model.GradedTestListBook;
 import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.gradedtest.GradedTest;
 
+import static seedu.address.logic.commands.AddGradedTestCommand.MESSAGE_DUPLICATE_GRADED_TEST;
+
 /**
  * An Immutable TaskList that is serializable to JSON format.
  */
 @JsonRootName(value = "gradedTestList")
-public class JsonSerializableGradedTestList {
+class JsonSerializableGradedTestList {
 
     public static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate gradedTest(s).";
 
@@ -52,7 +54,7 @@ public class JsonSerializableGradedTestList {
         for (JsonAdaptedGradedTest jsonAdaptedGradedTest : gradedTests) {
             GradedTest gradedTest = jsonAdaptedGradedTest.toModelType();
             if (gradedTestList.hasGradedTest(gradedTest)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_GRADED_TEST);
             }
             gradedTestList.addGradedTest(gradedTest);
         }

@@ -8,8 +8,10 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.gradedtest.exceptions.GradedTestNotFoundException;
+import seedu.address.model.gradedtest.exceptions.DuplicateGradedTestException;
+import seedu.address.model.gradedtest.exceptions.GradedTestNotFoundException;
 import seedu.address.model.task.exceptions.DuplicateTaskException;
-import seedu.address.model.task.exceptions.GradedTestNotFoundException;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
@@ -56,7 +58,7 @@ public class GradedTestList implements Iterable<GradedTest> {
     public void add(GradedTest toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateTaskException();
+            throw new DuplicateGradedTestException();
         }
         internalList.add(toAdd);
     }
@@ -75,7 +77,7 @@ public class GradedTestList implements Iterable<GradedTest> {
         }
 
         if (!target.isSameGradedTest(editedGradedTest) && contains(editedGradedTest)) {
-            throw new DuplicateTaskException();
+            throw new DuplicateGradedTestException();
         }
 
         internalList.set(index, editedGradedTest);
@@ -92,7 +94,7 @@ public class GradedTestList implements Iterable<GradedTest> {
         }
     }
 
-    public void setTasks(GradedTestList replacement) {
+    public void setGradedTests(GradedTestList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
@@ -104,7 +106,7 @@ public class GradedTestList implements Iterable<GradedTest> {
     public void setGradedTests(List<GradedTest> gradedTests) {
         requireAllNonNull(gradedTests);
         if (!isUniqueGradedTest(gradedTests)) {
-            throw new DuplicateTaskException();
+            throw new DuplicateGradedTestException();
         }
 
         internalList.setAll(gradedTests);

@@ -5,7 +5,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.gradedtest.MidTerms;
+import seedu.address.model.gradedtest.PracticalExam;
+import seedu.address.model.gradedtest.ReadingAssessment;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -38,6 +42,12 @@ public class EditPersonDescriptorBuilder {
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
         descriptor.setTags(person.getTags());
+        descriptor.setGradedTest(person.getGradedTest());
+        descriptor.setReadingAssessment1((ReadingAssessment) person.getGradedTest().toArray()[0]);
+        descriptor.setReadingAssessment2((ReadingAssessment) person.getGradedTest().toArray()[1]);
+        descriptor.setMidTerms((MidTerms) person.getGradedTest().toArray()[2]);
+        descriptor.setFinals((Finals) person.getGradedTest().toArray()[3]);
+        descriptor.setPracticalExam((PracticalExam) person.getGradedTest().toArray()[4]);
     }
 
     /**
@@ -83,12 +93,52 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code EditPersonDescriptor}
+     * Parses the {@code gradedTest} into a {@code Set<GradedTest>} and set it to the {@code EditPersonDescriptor}
      * that we are building.
      */
     public EditPersonDescriptorBuilder withGradedTest(String... gradedTests) {
         Set<GradedTest> gradedTestSet = Stream.of(gradedTests).map(GradedTest::new).collect(Collectors.toSet());
         descriptor.setGradedTest(gradedTestSet);
+        return this;
+    }
+
+    /**
+     * Sets the Reading Assessment for the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withRA1(String ra1) {
+        descriptor.setReadingAssessment1(new ReadingAssessment(ra1));
+        return this;
+    }
+
+    /**
+     * Sets the Reading Assessment for the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withRA2(String ra2) {
+        descriptor.setReadingAssessment2(new ReadingAssessment(ra2));
+        return this;
+    }
+
+    /**
+     * Sets the MidTerms for the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withMidTerm(String midterms) {
+        descriptor.setMidTerms(new MidTerms(midterms));
+        return this;
+    }
+
+    /**
+     * Sets the Finals for the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withFinals(String finals) {
+        descriptor.setFinals(new Finals(finals));
+        return this;
+    }
+
+    /**
+     * Sets the Practical Exam for the {@code EditPersonDescriptor} that we are building.
+     */
+    public EditPersonDescriptorBuilder withPracticalExam(String pe) {
+        descriptor.setPracticalExam(new PracticalExam(pe));
         return this;
     }
 

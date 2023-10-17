@@ -14,10 +14,10 @@ import seedu.address.model.expectedgrade.ExpectedGrade;
 
 public class GradedTest {
     public static final String MESSAGE_CONSTRAINTS = "Graded Test Scores should be Alphanumeric";
-    public static final String VALIDATION_REGEX = "[-\\p{Alnum}]+";
+    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
     public static final String DEFAULT_VALUE = "-";
     // Identity fields
-    private String gradedTestName;
+    private final String gradedTestsIndv;
 
     // Data fields
     private final Set<ExpectedGrade> expectedGrades = new HashSet<>();
@@ -44,17 +44,19 @@ public class GradedTest {
         this.midTerms = midTerms;
         this.finals = finals;
         this.practicalExam = practicalExam;
+        this.gradedTestsIndv = readingAssessment1.toString() + readingAssessment2.toString() + midTerms.toString()
+                + finals.toString() + practicalExam.toString();
     }
 
     /**
      * Constructs a {@code GradedTest}.
      *
-     * @param gradedTestName A valid gradedTest name.
+     * @param gradedTestsIndv A valid gradedTest name.
      */
-    public GradedTest(String gradedTestName) {
-        requireNonNull(gradedTestName);
-        checkArgument(isValidGradeTestName(gradedTestName), MESSAGE_CONSTRAINTS);
-        this.gradedTestName = gradedTestName;
+    public GradedTest(String gradedTestsIndv) {
+        requireNonNull(gradedTestsIndv);
+        // checkArgument(Boolean.valueOf(VALIDATION_REGEX));
+        this.gradedTestsIndv = gradedTestsIndv;
         this.readingAssessment1 = new ReadingAssessment(DEFAULT_VALUE);
         this.readingAssessment2 = new ReadingAssessment(DEFAULT_VALUE);
         this.midTerms = new MidTerms(DEFAULT_VALUE);
@@ -82,12 +84,12 @@ public class GradedTest {
         return practicalExam;
     }
 
-    public String getGradedTestName() {
-        return gradedTestName;
+    public String getGradedTests() {
+        return gradedTestsIndv;
     }
 
     /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * Returns an immutable gradedTest set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
     public Set<ExpectedGrade> getExpectedGrade() {
@@ -95,7 +97,7 @@ public class GradedTest {
     }
 
     /**
-     * Returns true if a given string is a valid tag name.
+     * Returns true if a given string is a valid gradedTest name.
      */
     public static boolean isValidGradeTestName(String test) {
         return test.matches(VALIDATION_REGEX);
@@ -104,18 +106,18 @@ public class GradedTest {
     /**
      * Returns true if both tasks have the same name and description.
      */
-    public boolean isSameGradedTest(GradedTest otherTask) {
-        if (otherTask == this) {
+    public boolean isSameGradedTest(GradedTest otherGradedTest) {
+        if (otherGradedTest == this) {
             return true;
         }
 
-        return otherTask != null
-                && otherTask.getGradedTestName().equals(getGradedTestName())
-                && otherTask.getRA1().equals(getRA1())
-                && otherTask.getRA2().equals(getRA2())
-                && otherTask.getMidTerms().equals(getMidTerms())
-                && otherTask.getFinals().equals(getFinals())
-                && otherTask.getPracticalExam().equals(getPracticalExam());
+        return otherGradedTest != null
+                && otherGradedTest.getGradedTests().equals(getGradedTests())
+                && otherGradedTest.getRA1().equals(getRA1())
+                && otherGradedTest.getRA2().equals(getRA2())
+                && otherGradedTest.getMidTerms().equals(getMidTerms())
+                && otherGradedTest.getFinals().equals(getFinals())
+                && otherGradedTest.getPracticalExam().equals(getPracticalExam());
     }
 
     /**
@@ -150,11 +152,11 @@ public class GradedTest {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("Reading Assessment 1: ", readingAssessment1)
-                .add("Reading Assessment 2: ", readingAssessment2)
-                .add("MidTerms: ", midTerms)
-                .add("Finals: ", finals)
-                .add("Practical Exam: ", practicalExam)
+                .add("Reading Assessment 1", readingAssessment1 + "\n")
+                .add("Reading Assessment 2", readingAssessment2 + "\n")
+                .add("MidTerms", midTerms + "\n")
+                .add("Finals", finals + "\n")
+                .add("Practical Exam", practicalExam + "\n")
                 .toString();
     }
 

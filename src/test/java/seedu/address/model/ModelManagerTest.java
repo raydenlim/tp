@@ -3,11 +3,12 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_GRADED_TEST;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
-import static seedu.address.testutil.TypicalGradedTest.GT2;
+import static seedu.address.testutil.TypicalGradedTest.GT3;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalTasks.TASK1;
@@ -20,6 +21,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.gradedtest.GradedTestNameContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
@@ -163,7 +165,7 @@ public class ModelManagerTest {
 
     @Test
     public void hasGradedTest_gradedTestNotInGradedTestList_returnsFalse() {
-        assertFalse(modelManager.hasGradedTest(GT2));
+        assertFalse(modelManager.hasGradedTest(GT3));
     }
 
     @Test
@@ -226,16 +228,22 @@ public class ModelManagerTest {
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-
         // different taskList -> returns false
         String[] taskKeywords = TASK1.getName().taskName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
                 new TaskListBook(), new GradedTestListBook())));
 
+        // different gradedTestList -> returns false
+        String[] gradedTestKeywords = GT1.getGradedTests().toString().split("\\s+");
+        modelManager.updateFilteredGradedTestList(new GradedTestNameContainsKeywordsPredicate(Arrays.asList(gradedTestKeywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
+                new TaskListBook(), new GradedTestListBook())));
+
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        modelManager.updateFilteredGradedTestList(PREDICATE_SHOW_ALL_GRADED_TEST);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

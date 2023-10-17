@@ -66,14 +66,14 @@ public class Messages {
      * Formats the {@code gradedTest} for display to the user.
      */
     public static String format(GradedTest gradedTest) {
-        String builder = gradedTest.getGradedTestName()
-                + "; Graded Tests: "
-                + gradedTest.getRA1()
-                + gradedTest.getRA2()
-                + gradedTest.getMidTerms()
-                + gradedTest.getFinals()
-                + gradedTest.getPracticalExam();
-        return builder;
+        final StringBuilder builder = new StringBuilder();
+        builder.append(gradedTest.getGradedTests())
+                .append("; Reading Assessment 1: ").append(gradedTest.getRA1())
+                .append("; Reading Assessment 2: ").append(gradedTest.getRA2())
+                .append("; MidTerms: ").append(gradedTest.getMidTerms())
+                .append("; Final: ").append(gradedTest.getFinals())
+                .append("; Practical Exam: ").append(gradedTest.getPracticalExam());
+        return builder.toString();
     }
 
 }

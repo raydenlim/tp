@@ -12,11 +12,11 @@ import seedu.address.model.gradedtest.ReadingAssessment;
  * You can create GradedTest objects with custom attributes or use default values.
  */
 public class GradedTestBuilder {
-    public static final String DEFAULT_RA1 = "0";
-    public static final String DEFAULT_RA2 = "0";
-    public static final String DEFAULT_MIDTERMS = "0";
-    public static final String DEFAULT_FINALS = "0";
-    public static final String DEFAULT_PE = "0";
+    public static final String DEFAULT_RA1 = "-";
+    public static final String DEFAULT_RA2 = "-";
+    public static final String DEFAULT_MIDTERMS = "-";
+    public static final String DEFAULT_FINALS = "-";
+    public static final String DEFAULT_PE = "-";
 
 
     private ReadingAssessment rA1;
