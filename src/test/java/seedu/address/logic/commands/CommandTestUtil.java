@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
@@ -66,6 +67,11 @@ public class CommandTestUtil {
     public static final String INVALID_TASK_NAME = " " + PREFIX_TASK_NAME + "@@@@HER"; // '@' not allowed in name
     public static final String INVALID_TASK_DESCRIPTION = " "
             + PREFIX_TASK_DESCRIPTION + "\\    "; // whitespaces only not allowed in description
+
+    public static final String SESSION_NUMBER_SESSION1 = " " + PREFIX_SESSION + "1";
+    public static final String INVALID_SESSION_NUMBER = " " + PREFIX_SESSION + "abc";
+    public static final String SESSION_STUDENTS_STUDENTS1 = " " + PREFIX_NAME + "Bob";
+    public static final String INVALID_SESSION_STUDENTS = " " + PREFIX_NAME + "Charlie123@abc";
 
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
