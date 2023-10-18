@@ -7,6 +7,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskPriority;
 
 /**
  * Jackson-friendly version of {@link Task}.
@@ -18,16 +19,18 @@ class JsonAdaptedTask {
     private final String name;
     private final String description;
     private final boolean isDone;
+    private final String priority;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("description") String description,
-                           @JsonProperty("isDone") boolean isDone) {
+                           @JsonProperty("isDone") boolean isDone, @JsonProperty("priority") String priority) {
         this.name = name;
         this.description = description;
         this.isDone = isDone;
+        this.priority = priority;
     }
 
     /**
@@ -37,6 +40,7 @@ class JsonAdaptedTask {
         name = source.getName().taskName;
         description = source.getDescription().description;
         isDone = source.getIsDone();
+        priority = source.getPriority().name();
     }
 
     /**
@@ -63,7 +67,14 @@ class JsonAdaptedTask {
         }
         final TaskDescription modelDescription = new TaskDescription(description);
 
-        return new Task(modelName, modelDescription, isDone);
+        final TaskPriority modelPriority;
+        try {
+            modelPriority = TaskPriority.valueOf(priority);
+        } catch (Exception e) {
+            throw new IllegalValueException(TaskPriority.MESSAGE_CONSTRAINTS);
+        }
+
+        return new Task(modelName, modelDescription, isDone, modelPriority);
     }
 
 }

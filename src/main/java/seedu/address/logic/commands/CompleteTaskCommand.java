@@ -11,6 +11,7 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskPriority;
 
 /**
  * Marks a task identified using it's displayed index from the task list as completed.
@@ -43,7 +44,7 @@ public class CompleteTaskCommand extends Command {
 
         Task taskToMark = lastShownList.get(targetIndex.getZeroBased());
 
-        Task editedTask = new Task(taskToMark.getName(), taskToMark.getDescription(), true);
+        Task editedTask = new Task(taskToMark.getName(), taskToMark.getDescription(), TaskPriority.HIGH);
 
         model.setTask(taskToMark, editedTask);
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);

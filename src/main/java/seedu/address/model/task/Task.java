@@ -1,6 +1,5 @@
 package seedu.address.model.task;
 
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
@@ -19,6 +18,7 @@ public class Task {
     // Data fields
     private final TaskDescription taskDescription;
     private final boolean isDone;
+    private final TaskPriority priority;
 
     /**
      * Creates a new task with the given name, description, and completion status.
@@ -27,11 +27,12 @@ public class Task {
      * @param taskDescription The description of the task. Must not be null.
      * @param isDone          The completion status of the task.
      */
-    public Task(TaskName taskName, TaskDescription taskDescription, boolean isDone) {
+    public Task(TaskName taskName, TaskDescription taskDescription, boolean isDone, TaskPriority priority) {
         requireAllNonNull(taskName, taskDescription);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = isDone;
+        this.priority = priority;
     }
 
     /**
@@ -41,11 +42,12 @@ public class Task {
      * @param taskName        The name of the task. Must not be null.
      * @param taskDescription The description of the task. Must not be null.
      */
-    public Task(TaskName taskName, TaskDescription taskDescription) {
+    public Task(TaskName taskName, TaskDescription taskDescription, TaskPriority priority) {
         requireAllNonNull(taskName, taskDescription);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = false;
+        this.priority = priority;
     }
 
     public TaskName getName() {
@@ -58,6 +60,10 @@ public class Task {
 
     public boolean getIsDone() {
         return isDone;
+    }
+
+    public TaskPriority getPriority() {
+        return priority;
     }
 
     /**
@@ -96,7 +102,7 @@ public class Task {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(taskName, taskDescription);
+        return Objects.hash(taskName, taskDescription, isDone, priority);
     }
 
     @Override
@@ -105,6 +111,7 @@ public class Task {
                 .add("name", taskName)
                 .add("description", taskDescription)
                 .add("isDone", isDone)
+                .add("priority", priority)
                 .toString();
     }
 
