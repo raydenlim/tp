@@ -18,7 +18,7 @@ public class Task {
 
     // Data fields
     private final TaskDescription taskDescription;
-    private boolean isDone;
+    private final boolean isDone;
 
     /**
      * Creates a new task with the given name, description, and completion status.
@@ -58,13 +58,6 @@ public class Task {
 
     public boolean getIsDone() {
         return isDone;
-    }
-
-    /**
-     * Marks a task as completed.
-     */
-    public void markDone() {
-        isDone = true;
     }
 
     /**

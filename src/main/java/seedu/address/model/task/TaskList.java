@@ -90,21 +90,6 @@ public class TaskList implements Iterable<Task> {
         }
     }
 
-    /**
-     * Marks the equivalent task from the list.
-     * The task must exist in the list.
-     */
-    public void mark(Task toMark) {
-        requireNonNull(toMark);
-        for (Task task : internalList) {
-            if (task.isSameTask(toMark)) {
-                task.markDone();
-                return;
-            }
-        }
-        throw new TaskNotFoundException();
-    }
-
     public void setTasks(TaskList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

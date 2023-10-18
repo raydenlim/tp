@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.text.Text?>
+
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
@@ -25,10 +27,10 @@
                         <Region fx:constant="USE_PREF_SIZE" />
                     </minWidth>
                 </Label>
-                <Label fx:id="name" text="\$name" styleClass="cell_big_label" />
+                <Text fx:id="name" text="\$name" styleClass="cell_big_label" style="-fx-fill: white;" />
             </HBox>
             <FlowPane fx:id="tags" />
-            <Label fx:id="description" styleClass="cell_small_label" text="\$description" />
+            <Text fx:id="description" styleClass="cell_small_label" text="\$description" style="-fx-fill: white;" />
         </VBox>
     </GridPane>
 </HBox>
