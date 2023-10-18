@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -32,14 +31,15 @@ public class AddGradeCommand extends Command {
 
     public static final String COMMAND_WORD = "addgrade";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a grade to a person’s assignment. "
-            + "Parameters: "
-            + PREFIX_NAME + "NAME "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a grade to a person’s assignment identified "
+            + "by the index number used in the displayed person list. "
+            + "Parameters: INDEX (must be a positive integer) "
+            + "index"
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
             + PREFIX_GRADE + "GRADE ";
 
     public static final String MESSAGE_SUCCESS = "Added grade to assignment: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This assignment has already been graded";
+    public static final String MESSAGE_DUPLICATE_ASSIGNMENT = "This assignment has already been graded";
 
     private final AssignmentName assignmentName;
     private final String gradeString;
@@ -63,6 +63,10 @@ public class AddGradeCommand extends Command {
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        if (!AssignmentName.isValidName(this.assignmentName.toString())) {
+            throw new CommandException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
@@ -92,5 +96,25 @@ public class AddGradeCommand extends Command {
         AssignmentMap updatedAssignmentMap =
             reference.getAllAssignments().createUpdatedMap(this.assignmentName, newGrade);
         return new Person(name, phone, email, address, tags, updatedAssignmentMap);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddGradeCommand)) {
+            return false;
+        }
+
+        AddGradeCommand otherAddGradeCommand = (AddGradeCommand) other;
+
+        boolean sameAssignmentName = this.assignmentName.equals(otherAddGradeCommand.assignmentName);
+        boolean sameGrade = this.gradeString.equals(otherAddGradeCommand.gradeString);
+        boolean samePersonIndex = this.index.equals(otherAddGradeCommand.index);
+
+        return sameAssignmentName && sameGrade && samePersonIndex;
     }
 }

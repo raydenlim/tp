@@ -1,7 +1,9 @@
 package seedu.address.model.person.assignment;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
+import seedu.address.model.person.assignment.initialise.AssignmentNameInitialise;
 
 /**
  * Represents an assignment name.
@@ -9,9 +11,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class AssignmentName {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Assignment Names should only contain alphanumeric characters and spaces, and it should not be blank";
-
-    public static final String VALIDATION_REGEX = "^(?=.*[A-Za-z0-9_-])[-A-Za-z0-9\\s_-]*$";
+            "Assignment does not exist";
+    private static final AssignmentNameInitialise checkIfValid = new AssignmentNameInitialise();
 
     public final String assignmentName;
 
@@ -20,12 +21,18 @@ public class AssignmentName {
      */
     public AssignmentName(String name) {
         requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
         this.assignmentName = name;
     }
 
+    /**
+     * Checks if the assignment name exists.
+     *
+     * @param test The assignment name as a string.
+     * @return Whether the assignment exists.
+     */
     public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
+        AssignmentInitialise.init();
+        return checkIfValid.contains(new AssignmentName(test));
     }
 
     @Override

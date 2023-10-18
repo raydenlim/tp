@@ -56,4 +56,25 @@ public class Grade {
             return "UNGRADED/" + this.maxGrade;
         }
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Grade)) {
+            return false;
+        }
+
+        Grade otherGrade = (Grade) other;
+        boolean sameMaxGrade = this.maxGrade.equals(otherGrade.maxGrade);
+        if (this.isGraded && otherGrade.isGraded) {
+            boolean sameGrade = this.actualGrade.equals(otherGrade.actualGrade);
+            return sameMaxGrade && sameGrade;
+        } else {
+            return sameMaxGrade && !otherGrade.isGraded;
+        }
+    }
 }

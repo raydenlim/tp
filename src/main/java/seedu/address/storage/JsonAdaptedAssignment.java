@@ -52,9 +52,7 @@ public class JsonAdaptedAssignment {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     AssignmentName.class.getSimpleName()));
         }
-        if (!AssignmentName.isValidName(name)) {
-            throw new IllegalValueException(AssignmentName.MESSAGE_CONSTRAINTS);
-        }
+
         final AssignmentName modelName = new AssignmentName(name);
 
         if (grade == null) {

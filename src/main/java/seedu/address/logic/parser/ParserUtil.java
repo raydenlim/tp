@@ -195,7 +195,7 @@ public class ParserUtil {
     public static AssignmentName parseAssignmentName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!TaskName.isValidName(trimmedName)) {
+        if (!AssignmentName.isValidName(trimmedName)) {
             throw new ParseException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
         return new AssignmentName(trimmedName);

@@ -8,7 +8,6 @@ public class Assignment {
     // Identity fields
     private final AssignmentName assignmentName;
     private final Grade grade;
-    private Comment comment;
 
     /**
      * Creates an assignment.
@@ -31,9 +30,5 @@ public class Assignment {
 
     public Assignment copyAssignment() {
         return new Assignment(this.assignmentName, this.grade.copyGrade());
-    }
-
-    public void addComment(String commentBody) {
-        this.comment = new Comment(commentBody);
     }
 }

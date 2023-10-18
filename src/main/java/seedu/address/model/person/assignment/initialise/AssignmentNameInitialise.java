@@ -49,6 +49,10 @@ public class AssignmentNameInitialise {
         return assignmentNames.get(index);
     }
 
+    public boolean contains(AssignmentName assignmentName) {
+        return assignmentNames.contains(assignmentName);
+    }
+
     public int size() {
         return assignmentNames.size();
     }
