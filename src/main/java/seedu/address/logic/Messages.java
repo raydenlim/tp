@@ -65,13 +65,16 @@ public class Messages {
 
 
     /**
-     * Formats the {@code person} for display to the user.
+     * Formats the {@code task} for display to the user.
      */
     public static String format(Task task) {
-        String builder = task.getName()
+        return task.getName()
                 + "; Description: "
-                + task.getDescription();
-        return builder;
+                + task.getDescription()
+                + "; isDone: "
+                + task.getIsDone()
+                + "; Priority: "
+                + task.getPriority();
     }
 
 }
