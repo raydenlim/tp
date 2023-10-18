@@ -31,6 +31,7 @@
             </HBox>
             <FlowPane fx:id="tags" />
             <Text fx:id="description" styleClass="cell_small_label" text="\$description" style="-fx-fill: white;" />
+            <Text fx:id="priority" styleClass="cell_small_label" text="\$priority" style="-fx-fill: white;" />
         </VBox>
     </GridPane>
 </HBox>

@@ -24,6 +24,8 @@ public class TaskCard extends UiPart<Region> {
     private Label id;
     @FXML
     private Text description;
+    @FXML
+    private Text priority;
 
     /**
      * Creates a {@code TaskCard} with the given {@code Task} and index to display.
@@ -33,9 +35,26 @@ public class TaskCard extends UiPart<Region> {
         this.task = task;
         id.setText(displayedIndex + ". ");
         name.setText(task.getName().taskName);
-        name.setStrikethrough(task.getIsDone());
         description.setText(task.getDescription().description);
+        priority.setText(task.getPriority().name());
+
+        switch(task.getPriority()) {
+        case LOW:
+            priority.setStyle("-fx-fill: green");
+            break;
+        case MEDIUM:
+            priority.setStyle("-fx-fill: yellow");
+            break;
+        case HIGH:
+            priority.setStyle("-fx-fill: red");
+            break;
+        default:
+            priority.setStyle("-fx-fill: white");
+        }
+
+        name.setStrikethrough(task.getIsDone());
         description.setStrikethrough(task.getIsDone());
+        priority.setStrikethrough(task.getIsDone());
 
     }
 }
