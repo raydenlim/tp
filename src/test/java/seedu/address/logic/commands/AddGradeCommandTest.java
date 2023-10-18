@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.GRADE_400;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ASSIGNMENT_NAME;
@@ -81,5 +83,30 @@ public class AddGradeCommandTest {
         AddGradeCommand addGradeCommand = new AddGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
 
         assertCommandFailure(addGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void test_sameObject_equals() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        AddGradeCommand addGradeCommand = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+
+        assertEquals(addGradeCommand, addGradeCommand);
+    }
+
+    @Test
+    public void test_differentObject_equals() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        AddGradeCommand addGradeCommand = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+
+        assertFalse(addGradeCommand.equals(assignmentName));
+    }
+
+    @Test
+    public void test_differentObjectSameContent_equals() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        AddGradeCommand addGradeCommandFirst = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        AddGradeCommand addGradeCommandSecond = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+
+        assertEquals(addGradeCommandFirst, addGradeCommandSecond);
     }
 }
