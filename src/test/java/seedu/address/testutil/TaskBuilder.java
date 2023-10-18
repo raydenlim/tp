@@ -14,6 +14,7 @@ public class TaskBuilder {
 
     private TaskName name;
     private TaskDescription description;
+    private boolean isDone;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -44,6 +45,14 @@ public class TaskBuilder {
      */
     public TaskBuilder withDescription(String description) {
         this.description = new TaskDescription(description);
+        return this;
+    }
+
+    /**
+     * Sets the {@code isDone} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withIsDone(boolean isDone) {
+        this.isDone = isDone;
         return this;
     }
 
