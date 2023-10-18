@@ -1,12 +1,18 @@
 package seedu.address.model.person.assignment.initialise;
 
-import seedu.address.model.person.assignment.Grade;
-
 import java.util.ArrayList;
 
+import seedu.address.model.person.assignment.Grade;
+
+/**
+ * Represents an initializer to create grades for each assignment.
+ */
 public class AssignmentMaxGradeInitialise {
     private static ArrayList<Grade> maxGrades = new ArrayList<>();
 
+    /**
+     * Initialises mission grades.
+     */
     public void missionGrades() {
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("600"));
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1000"));
@@ -25,6 +31,9 @@ public class AssignmentMaxGradeInitialise {
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1200"));
     }
 
+    /**
+     * Initialises quest grades.
+     */
     public void questGrades() {
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("400"));
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("600"));

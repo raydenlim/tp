@@ -187,6 +187,11 @@ public class ParserUtil {
         return new TaskDescription(trimmedName);
     }
 
+    /**
+     * Parses a {@code String assignmentName} into a {@code assignmentName}.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
     public static AssignmentName parseAssignmentName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();

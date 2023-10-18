@@ -1,8 +1,8 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -10,10 +10,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AssignmentMapBook;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -44,43 +41,43 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
-            this.name = name;
-            this.phone = phone;
-            this.email = email;
-            this.address = address;
-            if (tags != null) {
-                this.tags.addAll(tags);
-            }
-            HashMap<String, JsonAdaptedAssignment> JsonMap = new HashMap<>();
-            for (int i = 0; i < AssignmentInitialise.size(); i++) {
-                String assignmentName = AssignmentInitialise.getAssignmentName(i).toString();
-                String assignmentGrade = AssignmentInitialise.getAssignmentMaxGrade(i).toString();
-                JsonMap.put(assignmentName, new JsonAdaptedAssignment(assignmentName + ": " + assignmentGrade));
-            }
-            this.jsonAssignments = new JsonSerializableAssignmentMap(JsonMap);
+        @JsonProperty("email") String email, @JsonProperty("address") String address,
+        @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
+        HashMap<String, JsonAdaptedAssignment> jsonMap = new HashMap<>();
+        for (int i = 0; i < AssignmentInitialise.size(); i++) {
+            String assignmentName = AssignmentInitialise.getAssignmentName(i).toString();
+            String assignmentGrade = AssignmentInitialise.getAssignmentMaxGrade(i).toString();
+            jsonMap.put(assignmentName, new JsonAdaptedAssignment(assignmentName + ": " + assignmentGrade));
+        }
+        this.jsonAssignments = new JsonSerializableAssignmentMap(jsonMap);
     }
 
     /**
      * Converts a given {@code Person} into this class for Jackson use.
      */
     public JsonAdaptedPerson(Person source) {
-            name = source.getName().fullName;
-            phone = source.getPhone().value;
-            email = source.getEmail().value;
-            address = source.getAddress().value;
-            tags.addAll(source.getTags().stream()
-                    .map(JsonAdaptedTag::new)
-                    .collect(Collectors.toList()));
-            HashMap<String, JsonAdaptedAssignment> JsonMap = new HashMap<>();
-            for (int i = 0; i < AssignmentInitialise.size(); i++) {
-                AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
-                Assignment assignment = source.getAllAssignments().get(assignmentName);
-                JsonMap.put(assignmentName.toString(),
-                        new JsonAdaptedAssignment(assignment));
-            }
-            this.jsonAssignments = new JsonSerializableAssignmentMap(JsonMap);
+        name = source.getName().fullName;
+        phone = source.getPhone().value;
+        email = source.getEmail().value;
+        address = source.getAddress().value;
+        tags.addAll(source.getTags().stream()
+                .map(JsonAdaptedTag::new)
+                .collect(Collectors.toList()));
+        HashMap<String, JsonAdaptedAssignment> jsonMap = new HashMap<>();
+        for (int i = 0; i < AssignmentInitialise.size(); i++) {
+            AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
+            Assignment assignment = source.getAllAssignments().get(assignmentName);
+            jsonMap.put(assignmentName.toString(),
+                    new JsonAdaptedAssignment(assignment));
+        }
+        this.jsonAssignments = new JsonSerializableAssignmentMap(jsonMap);
     }
 
     /**
@@ -129,11 +126,11 @@ class JsonAdaptedPerson {
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
         final AssignmentMap assignments = new AssignmentMap();
-        HashMap<String, JsonAdaptedAssignment> JsonMap = jsonAssignments.getAssignments();
+        HashMap<String, JsonAdaptedAssignment> jsonMap = jsonAssignments.getAssignments();
         HashMap<AssignmentName, Assignment> actualMap = new HashMap<>();
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
-            Assignment assignment = jsonAssignments.getAssignments().get(assignmentName.toString()).toModelType();
+            Assignment assignment = jsonMap.get(assignmentName.toString()).toModelType();
             actualMap.put(assignmentName, assignment);
         }
         assignments.setAssignmentMap(actualMap);

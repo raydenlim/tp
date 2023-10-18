@@ -1,31 +1,41 @@
 package seedu.address.storage;
 
+import java.util.HashMap;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
 import seedu.address.model.ReadOnlyAssignmentMap;
-import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
-import seedu.address.model.person.assignment.Grade;
 import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 
-import java.util.HashMap;
-
+/**
+ * An Immutable AssignmentMap that is serializable to JSON format.
+ */
 @JsonRootName(value = "assignmentmap")
 public class JsonSerializableAssignmentMap {
 
     private final HashMap<String, JsonAdaptedAssignment> assignments = new HashMap<>();
 
+    /**
+     * Constructs a {@code JsonSerializableAssignmentMap} with the given persons.
+     */
     @JsonCreator
     public JsonSerializableAssignmentMap(
             @JsonProperty("assignments") HashMap<String, JsonAdaptedAssignment> assignments) {
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             String assignmentName = AssignmentInitialise.getAssignmentName(i).toString();
-            JsonAdaptedAssignment JSONAssignment = assignments.get(assignmentName);
-            this.assignments.put(assignmentName, JSONAssignment);
+            JsonAdaptedAssignment jsonAssignment = assignments.get(assignmentName);
+            this.assignments.put(assignmentName, jsonAssignment);
         }
     }
 
+    /**
+     * Converts a given {@code ReadOnlyAssignmentMap} into this class for Jackson use.
+     *
+     * @param source future changes to this will not affect the created {@code JsonSerializableAssignmentMap}.
+     */
     public JsonSerializableAssignmentMap(ReadOnlyAssignmentMap source) {
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);

@@ -3,6 +3,9 @@ package seedu.address.model.person.assignment;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents an assignment name.
+ */
 public class AssignmentName {
 
     public static final String MESSAGE_CONSTRAINTS =
@@ -12,6 +15,9 @@ public class AssignmentName {
 
     public final String assignmentName;
 
+    /**
+     * Creates an assignment name.
+     */
     public AssignmentName(String name) {
         requireNonNull(name);
         checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);

@@ -1,5 +1,8 @@
 package seedu.address.model.person.assignment;
 
+/**
+ * Represents an assignment.
+ */
 public class Assignment {
 
     // Identity fields
@@ -7,6 +10,9 @@ public class Assignment {
     private final Grade grade;
     private Comment comment;
 
+    /**
+     * Creates an assignment.
+     */
     public Assignment(AssignmentName name, Grade grade) {
         this.assignmentName = name;
         this.grade = grade;

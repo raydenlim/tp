@@ -1,23 +1,27 @@
 package seedu.address.model.person.assignment;
 
+import static javafx.collections.FXCollections.observableHashMap;
+import static javafx.collections.FXCollections.unmodifiableObservableMap;
+
+import java.util.Map;
+
 import javafx.collections.ObservableMap;
 import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static javafx.collections.FXCollections.observableHashMap;
-import static javafx.collections.FXCollections.unmodifiableObservableMap;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
+/**
+ * Stores the list of assignments a person has.
+ */
 public class AssignmentMap {
     private final ObservableMap<AssignmentName, Assignment> assignments = observableHashMap();
     private final ObservableMap<AssignmentName, Assignment> unmodifiableAssignments =
             unmodifiableObservableMap(assignments);
 
+    /**
+     * Creates an AssignmentMap to store all assignments a person has.
+     */
     public AssignmentMap() {
-        if (!AssignmentInitialise.isInitialised) {
-            AssignmentInitialise.Init();
+        if (!AssignmentInitialise.getInitialisationStatus()) {
+            AssignmentInitialise.init();
         }
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
@@ -34,16 +38,13 @@ public class AssignmentMap {
         }
     }
 
-    public AssignmentMap copy() {
-        AssignmentMap copyTo = new AssignmentMap();
-        for (int i = 0; i < AssignmentInitialise.size(); i++) {
-            AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
-            Assignment originalAssignment = this.assignments.get(assignmentName);
-            copyTo.assignments.replace(assignmentName, originalAssignment.copyAssignment());
-        }
-        return copyTo;
-    }
-
+    /**
+     * Creates a new AssignmentMap with the updated grade being given to an assignment.
+     *
+     * @param toBeGraded Name of assignment being graded.
+     * @param newGrade Grade being given to the assignment.
+     * @return New AssignmentMap with the updated grades.
+     */
     public AssignmentMap createUpdatedMap(AssignmentName toBeGraded, Grade newGrade) {
         AssignmentMap updateTo = new AssignmentMap();
         for (int i = 0; i < AssignmentInitialise.size(); i++) {

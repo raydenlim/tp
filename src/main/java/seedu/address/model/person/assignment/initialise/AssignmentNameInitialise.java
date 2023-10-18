@@ -1,12 +1,18 @@
 package seedu.address.model.person.assignment.initialise;
 
-import seedu.address.model.person.assignment.AssignmentName;
-
 import java.util.ArrayList;
 
+import seedu.address.model.person.assignment.AssignmentName;
+
+/**
+ * Represents an initializer to create names for each assignment.
+ */
 public class AssignmentNameInitialise {
     private static ArrayList<AssignmentName> assignmentNames = new ArrayList<>();
 
+    /**
+     * Initialises mission names.
+     */
     public void initMissions() {
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Rune Trials"));
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Rune Reading"));
@@ -25,6 +31,9 @@ public class AssignmentNameInitialise {
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Know Your Environment"));
     }
 
+    /**
+     * Initialises quest names.
+     */
     public void initQuests() {
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Runic Carpets"));
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Colorful Carpets"));
@@ -37,10 +46,10 @@ public class AssignmentNameInitialise {
     }
 
     public AssignmentName getName(int index) {
-        return this.assignmentNames.get(index);
+        return assignmentNames.get(index);
     }
 
     public int size() {
-        return this.assignmentNames.size();
+        return assignmentNames.size();
     }
 }

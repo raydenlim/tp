@@ -11,10 +11,8 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
-import seedu.address.model.person.assignment.Grade;
 import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 
 /**
  * Represents a Person in the address book.
@@ -45,6 +43,10 @@ public class Person {
         this.assignments = new AssignmentMap();
     }
 
+    /**
+     * Creates a new Person object with a pre-set map of assignments.
+     * Every field must be present and not null.
+     */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, AssignmentMap assignments) {
         requireAllNonNull(name, phone, email, address, tags, assignments);
         this.name = name;
