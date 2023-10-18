@@ -8,7 +8,7 @@ import java.util.Objects;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Task in the task list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
@@ -18,14 +18,23 @@ public class Task {
 
     // Data fields
     private final TaskDescription taskDescription;
+    private boolean isDone;
 
     /**
      * Every field must be present and not null.
      */
+    public Task(TaskName taskName, TaskDescription taskDescription, boolean isDone) {
+        requireAllNonNull(taskName, taskDescription);
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.isDone = isDone;
+    }
+
     public Task(TaskName taskName, TaskDescription taskDescription) {
         requireAllNonNull(taskName, taskDescription);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+        this.isDone = false;
     }
 
     public TaskName getName() {
@@ -34,6 +43,17 @@ public class Task {
 
     public TaskDescription getDescription() {
         return taskDescription;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    /**
+     * Marks a task as completed.
+     */
+    public void markDone() {
+        isDone = true;
     }
 
     /**

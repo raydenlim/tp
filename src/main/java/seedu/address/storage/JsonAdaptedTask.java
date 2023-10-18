@@ -17,14 +17,17 @@ class JsonAdaptedTask {
 
     private final String name;
     private final String description;
+    private final boolean isDone;
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedPerson} with the given task details.
      */
     @JsonCreator
-    public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("description") String description) {
+    public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("description") String description,
+                           @JsonProperty("isDone") boolean isDone) {
         this.name = name;
         this.description = description;
+        this.isDone = isDone;
     }
 
     /**
@@ -33,6 +36,7 @@ class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().taskName;
         description = source.getDescription().description;
+        isDone = source.getIsDone();
     }
 
     /**
@@ -59,7 +63,7 @@ class JsonAdaptedTask {
         }
         final TaskDescription modelDescription = new TaskDescription(description);
 
-        return new Task(modelName, modelDescription);
+        return new Task(modelName, modelDescription, isDone);
     }
 
 }

@@ -105,6 +105,8 @@ public interface Model {
      */
     void addSession(Session session);
 
+
+    //=========== TaskList =================================================================================
     /**
      * Replaces task list data with the data in {@code taskList}.
      */
@@ -123,6 +125,12 @@ public interface Model {
      * The task must exist in the task list.
      */
     void deleteTask(Task target);
+
+    /**
+     * Marks a given task.
+     * The task must exist in the task list.
+     */
+    void markTask(Task target);
 
     /**
      * Adds the given task.

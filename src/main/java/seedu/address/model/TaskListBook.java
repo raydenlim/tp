@@ -101,6 +101,14 @@ public class TaskListBook implements ReadOnlyTaskList {
         tasks.remove(key);
     }
 
+    /**
+     * Marks {@code key} from this {@code TaskListBook}.
+     * {@code key} must exist in the task list book.
+     */
+    public void markTask(Task key) {
+        tasks.mark(key);
+    }
+
     //// util methods
 
     @Override
