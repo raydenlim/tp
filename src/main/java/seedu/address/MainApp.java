@@ -16,16 +16,20 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
+import seedu.address.storage.ConsultationListStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonConsultationListStorage;
 import seedu.address.storage.JsonSessionListStorage;
 import seedu.address.storage.JsonTaskListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
@@ -66,7 +70,10 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         TaskListStorage taskListStorage = new JsonTaskListStorage(userPrefs.getTaskListFilePath());
         SessionListStorage sessionListStorage = new JsonSessionListStorage(userPrefs.getSessionListFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage, sessionListStorage);
+        ConsultationListStorage consultationListStorage = new JsonConsultationListStorage(userPrefs
+                .getConsultationListFilePath());
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage,
+                sessionListStorage, consultationListStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -89,6 +96,10 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyTaskList> taskListOptional;
         ReadOnlyTaskList initialTaskList;
+
+        Optional<ReadOnlyConsultationList> consultationListOptional;
+        ReadOnlyConsultationList initialConsultationList;
+
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -111,11 +122,24 @@ public class MainApp extends Application {
             initialTaskList = taskListOptional.orElseGet(SampleDataUtil::getSampleTaskList);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with an empty TaskList.");
             initialTaskList = new TaskListBook();
         }
 
-        return new ModelManager(initialData, userPrefs, initialTaskList);
+        try {
+            consultationListOptional = storage.readConsultationList();
+            if (!consultationListOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getConsultationListFilePath()
+                        + " populated with a sample ConsultationList.");
+            }
+            initialConsultationList = consultationListOptional.orElseGet(SampleDataUtil::getSampleConsultationList);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getConsultationListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty ConsultationList.");
+            initialConsultationList = new ConsultationListBook();
+        }
+
+        return new ModelManager(initialData, userPrefs, initialTaskList, initialConsultationList);
     }
 
     private void initLogging(Config config) {

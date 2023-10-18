@@ -18,6 +18,13 @@ import seedu.address.model.person.Name;
  * Parses input arguments and creates a new CreateConsultationCommand object
  */
 public class CreateConsultCommandParser implements Parser<CreateConsultCommand> {
+    /**
+     * Parses the given `args` string and returns a CreateConsultCommand object if the input is valid.
+     *
+     * @param args The input arguments to be parsed.
+     * @return A CreateConsultCommand object.
+     * @throws ParseException If the input arguments are not in the correct format or if parsing fails.
+     */
     @Override
     public CreateConsultCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
@@ -37,6 +44,13 @@ public class CreateConsultCommandParser implements Parser<CreateConsultCommand> 
         return new CreateConsultCommand(date, time, names);
     }
 
+    /**
+     * Checks if the specified prefixes are present in the given ArgumentMultimap.
+     *
+     * @param argumentMultimap The ArgumentMultimap to check for prefix presence.
+     * @param prefixes The prefixes to be checked.
+     * @return `true` if all specified prefixes are present, `false` otherwise.
+     */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }

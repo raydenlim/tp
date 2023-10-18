@@ -159,6 +159,18 @@ public interface Model {
      */
     void addConsultation(Consultation consultation);
 
+    /** Returns the ConsultationList */
+    ReadOnlyConsultationList getConsultationList();
+
+    /** Returns an unmodifiable view of the filtered consultation list */
+    ObservableList<Consultation> getFilteredConsultationList();
+
+    /**
+     * Updates the filter of the filtered consultation list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredConsultationList(Predicate<Consultation> predicate);
+
     Person getMatchingStudentName(Name name);
 
     /** Returns an unmodifiable view of the filtered task list */

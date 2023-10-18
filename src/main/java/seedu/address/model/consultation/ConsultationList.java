@@ -1,15 +1,15 @@
 package seedu.address.model.consultation;
 
 import static java.util.Objects.requireNonNull;
-//import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.exceptions.ConsultationNotFoundException;
 import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
-//import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 
 /**
  * A list of Consultation.
@@ -18,6 +18,11 @@ public class ConsultationList implements Iterable<Consultation> {
     private ObservableList<Consultation> internalList = FXCollections.observableArrayList();
     private final ObservableList<Consultation> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+
+    public void setConsultationList(List<Consultation> consultationList) {
+        requireAllNonNull(consultationList);
+        internalList.setAll(consultationList);
+    }
 
     /**
      * Returns true if the list contains an equivalent consultation as the given argument.

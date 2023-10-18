@@ -31,8 +31,8 @@ public class Consultation {
     //     * Adds a student to the consultation.
     //     * The person must not already exist in the consultation.
     //     */
-    //    public void addStudent(Person p) {
-    //        students.add(p);
+    //    public void addStudent(Person student) {
+    //        students.add(student);
     //    }
 
     //    /**

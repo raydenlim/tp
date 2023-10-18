@@ -21,6 +21,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.consultation.Consultation;
@@ -211,6 +212,21 @@ public class AddCommandTest {
 
         @Override
         public void addConsultation(Consultation consultation) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyConsultationList getConsultationList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Consultation> getFilteredConsultationList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredConsultationList(Predicate<Consultation> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

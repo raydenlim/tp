@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -23,6 +24,7 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
     private TaskListStorage taskListStorage;
     private SessionListStorage sessionListStorage;
+    private ConsultationListStorage consultationListStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage}
@@ -30,11 +32,12 @@ public class StorageManager implements Storage {
      */
     public StorageManager(AddressBookStorage addressBookStorage,
                           UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage,
-                          SessionListStorage sessionListStorage) {
+                          SessionListStorage sessionListStorage, ConsultationListStorage consultationListStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.taskListStorage = taskListStorage;
         this.sessionListStorage = sessionListStorage;
+        this.consultationListStorage = consultationListStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -111,6 +114,35 @@ public class StorageManager implements Storage {
     public void saveSessionList(ReadOnlySessionList sessionList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         sessionListStorage.saveSessionList(sessionList, filePath);
+    }
+
+    // ================ ConsultationList methods ===========================
+
+    @Override
+    public Path getConsultationListFilePath() {
+        return consultationListStorage.getConsultationListFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyConsultationList> readConsultationList() throws DataLoadingException {
+        return readConsultationList(consultationListStorage.getConsultationListFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyConsultationList> readConsultationList(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return consultationListStorage.readConsultationList(filePath);
+    }
+
+    @Override
+    public void saveConsultationList(ReadOnlyConsultationList consultationList) throws IOException {
+        saveConsultationList(consultationList, consultationListStorage.getConsultationListFilePath());
+    }
+
+    @Override
+    public void saveConsultationList(ReadOnlyConsultationList consultationList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        consultationListStorage.saveConsultationList(consultationList, filePath);
     }
 
     // ================ TaskList methods ==============================
