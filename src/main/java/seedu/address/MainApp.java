@@ -26,8 +26,10 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonSessionListStorage;
 import seedu.address.storage.JsonTaskListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.SessionListStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.TaskListStorage;
@@ -63,7 +65,8 @@ public class MainApp extends Application {
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         TaskListStorage taskListStorage = new JsonTaskListStorage(userPrefs.getTaskListFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage);
+        SessionListStorage sessionListStorage = new JsonSessionListStorage(userPrefs.getSessionListFilePath());
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage, sessionListStorage);
 
         model = initModelManager(storage, userPrefs);
 

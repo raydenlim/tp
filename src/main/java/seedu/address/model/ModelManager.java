@@ -11,7 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 
 /**
@@ -21,6 +25,7 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final SessionList sessionList;
     private final TaskListBook taskList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
@@ -35,6 +40,7 @@ public class ModelManager implements Model {
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.sessionList = new SessionList();
         this.taskList = new TaskListBook(taskList);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
@@ -127,6 +133,18 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    //=========== SessionList =================================================================================
+    @Override
+    public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
+        requireNonNull(sessionNumber);
+        return sessionList.findSessionBySessionNumber(sessionNumber);
+    }
+
+    @Override
+    public void addSession(Session session) {
+        requireNonNull(session);
+        sessionList.addSession(session);
+    }
 
     //=========== TaskListBook ================================================================================
 
@@ -187,6 +205,7 @@ public class ModelManager implements Model {
     }
 
 
+
     //=========== Filtered Task List Accessors =============================================================
 
     /**
@@ -203,7 +222,6 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredTasks.setPredicate(predicate);
     }
-
 
     @Override
     public boolean equals(Object other) {
@@ -223,5 +241,15 @@ public class ModelManager implements Model {
                 && taskList.equals(otherModelManager.taskList)
                 && filteredTasks.equals(otherModelManager.filteredTasks);
     }
+
+
+    @Override
+    public Person getMatchingStudentName(Name name) {
+        requireNonNull(name);
+        return addressBook.matchName(name);
+    }
+
+
+
 
 }

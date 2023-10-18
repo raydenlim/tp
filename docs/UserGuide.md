@@ -299,8 +299,8 @@ Format:
 
 Parameters:
 * `FILTER_ATTRIBUTE` - The filter type filter_studentScores
-    * `filter_studentScores`
-    * `filter_studentGrades`
+  * `filter_studentScores`
+  * `filter_studentGrades`
 * `FILTER_DESCRIPTION` - The conditions for the filter
 
 Examples:

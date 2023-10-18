@@ -2,13 +2,17 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
+import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 
@@ -75,6 +79,25 @@ public class Person {
         return Collections.unmodifiableSet(tags);
     }
 
+
+    /**
+     * Adds a student to a session and a session to a student.
+     *
+     * @param session The session to attend.
+     */
+    public void attendSession(Session session) {
+        session.addStudent(this);
+    }
+
+    /**
+     * Removes a student from a session and a session from a student.
+     *
+     * @param session The session to miss.
+     */
+    public void missSession(Session session) {
+        session.removeStudent(this);
+    }
+
     public AssignmentMap getAllAssignments() {
         return assignments;
     }
@@ -94,6 +117,18 @@ public class Person {
 
         return otherPerson != null
                 && otherPerson.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both persons have the same name.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSameName(Name otherName) {
+        if (otherName == this.getName()) {
+            return true;
+        }
+
+        return otherName.equals(getName());
     }
 
     /**

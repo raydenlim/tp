@@ -14,6 +14,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
@@ -51,6 +52,21 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    /**
+     * Parses {@code Collection<String> names} into a {@code Set<Name>}.
+     */
+    public static Set<Name> parseNames(Collection<String> names) throws ParseException {
+        requireNonNull(names);
+        final Set<Name> nameSet = new HashSet<>();
+        for (String studentName : names) {
+            if (!Name.isValidName(studentName)) {
+                throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            }
+            nameSet.add(parseName(studentName));
+        }
+        return nameSet;
     }
 
     /**
@@ -123,6 +139,22 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses the input session number as a string and returns it as an integer.
+     *
+     * @param sessionNumber The session number to be parsed.
+     * @return The parsed session number as an integer.
+     * @throws NumberFormatException If the session number is not a valid integer.
+     */
+    public static SessionNumber parseSessionNumber(String sessionNumber) throws ParseException {
+        requireNonNull(sessionNumber);
+        String trimmedSessionNumber = sessionNumber.trim();
+        if (!SessionNumber.isValidSessionNumber(trimmedSessionNumber)) {
+            throw new ParseException(SessionNumber.MESSAGE_CONSTRAINTS);
+        }
+        return new SessionNumber(trimmedSessionNumber);
     }
 
     /**
