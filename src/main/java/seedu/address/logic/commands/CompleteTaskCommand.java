@@ -13,11 +13,11 @@ import seedu.address.model.Model;
 import seedu.address.model.task.Task;
 
 /**
- * Marks a task identified using it's displayed index from the task list.
+ * Marks a task identified using it's displayed index from the task list as completed.
  */
-public class MarkTaskCompletedCommand extends Command {
+public class CompleteTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "marktask";
+    public static final String COMMAND_WORD = "completetask";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Marks the task identified by the index number used in the displayed task list.\n"
@@ -28,7 +28,7 @@ public class MarkTaskCompletedCommand extends Command {
 
     private final Index targetIndex;
 
-    public MarkTaskCompletedCommand(Index targetIndex) {
+    public CompleteTaskCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -58,11 +58,11 @@ public class MarkTaskCompletedCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof MarkTaskCompletedCommand)) {
+        if (!(other instanceof CompleteTaskCommand)) {
             return false;
         }
 
-        MarkTaskCompletedCommand otherMarkCommand = (MarkTaskCompletedCommand) other;
+        CompleteTaskCommand otherMarkCommand = (CompleteTaskCommand) other;
         return targetIndex.equals(otherMarkCommand.targetIndex);
     }
 
