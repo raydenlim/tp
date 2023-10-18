@@ -3,6 +3,7 @@ package seedu.address.storage;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -50,9 +51,10 @@ public class JsonAdaptedConsultation {
     /**
      * Converts this Jackson-friendly adapted consultation object into the model's {@code Consultation} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted consultation.
+     * @throws DateTimeParseException if there were date and time format constraints violated in the adapted
+     *      consultation.
      */
-    public Consultation toModelType() throws IllegalValueException {
+    public Consultation toModelType() throws DateTimeParseException, IllegalValueException {
         // TODO check for invalid values of date and time
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate formattedDate = LocalDate.parse(date, dateFormatter);

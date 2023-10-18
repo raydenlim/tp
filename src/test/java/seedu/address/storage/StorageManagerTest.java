@@ -2,6 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
@@ -14,7 +15,9 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.AddressBook;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.SessionListBook;
@@ -82,6 +85,19 @@ public class StorageManagerTest {
         storageManager.saveSessionList(original);
         ReadOnlySessionList retrieved = storageManager.readSessionList().get();
         assertEquals(original, new SessionListBook(retrieved));
+    }
+
+    @Test
+    public void getConsultationListFilePath() {
+        assertNotNull(storageManager.getConsultationListFilePath());
+    }
+
+    @Test
+    public void consultationListReadSave() throws Exception {
+        ConsultationListBook original = getTypicalConsultationListBook();
+        storageManager.saveConsultationList(original);
+        ReadOnlyConsultationList retrieved = storageManager.readConsultationList().get();
+        assertEquals(original, new ConsultationListBook(retrieved));
     }
 
     @Test

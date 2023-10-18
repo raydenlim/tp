@@ -3,7 +3,9 @@ package seedu.address.model.consultation;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 
 /**
@@ -91,7 +93,7 @@ public class Consultation {
     public Set<Person> getStudents() {
         return students;
     }
-    public String getConsultationInfo() {
-        return String.format("%s, %s - %s", date, time, students);
+    public Set<Name> getStudentsNames() {
+        return students.stream().map(Person::getName).collect(Collectors.toSet());
     }
 }

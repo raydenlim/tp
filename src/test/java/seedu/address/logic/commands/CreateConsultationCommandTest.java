@@ -1,26 +1,54 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_OBJ;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_OBJ;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalPersons.AMY;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
+import seedu.address.model.AddressBook;
+import seedu.address.model.ConsultationListBook;
+import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
 import seedu.address.model.util.SampleDataUtil;
+import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.ConsultationBuilder;
+import seedu.address.testutil.ModelStub;
 
 
 public class CreateConsultationCommandTest {
     @Test
     public void constructor_nullDetails_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new CreateConsultCommand(null, null, null));
+    }
+
+    @Test
+    public void execute_consultationAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingConsultationAdded modelStub = new ModelStubAcceptingConsultationAdded();
+        Consultation validConsultation = new ConsultationBuilder().build();
+        CommandResult commandResult = new CreateConsultCommand(
+                validConsultation.getDate(),
+                validConsultation.getTime(),
+                validConsultation.getStudentsNames()).execute(modelStub);
+
+        assertEquals(String.format(CreateConsultCommand.MESSAGE_SUCCESS, Messages.format(validConsultation)),
+                commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validConsultation), modelStub.consultationAdded);
     }
 
     @Test
@@ -38,5 +66,36 @@ public class CreateConsultationCommandTest {
 
         // null -> returns false
         assertFalse(createConsultCommand.equals(null));
+    }
+
+    /**
+     * A Model stub that always accept the consultation being added.
+     */
+    private class ModelStubAcceptingConsultationAdded extends ModelStub {
+        final ArrayList<Consultation> consultationAdded = new ArrayList<>();
+        final AddressBook addressBook = new AddressBookBuilder().withPerson(AMY).build();
+
+        @Override
+        public boolean hasConsultation(Consultation consultation) {
+            requireNonNull(consultation);
+            return consultationAdded.stream().anyMatch(consultation::isSameConsultation);
+        }
+
+        @Override
+        public void addConsultation(Consultation consultation) {
+            requireNonNull(consultation);
+            consultationAdded.add(consultation);
+        }
+
+        @Override
+        public Person getMatchingStudentName(Name name) {
+            requireNonNull(name);
+            return addressBook.matchName(name);
+        }
+
+        @Override
+        public ReadOnlyConsultationList getConsultationList() {
+            return new ConsultationListBook();
+        }
     }
 }

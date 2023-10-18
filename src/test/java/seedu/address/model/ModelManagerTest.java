@@ -19,6 +19,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -27,6 +28,7 @@ import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.ConsultationBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.SessionBuilder;
 import seedu.address.testutil.TypicalPersons;
@@ -160,8 +162,31 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void addConsultation_nullCase_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addConsultation(null));
+    }
+
+    @Test
+    public void hasConsultation_nullCase_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasConsultation(null));
+    }
+
+    @Test
+    public void addConsultation_validConsultation_returnsTrue() {
+        Consultation consultation = new ConsultationBuilder().build();
+        modelManager.addConsultation(consultation);
+        assertTrue(modelManager.hasConsultation(consultation));
+    }
+
+    @Test
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void getFilteredConsultationList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.getFilteredConsultationList().remove(0));
     }
 
     @Test

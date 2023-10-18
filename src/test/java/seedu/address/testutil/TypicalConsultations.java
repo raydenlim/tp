@@ -1,21 +1,28 @@
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.ConsultationList;
 
 /**
  * A utility class containing a list of {@code Consultation} objects to be used in tests.
  */
 public class TypicalConsultations {
+
     public static final Consultation CONSULTATION1 = new ConsultationBuilder()
             .withDate("11/11/2002")
             .withTime("10:00")
-            .withStudents(TypicalPersons.AMY, TypicalPersons.GEORGE)
+            .withStudents(TypicalPersons.AMY)
             .build();
 
     public static final Consultation CONSULTATION2 = new ConsultationBuilder()
             .withDate("12/12/2022")
             .withTime("19:00")
-            .withStudents(TypicalPersons.ALICE)
+            .withStudents(TypicalPersons.ALICE, TypicalPersons.GEORGE)
             .build();
 
     public static final Consultation CONSULTATION3 = new ConsultationBuilder()
@@ -30,5 +37,22 @@ public class TypicalConsultations {
             .withStudents(TypicalPersons.ELLE)
             .build();
 
-    private TypicalConsultations() {} // prevents instantiation
+    private TypicalConsultations() {} // prevents initialising
+
+    public static ConsultationListBook getTypicalConsultationListBook() {
+        ConsultationListBook clb = new ConsultationListBook();
+        for (Consultation consultation : getTypicalConsultations()) {
+            clb.addConsultation(consultation);
+        }
+        return clb;
+    }
+
+    public static ConsultationList getTypicalConsultations() {
+        ConsultationList typicalConsultations = new ConsultationList();
+        List<Consultation> consultationList = new ArrayList<>(Arrays.asList(CONSULTATION1, CONSULTATION2));
+        typicalConsultations.setConsultationList(consultationList);
+        return typicalConsultations;
+    }
+
+
 }

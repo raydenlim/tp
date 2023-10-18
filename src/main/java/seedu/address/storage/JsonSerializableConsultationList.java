@@ -19,7 +19,7 @@ import seedu.address.model.consultation.Consultation;
  */
 @JsonRootName(value = "consultationlist")
 public class JsonSerializableConsultationList {
-    public static final String MESSAGE_DUPLICATE_SESSION = "Consultation list contains duplicate consultation(s).";
+    public static final String MESSAGE_DUPLICATE_CONSULTATION = "Consultation list contains duplicate consultation(s).";
 
     private final List<JsonAdaptedConsultation> consultations = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class JsonSerializableConsultationList {
         for (JsonAdaptedConsultation jsonAdaptedConsultation : consultations) {
             Consultation consultation = jsonAdaptedConsultation.toModelType();
             if (consultationList.hasConsultation(consultation)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_SESSION);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_CONSULTATION);
             }
             consultationList.addConsultation(consultation);
         }

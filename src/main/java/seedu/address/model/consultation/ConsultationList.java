@@ -88,4 +88,20 @@ public class ConsultationList implements Iterable<Consultation> {
     public String toString() {
         return internalList.toString();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true; // Same object, equal
+        }
+
+        if (!(other instanceof ConsultationList)) {
+            return false; // Not the same class, not equal
+        }
+
+        ConsultationList otherList = (ConsultationList) other;
+
+        // Check if the lists have the same sessions in the same order
+        return internalList.equals(otherList.internalList);
+    }
 }

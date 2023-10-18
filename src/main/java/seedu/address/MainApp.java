@@ -90,6 +90,7 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
         logger.info("Using task list file : " + storage.getTaskListFilePath());
+        logger.info("Using consultation list file : " + storage.getConsultationListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;

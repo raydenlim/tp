@@ -222,6 +222,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasConsultation(Consultation consultation) {
+        requireNonNull(consultation);
+        return consultationList.hasConsultation(consultation);
+    }
+
+    @Override
     public ObservableList<Consultation> getFilteredConsultationList() {
         return filteredConsultations;
     }

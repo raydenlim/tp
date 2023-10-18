@@ -15,11 +15,7 @@ import seedu.address.model.util.SampleDataUtil;
 public class ConsultationBuilder {
     public static final String DEFAULT_DATE = "11/11/2023";
     public static final String DEFAULT_TIME = "11:11";
-    public static final Set<Person> DEFAULT_STUDENTS = SampleDataUtil.getStudentSet(
-            TypicalPersons.AMY,
-            TypicalPersons.BOB,
-            TypicalPersons.CARL
-    );
+    public static final Set<Person> DEFAULT_STUDENTS = TypicalPersons.DEFAULT_PERSONS;
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
     private LocalDate date;
