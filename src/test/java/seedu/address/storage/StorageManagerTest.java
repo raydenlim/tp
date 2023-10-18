@@ -88,6 +88,11 @@ public class StorageManagerTest {
     }
 
     @Test
+    public void getSessionListFilePath() {
+        assertNotNull(storageManager.getSessionListFilePath());
+    }
+
+    @Test
     public void getConsultationListFilePath() {
         assertNotNull(storageManager.getConsultationListFilePath());
     }
@@ -98,11 +103,6 @@ public class StorageManagerTest {
         storageManager.saveConsultationList(original);
         ReadOnlyConsultationList retrieved = storageManager.readConsultationList().get();
         assertEquals(original, new ConsultationListBook(retrieved));
-    }
-
-    @Test
-    public void getSessionListFilePath() {
-        assertNotNull(storageManager.getSessionListFilePath());
     }
 
     @Test
