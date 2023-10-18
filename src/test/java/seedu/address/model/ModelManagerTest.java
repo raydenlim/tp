@@ -20,8 +20,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;

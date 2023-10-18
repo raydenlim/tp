@@ -144,7 +144,6 @@ public class ParserUtil {
     }
 
     /**
-<<<<<<< HEAD
      * Parses {@code String date} into an {@code LocalDate} and returns it. Leading and trailing whitespaces will be
      * trimmed.
      */
