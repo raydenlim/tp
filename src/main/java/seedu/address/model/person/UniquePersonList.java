@@ -37,6 +37,20 @@ public class UniquePersonList implements Iterable<Person> {
         return internalList.stream().anyMatch(toCheck::isSamePerson);
     }
 
+
+    /**
+     * Returns student in the list that matches the name {@code toCheck}.
+     */
+    public Person matchName(Name toCheck) {
+        requireNonNull(toCheck);
+        Optional<Person> matchingStudent = internalList.stream().filter(p -> p.isSameName(toCheck)).findAny();
+        if (matchingStudent.isEmpty()) {
+            throw new PersonNotFoundException();
+        }
+        return matchingStudent.get();
+    }
+
+
     /**
      * Returns student in the list that matches the name {@code toCheck}.
      */

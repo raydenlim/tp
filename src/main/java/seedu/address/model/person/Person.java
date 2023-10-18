@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -24,6 +25,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
@@ -59,6 +61,25 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+
+    /**
+     * Adds a student to a session and a session to a student.
+     *
+     * @param session The session to attend.
+     */
+    public void attendSession(Session session) {
+        session.addStudent(this);
+    }
+
+    /**
+     * Removes a student from a session and a session from a student.
+     *
+     * @param session The session to miss.
+     */
+    public void missSession(Session session) {
+        session.removeStudent(this);
     }
 
     /**

@@ -15,6 +15,9 @@ import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.ConsultationList;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionList;
+import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 
 /**
@@ -25,6 +28,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final ConsultationList consultations;
+    private final SessionList sessionList;
     private final TaskListBook taskList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
@@ -40,6 +44,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.consultations = new ConsultationList();
+        this.sessionList = new SessionList();
         this.taskList = new TaskListBook(taskList);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
@@ -132,6 +137,18 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    //=========== SessionList =================================================================================
+    @Override
+    public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
+        requireNonNull(sessionNumber);
+        return sessionList.findSessionBySessionNumber(sessionNumber);
+    }
+
+    @Override
+    public void addSession(Session session) {
+        requireNonNull(session);
+        sessionList.addSession(session);
+    }
 
     //=========== TaskListBook ================================================================================
 
@@ -202,6 +219,7 @@ public class ModelManager implements Model {
         requireNonNull(name);
         return addressBook.matchName(name);
     }
+
 
     //=========== Filtered Task List Accessors =============================================================
 

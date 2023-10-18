@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -11,10 +12,16 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
+import static seedu.address.testutil.TypicalSessions.EMPTY_SESSION;
+import static seedu.address.testutil.TypicalSessions.SESSION1A;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.session.Session;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.SessionBuilder;
+
 
 public class PersonTest {
 
@@ -22,6 +29,25 @@ public class PersonTest {
     public void asObservableList_modifyList_throwsUnsupportedOperationException() {
         Person person = new PersonBuilder().build();
         assertThrows(UnsupportedOperationException.class, () -> person.getTags().remove(0));
+    }
+
+    @Test
+    public void studentAttendSession() {
+        Session emptySession = EMPTY_SESSION;
+        Person alice = new PersonBuilder(ALICE).build();
+        alice.attendSession(emptySession);
+
+        assertTrue(emptySession.getStudents().contains(alice));
+    }
+
+    @Test
+    public void studentMissSession() {
+        Session sessionWithCarl = new SessionBuilder()
+                .withSessionNumber("1").withStudents(SESSION1A.getStudents()).build();
+        Person carl = new PersonBuilder(CARL).build();
+        carl.missSession(sessionWithCarl);
+
+        assertFalse(sessionWithCarl.getStudents().contains(carl));
     }
 
     @Test
@@ -61,6 +87,38 @@ public class PersonTest {
         Person personA = new PersonBuilder().withName("Alice").build();
         Person personB = new PersonBuilder().withName("Alice").build();
         assertTrue(personA.isSameName(personB.getName()));
+    }
+
+    @Test
+    public void isSameName_sameName_returnsTrue() {
+        Name name = new Name("Jeremy");
+        Person person = new PersonBuilder().withName(name.toString()).withPhone("12345678").build();
+
+        // Create another person with the same name
+        Person anotherPerson = new PersonBuilder().withName(name.toString()).withPhone("98765432").build();
+
+        assertTrue(person.isSameName(anotherPerson.getName()));
+    }
+
+    @Test
+    public void isSameName_sameNameDifferentObject_returnsTrue() {
+        Name name1 = new Name("James");
+        Name name2 = new Name("James");
+        Person person1 = new PersonBuilder().withName(name1.toString()).withPhone("99999999").build();
+        Person person2 = new PersonBuilder().withName(name2.toString()).withPhone("12345678").build();
+
+        assertTrue(person1.isSameName(person2.getName()));
+    }
+
+    @Test
+    public void isSameName_differentName_returnsFalse() {
+        Name name1 = new Name("Green Blue");
+        Name name2 = new Name("Blue Green");
+        Person person = new PersonBuilder().withName(name1.toString()).withPhone("12345678").build();
+        // Create another person with a different name
+        Person anotherPerson = new PersonBuilder().withName(name2.toString()).withPhone("12345678").build();
+
+        assertFalse(person.isSameName(anotherPerson.getName()));
     }
 
     @Test
@@ -105,7 +163,8 @@ public class PersonTest {
     @Test
     public void toStringMethod() {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags() + "}";
+                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags()
+                + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

@@ -7,6 +7,8 @@ import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -26,6 +28,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.session.CreateSessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -97,6 +100,16 @@ public class AddressBookParserTest {
         String inputCommandString = CreateConsultCommand.COMMAND_WORD + VALID_DATE_DESC + VALID_TIME_DESC
                 + NAME_DESC_AMY;
         assertTrue(parser.parseCommand(inputCommandString) instanceof CreateConsultCommand);
+    }
+
+    @Test
+    public void parseCommand_createSession() throws Exception {
+        String sessionNumber = "1";
+        String studentName = "Ding Han";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(CreateSessionCommand.COMMAND_WORD
+                + whiteSpace + PREFIX_SESSION + sessionNumber
+                + whiteSpace + PREFIX_NAME + studentName) instanceof CreateSessionCommand);
     }
 
     @Test

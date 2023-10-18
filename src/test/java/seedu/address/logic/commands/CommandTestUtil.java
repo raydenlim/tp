@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
@@ -82,6 +83,10 @@ public class CommandTestUtil {
 
     public static final String VALID_DATE_DESC = " " + PREFIX_DATE + VALID_DATE;
     public static final String VALID_TIME_DESC = " " + PREFIX_TIME + VALID_TIME;
+    public static final String SESSION_NUMBER_SESSION1 = " " + PREFIX_SESSION + "1";
+    public static final String INVALID_SESSION_NUMBER = " " + PREFIX_SESSION + "abc";
+    public static final String SESSION_STUDENTS_STUDENTS1 = " " + PREFIX_NAME + "Bob";
+    public static final String INVALID_SESSION_STUDENTS = " " + PREFIX_NAME + "Charlie123@abc";
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

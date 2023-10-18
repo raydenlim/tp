@@ -185,6 +185,21 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void matchName_successfulMatch() {
+        Name nameToMatch = new Name("Alice Pauline");
+        Person personWithNameToMatch = new PersonBuilder().withName(nameToMatch.toString()).build();
+        uniquePersonList.add(personWithNameToMatch);
+        Person matchedPerson = uniquePersonList.matchName(nameToMatch);
+        assertEquals(personWithNameToMatch, matchedPerson);
+    }
+
+    @Test
+    public void matchName_nameNotInList_unsuccessfulMatch() {
+        Name nameToMatch = new Name("Invalid name");
+        assertThrows(PersonNotFoundException.class, () -> uniquePersonList.matchName(nameToMatch));
+    }
+
+    @Test
     public void toStringMethod() {
         assertEquals(uniquePersonList.asUnmodifiableObservableList().toString(), uniquePersonList.toString());
     }
