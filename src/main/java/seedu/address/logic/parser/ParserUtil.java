@@ -15,7 +15,6 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
@@ -191,7 +190,7 @@ public class ParserUtil {
     /**
      * Parses a {@code String priority} into a {@code TaskPriority}.
      * Leading and trailing whitespaces will be trimmed.
-     * String will be lowercase.
+     * String will be uppercase.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */

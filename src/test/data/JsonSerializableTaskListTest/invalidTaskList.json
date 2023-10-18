@@ -1,6 +1,8 @@
 {
   "tasks": [ {
     "name": "H@ve some c0ff3#",
-    "description": " "
+    "description": " ",
+    "isDone": false,
+    "priority": "MEDIUM"
   } ]
 }
