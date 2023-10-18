@@ -21,8 +21,8 @@ public class JsonSerializableAssignmentMap {
             @JsonProperty("assignments") HashMap<String, JsonAdaptedAssignment> assignments) {
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             String assignmentName = AssignmentInitialise.getAssignmentName(i).toString();
-            String assignmentGrade = AssignmentInitialise.getAssignmentMaxGrade(i).toString();
-            assignments.put(assignmentName, new JsonAdaptedAssignment(assignmentName, assignmentGrade));
+            JsonAdaptedAssignment JSONAssignment = assignments.get(assignmentName);
+            this.assignments.put(assignmentName, JSONAssignment);
         }
     }
 

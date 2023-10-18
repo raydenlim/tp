@@ -16,10 +16,16 @@ public class JsonAdaptedAssignment {
     private final String name;
     private final String grade;
 
-    @JsonCreator
-    public JsonAdaptedAssignment(@JsonProperty("assignmentname") String name, @JsonProperty("grade") String grade) {
+
+    /*public JsonAdaptedAssignment(@JsonProperty("assignmentname") String name, @JsonProperty("grade") String grade) {
         this.name = name;
         this.grade = grade;
+    }*/
+    @JsonCreator
+    public JsonAdaptedAssignment(String JSONdata) {
+        String[] splitData = JSONdata.split(": ");
+        this.name = splitData[0];
+        this.grade = splitData[1];
     }
 
     public JsonAdaptedAssignment(Assignment source) {

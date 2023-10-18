@@ -50,7 +50,7 @@ class JsonAdaptedPerson {
             for (int i = 0; i < AssignmentInitialise.size(); i++) {
                 String assignmentName = AssignmentInitialise.getAssignmentName(i).toString();
                 String assignmentGrade = AssignmentInitialise.getAssignmentMaxGrade(i).toString();
-                JsonMap.put(assignmentName, new JsonAdaptedAssignment(assignmentName, assignmentGrade));
+                JsonMap.put(assignmentName, new JsonAdaptedAssignment(assignmentName + ": " + assignmentGrade));
             }
             this.jsonAssignments = new JsonSerializableAssignmentMap(JsonMap);
     }
