@@ -21,7 +21,11 @@ public class Task {
     private boolean isDone;
 
     /**
-     * Every field must be present and not null.
+     * Creates a new task with the given name, description, and completion status.
+     *
+     * @param taskName        The name of the task. Must not be null.
+     * @param taskDescription The description of the task. Must not be null.
+     * @param isDone          The completion status of the task.
      */
     public Task(TaskName taskName, TaskDescription taskDescription, boolean isDone) {
         requireAllNonNull(taskName, taskDescription);
@@ -30,6 +34,13 @@ public class Task {
         this.isDone = isDone;
     }
 
+    /**
+     * Creates a new task with the given name and description.
+     * This task is initially marked as not done.
+     *
+     * @param taskName        The name of the task. Must not be null.
+     * @param taskDescription The description of the task. Must not be null.
+     */
     public Task(TaskName taskName, TaskDescription taskDescription) {
         requireAllNonNull(taskName, taskDescription);
         this.taskName = taskName;
@@ -59,7 +70,7 @@ public class Task {
     /**
      * Returns true if both tasks have the same name and description.
      */
-    public boolean isSameTask(seedu.address.model.task.Task otherTask) {
+    public boolean isSameTask(Task otherTask) {
         if (otherTask == this) {
             return true;
         }
@@ -80,11 +91,11 @@ public class Task {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof seedu.address.model.task.Task)) {
+        if (!(other instanceof Task)) {
             return false;
         }
 
-        seedu.address.model.task.Task otherTask = (seedu.address.model.task.Task) other;
+        Task otherTask = (Task) other;
         return taskName.equals(otherTask.taskName)
                 && taskDescription.equals(otherTask.taskDescription);
     }
