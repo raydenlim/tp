@@ -104,6 +104,7 @@ public class Task {
         return new ToStringBuilder(this)
                 .add("name", taskName)
                 .add("description", taskDescription)
+                .add("isDone", isDone)
                 .toString();
     }
 
