@@ -42,15 +42,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
         descriptor.setTags(person.getTags());
-
-        if (person.getGradedTest().size() == 5) {
-            descriptor.setGradedTest(person.getGradedTest());
-            descriptor.setReadingAssessment1((ReadingAssessment) person.getGradedTest().toArray()[0]);
-            descriptor.setReadingAssessment2((ReadingAssessment) person.getGradedTest().toArray()[1]);
-            descriptor.setMidTerms((MidTerms) person.getGradedTest().toArray()[2]);
-            descriptor.setFinals((Finals) person.getGradedTest().toArray()[3]);
-            descriptor.setPracticalExam((PracticalExam) person.getGradedTest().toArray()[4]);
-        }
+        descriptor.setGradedTest(person.getGradedTest());
     }
 
     /**

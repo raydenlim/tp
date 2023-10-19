@@ -1,12 +1,38 @@
 package seedu.address.model.gradedtest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class ReadingAssessmentTest {
+
+    @Test
+    public void validReadingAssessmentConstruction() {
+        ReadingAssessment score = new ReadingAssessment("10");
+        assertEquals("10", score.toString());
+    }
+
+    @Test
+    public void invalidReadingAssessmentConstruction() {
+        // Test construction with an invalid name
+        assertThrows(IllegalArgumentException.class, () -> new ReadingAssessment("**iloveyou**"));
+        assertThrows(IllegalArgumentException.class, () -> new ReadingAssessment("-10000000000"));
+    }
+
+    @Test
+    public void testHashCode() {
+        ReadingAssessment score1 = new ReadingAssessment("10");
+        ReadingAssessment score2 = new ReadingAssessment("10");
+        ReadingAssessment diffScore = new ReadingAssessment("10.0");
+
+        assertEquals(score1.hashCode(), score2.hashCode());
+        assertNotEquals(score1.hashCode(), diffScore.hashCode());
+    }
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new ReadingAssessment(null));

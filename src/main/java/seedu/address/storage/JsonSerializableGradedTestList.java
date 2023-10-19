@@ -1,7 +1,5 @@
 package seedu.address.storage;
 
-import static seedu.address.logic.commands.AddGradedTestCommand.MESSAGE_DUPLICATE_GRADED_TEST;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

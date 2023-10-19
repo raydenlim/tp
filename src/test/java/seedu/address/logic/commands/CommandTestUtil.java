@@ -46,15 +46,15 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_GT_RA1 = "-"; // default is -
-    public static final String VALID_GT_RA2 = "-"; // default is -
-    public static final String VALID_GT_MIDTERMS = "20.0"; // floats are allowed
-    public static final String VALID_GT_FINALS = "100"; // ints are allowed
-    public static final String VALID_GT_PE = "0"; // 0 score ok
-    public static final String VALID_GRADED_TEST_1 = "Reading Assessment 1: - | Reading Assessment 2: - "
-            + "| MidTerms: 3 | Finals: 4 | Practical Exam: 5 ";
-    public static final String VALID_GRADED_TEST_2 = "Reading Assessment 1: 100 | Reading Assessment 2: 100 "
-            + "| MidTerms: 100 | Finals: 100 | Practical Exam: 100 ";
+    public static final String VALID_GT_RA1 = "1.0";
+    public static final String VALID_GT_RA2 = "2";
+    public static final String VALID_GT_MIDTERMS = "3";
+    public static final String VALID_GT_FINALS = "4";
+    public static final String VALID_GT_PE = "5";
+    public static final String VALID_GRADED_TEST_1 =
+            "Reading Assessment 1:- | Reading Assessment 2:- | MidTerms:3 | Finals:4 | Practical Exam:5";
+    public static final String VALID_GRADED_TEST_2 =
+            "Reading Assessment 1:100 | Reading Assessment 2:100 | MidTerms:100 | Finals:100 | Practical Exam:100";
     public static final String VALID_TASK_NAME = "Do cs2103t";
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
 
@@ -70,24 +70,24 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
     public static final String GT_DESC_DEFAULT = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_1;
     public static final String GT_DESC_100 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_2;
-    public static final String GT_DESC_RA1 = " " + PREFIX_GRADED_TEST + VALID_GT_RA1;
-    public static final String GT_DESC_RA2 = " " + PREFIX_GRADED_TEST + VALID_GT_RA2;
-    public static final String GT_DESC_MIDTERMS = " " + PREFIX_GRADED_TEST + VALID_GT_MIDTERMS;
-    public static final String GT_DESC_FINALS = " " + PREFIX_GRADED_TEST + VALID_GT_FINALS;
-    public static final String GT_DESC_PE = " " + PREFIX_GRADED_TEST + VALID_GT_PE;
+    public static final String GT_DESC_RA1 = " " + PREFIX_READING_ASSESSMENT + VALID_GT_RA1;
+    public static final String GT_DESC_RA2 = " " + PREFIX_READING_ASSESSMENT + VALID_GT_RA2;
+    public static final String GT_DESC_MIDTERMS = " " + PREFIX_MIDTERMS + VALID_GT_MIDTERMS;
+    public static final String GT_DESC_FINALS = " " + PREFIX_FINALS + VALID_GT_FINALS;
+    public static final String GT_DESC_PE = " " + PREFIX_PRACTICAL_EXAM + VALID_GT_PE;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
-    public static final String INVALID_GT_RA_DESC = "-"; // no such thing as RA 13, only 1 & 2
+    public static final String INVALID_GT_RA_DESC = "-1";
     public static final String INVALID_GT_MIDTERMS_DESC = "wergwrg"; // only numerics
     public static final String INVALID_GT_FINALS_DESC = "-43"; // no negative numbers
     public static final String INVALID_GT_PE_DESC = "%#&@%$^@#"; // no special symbols
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
-    public static final String INVALID_GRADED_TEST_DESC_1 = "Reading Assessment 1: -1 | Reading Assessment 2: 0 "
-            + "| MidTerms: 0 | Finals: -1 | Practical Exam: 0"; // No negative scores
-    public static final String INVALID_GRADED_TEST_DESC_2 = "Reading Assessment 1: 0 | Reading Assessment 2: 0 "
-            + "| MidTerms: 0 | Finals: 0 | Practical Exam: *"; // No special char * allowed
+    public static final String INVALID_GRADED_TEST_DESC_1 = "Reading Assessment 1:-1 | Reading Assessment 2:0 "
+            + "| MidTerms:0 | Finals:-1 | Practical Exam:0"; // No negative scores
+    public static final String INVALID_GRADED_TEST_DESC_2 = "Reading Assessment 1:0 | Reading Assessment 2:0 "
+            + "| MidTerms:0 | Finals:0 | Practical Exam:*"; // No special char * allowed
     public static final String TASK_NAME_TASK1 = " " + PREFIX_TASK_NAME + VALID_TASK_NAME;
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
@@ -121,12 +121,10 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).withRA1(VALID_GT_RA1).withRA2(VALID_GT_RA2)
-                .withMidTerm(VALID_GT_MIDTERMS).withFinals(VALID_GT_FINALS)
-                .withPracticalExam(VALID_GT_PE).build();
+                .withTags(VALID_TAG_FRIEND).withGradedTest(VALID_GRADED_TEST_1).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).withGradedTest(VALID_GRADED_TEST_2).build();
     }
 
     /**

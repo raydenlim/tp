@@ -1,12 +1,38 @@
 package seedu.address.model.gradedtest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class MidTermTest {
+
+    @Test
+    public void validMidTermsConstruction() {
+        MidTerms score = new MidTerms("10");
+        assertEquals("10", score.toString());
+    }
+
+    @Test
+    public void invalidMidTermsConstruction() {
+        // Test construction with an invalid name
+        assertThrows(IllegalArgumentException.class, () -> new MidTerms("**iloveyou**"));
+        assertThrows(IllegalArgumentException.class, () -> new MidTerms("-10000000000"));
+    }
+
+    @Test
+    public void testHashCode() {
+        MidTerms score1 = new MidTerms("10");
+        MidTerms score2 = new MidTerms("10");
+        MidTerms diffScore = new MidTerms("10.0");
+
+        assertEquals(score1.hashCode(), score2.hashCode());
+        assertNotEquals(score1.hashCode(), diffScore.hashCode());
+    }
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new MidTerms(null));

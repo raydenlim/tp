@@ -1,12 +1,38 @@
 package seedu.address.model.gradedtest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class FinalsTest {
+
+    @Test
+    public void validFinalsConstruction() {
+        Finals score = new Finals("10");
+        assertEquals("10", score.toString());
+    }
+
+    @Test
+    public void invalidFinalsConstruction() {
+        // Test construction with an invalid name
+        assertThrows(IllegalArgumentException.class, () -> new Finals("**iloveyou**"));
+        assertThrows(IllegalArgumentException.class, () -> new Finals("-10000000000"));
+    }
+
+    @Test
+    public void testHashCode() {
+        Finals score1 = new Finals("10");
+        Finals score2 = new Finals("10");
+        Finals diffScore = new Finals("10.0");
+
+        assertEquals(score1.hashCode(), score2.hashCode());
+        assertNotEquals(score1.hashCode(), diffScore.hashCode());
+    }
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Finals(null));
@@ -19,7 +45,7 @@ public class FinalsTest {
     }
 
     @Test
-    public void isValidMidTerms() {
+    public void isValidFinals() {
         // null score
         assertThrows(NullPointerException.class, () -> Finals.isValidFinalsResult(null));
 

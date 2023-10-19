@@ -1,12 +1,38 @@
 package seedu.address.model.gradedtest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class PracticalExamTest {
+
+    @Test
+    public void validPracticalExamConstruction() {
+        PracticalExam score = new PracticalExam("10");
+        assertEquals("10", score.toString());
+    }
+
+    @Test
+    public void invalidPracticalExamConstruction() {
+        // Test construction with an invalid name
+        assertThrows(IllegalArgumentException.class, () -> new PracticalExam("**iloveyou**"));
+        assertThrows(IllegalArgumentException.class, () -> new PracticalExam("-10000000000"));
+    }
+
+    @Test
+    public void testHashCode() {
+        PracticalExam score1 = new PracticalExam("10");
+        PracticalExam score2 = new PracticalExam("10");
+        PracticalExam diffScore = new PracticalExam("10.0");
+
+        assertEquals(score1.hashCode(), score2.hashCode());
+        assertNotEquals(score1.hashCode(), diffScore.hashCode());
+    }
+
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new PracticalExam(null));

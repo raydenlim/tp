@@ -3,24 +3,22 @@ package seedu.address.model.gradedtest;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.expectedgrade.ExpectedGrade;
 
 public class GradedTest {
-    public static final String MESSAGE_CONSTRAINTS = "Graded Test Scores should be Alphanumeric";
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}-]+";
+    public static final String MESSAGE_CONSTRAINTS =
+            "GradedTest Names should only contain alphanumeric characters and spaces, and it should not be blank";
+    public static final String VALIDATION_REGEX = "Reading Assessment 1:[-\\d]+ \\| Reading Assessment 2:[-\\d]+ \\| "
+            + "MidTerms:[-\\d]+ \\| Finals:[-\\d]+ \\| Practical Exam:[-\\d]+";
+
     public static final String DEFAULT_VALUE = "-";
     // Identity fields
     public final String gradedTestsIndv;
 
     // Data fields
-    private final Set<ExpectedGrade> expectedGrades = new HashSet<>();
     private final ReadingAssessment readingAssessment1;
     private final ReadingAssessment readingAssessment2;
     private final MidTerms midTerms;
@@ -44,8 +42,12 @@ public class GradedTest {
         this.midTerms = midTerms;
         this.finals = finals;
         this.practicalExam = practicalExam;
-        this.gradedTestsIndv = readingAssessment1.toString() + readingAssessment2.toString() + midTerms.toString()
-                + finals.toString() + practicalExam.toString();
+        this.gradedTestsIndv =
+                "Reading Assessment 1:" + readingAssessment1.toString() + " | "
+                + "Reading Assessment 2:" + readingAssessment2.toString() + " | "
+                + "MidTerms:" + midTerms.toString() + " | "
+                + "Finals:" + finals.toString() + " | "
+                + "Practical Exam:" + practicalExam.toString();
     }
 
     /**
@@ -104,14 +106,6 @@ public class GradedTest {
 
     public String getGradedTests() {
         return gradedTestsIndv;
-    }
-
-    /**
-     * Returns an immutable gradedTest set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<ExpectedGrade> getExpectedGrade() {
-        return Collections.unmodifiableSet(expectedGrades);
     }
 
     /**
