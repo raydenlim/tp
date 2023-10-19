@@ -57,7 +57,13 @@
             <Label text="Task List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
             <StackPane VBox.vgrow="ALWAYS" fx:id="taskListPanelPlaceholder" />
           </VBox>
+
+          <VBox fx:id="sessionList" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+            <Label text="Session List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
+            <StackPane VBox.vgrow="ALWAYS" fx:id="sessionListPanelPlaceholder" />
+          </VBox>
         </HBox>
+
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>

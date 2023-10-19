@@ -17,6 +17,7 @@ import seedu.address.logic.Messages;
 import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
@@ -28,7 +29,7 @@ import seedu.address.model.person.Person;
 public class DeleteCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
-            new GradedTestListBook());
+            new SessionListBook(), new GradedTestListBook());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -39,7 +40,8 @@ public class DeleteCommandTest {
                 Messages.format(personToDelete));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
-                new GradedTestListBook());
+                new SessionListBook(), new GradedTestListBook());
+
         expectedModel.deletePerson(personToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -63,8 +65,9 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
-                new GradedTestListBook());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
+                        new SessionListBook(), new GradedTestListBook());
+      
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
 

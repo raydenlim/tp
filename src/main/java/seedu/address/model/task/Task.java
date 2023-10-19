@@ -1,6 +1,5 @@
 package seedu.address.model.task;
 
-
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
@@ -8,7 +7,7 @@ import java.util.Objects;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Task in the task list.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Task {
@@ -18,14 +17,37 @@ public class Task {
 
     // Data fields
     private final TaskDescription taskDescription;
+    private final boolean isDone;
+    private final TaskPriority priority;
 
     /**
-     * Every field must be present and not null.
+     * Creates a new task with the given name, description, and completion status.
+     *
+     * @param taskName        The name of the task. Must not be null.
+     * @param taskDescription The description of the task. Must not be null.
+     * @param isDone          The completion status of the task.
      */
-    public Task(TaskName taskName, TaskDescription taskDescription) {
+    public Task(TaskName taskName, TaskDescription taskDescription, boolean isDone, TaskPriority priority) {
         requireAllNonNull(taskName, taskDescription);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+        this.isDone = isDone;
+        this.priority = priority;
+    }
+
+    /**
+     * Creates a new task with the given name and description.
+     * This task is initially marked as not done.
+     *
+     * @param taskName        The name of the task. Must not be null.
+     * @param taskDescription The description of the task. Must not be null.
+     */
+    public Task(TaskName taskName, TaskDescription taskDescription, TaskPriority priority) {
+        requireAllNonNull(taskName, taskDescription);
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.isDone = false;
+        this.priority = priority;
     }
 
     public TaskName getName() {
@@ -34,6 +56,14 @@ public class Task {
 
     public TaskDescription getDescription() {
         return taskDescription;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    public TaskPriority getPriority() {
+        return priority;
     }
 
     /**
@@ -60,11 +90,11 @@ public class Task {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof seedu.address.model.task.Task)) {
+        if (!(other instanceof Task)) {
             return false;
         }
 
-        seedu.address.model.task.Task otherTask = (seedu.address.model.task.Task) other;
+        Task otherTask = (Task) other;
         return taskName.equals(otherTask.taskName)
                 && taskDescription.equals(otherTask.taskDescription);
     }
@@ -72,7 +102,7 @@ public class Task {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(taskName, taskDescription);
+        return Objects.hash(taskName, taskDescription, isDone, priority);
     }
 
     @Override
@@ -80,6 +110,8 @@ public class Task {
         return new ToStringBuilder(this)
                 .add("name", taskName)
                 .add("description", taskDescription)
+                .add("isDone", isDone)
+                .add("priority", priority)
                 .toString();
     }
 

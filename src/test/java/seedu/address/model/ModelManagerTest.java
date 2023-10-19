@@ -5,12 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_GRADED_TEST;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -27,6 +29,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionNumberContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -161,6 +164,11 @@ public class ModelManagerTest {
         assertTrue(toAdd.equals(sessionList.findSessionBySessionNumber(new SessionNumber("0"))));
     }
 
+    @Test
+    public void getFilteredSessionList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredSessionList().remove(0));
+    }
+
 
     @Test
     public void setGradedTestListFilePath_nullPath_throwsNullPointerException() {
@@ -213,13 +221,15 @@ public class ModelManagerTest {
         UserPrefs userPrefs = new UserPrefs();
         TaskListBook taskList = new TaskListBook();
         GradedTestListBook gradedTestList = new GradedTestListBook();
+        SessionListBook sessionList = new SessionListBook();
         taskList.addTask(TASK1);
         gradedTestList.addGradedTest(GT1);
 
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, taskList, gradedTestList);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, taskList, gradedTestList);
+        modelManager = new ModelManager(addressBook, userPrefs, taskList, sessionList, gradedTestList);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, taskList, sessionList, gradedTestList);
+
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -233,14 +243,14 @@ public class ModelManagerTest {
 
         // different addressBook -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs,
-                taskList, gradedTestList)));
+                taskList, sessionList, gradedTestList)));
+
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                taskList, gradedTestList)));
-
+                taskList, sessionList, gradedTestList)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -248,9 +258,9 @@ public class ModelManagerTest {
         // different taskList -> returns false
         String[] taskKeywords = TASK1.getName().taskName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
-        System.out.println(TASK1.getName());
+
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                new TaskListBook(), new GradedTestListBook())));
+                new TaskListBook(),  new SessionListBook(), new GradedTestListBook())));
 
         // different gradedTestList -> returns false
         String[] gradedTestKeywords = GT1.getGradedTests().toString().split("\\s+");
@@ -258,17 +268,20 @@ public class ModelManagerTest {
                 new GradedTestNameContainsKeywordsPredicate(Arrays.asList(gradedTestKeywords)));
         System.out.println(GT1.getGradedTests());
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                new TaskListBook(), new GradedTestListBook())));
+                new TaskListBook(), new SessionListBook(), new GradedTestListBook())));
+
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         modelManager.updateFilteredGradedTestList(PREDICATE_SHOW_ALL_GRADED_TEST);
+        modelManager.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs,
-                taskList, gradedTestList)));
+                taskList, sessionList, gradedTestList)));
+
     }
 }

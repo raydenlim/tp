@@ -23,6 +23,8 @@ public interface Model {
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Session> PREDICATE_SHOW_ALL_SESSIONS = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<GradedTest> PREDICATE_SHOW_ALL_GRADED_TEST = unused -> true;
@@ -108,6 +110,22 @@ public interface Model {
      * Adds the given sesssion.
      */
     void addSession(Session session);
+
+    /** Returns an unmodifiable view of the filtered session list */
+    ObservableList<Session> getFilteredSessionList();
+
+    /** Returns the SessionList */
+    ReadOnlySessionList getSessionList();
+
+    /**
+     * Updates the filter of the filtered session list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredSessionList(Predicate<Session> predicate);
+
+
+    //=========== TaskList =================================================================================
+
 
     /**
      * Replaces task list data with the data in {@code taskList}.

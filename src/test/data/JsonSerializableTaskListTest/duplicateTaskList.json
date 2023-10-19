@@ -1,9 +1,13 @@
 {
   "tasks" : [ {
     "name" : "Do 2103T",
-    "description" : "Homework assignment"
+    "description" : "Homework assignment",
+    "isDone": false,
+    "priority": "MEDIUM"
   }, {
     "name" : "Do 2103T",
-    "description" : "Homework assignment"
+    "description" : "Homework assignment",
+    "isDone": false,
+    "priority": "MEDIUM"
   } ]
 }
