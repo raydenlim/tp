@@ -53,6 +53,9 @@ public class ConsultationListBookTest {
         // New SessionListBook should be equal to itself
         assertEquals(consultationListBook, consultationListBook);
 
+        // Other class objects not equals to ConsultationListBook
+        assertFalse(consultationListBook.equals(new Integer(1)));
+
         // ConsultationListBook with different data should not be equal
         ConsultationListBook other = new ConsultationListBook();
         other.addConsultation(CONSULTATION1);

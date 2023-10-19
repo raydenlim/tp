@@ -68,6 +68,16 @@ public class ConsultationListTest {
     }
 
     @Test
+    public void equals() {
+        // Same ConsultationList object
+        ConsultationList sameConsultations = consultations;
+        assertEquals(consultations, sameConsultations);
+
+        // Object of different class -> returns false
+        assertFalse(consultations.equals(new Integer(1)));
+    }
+
+    @Test
     public void toStringMethod() {
         assertEquals(consultations.asUnmodifiableObservableList().toString(), consultations.toString());
     }
