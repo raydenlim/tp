@@ -149,6 +149,11 @@ public class ModelManager implements Model {
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
+    @Override
+    public ReadOnlySessionList getSessionList() {
+        return sessionList;
+    }
+
     /**
      * Returns an unmodifiable view of the list of {@code Session} backed by the internal list of
      * {@code versionedAddressBook}

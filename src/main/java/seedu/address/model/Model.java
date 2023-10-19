@@ -110,6 +110,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered session list */
     ObservableList<Session> getFilteredSessionList();
 
+    /** Returns the SessionList */
+    ReadOnlySessionList getSessionList();
+
     /**
      * Updates the filter of the filtered session list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
