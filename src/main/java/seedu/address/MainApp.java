@@ -19,8 +19,10 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
@@ -83,12 +85,18 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
         logger.info("Using task list file : " + storage.getTaskListFilePath());
+        logger.info("Using session list file : " + storage.getSessionListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
 
         Optional<ReadOnlyTaskList> taskListOptional;
         ReadOnlyTaskList initialTaskList;
+
+        Optional<ReadOnlySessionList> sessionListOptional;
+        ReadOnlySessionList initialSessionList;
+
+
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -110,12 +118,25 @@ public class MainApp extends Application {
             }
             initialTaskList = taskListOptional.orElseGet(SampleDataUtil::getSampleTaskList);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+            logger.warning("Data file at " + storage.getTaskListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty TaskList.");
             initialTaskList = new TaskListBook();
         }
 
-        return new ModelManager(initialData, userPrefs, initialTaskList);
+        try {
+            sessionListOptional = storage.readSessionList();
+            if (!sessionListOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getSessionListFilePath()
+                        + " populated with a sample SessionList.");
+            }
+            initialSessionList = sessionListOptional.orElseGet(SampleDataUtil::getSampleSessionList);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getSessionListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty SessionList.");
+            initialSessionList = new SessionListBook();
+        }
+
+        return new ModelManager(initialData, userPrefs, initialTaskList, initialSessionList);
     }
 
     private void initLogging(Config config) {

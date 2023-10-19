@@ -57,7 +57,7 @@ public class TaskListBook implements ReadOnlyTaskList {
         setTasks(newData.getTaskList());
     }
 
-    //// task-level operations
+    // task-level operations
 
     /**
      * Returns the task at the given index.

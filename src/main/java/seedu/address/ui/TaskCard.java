@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import seedu.address.model.task.Task;
 
 /**
@@ -18,11 +19,13 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Text name;
     @FXML
     private Label id;
     @FXML
-    private Label description;
+    private Text description;
+    @FXML
+    private Text priority;
 
     /**
      * Creates a {@code TaskCard} with the given {@code Task} and index to display.
@@ -33,5 +36,25 @@ public class TaskCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(task.getName().taskName);
         description.setText(task.getDescription().description);
+        priority.setText(task.getPriority().name());
+
+        switch(task.getPriority()) {
+        case LOW:
+            priority.setStyle("-fx-fill: green");
+            break;
+        case MEDIUM:
+            priority.setStyle("-fx-fill: yellow");
+            break;
+        case HIGH:
+            priority.setStyle("-fx-fill: red");
+            break;
+        default:
+            priority.setStyle("-fx-fill: white");
+        }
+
+        name.setStrikethrough(task.getIsDone());
+        description.setStrikethrough(task.getIsDone());
+        priority.setStrikethrough(task.getIsDone());
+
     }
 }

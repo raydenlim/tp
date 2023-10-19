@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -63,9 +64,26 @@ public class TaskTest {
     }
 
     @Test
+    public void hashCode_sameFields_expectSameHashCode() {
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+        Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+
+        assertEquals(task1.hashCode(), task2.hashCode());
+    }
+
+    @Test
+    public void hashCode_differentFields_expectDifferentHashCode() {
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+        Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"), true, TaskPriority.HIGH);
+
+        assertThrows(AssertionError.class, () -> assertEquals(task1.hashCode(), task2.hashCode()));
+    }
+
+    @Test
     public void toStringMethod() {
-        String expected = String.format("%s{name=%s, description=%s}",
-                Task.class.getCanonicalName(), TASK1.getName(), TASK1.getDescription());
+        String expected = String.format("%s{name=%s, description=%s, isDone=%s, priority=%s}",
+                Task.class.getCanonicalName(), TASK1.getName(), TASK1.getDescription(),
+                TASK1.getIsDone(), TASK1.getPriority());
         assertEquals(expected, TASK1.toString());
     }
 }

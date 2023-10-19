@@ -27,8 +27,8 @@ public class SessionListBookTest {
     }
 
 
-
-    private void resetData_withValidReadOnlySessionListBook_replacesData() {
+    @Test
+    public void resetData_withValidReadOnlySessionListBook_replacesData() {
         SessionListBook newData = getTypicalSessionList();
         sessionListBook.resetData(newData);
         assertEquals(newData, sessionListBook);
