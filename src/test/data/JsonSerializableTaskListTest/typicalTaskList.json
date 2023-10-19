@@ -1,9 +1,13 @@
 {
   "tasks" : [ {
     "name" : "Do cs2103t",
-    "description" : "Complete PRS"
+    "description" : "Complete PRS",
+    "isDone": false,
+    "priority": "MEDIUM"
   }, {
     "name" : "Read quant guide",
-    "description" : "The green book"
+    "description" : "The green book",
+    "isDone": false,
+    "priority": "MEDIUM"
   } ]
 }

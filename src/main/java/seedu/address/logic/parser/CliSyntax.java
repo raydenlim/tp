@@ -16,5 +16,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_SESSION = new Prefix("s/");
     public static final Prefix PREFIX_TASK_NAME = new Prefix("tn/");
     public static final Prefix PREFIX_TASK_DESCRIPTION = new Prefix("td/");
+    public static final Prefix PREFIX_TASK_PRIORITY = new Prefix("tp/");
 
 }

@@ -23,6 +23,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskPriority;
 
 
 /**
@@ -54,9 +55,9 @@ public class SampleDataUtil {
 
     public static Task[] getSampleTasks() {
         return new Task[] {
-            new Task(new TaskName("Do 2103T"), new TaskDescription("Homework assignment")),
-            new Task(new TaskName("Do cs2101"), new TaskDescription("Practice script")),
-            new Task(new TaskName("Do cs2100"), new TaskDescription("Remember mips"))
+            new Task(new TaskName("Do 2103T"), new TaskDescription("Homework assignment"), TaskPriority.HIGH),
+            new Task(new TaskName("Do cs2101"), new TaskDescription("Practice script"), TaskPriority.HIGH),
+            new Task(new TaskName("Do cs2100"), new TaskDescription("Remember mips"), TaskPriority.HIGH)
         };
     }
 
