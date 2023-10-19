@@ -110,8 +110,8 @@ public class MainApp extends Application {
             }
             initialTaskList = taskListOptional.orElseGet(SampleDataUtil::getSampleTaskList);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+            logger.warning("Data file at " + storage.getTaskListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty TaskList.");
             initialTaskList = new TaskListBook();
         }
 

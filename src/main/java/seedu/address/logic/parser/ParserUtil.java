@@ -17,6 +17,7 @@ import seedu.address.model.session.SessionNumber;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
+import seedu.address.model.task.TaskPriority;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -157,7 +158,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String taskName} into a {@code taskName}.
+     * Parses a {@code String taskName} into a {@code TaskName}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -172,7 +173,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String taskDescription} into a {@code taskDescription}.
+     * Parses a {@code String taskDescription} into a {@code TaskDescription}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -184,5 +185,23 @@ public class ParserUtil {
             throw new ParseException(TaskDescription.MESSAGE_CONSTRAINTS);
         }
         return new TaskDescription(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String priority} into a {@code TaskPriority}.
+     * Leading and trailing whitespaces will be trimmed.
+     * String will be uppercase.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static TaskPriority parseTaskPriority(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim().toUpperCase();
+        for (TaskPriority priority : TaskPriority.values()) {
+            if (trimmedName.equals(priority.name())) {
+                return TaskPriority.valueOf(trimmedName);
+            }
+        }
+        throw new ParseException(TaskPriority.MESSAGE_CONSTRAINTS);
     }
 }
