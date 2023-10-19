@@ -63,6 +63,7 @@ public class SessionListTest {
     public void set_setSession_successful() {
         sessionList.addSession(SESSION3A);
         sessionList.setSession(SESSION3A, SESSION2);
+        
         assertTrue(sessionList.contains(SESSION2));
         assertFalse(sessionList.contains(SESSION3A));
     }
