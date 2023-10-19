@@ -32,8 +32,8 @@ import seedu.address.model.person.assignment.Grade;
 
 public class AddGradeCommandTest {
 
-    private Model model = new ModelManager(
-        getTypicalAddressBook(), new UserPrefs(), new TaskListBook(), new SessionListBook(), new ConsultationListBook());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
+        new SessionListBook(), new ConsultationListBook());
     @Test
     public void execute_addGrade_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
