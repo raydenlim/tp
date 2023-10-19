@@ -66,7 +66,7 @@ public class CreateConsultCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
+        // instanceof handles null case
         if (!(other instanceof CreateConsultCommand)) {
             return false;
         }
