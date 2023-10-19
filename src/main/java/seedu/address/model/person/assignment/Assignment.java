@@ -31,4 +31,18 @@ public class Assignment {
     public Assignment copyAssignment() {
         return new Assignment(this.assignmentName, this.grade.copyGrade());
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Assignment)) {
+            return false;
+        }
+
+        Assignment otherName = (Assignment) other;
+        return assignmentName.equals(otherName.assignmentName) && grade.equals(otherName.grade);
+    }
 }

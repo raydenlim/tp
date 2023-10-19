@@ -71,4 +71,18 @@ public class AssignmentMap {
     public ObservableMap<AssignmentName, Assignment> asUnmodifiableObservableMap() {
         return unmodifiableAssignments;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof AssignmentMap)) {
+            return false;
+        }
+
+        AssignmentMap otherMap = (AssignmentMap) other;
+        return this.assignments.equals(otherMap.assignments);
+    }
 }

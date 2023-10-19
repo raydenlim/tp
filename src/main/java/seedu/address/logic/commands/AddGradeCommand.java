@@ -34,7 +34,6 @@ public class AddGradeCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a grade to a person’s assignment identified "
             + "by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
-            + "index"
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
             + PREFIX_GRADE + "GRADE ";
 

@@ -13,10 +13,10 @@ import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 /**
  * An Immutable AssignmentMap that is serializable to JSON format.
  */
-@JsonRootName(value = "assignmentmap")
+@JsonRootName(value = "assignmentMap")
 public class JsonSerializableAssignmentMap {
 
-    private final HashMap<String, JsonAdaptedAssignment> assignments = new HashMap<>();
+    private final HashMap<String, JsonAdaptedAssignment> assignments;
 
     /**
      * Constructs a {@code JsonSerializableAssignmentMap} with the given persons.
@@ -24,11 +24,7 @@ public class JsonSerializableAssignmentMap {
     @JsonCreator
     public JsonSerializableAssignmentMap(
             @JsonProperty("assignments") HashMap<String, JsonAdaptedAssignment> assignments) {
-        for (int i = 0; i < AssignmentInitialise.size(); i++) {
-            String assignmentName = AssignmentInitialise.getAssignmentName(i).toString();
-            JsonAdaptedAssignment jsonAssignment = assignments.get(assignmentName);
-            this.assignments.put(assignmentName, jsonAssignment);
-        }
+        this.assignments = assignments;
     }
 
     /**
@@ -37,11 +33,12 @@ public class JsonSerializableAssignmentMap {
      * @param source future changes to this will not affect the created {@code JsonSerializableAssignmentMap}.
      */
     public JsonSerializableAssignmentMap(ReadOnlyAssignmentMap source) {
+        this.assignments = new HashMap<String, JsonAdaptedAssignment>();
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
             JsonAdaptedAssignment assignmentToBeAdded =
                     new JsonAdaptedAssignment(source.getAssignmentMap().get(assignmentName));
-            assignments.put(assignmentName.toString(), assignmentToBeAdded);
+            this.assignments.put(assignmentName.toString(), assignmentToBeAdded);
         }
     }
 

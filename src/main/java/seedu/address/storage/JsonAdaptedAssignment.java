@@ -1,7 +1,7 @@
 package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.assignment.Assignment;
@@ -16,30 +16,25 @@ public class JsonAdaptedAssignment {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Assignment's %s field is missing!";
 
-    private final String name;
+    private final String assignmentName;
     private final String grade;
 
     /**
      * Constructs a {@code JsonAdaptedAssignment} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedAssignment(String jsonData) {
-        String[] splitData = jsonData.split(": ");
-        this.name = splitData[0];
-        this.grade = splitData[1];
+    public JsonAdaptedAssignment(@JsonProperty("assignmentName") String assignmentName,
+        @JsonProperty("grade") String grade) {
+        this.assignmentName = assignmentName;
+        this.grade = grade;
     }
 
     /**
      * Converts a given {@code Assignment} into this class for Jackson use.
      */
     public JsonAdaptedAssignment(Assignment source) {
-        name = source.name();
+        assignmentName = source.name();
         grade = source.gradeToString();
-    }
-
-    @JsonValue
-    public String getAssignmentDetails() {
-        return name + ": " + grade;
     }
 
     /**
@@ -48,12 +43,12 @@ public class JsonAdaptedAssignment {
      * @throws IllegalValueException if there were any data constraints violated in the adapted assignment.
      */
     public Assignment toModelType() throws IllegalValueException {
-        if (name == null) {
+        if (assignmentName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     AssignmentName.class.getSimpleName()));
         }
 
-        final AssignmentName modelName = new AssignmentName(name);
+        final AssignmentName modelName = new AssignmentName(assignmentName);
 
         if (grade == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
