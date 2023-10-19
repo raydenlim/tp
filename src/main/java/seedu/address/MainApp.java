@@ -19,8 +19,10 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
@@ -89,6 +91,11 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyTaskList> taskListOptional;
         ReadOnlyTaskList initialTaskList;
+
+        Optional<ReadOnlySessionList> sessionListOptional;
+        ReadOnlySessionList initialSessionList;
+
+
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -115,7 +122,20 @@ public class MainApp extends Application {
             initialTaskList = new TaskListBook();
         }
 
-        return new ModelManager(initialData, userPrefs, initialTaskList);
+        try {
+            sessionListOptional = storage.readSessionList();
+            if (!sessionListOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getSessionListFilePath()
+                        + " populated with a sample SessionList.");
+            }
+            initialSessionList = sessionListOptional.orElseGet(SampleDataUtil::getSampleSessionList);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
+                    + " Will be starting with an empty AddressBook.");
+            initialSessionList = new SessionListBook();
+        }
+
+        return new ModelManager(initialData, userPrefs, initialTaskList, initialSessionList);
     }
 
     private void initLogging(Config config) {

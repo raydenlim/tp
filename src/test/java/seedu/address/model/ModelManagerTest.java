@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -23,6 +25,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionNumberContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -157,6 +160,11 @@ public class ModelManagerTest {
         assertTrue(toAdd.equals(sessionList.findSessionBySessionNumber(new SessionNumber("0"))));
     }
 
+    @Test
+    public void getFilteredSessionList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredSessionList().remove(0));
+    }
+
 
     @Test
     public void equals() {
@@ -164,12 +172,13 @@ public class ModelManagerTest {
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
         TaskListBook taskList = new TaskListBook();
+        SessionListBook sessionList = new SessionListBook();
         taskList.addTask(TASK1);
 
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, taskList);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, taskList);
+        modelManager = new ModelManager(addressBook, userPrefs, taskList, sessionList);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, taskList, sessionList);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -182,12 +191,12 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs, taskList)));
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs, taskList, sessionList)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, taskList)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, taskList, sessionList)));
 
 
         // resets modelManager to initial state for upcoming tests
@@ -197,15 +206,24 @@ public class ModelManagerTest {
         // different taskList -> returns false
         String[] taskKeywords = TASK1.getName().taskName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, new TaskListBook())));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
+                new TaskListBook(), new SessionListBook())));
+
+        // different sessionList -> returns false
+        String[] sessionKeywords = SESSION1A.getSessionNumber().sessionNumber.split("");
+        modelManager.updateFilteredSessionList(
+                new SessionNumberContainsKeywordsPredicate(Arrays.asList(sessionKeywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
+                new TaskListBook(), new SessionListBook())));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        modelManager.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs, taskList)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs, taskList, sessionList)));
     }
 }
