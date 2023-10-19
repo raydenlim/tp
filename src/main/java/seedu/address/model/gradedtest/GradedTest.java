@@ -171,11 +171,11 @@ public class GradedTest {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("Reading Assessment 1", readingAssessment1 + "\n")
-                .add("Reading Assessment 2", readingAssessment2 + "\n")
-                .add("MidTerms", midTerms + "\n")
-                .add("Finals", finals + "\n")
-                .add("Practical Exam", practicalExam + "\n")
+                .add("Reading Assessment 1", readingAssessment1)
+                .add("Reading Assessment 2", readingAssessment2)
+                .add("MidTerms", midTerms)
+                .add("Finals", finals)
+                .add("Practical Exam", practicalExam)
                 .toString();
     }
 
