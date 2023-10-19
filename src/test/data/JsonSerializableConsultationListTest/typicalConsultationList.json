@@ -8,8 +8,7 @@
       "email" : "amy@example.com",
       "address" : "Block 312, Amy Street 1",
       "tags" : [ "friend" ],
-      "assignmentMap" : {
-        "assignments" : {
+      "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -103,7 +102,6 @@
             "grade" : "UNGRADED/670"
           }
         }
-      }
     } ]
   }, {
     "date" : "12/12/2022",
@@ -114,8 +112,7 @@
       "email" : "alice@example.com",
       "address" : "123, Jurong West Ave 6, #08-111",
       "tags" : [ "friends" ],
-      "assignmentMap" : {
-        "assignments" : {
+      "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -209,14 +206,12 @@
             "grade" : "UNGRADED/670"
           }
         }
-      }
     }, {
       "name" : "George Best",
       "phone" : "9482442",
       "email" : "anna@example.com",
       "address" : "4th street",
-      "assignmentMap" : {
-        "assignments" : {
+      "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -310,7 +305,6 @@
             "grade" : "UNGRADED/670"
           }
         }
-      }
     } ]
   } ]
 }

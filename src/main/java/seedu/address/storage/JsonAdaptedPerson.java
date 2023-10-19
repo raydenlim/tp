@@ -34,7 +34,8 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
-    private final JsonSerializableAssignmentMap assignmentMap;
+    //private final JsonSerializableAssignmentMap assignmentMap;
+    private final HashMap<String, JsonAdaptedAssignment> assignments;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -43,7 +44,7 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
         @JsonProperty("email") String email, @JsonProperty("address") String address,
         @JsonProperty("tags") List<JsonAdaptedTag> tags,
-        @JsonProperty("assignmentMap") JsonSerializableAssignmentMap assignmentMap) {
+        @JsonProperty("assignments") HashMap<String, JsonAdaptedAssignment> assignments) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -51,7 +52,7 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.assignmentMap = assignmentMap;
+        this.assignments = assignments;
     }
 
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -70,7 +71,7 @@ class JsonAdaptedPerson {
             String assignmentGrade = AssignmentInitialise.getAssignmentMaxGrade(i).toString();
             jsonMap.put(assignmentName, new JsonAdaptedAssignment(assignmentName, assignmentGrade));
         }
-        this.assignmentMap = new JsonSerializableAssignmentMap(jsonMap);
+        this.assignments = jsonMap;
     }
 
     /**
@@ -91,7 +92,7 @@ class JsonAdaptedPerson {
             jsonMap.put(assignmentName.toString(),
                     new JsonAdaptedAssignment(assignment));
         }
-        this.assignmentMap = new JsonSerializableAssignmentMap(jsonMap);
+        this.assignments = jsonMap;
     }
 
     /**
@@ -139,17 +140,17 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
 
-        final AssignmentMap assignments = new AssignmentMap();
-        HashMap<String, JsonAdaptedAssignment> jsonMap = assignmentMap.getAssignments();
+        final AssignmentMap assignmentMap = new AssignmentMap();
+        HashMap<String, JsonAdaptedAssignment> jsonMap = this.assignments;
         HashMap<AssignmentName, Assignment> actualMap = new HashMap<>();
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
             Assignment assignment = jsonMap.get(assignmentName.toString()).toModelType();
             actualMap.put(assignmentName, assignment);
         }
-        assignments.setAssignmentMap(actualMap);
+        assignmentMap.setAssignmentMap(actualMap);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, assignments);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, assignmentMap);
     }
 
 }

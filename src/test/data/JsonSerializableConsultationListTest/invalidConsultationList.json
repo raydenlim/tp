@@ -8,8 +8,7 @@
       "email" : "alexyeoh@example.com",
       "address" : "Blk 30 Geylang Street 29, #06-40",
       "tags" : [ "friends" ],
-      "assignmentMap" : {
-        "assignments" : {
+      "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -103,15 +102,13 @@
             "grade" : "UNGRADED/670"
           }
         }
-      }
     }, {
       "name" : "Bernice Yu",
       "phone" : "99272758",
       "email" : "berniceyu@example.com",
       "address" : "Blk 30 Lorong 3 Serangoon Gardens, #07-18",
       "tags" : [ "colleagues", "friends" ],
-      "assignmentMap" : {
-        "assignments" : {
+      "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -205,7 +202,6 @@
             "grade" : "UNGRADED/670"
           }
         }
-      }
     } ]
   } ]
 }
