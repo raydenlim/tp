@@ -46,6 +46,7 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
+
 public class EditCommandParserTest {
 
     private static final String TAG_EMPTY = " " + PREFIX_TAG;
@@ -207,4 +208,13 @@ public class EditCommandParserTest {
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }
+
+    @Test
+    public void parse_invalidPrefix_failure() {
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String userInput = targetIndex.getOneBased() + " i/JohnDoe";
+
+        assertParseFailure(parser, userInput, MESSAGE_INVALID_FORMAT);
+    }
+
 }

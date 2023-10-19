@@ -2,6 +2,7 @@ package seedu.address.model.gradedtest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
@@ -161,5 +162,92 @@ public class GradedTestListTest {
     @Test
     public void toStringMethod() {
         assertEquals(gradedTestList.asUnmodifiableObservableList().toString(), gradedTestList.toString());
+    }
+
+    @Test
+    public void equalsTest() {
+        GradedTestList gradedTestList1 = new GradedTestList();
+        GradedTestList gradedTestList2 = new GradedTestList();
+
+        // Test when both lists are empty
+        assertTrue(gradedTestList1.equals(gradedTestList2));
+
+        // Add a graded test to one list and test for inequality
+        gradedTestList1.add(GT1);
+        assertFalse(gradedTestList1.equals(gradedTestList2));
+
+        // Add the same graded test to the other list and test for equality
+        gradedTestList2.add(GT1);
+        assertTrue(gradedTestList1.equals(gradedTestList2));
+    }
+
+    @Test
+    public void hashCodeTest() {
+        GradedTestList gradedTestList1 = new GradedTestList();
+        GradedTestList gradedTestList2 = new GradedTestList();
+
+        // Test when both lists are empty
+        assertEquals(gradedTestList1.hashCode(), gradedTestList2.hashCode());
+
+        // Add a graded test to one list and test for inequality
+        gradedTestList1.add(GT1);
+        assertNotEquals(gradedTestList1.hashCode(), gradedTestList2.hashCode());
+
+        // Add the same graded test to the other list and test for equality
+        gradedTestList2.add(GT1);
+        assertEquals(gradedTestList1.hashCode(), gradedTestList2.hashCode());
+    }
+
+    @Test
+    public void addAndRemoveGradedTests() {
+        GradedTestList gradedTestList = new GradedTestList();
+
+        // Add a graded test
+        gradedTestList.add(GT1);
+        assertTrue(gradedTestList.contains(GT1));
+
+        // Remove the added graded test
+        gradedTestList.remove(GT1);
+        assertFalse(gradedTestList.contains(GT1));
+
+        // Try to remove a non-existent graded test (should throw exception)
+        assertThrows(GradedTestNotFoundException.class, () -> gradedTestList.remove(GT1));
+    }
+
+    @Test
+    public void setGradedTestListWithDuplicateGradedTests() {
+        GradedTestList gradedTestList = new GradedTestList();
+        gradedTestList.add(GT2);
+
+        // Create a list with duplicate graded tests
+        List<GradedTest> duplicateGradedTestList = Arrays.asList(GT2, GT2);
+
+        // Setting the list should throw DuplicateGradedTestException
+        assertThrows(DuplicateGradedTestException.class, () -> gradedTestList.setGradedTests(duplicateGradedTestList));
+    }
+
+    @Test
+    public void getGradedTestWithInvalidIndex() {
+        GradedTestList gradedTestList = new GradedTestList();
+        gradedTestList.add(GT2);
+
+        assertThrows(IllegalArgumentException.class, () -> gradedTestList.getGradedTest(1));
+    }
+
+    @Test
+    public void setGradedTestsWithNullList() {
+        GradedTestList gradedTestList = new GradedTestList();
+        List<GradedTest> nullList = null;
+
+        assertThrows(NullPointerException.class, () -> gradedTestList.setGradedTests(nullList));
+    }
+
+    @Test
+    public void unmodifiableListModification() {
+        GradedTestList gradedTestList = new GradedTestList();
+        gradedTestList.add(GT2);
+
+        assertThrows(UnsupportedOperationException.class, () ->
+                gradedTestList.asUnmodifiableObservableList().remove(0));
     }
 }
