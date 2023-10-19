@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -51,12 +50,6 @@ public class PersonTest {
     }
 
     @Test
-    public void isSameName() {
-        Person otherBob = new PersonBuilder().withName(VALID_NAME_BOB).withAddress(VALID_EMAIL_AMY).build();
-        assertTrue(BOB.isSameName(otherBob.getName()));
-    }
-
-    @Test
     public void isSamePerson() {
         // same object -> returns true
         assertTrue(ALICE.isSamePerson(ALICE));
@@ -81,6 +74,18 @@ public class PersonTest {
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSamePerson(editedBob));
+    }
+
+    @Test
+    public void isSameName() {
+        // person shares same name object
+        Name aliceName = ALICE.getName();
+        assertTrue(ALICE.isSameName(aliceName));
+
+        // different person share same name
+        Person personA = new PersonBuilder().withName("Alice").build();
+        Person personB = new PersonBuilder().withName("Alice").build();
+        assertTrue(personA.isSameName(personB.getName()));
     }
 
     @Test

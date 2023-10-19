@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
@@ -24,6 +25,9 @@ public interface Model {
     Predicate<Task> PREDICATE_SHOW_ALL_TASKS = unused -> true;
     /** {@code Predicate} that always evaluate to true */
     Predicate<Session> PREDICATE_SHOW_ALL_SESSIONS = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Consultation> PREDICATE_SHOW_ALL_CONSULTATIONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -171,6 +175,27 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    /**
+     * Returns true if a consultation with the same identity as {@code task} exists in the consultation list.
+     */
+    boolean hasConsultation(Consultation consultation);
+
+    /**
+     * Adds the given consultation.
+     */
+    void addConsultation(Consultation consultation);
+
+    /** Returns the ConsultationList */
+    ReadOnlyConsultationList getConsultationList();
+
+    /** Returns an unmodifiable view of the filtered consultation list */
+    ObservableList<Consultation> getFilteredConsultationList();
+
+    /**
+     * Updates the filter of the filtered consultation list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredConsultationList(Predicate<Consultation> predicate);
 
     Person getMatchingStudentName(Name name);
 

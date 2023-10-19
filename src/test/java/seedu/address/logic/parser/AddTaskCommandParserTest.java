@@ -45,7 +45,7 @@ public class AddTaskCommandParserTest {
         assertParseFailure(parser, TASK_NAME_TASK2 + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TASK_NAME));
 
-        // multiple desscription
+        // multiple description
         assertParseFailure(parser, TASK_DESCRIPTION_TASK2 + validExpectedTaskString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_TASK_DESCRIPTION));
 

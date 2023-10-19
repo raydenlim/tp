@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.SessionListBook;
@@ -26,9 +27,8 @@ import seedu.address.model.person.Person;
  * {@code DeleteCommand}.
  */
 public class DeleteCommandTest {
-
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
-            new TaskListBook(), new SessionListBook());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
+            new SessionListBook(), new ConsultationListBook());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -38,8 +38,9 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
-                new TaskListBook(), new SessionListBook());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
+                new SessionListBook(), new ConsultationListBook());
+
         expectedModel.deletePerson(personToDelete);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
@@ -63,8 +64,9 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
-                new TaskListBook(), new SessionListBook());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
+                new SessionListBook(), new ConsultationListBook());
+
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
 

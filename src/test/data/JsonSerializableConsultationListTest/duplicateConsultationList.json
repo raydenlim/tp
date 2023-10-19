@@ -1,0 +1,23 @@
+{
+  "consultations" : [ {
+    "date" : "01/11/2023",
+    "time" : "10:00",
+    "students" : [ {
+      "name" : "Alex Yeoh",
+      "phone" : "87438807",
+      "email" : "alexyeoh@example.com",
+      "address" : "Blk 30 Geylang Street 29, #06-40",
+      "tags" : [ "friends" ]
+    } ]
+  }, {
+    "date" : "01/11/2023",
+    "time" : "10:00",
+    "students" : [ {
+      "name" : "Alex Yeoh",
+      "phone" : "87438807",
+      "email" : "alexyeoh@example.com",
+      "address" : "Blk 30 Geylang Street 29, #06-40",
+      "tags" : [ "friends" ]
+    } ]
+  } ]
+}

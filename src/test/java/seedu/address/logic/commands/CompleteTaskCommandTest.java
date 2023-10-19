@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
+import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -28,9 +29,8 @@ import seedu.address.testutil.TaskBuilder;
  * {@code CompleteTaskCommand}.
  */
 public class CompleteTaskCommandTest {
-
-    private Model model = new ModelManager(getTypicalAddressBook(),
-            new UserPrefs(), getTypicalTaskList(), getTypicalSessionList());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
+            getTypicalTaskList(), getTypicalSessionList(), getTypicalConsultationListBook());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -41,8 +41,10 @@ public class CompleteTaskCommandTest {
         String expectedMessage = String.format(CompleteTaskCommand.MESSAGE_MARK_TASK_SUCCESS,
                 Messages.format(taskToMark));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(),
-                new UserPrefs(), model.getTaskList(), model.getSessionList());
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
+                model.getSessionList(), model.getConsultationList());
+
         expectedModel.setTask(taskToMark, editedTask);
 
         assertCommandSuccess(completeTaskCommand, model, expectedMessage, expectedModel);
@@ -67,8 +69,9 @@ public class CompleteTaskCommandTest {
         String expectedMessage = String.format(CompleteTaskCommand.MESSAGE_MARK_TASK_SUCCESS,
                 Messages.format(taskToMark));
 
-        Model expectedModel = new ModelManager(model.getAddressBook(),
-                new UserPrefs(), model.getTaskList(), model.getSessionList());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
+                model.getSessionList(), model.getConsultationList());
+
         expectedModel.setTask(taskToMark, editedTask);
 
         assertCommandSuccess(completeTaskCommand, model, expectedMessage, expectedModel);
