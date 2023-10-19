@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
+import static seedu.address.testutil.TypicalGradedTest.GT4;
 import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import seedu.address.model.GradedTestListBook;
 import seedu.address.model.ReadOnlyGradedTestList;
 
 public class JsonGradedTestListStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "gradedTest",
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test",
             "data", "JsonGradedTestListStorageTest");
 
     @TempDir
@@ -49,19 +50,20 @@ public class JsonGradedTestListStorageTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataLoadingException.class, () -> readGradedTestList("notJsonFormatGradedTestList.json"));
+        assertThrows(DataLoadingException.class, () ->
+                readGradedTestList("notJsonFormatGradedTestList.json"));
     }
 
     @Test
     public void readGradedTestList_invalidGradedTestList_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class,
-                ()-> readGradedTestList("invalidGradedTestList.json"));
+        assertThrows(DataLoadingException.class, ()->
+                readGradedTestList("invalidGradedTestList.json"));
     }
 
     @Test
     public void readGradedTestList_invalidAndValidGradedTestList_throwDataLoadingException() {
-        assertThrows(DataLoadingException.class,
-                () -> readGradedTestList("invalidAndValidGradedTestList.json"));
+        assertThrows(DataLoadingException.class, () ->
+                readGradedTestList("invalidAndValidGradedTestList.json"));
     }
 
     @Test
@@ -83,7 +85,7 @@ public class JsonGradedTestListStorageTest {
         assertEquals(original, new GradedTestListBook(readBack));
 
         // Save and read without specifying file path
-        original.addGradedTest(GT3);
+        original.addGradedTest(GT4);
         jsonGradedTestListStorage.saveGradedTestList(original); // file path not specified
         readBack = jsonGradedTestListStorage.readGradedTestList().get(); // file path not specified
         assertEquals(original, new GradedTestListBook(readBack));
@@ -92,7 +94,8 @@ public class JsonGradedTestListStorageTest {
 
     @Test
     public void saveTaskList_nullTaskList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveGradedTestList(null, "SomeFile.json"));
+        assertThrows(NullPointerException.class, () ->
+                saveGradedTestList(null, "SomeFile.json"));
     }
 
     /**
@@ -109,7 +112,7 @@ public class JsonGradedTestListStorageTest {
 
     @Test
     public void saveGradedTestList_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> saveGradedTestList(new GradedTestListBook(), null));
+        assertThrows(NullPointerException.class, () ->
+                saveGradedTestList(new GradedTestListBook(), null));
     }
 }

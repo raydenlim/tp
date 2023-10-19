@@ -32,7 +32,7 @@ public class StorageManager implements Storage {
      */
     public StorageManager(AddressBookStorage addressBookStorage,
                           UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage,
-                          SessionListStorage sessionListStorage,  GradedTestListStorage gradedTestListStorage) {
+                          SessionListStorage sessionListStorage, GradedTestListStorage gradedTestListStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.taskListStorage = taskListStorage;

@@ -49,13 +49,12 @@ public class CommandTestUtil {
     public static final String VALID_GT_MIDTERMS = "20.0"; // floats are allowed
     public static final String VALID_GT_FINALS = "100"; // ints are allowed
     public static final String VALID_GT_PE = "0"; // 0 score ok
-    public static final String VALID_GRADED_TEST_1 = "Reading Assessment 1: - |" + " Reading Assessment 2: - |"
-            + " MidTerms: - |" + " Finals: - | " + " Practical Exam: - ";
-    public static final String VALID_GRADED_TEST_2 = "Reading Assessment 1: 100 |" + " Reading Assessment 2: 100 |"
-            + " MidTerms: 100 |" + " Finals: 100 | " + " Practical Exam: 100 ";
+    public static final String VALID_GRADED_TEST_1 = "Reading Assessment 1: - | Reading Assessment 2: - "
+            + "| MidTerms: 3 | Finals: 4 | Practical Exam: 5 ";
+    public static final String VALID_GRADED_TEST_2 = "Reading Assessment 1: 100 | Reading Assessment 2: 100 "
+            + "| MidTerms: 100 | Finals: 100 | Practical Exam: 100 ";
     public static final String VALID_TASK_NAME = "Do cs2103t";
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
-
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -74,7 +73,6 @@ public class CommandTestUtil {
     public static final String GT_DESC_MIDTERMS = " " + PREFIX_GRADED_TEST + VALID_GT_MIDTERMS;
     public static final String GT_DESC_FINALS = " " + PREFIX_GRADED_TEST + VALID_GT_FINALS;
     public static final String GT_DESC_PE = " " + PREFIX_GRADED_TEST + VALID_GT_PE;
-
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
@@ -84,10 +82,10 @@ public class CommandTestUtil {
     public static final String INVALID_GT_FINALS_DESC = "-43"; // no negative numbers
     public static final String INVALID_GT_PE_DESC = "%#&@%$^@#"; // no special symbols
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
-    public static final String INVALID_GRADED_TEST_DESC_1 = "Reading Assessment 1: -1 \n" + "Reading Assessment 2: 0 \n"
-            + "MidTerms: 0 \n" + "Finals: -1 \n" + "Practical Exam: 0 \n"; // No negative scores
-    public static final String INVALID_GRADED_TEST_DESC_2 = "Reading Assessment 1: 0 \n" + "Reading Assessment 2: 0 \n"
-            + "MidTerms: 0 \n" + "Finals: 0 \n" + "Practical Exam: * \n"; // No special char * allowed
+    public static final String INVALID_GRADED_TEST_DESC_1 = "Reading Assessment 1: -1 | Reading Assessment 2: 0 "
+            + "| MidTerms: 0 | Finals: -1 | Practical Exam: 0"; // No negative scores
+    public static final String INVALID_GRADED_TEST_DESC_2 = "Reading Assessment 1: 0 | Reading Assessment 2: 0 "
+            + "| MidTerms: 0 | Finals: 0 | Practical Exam: *"; // No special char * allowed
     public static final String TASK_NAME_TASK1 = " " + PREFIX_TASK_NAME + VALID_TASK_NAME;
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
@@ -111,21 +109,17 @@ public class CommandTestUtil {
     public static final String SESSION_STUDENTS_STUDENTS1 = " " + PREFIX_NAME + "Bob";
     public static final String INVALID_SESSION_STUDENTS = " " + PREFIX_NAME + "Charlie123@abc";
 
-
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    public static final EditCommand.EditPersonDescriptor DESC_AMY2;
+    // public static final EditCommand.EditPersonDescriptor DESC_AMY2;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).withGradedTest(VALID_GRADED_TEST_1).build();
-        DESC_AMY2 = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_FRIEND).withRA1(VALID_GT_RA1).withRA1(VALID_GT_RA2)
+                .withTags(VALID_TAG_FRIEND).withRA1(VALID_GT_RA1).withRA2(VALID_GT_RA2)
                 .withMidTerm(VALID_GT_MIDTERMS).withFinals(VALID_GT_FINALS)
                 .withPracticalExam(VALID_GT_PE).build();
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
@@ -139,7 +133,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -154,7 +148,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -175,6 +169,7 @@ public class CommandTestUtil {
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPersonList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -188,5 +183,4 @@ public class CommandTestUtil {
 
         assertEquals(1, model.getFilteredPersonList().size());
     }
-
 }

@@ -81,7 +81,7 @@ public class Messages {
      */
     public static String format(GradedTest gradedTest) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(gradedTest.getGradedTests())
+        builder.append("Graded Test:")
                 .append("; Reading Assessment 1: ").append(gradedTest.getRA1())
                 .append("; Reading Assessment 2: ").append(gradedTest.getRA2())
                 .append("; MidTerms: ").append(gradedTest.getMidTerms())

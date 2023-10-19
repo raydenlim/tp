@@ -10,8 +10,8 @@ import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.GradedTestList;
 
 /**
- * Wraps all data at the task-list level
- * Duplicates are not allowed (by .isSameTask comparison)
+ * Wraps all data at the gradedTest-list level
+ * Duplicates are not allowed (by .isSameGradedTest comparison)
  */
 public class GradedTestListBook implements ReadOnlyGradedTestList {
     private final GradedTestList gradedTests;
@@ -30,7 +30,7 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
     public GradedTestListBook() {}
 
     /**
-     * Creates an TaskList using the Tasks in the {@code toBeCopied}
+     * Creates an GradedTestList using the GradedTest in the {@code toBeCopied}
      */
     public GradedTestListBook(ReadOnlyGradedTestList toBeCopied) {
         this();
@@ -40,21 +40,21 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the task list with {@code tasks}.
-     * {@code tasks} must not contain duplicate tasks.
+     * Replaces the contents of the GradedTest list with {@code gradedTEst}.
+     * {@code gradedTests} must not contain duplicate gradedTest.
      */
     public void setGradedTests(List<GradedTest> gradedTests) {
         this.gradedTests.setGradedTests(gradedTests);
     }
 
     /**
-     * Replaces the given task {@code target} in the list with {@code editedTask}.
-     * {@code target} must exist in the task list.
-     * The task identity of {@code editedTask} must not be the same as another existing task in the task list.
+     * Replaces the given gradedTest {@code target} in the list with {@code editedGradedTest}.
+     * {@code target} must exist in the gradedTest list.
+     * The gradedTest identity of {@code editedGradedTest} must not be the same as another existing
+     * gradedTest in the gradedTest list.
      */
     public void setGradedTests(GradedTest target, GradedTest editedGradedTest) {
         requireNonNull(editedGradedTest);
-
         gradedTests.editGradedTest(target, editedGradedTest);
     }
 
@@ -86,7 +86,7 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
 
     /**
      * Adds a gradedTest to the gradedTest list.
-     * The task must not already exist in the gradedTest list.
+     * The gradedTest must not already exist in the gradedTest list.
      */
     public void addGradedTest(GradedTest gt) {
         gradedTests.add(gt);
@@ -107,7 +107,7 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("Graded Test", gradedTests)
+                .add("gradedTests", gradedTests)
                 .toString();
     }
 
@@ -123,7 +123,7 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof GradedTestList)) {
+        if (other == null | getClass() != other.getClass()) {
             return false;
         }
 

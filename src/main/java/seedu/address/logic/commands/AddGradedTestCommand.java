@@ -2,25 +2,23 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRACTICAL_EXAM;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.gradedtest.GradedTest;
-import seedu.address.model.person.Name;
-
 
 /**
  * Represents a command for adding a new Graded Test to the application.
  * Users can add a Graded Test with a name and associate it with a student's name or names.
  * It can add a Graded Test for a single student or multiple students.
  */
-public class AddGradedTestCommand extends Command{
+public class AddGradedTestCommand extends Command {
     public static final String COMMAND_WORD = "addGT";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a new GradedTest with specified scores.\n"
@@ -39,8 +37,8 @@ public class AddGradedTestCommand extends Command{
             + PREFIX_PRACTICAL_EXAM + "4 ";
 
     public static final String MESSAGE_SUCCESS = "Scores have been added: %1$s";
-    public static final String MESSAGE_DUPLICATE_GRADED_TEST = "This graded test already exists in the graded test book";
-    private final Name name;
+    public static final String MESSAGE_DUPLICATE_GRADED_TEST =
+            "This graded test already exists in the graded test book";
     private final GradedTest gradedTest;
 
     /**
@@ -49,11 +47,9 @@ public class AddGradedTestCommand extends Command{
      * @param gradedTest The name of the Graded Test to add.
      * @param name The student's name to associate with the Graded Test.
      */
-    public AddGradedTestCommand(GradedTest gradedTest, Name name) {
-        requireAllNonNull(gradedTest, name);
-
+    public AddGradedTestCommand(GradedTest gradedTest) {
+        requireAllNonNull(gradedTest);
         this.gradedTest = gradedTest;
-        this.name = name;
     }
 
     /**

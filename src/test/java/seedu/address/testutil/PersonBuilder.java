@@ -72,6 +72,15 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Parses the {@code gradedTest} into a {@code Set<GradedTest>} and set it to
+     * the {@code GradedTest} that we are building.
+     */
+    public PersonBuilder withGradedTest(String ... gradedTests) {
+        this.gradedTests = SampleDataUtil.getGradedTestSet(gradedTests);
+        return this;
+    }
+
 
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.

@@ -248,12 +248,15 @@ public class ModelManagerTest {
         // different taskList -> returns false
         String[] taskKeywords = TASK1.getName().taskName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
+        System.out.println(TASK1.getName());
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
                 new TaskListBook(), new GradedTestListBook())));
 
         // different gradedTestList -> returns false
         String[] gradedTestKeywords = GT1.getGradedTests().toString().split("\\s+");
-        modelManager.updateFilteredGradedTestList(new GradedTestNameContainsKeywordsPredicate(Arrays.asList(gradedTestKeywords)));
+        modelManager.updateFilteredGradedTestList(
+                new GradedTestNameContainsKeywordsPredicate(Arrays.asList(gradedTestKeywords)));
+        System.out.println(GT1.getGradedTests());
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
                 new TaskListBook(), new GradedTestListBook())));
 

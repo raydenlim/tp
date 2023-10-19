@@ -1,16 +1,16 @@
 package seedu.address.model.gradedtest;
 
-import static seedu.address.testutil.Assert.assertThrows;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.GradedTestBuilder;
+
 
 public class GradedTestTest {
 
@@ -19,11 +19,11 @@ public class GradedTestTest {
         assertThrows(NullPointerException.class, () -> new GradedTest(null));
     }
 
-//    @Test
-//    public void constructor_invalidGradedTestName_throwsIllegalArgumentException() {
-//        String invalidGradedTestName = "%$#%#%";
-//        assertThrows(IllegalArgumentException.class, () -> new GradedTest(invalidGradedTestName));
-//    }
+    @Test
+    public void constructor_invalidGradedTestName_throwsIllegalArgumentException() {
+        String invalidGradedTestName = "%$#%#%";
+        assertThrows(IllegalArgumentException.class, () -> new GradedTest(invalidGradedTestName));
+    }
 
     @Test
     public void isValidGradedTestName() {
@@ -78,8 +78,8 @@ public class GradedTestTest {
         assertFalse(GT1.equals(GT3));
 
         // different pe value -> return false
-        GradedTest editedGradedTest2 = new GradedTestBuilder(GT1).
-                withPe(GT3.getPracticalExam().value).build();
+        GradedTest editedGradedTest2 = new GradedTestBuilder(GT1)
+                .withPe(GT3.getPracticalExam().value).build();
         assertFalse(GT1.equals(editedGradedTest2));
 
         // different finals value -> return false
@@ -91,8 +91,8 @@ public class GradedTestTest {
 
     @Test
     public void toStringMethod() {
-        String expected = String.format("%s{Reading Assessment 1=%s," +
-                "Reading Assessment 2=%s, MidTerms=%s, Finals=%s, Practical Exam=%s}",
+        String expected = String.format("%s{Reading Assessment 1=%s,"
+                        + "Reading Assessment 2=%s, MidTerms=%s, Finals=%s, Practical Exam=%s}",
                 GradedTest.class.getCanonicalName(), GT1.getRA1(), GT1.getRA2(),
                 GT1.getMidTerms(), GT1.getFinals(), GT1.getPracticalExam());
         assertEquals(expected, expected);

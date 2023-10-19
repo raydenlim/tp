@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static seedu.address.logic.commands.AddGradedTestCommand.MESSAGE_DUPLICATE_GRADED_TEST;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,15 +15,14 @@ import seedu.address.model.GradedTestListBook;
 import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.gradedtest.GradedTest;
 
-import static seedu.address.logic.commands.AddGradedTestCommand.MESSAGE_DUPLICATE_GRADED_TEST;
 
 /**
  * An Immutable TaskList that is serializable to JSON format.
  */
-@JsonRootName(value = "gradedTestList")
+@JsonRootName(value = "gradedtestlist")
 class JsonSerializableGradedTestList {
 
-    public static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate gradedTest(s).";
+    public static final String MESSAGE_DUPLICATE_GRADED_TEST = "Graded list contains duplicate gradedTest(s).";
 
     private final List<JsonAdaptedGradedTest> gradedTests = new ArrayList<>();
 

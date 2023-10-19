@@ -50,7 +50,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Set<Session> sessionList = new HashSet<>();
-        Person person = new Person(name, phone, email, address, tagList);
         Set<GradedTest> gradedTestList = ParserUtil.parseGradedTests(argMultimap.getAllValues(PREFIX_GRADED_TEST));
 
         Person person = new Person(name, phone, email, address, tagList, gradedTestList);

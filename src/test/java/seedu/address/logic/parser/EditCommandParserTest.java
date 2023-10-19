@@ -5,18 +5,10 @@ import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.GT_DESC_DEFAULT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_DESC_1;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GT_FINALS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GT_MIDTERMS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GT_PE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GT_RA_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_MIDTERMS_TEST;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_RA_TEST;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
@@ -25,11 +17,6 @@ import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GT_FINALS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GT_MIDTERMS;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GT_PE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GT_RA1;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GT_RA2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -52,11 +39,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.gradedtest.Finals;
-import seedu.address.model.gradedtest.GradedTest;
-import seedu.address.model.gradedtest.MidTerms;
-import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -108,12 +90,6 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
-        assertParseFailure(parser, "1" + INVALID_GT_RA_DESC, ReadingAssessment.MESSAGE_CONSTRAINTS); // invalid RA1
-        assertParseFailure(parser, "1" + INVALID_GT_RA_DESC, ReadingAssessment.MESSAGE_CONSTRAINTS); // invalid RA2
-        assertParseFailure(parser, "1" + INVALID_GT_MIDTERMS_DESC, MidTerms.MESSAGE_CONSTRAINTS); // invalid Midterms
-        assertParseFailure(parser, "1" + INVALID_GT_FINALS_DESC, Finals.MESSAGE_CONSTRAINTS); // invalid Finals
-        assertParseFailure(parser, "1" + INVALID_GT_PE_DESC, PracticalExam.MESSAGE_CONSTRAINTS); // invalid PE
-        assertParseFailure(parser, "1" + INVALID_GRADED_TEST_DESC_1, GradedTest.MESSAGE_CONSTRAINTS); // invalid GradedTest
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
@@ -133,14 +109,11 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_HUSBAND
-                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND
-                + GT_DESC_DEFAULT;
+                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-                .withRA1(VALID_GT_RA1).withRA2(VALID_GT_RA2).withMidTerm(VALID_GT_MIDTERMS)
-                .withFinals(VALID_GT_FINALS).withFinals(VALID_GT_PE).build();
+                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

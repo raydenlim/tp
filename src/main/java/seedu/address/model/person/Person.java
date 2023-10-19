@@ -8,11 +8,11 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
-import seedu.address.model.gradedtest.MidTerms;
-import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+//import seedu.address.model.gradedtest.Finals;
+//import seedu.address.model.gradedtest.MidTerms;
+//import seedu.address.model.gradedtest.PracticalExam;
+//import seedu.address.model.gradedtest.ReadingAssessment;
 import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 

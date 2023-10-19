@@ -111,6 +111,11 @@ public class StorageManagerTest {
     }
 
     @Test
+    public void getGradedTaskListFilePath() {
+        assertNotNull(storageManager.getGradedTestListFilePath());
+    }
+
+    @Test
     public void gradedTestListReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
@@ -120,11 +125,9 @@ public class StorageManagerTest {
         GradedTestListBook original = getTypicalGradedTestList();
         storageManager.saveGradedTestList(original);
         ReadOnlyGradedTestList retrieved = storageManager.readGradedTestList().get();
+        // assertTrue(original.equals(new GradedTestListBook(retrieved)));
+        System.out.println("Original: " + original);
+        System.out.println("Retrieved: " + new GradedTestListBook(retrieved));
         assertEquals(original, new GradedTestListBook(retrieved));
-    }
-
-    @Test
-    public void getGradedTaskListFilePath() {
-        assertNotNull(storageManager.getGradedTestListFilePath());
     }
 }

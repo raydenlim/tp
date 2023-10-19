@@ -14,8 +14,8 @@ import seedu.address.model.GradedTestListBook;
 import seedu.address.testutil.TypicalGradedTest;
 
 public class JsonSerializableGradedTestListTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "gradedTest",
-            "data", "JsonSerializableGradedTestListTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src",
+            "test", "data", "JsonSerializableGradedTestListTest");
     private static final Path TYPICAL_GRADED_TEST_FILE = TEST_DATA_FOLDER.resolve("typicalGradedTestList.json");
     private static final Path INVALID_GRADED_TEST_FILE = TEST_DATA_FOLDER.resolve("invalidGradedTestList.json");
     private static final Path DUPLICATE_GRADED_TEST_FILE = TEST_DATA_FOLDER.resolve("duplicateGradedTestList.json");
@@ -40,7 +40,7 @@ public class JsonSerializableGradedTestListTest {
     public void toModelType_duplicateGradedTest_throwsIllegalValueException() throws Exception {
         JsonSerializableGradedTestList dataFromFile = JsonUtil.readJsonFile(DUPLICATE_GRADED_TEST_FILE,
                 JsonSerializableGradedTestList.class).get();
-        assertThrows(IllegalValueException.class, JsonSerializableGradedTestList.MESSAGE_DUPLICATE_TASK,
+        assertThrows(IllegalValueException.class, JsonSerializableGradedTestList.MESSAGE_DUPLICATE_GRADED_TEST,
                 dataFromFile::toModelType);
     }
 }

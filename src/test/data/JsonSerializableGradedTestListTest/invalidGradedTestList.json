@@ -1,9 +1,9 @@
 {
-  "gradedTest": [ {
-    "reading assessment 1": "H@ve some c0ff3#",
-    "reading assessment 2": "H@ve some c0ff3#",
-    "midterms": "H@ve some c0ff3#",
-    "finals": "H@ve some c0ff3#",
-    "practical exam": "H@ve some c0ff3#"
+  "gradedTests": [ {
+    "Reading Assessment 1": "H@ve some c0ff3#",
+    "Reading Assessment 2": "H@ve some c0ff3#",
+    "MidTerms": "H@ve some c0ff3#",
+    "Finals": "H@ve some c0ff3#",
+    "Practical Exam": "H@ve some c0ff3#"
   } ]
 }

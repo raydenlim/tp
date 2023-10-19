@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
 import seedu.address.model.gradedtest.ReadingAssessment;
 
-import static seedu.address.model.gradedtest.GradedTest.DEFAULT_VALUE;
 
 /**
  * Jackson-friendly version of {@link GradedTest}.
@@ -19,7 +19,6 @@ import static seedu.address.model.gradedtest.GradedTest.DEFAULT_VALUE;
 class JsonAdaptedGradedTest {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "GradedTest's %s field is missing!";
-    private final String gradedTestIndv;
     private final String readingAssessment1;
     private final String readingAssessment2;
     private final String midTerms;
@@ -27,44 +26,23 @@ class JsonAdaptedGradedTest {
     private final String practicalExam;
 
     /**
-     * Constructs a {@code JsonAdaptedGradedTest} with the given {@code tagName}.
+     * Constructs a {@code JsonAdaptedGradedTest} with the given gradedTest details
      */
     @JsonCreator
-    public JsonAdaptedGradedTest(String gradedTestIndv) {
-        this.gradedTestIndv = gradedTestIndv;
-        String[] parts = gradedTestIndv.split("\\|");
-        if (parts.length == 5) {
-            this.readingAssessment1 = parts[0].trim();
-            this.readingAssessment2 = parts[1].trim();
-            this.midTerms = parts[2].trim();
-            this.finals = parts[3].trim();
-            this.practicalExam = parts[4].trim();
-        } else {
-            this.readingAssessment1 = DEFAULT_VALUE;
-            this.readingAssessment2 = DEFAULT_VALUE;
-            this.midTerms = DEFAULT_VALUE;
-            this.finals = DEFAULT_VALUE;
-            this.practicalExam = DEFAULT_VALUE;
-        }
-    }
-
-    @JsonCreator
-    public JsonAdaptedGradedTest(@JsonProperty("readingAssessment1") String readingAssessment1,
-                                 @JsonProperty("readingAssessment2") String readingAssessment2,
-                                 @JsonProperty("midTerms") String midTerms,
-                                 @JsonProperty("finals") String finals,
-                                 @JsonProperty("practicalExam") String practicalExam) {
+    public JsonAdaptedGradedTest(@JsonProperty("Reading Assessment 1") String readingAssessment1,
+                                 @JsonProperty("Reading Assessment 2") String readingAssessment2,
+                                 @JsonProperty("MidTerms") String midTerms,
+                                 @JsonProperty("Finals") String finals,
+                                 @JsonProperty("Practical Exam") String practicalExam) {
         this.readingAssessment1 = readingAssessment1;
         this.readingAssessment2 = readingAssessment2;
         this.midTerms = midTerms;
         this.finals = finals;
         this.practicalExam = practicalExam;
-        this.gradedTestIndv = readingAssessment1 + readingAssessment2
-                + midTerms + finals + practicalExam;
     }
 
     /**
-     * Converts a given {@code Tag} into this class for Jackson use.
+     * Converts a given {@code GradedTest} into this class for Jackson use.
      */
     public JsonAdaptedGradedTest(GradedTest source) {
         readingAssessment1 = source.getRA1().value;
@@ -72,14 +50,6 @@ class JsonAdaptedGradedTest {
         midTerms = source.getMidTerms().value;
         finals = source.getFinals().value;
         practicalExam = source.getPracticalExam().value;
-        this.gradedTestIndv = readingAssessment1 + readingAssessment2
-                + midTerms + finals + practicalExam;
-    }
-
-
-    @JsonValue
-    public String getGradedTestName() {
-        return gradedTestIndv;
     }
 
     /**
@@ -120,7 +90,7 @@ class JsonAdaptedGradedTest {
                     Finals.class.getSimpleName()));
         }
         if (!Finals.isValidFinalsResult(finals)) {
-            throw new IllegalValueException(MidTerms.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Finals.MESSAGE_CONSTRAINTS);
         }
         final Finals modelFinals = new Finals(finals);
 

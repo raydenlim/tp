@@ -8,18 +8,15 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.gradedtest.exceptions.GradedTestNotFoundException;
 import seedu.address.model.gradedtest.exceptions.DuplicateGradedTestException;
 import seedu.address.model.gradedtest.exceptions.GradedTestNotFoundException;
-import seedu.address.model.task.exceptions.DuplicateTaskException;
-import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
- * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
- * A task is considered unique by comparing using {@code GradedTest#isSameGradedTest(gradedTest)}.
- * As such, adding and updating of tasks uses GradedTest#isSameGradedTest(gradedTest) for equality
- * so as to ensure that the task being added or updated is unique in terms of identity in the GradedTestList.
- * However, the removal of a task uses GradedTest#equals(Object) so as to ensure that the task with exactly
+ * A list of gradedTest that enforces uniqueness between its elements and does not allow nulls.
+ * A gradedTest is considered unique by comparing using {@code GradedTest#isSameGradedTest(gradedTest)}.
+ * As such, adding and updating of gradedTest uses GradedTest#isSameGradedTest(gradedTest) for equality
+ * so as to ensure that the gradedTest being added or updated is unique in terms of identity in the GradedTestList.
+ * However, the removal of a gradedTest uses GradedTest#equals(Object) so as to ensure that the gradedTest with exactly
  * the same fields will be removed.
  *
  * Supports a minimal set of list operations.
@@ -52,8 +49,8 @@ public class GradedTestList implements Iterable<GradedTest> {
     }
 
     /**
-     * Adds a task to the list.
-     * The task must not already exist in the list.
+     * Adds a gradedTest to the list.
+     * The gradedTest must not already exist in the list.
      */
     public void add(GradedTest toAdd) {
         requireNonNull(toAdd);
@@ -66,14 +63,15 @@ public class GradedTestList implements Iterable<GradedTest> {
     /**
      * Replaces the gradedTest {@code target} in the list with {@code editedGradedTest}.
      * {@code target} must exist in the list.
-     * The task identity of {@code editedGradedTest} must not be the same as another existing task in the list.
+     * The gradedTest identity of {@code editedGradedTest} must not be the same as another
+     * existing gradedTest in the list.
      */
     public void editGradedTest(GradedTest target, GradedTest editedGradedTest) {
         requireAllNonNull(target, editedGradedTest);
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new TaskNotFoundException();
+            throw new GradedTestNotFoundException();
         }
 
         if (!target.isSameGradedTest(editedGradedTest) && contains(editedGradedTest)) {
@@ -135,8 +133,8 @@ public class GradedTestList implements Iterable<GradedTest> {
             return false;
         }
 
-        GradedTestList otherUniquePersonList = (GradedTestList) other;
-        return internalList.equals(otherUniquePersonList.internalList);
+        GradedTestList otherList = (GradedTestList) other;
+        return internalList.equals(otherList.internalList);
     }
 
     @Override

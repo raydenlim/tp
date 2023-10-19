@@ -13,7 +13,7 @@ import seedu.address.model.gradedtest.GradedTest;
 public class TypicalGradedTest {
 
     public static final GradedTest GT1 = new GradedTestBuilder()
-            .withReadingAssessment1("1")
+            .withReadingAssessment1("1.0")
             .withReadingAssessment2("2")
             .withMidTerms("3")
             .withFinals("4")
@@ -59,7 +59,7 @@ public class TypicalGradedTest {
     }
 
     public static List<GradedTest> getTypicalGradedTest() {
-        return new ArrayList<>(Arrays.asList(GT1, GT3));
+        return new ArrayList<>(Arrays.asList(GT1, GT2));
     }
 
 }

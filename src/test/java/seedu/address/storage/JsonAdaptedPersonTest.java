@@ -23,8 +23,11 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
-    private static final String INVALID_GRADED_TEST = "#%grade";
-
+    private static final String INVALID_RA1 = "#%grade";
+    private static final String INVALID_RA2 = "#%grade";
+    private static final String INVALID_MIDTERMS = "#%grade";
+    private static final String INVALID_FINALS = "#%grade";
+    private static final String INVALID_PE = "#%grade";
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
@@ -123,7 +126,8 @@ public class JsonAdaptedPersonTest {
     @Test
     public void toModelType_invalidGradeTests_throwsIllegalValueException() {
         List<JsonAdaptedGradedTest> invalidGradeTest = new ArrayList<>(VALID_GRADED_TEST);
-        invalidGradeTest.add(new JsonAdaptedGradedTest(INVALID_GRADED_TEST));
+        invalidGradeTest.add(new JsonAdaptedGradedTest(INVALID_RA1, INVALID_RA2,
+                INVALID_MIDTERMS, INVALID_FINALS, INVALID_PE));
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
                         VALID_TAGS, invalidGradeTest);

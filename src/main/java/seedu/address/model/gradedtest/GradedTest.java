@@ -10,14 +10,15 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.expectedgrade.ExpectedGrade;
 
 public class GradedTest {
     public static final String MESSAGE_CONSTRAINTS = "Graded Test Scores should be Alphanumeric";
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String VALIDATION_REGEX = "[\\p{Alnum}-]+";
     public static final String DEFAULT_VALUE = "-";
     // Identity fields
-    private final String gradedTestsIndv;
+    public final String gradedTestsIndv;
 
     // Data fields
     private final Set<ExpectedGrade> expectedGrades = new HashSet<>();
@@ -44,6 +45,7 @@ public class GradedTest {
         this.midTerms = midTerms;
         this.finals = finals;
         this.practicalExam = practicalExam;
+        // UPDATE THIS PARSER BELOW. WRONG FORMAT. SHOULD BE SIMILAR TO JSON
         this.gradedTestsIndv = readingAssessment1.toString() + readingAssessment2.toString() + midTerms.toString()
                 + finals.toString() + practicalExam.toString();
     }
@@ -54,14 +56,32 @@ public class GradedTest {
      * @param gradedTestsIndv A valid gradedTest name.
      */
     public GradedTest(String gradedTestsIndv) {
-        requireNonNull(gradedTestsIndv);
-        // checkArgument(Boolean.valueOf(VALIDATION_REGEX));
         this.gradedTestsIndv = gradedTestsIndv;
-        this.readingAssessment1 = new ReadingAssessment(DEFAULT_VALUE);
-        this.readingAssessment2 = new ReadingAssessment(DEFAULT_VALUE);
-        this.midTerms = new MidTerms(DEFAULT_VALUE);
-        this.finals = new Finals(DEFAULT_VALUE);
-        this.practicalExam = new PracticalExam(DEFAULT_VALUE);
+        requireNonNull(gradedTestsIndv);
+        if (!isValidGradeTestName(gradedTestsIndv)) {
+            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
+        }
+        try {
+            String[] components = gradedTestsIndv.split("\\|");
+
+            if (components.length != 5) {
+                throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+            }
+
+            String ra1Score = components[0].replaceAll("Reading Assessment 1:", "").trim();
+            String ra2Score = components[1].replaceAll("Reading Assessment 2:", "").trim();
+            String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
+            String finalsScore = components[3].replaceAll("Finals:", "").trim();
+            String peScore = components[4].replaceAll("Practical Exam:", "").trim();
+
+            this.readingAssessment1 = new ReadingAssessment(ra1Score);
+            this.readingAssessment2 = new ReadingAssessment(ra2Score);
+            this.midTerms = new MidTerms(midTermsScore);
+            this.finals = new Finals(finalsScore);
+            this.practicalExam = new PracticalExam(peScore);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ReadingAssessment getRA1() {
@@ -112,12 +132,12 @@ public class GradedTest {
         }
 
         return otherGradedTest != null
-                && otherGradedTest.getGradedTests().equals(getGradedTests())
-                && otherGradedTest.getRA1().equals(getRA1())
-                && otherGradedTest.getRA2().equals(getRA2())
-                && otherGradedTest.getMidTerms().equals(getMidTerms())
-                && otherGradedTest.getFinals().equals(getFinals())
-                && otherGradedTest.getPracticalExam().equals(getPracticalExam());
+                && otherGradedTest.getGradedTests().equals(gradedTestsIndv)
+                && otherGradedTest.getRA1().equals(readingAssessment1)
+                && otherGradedTest.getRA2().equals(readingAssessment2)
+                && otherGradedTest.getMidTerms().equals(midTerms)
+                && otherGradedTest.getFinals().equals(finals)
+                && otherGradedTest.getPracticalExam().equals(practicalExam);
     }
 
     /**
@@ -140,7 +160,8 @@ public class GradedTest {
                 && readingAssessment2.equals(otherTest.readingAssessment2)
                 && midTerms.equals(otherTest.midTerms)
                 && finals.equals(otherTest.finals)
-                && practicalExam.equals(otherTest.practicalExam);
+                && practicalExam.equals(otherTest.practicalExam)
+                && gradedTestsIndv.equals(otherTest.gradedTestsIndv);
     }
 
     @Override

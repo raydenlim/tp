@@ -72,7 +72,8 @@ public class MainApp extends Application {
         SessionListStorage sessionListStorage = new JsonSessionListStorage(userPrefs.getSessionListFilePath());
         GradedTestListStorage gradedTestListStorage =
                 new JsonGradedTestListStorage(userPrefs.getGradedTestListFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage, sessionListStorage, gradedTestListStorage);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage,
+                sessionListStorage, gradedTestListStorage);
 
         model = initModelManager(storage, userPrefs);
 

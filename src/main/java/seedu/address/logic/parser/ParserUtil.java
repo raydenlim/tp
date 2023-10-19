@@ -9,7 +9,6 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
@@ -202,19 +201,32 @@ public class ParserUtil {
         requireNonNull(gradedTest);
         String trimmedGradedTest = gradedTest.trim();
 
-        String[] components = trimmedGradedTest.split("\\s+");
+        try {
+            String[] components = trimmedGradedTest.split("\\|");
 
-        if (components.length != 5) {
-            throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+            if (components.length != 5) {
+                throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+            }
+
+            String ra1Score = components[0].replaceAll("Reading Assessment 1:", "").trim();
+            String ra2Score = components[1].replaceAll("Reading Assessment 2:", "").trim();
+            String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
+            String finalsScore = components[3].replaceAll("Finals:", "").trim();
+            String peScore = components[4].replaceAll("Practical Exam:", "").trim();
+
+            ReadingAssessment readingAssessment1 = new ReadingAssessment(ra1Score);
+            ReadingAssessment readingAssessment2 = new ReadingAssessment(ra2Score);
+            MidTerms midTerms = new MidTerms(midTermsScore);
+            Finals finals = new Finals(finalsScore);
+            PracticalExam practicalExam = new PracticalExam(peScore);
+
+            return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
+        } catch (ParseException e) {
+            if (!GradedTest.isValidGradeTestName(trimmedGradedTest)) {
+                throw new ParseException(GradedTest.MESSAGE_CONSTRAINTS);
+            }
+            return new GradedTest(trimmedGradedTest);
         }
-
-        ReadingAssessment readingAssessment1 = new ReadingAssessment(components[0]);
-        ReadingAssessment readingAssessment2 = new ReadingAssessment(components[1]);
-        MidTerms midTerms = new MidTerms(components[2]);
-        Finals finals = new Finals(components[3]);
-        PracticalExam practicalExam = new PracticalExam(components[4]);
-
-        return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
     }
 
     /**

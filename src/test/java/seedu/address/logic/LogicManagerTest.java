@@ -59,7 +59,7 @@ public class LogicManagerTest {
         JsonSessionListStorage sessionListStorage = new JsonSessionListStorage(
                 temporaryFolder.resolve("sessionList.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, sessionListStorage, gradedTestListStorag);
+                taskListStorage, sessionListStorage, gradedTestListStorage);
         logic = new LogicManager(model, storage);
     }
 

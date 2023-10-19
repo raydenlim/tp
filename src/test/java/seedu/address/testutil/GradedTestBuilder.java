@@ -27,7 +27,7 @@ public class GradedTestBuilder {
 
 
     /**
-     * Creates a {@code TaskBuilder} with the default details.
+     * Creates a {@code GradedTestBuilder} with the default details.
      */
     public GradedTestBuilder() {
         rA1 = new ReadingAssessment(DEFAULT_RA1);
@@ -38,19 +38,19 @@ public class GradedTestBuilder {
     }
 
     /**
-     * Initializes the TaskBuilder with the data of {@code gradedTest}.
+     * Initializes the GradedTestBuilder with the data of {@code gradedTest}.
      */
-    public GradedTestBuilder(GradedTest gradedTest) {
-        rA1 = gradedTest.getRA1();
-        rA2 = gradedTest.getRA2();
-        midterms = gradedTest.getMidTerms();
-        finals = gradedTest.getFinals();
-        pE = gradedTest.getPracticalExam();
+    public GradedTestBuilder(GradedTest gradedTestToCopy) {
+        rA1 = gradedTestToCopy.getRA1();
+        rA2 = gradedTestToCopy.getRA2();
+        midterms = gradedTestToCopy.getMidTerms();
+        finals = gradedTestToCopy.getFinals();
+        pE = gradedTestToCopy.getPracticalExam();
 
     }
 
     /**
-     * Sets the {@code Description} of the {@code Task} that we are building.
+     * Sets the {@code ReadingAssessment} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withReadingAssessment1(String rA1) {
         this.rA1 = new ReadingAssessment(rA1);
@@ -58,7 +58,7 @@ public class GradedTestBuilder {
     }
 
     /**
-     * Sets the {@code Description} of the {@code Task} that we are building.
+     * Sets the {@code ReadingAssessment} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withReadingAssessment2(String rA2) {
         this.rA2 = new ReadingAssessment(rA2);
@@ -66,7 +66,7 @@ public class GradedTestBuilder {
     }
 
     /**
-     * Sets the {@code Description} of the {@code Task} that we are building.
+     * Sets the {@code MidTerms} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withMidTerms(String midTerms) {
         this.midterms = new MidTerms(midTerms);
@@ -74,7 +74,7 @@ public class GradedTestBuilder {
     }
 
     /**
-     * Sets the {@code Description} of the {@code Task} that we are building.
+     * Sets the {@code Finals} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withFinals(String finals) {
         this.finals = new Finals(finals);
@@ -82,7 +82,7 @@ public class GradedTestBuilder {
     }
 
     /**
-     * Sets the {@code Description} of the {@code Task} that we are building.
+     * Sets the {@code PracticalExam} of the {@code Task} that we are building.
      */
     public GradedTestBuilder withPe(String pE) {
         this.pE = new PracticalExam(pE);
