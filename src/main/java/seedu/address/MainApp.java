@@ -85,6 +85,7 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
         logger.info("Using task list file : " + storage.getTaskListFilePath());
+        logger.info("Using session list file : " + storage.getSessionListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
@@ -130,7 +131,7 @@ public class MainApp extends Application {
             }
             initialSessionList = sessionListOptional.orElseGet(SampleDataUtil::getSampleSessionList);
         } catch (DataLoadingException e) {
-            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
+            logger.warning("Data file at " + storage.getSessionListFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");
             initialSessionList = new SessionListBook();
         }
