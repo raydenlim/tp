@@ -43,7 +43,7 @@ public class GradedTestNameContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_sessionNumberContainsKeywords_returnsTrue() {
+    public void test_gradedTestContainsKeywords_returnsTrue() {
         // One keyword
         GradedTestNameContainsKeywordsPredicate predicate =
                 new GradedTestNameContainsKeywordsPredicate(Collections.singletonList("1"));
@@ -59,7 +59,7 @@ public class GradedTestNameContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_sessionNumberDoesNotContainKeywords_returnsFalse() {
+    public void test_gradedTestDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         GradedTestNameContainsKeywordsPredicate predicate =
                 new GradedTestNameContainsKeywordsPredicate(Collections.emptyList());
