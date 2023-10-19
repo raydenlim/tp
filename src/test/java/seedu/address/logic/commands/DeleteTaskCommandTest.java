@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -9,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,8 @@ import seedu.address.model.task.Task;
  */
 public class DeleteTaskCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalTaskList());
+    private Model model = new ModelManager(getTypicalAddressBook(),
+            new UserPrefs(), getTypicalTaskList(), getTypicalSessionList());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -36,7 +39,8 @@ public class DeleteTaskCommandTest {
         String expectedMessage = String.format(DeleteTaskCommand.MESSAGE_DELETE_TASK_SUCCESS,
                 Messages.format(taskToDelete));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(),
+                new UserPrefs(), model.getTaskList(), model.getSessionList());
         expectedModel.deleteTask(taskToDelete);
 
         assertCommandSuccess(deleteTaskCommand, model, expectedMessage, expectedModel);
@@ -60,7 +64,8 @@ public class DeleteTaskCommandTest {
         String expectedMessage = String.format(DeleteTaskCommand.MESSAGE_DELETE_TASK_SUCCESS,
                 Messages.format(taskToDelete));
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList());
+        Model expectedModel = new ModelManager(model.getAddressBook(),
+                new UserPrefs(), model.getTaskList(), model.getSessionList());
         expectedModel.deleteTask(taskToDelete);
         showNoTask(expectedModel);
 
@@ -93,7 +98,7 @@ public class DeleteTaskCommandTest {
         assertEquals(deleteFirstCommand, deleteFirstCommandCopy);
 
         // different types -> returns false
-        assertNotEquals(1, deleteFirstCommand);
+        assertFalse(deleteFirstCommand.equals(1));
 
         // null -> returns false
         assertNotEquals(null, deleteFirstCommand);

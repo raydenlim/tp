@@ -65,6 +65,7 @@ public class SessionListBook implements ReadOnlySessionList {
         return sessionList.findSessionBySessionNumber(sessionNumber);
     }
 
+
     /**
      * Checks if the SessionListBook contains the provided session.
      *

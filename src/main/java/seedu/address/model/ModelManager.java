@@ -14,7 +14,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
-import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 
@@ -25,30 +24,33 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
-    private final SessionList sessionList;
+    private final SessionListBook sessionList;
     private final TaskListBook taskList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Session> filteredSessions;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyTaskList taskList) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyTaskList taskList, ReadOnlySessionList sessionList) {
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
-        this.sessionList = new SessionList();
+        this.sessionList = new SessionListBook(sessionList);
         this.taskList = new TaskListBook(taskList);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.taskList.getTaskList());
+        filteredSessions = new FilteredList<>(this.sessionList.getSessionList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new TaskListBook());
+        this(new AddressBook(), new UserPrefs(), new TaskListBook(), new SessionListBook());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -137,13 +139,34 @@ public class ModelManager implements Model {
     @Override
     public Session findSessionBySessionNumber(SessionNumber sessionNumber) {
         requireNonNull(sessionNumber);
-        return sessionList.findSessionBySessionNumber(sessionNumber);
+        return sessionList.getSession(sessionNumber);
     }
 
     @Override
     public void addSession(Session session) {
         requireNonNull(session);
         sessionList.addSession(session);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public ReadOnlySessionList getSessionList() {
+        return sessionList;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Session} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Session> getFilteredSessionList() {
+        return filteredSessions;
+    }
+
+    @Override
+    public void updateFilteredSessionList(Predicate<Session> predicate) {
+        requireNonNull(predicate);
+        filteredSessions.setPredicate(predicate);
     }
 
     //=========== TaskListBook ================================================================================
