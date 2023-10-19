@@ -17,9 +17,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
     private Path taskListFilePath = Paths.get("data" , "tasklist.json");
     private Path sessionListFilePath = Paths.get("data", "sessionlist.json");
-    private Path gradedTestListFilePath = Paths.get("data" , "gradedtestlist.json");
-
     private Path consultationListFilePath = Paths.get("data", "consultationlist.json");
+    private Path gradedTestListFilePath = Paths.get("data" , "gradedtestlist.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
@@ -119,6 +118,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         sb.append("\nLocal data file location : " + addressBookFilePath);
         sb.append("\nTask list file location : " + taskListFilePath);
         sb.append("\nSession list file location : " + sessionListFilePath);
+        sb.append("\nConsultation list file location : " + consultationListFilePath);
         sb.append("\nGradedTask list file location : " + gradedTestListFilePath);
         return sb.toString();
     }
