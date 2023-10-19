@@ -50,7 +50,6 @@ public class UniquePersonList implements Iterable<Person> {
         return matchingStudent.get();
     }
 
-
     /**
      * Adds a person to the list.
      * The person must not already exist in the list.

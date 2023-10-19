@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -20,6 +23,7 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CompleteTaskCommand;
+import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -100,6 +104,12 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_createConsultation() throws Exception {
+        String inputCommandString = CreateConsultCommand.COMMAND_WORD + VALID_DATE_DESC + VALID_TIME_DESC
+                + NAME_DESC_AMY;
+        assertTrue(parser.parseCommand(inputCommandString) instanceof CreateConsultCommand);
+    }
+
     public void parseCommand_addTask() throws Exception {
         Task task = new TaskBuilder().build();
         AddTaskCommand command = (AddTaskCommand) parser.parseCommand(TaskUtil.getAddCommand(task));

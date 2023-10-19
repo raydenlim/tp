@@ -2,6 +2,10 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +29,8 @@ import seedu.address.model.task.TaskPriority;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DATE = "Date is needs to be in the format dd/MM/yyyy.";
+    public static final String MESSAGE_INVALID_TIME = "Time is needs to be in the format HH:mm.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -139,6 +145,36 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String date} into an {@code LocalDate} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
+            return LocalDate.parse(trimmedDate, formatter);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(MESSAGE_INVALID_DATE);
+        }
+    }
+
+    /**
+     * Parses {@code String time} into an {@code LocalTime} and returns it. Leading and trailing whitespaces will be
+     * trimmed.
+     */
+    public static LocalTime parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        try {
+            return LocalTime.parse(trimmedTime, formatter);
+        } catch (DateTimeParseException e) {
+            throw new ParseException(MESSAGE_INVALID_TIME);
+        }
     }
 
     /**
