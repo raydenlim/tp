@@ -20,12 +20,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
-import java.time.format.DateTimeParseException;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.CreateConsultCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.util.SampleDataUtil;
 
 public class CreateConsultationCommandParserTest {
@@ -63,16 +62,16 @@ public class CreateConsultationCommandParserTest {
     public void parse_invalidInput_failure() {
         // invalid date
         String invalidDateInput = INVALID_DATE_DESC + VALID_TIME_DESC + NAME_DESC_AMY;
-        assertThrows(DateTimeParseException.class, () -> parser.parse(invalidDateInput));
+        assertThrows(ParseException.class, () -> parser.parse(invalidDateInput));
 
         // invalid time
         String invalidTimeInput = VALID_DATE_DESC + INVALID_TIME_DESC + NAME_DESC_AMY;
-        assertThrows(DateTimeParseException.class, () -> parser.parse(invalidTimeInput));
+        assertThrows(ParseException.class, () -> parser.parse(invalidTimeInput));
 
 
         // invalid date and time
         String invalidDateTimeInput = INVALID_DATE_DESC + INVALID_TIME_DESC + NAME_DESC_AMY;
-        assertThrows(DateTimeParseException.class, () -> parser.parse(invalidDateTimeInput));
+        assertThrows(ParseException.class, () -> parser.parse(invalidDateTimeInput));
 
     }
 

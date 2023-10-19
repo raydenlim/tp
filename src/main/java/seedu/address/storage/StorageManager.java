@@ -27,8 +27,8 @@ public class StorageManager implements Storage {
     private ConsultationListStorage consultationListStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage}
-     * and {@code UserPrefStorage} and {@code TaskListStorage}.
+     * Creates a {@code StorageManager} with the given {@code AddressBookStorage}, {@code UserPrefStorage},
+     * {@code TaskListStorage}, {@code SessionListStorage} and {@code ConsultationListStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage,
                           UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage,

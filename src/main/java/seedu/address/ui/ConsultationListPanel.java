@@ -30,7 +30,7 @@ public class ConsultationListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code TaskCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Consultation} using a {@code ConsultationCard}.
      */
     class ConsultationListViewCell extends ListCell<Consultation> {
         @Override

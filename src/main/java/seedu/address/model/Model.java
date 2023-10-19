@@ -176,7 +176,7 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
-     * Returns true if a task with the same identity as {@code task} exists in the task list.
+     * Returns true if a consultation with the same identity as {@code task} exists in the consultation list.
      */
     boolean hasConsultation(Consultation consultation);
 

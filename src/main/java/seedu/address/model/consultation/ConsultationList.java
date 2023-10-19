@@ -12,7 +12,7 @@ import seedu.address.model.consultation.exceptions.ConsultationNotFoundException
 import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 
 /**
- * A list of Consultation.
+ * A list of Consultations.
  */
 public class ConsultationList implements Iterable<Consultation> {
     private ObservableList<Consultation> internalList = FXCollections.observableArrayList();
