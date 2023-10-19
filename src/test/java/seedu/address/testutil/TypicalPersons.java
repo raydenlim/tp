@@ -64,6 +64,8 @@ public class TypicalPersons {
 
     public static final Set<Person> DEFAULT_PERSONS = SampleDataUtil.getStudentSet(AMY);
 
+    public static final Set<Person> DEFAULT_PERSONS = SampleDataUtil.getStudentSet(AMY);
+
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
     private TypicalPersons() {} // prevents instantiation

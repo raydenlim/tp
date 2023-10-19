@@ -21,6 +21,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     private Path consultationListFilePath = Paths.get("data", "consultationlist.json");
 
+    private Path consultationListFilePath = Paths.get("data", "consultationlist.json");
+
     /**
      * Creates a {@code UserPrefs} with default values.
      */
