@@ -132,7 +132,7 @@ public class MainApp extends Application {
             initialSessionList = sessionListOptional.orElseGet(SampleDataUtil::getSampleSessionList);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getSessionListFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with an empty SessionList.");
             initialSessionList = new SessionListBook();
         }
 
