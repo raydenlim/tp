@@ -8,6 +8,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -23,6 +24,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionNumberContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -157,6 +159,11 @@ public class ModelManagerTest {
         assertTrue(toAdd.equals(sessionList.findSessionBySessionNumber(new SessionNumber("0"))));
     }
 
+    @Test
+    public void getFilteredSessionList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredSessionList().remove(0));
+    }
+
 
     @Test
     public void equals() {
@@ -198,6 +205,13 @@ public class ModelManagerTest {
         // different taskList -> returns false
         String[] taskKeywords = TASK1.getName().taskName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
+                new TaskListBook(), new SessionListBook())));
+
+        // different sessionList -> returns false
+        String[] sessionKeywords = SESSION1A.getSessionNumber().sessionNumber.split("");
+        modelManager.updateFilteredSessionList(
+                new SessionNumberContainsKeywordsPredicate(Arrays.asList(sessionKeywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
                 new TaskListBook(), new SessionListBook())));
 
