@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
+import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -29,7 +30,7 @@ import seedu.address.model.task.Task;
 public class DeleteTaskCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(),
-            new UserPrefs(), getTypicalTaskList(), getTypicalSessionList());
+            new UserPrefs(), getTypicalTaskList(), getTypicalSessionList(), getTypicalGradedTestList());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -40,7 +41,7 @@ public class DeleteTaskCommandTest {
                 Messages.format(taskToDelete));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(),
-                new UserPrefs(), model.getTaskList(), model.getSessionList());
+                new UserPrefs(), model.getTaskList(), model.getSessionList(), model.getGradedTestList());
         expectedModel.deleteTask(taskToDelete);
 
         assertCommandSuccess(deleteTaskCommand, model, expectedMessage, expectedModel);
@@ -65,7 +66,7 @@ public class DeleteTaskCommandTest {
                 Messages.format(taskToDelete));
 
         Model expectedModel = new ModelManager(model.getAddressBook(),
-                new UserPrefs(), model.getTaskList(), model.getSessionList());
+                new UserPrefs(), model.getTaskList(), model.getSessionList(), model.getGradedTestList());
         expectedModel.deleteTask(taskToDelete);
         showNoTask(expectedModel);
 

@@ -66,8 +66,7 @@ public class DeleteCommandTest {
                 Messages.format(personToDelete));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
-                        new SessionListBook(), new GradedTestListBook());
-      
+                new SessionListBook(), new GradedTestListBook());
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
 

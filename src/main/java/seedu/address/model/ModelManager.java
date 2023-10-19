@@ -37,7 +37,8 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyTaskList taskList, ReadOnlySessionList sessionList, ReadOnlyGradedTestList gradedTestList) {
+                        ReadOnlyTaskList taskList, ReadOnlySessionList sessionList,
+                        ReadOnlyGradedTestList gradedTestList) {
 
         requireAllNonNull(addressBook, userPrefs);
 

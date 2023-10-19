@@ -1,7 +1,6 @@
 package seedu.address.model.gradedtest;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Collections;
@@ -45,7 +44,6 @@ public class GradedTest {
         this.midTerms = midTerms;
         this.finals = finals;
         this.practicalExam = practicalExam;
-        // UPDATE THIS PARSER BELOW. WRONG FORMAT. SHOULD BE SIMILAR TO JSON
         this.gradedTestsIndv = readingAssessment1.toString() + readingAssessment2.toString() + midTerms.toString()
                 + finals.toString() + practicalExam.toString();
     }

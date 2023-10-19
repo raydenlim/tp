@@ -145,8 +145,8 @@ public class MainApp extends Application {
                     + " Will be starting with an empty AddressBook.");
             initialGradedTestList = new GradedTestListBook();
         }
-      
-        try{
+
+        try {
             sessionListOptional = storage.readSessionList();
             if (!sessionListOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getSessionListFilePath()

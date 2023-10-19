@@ -3,7 +3,6 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRACTICAL_EXAM;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT;
 
@@ -16,7 +15,6 @@ import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
 import seedu.address.model.gradedtest.ReadingAssessment;
-import seedu.address.model.person.Name;
 
 /**
  * Parses input arguments and creates a new AddGradedTestCommand object

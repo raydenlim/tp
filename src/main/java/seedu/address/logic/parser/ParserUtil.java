@@ -300,7 +300,8 @@ public class ParserUtil {
             throw new ParseException(PracticalExam.MESSAGE_CONSTRAINTS);
         }
         return new PracticalExam(trimmedName);
-      
+    }
+
     /**
      * Parses a {@code String priority} into a {@code TaskPriority}.
      * Leading and trailing whitespaces will be trimmed.
@@ -317,6 +318,5 @@ public class ParserUtil {
             }
         }
         throw new ParseException(TaskPriority.MESSAGE_CONSTRAINTS);
-
     }
 }

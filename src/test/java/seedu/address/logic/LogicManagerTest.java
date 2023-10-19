@@ -142,7 +142,7 @@ public class LogicManagerTest {
             String expectedMessage) {
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
                 new TaskListBook(), new SessionListBook(), new GradedTestListBook());
-      
+
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

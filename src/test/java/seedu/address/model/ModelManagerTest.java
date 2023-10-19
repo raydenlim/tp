@@ -12,7 +12,6 @@ import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
-import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -29,7 +28,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
-import seedu.address.model.session.SessionNumberContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -260,7 +258,7 @@ public class ModelManagerTest {
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
 
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                new TaskListBook(),  new SessionListBook(), new GradedTestListBook())));
+                new TaskListBook(), new SessionListBook(), new GradedTestListBook())));
 
         // different gradedTestList -> returns false
         String[] gradedTestKeywords = GT1.getGradedTests().toString().split("\\s+");

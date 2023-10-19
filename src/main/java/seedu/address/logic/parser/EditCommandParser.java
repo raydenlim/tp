@@ -63,7 +63,8 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
-        parseGradedTestForEdit(argMultimap.getAllValues(PREFIX_GRADED_TEST)).ifPresent(editPersonDescriptor::setGradedTest);
+        parseGradedTestForEdit(argMultimap.getAllValues(PREFIX_GRADED_TEST))
+                .ifPresent(editPersonDescriptor::setGradedTest);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
@@ -88,7 +89,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     }
 
     /**
-     * Parses {@code Collection<String> gradedTest} into a {@code Set<GradedTest>} if {@code gradedTestIndv} is non-empty.
+     * Parses {@code Collection<String> gradedTest} into a {@code Set<GradedTest>}
+     * if {@code gradedTestIndv} is non-empty.
      * If {@code gradedTestIndv} contain only one element which is an empty string, it will be parsed into a
      * {@code Set<GradedTest>} containing zero gradedTestIndv.
      */
@@ -98,7 +100,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (gradedTestIndv.isEmpty()) {
             return Optional.empty();
         }
-        Collection<String> gradedTestIndvSet = gradedTestIndv.size() == 1 && gradedTestIndv.contains("") ? Collections.emptySet() : gradedTestIndv;
+        Collection<String> gradedTestIndvSet = gradedTestIndv.size() == 1
+                && gradedTestIndv.contains("") ? Collections.emptySet() : gradedTestIndv;
         return Optional.of(ParserUtil.parseGradedTests(gradedTestIndvSet));
     }
 
