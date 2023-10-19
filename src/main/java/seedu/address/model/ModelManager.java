@@ -14,7 +14,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
-import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.task.Task;
 

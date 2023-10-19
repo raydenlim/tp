@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -7,19 +9,22 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.session.Session;
-import seedu.address.model.task.Task;
 
-import java.util.logging.Logger;
 
+/**
+ * Represents a UI component that displays a list of sessions in the user interface.
+ */
 public class SessionListPanel extends UiPart<Region> {
     private static final String FXML = "SessionListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(SessionListPanel.class);
 
-    @javafx.fxml.FXML
+    @FXML
     private ListView<Session> sessionListView;
 
     /**
-     * Creates a {@code SessionListPanel} with the given {@code ObservableList}.
+     * Creates a `SessionListPanel` with the given `ObservableList` of sessions.
+     *
+     * @param sessionList The list of sessions to display.
      */
     public SessionListPanel(ObservableList<Session> sessionList) {
         super(FXML);
@@ -28,7 +33,7 @@ public class SessionListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Session} using a {@code SessionCard}.
+     * Custom `ListCell` that displays the graphics of a `Session` using a `SessionCard`.
      */
     class SessionListViewCell extends ListCell<Session> {
         @Override
@@ -43,5 +48,4 @@ public class SessionListPanel extends UiPart<Region> {
             }
         }
     }
-
 }
