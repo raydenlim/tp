@@ -23,6 +23,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -32,6 +33,7 @@ import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonConsultationListStorage;
 import seedu.address.storage.JsonGradedTestListStorage;
 import seedu.address.storage.JsonSessionListStorage;
 import seedu.address.storage.JsonTaskListStorage;
@@ -59,8 +61,10 @@ public class LogicManagerTest {
                 temporaryFolder.resolve("gradedTestList.json"));
         JsonSessionListStorage sessionListStorage = new JsonSessionListStorage(
                 temporaryFolder.resolve("sessionList.json"));
+        JsonConsultationListStorage consultationListStorage = new JsonConsultationListStorage(
+                temporaryFolder.resolve("consultationList.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, sessionListStorage, gradedTestListStorage);
+                taskListStorage, sessionListStorage, consultationListStorage, gradedTestListStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -97,6 +101,11 @@ public class LogicManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    }
+
+    @Test
+    public void getFilteredConsultationList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredConsultationList().remove(0));
     }
 
     @Test
@@ -140,9 +149,8 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(),
-                new TaskListBook(), new SessionListBook(), new GradedTestListBook());
-
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -185,8 +193,10 @@ public class LogicManagerTest {
                 new JsonGradedTestListStorage(temporaryFolder.resolve("ExceptionGradedTestList.json"));
         JsonSessionListStorage sessionListStorage =
                 new JsonSessionListStorage(temporaryFolder.resolve("ExceptionSessionList.json"));
+        JsonConsultationListStorage consultationListStorage =
+                new JsonConsultationListStorage(temporaryFolder.resolve("ExceptionConsultationList.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, sessionListStorage, gradedTestListStorage);
+                taskListStorage, sessionListStorage, consultationListStorage, gradedTestListStorage);
 
         logic = new LogicManager(model, storage);
 

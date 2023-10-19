@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
@@ -15,8 +16,12 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,6 +62,13 @@ public class CommandTestUtil {
             "Reading Assessment 1:100 | Reading Assessment 2:100 | MidTerms:100 | Finals:100 | Practical Exam:100";
     public static final String VALID_TASK_NAME = "Do cs2103t";
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
+    public static final String VALID_DATE = "11/11/2023";
+    public static final String VALID_TIME = "11:11";
+
+    public static final LocalDate VALID_DATE_OBJ = LocalDate.parse(VALID_DATE,
+            DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    public static final LocalTime VALID_TIME_OBJ = LocalTime.parse(VALID_TIME,
+            DateTimeFormatter.ofPattern("HH:mm"));
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -105,7 +117,11 @@ public class CommandTestUtil {
 
     public static final String INVALID_TASK_DESCRIPTION = " "
             + PREFIX_TASK_DESCRIPTION + "\\    "; // whitespaces only not allowed in description
+    public static final String INVALID_DATE_DESC = " " + PREFIX_DATE + "1/1/2002";
+    public static final String INVALID_TIME_DESC = " " + PREFIX_TIME + "0:30";
 
+    public static final String VALID_DATE_DESC = " " + PREFIX_DATE + VALID_DATE;
+    public static final String VALID_TIME_DESC = " " + PREFIX_TIME + VALID_TIME;
     public static final String SESSION_NUMBER_SESSION1 = " " + PREFIX_SESSION + "1";
     public static final String INVALID_SESSION_NUMBER = " " + PREFIX_SESSION + "abc";
     public static final String SESSION_STUDENTS_STUDENTS1 = " " + PREFIX_NAME + "Bob";

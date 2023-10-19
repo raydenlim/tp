@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -27,24 +28,26 @@ public class ModelManager implements Model {
     private final SessionListBook sessionList;
     private final TaskListBook taskList;
     private final GradedTestListBook gradedTestList;
+    private final ConsultationListBook consultationList;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<GradedTest> filteredGradedTest;
+    private final FilteredList<Consultation> filteredConsultations;
     private final FilteredList<Session> filteredSessions;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyTaskList taskList, ReadOnlySessionList sessionList,
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyTaskList taskList,
+                        ReadOnlySessionList sessionList, ReadOnlyConsultationList consultationList,
                         ReadOnlyGradedTestList gradedTestList) {
-
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.consultationList = new ConsultationListBook(consultationList);
         this.sessionList = new SessionListBook(sessionList);
         this.taskList = new TaskListBook(taskList);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -52,6 +55,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.taskList.getTaskList());
         filteredGradedTest = new FilteredList<>(this.gradedTestList.getGradedTestList());
+        filteredConsultations = new FilteredList<>(this.consultationList.getConsultationList());
         filteredSessions = new FilteredList<>(this.sessionList.getSessionList());
     }
 
@@ -59,8 +63,8 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with default data.
      */
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(),
-                new TaskListBook(), new SessionListBook(), new GradedTestListBook());
+        this(new AddressBook(), new UserPrefs(), new TaskListBook(), new SessionListBook(),
+                new ConsultationListBook(), new GradedTestListBook());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -293,6 +297,38 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //=========== Consultations ================================================================================
+    @Override
+    public void addConsultation(Consultation consultation) {
+        consultationList.addConsultation(consultation);
+    }
+
+    @Override
+    public ReadOnlyConsultationList getConsultationList() {
+        return consultationList;
+    }
+
+    @Override
+    public boolean hasConsultation(Consultation consultation) {
+        requireNonNull(consultation);
+        return consultationList.hasConsultation(consultation);
+    }
+
+    @Override
+    public ObservableList<Consultation> getFilteredConsultationList() {
+        return filteredConsultations;
+    }
+    @Override
+    public void updateFilteredConsultationList(Predicate<Consultation> predicate) {
+        requireNonNull(predicate);
+        filteredConsultations.setPredicate(predicate);
+    }
+
+    @Override
+    public Person getMatchingStudentName(Name name) {
+        requireNonNull(name);
+        return addressBook.matchName(name);
+    }
 
 
     //=========== Filtered Task List Accessors =============================================================
@@ -331,16 +367,6 @@ public class ModelManager implements Model {
                 && filteredTasks.equals(otherModelManager.filteredTasks)
                 && filteredGradedTest.equals(otherModelManager.filteredGradedTest);
     }
-
-
-    @Override
-    public Person getMatchingStudentName(Name name) {
-        requireNonNull(name);
-        return addressBook.matchName(name);
-    }
-
-
-
 
     //=========== Filtered GradedTest List Accessors =============================================================
 

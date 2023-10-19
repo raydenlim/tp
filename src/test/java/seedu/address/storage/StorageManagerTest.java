@@ -2,6 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
 import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
@@ -15,8 +16,10 @@ import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.AddressBook;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.GradedTestListBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
@@ -37,10 +40,12 @@ public class StorageManagerTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         JsonTaskListStorage taskListStorage = new JsonTaskListStorage(getTempFilePath("tasks"));
         JsonSessionListStorage sessionListStorage = new JsonSessionListStorage(getTempFilePath("sessions"));
+        JsonConsultationListStorage consultationListStorage = new JsonConsultationListStorage(
+                getTempFilePath("consultations"));
         JsonGradedTestListStorage gradedTestListStorage = new JsonGradedTestListStorage(
                 getTempFilePath("gradedTests"));
         storageManager = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, sessionListStorage, gradedTestListStorage);
+                taskListStorage, sessionListStorage, consultationListStorage, gradedTestListStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -90,6 +95,19 @@ public class StorageManagerTest {
     @Test
     public void getSessionListFilePath() {
         assertNotNull(storageManager.getSessionListFilePath());
+    }
+
+    @Test
+    public void getConsultationListFilePath() {
+        assertNotNull(storageManager.getConsultationListFilePath());
+    }
+
+    @Test
+    public void consultationListReadSave() throws Exception {
+        ConsultationListBook original = getTypicalConsultationListBook();
+        storageManager.saveConsultationList(original);
+        ReadOnlyConsultationList retrieved = storageManager.readConsultationList().get();
+        assertEquals(original, new ConsultationListBook(retrieved));
     }
 
     @Test

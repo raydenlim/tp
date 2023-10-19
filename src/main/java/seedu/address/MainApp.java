@@ -16,10 +16,12 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
@@ -29,8 +31,10 @@ import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
+import seedu.address.storage.ConsultationListStorage;
 import seedu.address.storage.GradedTestListStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonConsultationListStorage;
 import seedu.address.storage.JsonGradedTestListStorage;
 import seedu.address.storage.JsonSessionListStorage;
 import seedu.address.storage.JsonTaskListStorage;
@@ -72,10 +76,12 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         TaskListStorage taskListStorage = new JsonTaskListStorage(userPrefs.getTaskListFilePath());
         SessionListStorage sessionListStorage = new JsonSessionListStorage(userPrefs.getSessionListFilePath());
+        ConsultationListStorage consultationListStorage = new JsonConsultationListStorage(userPrefs
+                .getConsultationListFilePath());
         GradedTestListStorage gradedTestListStorage =
                 new JsonGradedTestListStorage(userPrefs.getGradedTestListFilePath());
         storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage,
-                sessionListStorage, gradedTestListStorage);
+                sessionListStorage, consultationListStorage, gradedTestListStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -92,6 +98,7 @@ public class MainApp extends Application {
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getAddressBookFilePath());
         logger.info("Using task list file : " + storage.getTaskListFilePath());
+        logger.info("Using consultation list file : " + storage.getConsultationListFilePath());
         logger.info("Using session list file : " + storage.getSessionListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
@@ -103,6 +110,9 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyGradedTestList> gradedTestListOptional;
         ReadOnlyGradedTestList initialGradedTestList;
+
+        Optional<ReadOnlyConsultationList> consultationListOptional;
+        ReadOnlyConsultationList initialConsultationList;
 
         Optional<ReadOnlySessionList> sessionListOptional;
         ReadOnlySessionList initialSessionList;
@@ -147,6 +157,19 @@ public class MainApp extends Application {
         }
 
         try {
+            consultationListOptional = storage.readConsultationList();
+            if (!consultationListOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getConsultationListFilePath()
+                        + " populated with a sample ConsultationList.");
+            }
+            initialConsultationList = consultationListOptional.orElseGet(SampleDataUtil::getSampleConsultationList);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getConsultationListFilePath() + " could not be loaded."
+                    + " Will be starting with an empty ConsultationList.");
+            initialConsultationList = new ConsultationListBook();
+        }
+
+        try {
             sessionListOptional = storage.readSessionList();
             if (!sessionListOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getSessionListFilePath()
@@ -159,8 +182,8 @@ public class MainApp extends Application {
             initialSessionList = new SessionListBook();
         }
 
-        return new ModelManager(initialData, userPrefs, initialTaskList, initialSessionList, initialGradedTestList);
-
+        return new ModelManager(initialData, userPrefs, initialTaskList, initialSessionList, initialConsultationList,
+                initialGradedTestList);
     }
 
     private void initLogging(Config config) {

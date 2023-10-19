@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
+import seedu.address.model.ConsultationListBook;
 import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -27,9 +28,8 @@ import seedu.address.model.person.Person;
  * {@code DeleteCommand}.
  */
 public class DeleteCommandTest {
-
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
-            new SessionListBook(), new GradedTestListBook());
+            new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -40,7 +40,7 @@ public class DeleteCommandTest {
                 Messages.format(personToDelete));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
-                new SessionListBook(), new GradedTestListBook());
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
 
         expectedModel.deletePerson(personToDelete);
 
@@ -65,8 +65,9 @@ public class DeleteCommandTest {
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
-                new SessionListBook(), new GradedTestListBook());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
+
         expectedModel.deletePerson(personToDelete);
         showNoPerson(expectedModel);
 

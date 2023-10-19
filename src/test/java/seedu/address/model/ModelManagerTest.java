@@ -3,6 +3,7 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONSULTATIONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_GRADED_TEST;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
@@ -12,6 +13,8 @@ import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalSessions.SESSION1A;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -22,14 +25,18 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.consultation.Consultation;
 import seedu.address.model.gradedtest.GradedTestNameContainsKeywordsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionNumberContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.ConsultationBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.SessionBuilder;
 import seedu.address.testutil.TypicalPersons;
@@ -149,8 +156,45 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void matchName_personWithMatchingName_returnsTrue() {
+        // matching name
+        modelManager.addPerson(ALICE);
+        assertEquals(modelManager.getMatchingStudentName(ALICE.getName()), ALICE);
+    }
+
+    @Test
+    public void matchName_noMatchingNameFound_throwsPersonNotFoundException() {
+        // no matching name
+        modelManager.addPerson(ALICE);
+        assertThrows(PersonNotFoundException.class, () -> modelManager.getMatchingStudentName(BOB.getName()));
+    }
+
+    @Test
+    public void addConsultation_nullCase_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.addConsultation(null));
+    }
+
+    @Test
+    public void hasConsultation_nullCase_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasConsultation(null));
+    }
+
+    @Test
+    public void addConsultation_validConsultation_returnsTrue() {
+        Consultation consultation = new ConsultationBuilder().build();
+        modelManager.addConsultation(consultation);
+        assertTrue(modelManager.hasConsultation(consultation));
+    }
+
+    @Test
     public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
+    }
+
+    @Test
+    public void getFilteredConsultationList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () ->
+                modelManager.getFilteredConsultationList().remove(0));
     }
 
     @Test
@@ -218,6 +262,7 @@ public class ModelManagerTest {
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
         TaskListBook taskList = new TaskListBook();
+        ConsultationListBook consultationList = new ConsultationListBook();
         GradedTestListBook gradedTestList = new GradedTestListBook();
         SessionListBook sessionList = new SessionListBook();
         taskList.addTask(TASK1);
@@ -225,8 +270,10 @@ public class ModelManagerTest {
 
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, taskList, sessionList, gradedTestList);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, taskList, sessionList, gradedTestList);
+        modelManager = new ModelManager(addressBook, userPrefs, taskList, sessionList,
+                consultationList, gradedTestList);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, taskList,
+                sessionList, consultationList, gradedTestList);
 
         assertTrue(modelManager.equals(modelManagerCopy));
 
@@ -240,15 +287,16 @@ public class ModelManagerTest {
         assertFalse(modelManager.equals(5));
 
         // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs,
-                taskList, sessionList, gradedTestList)));
-
+        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs, taskList,
+                sessionList, consultationList, gradedTestList)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                taskList, sessionList, gradedTestList)));
+
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, taskList,
+                sessionList, consultationList, gradedTestList)));
+
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -257,8 +305,19 @@ public class ModelManagerTest {
         String[] taskKeywords = TASK1.getName().taskName.split("\\s+");
         modelManager.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(taskKeywords)));
 
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, new TaskListBook(),
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook())));
+
+        // different consultationList -> returns false
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, new TaskListBook(),
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook())));
+
+        // different sessionList -> returns false
+        String[] sessionKeywords = SESSION1A.getSessionNumber().sessionNumber.split("");
+        modelManager.updateFilteredSessionList(
+                new SessionNumberContainsKeywordsPredicate(Arrays.asList(sessionKeywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                new TaskListBook(), new SessionListBook(), new GradedTestListBook())));
+                new TaskListBook(), new SessionListBook(), new ConsultationListBook(), new GradedTestListBook())));
 
         // different gradedTestList -> returns false
         String[] gradedTestKeywords = GT1.getGradedTests().toString().split("\\s+");
@@ -266,20 +325,21 @@ public class ModelManagerTest {
                 new GradedTestNameContainsKeywordsPredicate(Arrays.asList(gradedTestKeywords)));
         System.out.println(GT1.getGradedTests());
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
-                new TaskListBook(), new SessionListBook(), new GradedTestListBook())));
-
+                new TaskListBook(), new SessionListBook(), new ConsultationListBook(), new GradedTestListBook())));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         modelManager.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
         modelManager.updateFilteredGradedTestList(PREDICATE_SHOW_ALL_GRADED_TEST);
+        modelManager.updateFilteredConsultationList(PREDICATE_SHOW_ALL_CONSULTATIONS);
         modelManager.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs,
-                taskList, sessionList, gradedTestList)));
 
+        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs, taskList,
+                sessionList, consultationList, gradedTestList)));
     }
+
 }

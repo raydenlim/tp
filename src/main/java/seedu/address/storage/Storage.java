@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyConsultationList;
 import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
@@ -16,7 +17,7 @@ import seedu.address.model.UserPrefs;
  * API of the Storage component
  */
 public interface Storage extends AddressBookStorage, UserPrefsStorage,
-        TaskListStorage, SessionListStorage, GradedTestListStorage {
+        TaskListStorage, SessionListStorage, ConsultationListStorage, GradedTestListStorage {
 
     @Override
     Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
@@ -38,6 +39,12 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage,
 
     @Override
     void saveSessionList(ReadOnlySessionList sessionList) throws IOException;
+
+    @Override
+    Optional<ReadOnlyConsultationList> readConsultationList() throws DataLoadingException;
+
+    @Override
+    void saveConsultationList(ReadOnlyConsultationList consultationList) throws IOException;
 
     @Override
     Optional<ReadOnlyTaskList> readTaskList() throws DataLoadingException;

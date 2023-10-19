@@ -19,6 +19,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private Path sessionListFilePath = Paths.get("data", "sessionlist.json");
     private Path gradedTestListFilePath = Paths.get("data" , "gradedtestlist.json");
 
+    private Path consultationListFilePath = Paths.get("data", "consultationlist.json");
+
     /**
      * Creates a {@code UserPrefs} with default values.
      */
@@ -61,6 +63,9 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     public Path getSessionListFilePath() {
         return sessionListFilePath;
+    }
+    public Path getConsultationListFilePath() {
+        return consultationListFilePath;
     }
 
     public void setSessionListFilePath(Path sessionListFilePath) {

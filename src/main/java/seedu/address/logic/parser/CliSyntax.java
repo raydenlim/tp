@@ -16,8 +16,9 @@ public class CliSyntax {
     public static final Prefix PREFIX_MIDTERMS = new Prefix("gt/m/");
     public static final Prefix PREFIX_FINALS = new Prefix("gt/f/");
     public static final Prefix PREFIX_PRACTICAL_EXAM = new Prefix("gt/pe/");
+    public static final Prefix PREFIX_DATE = new Prefix("d/");
+    public static final Prefix PREFIX_TIME = new Prefix("tt/");
     public static final Prefix PREFIX_SESSION = new Prefix("s/");
-
     public static final Prefix PREFIX_TASK_NAME = new Prefix("tn/");
     public static final Prefix PREFIX_TASK_DESCRIPTION = new Prefix("td/");
     public static final Prefix PREFIX_TASK_PRIORITY = new Prefix("tp/");

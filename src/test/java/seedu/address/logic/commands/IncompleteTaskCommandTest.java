@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
+import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
 import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
@@ -29,9 +30,8 @@ import seedu.address.testutil.TaskBuilder;
  * {@code IncompleteTaskCommand}.
  */
 public class IncompleteTaskCommandTest {
-
-    private Model model = new ModelManager(getTypicalAddressBook(),
-            new UserPrefs(), getTypicalTaskList(), getTypicalSessionList(), getTypicalGradedTestList());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalTaskList(),
+            getTypicalSessionList(), getTypicalConsultationListBook(), getTypicalGradedTestList());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -42,8 +42,9 @@ public class IncompleteTaskCommandTest {
         String expectedMessage = String.format(IncompleteTaskCommand.MESSAGE_UNMARK_TASK_SUCCESS,
                 Messages.format(taskToMark));
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(),
-                new UserPrefs(), model.getTaskList(), model.getSessionList(), getTypicalGradedTestList());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
+                model.getSessionList(), model.getConsultationList(), model.getGradedTestList());
+
         expectedModel.setTask(taskToMark, editedTask);
 
         assertCommandSuccess(incompleteTaskCommand, model, expectedMessage, expectedModel);
@@ -68,8 +69,9 @@ public class IncompleteTaskCommandTest {
         String expectedMessage = String.format(IncompleteTaskCommand.MESSAGE_UNMARK_TASK_SUCCESS,
                 Messages.format(taskToMark));
 
-        Model expectedModel = new ModelManager(model.getAddressBook(),
-                new UserPrefs(), model.getTaskList(), model.getSessionList(), getTypicalGradedTestList());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
+                model.getSessionList(), model.getConsultationList(), model.getGradedTestList());
+
         expectedModel.setTask(taskToMark, editedTask);
 
         assertCommandSuccess(incompleteTaskCommand, model, expectedMessage, expectedModel);
