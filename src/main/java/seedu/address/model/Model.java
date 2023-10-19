@@ -105,6 +105,15 @@ public interface Model {
      */
     void addSession(Session session);
 
+    /** Returns an unmodifiable view of the filtered session list */
+    ObservableList<Session> getFilteredSessionList();
+
+    /**
+     * Updates the filter of the filtered session list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredSessionList(Predicate<Session> predicate);
+
     /**
      * Replaces task list data with the data in {@code taskList}.
      */

@@ -6,13 +6,18 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
+import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionStudents;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
@@ -53,6 +58,13 @@ public class SampleDataUtil {
         };
     }
 
+    public static Session[] getSampleSessions() {
+        return new Session[] {
+            new Session(new SessionNumber("1"), new SessionStudents(getSamplePersons())),
+            new Session(new SessionNumber("2"), new SessionStudents(getSamplePersons()))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -67,6 +79,14 @@ public class SampleDataUtil {
             sampleTl.addTask(sampleTask);
         }
         return sampleTl;
+    }
+
+    public static ReadOnlySessionList getSampleSessionList() {
+        SessionListBook sampleSl = new SessionListBook();
+        for (Session sampleSession : getSampleSessions()) {
+            sampleSl.addSession(sampleSession);
+        }
+        return sampleSl;
     }
 
     /**
