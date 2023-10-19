@@ -3,7 +3,6 @@ package seedu.address.model.session;
 import java.util.List;
 import java.util.function.Predicate;
 
-import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
@@ -19,10 +18,18 @@ public class SessionNumberContainsKeywordsPredicate implements Predicate<Session
     @Override
     public boolean test(Session session) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(
+                .anyMatch(keyword -> containsSubstringIgnoreCase(
                         session.getSessionNumber().sessionNumber, keyword));
     }
 
+    private boolean containsSubstringIgnoreCase(String str, String substring) {
+        // Convert both the main string and substring to lowercase for a case-insensitive match
+        String lowerCaseStr = str.toLowerCase();
+        String lowerCaseSubstring = substring.toLowerCase();
+
+        // Check if the main string contains the substring
+        return lowerCaseStr.contains(lowerCaseSubstring);
+    }
     @Override
     public boolean equals(Object other) {
         if (other == this) {
