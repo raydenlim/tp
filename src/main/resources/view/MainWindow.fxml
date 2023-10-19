@@ -48,21 +48,27 @@
         </StackPane>
 
         <HBox styleClass="pane-with-border">
-          <VBox fx:id="personList"  minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+          <VBox fx:id="personList"  minWidth="300" prefWidth="300" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <Label text="Person List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <VBox fx:id="taskList" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+          <VBox fx:id="taskList" minWidth="300" prefWidth="300" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <Label text="Task List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
             <StackPane VBox.vgrow="ALWAYS" fx:id="taskListPanelPlaceholder" />
           </VBox>
 
-          <VBox fx:id="consultationList" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+          <VBox fx:id="consultationList" minWidth="300" prefWidth="300" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <Label text="Consultation List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
             <StackPane VBox.vgrow="ALWAYS" fx:id="consultationListPanelPlaceholder" />
           </VBox>
+
+          <VBox fx:id="sessionList" minWidth="300" prefWidth="300" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+            <Label text="Session List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
+            <StackPane VBox.vgrow="ALWAYS" fx:id="sessionListPanelPlaceholder" />
+          </VBox>
         </HBox>
+
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>

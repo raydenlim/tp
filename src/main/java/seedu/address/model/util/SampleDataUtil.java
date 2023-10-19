@@ -11,7 +11,9 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ConsultationListBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
+import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Address;
@@ -19,6 +21,9 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionStudents;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
@@ -65,22 +70,26 @@ public class SampleDataUtil {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 
-        return new Consultation[] {
-            new Consultation(
+        return new Consultation[] { new Consultation(
                 LocalDate.parse("11/11/2023", dateFormatter),
                 LocalTime.parse("11:11", timeFormatter),
                 SampleDataUtil.getStudentSet(PERSON_ALEX, PERSON_BERNICE)
-            ),
-            new Consultation(
+        ), new Consultation(
                 LocalDate.parse("01/11/2023", dateFormatter),
                 LocalTime.parse("10:00", timeFormatter),
                 SampleDataUtil.getStudentSet(PERSON_ALEX)
-            ),
-            new Consultation(
+        ), new Consultation(
                 LocalDate.parse("11/12/2023", dateFormatter),
                 LocalTime.parse("15:00", timeFormatter),
                 SampleDataUtil.getStudentSet(PERSON_DAVID, PERSON_IRFAN, PERSON_ROY)
-            )
+        ),
+        };
+    }
+
+    public static Session[] getSampleSessions() {
+        return new Session[] {
+            new Session(new SessionNumber("1"), new SessionStudents(getSamplePersons())),
+            new Session(new SessionNumber("2"), new SessionStudents(getSamplePersons()))
         };
     }
 
@@ -106,6 +115,14 @@ public class SampleDataUtil {
             sampleClb.addConsultation(sampleConsultation);
         }
         return sampleClb;
+    }
+
+    public static ReadOnlySessionList getSampleSessionList() {
+        SessionListBook sampleSl = new SessionListBook();
+        for (Session sampleSession : getSampleSessions()) {
+            sampleSl.addSession(sampleSession);
+        }
+        return sampleSl;
     }
 
     /**

@@ -9,6 +9,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ConsultationListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 
@@ -25,9 +26,10 @@ public class ClearCommandTest {
     @Test
     public void execute_nonEmptyAddressBook_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
-                new ConsultationListBook());
+                new SessionListBook(), new ConsultationListBook());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
-                new ConsultationListBook());
+                new SessionListBook(), new ConsultationListBook());
+
         expectedModel.setAddressBook(new AddressBook());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);

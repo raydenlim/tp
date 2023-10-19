@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
@@ -60,6 +61,22 @@ public class TaskTest {
         editedTask = new TaskBuilder(TASK1).withDescription(TASK2.getDescription().description).build();
         assertFalse(TASK1.equals(editedTask));
 
+    }
+
+    @Test
+    public void hashCode_sameFields_expectSameHashCode() {
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+        Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+
+        assertEquals(task1.hashCode(), task2.hashCode());
+    }
+
+    @Test
+    public void hashCode_differentFields_expectDifferentHashCode() {
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+        Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"), true, TaskPriority.HIGH);
+
+        assertThrows(AssertionError.class, () -> assertEquals(task1.hashCode(), task2.hashCode()));
     }
 
     @Test

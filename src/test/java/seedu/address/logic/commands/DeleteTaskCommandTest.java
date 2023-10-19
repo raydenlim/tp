@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -10,6 +11,7 @@ import static seedu.address.testutil.TypicalConsultations.getTypicalConsultation
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
@@ -26,9 +28,8 @@ import seedu.address.model.task.Task;
  * {@code DeleteTaskCommand}.
  */
 public class DeleteTaskCommandTest {
-
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalTaskList(),
-            getTypicalConsultationListBook());
+            getTypicalSessionList(), getTypicalConsultationListBook());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -39,7 +40,8 @@ public class DeleteTaskCommandTest {
                 Messages.format(taskToDelete));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
-                model.getConsultationList());
+                model.getSessionList(), model.getConsultationList());
+
         expectedModel.deleteTask(taskToDelete);
 
         assertCommandSuccess(deleteTaskCommand, model, expectedMessage, expectedModel);
@@ -64,7 +66,8 @@ public class DeleteTaskCommandTest {
                 Messages.format(taskToDelete));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
-                model.getConsultationList());
+                model.getSessionList(), model.getConsultationList());
+
         expectedModel.deleteTask(taskToDelete);
         showNoTask(expectedModel);
 
@@ -97,7 +100,7 @@ public class DeleteTaskCommandTest {
         assertEquals(deleteFirstCommand, deleteFirstCommandCopy);
 
         // different types -> returns false
-        assertNotEquals(1, deleteFirstCommand);
+        assertFalse(deleteFirstCommand.equals(1));
 
         // null -> returns false
         assertNotEquals(null, deleteFirstCommand);

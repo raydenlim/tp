@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.consultation.Consultation;
@@ -173,6 +174,21 @@ public class ModelStub implements Model {
 
     @Override
     public void addSession(Session session) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Session> getFilteredSessionList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ReadOnlySessionList getSessionList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void updateFilteredSessionList(Predicate<Session> predicate) {
         throw new AssertionError("This method should not be called.");
     }
 

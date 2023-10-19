@@ -37,6 +37,7 @@ public class ParserUtilTest {
     private static final String VALID_TAG_2 = "neighbour";
 
     private static final String WHITESPACE = " \t\r\n";
+    private static final String INVALID_PRIORITY = "jason";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -220,6 +221,11 @@ public class ParserUtilTest {
 
         // When there's an invalid name, a ParseException should be thrown
         assertThrows(ParseException.class, () -> ParserUtil.parseNames(names));
+    }
+
+    @Test
+    public void parsePriority_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTaskPriority(INVALID_PRIORITY));
     }
 
 }

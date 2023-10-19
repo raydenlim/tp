@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
 
 /**
@@ -40,6 +41,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of consultations */
     ObservableList<Consultation> getFilteredConsultationList();
+
+    /** Returns an unmodifiable view of the filtered list of sessions */
+    ObservableList<Session> getFilteredSessionList();
 
     /**
      * Returns the user prefs' address book file path.

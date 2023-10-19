@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -10,6 +11,7 @@ import static seedu.address.testutil.TypicalConsultations.getTypicalConsultation
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
@@ -27,9 +29,8 @@ import seedu.address.testutil.TaskBuilder;
  * {@code IncompleteTaskCommand}.
  */
 public class IncompleteTaskCommandTest {
-
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), getTypicalTaskList(),
-            getTypicalConsultationListBook());
+            getTypicalSessionList(), getTypicalConsultationListBook());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -41,7 +42,8 @@ public class IncompleteTaskCommandTest {
                 Messages.format(taskToMark));
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
-                model.getConsultationList());
+                model.getSessionList(), model.getConsultationList());
+
         expectedModel.setTask(taskToMark, editedTask);
 
         assertCommandSuccess(incompleteTaskCommand, model, expectedMessage, expectedModel);
@@ -67,7 +69,8 @@ public class IncompleteTaskCommandTest {
                 Messages.format(taskToMark));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
-                model.getConsultationList());
+                model.getSessionList(), model.getConsultationList());
+
         expectedModel.setTask(taskToMark, editedTask);
 
         assertCommandSuccess(incompleteTaskCommand, model, expectedMessage, expectedModel);
@@ -99,7 +102,7 @@ public class IncompleteTaskCommandTest {
         assertEquals(incompleteFirstCommand, incompleteFirstCommandCopy);
 
         // different types -> returns false
-        assertNotEquals(1, incompleteFirstCommand);
+        assertFalse(incompleteFirstCommand.equals(1));
 
         // null -> returns false
         assertNotEquals(null, incompleteFirstCommand);
