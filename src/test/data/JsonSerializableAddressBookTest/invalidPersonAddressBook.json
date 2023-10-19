@@ -4,7 +4,8 @@
     "phone": "9482424",
     "email": "invalid@email!3e",
     "address": "4th street",
-    "assignments" : {
+    "assignmentMap" : {
+      "assignments" : {
         "Beyond the First Dimension" : {
           "assignmentName" : "Beyond the First Dimension",
           "grade" : "UNGRADED/800"
@@ -98,5 +99,6 @@
           "grade" : "UNGRADED/670"
         }
       }
+    }
   } ]
 }

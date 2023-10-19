@@ -8,7 +8,8 @@
         "email" : "alice@example.com",
         "address" : "123, Jurong West Ave 6, #08-111",
         "tags" : [ "friends" ],
-        "assignments" : {
+        "assignmentMap" : {
+          "assignments" : {
             "Beyond the First Dimension" : {
               "assignmentName" : "Beyond the First Dimension",
               "grade" : "UNGRADED/800"
@@ -102,6 +103,7 @@
               "grade" : "UNGRADED/670"
             }
           }
+        }
       }
     ]
   }, {
@@ -112,7 +114,8 @@
       "email" : "johnd@example.com",
       "address" : "311, Clementi Ave 2, #02-25",
       "tags" : [ "owesMoney", "friends" ],
-      "assignments" : {
+      "assignmentMap" : {
+        "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -206,6 +209,7 @@
             "grade" : "UNGRADED/670"
           }
         }
+      }
     }]
   } ]
 }

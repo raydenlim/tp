@@ -6,7 +6,8 @@
       "phone": "94351253",
       "email": "pauline@example.com",
       "address": "4th street",
-      "assignments" : {
+      "assignmentMap" : {
+        "assignments" : {
           "Beyond the First Dimension" : {
             "assignmentName" : "Beyond the First Dimension",
             "grade" : "UNGRADED/800"
@@ -100,6 +101,7 @@
             "grade" : "UNGRADED/670"
           }
         }
+      }
     }]
   },
     {
@@ -110,7 +112,8 @@
           "phone": "94351253",
           "email": "pauline@example.com",
           "address": "4th street",
-          "assignments" : {
+          "assignmentMap" : {
+            "assignments" : {
               "Beyond the First Dimension" : {
                 "assignmentName" : "Beyond the First Dimension",
                 "grade" : "UNGRADED/800"
@@ -205,6 +208,7 @@
               }
             }
           }
+        }
       ]
     }]
 }

@@ -12,7 +12,6 @@ import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 /**
  * An Immutable AssignmentMap that is serializable to JSON format.
  */
-
 public class JsonSerializableAssignmentMap {
 
     private final HashMap<String, JsonAdaptedAssignment> assignments;
