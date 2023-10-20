@@ -54,9 +54,7 @@ class JsonAdaptedPerson {
         this.assignmentMap = assignmentMap;
     }
 
-    public JsonAdaptedPerson(String name, String phone,
-                             String email, String address,
-                             List<JsonAdaptedTag> tags) {
+    public JsonAdaptedPerson(String name, String phone, String email, String address, List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
