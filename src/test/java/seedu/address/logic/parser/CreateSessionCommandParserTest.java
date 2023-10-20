@@ -10,7 +10,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.session.CreateSessionCommand;
+import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.model.person.Name;
 import seedu.address.model.session.SessionNumber;
 

@@ -1,43 +1,48 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.CreateSessionCommand;
+import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.attendance.AttendancePresence;
 import seedu.address.model.person.Name;
 import seedu.address.model.session.SessionNumber;
 
 /**
- * Parses input arguments and creates a new CreateSessionCommand object.
+ * Parses input arguments and creates a new TakeAttendanceCommand object.
  */
-public class CreateSessionCommandParser implements Parser<CreateSessionCommand> {
+public class TakeAttendanceCommandParser implements Parser<TakeAttendanceCommand> {
 
     /**
-     * Parses the given `args` string and returns a CreateSessionCommand object if the input is valid.
+     * Parses the given `args` and creates a new `TakeAttendanceCommand` object.
      *
-     * @param args The input arguments to be parsed.
-     * @return A CreateSessionCommand object.
-     * @throws ParseException If the input arguments are not in the correct format or if parsing fails.
+     * @param args The input arguments provided by the user.
+     * @return A `TakeAttendanceCommand` object.
+     * @throws ParseException If the user input does not conform to the expected format.
      */
-    @Override
-    public CreateSessionCommand parse(String args) throws ParseException {
+    public TakeAttendanceCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_SESSION, PREFIX_NAME);
+                ArgumentTokenizer.tokenize(args, PREFIX_SESSION, PREFIX_NAME, PREFIX_ATTENDANCE_PRESENCE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_SESSION, PREFIX_NAME)
+        if (!arePrefixesPresent(argMultimap, PREFIX_SESSION, PREFIX_NAME, PREFIX_ATTENDANCE_PRESENCE)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateSessionCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TakeAttendanceCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ATTENDANCE_PRESENCE);
         SessionNumber sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        AttendancePresence attendancePresence =
+                ParserUtil.parseAttendancePresence(argMultimap.getValue(PREFIX_ATTENDANCE_PRESENCE).get());
 
-        return new CreateSessionCommand(sessionNumber, name);
+        return new TakeAttendanceCommand(sessionNumber, name, attendancePresence);
     }
 
     /**
