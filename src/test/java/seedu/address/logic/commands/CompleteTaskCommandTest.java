@@ -8,6 +8,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showTaskAtIndex;
 import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
+import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -30,7 +31,8 @@ import seedu.address.testutil.TaskBuilder;
  */
 public class CompleteTaskCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
-            getTypicalTaskList(), getTypicalSessionList(), getTypicalConsultationListBook());
+            getTypicalTaskList(), getTypicalSessionList(),
+            getTypicalConsultationListBook(), getTypicalGradedTestList());
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
@@ -43,7 +45,7 @@ public class CompleteTaskCommandTest {
 
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
-                model.getSessionList(), model.getConsultationList());
+                model.getSessionList(), model.getConsultationList(), model.getGradedTestList());
 
         expectedModel.setTask(taskToMark, editedTask);
 
@@ -70,7 +72,7 @@ public class CompleteTaskCommandTest {
                 Messages.format(taskToMark));
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), model.getTaskList(),
-                model.getSessionList(), model.getConsultationList());
+                model.getSessionList(), model.getConsultationList(), model.getGradedTestList());
 
         expectedModel.setTask(taskToMark, editedTask);
 

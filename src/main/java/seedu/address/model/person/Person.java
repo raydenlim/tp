@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
@@ -28,18 +29,20 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final Set<GradedTest> gradedTests = new HashSet<>();
     private final AssignmentMap assignments;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<GradedTest> gradedTests) {
+        requireAllNonNull(name, phone, email, address, tags, gradedTests);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.gradedTests.addAll(gradedTests);
         this.assignments = new AssignmentMap();
     }
 
@@ -47,13 +50,15 @@ public class Person {
      * Creates a new Person object with a pre-set map of assignments.
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, AssignmentMap assignments) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  AssignmentMap assignments, Set<GradedTest> gradedTests) {
         requireAllNonNull(name, phone, email, address, tags, assignments);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.gradedTests.addAll(gradedTests);
         this.assignments = assignments;
     }
 
@@ -79,6 +84,14 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns an immutable gradedTests set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<GradedTest> getGradedTest() {
+        return Collections.unmodifiableSet(gradedTests);
     }
 
 
@@ -154,13 +167,14 @@ public class Person {
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
                 && tags.equals(otherPerson.tags)
-                && assignments.equals(otherPerson.assignments);
+                && assignments.equals(otherPerson.assignments)
+                && gradedTests.equals(otherPerson.gradedTests);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, tags, gradedTests);
     }
 
     @Override
@@ -171,6 +185,7 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
+                .add("gradedTests", gradedTests)
                 .toString();
     }
 

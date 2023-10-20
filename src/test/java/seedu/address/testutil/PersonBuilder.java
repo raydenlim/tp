@@ -3,6 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -28,6 +29,7 @@ public class PersonBuilder {
     private Email email;
     private Address address;
     private Set<Tag> tags;
+    private Set<GradedTest> gradedTests;
     private Set<Session> sessions;
     private AssignmentMap assignments;
 
@@ -40,6 +42,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         tags = new HashSet<>();
+        gradedTests = new HashSet<>();
         sessions = new HashSet<>();
         assignments = new AssignmentMap();
     }
@@ -54,6 +57,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
         assignments = personToCopy.getAllAssignments();
+        gradedTests = new HashSet<>(personToCopy.getGradedTest());
     }
 
     /**
@@ -71,6 +75,16 @@ public class PersonBuilder {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
+
+    /**
+     * Parses the {@code gradedTest} into a {@code Set<GradedTest>} and set it to
+     * the {@code GradedTest} that we are building.
+     */
+    public PersonBuilder withGradedTest(String ... gradedTests) {
+        this.gradedTests = SampleDataUtil.getGradedTestSet(gradedTests);
+        return this;
+    }
+
 
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.
@@ -97,7 +111,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, tags);
+        return new Person(name, phone, email, address, tags, gradedTests);
     }
 
 }

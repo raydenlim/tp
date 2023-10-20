@@ -3,6 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
+import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
@@ -16,8 +17,10 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ConsultationListBook;
+import seedu.address.model.GradedTestListBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.SessionListBook;
@@ -39,8 +42,10 @@ public class StorageManagerTest {
         JsonSessionListStorage sessionListStorage = new JsonSessionListStorage(getTempFilePath("sessions"));
         JsonConsultationListStorage consultationListStorage = new JsonConsultationListStorage(
                 getTempFilePath("consultations"));
+        JsonGradedTestListStorage gradedTestListStorage = new JsonGradedTestListStorage(
+                getTempFilePath("gradedTests"));
         storageManager = new StorageManager(addressBookStorage, userPrefsStorage,
-                taskListStorage, sessionListStorage, consultationListStorage);
+                taskListStorage, sessionListStorage, consultationListStorage, gradedTestListStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -123,4 +128,24 @@ public class StorageManagerTest {
         assertNotNull(storageManager.getTaskListFilePath());
     }
 
+    @Test
+    public void getGradedTaskListFilePath() {
+        assertNotNull(storageManager.getGradedTestListFilePath());
+    }
+
+    @Test
+    public void gradedTestListReadSave() throws Exception {
+        /*
+         * Note: This is an integration test that verifies the StorageManager is properly wired to the
+         * {@link JsonAddressBookStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         */
+        GradedTestListBook original = getTypicalGradedTestList();
+        storageManager.saveGradedTestList(original);
+        ReadOnlyGradedTestList retrieved = storageManager.readGradedTestList().get();
+        // assertTrue(original.equals(new GradedTestListBook(retrieved)));
+        System.out.println("Original: " + original);
+        System.out.println("Retrieved: " + new GradedTestListBook(retrieved));
+        assertEquals(original, new GradedTestListBook(retrieved));
+    }
 }
