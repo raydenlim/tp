@@ -2,6 +2,7 @@ package seedu.address.model.task;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -19,6 +20,7 @@ public class Task {
     private final TaskDescription taskDescription;
     private final boolean isDone;
     private final TaskPriority priority;
+    private final LocalDate date;
 
     /**
      * Creates a new task with the given name, description, and completion status.
@@ -26,13 +28,16 @@ public class Task {
      * @param taskName        The name of the task. Must not be null.
      * @param taskDescription The description of the task. Must not be null.
      * @param isDone          The completion status of the task.
+     * @param priority        The level of priority of the task.
      */
-    public Task(TaskName taskName, TaskDescription taskDescription, boolean isDone, TaskPriority priority) {
-        requireAllNonNull(taskName, taskDescription);
+    public Task(TaskName taskName, TaskDescription taskDescription,
+                boolean isDone, TaskPriority priority, LocalDate date) {
+        requireAllNonNull(taskName, taskDescription, priority);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = isDone;
         this.priority = priority;
+        this.date = date;
     }
 
     /**
@@ -41,13 +46,15 @@ public class Task {
      *
      * @param taskName        The name of the task. Must not be null.
      * @param taskDescription The description of the task. Must not be null.
+     * @param priority        The level of priority of the task.
      */
     public Task(TaskName taskName, TaskDescription taskDescription, TaskPriority priority) {
-        requireAllNonNull(taskName, taskDescription);
+        requireAllNonNull(taskName, taskDescription, priority);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = false;
         this.priority = priority;
+        this.date = null; // Think about how we want to represent tasks without a date
     }
 
     public TaskName getName() {
