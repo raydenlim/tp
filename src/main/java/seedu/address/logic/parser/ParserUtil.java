@@ -13,6 +13,11 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.gradedtest.Finals;
+import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.gradedtest.MidTerms;
+import seedu.address.model.gradedtest.PracticalExam;
+import seedu.address.model.gradedtest.ReadingAssessment;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -222,6 +227,116 @@ public class ParserUtil {
             throw new ParseException(TaskDescription.MESSAGE_CONSTRAINTS);
         }
         return new TaskDescription(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String gradedTest} into a {@code GradedTest}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code gradedTest} is invalid.
+     */
+    public static GradedTest parseGradedTest(String gradedTest) throws ParseException {
+        requireNonNull(gradedTest);
+        String trimmedGradedTest = gradedTest.trim();
+
+        try {
+            String[] components = trimmedGradedTest.split("\\|");
+
+            if (components.length != 5) {
+                throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+            }
+
+            String ra1Score = components[0].replaceAll("Reading Assessment 1:", "").trim();
+            String ra2Score = components[1].replaceAll("Reading Assessment 2:", "").trim();
+            String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
+            String finalsScore = components[3].replaceAll("Finals:", "").trim();
+            String peScore = components[4].replaceAll("Practical Exam:", "").trim();
+
+            ReadingAssessment readingAssessment1 = new ReadingAssessment(ra1Score);
+            ReadingAssessment readingAssessment2 = new ReadingAssessment(ra2Score);
+            MidTerms midTerms = new MidTerms(midTermsScore);
+            Finals finals = new Finals(finalsScore);
+            PracticalExam practicalExam = new PracticalExam(peScore);
+
+            return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
+        } catch (ParseException e) {
+            if (!GradedTest.isValidGradeTestName(trimmedGradedTest)) {
+                throw new ParseException(GradedTest.MESSAGE_CONSTRAINTS);
+            }
+            return new GradedTest(trimmedGradedTest);
+        }
+    }
+
+    /**
+     * Parses {@code Collection<String> gradedTest} into a {@code Set<GradedTest>}.
+     */
+    public static Set<GradedTest> parseGradedTests(Collection<String> gradedTests) throws ParseException {
+        requireNonNull(gradedTests);
+        final Set<GradedTest> gradedTestSet = new HashSet<>();
+        for (String gradedTestName : gradedTests) {
+            gradedTestSet.add(parseGradedTest(gradedTestName));
+        }
+        return gradedTestSet;
+    }
+
+    /**
+     * Parses a {@code String readingAssessment} into a {@code readingAssessment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static ReadingAssessment parseReadingAssessment(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!ReadingAssessment.isValidRaResult(trimmedName)) {
+            throw new ParseException(ReadingAssessment.MESSAGE_CONSTRAINTS);
+        }
+        return new ReadingAssessment(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String readingAssessment} into a {@code readingAssessment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static MidTerms parseMidTerms(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!MidTerms.isValidMidTermResult(trimmedName)) {
+            throw new ParseException(MidTerms.MESSAGE_CONSTRAINTS);
+        }
+        return new MidTerms(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String finals} into a {@code finals}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static Finals parseFinals(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!Finals.isValidFinalsResult(trimmedName)) {
+            throw new ParseException(Finals.MESSAGE_CONSTRAINTS);
+        }
+        return new Finals(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String practicalExam} into a {@code practicalExam}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static PracticalExam parsePracticalExam(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!PracticalExam.isValidPeResult(trimmedName)) {
+            throw new ParseException(PracticalExam.MESSAGE_CONSTRAINTS);
+        }
+        return new PracticalExam(trimmedName);
     }
 
     /**

@@ -17,10 +17,12 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ConsultationListBook;
+import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -30,8 +32,10 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.ConsultationListStorage;
+import seedu.address.storage.GradedTestListStorage;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonConsultationListStorage;
+import seedu.address.storage.JsonGradedTestListStorage;
 import seedu.address.storage.JsonSessionListStorage;
 import seedu.address.storage.JsonTaskListStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
@@ -74,8 +78,10 @@ public class MainApp extends Application {
         SessionListStorage sessionListStorage = new JsonSessionListStorage(userPrefs.getSessionListFilePath());
         ConsultationListStorage consultationListStorage = new JsonConsultationListStorage(userPrefs
                 .getConsultationListFilePath());
+        GradedTestListStorage gradedTestListStorage =
+                new JsonGradedTestListStorage(userPrefs.getGradedTestListFilePath());
         storage = new StorageManager(addressBookStorage, userPrefsStorage, taskListStorage,
-                sessionListStorage, consultationListStorage);
+                sessionListStorage, consultationListStorage, gradedTestListStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -100,6 +106,10 @@ public class MainApp extends Application {
 
         Optional<ReadOnlyTaskList> taskListOptional;
         ReadOnlyTaskList initialTaskList;
+
+
+        Optional<ReadOnlyGradedTestList> gradedTestListOptional;
+        ReadOnlyGradedTestList initialGradedTestList;
 
         Optional<ReadOnlyConsultationList> consultationListOptional;
         ReadOnlyConsultationList initialConsultationList;
@@ -134,6 +144,19 @@ public class MainApp extends Application {
         }
 
         try {
+            gradedTestListOptional = storage.readGradedTestList();
+            if (!gradedTestListOptional.isPresent()) {
+                logger.info("Creating a new data file " + storage.getTaskListFilePath()
+                        + " populated with a sample GradedTest.");
+            }
+            initialGradedTestList = gradedTestListOptional.orElseGet(SampleDataUtil::getSampleGradedTestList);
+        } catch (DataLoadingException e) {
+            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
+                    + " Will be starting with an empty AddressBook.");
+            initialGradedTestList = new GradedTestListBook();
+        }
+
+        try {
             consultationListOptional = storage.readConsultationList();
             if (!consultationListOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getConsultationListFilePath()
@@ -159,7 +182,8 @@ public class MainApp extends Application {
             initialSessionList = new SessionListBook();
         }
 
-        return new ModelManager(initialData, userPrefs, initialTaskList, initialSessionList, initialConsultationList);
+        return new ModelManager(initialData, userPrefs, initialTaskList, initialSessionList, initialConsultationList,
+                initialGradedTestList);
     }
 
     private void initLogging(Config config) {

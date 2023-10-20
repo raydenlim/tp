@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
@@ -52,6 +53,8 @@ public class Messages {
                 .append(person.getAddress())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        builder.append("; Graded Tests: ");
+        person.getGradedTest().forEach(gradedTest -> builder.append(person.getGradedTest()).append(", "));
         return builder.toString();
     }
 
@@ -94,5 +97,17 @@ public class Messages {
                 + task.getPriority();
     }
 
-
+    /**
+     * Formats the {@code gradedTest} for display to the user.
+     */
+    public static String format(GradedTest gradedTest) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Graded Test:")
+                .append("; Reading Assessment 1: ").append(gradedTest.getRA1())
+                .append("; Reading Assessment 2: ").append(gradedTest.getRA2())
+                .append("; MidTerms: ").append(gradedTest.getMidTerms())
+                .append("; Final: ").append(gradedTest.getFinals())
+                .append("; Practical Exam: ").append(gradedTest.getPracticalExam());
+        return builder.toString();
+    }
 }

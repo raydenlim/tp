@@ -8,10 +8,12 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
@@ -198,6 +200,52 @@ public class ModelStub implements Model {
     }
     @Override
     public void updateFilteredTaskList(Predicate<Task> predicate) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public Path getGradedTestListFilePath() {
+        throw new AssertionError("This method should not be called.");
+
+    }
+
+    @Override
+    public void setGradedTestListFilePath(Path gradedTestListFilePath) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void setGradedTestList(ReadOnlyGradedTestList gradedTestList) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ReadOnlyGradedTestList getGradedTestList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public boolean hasGradedTest(GradedTest gradedTest) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void deleteGradedTest(GradedTest target) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public GradedTest getGradedTest(int index) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void addGradedTest(GradedTest gradedTest) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void setGradedTest(GradedTest target, GradedTest editedGradedTest) {
         throw new AssertionError("This method should not be called.");
     }
 }

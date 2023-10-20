@@ -9,6 +9,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataLoadingException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyConsultationList;
+import seedu.address.model.ReadOnlyGradedTestList;
 import seedu.address.model.ReadOnlySessionList;
 import seedu.address.model.ReadOnlyTaskList;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -23,6 +24,7 @@ public class StorageManager implements Storage {
     private AddressBookStorage addressBookStorage;
     private UserPrefsStorage userPrefsStorage;
     private TaskListStorage taskListStorage;
+    private GradedTestListStorage gradedTestListStorage;
     private SessionListStorage sessionListStorage;
     private ConsultationListStorage consultationListStorage;
 
@@ -32,12 +34,14 @@ public class StorageManager implements Storage {
      */
     public StorageManager(AddressBookStorage addressBookStorage,
                           UserPrefsStorage userPrefsStorage, TaskListStorage taskListStorage,
-                          SessionListStorage sessionListStorage, ConsultationListStorage consultationListStorage) {
+                          SessionListStorage sessionListStorage, ConsultationListStorage consultationListStorage,
+                          GradedTestListStorage gradedTestListStorage) {
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.taskListStorage = taskListStorage;
         this.sessionListStorage = sessionListStorage;
         this.consultationListStorage = consultationListStorage;
+        this.gradedTestListStorage = gradedTestListStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -172,6 +176,34 @@ public class StorageManager implements Storage {
     public void saveTaskList(ReadOnlyTaskList taskList, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         taskListStorage.saveTaskList(taskList, filePath);
+    }
+
+    // ================ GradedTest methods ==============================
+    @Override
+    public Path getGradedTestListFilePath() {
+        return gradedTestListStorage.getGradedTestListFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyGradedTestList> readGradedTestList() throws DataLoadingException {
+        return readGradedTestList(gradedTestListStorage.getGradedTestListFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyGradedTestList> readGradedTestList(Path filePath) throws DataLoadingException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return gradedTestListStorage.readGradedTestList(filePath);
+    }
+
+    @Override
+    public void saveGradedTestList(ReadOnlyGradedTestList gradedTestList) throws IOException {
+        saveGradedTestList(gradedTestList, gradedTestListStorage.getGradedTestListFilePath());
+    }
+
+    @Override
+    public void saveGradedTestList(ReadOnlyGradedTestList gradedTestList, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        gradedTestListStorage.saveGradedTestList(gradedTestList, filePath);
     }
 
 }

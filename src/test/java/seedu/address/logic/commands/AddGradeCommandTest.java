@@ -21,6 +21,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ConsultationListBook;
+import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.SessionListBook;
@@ -33,7 +34,7 @@ import seedu.address.model.person.assignment.Grade;
 public class AddGradeCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
-        new SessionListBook(), new ConsultationListBook());
+        new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
     @Test
     public void execute_addGrade_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
@@ -48,7 +49,8 @@ public class AddGradeCommandTest {
         String expectedMessage = String.format(AddGradeCommand.MESSAGE_SUCCESS, VALID_ASSIGNMENT_NAME);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
-                new UserPrefs(), new TaskListBook(), new SessionListBook(), new ConsultationListBook());
+                new UserPrefs(), new TaskListBook(), new SessionListBook(),
+                new ConsultationListBook(), new GradedTestListBook());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
         assertCommandSuccess(addGradeCommand, model, expectedMessage, expectedModel);

@@ -1,0 +1,18 @@
+{
+  "gradedTests": [
+    {
+      "Reading Assessment 1": "1.0",
+      "Reading Assessment 2": "2",
+      "MidTerms": "3",
+      "Finals": "4",
+      "Practical Exam": "5"
+    },
+    {
+      "Reading Assessment 1": "-",
+      "Reading Assessment 2": "-",
+      "MidTerms": "-",
+      "Finals": "-",
+      "Practical Exam": "-"
+    }
+  ]
+}
