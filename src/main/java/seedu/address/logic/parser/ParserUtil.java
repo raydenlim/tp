@@ -13,6 +13,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.attendance.AttendancePresence;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -179,11 +180,11 @@ public class ParserUtil {
     }
 
     /**
-     * Parses the input session number as a string and returns it as an integer.
+     * Parses the input session number as a string and returns it as a SessionNumber.
      *
      * @param sessionNumber The session number to be parsed.
-     * @return The parsed session number as an integer.
-     * @throws NumberFormatException If the session number is not a valid integer.
+     * @return The parsed session number as a SessionNumber.
+     * @throws ParseException If the session number is not a valid number.
      */
     public static SessionNumber parseSessionNumber(String sessionNumber) throws ParseException {
         requireNonNull(sessionNumber);
@@ -192,6 +193,22 @@ public class ParserUtil {
             throw new ParseException(SessionNumber.MESSAGE_CONSTRAINTS);
         }
         return new SessionNumber(trimmedSessionNumber);
+    }
+
+    /**
+     * Parses the input attendance presence as a string and returns it as an AttendancePresence.
+     *
+     * @param attendancePresence The attendance presence to be parsed.
+     * @return The parsed attendance presence as an AttendancePresence.
+     * @throws ParseException If the attendance presence is invalid.
+     */
+    public static AttendancePresence parseAttendancePresence(String attendancePresence) throws ParseException {
+        requireNonNull(attendancePresence);
+        String trimmedAttendancePresence = attendancePresence.trim().toLowerCase();
+        if (!AttendancePresence.isValidInput(trimmedAttendancePresence)) {
+            throw new ParseException(AttendancePresence.MESSAGE_CONSTRAINTS);
+        }
+        return new AttendancePresence(attendancePresence);
     }
 
     /**
@@ -255,4 +272,5 @@ public class ParserUtil {
         }
         return new AssignmentName(trimmedName);
     }
+
 }
