@@ -31,13 +31,13 @@ public class Task {
      * @param priority        The level of priority of the task.
      */
     public Task(TaskName taskName, TaskDescription taskDescription,
-                boolean isDone, TaskPriority priority, LocalDate date) {
+                boolean isDone, TaskPriority priority) {
         requireAllNonNull(taskName, taskDescription, priority);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = isDone;
         this.priority = priority;
-        this.date = date;
+        this.date = null;
     }
 
     /**

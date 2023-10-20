@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PRIORITY;
 
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -70,5 +71,11 @@ public class AddTaskCommand extends Command {
         return task.equals(e.task);
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("task", task)
+                .toString();
+    }
 
 }
