@@ -77,7 +77,7 @@ public class TakeAttendanceCommandTest {
 
         assertTrue(command1.equals(command2));
     }
-//
+
     @Test
     public void equals_differentCommands_returnsFalse() {
         TakeAttendanceCommand command1 = new TakeAttendanceCommand(
