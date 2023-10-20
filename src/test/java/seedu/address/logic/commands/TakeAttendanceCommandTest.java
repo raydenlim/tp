@@ -40,6 +40,12 @@ public class TakeAttendanceCommandTest {
         command.execute(model);
         assertEquals(2, currentSession.getStudents().size());
         assertTrue(currentSession.getStudents().contains(newStudent));
+
+        TakeAttendanceCommand markAbsentCommand =
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("absent"));
+        markAbsentCommand.execute(model);
+        assertEquals(1, currentSession.getStudents().size());
+        assertFalse(currentSession.getStudents().contains(newStudent));
     }
 
 
@@ -65,6 +71,13 @@ public class TakeAttendanceCommandTest {
         assertEquals(2, currentSession.getStudents().size());
         assertTrue(currentSession.getStudents().contains(alice));
         assertTrue(currentSession.getStudents().contains(bob));
+
+        TakeAttendanceCommand markAbsentCommand = new TakeAttendanceCommand(
+                currentSession.getSessionNumber(), studentNames, new AttendancePresence("absent"));
+        markAbsentCommand.execute(model);
+        assertEquals(0, currentSession.getStudents().size());
+        assertFalse(currentSession.getStudents().contains(alice));
+        assertFalse(currentSession.getStudents().contains(bob));
     }
 
 
