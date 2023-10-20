@@ -50,7 +50,8 @@ public class Person {
      * Creates a new Person object with a pre-set map of assignments.
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, AssignmentMap assignments, Set<GradedTest> gradedTests) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                  AssignmentMap assignments, Set<GradedTest> gradedTests) {
         requireAllNonNull(name, phone, email, address, tags, assignments);
         this.name = name;
         this.phone = phone;

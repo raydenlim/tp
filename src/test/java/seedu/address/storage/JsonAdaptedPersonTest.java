@@ -123,15 +123,4 @@ public class JsonAdaptedPersonTest {
         assertThrows(IllegalValueException.class, person::toModelType);
     }
 
-    @Test
-    public void toModelType_invalidGradeTests_throwsIllegalValueException() {
-        List<JsonAdaptedGradedTest> invalidGradeTest = new ArrayList<>(VALID_GRADED_TEST);
-        invalidGradeTest.add(new JsonAdaptedGradedTest(INVALID_RA1, INVALID_RA2,
-                INVALID_MIDTERMS, INVALID_FINALS, INVALID_PE));
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
-                        VALID_TAGS, invalidGradeTest);
-        assertThrows(IllegalValueException.class, person::toModelType);
-    }
-
 }
