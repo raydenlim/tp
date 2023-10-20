@@ -310,59 +310,59 @@ Examples:
 ### 📝Adding a grade to an assignment: `addgrade`
 Adds a grade to a student’s assignment.
 
-Format: `addgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
+Format: `addgrade INDEX as/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* INDEX The index of the student.
 * ASSIGNMENT The name of the assignment.
 * GRADE The grade of the student.
 
 Examples:
-* `addgrade n/Rayson a/Functional Expressionism g/1300` adds a grade of 1300 to Rayson’s Functional Expressionism assignment.
-* `addgrade n/Wesley a/Rune Reading g/600` adds a grade of 600 to Wesley’s Rune Reading assignment.
+* `addgrade 1 as/Functional Expressionism g/1300` adds a grade of 1300 to student 1's Functional Expressionism assignment.
+* `addgrade 2 as/Rune Reading g/600` adds a grade of 600 to student 2's Rune Reading assignment.
 
 
 ### 👀Viewing an assignment grade: `viewgrade`
 Shows a student’s assignment grade.
 
-Format: `viewgrade n/STUDENT_NAME a/ASSIGNMENT`
+Format: `viewgrade INDEX as/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* INDEX The index of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
-* `viewgrade n/Rayson a/Functional Expressionism` shows Rayson’s Functional Expressionism grade.
-* `viewgrade n/Wesley a/Rune Reading` shows Wesley’s Rune Reading grade.
+* `viewgrade 1 as/Functional Expressionism` shows student 1's Functional Expressionism grade.
+* `viewgrade 2 as/Rune Reading` shows student 2's Rune Reading grade.
 
 
 ### 🛠️Editing an assignment grade: `editgrade`
 Edits a student’s assignment grade.
 
-Format: `editgrade n/STUDENT_NAME a/ASSIGNMENT g/GRADE`
+Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* INDEX The index of the student.
 * ASSIGNMENT The name of the assignment.
 * GRADE The score of the student.
 
 Examples:
-* `editgrade n/Rayson a/Functional Expressionism g/1200` edits the grade of Rayson’s Functional Expressionism assignment to 1200.
-* `editgrade n/Wesley a/Rune Reading g/1000` edits the grade of Wesley’s Rune Reading assignment to 1000.
+* `editgrade 1 as/Functional Expressionism g/1200` edits the grade of student 1's Functional Expressionism assignment to 1200.
+* `editgrade 2 as/Rune Reading g/1000` edits the grade of student 2's Rune Reading assignment to 1000.
 
 
 ### ❌Deleting an assignment grade: `deletegrade`
 Deletes a student’s assignment grade.
 
-Format: `deletegrade n/STUDENT_NAME a/ASSIGNMENT`
+Format: `deletegrade INDEX as/ASSIGNMENT`
 
 Parameters:
-* STUDENT_NAME The name of the student.
+* INDEX The index of the student.
 * ASSIGNMENT The name of the assignment.
 
 Examples:
-* `deletegrade n/Rayson a/Functional Expressionism` deletes Rayson’s Functional Expressionism grade.
-* `deletegrade n/Wesley a/Rune Reading` deletes Wesley’s Rune Reading grade.
+* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade.
+* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade.
 
 
 ### 📝Adding a comment to an assignment: `addcomment`

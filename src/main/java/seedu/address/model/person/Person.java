@@ -8,6 +8,9 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.assignment.Assignment;
+import seedu.address.model.person.assignment.AssignmentMap;
+import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 
@@ -25,7 +28,7 @@ public class Person {
     // Data fields
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
-
+    private final AssignmentMap assignments;
 
     /**
      * Every field must be present and not null.
@@ -37,6 +40,21 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.assignments = new AssignmentMap();
+    }
+
+    /**
+     * Creates a new Person object with a pre-set map of assignments.
+     * Every field must be present and not null.
+     */
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, AssignmentMap assignments) {
+        requireAllNonNull(name, phone, email, address, tags, assignments);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.assignments = assignments;
     }
 
     public Name getName() {
@@ -80,6 +98,14 @@ public class Person {
      */
     public void missSession(Session session) {
         session.removeStudent(this);
+    }
+
+    public AssignmentMap getAllAssignments() {
+        return assignments;
+    }
+
+    public Assignment getAssignment(AssignmentName assignmentName) {
+        return assignments.get(assignmentName);
     }
 
     /**
@@ -127,7 +153,8 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags);
+                && tags.equals(otherPerson.tags)
+                && assignments.equals(otherPerson.assignments);
     }
 
     @Override

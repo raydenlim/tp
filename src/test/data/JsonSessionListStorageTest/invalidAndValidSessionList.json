@@ -5,7 +5,103 @@
       "name": "Valid Person",
       "phone": "9482424",
       "email": "hans@example.com",
-      "address": "4th street"
+      "address": "4th street",
+      "assignmentMap" : {
+        "assignments" : {
+          "Beyond the First Dimension" : {
+            "assignmentName" : "Beyond the First Dimension",
+            "grade" : "UNGRADED/800"
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600"
+          },
+          "Premorseal Communications" : {
+            "assignmentName" : "Premorseal Communications",
+            "grade" : "UNGRADED/950"
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
+            "grade" : "UNGRADED/800"
+          },
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
+            "grade" : "UNGRADED/800"
+          },
+          "Finding ELDRIC" : {
+            "assignmentName" : "Finding ELDRIC",
+            "grade" : "UNGRADED/1200"
+          },
+          "Rune Trials" : {
+            "assignmentName" : "Rune Trials",
+            "grade" : "UNGRADED/600"
+          },
+          "Runic Carpets" : {
+            "assignmentName" : "Runic Carpets",
+            "grade" : "UNGRADED/400"
+          },
+          "Search and Rescue" : {
+            "assignmentName" : "Search and Rescue",
+            "grade" : "UNGRADED/720"
+          },
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300"
+          },
+          "Functional Expressionism" : {
+            "assignmentName" : "Functional Expressionism",
+            "grade" : "UNGRADED/500"
+          },
+          "Know Your Environment" : {
+            "assignmentName" : "Know Your Environment",
+            "grade" : "UNGRADED/1200"
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950"
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750"
+          },
+          "Robotic Trials" : {
+            "assignmentName" : "Robotic Trials",
+            "grade" : "UNGRADED/800"
+          },
+          "Curve Introduction" : {
+            "assignmentName" : "Curve Introduction",
+            "grade" : "UNGRADED/700"
+          },
+          "Moving about on Planet Y" : {
+            "assignmentName" : "Moving about on Planet Y",
+            "grade" : "UNGRADED/1000"
+          },
+          "Curvaceous Wizardry" : {
+            "assignmentName" : "Curvaceous Wizardry",
+            "grade" : "UNGRADED/600"
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200"
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000"
+          },
+          "Cardioid Arrest" : {
+            "assignmentName" : "Cardioid Arrest",
+            "grade" : "UNGRADED/500"
+          },
+          "Curve Manipulation" : {
+            "assignmentName" : "Curve Manipulation",
+            "grade" : "UNGRADED/600"
+          },
+          "Echoes of the Past" : {
+            "assignmentName" : "Echoes of the Past",
+            "grade" : "UNGRADED/670"
+          }
+        }
+      }
     }]
   }, {
     "sessionNumber": "abc"
