@@ -211,39 +211,19 @@ public class EditCommand extends Command {
             this.ra1 = ra1;
         }
 
-        public Optional<ReadingAssessment> getReadingAssessment1() {
-            return Optional.ofNullable(ra1);
-        }
-
         public void setReadingAssessment2(ReadingAssessment ra2) {
             this.ra2 = ra2;
-        }
-
-        public Optional<ReadingAssessment> getReadingAssessment2() {
-            return Optional.ofNullable(ra2);
         }
 
         public void setMidTerms(MidTerms midTerms) {
             this.midTerms = midTerms;
         }
 
-        public Optional<MidTerms> getMidTerms() {
-            return Optional.ofNullable(midTerms);
-        }
-
         public void setFinals(Finals finals) {
             this.finals = finals;
         }
-
-        public Optional<Finals> getFinals() {
-            return Optional.ofNullable(finals);
-        }
         public void setPracticalExam(PracticalExam pe) {
             this.pe = pe;
-        }
-
-        public Optional<PracticalExam> getPracticalExam() {
-            return Optional.ofNullable(pe);
         }
 
         /**
