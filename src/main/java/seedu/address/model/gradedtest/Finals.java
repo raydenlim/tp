@@ -5,7 +5,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Final result.
- * A Final result is a positive number that indicates the score achieved in the exam.
+ * A Final result is a positive number and indicates the score achieved in the exam.
  * The result can be an integer or a decimal number.
  */
 public class Finals {
