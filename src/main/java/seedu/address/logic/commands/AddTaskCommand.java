@@ -43,7 +43,6 @@ public class AddTaskCommand extends Command {
         this.task = task;
     }
 
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);

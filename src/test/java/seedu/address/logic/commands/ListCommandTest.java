@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.ConsultationListBook;
+import seedu.address.model.GradedTestListBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.SessionListBook;
@@ -26,9 +27,9 @@ public class ListCommandTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
-                new SessionListBook(), new ConsultationListBook());
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new TaskListBook(),
-                new SessionListBook(), new ConsultationListBook());
+                new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
     }
 
     @Test

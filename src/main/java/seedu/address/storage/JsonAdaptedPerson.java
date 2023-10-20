@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -34,6 +35,8 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final List<JsonAdaptedGradedTest> gradedTests = new ArrayList<>();
+
     private final JsonSerializableAssignmentMap assignmentMap;
 
     /**
@@ -41,9 +44,10 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-        @JsonProperty("email") String email, @JsonProperty("address") String address,
-        @JsonProperty("tags") List<JsonAdaptedTag> tags,
-        @JsonProperty("assignmentMap") JsonSerializableAssignmentMap assignmentMap) {
+                             @JsonProperty("email") String email, @JsonProperty("address") String address,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                             @JsonProperty("assignmentMap") JsonSerializableAssignmentMap assignmentMap,
+                             @JsonProperty("gradedTests") List<JsonAdaptedGradedTest> gradedTests) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -51,14 +55,21 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
+        if (gradedTests != null) {
+            this.gradedTests.addAll(gradedTests);
+        }
         this.assignmentMap = assignmentMap;
     }
 
-    public JsonAdaptedPerson(String name, String phone, String email, String address, List<JsonAdaptedTag> tags) {
+    public JsonAdaptedPerson(String name, String phone, String email, String address, List<JsonAdaptedTag> tags,
+                             List<JsonAdaptedGradedTest> gradedTests) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -90,6 +101,9 @@ class JsonAdaptedPerson {
                     new JsonAdaptedAssignment(assignment));
         }
         this.assignmentMap = new JsonSerializableAssignmentMap(jsonMap);
+        gradedTests.addAll(source.getGradedTest().stream()
+                .map(JsonAdaptedGradedTest::new)
+                .collect(Collectors.toList()));
     }
 
     /**
@@ -99,8 +113,13 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
+        final List<GradedTest> personGradedTests = new ArrayList<>();
+
         for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
+        }
+        for (JsonAdaptedGradedTest gradedTest : gradedTests) {
+            personGradedTests.add(gradedTest.toModelType());
         }
 
         if (name == null) {
@@ -136,6 +155,7 @@ class JsonAdaptedPerson {
         final Address modelAddress = new Address(address);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Set<GradedTest> modelGradedTests = new HashSet<>(personGradedTests);
 
         final AssignmentMap assignments = new AssignmentMap();
         HashMap<String, JsonAdaptedAssignment> jsonMap = assignmentMap.getAssignments();
@@ -147,7 +167,7 @@ class JsonAdaptedPerson {
         }
         assignments.setAssignmentMap(actualMap);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, assignments);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, assignments, modelGradedTests);
     }
 
 }
