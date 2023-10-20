@@ -9,6 +9,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.session.Session;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -30,6 +31,7 @@ public class PersonBuilder {
     private Set<Tag> tags;
     private Set<GradedTest> gradedTests;
     private Set<Session> sessions;
+    private AssignmentMap assignments;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -42,6 +44,7 @@ public class PersonBuilder {
         tags = new HashSet<>();
         gradedTests = new HashSet<>();
         sessions = new HashSet<>();
+        assignments = new AssignmentMap();
     }
 
     /**
@@ -53,6 +56,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
+        assignments = personToCopy.getAllAssignments();
         gradedTests = new HashSet<>(personToCopy.getGradedTest());
     }
 

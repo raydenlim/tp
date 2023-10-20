@@ -3,11 +3,13 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRACTICAL_EXAM;
@@ -62,6 +64,9 @@ public class CommandTestUtil {
             "Reading Assessment 1:100 | Reading Assessment 2:100 | MidTerms:100 | Finals:100 | Practical Exam:100";
     public static final String VALID_TASK_NAME = "Do cs2103t";
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
+    public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
+    public static final String INVALID_ASSIGNMENT_NAME = "Finding BOYD";
+    public static final String GRADE_400 = "400";
     public static final String VALID_DATE = "11/11/2023";
     public static final String VALID_TIME = "11:11";
 
@@ -87,6 +92,8 @@ public class CommandTestUtil {
     public static final String GT_DESC_MIDTERMS = " " + PREFIX_MIDTERMS + VALID_GT_MIDTERMS;
     public static final String GT_DESC_FINALS = " " + PREFIX_FINALS + VALID_GT_FINALS;
     public static final String GT_DESC_PE = " " + PREFIX_PRACTICAL_EXAM + VALID_GT_PE;
+    public static final String ASSIGNMENT_DESC = " " + PREFIX_ASSIGNMENT + "Finding ELDRIC";
+    public static final String GRADE_DESC_400 = " " + PREFIX_GRADE + "400";
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
@@ -96,6 +103,8 @@ public class CommandTestUtil {
     public static final String INVALID_GT_FINALS_DESC = "-43"; // no negative numbers
     public static final String INVALID_GT_PE_DESC = "%#&@%$^@#"; // no special symbols
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+    public static final String INVALID_ASSIGNMENT_DESC = " " + PREFIX_ASSIGNMENT + "Finding BOYD";
+
     public static final String INVALID_GRADED_TEST_DESC_1 = "Reading Assessment 1:-1 | Reading Assessment 2:0 "
             + "| MidTerms:0 | Finals:-1 | Practical Exam:0"; // No negative scores
     public static final String INVALID_GRADED_TEST_DESC_2 = "Reading Assessment 1:0 | Reading Assessment 2:0 "
