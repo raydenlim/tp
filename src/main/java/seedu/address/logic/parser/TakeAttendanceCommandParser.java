@@ -7,7 +7,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.attendance.AttendancePresence;
@@ -32,7 +31,8 @@ public class TakeAttendanceCommandParser implements Parser<TakeAttendanceCommand
 
         if (!arePrefixesPresent(argMultimap, PREFIX_SESSION, PREFIX_NAME, PREFIX_ATTENDANCE_PRESENCE)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TakeAttendanceCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(
+                    MESSAGE_INVALID_COMMAND_FORMAT, TakeAttendanceCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
