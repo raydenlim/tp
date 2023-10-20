@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT2;
+import static seedu.address.testutil.TypicalGradedTest.GT3;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -49,17 +50,17 @@ public class GradedTestListTest {
     }
 
     @Test
-    public void setGradedTest_nullTargetGradedTest_throwsNullPointerException() {
+    public void editGradedTest_nullTargetGradedTest_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> gradedTestList.editGradedTest(null, GT1));
     }
 
     @Test
-    public void setGradedTest_nullEditedGradedTest_throwsNullPointerException() {
+    public void editGradedTest_nullEditedGradedTest_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> gradedTestList.editGradedTest(GT1, null));
     }
 
     @Test
-    public void setGradedTest_targetGradedTestNotInList_throwsGradedTestNotFoundException() {
+    public void editGradedTest_targetGradedTestNotInList_throwsGradedTestNotFoundException() {
         assertThrows(GradedTestNotFoundException.class, () -> gradedTestList.editGradedTest(GT1, GT1));
     }
 
@@ -69,7 +70,7 @@ public class GradedTestListTest {
         gradedTestList.editGradedTest(GT1, GT1);
         GradedTestList expectedGradedTestList = new GradedTestList();
         expectedGradedTestList.add(GT1);
-        assertEquals(expectedGradedTestList, gradedTestList);
+        assertTrue(expectedGradedTestList.equals(gradedTestList));
     }
 
     @Test
@@ -78,14 +79,33 @@ public class GradedTestListTest {
         gradedTestList.editGradedTest(GT1, GT2);
         GradedTestList expectedGradedTestList = new GradedTestList();
         expectedGradedTestList.add(GT2);
-        assertEquals(expectedGradedTestList, gradedTestList);
+        assertTrue(expectedGradedTestList.equals(gradedTestList));
     }
+
+
 
     @Test
     public void setGradedTest_editedGradedTestHasNonUniqueIdentity_throwsDuplicateGradedTestException() {
         gradedTestList.add(GT1);
         gradedTestList.add(GT2);
         assertThrows(DuplicateGradedTestException.class, () -> gradedTestList.editGradedTest(GT1, GT2));
+    }
+
+    @Test
+    public void editGradedTest_duplicateGradedTest_throwsDuplicateGradedTestException() {
+        gradedTestList.add(GT1);
+        gradedTestList.add(GT2);
+        gradedTestList.add(GT3);
+        assertThrows(DuplicateGradedTestException.class, () -> gradedTestList.editGradedTest(GT1, GT3));
+    }
+
+    @Test
+    public void editGradedTest_success() {
+        gradedTestList.add(GT1);
+        gradedTestList.editGradedTest(GT1, GT2);
+        GradedTestList expectedGradedTestList = new GradedTestList();
+        expectedGradedTestList.add(GT2);
+        assertEquals(expectedGradedTestList, gradedTestList);
     }
 
     @Test
