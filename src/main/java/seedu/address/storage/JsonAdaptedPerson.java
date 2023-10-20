@@ -44,9 +44,9 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-        @JsonProperty("email") String email, @JsonProperty("address") String address,
-        @JsonProperty("tags") List<JsonAdaptedTag> tags,
-        @JsonProperty("assignmentMap") JsonSerializableAssignmentMap assignmentMap,
+                             @JsonProperty("email") String email, @JsonProperty("address") String address,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags,
+                             @JsonProperty("assignmentMap") JsonSerializableAssignmentMap assignmentMap,
                              @JsonProperty("gradedTests") List<JsonAdaptedGradedTest> gradedTests) {
         this.name = name;
         this.phone = phone;
@@ -55,17 +55,21 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.assignmentMap = assignmentMap;
         if (gradedTests != null) {
             this.gradedTests.addAll(gradedTests);
         }
+        this.assignmentMap = assignmentMap;
     }
 
-    public JsonAdaptedPerson(String name, String phone, String email, String address, List<JsonAdaptedTag> tags) {
+    public JsonAdaptedPerson(String name, String phone, String email, String address, List<JsonAdaptedTag> tags,
+                             List<JsonAdaptedGradedTest> gradedTests) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        if (tags != null) {
+            this.tags.addAll(tags);
+        }
         if (tags != null) {
             this.tags.addAll(tags);
         }
