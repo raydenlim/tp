@@ -69,13 +69,37 @@ public class TakeAttendanceCommandTest {
 
 
     @Test
-    public void equals_sameCommands_returnsTrue() {
+    public void equals_sameCommandArguments_returnsTrue() {
         TakeAttendanceCommand command1 =
                 new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), new AttendancePresence("absent"));
         TakeAttendanceCommand command2 =
                 new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), new AttendancePresence("absent"));
 
         assertTrue(command1.equals(command2));
+    }
+
+    @Test
+    public void equals_sameCommand_returnsTrue() {
+        TakeAttendanceCommand command =
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+        assertTrue(command.equals(command));
+    }
+
+    @Test
+    public void equals_otherInstance_returnsFalse() {
+        TakeAttendanceCommand command =
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+        assertFalse(command.equals(1));
+    }
+
+    @Test
+    public void equals_nullNames_returnsFalse() {
+        TakeAttendanceCommand command1 =
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+        Set<Name> names = new HashSet<>();
+        TakeAttendanceCommand command2 =
+                new TakeAttendanceCommand(new SessionNumber("2"), names, new AttendancePresence("present"));
+        assertFalse(command1.equals(command2));
     }
 
     @Test

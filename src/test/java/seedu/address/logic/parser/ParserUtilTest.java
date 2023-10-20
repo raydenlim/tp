@@ -38,6 +38,7 @@ public class ParserUtilTest {
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_PRIORITY = "jason";
+    private static final String INVALID_ATTENDANCE_PRESENCE = "presen";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -226,6 +227,11 @@ public class ParserUtilTest {
     @Test
     public void parsePriority_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseTaskPriority(INVALID_PRIORITY));
+    }
+
+    @Test
+    public void parseAttendancePresence_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseAttendancePresence(INVALID_ATTENDANCE_PRESENCE));
     }
 
 }
