@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.testutil.TaskBuilder;
 
@@ -97,6 +98,10 @@ public class AddTaskCommandParserTest {
         // invalid name
         assertParseFailure(parser, INVALID_TASK_NAME + TASK_DESCRIPTION_TASK2,
                 TaskName.MESSAGE_CONSTRAINTS);
+
+        // invalid description
+        assertParseFailure(parser, TASK_NAME_TASK1 + INVALID_TASK_DESCRIPTION,
+                TaskDescription.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_TASK_NAME + INVALID_TASK_DESCRIPTION,

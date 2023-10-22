@@ -14,7 +14,8 @@ import seedu.address.model.task.TaskPriority;
 
 public class JsonAdaptedTaskTest {
     private static final String INVALID_TASK_NAME = "!!! do cs2120@@@"; // no symbols
-    private static final String INVALID_TASK_DESCRIPTION = "    "; // whitespace only not allowed
+    private static final String INVALID_TASK_DESCRIPTION = "sssssssssssssssssssssssssssssssssssss"
+            + "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"; // >100 characters
     private static final String INVALID_TASK_PRIORITY = "jason"; // not low, medium or high
 
     private static final String VALID_NAME = TASK1.getName().toString();

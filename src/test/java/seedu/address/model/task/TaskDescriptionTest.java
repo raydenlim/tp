@@ -19,7 +19,8 @@ public class TaskDescriptionTest {
         assertThrows(NullPointerException.class, () -> TaskDescription.isValidDescription(null));
 
         // invalid descriptions
-        assertFalse(TaskDescription.isValidDescription(" ")); // spaces only
+        assertFalse(TaskDescription.isValidDescription("sssssssssssssssssssssssssssssssss" +
+                "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")); // >100 characters
 
         // valid descriptions
         assertTrue(TaskDescription.isValidDescription("")); // empty string

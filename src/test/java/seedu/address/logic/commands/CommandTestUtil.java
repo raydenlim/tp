@@ -125,7 +125,8 @@ public class CommandTestUtil {
     public static final String INVALID_PE_TEST = " " + PREFIX_PRACTICAL_EXAM + INVALID_GT_PE_DESC;
 
     public static final String INVALID_TASK_DESCRIPTION = " "
-            + PREFIX_TASK_DESCRIPTION + "\\    "; // whitespaces only not allowed in description
+            + PREFIX_TASK_DESCRIPTION + "ssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+            + "sssssssssssssssssssssssssssssssssssssssssssssssssssssssss"; // more than 100 chars not allowed
     public static final String INVALID_DATE_DESC = " " + PREFIX_DATE + "1/1/2002";
     public static final String INVALID_TIME_DESC = " " + PREFIX_TIME + "0:30";
 

@@ -38,6 +38,8 @@ public class ParserUtilTest {
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_PRIORITY = "jason";
+    private static final String INVALID_DESCRIPTION = "ssssssssssssssssssssssssssssssssssssssssssssssss"
+            + "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"; // more than 100 chars
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -226,6 +228,11 @@ public class ParserUtilTest {
     @Test
     public void parsePriority_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseTaskPriority(INVALID_PRIORITY));
+    }
+
+    @Test
+    public void parseDescription_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTaskDescription(INVALID_DESCRIPTION));
     }
 
 }
