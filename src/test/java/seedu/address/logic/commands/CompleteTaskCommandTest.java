@@ -98,20 +98,20 @@ public class CompleteTaskCommandTest {
         CompleteTaskCommand completeSecondCommand = new CompleteTaskCommand(INDEX_SECOND_TASK);
 
         // same object -> returns true
-        assertEquals(completeFirstCommand, completeFirstCommand);
+        assertTrue(completeFirstCommand.equals(completeFirstCommand));
 
         // same values -> returns true
         CompleteTaskCommand completeFirstCommandCopy = new CompleteTaskCommand(INDEX_FIRST_TASK);
-        assertEquals(completeFirstCommand, completeFirstCommandCopy);
+        assertTrue(completeFirstCommand.equals(completeFirstCommandCopy));
 
         // different types -> returns false
         assertFalse(completeFirstCommand.equals(1));
 
         // null -> returns false
-        assertNotEquals(null, completeFirstCommand);
+        assertFalse(completeFirstCommand.equals(null));
 
         // different person -> returns false
-        assertNotEquals(completeFirstCommand, completeSecondCommand);
+        assertFalse(completeFirstCommand.equals(completeSecondCommand));
     }
 
     @Test

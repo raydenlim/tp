@@ -96,20 +96,20 @@ public class IncompleteTaskCommandTest {
         IncompleteTaskCommand incompleteSecondCommand = new IncompleteTaskCommand(INDEX_SECOND_TASK);
 
         // same object -> returns true
-        assertEquals(incompleteFirstCommand, incompleteFirstCommand);
+        assertTrue(incompleteFirstCommand.equals(incompleteFirstCommand));
 
         // same values -> returns true
         IncompleteTaskCommand incompleteFirstCommandCopy = new IncompleteTaskCommand(INDEX_FIRST_TASK);
-        assertEquals(incompleteFirstCommand, incompleteFirstCommandCopy);
+        assertTrue(incompleteFirstCommandCopy.equals(incompleteFirstCommand));
 
         // different types -> returns false
         assertFalse(incompleteFirstCommand.equals(1));
 
         // null -> returns false
-        assertNotEquals(null, incompleteFirstCommand);
+        assertFalse(incompleteFirstCommand.equals(null));
 
         // different person -> returns false
-        assertNotEquals(incompleteFirstCommand, incompleteSecondCommand);
+        assertFalse(incompleteFirstCommand.equals(incompleteSecondCommand));
     }
 
     @Test

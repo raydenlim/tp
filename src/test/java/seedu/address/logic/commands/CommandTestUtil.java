@@ -18,6 +18,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -113,6 +114,9 @@ public class CommandTestUtil {
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
     public static final String TASK_DESCRIPTION_TASK2 = " " + PREFIX_TASK_DESCRIPTION + "The green book";
+    public static final String DATE_TASK2 = " " + PREFIX_DATE + "22/10/2023";
+    public static final String TASK_PRIORITY_TASK1 = " " + PREFIX_TASK_PRIORITY + "high";
+    public static final String TASK_PRIORITY_TASK2 = " " + PREFIX_TASK_PRIORITY + "high";
     public static final String INVALID_TASK_NAME = " " + PREFIX_TASK_NAME + "@@@@HER"; // '@' not allowed in name
 
     public static final String GRADED_TEST_1 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_1;

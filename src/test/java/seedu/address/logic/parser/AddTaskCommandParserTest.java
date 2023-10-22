@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.DATE_TASK2;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DESCRIPTION;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
@@ -9,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.TASK_DESCRIPTION_TASK
 import static seedu.address.logic.commands.CommandTestUtil.TASK_DESCRIPTION_TASK2;
 import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.TASK_PRIORITY_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TASK_DESCRIPTION;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
@@ -35,7 +37,8 @@ public class AddTaskCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE
-                + TASK_NAME_TASK1 + TASK_DESCRIPTION_TASK1, new AddTaskCommand(expectedTask));
+                + TASK_NAME_TASK1 + TASK_DESCRIPTION_TASK1
+                + TASK_PRIORITY_TASK1 + DATE_TASK2, new AddTaskCommand(expectedTask));
     }
 
     @Test

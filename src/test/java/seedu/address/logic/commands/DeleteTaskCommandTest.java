@@ -94,20 +94,20 @@ public class DeleteTaskCommandTest {
         DeleteTaskCommand deleteSecondCommand = new DeleteTaskCommand(INDEX_SECOND_TASK);
 
         // same object -> returns true
-        assertEquals(deleteFirstCommand, deleteFirstCommand);
+        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
         DeleteTaskCommand deleteFirstCommandCopy = new DeleteTaskCommand(INDEX_FIRST_TASK);
-        assertEquals(deleteFirstCommand, deleteFirstCommandCopy);
+        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
         assertFalse(deleteFirstCommand.equals(1));
 
         // null -> returns false
-        assertNotEquals(null, deleteFirstCommand);
+        assertFalse(deleteFirstCommand.equals(null));
 
         // different person -> returns false
-        assertNotEquals(deleteFirstCommand, deleteSecondCommand);
+        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 
     @Test
