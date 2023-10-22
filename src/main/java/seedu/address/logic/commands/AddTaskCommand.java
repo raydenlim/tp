@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PRIORITY;
@@ -23,12 +24,14 @@ public class AddTaskCommand extends Command {
             + ": Adds a new task with the specified description.\n"
             + "Parameters: "
             + PREFIX_TASK_NAME + "NAME "
-            + "[" + PREFIX_TASK_DESCRIPTION + "DESCRIPTION]\n"
-            + "[" + PREFIX_TASK_PRIORITY + "PRIORITY]\n"
+            + "[" + PREFIX_TASK_DESCRIPTION + "DESCRIPTION]"
+            + "[" + PREFIX_TASK_PRIORITY + "PRIORITY]"
+            + "[" + PREFIX_DATE + "DATE]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TASK_NAME + "Do laundry "
             + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket"
-            + PREFIX_TASK_PRIORITY + "medium";
+            + PREFIX_TASK_PRIORITY + "medium"
+            + PREFIX_DATE + "22/10/2023";
 
     public static final String MESSAGE_SUCCESS = "Task has been added: %1$s";
 
