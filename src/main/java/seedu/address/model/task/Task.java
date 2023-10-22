@@ -31,13 +31,13 @@ public class Task {
      * @param priority        The level of priority of the task.
      */
     public Task(TaskName taskName, TaskDescription taskDescription,
-                boolean isDone, TaskPriority priority) {
+                boolean isDone, TaskPriority priority, LocalDate date) {
         requireAllNonNull(taskName, taskDescription, priority);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = isDone;
         this.priority = priority;
-        this.date = null;
+        this.date = date;
     }
 
     /**
@@ -48,13 +48,13 @@ public class Task {
      * @param taskDescription The description of the task. Must not be null.
      * @param priority        The level of priority of the task.
      */
-    public Task(TaskName taskName, TaskDescription taskDescription, TaskPriority priority) {
+    public Task(TaskName taskName, TaskDescription taskDescription, TaskPriority priority, LocalDate date) {
         requireAllNonNull(taskName, taskDescription, priority);
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.isDone = false;
         this.priority = priority;
-        this.date = null; // Think about how we want to represent tasks without a date
+        this.date = date; // Think about how we want to represent tasks without a date
     }
 
     public TaskName getName() {
@@ -71,6 +71,9 @@ public class Task {
 
     public TaskPriority getPriority() {
         return priority;
+    }
+    public LocalDate getDate() {
+        return date;
     }
 
     /**

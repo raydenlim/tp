@@ -44,7 +44,7 @@ public class IncompleteTaskCommand extends Command {
         Task taskToMark = lastShownList.get(targetIndex.getZeroBased());
 
         Task editedTask = new Task(taskToMark.getName(), taskToMark.getDescription(),
-                false, taskToMark.getPriority());
+                false, taskToMark.getPriority(), taskToMark.getDate());
 
         model.setTask(taskToMark, editedTask);
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);

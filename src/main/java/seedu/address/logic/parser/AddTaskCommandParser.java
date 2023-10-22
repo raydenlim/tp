@@ -1,10 +1,12 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PRIORITY;
 
+import java.time.LocalDate;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddTaskCommand;
@@ -26,21 +28,29 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
      */
     public AddTaskCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION, PREFIX_TASK_PRIORITY);
+                ArgumentTokenizer.tokenize(args, PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION,
+                        PREFIX_TASK_PRIORITY, PREFIX_DATE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_TASK_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTaskCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION, PREFIX_TASK_PRIORITY);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION,
+                PREFIX_TASK_PRIORITY, PREFIX_DATE);
         TaskName name = ParserUtil.parseTaskName(argMultimap.getValue(PREFIX_TASK_NAME).get());
         TaskDescription taskDescription = ParserUtil.parseTaskDescription(argMultimap
                 .getValue(PREFIX_TASK_DESCRIPTION).orElse(""));
         TaskPriority priority = ParserUtil.parseTaskPriority(argMultimap
                 .getValue(PREFIX_TASK_PRIORITY).orElse("LOW"));
+        LocalDate date;
+        try {
+            date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).orElse(""));
+        } catch (ParseException e) {
+            date = null;
+        }
 
-        Task task = new Task(name, taskDescription, priority);
+        Task task = new Task(name, taskDescription, priority, date);
 
         return new AddTaskCommand(task);
     }

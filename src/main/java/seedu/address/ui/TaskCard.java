@@ -26,6 +26,8 @@ public class TaskCard extends UiPart<Region> {
     private Text description;
     @FXML
     private Text priority;
+    @FXML
+    private Text date;
 
     /**
      * Creates a {@code TaskCard} with the given {@code Task} and index to display.
@@ -37,6 +39,7 @@ public class TaskCard extends UiPart<Region> {
         name.setText(task.getName().taskName);
         description.setText(task.getDescription().description);
         priority.setText(task.getPriority().name());
+        date.setText(task.getDate() != null ? task.getDate().toString() : "");
 
         switch(task.getPriority()) {
         case LOW:
@@ -55,6 +58,7 @@ public class TaskCard extends UiPart<Region> {
         name.setStrikethrough(task.getIsDone());
         description.setStrikethrough(task.getIsDone());
         priority.setStrikethrough(task.getIsDone());
+        date.setStrikethrough(task.getIsDone());
 
     }
 }

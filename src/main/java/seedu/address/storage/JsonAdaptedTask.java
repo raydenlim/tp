@@ -9,28 +9,37 @@ import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
+
 /**
  * Jackson-friendly version of {@link Task}.
  */
 class JsonAdaptedTask {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 
     private final String name;
     private final String description;
     private final boolean isDone;
     private final String priority;
+    private final String date;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("description") String description,
-                           @JsonProperty("isDone") boolean isDone, @JsonProperty("priority") String priority) {
+                           @JsonProperty("isDone") boolean isDone, @JsonProperty("priority") String priority,
+                           @JsonProperty("date") String date) {
         this.name = name;
         this.description = description;
         this.isDone = isDone;
         this.priority = priority;
+        this.date = date;
     }
 
     /**
@@ -41,6 +50,9 @@ class JsonAdaptedTask {
         description = source.getDescription().description;
         isDone = source.getIsDone();
         priority = source.getPriority().name();
+        date = source.getDate() != null
+                ? source.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                : "";
     }
 
     /**
@@ -78,7 +90,16 @@ class JsonAdaptedTask {
             throw new IllegalValueException(TaskPriority.MESSAGE_CONSTRAINTS);
         }
 
-        return new Task(modelName, modelDescription, isDone, modelPriority);
+        final LocalDate localDate;
+        if (date.equals("")) {
+            localDate = null;
+        } else {
+            localDate = LocalDate.parse(date, FORMATTER);
+        }
+
+
+
+        return new Task(modelName, modelDescription, isDone, modelPriority, localDate);
     }
 
 }

@@ -11,7 +11,12 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.TaskBuilder;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class TaskTest {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 
     @Test
     public void isSameTask() {
@@ -65,16 +70,20 @@ public class TaskTest {
 
     @Test
     public void hashCode_sameFields_expectSameHashCode() {
-        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
-        Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
+                false, TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER));
+        Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
+                false, TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER));
 
         assertEquals(task1.hashCode(), task2.hashCode());
     }
 
     @Test
     public void hashCode_differentFields_expectDifferentHashCode() {
-        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
-        Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"), true, TaskPriority.HIGH);
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
+                false, TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER));
+        Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"),
+                true, TaskPriority.HIGH, LocalDate.parse("23/10/2023", FORMATTER));
 
         assertThrows(AssertionError.class, () -> assertEquals(task1.hashCode(), task2.hashCode()));
     }

@@ -14,21 +14,29 @@ public class TypicalTasks {
     public static final Task TASK1 = new TaskBuilder()
             .withName("Do cs2103t")
             .withDescription("Complete PRS")
+            .withPriority("LOW")
+            .withDate("22/10/2023")
             .build();
 
     public static final Task TASK2 = new TaskBuilder()
             .withName("Read quant guide")
             .withDescription("The green book")
+            .withPriority("LOW")
+            .withDate("22/10/2023")
             .build();
 
     public static final Task TASK3 = new TaskBuilder()
             .withName("Study cs3233")
             .withDescription("Read Steven Halim Book for competitive programming")
+            .withPriority("LOW")
+            .withDate("22/10/2023")
             .build();
 
     public static final Task TASK4 = new TaskBuilder()
             .withName("Plan for mods")
             .withDescription("SEPSPEPESEP")
+            .withPriority("LOW")
+            .withDate("22/10/2023")
             .build();
 
     private TypicalTasks() {} // prevents instantiation
