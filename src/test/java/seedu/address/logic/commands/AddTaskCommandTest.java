@@ -1,13 +1,5 @@
 package seedu.address.logic.commands;
 
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.task.Task;
-import seedu.address.testutil.ModelStub;
-import seedu.address.testutil.TaskBuilder;
-
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,6 +11,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.task.Task;
+import seedu.address.testutil.ModelStub;
+import seedu.address.testutil.TaskBuilder;
 
 public class AddTaskCommandTest {
 
@@ -45,8 +45,8 @@ public class AddTaskCommandTest {
         AddTaskCommand addCommand = new AddTaskCommand(task);
         ModelStub modelStub = new ModelStubWithTask(task);
 
-        assertThrows(CommandException.class, AddTaskCommand.MESSAGE_DUPLICATE_TASK,
-                () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class,
+                AddTaskCommand.MESSAGE_DUPLICATE_TASK, () -> addCommand.execute(modelStub));
     }
 
     @Test

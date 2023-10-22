@@ -1,12 +1,12 @@
 package seedu.address.testutil;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  * A utility class to help with building Person objects.

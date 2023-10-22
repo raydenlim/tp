@@ -5,14 +5,14 @@ import static seedu.address.storage.JsonAdaptedTask.MISSING_FIELD_MESSAGE_FORMAT
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 
+import java.time.format.DateTimeFormatter;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
-
-import java.time.format.DateTimeFormatter;
 
 public class JsonAdaptedTaskTest {
     private static final String INVALID_TASK_NAME = "!!! do cs2120@@@"; // no symbols
@@ -63,7 +63,8 @@ public class JsonAdaptedTaskTest {
 
     @Test
     public void toModelType_invalidPriority_throwsIllegalValueException() {
-        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_DESCRIPTION, false, INVALID_TASK_PRIORITY, VALID_DATE);
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_DESCRIPTION,
+                false, INVALID_TASK_PRIORITY, VALID_DATE);
         String expectedMessage = TaskPriority.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
