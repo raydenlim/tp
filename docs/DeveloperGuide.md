@@ -297,16 +297,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `FAKEJARVIS` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `F.A.K.E.J.A.R.V.I.S.` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Delete a person**
 
 **MSS**
 
 1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  FAKEJARVIS deletes the person
+4.  F.A.K.E.J.A.R.V.I.S. deletes the person
 
     Use case ends.
 
@@ -318,7 +318,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. FAKEJARVIS shows an error message.
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case resumes at step 2.
 
@@ -328,9 +328,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to delete a specific person in the list
-4.  FAKEJARVIS deletes the person
+4.  F.A.K.E.J.A.R.V.I.S. deletes the person
 
     Use case ends.
 
@@ -342,7 +342,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. FAKEJARVIS shows an error message.
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case resumes at step 2.
 
@@ -352,9 +352,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to grade an assignment for a specific person in the list
-4.  FAKEJARVIS assigns given grade to the student
+4.  F.A.K.E.J.A.R.V.I.S. assigns given grade to the student
 
     Use case ends.
 
@@ -366,7 +366,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. FAKEJARVIS shows an error message.
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case resumes at step 2.
 
@@ -375,9 +375,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list persons
-2.  FAKEJARVIS shows a list of persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User request a search query to find a student's profile
-4.  FAKEJARVIS returns matching results from the database
+4.  F.A.K.E.J.A.R.V.I.S. returns matching results from the database
 
     Use case ends.
 
@@ -389,7 +389,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. No matching profiles.
 
-    * 3a1. FAKEJARVIS shows an error message.
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
         Use case resumes at step 2.
 
@@ -398,9 +398,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list persons.
-2.  FAKEJARVIS shows a list of persons.
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons.
 3.  User requests to apply filters to the results via attribute `FILTER_ATTRIBUTE`, or description `FILTER_DESCRIPTION`.
-4.  FAKEJARVIS shows the filter results.
+4.  F.A.K.E.J.A.R.V.I.S. shows the filter results.
 
     Use case ends.
 
@@ -412,7 +412,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. No filtered results.
 
-    * 3a1. FAKEJARVIS shows an error message.
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case resumes at step 2.
 
