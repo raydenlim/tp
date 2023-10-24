@@ -1,5 +1,7 @@
 package seedu.address.model.util;
 
+import static seedu.address.model.task.Task.FORMATTER;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -38,6 +40,7 @@ import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
 
 
+
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
@@ -64,8 +67,6 @@ public class SampleDataUtil {
     public static final Person PERSON_ROY = new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),
             new Email("royb@example.com"), new Address("Blk 45 Aljunied Street 85, #11-31"),
             getTagSet("colleagues"), getGradedTestSet(VALID_GRADED_TEST_2));
-
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
     public static Person[] getSamplePersons() {

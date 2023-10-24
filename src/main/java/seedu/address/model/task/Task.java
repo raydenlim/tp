@@ -3,15 +3,17 @@ package seedu.address.model.task;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
  * Represents a Task in the task list.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Guarantees: field values are validated, immutable.
  */
 public class Task {
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     // Identity fields
     private final TaskName taskName;
@@ -110,7 +112,9 @@ public class Task {
         Task otherTask = (Task) other;
         return taskName.equals(otherTask.taskName)
                 && taskDescription.equals(otherTask.taskDescription)
-                && priority.equals(otherTask.priority);
+                && priority.equals(otherTask.priority)
+                && Objects.equals(date, otherTask.date)
+                && isDone == otherTask.isDone;
     }
 
     @Override

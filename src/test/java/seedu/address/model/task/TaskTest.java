@@ -3,21 +3,18 @@ package seedu.address.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.task.Task.FORMATTER;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.TaskBuilder;
 
 public class TaskTest {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-
     @Test
     public void isSameTask() {
         // same object -> returns true

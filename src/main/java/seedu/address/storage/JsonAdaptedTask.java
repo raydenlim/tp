@@ -1,5 +1,7 @@
 package seedu.address.storage;
 
+import static seedu.address.model.task.Task.FORMATTER;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -18,9 +20,6 @@ import seedu.address.model.task.TaskPriority;
 class JsonAdaptedTask {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-
     private final String name;
     private final String description;
     private final boolean isDone;

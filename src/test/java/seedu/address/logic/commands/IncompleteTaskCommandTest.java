@@ -35,7 +35,7 @@ public class IncompleteTaskCommandTest {
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Task taskToMark = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
-        Task editedTask = new TaskBuilder(taskToMark).withIsDone(true).build();
+        Task editedTask = new TaskBuilder(taskToMark).withIsDone(false).build();
         IncompleteTaskCommand incompleteTaskCommand = new IncompleteTaskCommand(INDEX_FIRST_TASK);
 
         String expectedMessage = String.format(IncompleteTaskCommand.MESSAGE_UNMARK_TASK_SUCCESS,
@@ -62,7 +62,7 @@ public class IncompleteTaskCommandTest {
         showTaskAtIndex(model, INDEX_FIRST_TASK);
 
         Task taskToMark = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
-        Task editedTask = new TaskBuilder(taskToMark).withIsDone(true).build();
+        Task editedTask = new TaskBuilder(taskToMark).withIsDone(false).build();
         IncompleteTaskCommand incompleteTaskCommand = new IncompleteTaskCommand(INDEX_FIRST_TASK);
 
         String expectedMessage = String.format(IncompleteTaskCommand.MESSAGE_UNMARK_TASK_SUCCESS,
