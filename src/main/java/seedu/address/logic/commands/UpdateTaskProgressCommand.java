@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PROGRESS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
 import java.util.List;
@@ -23,8 +24,10 @@ public class UpdateTaskProgressCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Updates the task's progress identified by the index number used in the displayed task list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Parameters: "
+            + "INDEX (must be a positive integer) "
+            + PREFIX_TASK_PROGRESS + "PROGRESS\n"
+            + "Example: " + COMMAND_WORD + " 1 " + PREFIX_TASK_PROGRESS + "PENDING";
 
     public static final String MESSAGE_MARK_TASK_SUCCESS = "Updated Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "Progress must be updated";
