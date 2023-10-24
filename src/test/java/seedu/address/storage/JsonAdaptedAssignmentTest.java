@@ -16,7 +16,8 @@ public class JsonAdaptedAssignmentTest {
     private static final String INVALID_ASSIGNMENT_NAME = "HeheHaha";
     private static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
     private static final String VALID_GRADE = "1200/1200";
-    private static final String VALID_UNGRADED = "UNGRADED/1200";
+    private static final String INVALID_GRADE_TOO_HIGH = "1300/1200";
+    private static final String INVALID_GRADE_NOT_INT = "haha/1200";
 
     @Test
     public void toModelType_validNameAndGrade_returnsAssignment() throws Exception {
@@ -41,6 +42,20 @@ public class JsonAdaptedAssignmentTest {
     public void toModelType_nullName_throwsIllegalValueException() {
         JsonAdaptedAssignment assignment = new JsonAdaptedAssignment(null, VALID_GRADE);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, AssignmentName.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, assignment::toModelType);
+    }
+
+    @Test
+    public void toModelType_gradeOutOfRange_throwsIllegalValueException() {
+        JsonAdaptedAssignment assignment = new JsonAdaptedAssignment(VALID_ASSIGNMENT_NAME, INVALID_GRADE_TOO_HIGH);
+        String expectedMessage = Grade.MESSAGE_CONSTRAINTS;
+        assertThrows(IllegalValueException.class, expectedMessage, assignment::toModelType);
+    }
+
+    @Test
+    public void toModelType_gradeNotInt_throwsIllegalValueException() {
+        JsonAdaptedAssignment assignment = new JsonAdaptedAssignment(VALID_ASSIGNMENT_NAME, INVALID_GRADE_NOT_INT);
+        String expectedMessage = Grade.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, assignment::toModelType);
     }
 

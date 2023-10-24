@@ -161,7 +161,7 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(EditGradeCommand.COMMAND_WORD
                 + whiteSpace + personIndex
                 + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
-                + whiteSpace + PREFIX_GRADE) instanceof EditGradeCommand);
+                + whiteSpace + PREFIX_GRADE + grade) instanceof EditGradeCommand);
     }
 
     @Test

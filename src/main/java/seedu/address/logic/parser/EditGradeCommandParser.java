@@ -10,7 +10,9 @@ import java.util.stream.Stream;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.person.assignment.Grade;
 
 /**
  * Parses input arguments and creates a new EditGradeCommand object
@@ -40,8 +42,10 @@ public class EditGradeCommandParser implements Parser<EditGradeCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ASSIGNMENT, PREFIX_GRADE);
         AssignmentName assignmentName = ParserUtil.parseAssignmentName(argMultimap.getValue(PREFIX_ASSIGNMENT).get());
-        String actualGrade = argMultimap.getValue(PREFIX_GRADE).get();
-        return new EditGradeCommand(index, assignmentName, actualGrade);
+        AssignmentMap assignmentMapReference = new AssignmentMap();
+        String maxGrade = assignmentMapReference.get(assignmentName).maxGrade();
+        Grade grade = ParserUtil.parseGrade(argMultimap.getValue(PREFIX_GRADE).get(), maxGrade);
+        return new EditGradeCommand(index, assignmentName, grade);
     }
 
     /**

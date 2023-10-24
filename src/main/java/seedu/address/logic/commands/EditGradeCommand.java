@@ -18,7 +18,6 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
@@ -41,18 +40,19 @@ public class EditGradeCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Editted grade to assignment: %1$s";
 
     private final AssignmentName assignmentName;
-    private final String gradeString;
+    private final Grade grade;
     private final Index index;
 
     /**
      * Creates an EditGradeCommand to add the specified grade to a person's assignment
      */
-    public EditGradeCommand(Index index, AssignmentName assignmentName, String grade) {
+    public EditGradeCommand(Index index, AssignmentName assignmentName, Grade grade) {
         requireNonNull(index);
         requireNonNull(assignmentName);
+        requireNonNull(grade);
         this.index = index;
         this.assignmentName = assignmentName;
-        this.gradeString = grade;
+        this.grade = grade;
     }
 
     @Override
@@ -68,11 +68,15 @@ public class EditGradeCommand extends Command {
             throw new CommandException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
+        String[] gradeArray = this.grade.toString().split("/");
+        String actualGrade = gradeArray[0];
 
-        Assignment assignmentToGrade = personToEdit.getAssignment(this.assignmentName);
-        Grade newGrade = new Grade(this.gradeString, assignmentToGrade.maxGrade());
-        Person editedPerson = createGradedPerson(personToEdit, newGrade);
+        if (!Grade.isValidGrade(actualGrade, this.grade.getMax())) {
+            throw new CommandException(Grade.MESSAGE_CONSTRAINTS);
+        }
+
+        Person personToEdit = lastShownList.get(index.getZeroBased());
+        Person editedPerson = createGradedPerson(personToEdit);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -83,10 +87,9 @@ public class EditGradeCommand extends Command {
      * Creates a new Person with the newly graded assignment.
      *
      * @param reference The person to be graded.
-     * @param newGrade The new grade to be given to the person's assignment.
      * @return New person with a graded assignment.
      */
-    public Person createGradedPerson(Person reference, Grade newGrade) {
+    public Person createGradedPerson(Person reference) {
         Name name = reference.getName();
         Phone phone = reference.getPhone();
         Email email = reference.getEmail();
@@ -94,7 +97,7 @@ public class EditGradeCommand extends Command {
         Set<Tag> tags = reference.getTags();
         Set<GradedTest> gradedTest = reference.getGradedTest();
         AssignmentMap updatedAssignmentMap =
-            reference.getAllAssignments().createUpdatedMap(this.assignmentName, newGrade);
+            reference.getAllAssignments().createUpdatedMap(this.assignmentName, this.grade);
         return new Person(name, phone, email, address, tags, updatedAssignmentMap, gradedTest);
     }
 
@@ -112,7 +115,7 @@ public class EditGradeCommand extends Command {
         EditGradeCommand otherEditGradeCommand = (EditGradeCommand) other;
 
         boolean sameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
-        boolean sameGrade = this.gradeString.equals(otherEditGradeCommand.gradeString);
+        boolean sameGrade = this.grade.equals(otherEditGradeCommand.grade);
         boolean samePersonIndex = this.index.equals(otherEditGradeCommand.index);
 
         return sameAssignmentName && sameGrade && samePersonIndex;

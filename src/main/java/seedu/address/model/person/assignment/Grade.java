@@ -5,6 +5,9 @@ package seedu.address.model.person.assignment;
  * Consists of the maximum grade as well as the actual grade.
  */
 public class Grade {
+
+    public static final String MESSAGE_CONSTRAINTS =
+            "Grade must be a positive integer, less than or equal to (max grade + 75) and without leading 0's";
     private String actualGrade;
     private final String maxGrade;
     private boolean isGraded;
@@ -45,6 +48,50 @@ public class Grade {
             return new Grade(this.actualGrade, this.maxGrade);
         } else {
             return new Grade(this.maxGrade);
+        }
+    }
+
+    /**
+     * Checks if the grade being added is valid.
+     *
+     * @param test Grade to be added.
+     * @param maxGrade Maximum Grade.
+     * @return Whether the grade being added is valid.
+     */
+    public static boolean isValidGrade(String test, String maxGrade) {
+        int testInteger;
+        int maxInteger;
+
+        if (!test.matches("[0-9]+")) {
+            return false;
+        }
+        if (test.charAt(0) == '0' && test.length() > 1) {
+            return false;
+        }
+
+        testInteger = Integer.parseInt(test);
+        maxInteger = Integer.parseInt(maxGrade) + 75;
+
+        boolean isWithinRange = testInteger > 0 && testInteger <= maxInteger;
+        if (isWithinRange) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the grade is valid, including UNGRADED.
+     *
+     * @param test Grade to be added.
+     * @param maxGrade Maximum Grade.
+     * @return Whether the grade is valid.
+     */
+    public static boolean isValidIncludingUngraded(String test, String maxGrade) {
+        if (test.equals("UNGRADED")) {
+            return true;
+        } else {
+            return isValidGrade(test, maxGrade);
         }
     }
 

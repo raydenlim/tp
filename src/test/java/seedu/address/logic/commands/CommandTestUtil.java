@@ -66,6 +66,7 @@ public class CommandTestUtil {
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
     public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
     public static final String INVALID_ASSIGNMENT_NAME = "Finding BOYD";
+    public static final String VALID_GRADE = "1200";
     public static final String GRADE_400 = "400";
     public static final String VALID_DATE = "11/11/2023";
     public static final String VALID_TIME = "11:11";

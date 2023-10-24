@@ -56,7 +56,11 @@ public class JsonAdaptedAssignment {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Grade.class.getSimpleName()));
         }
-        // Add valid grade checker later
+        String[] gradeArray = grade.split("/");
+        if (!Grade.isValidIncludingUngraded(gradeArray[0], gradeArray[1])) {
+            throw new IllegalValueException(String.format(Grade.MESSAGE_CONSTRAINTS,
+                    Grade.class.getSimpleName()));
+        }
 
         final Grade modelGrade;
         if (grade.startsWith("UNGRADED/")) {

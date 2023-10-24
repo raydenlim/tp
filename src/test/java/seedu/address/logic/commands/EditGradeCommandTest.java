@@ -3,9 +3,9 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.GRADE_400;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ASSIGNMENT_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ASSIGNMENT_NAME;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -42,9 +42,9 @@ public class EditGradeCommandTest {
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
 
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        Grade actualGrade = new Grade(GRADE_400, personToEdit.getAssignment(assignmentName).maxGrade());
-        EditGradeCommand editGradeCommand = new EditGradeCommand(targetIndex, assignmentName, GRADE_400);
-        Person editedPerson = editGradeCommand.createGradedPerson(personToEdit, actualGrade);
+        Grade actualGrade = new Grade(VALID_GRADE, personToEdit.getAssignment(assignmentName).maxGrade());
+        EditGradeCommand editGradeCommand = new EditGradeCommand(targetIndex, assignmentName, actualGrade);
+        Person editedPerson = editGradeCommand.createGradedPerson(personToEdit);
 
         String expectedMessage = String.format(EditGradeCommand.MESSAGE_SUCCESS, VALID_ASSIGNMENT_NAME);
 
@@ -59,16 +59,38 @@ public class EditGradeCommandTest {
     @Test
     public void execute_invalidAssignment_failure() {
         AssignmentName assignmentName = new AssignmentName(INVALID_ASSIGNMENT_NAME);
-        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
 
-        assertCommandFailure(editGradeCommand, model, assignmentName.MESSAGE_CONSTRAINTS);
+        assertCommandFailure(editGradeCommand, model, AssignmentName.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void execute_gradeNotInteger_failure() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Grade invalidGradeNotInteger = new Grade("hi", VALID_GRADE);
+        EditGradeCommand editGradeCommand =
+            new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, invalidGradeNotInteger);
+
+        assertCommandFailure(editGradeCommand, model, Grade.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void execute_gradeLeadingZero_failure() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Grade invalidGradeLeadingZero = new Grade("0200", VALID_GRADE);
+        EditGradeCommand editGradeCommand =
+                new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, invalidGradeLeadingZero);
+
+        assertCommandFailure(editGradeCommand, model, Grade.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        EditGradeCommand editGradeCommand = new EditGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
+        Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(outOfBoundIndex, assignmentName, validGrade);
 
         assertCommandFailure(editGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
@@ -84,8 +106,9 @@ public class EditGradeCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
 
-        EditGradeCommand editGradeCommand = new EditGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(outOfBoundIndex, assignmentName, validGrade);
 
         assertCommandFailure(editGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
@@ -93,7 +116,8 @@ public class EditGradeCommandTest {
     @Test
     public void test_sameObject_equals() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
 
         assertEquals(editGradeCommand, editGradeCommand);
     }
@@ -101,7 +125,8 @@ public class EditGradeCommandTest {
     @Test
     public void test_differentObject_equals() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
 
         assertFalse(editGradeCommand.equals(assignmentName));
     }
@@ -109,8 +134,9 @@ public class EditGradeCommandTest {
     @Test
     public void test_differentObjectSameContent_equals() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        EditGradeCommand editGradeCommandFirst = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
-        EditGradeCommand editGradeCommandSecond = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
+        EditGradeCommand editGradeCommandFirst = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
+        EditGradeCommand editGradeCommandSecond = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
 
         assertEquals(editGradeCommandFirst, editGradeCommandSecond);
     }

@@ -2,8 +2,11 @@ package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.ASSIGNMENT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.GRADE_400;
 import static seedu.address.logic.commands.CommandTestUtil.GRADE_DESC_400;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ASSIGNMENT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ASSIGNMENT_NAME;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -17,6 +20,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.person.assignment.Grade;
 
 public class EditGradeCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
@@ -63,9 +67,10 @@ public class EditGradeCommandParserTest {
     public void parse_allFieldsPresent_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + ASSIGNMENT_DESC + GRADE_DESC_400;
-        AssignmentName assignmentName = new AssignmentName("Finding ELDRIC");
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Grade grade = new Grade(GRADE_400, VALID_GRADE);
 
-        assertParseSuccess(parser, userInput, new EditGradeCommand(targetIndex, assignmentName, "400"));
+        assertParseSuccess(parser, userInput, new EditGradeCommand(targetIndex, assignmentName, grade));
     }
 
     @Test
