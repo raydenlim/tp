@@ -13,6 +13,7 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
+import seedu.address.model.task.TaskProgress;
 
 /**
  * Jackson-friendly version of {@link Task}.
@@ -22,20 +23,20 @@ class JsonAdaptedTask {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
     private final String name;
     private final String description;
-    private final boolean isDone;
     private final String priority;
     private final String date;
+    private final String progress;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given task details.
      */
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("name") String name, @JsonProperty("description") String description,
-                           @JsonProperty("isDone") boolean isDone, @JsonProperty("priority") String priority,
-                           @JsonProperty("date") String date) {
+                           @JsonProperty("priority") String priority, @JsonProperty("date") String date,
+                           @JsonProperty("progress") String progress) {
         this.name = name;
         this.description = description;
-        this.isDone = isDone;
+        this.progress = progress;
         this.priority = priority;
         this.date = date;
     }
@@ -46,8 +47,8 @@ class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
         name = source.getName().taskName;
         description = source.getDescription().description;
-        isDone = source.getIsDone();
         priority = source.getPriority().name();
+        progress = source.getProgress().name();
         date = source.getDate() != null
                 ? source.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                 : "";
@@ -95,9 +96,20 @@ class JsonAdaptedTask {
             localDate = LocalDate.parse(date, FORMATTER);
         }
 
+        final TaskProgress modelProgress;
+        if (progress == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    TaskProgress.class.getSimpleName()));
+        }
+        try {
+            modelProgress = TaskProgress.valueOf(progress);
+        } catch (Exception e) {
+            throw new IllegalValueException(TaskProgress.MESSAGE_CONSTRAINTS);
+        }
 
 
-        return new Task(modelName, modelDescription, isDone, modelPriority, localDate);
+
+        return new Task(modelName, modelDescription, modelPriority, localDate, modelProgress);
     }
 
 }

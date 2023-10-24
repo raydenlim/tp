@@ -1,12 +1,14 @@
 package seedu.address.testutil;
 
+import static seedu.address.model.task.Task.FORMATTER;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
+import seedu.address.model.task.TaskProgress;
 
 /**
  * A utility class to help with building Person objects.
@@ -15,15 +17,14 @@ public class TaskBuilder {
 
     public static final String DEFAULT_NAME = "Borrow book";
     public static final String DEFAULT_DESCRIPTION = "At Central Library";
-    public static final String DEFAULT_PRIORITY = "HIGH";
+    public static final String DEFAULT_PRIORITY = "LOW";
     public static final String DEFAULT_DATE = "22/10/2023";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private TaskName name;
     private TaskDescription description;
-    private boolean isDone;
     private TaskPriority priority;
     private LocalDate date;
+    private TaskProgress progress;
 
     /**
      * Creates a {@code TaskBuilder} with the default details.
@@ -33,6 +34,7 @@ public class TaskBuilder {
         description = new TaskDescription(DEFAULT_DESCRIPTION);
         priority = TaskPriority.valueOf(DEFAULT_PRIORITY);
         date = LocalDate.parse(DEFAULT_DATE, FORMATTER);
+        progress = TaskProgress.NOT_STARTED;
     }
 
     /**
@@ -43,6 +45,7 @@ public class TaskBuilder {
         description = task.getDescription();
         priority = task.getPriority();
         date = task.getDate();
+        progress = task.getProgress();
     }
 
     /**
@@ -62,14 +65,6 @@ public class TaskBuilder {
     }
 
     /**
-     * Sets the {@code isDone} of the {@code Task} that we are building.
-     */
-    public TaskBuilder withIsDone(boolean isDone) {
-        this.isDone = isDone;
-        return this;
-    }
-
-    /**
      * Sets the {@code priority} of the {@code Task} that we are building.
      */
     public TaskBuilder withPriority(String name) {
@@ -85,8 +80,16 @@ public class TaskBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code progress} of the {@code Task} that we are building.
+     */
+    public TaskBuilder withProgress(String name) {
+        this.progress = TaskProgress.valueOf(name.trim().toUpperCase());
+        return this;
+    }
+
     public Task build() {
-        return new Task(name, description, isDone, priority, date);
+        return new Task(name, description, priority, date, progress);
     }
 
 }

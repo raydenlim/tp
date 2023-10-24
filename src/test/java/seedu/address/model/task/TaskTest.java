@@ -68,9 +68,9 @@ public class TaskTest {
     @Test
     public void hashCode_sameFields_expectSameHashCode() {
         Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
-                false, TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER));
+                TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
         Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
-                false, TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER));
+                TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
 
         assertEquals(task1.hashCode(), task2.hashCode());
     }
@@ -78,18 +78,18 @@ public class TaskTest {
     @Test
     public void hashCode_differentFields_expectDifferentHashCode() {
         Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
-                false, TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER));
+                TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
         Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"),
-                true, TaskPriority.HIGH, LocalDate.parse("23/10/2023", FORMATTER));
+                TaskPriority.HIGH, LocalDate.parse("23/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
 
         assertThrows(AssertionError.class, () -> assertEquals(task1.hashCode(), task2.hashCode()));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = String.format("%s{name=%s, description=%s, isDone=%s, priority=%s, date=%s}",
+        String expected = String.format("%s{name=%s, description=%s, priority=%s, date=%s, progress=%s}",
                 Task.class.getCanonicalName(), TASK1.getName(), TASK1.getDescription(),
-                TASK1.getIsDone(), TASK1.getPriority(), TASK1.getDate());
+                TASK1.getPriority(), TASK1.getDate(), TASK1.getProgress());
         assertEquals(expected, TASK1.toString());
     }
 }

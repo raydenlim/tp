@@ -92,7 +92,8 @@ public class AddTaskCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // no description
-        Task expectedTask = new TaskBuilder(TASK1).withDescription("").withDate("").build();
+        Task expectedTask = new TaskBuilder(TASK1).withDescription("")
+                .withDate("").build();
         assertParseSuccess(parser, TASK_NAME_TASK1, new AddTaskCommand(expectedTask));
     }
 

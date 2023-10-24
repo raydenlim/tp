@@ -2,14 +2,14 @@
   "tasks" : [ {
     "name" : "Do 2103T",
     "description" : "Homework assignment",
-    "isDone": false,
     "priority": "MEDIUM",
-    "date": ""
+    "date": "",
+    "progress": "PENDING"
   }, {
     "name" : "Do 2103T",
     "description" : "Homework assignment",
-    "isDone": false,
     "priority": "MEDIUM",
-    "date": "22/10/2023"
+    "date": "22/10/2023",
+    "progress": "DONE"
   } ]
 }

@@ -16,6 +16,7 @@ public class TypicalTasks {
             .withDescription("Complete PRS")
             .withPriority("LOW")
             .withDate("22/10/2023")
+            .withProgress("NOT_STARTED")
             .build();
 
     public static final Task TASK2 = new TaskBuilder()
@@ -23,6 +24,7 @@ public class TypicalTasks {
             .withDescription("The green book")
             .withPriority("MEDIUM")
             .withDate("22/02/2023")
+            .withProgress("DONE")
             .build();
 
     public static final Task TASK3 = new TaskBuilder()
@@ -30,6 +32,7 @@ public class TypicalTasks {
             .withDescription("Read Steven Halim Book for competitive programming")
             .withPriority("LOW")
             .withDate("22/10/2023")
+            .withProgress("PENDING")
             .build();
 
     public static final Task TASK4 = new TaskBuilder()

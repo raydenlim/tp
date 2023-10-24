@@ -91,8 +91,6 @@ public class Messages {
         return task.getName()
                 + "; Description: "
                 + task.getDescription()
-                + "; isDone: "
-                + task.getIsDone()
                 + "; Priority: "
                 + task.getPriority();
     }

@@ -55,10 +55,10 @@ public class TaskCard extends UiPart<Region> {
             priority.setStyle("-fx-fill: white");
         }
 
-        name.setStrikethrough(task.getIsDone());
-        description.setStrikethrough(task.getIsDone());
-        priority.setStrikethrough(task.getIsDone());
-        date.setStrikethrough(task.getIsDone());
+        name.setStrikethrough(task.getProgress().name().equals("done"));
+        description.setStrikethrough(task.getProgress().name().equals("done"));
+        priority.setStrikethrough(task.getProgress().name().equals("done"));
+        date.setStrikethrough(task.getProgress().name().equals("done"));
 
     }
 }

@@ -19,6 +19,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PRIORITY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PROGRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -38,6 +39,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.EditProgressDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -67,6 +69,8 @@ public class CommandTestUtil {
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
     public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
     public static final String INVALID_ASSIGNMENT_NAME = "Finding BOYD";
+    public static final String VALID_PROGRESS = "PENDING";
+    public static final String VALID_PROGRESS_DONE = "DONE";
     public static final String GRADE_400 = "400";
     public static final String VALID_DATE = "11/11/2023";
     public static final String VALID_TIME = "11:11";
@@ -114,6 +118,7 @@ public class CommandTestUtil {
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
     public static final String TASK_DESCRIPTION_TASK2 = " " + PREFIX_TASK_DESCRIPTION + "The green book";
+    public static final String TASK_PROGRESS_TASK1 = " " + PREFIX_TASK_PROGRESS + VALID_PROGRESS;
     public static final String DATE_TASK = " " + PREFIX_DATE + "22/10/2023";
     public static final String TASK_PRIORITY_TASK1 = " " + PREFIX_TASK_PRIORITY + "low";
     public static final String TASK_PRIORITY_TASK2 = " " + PREFIX_TASK_PRIORITY + "high";
@@ -155,6 +160,13 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).withGradedTest(VALID_GRADED_TEST_2).build();
+    }
+    public static final UpdateTaskProgressCommand.EditProgressDescriptor DESC_TASK;
+    public static final UpdateTaskProgressCommand.EditProgressDescriptor DESC_TASK2;
+
+    static {
+        DESC_TASK = new EditProgressDescriptorBuilder().withProgress(VALID_PROGRESS).build();
+        DESC_TASK2 = new EditProgressDescriptorBuilder().withProgress(VALID_PROGRESS_DONE).build();
     }
 
     /**
