@@ -44,7 +44,11 @@ public class AssignmentBuilder {
      * Sets the {@code Grade} of the {@code Assignment} that we are building.
      */
     public AssignmentBuilder withGrade(String actualGrade, String maxGrade) {
-        this.grade = new Grade(actualGrade, maxGrade);
+        if (actualGrade.equals(DEFAULT_ACTUAL_GRADE)) {
+            this.grade = new Grade(maxGrade);
+        } else {
+            this.grade = new Grade(actualGrade, maxGrade);
+        }
         return this;
     }
 

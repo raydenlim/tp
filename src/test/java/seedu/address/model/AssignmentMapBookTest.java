@@ -1,8 +1,10 @@
 package seedu.address.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT1;
+import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT_UNGRADED;
 
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +44,28 @@ public class AssignmentMapBookTest {
         AssignmentName name = ASSIGNMENT1.getName();
         assertThrows(UnsupportedOperationException.class, () ->
                 assignmentMapBook.getAssignmentMap().put(name, ASSIGNMENT1));
+    }
+
+    @Test
+    public void getAssignment_validAssignments_success() {
+        AssignmentName name = ASSIGNMENT_UNGRADED.getName();
+        assertEquals(assignmentMapBook.getAssignment(name), ASSIGNMENT_UNGRADED);
+    }
+
+    @Test
+    public void equals() {
+        // Same AssignmentMapBook object should be equal to itself
+        assertEquals(assignmentMapBook, assignmentMapBook);
+
+        // Other class objects not equals to AssignmentMapBook
+        assertFalse(assignmentMapBook.equals(1));
+
+        // AssignmentMapBook with different data should not be equal
+        AssignmentMapBook assignmentMapBookSample = TypicalAssignments.getSampleAssignmentMapBook();
+        assertFalse(assignmentMapBook.equals(assignmentMapBookSample));
+
+        // AssignmentMapBook with the same data should be equal
+        AssignmentMapBook assignmentMapBookTypical = TypicalAssignments.getTypicalAssignmentMapBook();
+        assertEquals(assignmentMapBookTypical, assignmentMapBook);
     }
 }
