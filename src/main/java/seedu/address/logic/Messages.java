@@ -92,7 +92,11 @@ public class Messages {
                 + "; Description: "
                 + task.getDescription()
                 + "; Priority: "
-                + task.getPriority();
+                + task.getPriority()
+                + "; Date: "
+                + task.getDate()
+                + "; Progress: "
+                + task.getProgress();
     }
 
     /**

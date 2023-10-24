@@ -44,9 +44,10 @@ public class AddTaskCommandParser implements Parser<AddTaskCommand> {
         TaskPriority priority = ParserUtil.parseTaskPriority(argMultimap
                 .getValue(PREFIX_TASK_PRIORITY).orElse("LOW"));
         LocalDate date;
-        try {
-            date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).orElse(""));
-        } catch (ParseException e) {
+
+        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
+        } else {
             date = null;
         }
 
