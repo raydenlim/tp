@@ -81,7 +81,7 @@ public class TaskBuilder {
      * Sets the {@code date} of the {@code Task} that we are building.
      */
     public TaskBuilder withDate(String name) {
-        this.date = LocalDate.parse(name, FORMATTER);
+        this.date = name.equals("") ? null : LocalDate.parse(name, FORMATTER);
         return this;
     }
 

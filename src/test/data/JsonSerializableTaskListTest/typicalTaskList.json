@@ -3,8 +3,8 @@
     "name" : "Do cs2103t",
     "description" : "Complete PRS",
     "isDone": false,
-    "priority": "MEDIUM",
-    "date": ""
+    "priority": "LOW",
+    "date": "22/10/2023"
   }, {
     "name" : "Read quant guide",
     "description" : "The green book",

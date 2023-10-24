@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.DATE_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.DATE_TASK;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DESCRIPTION;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
@@ -38,7 +38,7 @@ public class AddTaskCommandParserTest {
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE
                 + TASK_NAME_TASK1 + TASK_DESCRIPTION_TASK1
-                + TASK_PRIORITY_TASK1 + DATE_TASK2, new AddTaskCommand(expectedTask));
+                + TASK_PRIORITY_TASK1 + DATE_TASK, new AddTaskCommand(expectedTask));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class AddTaskCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // no description
-        Task expectedTask = new TaskBuilder(TASK1).withDescription("").build();
+        Task expectedTask = new TaskBuilder(TASK1).withDescription("").withDate("").build();
         assertParseSuccess(parser, TASK_NAME_TASK1, new AddTaskCommand(expectedTask));
     }
 

@@ -21,8 +21,8 @@ public class TypicalTasks {
     public static final Task TASK2 = new TaskBuilder()
             .withName("Read quant guide")
             .withDescription("The green book")
-            .withPriority("LOW")
-            .withDate("22/10/2023")
+            .withPriority("MEDIUM")
+            .withDate("22/02/2023")
             .build();
 
     public static final Task TASK3 = new TaskBuilder()
