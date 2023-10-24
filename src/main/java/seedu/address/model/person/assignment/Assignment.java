@@ -17,11 +17,12 @@ public class Assignment {
         this.grade = grade;
     }
 
-    public String name() {
-        return this.assignmentName.toString();
+    public AssignmentName getName() {
+        return this.assignmentName;
     }
-    public String gradeToString() {
-        return this.grade.toString();
+
+    public Grade getGrade() {
+        return this.grade;
     }
 
     public String maxGrade() {

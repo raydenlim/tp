@@ -27,21 +27,6 @@ public class JsonSerializableAssignmentMap {
         this.assignments = assignments;
     }
 
-    /**
-     * Converts a given {@code ReadOnlyAssignmentMap} into this class for Jackson use.
-     *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAssignmentMap}.
-     */
-    public JsonSerializableAssignmentMap(ReadOnlyAssignmentMap source) {
-        this.assignments = new HashMap<String, JsonAdaptedAssignment>();
-        for (int i = 0; i < AssignmentInitialise.size(); i++) {
-            AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
-            JsonAdaptedAssignment assignmentToBeAdded =
-                    new JsonAdaptedAssignment(source.getAssignmentMap().get(assignmentName));
-            this.assignments.put(assignmentName.toString(), assignmentToBeAdded);
-        }
-    }
-
     public HashMap<String, JsonAdaptedAssignment> getAssignments() {
         return this.assignments;
     }

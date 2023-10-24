@@ -6,6 +6,7 @@ import static javafx.collections.FXCollections.unmodifiableObservableMap;
 import java.util.Map;
 
 import javafx.collections.ObservableMap;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
 
 /**

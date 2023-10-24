@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.Map;
 
 import javafx.collections.ObservableMap;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
@@ -53,5 +54,19 @@ public class AssignmentMapBook implements ReadOnlyAssignmentMap {
     @Override
     public ObservableMap<AssignmentName, Assignment> getAssignmentMap() {
         return assignments.asUnmodifiableObservableMap();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof AssignmentMapBook)) {
+            return false;
+        }
+
+        AssignmentMapBook otherMap = (AssignmentMapBook) other;
+        return this.assignments.equals(otherMap.assignments);
     }
 }

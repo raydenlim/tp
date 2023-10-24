@@ -31,46 +31,46 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
 
-public class AddGradeCommandTest {
+public class EditGradeCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
         new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
     @Test
-    public void execute_addGrade_success() {
+    public void execute_editGrade_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
         List<Person> lastShownList = model.getFilteredPersonList();
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
 
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         Grade actualGrade = new Grade(GRADE_400, personToEdit.getAssignment(assignmentName).maxGrade());
-        AddGradeCommand addGradeCommand = new AddGradeCommand(targetIndex, assignmentName, GRADE_400);
-        Person editedPerson = addGradeCommand.createGradedPerson(personToEdit, actualGrade);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(targetIndex, assignmentName, GRADE_400);
+        Person editedPerson = editGradeCommand.createGradedPerson(personToEdit, actualGrade);
 
-        String expectedMessage = String.format(AddGradeCommand.MESSAGE_SUCCESS, VALID_ASSIGNMENT_NAME);
+        String expectedMessage = String.format(EditGradeCommand.MESSAGE_SUCCESS, VALID_ASSIGNMENT_NAME);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
                 new UserPrefs(), new TaskListBook(), new SessionListBook(),
                 new ConsultationListBook(), new GradedTestListBook());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
-        assertCommandSuccess(addGradeCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editGradeCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidAssignment_failure() {
         AssignmentName assignmentName = new AssignmentName(INVALID_ASSIGNMENT_NAME);
-        AddGradeCommand addGradeCommand = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
 
-        assertCommandFailure(addGradeCommand, model, assignmentName.MESSAGE_CONSTRAINTS);
+        assertCommandFailure(editGradeCommand, model, assignmentName.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        AddGradeCommand addGradeCommand = new AddGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
 
-        assertCommandFailure(addGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     /**
@@ -85,33 +85,33 @@ public class AddGradeCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
 
-        AddGradeCommand addGradeCommand = new AddGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(outOfBoundIndex, assignmentName, GRADE_400);
 
-        assertCommandFailure(addGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void test_sameObject_equals() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        AddGradeCommand addGradeCommand = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
 
-        assertEquals(addGradeCommand, addGradeCommand);
+        assertEquals(editGradeCommand, editGradeCommand);
     }
 
     @Test
     public void test_differentObject_equals() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        AddGradeCommand addGradeCommand = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
 
-        assertFalse(addGradeCommand.equals(assignmentName));
+        assertFalse(editGradeCommand.equals(assignmentName));
     }
 
     @Test
     public void test_differentObjectSameContent_equals() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        AddGradeCommand addGradeCommandFirst = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
-        AddGradeCommand addGradeCommandSecond = new AddGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommandFirst = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
+        EditGradeCommand editGradeCommandSecond = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, GRADE_400);
 
-        assertEquals(addGradeCommandFirst, addGradeCommandSecond);
+        assertEquals(editGradeCommandFirst, editGradeCommandSecond);
     }
 }

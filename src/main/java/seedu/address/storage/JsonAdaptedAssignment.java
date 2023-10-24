@@ -33,8 +33,8 @@ public class JsonAdaptedAssignment {
      * Converts a given {@code Assignment} into this class for Jackson use.
      */
     public JsonAdaptedAssignment(Assignment source) {
-        assignmentName = source.name();
-        grade = source.gradeToString();
+        assignmentName = source.getName().toString();
+        grade = source.getGrade().toString();
     }
 
     /**
@@ -46,13 +46,16 @@ public class JsonAdaptedAssignment {
         if (assignmentName == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     AssignmentName.class.getSimpleName()));
+        } else if (!AssignmentName.isValidName(assignmentName)) {
+            throw new IllegalValueException(String.format(AssignmentName.MESSAGE_CONSTRAINTS,
+                    AssignmentName.class.getSimpleName()));
         }
 
         final AssignmentName modelName = new AssignmentName(assignmentName);
 
         if (grade == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    TaskDescription.class.getSimpleName()));
+                    Grade.class.getSimpleName()));
         }
         // Add valid grade checker later
 

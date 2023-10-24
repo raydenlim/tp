@@ -28,27 +28,26 @@ import seedu.address.model.tag.Tag;
 /**
  * Adds a grade to a person's assignment.
  */
-public class AddGradeCommand extends Command {
+public class EditGradeCommand extends Command {
 
-    public static final String COMMAND_WORD = "addgrade";
+    public static final String COMMAND_WORD = "editgrade";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a grade to a person’s assignment identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a grade to a person’s assignment identified "
             + "by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
             + PREFIX_GRADE + "GRADE ";
 
-    public static final String MESSAGE_SUCCESS = "Added grade to assignment: %1$s";
-    public static final String MESSAGE_DUPLICATE_ASSIGNMENT = "This assignment has already been graded";
+    public static final String MESSAGE_SUCCESS = "Editted grade to assignment: %1$s";
 
     private final AssignmentName assignmentName;
     private final String gradeString;
     private final Index index;
 
     /**
-     * Creates an AddGradeCommand to add the specified grade to a person's assignment
+     * Creates an EditGradeCommand to add the specified grade to a person's assignment
      */
-    public AddGradeCommand(Index index, AssignmentName assignmentName, String grade) {
+    public EditGradeCommand(Index index, AssignmentName assignmentName, String grade) {
         requireNonNull(index);
         requireNonNull(assignmentName);
         this.index = index;
@@ -106,15 +105,15 @@ public class AddGradeCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddGradeCommand)) {
+        if (!(other instanceof EditGradeCommand)) {
             return false;
         }
 
-        AddGradeCommand otherAddGradeCommand = (AddGradeCommand) other;
+        EditGradeCommand otherEditGradeCommand = (EditGradeCommand) other;
 
-        boolean sameAssignmentName = this.assignmentName.equals(otherAddGradeCommand.assignmentName);
-        boolean sameGrade = this.gradeString.equals(otherAddGradeCommand.gradeString);
-        boolean samePersonIndex = this.index.equals(otherAddGradeCommand.index);
+        boolean sameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
+        boolean sameGrade = this.gradeString.equals(otherEditGradeCommand.gradeString);
+        boolean samePersonIndex = this.index.equals(otherEditGradeCommand.index);
 
         return sameAssignmentName && sameGrade && samePersonIndex;
     }

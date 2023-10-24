@@ -8,26 +8,26 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddGradeCommand;
+import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.assignment.AssignmentName;
 
 /**
- * Parses input arguments and creates a new AddGradeCommand object
+ * Parses input arguments and creates a new EditGradeCommand object
  */
-public class AddGradeCommandParser implements Parser<AddGradeCommand> {
+public class EditGradeCommandParser implements Parser<EditGradeCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddGradeCommand
-     * and returns an AddGradeCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the EditGradeCommand
+     * and returns an EditGradeCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddGradeCommand parse(String args) throws ParseException {
+    public EditGradeCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_ASSIGNMENT, PREFIX_GRADE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ASSIGNMENT, PREFIX_GRADE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddGradeCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditGradeCommand.MESSAGE_USAGE));
         }
 
         Index index;
@@ -35,13 +35,13 @@ public class AddGradeCommandParser implements Parser<AddGradeCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddGradeCommand.MESSAGE_USAGE), pe);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditGradeCommand.MESSAGE_USAGE), pe);
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ASSIGNMENT, PREFIX_GRADE);
         AssignmentName assignmentName = ParserUtil.parseAssignmentName(argMultimap.getValue(PREFIX_ASSIGNMENT).get());
         String actualGrade = argMultimap.getValue(PREFIX_GRADE).get();
-        return new AddGradeCommand(index, assignmentName, actualGrade);
+        return new EditGradeCommand(index, assignmentName, actualGrade);
     }
 
     /**

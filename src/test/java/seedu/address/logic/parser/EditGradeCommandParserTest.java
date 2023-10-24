@@ -15,13 +15,13 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.AddGradeCommand;
+import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.model.person.assignment.AssignmentName;
 
-public class AddGradeCommandParserTest {
+public class EditGradeCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddGradeCommand.MESSAGE_USAGE);
-    private AddGradeCommandParser parser = new AddGradeCommandParser();
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditGradeCommand.MESSAGE_USAGE);
+    private EditGradeCommandParser parser = new EditGradeCommandParser();
 
     @Test
     public void parse_missingParts_failure() {
@@ -65,7 +65,7 @@ public class AddGradeCommandParserTest {
         String userInput = targetIndex.getOneBased() + ASSIGNMENT_DESC + GRADE_DESC_400;
         AssignmentName assignmentName = new AssignmentName("Finding ELDRIC");
 
-        assertParseSuccess(parser, userInput, new AddGradeCommand(targetIndex, assignmentName, "400"));
+        assertParseSuccess(parser, userInput, new EditGradeCommand(targetIndex, assignmentName, "400"));
     }
 
     @Test
