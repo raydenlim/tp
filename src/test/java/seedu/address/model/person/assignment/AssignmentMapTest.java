@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.address.testutil.TypicalAssignments;
 
 public class AssignmentMapTest {
@@ -12,7 +13,7 @@ public class AssignmentMapTest {
     private AssignmentMap assignments = new AssignmentMap();
 
     @Test
-    public void test_contains_success() {
+    public void containsMethod() {
         AssignmentName assignmentNameTrue = new AssignmentName("Finding ELDRIC");
         assertTrue(assignments.contains(assignmentNameTrue));
 
@@ -28,7 +29,7 @@ public class AssignmentMapTest {
     }
 
     @Test
-    public void test_equals() {
+    public void equals() {
         // same object -> returns true
         assertTrue(assignments.equals(assignments));
 

@@ -1,17 +1,17 @@
 package seedu.address.model.person.assignment;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalGrades.GRADE1;
 import static seedu.address.testutil.TypicalGrades.GRADE2;
 import static seedu.address.testutil.TypicalGrades.UNGRADED_GRADE;
 
+import org.junit.jupiter.api.Test;
+
 public class GradeTest {
 
     @Test
-    public void test_equals() {
+    public void equals() {
         // same object -> returns true
         assertTrue(GRADE1.equals(GRADE1));
 
@@ -35,13 +35,13 @@ public class GradeTest {
     }
 
     @Test
-    public void test_grade_copy() {
+    public void gradeCopy_success() {
         Grade gradeCopy = GRADE1.copyGrade();
         assertTrue(GRADE1.equals(gradeCopy));
     }
 
     @Test
-    public void test_toString() {
+    public void toStringMethod() {
         // Ungraded grade -> returns true
         assertTrue("UNGRADED/1200".equals(UNGRADED_GRADE.toString()));
 

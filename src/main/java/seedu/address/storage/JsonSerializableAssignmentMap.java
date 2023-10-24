@@ -6,10 +6,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-import seedu.address.model.ReadOnlyAssignmentMap;
-import seedu.address.model.person.assignment.AssignmentName;
-import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
-
 /**
  * An Immutable AssignmentMap that is serializable to JSON format.
  */

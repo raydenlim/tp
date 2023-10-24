@@ -1,17 +1,18 @@
 package seedu.address.model.person.assignment;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.AssignmentBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT1;
 import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT2;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.AssignmentBuilder;
+
 public class AssignmentTest {
 
     @Test
-    public void test_equals() {
+    public void equals() {
         // same object -> returns true
         assertTrue(ASSIGNMENT1.equals(ASSIGNMENT1));
 
@@ -37,7 +38,7 @@ public class AssignmentTest {
     }
 
     @Test
-    public void test_assignment_copy() {
+    public void assignmentCopy_success() {
         Assignment assignmentCopy = ASSIGNMENT1.copyAssignment();
         assertTrue(ASSIGNMENT1.equals(assignmentCopy));
     }

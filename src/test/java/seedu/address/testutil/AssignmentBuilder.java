@@ -4,6 +4,9 @@ import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
 
+/**
+ * A utility class to help with building Assignment objects.
+ */
 public class AssignmentBuilder {
 
     public static final String DEFAULT_NAME = "Finding ELDRIC";

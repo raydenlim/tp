@@ -1,14 +1,13 @@
 package seedu.address.model.person.assignment.initialise;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 public class AssignmentInitialiseTest {
 
     @Test
-    public void test_initialisation_status() {
+    public void getInitialisationStatus_afterInitialisation_success() {
         AssignmentInitialise.init();
         assertTrue(AssignmentInitialise.getInitialisationStatus());
     }

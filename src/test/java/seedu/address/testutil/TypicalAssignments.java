@@ -1,18 +1,14 @@
 package seedu.address.testutil;
 
-import javafx.collections.ObservableMap;
-import seedu.address.logic.commands.exceptions.CommandException;
+import java.util.HashMap;
+import java.util.Map;
+
 import seedu.address.model.AssignmentMapBook;
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
 import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static javafx.collections.FXCollections.observableHashMap;
 
 /**
  * A utility class containing a map of {@code Assignment} objects to be used in tests.

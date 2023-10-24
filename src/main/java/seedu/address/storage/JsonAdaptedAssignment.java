@@ -7,7 +7,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
-import seedu.address.model.task.TaskDescription;
 
 /**
  * Jackson-friendly version of {@link Assignment}.

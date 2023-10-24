@@ -1,15 +1,16 @@
 package seedu.address.storage;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.assignment.AssignmentName;
-import seedu.address.model.person.assignment.Grade;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedAssignment.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT1;
 import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT_UNGRADED;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.person.assignment.Grade;
 
 public class JsonAdaptedAssignmentTest {
     private static final String INVALID_ASSIGNMENT_NAME = "HeheHaha";
@@ -18,13 +19,13 @@ public class JsonAdaptedAssignmentTest {
     private static final String VALID_UNGRADED = "UNGRADED/1200";
 
     @Test
-    public void toModelType_validName_andGrade_returnsAssignment() throws Exception {
+    public void toModelType_validNameAndGrade_returnsAssignment() throws Exception {
         JsonAdaptedAssignment assignment = new JsonAdaptedAssignment(ASSIGNMENT1);
         assertEquals(ASSIGNMENT1, assignment.toModelType());
     }
 
     @Test
-    public void toModelType_validName_ungraded_returnsAssignment() throws Exception {
+    public void toModelType_validNameUngraded_returnsAssignment() throws Exception {
         JsonAdaptedAssignment assignment = new JsonAdaptedAssignment(ASSIGNMENT_UNGRADED);
         assertEquals(ASSIGNMENT_UNGRADED, assignment.toModelType());
     }
