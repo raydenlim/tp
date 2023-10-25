@@ -52,7 +52,13 @@ public class TaskCard extends UiPart<Region> {
         date.setText(task.getDate() != null ? task.getDate().toString() : "");
         Label progressLabel = new Label(task.getProgress().name().toLowerCase());
         progress.getChildren().add(progressLabel);
-        dueDate.setText(LocalDate.now().until(task.getDate(), DAYS) + " Days");
+
+        if (task.getDate() != null) {
+            dueDate.setText(LocalDate.now().until(task.getDate(), DAYS) + " Days");
+        } else {
+            dueDate.setText("");
+        }
+
         boolean isDone = task.getProgress().equals(TaskProgress.DONE);
 
         switch(task.getProgress()) {
