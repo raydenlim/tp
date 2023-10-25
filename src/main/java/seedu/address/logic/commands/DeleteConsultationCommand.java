@@ -11,6 +11,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
 
+/**
+ * Deletes a consultation identified using it's displayed index from the consultation list book.
+ */
 public class DeleteConsultationCommand extends Command {
     public static final String COMMAND_WORD = "deleteconsult";
 
