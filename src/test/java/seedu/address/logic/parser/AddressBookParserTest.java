@@ -27,6 +27,7 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CompleteTaskCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteGradeCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -162,6 +163,16 @@ public class AddressBookParserTest {
                 + whiteSpace + personIndex
                 + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
                 + whiteSpace + PREFIX_GRADE + grade) instanceof EditGradeCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteGrade() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(DeleteGradeCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteGradeCommand);
     }
 
     @Test

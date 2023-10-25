@@ -29,6 +29,10 @@ public class Assignment {
         return this.grade.getMax();
     }
 
+    public boolean gradingStatus() {
+        return this.grade.getIsGraded();
+    }
+
     public Assignment copyAssignment() {
         return new Assignment(this.assignmentName, this.grade.copyGrade());
     }

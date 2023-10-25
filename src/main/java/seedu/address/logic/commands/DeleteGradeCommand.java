@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -23,36 +22,33 @@ import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
 import seedu.address.model.tag.Tag;
 
-
 /**
- * Edits a grade to a person's assignment.
+ * Deletes the grade from a person's assignment.
  */
-public class EditGradeCommand extends Command {
+public class DeleteGradeCommand extends Command {
 
-    public static final String COMMAND_WORD = "editgrade";
+    public static final String COMMAND_WORD = "deletegrade";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a grade to a person’s assignment identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes a grade from a person’s assignment identified "
             + "by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_ASSIGNMENT + "ASSIGNMENT "
-            + PREFIX_GRADE + "GRADE ";
+            + PREFIX_ASSIGNMENT + "ASSIGNMENT ";
 
-    public static final String MESSAGE_SUCCESS = "Edited grade to assignment: %1$s";
+    public static final String MESSAGE_SUCCESS = "Deleted grade from assignment: %1$s";
+
+    public static final String MESSAGE_CONSTRAINT = "Cannot delete the grade from an ungraded assignment";
 
     private final AssignmentName assignmentName;
-    private final Grade grade;
     private final Index index;
 
     /**
-     * Creates an EditGradeCommand to add the specified grade to a person's assignment.
+     * Creates a DeleteGradeCommand to delete the grade from a person's assignment.
      */
-    public EditGradeCommand(Index index, AssignmentName assignmentName, Grade grade) {
+    public DeleteGradeCommand(Index index, AssignmentName assignmentName) {
         requireNonNull(index);
         requireNonNull(assignmentName);
-        requireNonNull(grade);
         this.index = index;
         this.assignmentName = assignmentName;
-        this.grade = grade;
     }
 
     @Override
@@ -68,15 +64,15 @@ public class EditGradeCommand extends Command {
             throw new CommandException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
 
-        String[] gradeArray = this.grade.toString().split("/");
-        String actualGrade = gradeArray[0];
+        Person personToEdit = lastShownList.get(index.getZeroBased());
 
-        if (!Grade.isValidGrade(actualGrade, this.grade.getMax())) {
-            throw new CommandException(Grade.MESSAGE_CONSTRAINTS);
+        AssignmentMap assignmentMapReference = personToEdit.getAllAssignments();
+        boolean isGraded = assignmentMapReference.get(this.assignmentName).gradingStatus();
+        if (!isGraded) {
+            throw new CommandException(DeleteGradeCommand.MESSAGE_CONSTRAINT);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createGradedPerson(personToEdit);
+        Person editedPerson = createUngradedPerson(personToEdit);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -84,20 +80,21 @@ public class EditGradeCommand extends Command {
     }
 
     /**
-     * Creates a new Person with the newly graded assignment.
+     * Creates a new Person with the ungraded assignment.
      *
      * @param reference The person to be graded.
      * @return New person with a graded assignment.
      */
-    public Person createGradedPerson(Person reference) {
+    public Person createUngradedPerson(Person reference) {
         Name name = reference.getName();
         Phone phone = reference.getPhone();
         Email email = reference.getEmail();
         Address address = reference.getAddress();
         Set<Tag> tags = reference.getTags();
         Set<GradedTest> gradedTest = reference.getGradedTest();
+        Grade ungraded = reference.getAllAssignments().get(this.assignmentName).getGrade().ungrade();
         AssignmentMap updatedAssignmentMap =
-            reference.getAllAssignments().createUpdatedMap(this.assignmentName, this.grade);
+                reference.getAllAssignments().createUpdatedMap(this.assignmentName, ungraded);
         return new Person(name, phone, email, address, tags, updatedAssignmentMap, gradedTest);
     }
 
@@ -108,16 +105,15 @@ public class EditGradeCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditGradeCommand)) {
+        if (!(other instanceof DeleteGradeCommand)) {
             return false;
         }
 
-        EditGradeCommand otherEditGradeCommand = (EditGradeCommand) other;
+        DeleteGradeCommand otherEditGradeCommand = (DeleteGradeCommand) other;
 
         boolean sameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
-        boolean sameGrade = this.grade.equals(otherEditGradeCommand.grade);
         boolean samePersonIndex = this.index.equals(otherEditGradeCommand.index);
 
-        return sameAssignmentName && sameGrade && samePersonIndex;
+        return sameAssignmentName && samePersonIndex;
     }
 }

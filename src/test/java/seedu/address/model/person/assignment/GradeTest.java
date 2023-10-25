@@ -30,8 +30,42 @@ public class GradeTest {
         assertFalse(GRADE2.equals(editedGrade2));
 
         // different max grade -> returns false
-        Grade editedGrade5 = new Grade("UNGRADED", "1");
-        assertFalse(UNGRADED_GRADE.equals(editedGrade5));
+        Grade editedGradeUngraded = new Grade("UNGRADED", "1");
+        assertFalse(UNGRADED_GRADE.equals(editedGradeUngraded));
+
+        // different grading status -> returns false
+        Grade editedGrade = new Grade("1", UNGRADED_GRADE.getMax());
+        assertFalse(UNGRADED_GRADE.equals(editedGrade));
+    }
+
+    @Test
+    public void getIsGraded() {
+        assertTrue(GRADE1.getIsGraded());
+        assertFalse(UNGRADED_GRADE.getIsGraded());
+    }
+
+    @Test
+    public void ungrade() {
+        Grade grade = GRADE1;
+        assertTrue(grade.getIsGraded());
+        grade = grade.ungrade();
+        assertFalse(grade.getIsGraded());
+    }
+
+    @Test
+    public void isValidGrade() {
+        assertFalse(Grade.isValidGrade("haha", "800"));
+        assertFalse(Grade.isValidGrade("10000", "800"));
+        assertFalse(Grade.isValidGrade("UNGRADED", "800"));
+        assertTrue(Grade.isValidGrade("875", "800"));
+    }
+
+    @Test
+    public void isValidIncludingUngraded() {
+        assertFalse(Grade.isValidIncludingUngraded("haha", "800"));
+        assertFalse(Grade.isValidIncludingUngraded("10000", "800"));
+        assertTrue(Grade.isValidIncludingUngraded("UNGRADED", "800"));
+        assertTrue(Grade.isValidIncludingUngraded("875", "800"));
     }
 
     @Test

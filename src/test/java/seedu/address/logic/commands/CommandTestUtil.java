@@ -67,6 +67,8 @@ public class CommandTestUtil {
     public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
     public static final String INVALID_ASSIGNMENT_NAME = "Finding BOYD";
     public static final String VALID_GRADE = "1200";
+    public static final String GRADE_TOO_HIGH = "3000000";
+    public static final String GRADE_NOT_INT = "haha";
     public static final String GRADE_400 = "400";
     public static final String VALID_DATE = "11/11/2023";
     public static final String VALID_TIME = "11:11";
@@ -94,7 +96,9 @@ public class CommandTestUtil {
     public static final String GT_DESC_FINALS = " " + PREFIX_FINALS + VALID_GT_FINALS;
     public static final String GT_DESC_PE = " " + PREFIX_PRACTICAL_EXAM + VALID_GT_PE;
     public static final String ASSIGNMENT_DESC = " " + PREFIX_ASSIGNMENT + "Finding ELDRIC";
-    public static final String GRADE_DESC_400 = " " + PREFIX_GRADE + "400";
+    public static final String GRADE_DESC_400 = " " + PREFIX_GRADE + GRADE_400;
+    public static final String GRADE_DESC_NOT_INT = " " + PREFIX_GRADE + GRADE_NOT_INT;
+    public static final String GRADE_DESC_TOO_HIGH = " " + PREFIX_GRADE + GRADE_TOO_HIGH;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol

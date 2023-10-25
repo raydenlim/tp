@@ -38,6 +38,10 @@ public class Grade {
         return this.maxGrade;
     }
 
+    public boolean getIsGraded() {
+        return this.isGraded;
+    }
+
     /**
      * Creates a new copy of the Grade of an assignment.
      *
@@ -49,6 +53,10 @@ public class Grade {
         } else {
             return new Grade(this.maxGrade);
         }
+    }
+
+    public Grade ungrade() {
+        return new Grade(maxGrade);
     }
 
     /**
@@ -117,9 +125,9 @@ public class Grade {
 
         Grade otherGrade = (Grade) other;
         boolean sameMaxGrade = this.maxGrade.equals(otherGrade.maxGrade);
-        if (this.isGraded && otherGrade.isGraded) {
+        if (this.isGraded) {
             boolean sameGrade = this.actualGrade.equals(otherGrade.actualGrade);
-            return sameMaxGrade && sameGrade;
+            return sameMaxGrade && sameGrade && otherGrade.isGraded;
         } else {
             return sameMaxGrade && !otherGrade.isGraded;
         }

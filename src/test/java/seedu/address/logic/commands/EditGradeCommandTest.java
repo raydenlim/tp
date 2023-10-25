@@ -35,6 +35,7 @@ public class EditGradeCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
         new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
+
     @Test
     public void execute_editGrade_success() {
         Index targetIndex = INDEX_FIRST_PERSON;
@@ -114,7 +115,7 @@ public class EditGradeCommandTest {
     }
 
     @Test
-    public void test_sameObject_equals() {
+    public void equals_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
         EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
@@ -123,7 +124,7 @@ public class EditGradeCommandTest {
     }
 
     @Test
-    public void test_differentObject_equals() {
+    public void equals_differentObjectType_failure() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
         EditGradeCommand editGradeCommand = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
@@ -132,12 +133,25 @@ public class EditGradeCommandTest {
     }
 
     @Test
-    public void test_differentObjectSameContent_equals() {
+    public void equals_differentObjectSameContent_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);
         EditGradeCommand editGradeCommandFirst = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
         EditGradeCommand editGradeCommandSecond = new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGrade);
 
         assertEquals(editGradeCommandFirst, editGradeCommandSecond);
+    }
+
+    @Test
+    public void equals_differentObjectDifferentContent_failure() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Grade validGradeFirst = new Grade(VALID_GRADE, VALID_GRADE);
+        Grade validGradeSecond = new Grade(VALID_GRADE);
+        EditGradeCommand editGradeCommandFirst =
+            new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGradeFirst);
+        EditGradeCommand editGradeCommandSecond =
+            new EditGradeCommand(INDEX_FIRST_PERSON, assignmentName, validGradeSecond);
+
+        assertFalse(editGradeCommandFirst.equals(editGradeCommandSecond));
     }
 }
