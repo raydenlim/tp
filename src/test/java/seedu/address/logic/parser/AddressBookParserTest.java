@@ -10,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION_REMARK;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
@@ -36,6 +37,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncompleteTaskCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.TakeAttendanceCommand;
+import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -161,6 +163,16 @@ public class AddressBookParserTest {
                 + whiteSpace + PREFIX_SESSION + sessionNumber
                 + whiteSpace + PREFIX_NAME + studentName
                 + whiteSpace + PREFIX_ATTENDANCE_PRESENCE + attendancePresence) instanceof TakeAttendanceCommand);
+    }
+
+    @Test
+    public void parseCommand_updateSessionRemark() throws Exception {
+        String sessionNumber = "2";
+        String sessionRemark = "Fun times in this session";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(UpdateSessionRemarkCommand.COMMAND_WORD
+                + whiteSpace + PREFIX_SESSION + sessionNumber
+                + whiteSpace + PREFIX_SESSION_REMARK + sessionRemark) instanceof UpdateSessionRemarkCommand);
     }
 
     @Test

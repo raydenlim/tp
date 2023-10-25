@@ -20,6 +20,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.session.SessionRemark;
 import seedu.address.model.tag.Tag;
 
 public class ParserUtilTest {
@@ -39,6 +40,8 @@ public class ParserUtilTest {
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_PRIORITY = "jason";
     private static final String INVALID_ATTENDANCE_PRESENCE = "presen";
+    private static final String VALID_SESSION_REMARK = "lgtm";
+    private static final String INVALID_SESSION_REMARK = "pl@y3$";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -232,6 +235,17 @@ public class ParserUtilTest {
     @Test
     public void parseAttendancePresence_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseAttendancePresence(INVALID_ATTENDANCE_PRESENCE));
+    }
+
+    @Test
+    public void parseSessionRemark_validRemark_returnsSessionRemark() throws ParseException {
+        SessionRemark expectedSessionRemark = new SessionRemark(VALID_SESSION_REMARK);
+        assertEquals(expectedSessionRemark, ParserUtil.parseSessionRemark(VALID_SESSION_REMARK));
+    }
+
+    @Test
+    public void parseSessionRemark_invalidRemark_throwsParseException() throws ParseException {
+        assertThrows(ParseException.class, () -> ParserUtil.parseSessionRemark(INVALID_SESSION_REMARK));
     }
 
 }

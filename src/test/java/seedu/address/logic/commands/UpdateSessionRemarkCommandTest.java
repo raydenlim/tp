@@ -82,4 +82,22 @@ public class UpdateSessionRemarkCommandTest {
         assertFalse(standardCommand.equals(
                 new UpdateSessionRemarkCommand(new SessionNumber("1"), new SessionRemark("Old Remarks"))));
     }
+
+    @Test
+    public void toStringMethod() throws CommandException {
+        Model model = new ModelManager();
+        SessionNumber sessionNumber = new SessionNumber("1");
+        Session session = new Session(sessionNumber);
+        model.addSession(session);
+
+        SessionRemark sessionRemark = new SessionRemark("Looks fun");
+        UpdateSessionRemarkCommand command =
+                new UpdateSessionRemarkCommand(sessionNumber, sessionRemark);
+        command.execute(model);
+
+
+        String expected = UpdateSessionRemarkCommand.class.getCanonicalName()
+                + "{toUpdate=" + sessionNumber + ", remark=" + sessionRemark + "}";
+        assertEquals(expected, command.toString());
+    }
 }

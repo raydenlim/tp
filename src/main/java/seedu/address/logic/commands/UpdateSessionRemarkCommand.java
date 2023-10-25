@@ -93,7 +93,8 @@ public class UpdateSessionRemarkCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("toUpdate", sessionToUpdate)
+                .add("toUpdate", sessionNumber)
+                .add("remark", sessionRemark)
                 .toString();
     }
 }
