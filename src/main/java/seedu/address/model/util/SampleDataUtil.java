@@ -1,5 +1,7 @@
 package seedu.address.model.util;
 
+import static seedu.address.model.task.Task.FORMATTER;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -38,6 +40,7 @@ import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
 
 
+
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
@@ -65,15 +68,19 @@ public class SampleDataUtil {
             new Email("royb@example.com"), new Address("Blk 45 Aljunied Street 85, #11-31"),
             getTagSet("colleagues"), getGradedTestSet(VALID_GRADED_TEST_2));
 
+
     public static Person[] getSamplePersons() {
         return new Person[] { PERSON_ALEX, PERSON_BERNICE, PERSON_CHARLOTTE, PERSON_DAVID, PERSON_IRFAN, PERSON_ROY };
     }
 
     public static Task[] getSampleTasks() {
         return new Task[] {
-            new Task(new TaskName("Do 2103T"), new TaskDescription("Homework assignment"), TaskPriority.HIGH),
-            new Task(new TaskName("Do cs2101"), new TaskDescription("Practice script"), TaskPriority.HIGH),
-            new Task(new TaskName("Do cs2100"), new TaskDescription("Remember mips"), TaskPriority.HIGH)
+            new Task(new TaskName("Do 2103T"), new TaskDescription("Homework assignment"),
+                    TaskPriority.HIGH, LocalDate.parse("22/10/2023", FORMATTER)),
+            new Task(new TaskName("Do cs2101"), new TaskDescription("Practice script"),
+                    TaskPriority.HIGH, LocalDate.parse("22/10/2023", FORMATTER)),
+            new Task(new TaskName("Do cs2100"), new TaskDescription("Remember mips"),
+                    TaskPriority.HIGH, LocalDate.parse("22/10/2023", FORMATTER))
         };
     }
 

@@ -28,6 +28,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.model.task.TaskPriority;
+import seedu.address.model.task.TaskProgress;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -355,6 +356,24 @@ public class ParserUtil {
             }
         }
         throw new ParseException(TaskPriority.MESSAGE_CONSTRAINTS);
+    }
+
+    /**
+     * Parses a {@code String progress} into a {@code TaskProgress}.
+     * Leading and trailing whitespaces will be trimmed.
+     * String will be uppercase.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static TaskProgress parseTaskProgress(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim().toUpperCase();
+        for (TaskProgress progress : TaskProgress.values()) {
+            if (trimmedName.equals(progress.name())) {
+                return TaskProgress.valueOf(trimmedName);
+            }
+        }
+        throw new ParseException(TaskProgress.MESSAGE_CONSTRAINTS);
     }
 
     /**

@@ -2,7 +2,7 @@
   "tasks": [ {
     "name": "H@ve some c0ff3#",
     "description": " ",
-    "isDone": false,
-    "priority": "MEDIUM"
+    "priority": "MEDIUM",
+    "progress": "PENDING"
   } ]
 }
