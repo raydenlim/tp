@@ -157,6 +157,28 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Tasks
+The Task component consists of the following set of features: Add Task, Delete Task and Update Progress.
+
+#### The Task class
+The Task Class is made up of a `TaskName`, `TaskDescription`, `date`, `TaskPriority`, `TaskProgress`, and a set of getter methods that corresponds to these fields. 
+
+#### Design Considerations:
+**Aspect: How the status of a task is implemented:**
+
+**Alternative 1 (current choice):** `TaskProgress` will be implemented as an *enum* that holds a set of predefined constants representing the progress of the task. Progress includes `not_started`, `pending`, `done`.
+- Pros: More flexibility in choosing the state of progress
+- Cons: More checks need to be done to ensure that the user input given corresponds to a correct enum. More unit-testing is required to ensure the correctness of the field. 
+
+**Alternative 2:** `isDone` will be implemented as a *boolean* that indicates whether the task is completed.
+- Cons: Only allows for a binary state, i.e., either the task is done or not. 
+
+### Commands
+This section explains the general implementation of all commands. 
+
+
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
