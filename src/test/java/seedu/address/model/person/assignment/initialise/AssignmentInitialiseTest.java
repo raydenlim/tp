@@ -11,4 +11,12 @@ public class AssignmentInitialiseTest {
         AssignmentInitialise.init();
         assertTrue(AssignmentInitialise.getInitialisationStatus());
     }
+
+    @Test
+    public void init_noReinitialise_success() {
+        AssignmentInitialise.init();
+        Integer size = AssignmentInitialise.size();
+        AssignmentInitialise.init();
+        assertTrue(size.equals(AssignmentInitialise.size()));
+    }
 }

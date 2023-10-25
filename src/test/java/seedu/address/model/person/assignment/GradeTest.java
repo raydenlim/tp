@@ -79,7 +79,7 @@ public class GradeTest {
         // Ungraded grade -> returns true
         assertTrue("UNGRADED/1200".equals(UNGRADED_GRADE.toString()));
 
-        //Graded grade -> returns false
+        //Graded grade -> returns true
         assertTrue("800/800".equals(GRADE1.toString()));
     }
 }

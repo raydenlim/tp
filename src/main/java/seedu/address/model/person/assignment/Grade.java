@@ -8,6 +8,9 @@ public class Grade {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Grade must be a positive integer, less than or equal to (max grade + 75) and without leading 0's";
+
+    public static final String VALIDATION_REGEX = "[0-9]+";
+
     private String actualGrade;
     private final String maxGrade;
     private boolean isGraded;
@@ -70,7 +73,7 @@ public class Grade {
         int testInteger;
         int maxInteger;
 
-        if (!test.matches("[0-9]+")) {
+        if (!test.matches(VALIDATION_REGEX)) {
             return false;
         }
         if (test.charAt(0) == '0' && test.length() > 1) {
@@ -80,12 +83,7 @@ public class Grade {
         testInteger = Integer.parseInt(test);
         maxInteger = Integer.parseInt(maxGrade) + 75;
 
-        boolean isWithinRange = testInteger > 0 && testInteger <= maxInteger;
-        if (isWithinRange) {
-            return true;
-        } else {
-            return false;
-        }
+        return testInteger <= maxInteger;
     }
 
     /**

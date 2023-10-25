@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -47,9 +48,7 @@ public class EditGradeCommand extends Command {
      * Creates an EditGradeCommand to add the specified grade to a person's assignment.
      */
     public EditGradeCommand(Index index, AssignmentName assignmentName, Grade grade) {
-        requireNonNull(index);
-        requireNonNull(assignmentName);
-        requireNonNull(grade);
+        requireAllNonNull(index, assignmentName, grade);
         this.index = index;
         this.assignmentName = assignmentName;
         this.grade = grade;
@@ -114,10 +113,10 @@ public class EditGradeCommand extends Command {
 
         EditGradeCommand otherEditGradeCommand = (EditGradeCommand) other;
 
-        boolean sameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
-        boolean sameGrade = this.grade.equals(otherEditGradeCommand.grade);
-        boolean samePersonIndex = this.index.equals(otherEditGradeCommand.index);
+        boolean isSameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
+        boolean isSameGrade = this.grade.equals(otherEditGradeCommand.grade);
+        boolean isSamePersonIndex = this.index.equals(otherEditGradeCommand.index);
 
-        return sameAssignmentName && sameGrade && samePersonIndex;
+        return isSameAssignmentName && isSameGrade && isSamePersonIndex;
     }
 }
