@@ -21,8 +21,8 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.ViewTasksCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
+import seedu.address.logic.commands.ViewTasksCommand;
 import seedu.address.logic.commands.session.CreateSessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_TASK;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_TASK2;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PROGRESS;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PROGRESS_DONE;
 
 import org.junit.jupiter.api.Test;
