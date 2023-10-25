@@ -28,6 +28,7 @@ public class CreateSessionCommand extends Command {
             + PREFIX_SESSION + "SESSION_NUMBER "
             + "[" + PREFIX_NAME + "NAME]...\n"
             + "Example: " + COMMAND_WORD + " "
+            + PREFIX_SESSION + "3 "
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";

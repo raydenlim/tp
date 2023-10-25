@@ -7,6 +7,7 @@ import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -24,6 +25,7 @@ import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CompleteTaskCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
+import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -33,7 +35,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncompleteTaskCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.CreateSessionCommand;
+import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -147,6 +149,18 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(CreateSessionCommand.COMMAND_WORD
                 + whiteSpace + PREFIX_SESSION + sessionNumber
                 + whiteSpace + PREFIX_NAME + studentName) instanceof CreateSessionCommand);
+    }
+
+    @Test
+    public void parseCommand_takeAttendance() throws Exception {
+        String sessionNumber = "1";
+        String studentName = "ldinghan";
+        String attendancePresence = "present";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(TakeAttendanceCommand.COMMAND_WORD
+                + whiteSpace + PREFIX_SESSION + sessionNumber
+                + whiteSpace + PREFIX_NAME + studentName
+                + whiteSpace + PREFIX_ATTENDANCE_PRESENCE + attendancePresence) instanceof TakeAttendanceCommand);
     }
 
     @Test
