@@ -28,8 +28,10 @@
                     </minWidth>
                 </Label>
                 <Text fx:id="name" text="\$name" styleClass="cell_big_label" style="-fx-fill: white;" />
+                <Text fx:id="date" styleClass="cell_small_label" text="\$date" style="-fx-fill: white;" />
+                <Label fx:id="due_date" styleClass="date_small_label" text="\$dueDate" style="-fx-fill: white;" />
             </HBox>
-            <FlowPane fx:id="tags" />
+            <FlowPane fx:id="progress" />
             <Text fx:id="description" styleClass="cell_small_label" text="\$description" style="-fx-fill: white;" />
             <Text fx:id="priority" styleClass="cell_small_label" text="\$priority" style="-fx-fill: white;" />
         </VBox>
