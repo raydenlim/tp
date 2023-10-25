@@ -157,6 +157,34 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Tasks
+The Task component consists of the following set of features: Add Task, Delete Task and Update Progress.
+
+#### The Task class
+The Task Class is made up of a `TaskName`, `TaskDescription`, `date`, `TaskPriority`, `TaskProgress`, and a set of getter methods that corresponds to these fields.
+
+Below is a class diagram describing the implementation of `Task` and its respective fields.
+
+![Task Class UML](images/TaskClass UML.png)
+
+#### Design Considerations:
+**Aspect: How the status of a task is implemented:**
+
+**Alternative 1 (current choice):** `TaskProgress` Enum for Task Progress. Progress includes `not_started`, `pending`, `done`.
+- Pros: This choice offers flexibility in representing task progress.
+- Cons: It requires additional checks to validate user input and extensive unit testing.
+
+**Alternative 2:** `isDone` Boolean for Task Completion.
+- Cons: Only allows for a binary state, i.e., either the task is done or not.
+
+### Commands
+This section explains the general implementation of all commands.
+
+Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
+
+![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation

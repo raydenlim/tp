@@ -91,10 +91,12 @@ public class Messages {
         return task.getName()
                 + "; Description: "
                 + task.getDescription()
-                + "; isDone: "
-                + task.getIsDone()
                 + "; Priority: "
-                + task.getPriority();
+                + task.getPriority()
+                + "; Date: "
+                + task.getDate()
+                + "; Progress: "
+                + task.getProgress();
     }
 
     /**
