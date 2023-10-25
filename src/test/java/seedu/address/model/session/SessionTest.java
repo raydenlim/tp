@@ -58,20 +58,22 @@ public class SessionTest {
     @Test
     public void createSessionWithoutStudents() {
         Session sessionWithoutStudents = new SessionBuilder().withSessionNumber("99").build();
-        assertTrue("99 - ".equals(sessionWithoutStudents.toString()));
+        assertTrue("99 -  - NA".equals(sessionWithoutStudents.toString()));
     }
 
 
     @Test
     public void toStringMethod() {
-        String expected1 = "15 - Bob Choo";
+        String expected1 = "15 - Bob Choo - Some snark remarks";
         Session session2 = new SessionBuilder()
-                .withSessionNumber("15").withStudents(TypicalPersons.BOB).build();
+                .withSessionNumber("15").withStudents(TypicalPersons.BOB)
+                .withSessionRemark("Some snark remarks").build();
         assertEquals(expected1, session2.toString());
 
         Session tempSession3A = new SessionBuilder()
-                .withSessionNumber("73").withStudents(TypicalPersons.ALICE, TypicalPersons.BOB).build();
-        String expected2 = "73 - Alice Pauline, Bob Choo";
+                .withSessionNumber("73").withStudents(TypicalPersons.ALICE, TypicalPersons.BOB)
+                .withSessionRemark("They are smart students").build();
+        String expected2 = "73 - Alice Pauline, Bob Choo - They are smart students";
         assertEquals(expected2, tempSession3A.toString());
     }
 }

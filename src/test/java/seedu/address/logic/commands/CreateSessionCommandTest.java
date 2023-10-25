@@ -9,7 +9,6 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -92,7 +91,7 @@ public class CreateSessionCommandTest {
         // Execute creates the session to be added
         command.execute(model);
         String expectedAfterExecute = CreateSessionCommand.class.getCanonicalName()
-                + "{toCreate=" + sessionNumber + " - " + name + "}";
+                + "{toCreate=" + sessionNumber + " - " + name + " - NA}";
         assertEquals(expectedAfterExecute, command.toString());
 
     }

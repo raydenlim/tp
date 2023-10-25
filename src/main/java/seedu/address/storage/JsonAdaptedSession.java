@@ -15,6 +15,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionRemark;
 import seedu.address.model.session.SessionStudents;
 
 /**
@@ -23,15 +24,18 @@ import seedu.address.model.session.SessionStudents;
 public class JsonAdaptedSession {
     private final String sessionNumber;
     private final List<JsonAdaptedPerson> students = new ArrayList<>();
+    private final String sessionRemark;
 
     /**
      * Constructs a {@code JsonAdaptedSession} with the given {@code sessionInfo}.
      */
     @JsonCreator
     public JsonAdaptedSession(@JsonProperty("sessionNumber") String sessionNumber,
-            @JsonProperty("students") List<JsonAdaptedPerson> students) {
+            @JsonProperty("students") List<JsonAdaptedPerson> students,
+            @JsonProperty("sessionRemark") String sessionRemark) {
         this.sessionNumber = sessionNumber;
         this.students.addAll(students);
+        this.sessionRemark = sessionRemark;
     }
 
     /**
@@ -44,6 +48,7 @@ public class JsonAdaptedSession {
                     .map(JsonAdaptedPerson::new)
                     .collect(Collectors.toList()));
         }
+        this.sessionRemark = source.getSessionRemark().toString();
     }
 
     /**
@@ -68,7 +73,12 @@ public class JsonAdaptedSession {
             sessionStudents = new SessionStudents(studentSet);
         }
 
-        return new Session(modelSessionNumber, sessionStudents);
+        if (sessionRemark == null) {
+            throw new IllegalValueException(SessionRemark.MESSAGE_CONSTRAINTS);
+        }
+        final SessionRemark modelSessionRemark = new SessionRemark(sessionRemark);
+
+        return new Session(modelSessionNumber, sessionStudents, modelSessionRemark);
     }
 
 }

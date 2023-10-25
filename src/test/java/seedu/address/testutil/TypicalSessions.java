@@ -52,13 +52,15 @@ public class TypicalSessions {
      * A typical session with session number 2, attended by Alice.
      */
     public static final Session SESSION_TYPICAL1 = new SessionBuilder()
-            .withSessionNumber("5").withStudent(TypicalPersons.ALICE).build();
+            .withSessionNumber("5").withStudent(TypicalPersons.ALICE)
+            .withSessionRemark("This is a fun session").build();
 
     /**
      * A typical session with session number 3, attended by Benson.
      */
     public static final Session SESSION_TYPICAL2 = new SessionBuilder()
-            .withSessionNumber("6").withStudent(TypicalPersons.BENSON).build();
+            .withSessionNumber("6").withStudent(TypicalPersons.BENSON)
+            .withSessionRemark("Some valid remark").build();
 
     public static SessionListBook getTypicalSessionList() {
         SessionListBook sb = new SessionListBook();

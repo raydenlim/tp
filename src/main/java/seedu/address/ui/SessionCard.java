@@ -24,6 +24,8 @@ public class SessionCard extends UiPart<Region> {
     private Label sessionNumberLabel;
     @FXML
     private FlowPane students;
+    @FXML
+    private Label sessionRemarkLabel;
 
     /**
      * Creates a `SessionCard` object to display information about a session.
@@ -37,5 +39,6 @@ public class SessionCard extends UiPart<Region> {
         session.getStudents().stream()
                 .sorted(Comparator.comparing(student -> student.getName().fullName))
                 .forEach(student -> students.getChildren().add(new Label(student.getName().fullName)));
+        sessionRemarkLabel.setText(session.getSessionRemark().toString());
     }
 }

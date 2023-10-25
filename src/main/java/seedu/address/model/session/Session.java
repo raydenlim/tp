@@ -11,10 +11,25 @@ import seedu.address.model.person.Person;
  * Represents a class for managing a session, which can hold a list of students and session-specific details.
  */
 public class Session {
+    public static final SessionRemark DEFAULT_SESSION_REMARK = new SessionRemark("NA");
 
     private final SessionNumber sessionNumber;
     private SessionStudents students;
     private SessionRemark sessionRemark;
+
+    /**
+     * Creates a session with a session number and an initial set of students.
+     *
+     * @param sessionNumber The unique identifier for this session.
+     * @param presentStudents The set of students present in this session.
+     * @param sessionRemark The remarks for this session.
+     */
+    public Session(SessionNumber sessionNumber, SessionStudents presentStudents, SessionRemark sessionRemark) {
+        requireAllNonNull(sessionNumber, presentStudents, sessionRemark);
+        this.sessionNumber = sessionNumber;
+        this.students = presentStudents;
+        this.sessionRemark = sessionRemark;
+    }
 
     /**
      * Creates a session with a session number and an initial set of students.
@@ -26,7 +41,7 @@ public class Session {
         requireAllNonNull(sessionNumber, presentStudents);
         this.sessionNumber = sessionNumber;
         this.students = presentStudents;
-        this.sessionRemark = new SessionRemark("");
+        this.sessionRemark = DEFAULT_SESSION_REMARK;
     }
 
     /**
@@ -39,7 +54,7 @@ public class Session {
         requireAllNonNull(sessionNumber, student);
         this.sessionNumber = sessionNumber;
         this.students = new SessionStudents(student);
-        this.sessionRemark = new SessionRemark("");
+        this.sessionRemark = DEFAULT_SESSION_REMARK;
     }
 
     /**
@@ -50,7 +65,7 @@ public class Session {
     public Session(SessionNumber sessionNumber) {
         requireNonNull(sessionNumber);
         this.sessionNumber = sessionNumber;
-        this.sessionRemark = new SessionRemark("");
+        this.sessionRemark = DEFAULT_SESSION_REMARK;
     }
 
 
@@ -100,8 +115,8 @@ public class Session {
 
         Session otherSession = (Session) other;
 
-        return sessionNumber.equals(otherSession.sessionNumber) &&
-                students.equals(otherSession.students) && sessionRemark.equals(otherSession.sessionRemark);
+        return sessionNumber.equals(otherSession.sessionNumber)
+                && students.equals(otherSession.students) && sessionRemark.equals(otherSession.sessionRemark);
     }
 
 

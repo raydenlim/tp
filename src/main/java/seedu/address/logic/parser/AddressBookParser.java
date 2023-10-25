@@ -24,8 +24,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncompleteTaskCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.TakeAttendanceCommand;
+import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -111,6 +111,9 @@ public class AddressBookParser {
 
         case TakeAttendanceCommand.COMMAND_WORD:
             return new TakeAttendanceCommandParser().parse(arguments);
+
+        case UpdateSessionRemarkCommand.COMMAND_WORD:
+            return new UpdateSessionRemarkCommandParser().parse(arguments);
 
 
         default:

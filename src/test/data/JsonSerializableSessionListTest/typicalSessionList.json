@@ -105,7 +105,8 @@
           }
         }
       }
-    ]
+    ],
+    "sessionRemark": "This is a fun session"
   }, {
     "sessionNumber" : "6",
     "students" : [{
@@ -210,6 +211,7 @@
           }
         }
       }
-    }]
+    }],
+    "sessionRemark": "Some valid remark"
   } ]
 }

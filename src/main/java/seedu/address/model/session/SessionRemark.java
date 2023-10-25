@@ -3,6 +3,10 @@ package seedu.address.model.session;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a session remark, ensuring it adheres to certain constraints.
+ * A valid session remark consists of one or more alphanumeric characters and spaces and should not be blank.
+ */
 public class SessionRemark {
     public static final String MESSAGE_CONSTRAINTS =
             "Session remarks must only contain alphanumeric characters and spaces";

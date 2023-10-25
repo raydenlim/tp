@@ -25,6 +25,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionRemark;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
@@ -198,6 +199,22 @@ public class ParserUtil {
             throw new ParseException(SessionNumber.MESSAGE_CONSTRAINTS);
         }
         return new SessionNumber(trimmedSessionNumber);
+    }
+
+    /**
+     * Parses the input session remark as a string and returns it as a SessionRemark.
+     *
+     * @param sessionRemark The session remark to be parsed.
+     * @return The parsed session remark as a SessionRemark.
+     * @throws ParseException If the session remark is not a valid remark.
+     */
+    public static SessionRemark parseSessionRemark(String sessionRemark) throws ParseException {
+        requireNonNull(sessionRemark);
+        String trimmedSessionRemark = sessionRemark.trim();
+        if (!SessionRemark.isValidSessionRemark(trimmedSessionRemark)) {
+            throw new ParseException(SessionRemark.MESSAGE_CONSTRAINTS);
+        }
+        return new SessionRemark(trimmedSessionRemark);
     }
 
     /**

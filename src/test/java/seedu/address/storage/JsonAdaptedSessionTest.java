@@ -31,7 +31,7 @@ public class JsonAdaptedSessionTest {
     @Test
     public void toModelType_invalidSessionNumber_throwsIllegalValueException() {
         List<JsonAdaptedPerson> students = new ArrayList<>();
-        JsonAdaptedSession session = new JsonAdaptedSession(null, students);
+        JsonAdaptedSession session = new JsonAdaptedSession(null, students, "NA");
         String expectedMessage = SessionNumber.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, session::toModelType);
     }
