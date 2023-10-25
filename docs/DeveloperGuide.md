@@ -174,7 +174,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Pros: This choice offers flexibility in representing task progress.
 - Cons: It requires additional checks to validate user input and extensive unit testing.
 
-**Alternative 2:** `isDone` Boolean for Task Completion
+**Alternative 2:** `isDone` Boolean for Task Completion.
 - Cons: Only allows for a binary state, i.e., either the task is done or not.
 
 ### Commands
