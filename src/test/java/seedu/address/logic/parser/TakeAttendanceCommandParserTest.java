@@ -24,6 +24,27 @@ public class TakeAttendanceCommandParserTest {
     }
 
     @Test
+    public void parse_validArgsWithWhitespace_returnsTakeAttendanceCommand() throws ParseException {
+        String args = " s/1 n/Alice ap/ present  ";
+        TakeAttendanceCommand expectedCommand = new TakeAttendanceCommand(
+                new SessionNumber("1"), new Name("Alice"), new AttendancePresence("present"));
+        assertEquals(expectedCommand, parser.parse(args));
+    }
+
+    @Test
+    public void parse_invalidArgs_throwsParseException() throws ParseException {
+        String invalidAttendancePresence = "s/1 n/Alice ap/pr3sent";
+        assertThrows(ParseException.class, () -> parser.parse(invalidAttendancePresence));
+
+        String invalidName = "s/1 n/Alice#@# ap/ present ";
+        assertThrows(ParseException.class, () -> parser.parse(invalidName));
+
+        String invalidSessionNumber = "s/e n/Alice ap/present";
+        assertThrows(ParseException.class, () -> parser.parse(invalidSessionNumber));
+    }
+
+
+    @Test
     public void parse_missingSessionPrefix_throwsParseException() {
         String args = " n/Alice p/present";
         assertThrows(ParseException.class, () -> parser.parse(args));

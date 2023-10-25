@@ -11,7 +11,7 @@ public class AttendancePresence {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Presence field should only contain either 'present' or 'absent', and it should not be blank";
-
+    public static final String VALID_REGEX = "(?i)^(present|absent)$";
     public final String attendancePresence;
 
     /**
@@ -33,7 +33,7 @@ public class AttendancePresence {
      * @return True if the string is a valid presence, false otherwise.
      */
     public static boolean isValidInput(String test) {
-        return test.equals("present") || test.equals("absent");
+        return test.matches(VALID_REGEX);
     }
 
     /**
