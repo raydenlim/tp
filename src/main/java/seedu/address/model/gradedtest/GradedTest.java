@@ -172,9 +172,5 @@ public class GradedTest {
                 .add("Practical Exam", practicalExam)
                 .toString();
     }
-//    @Override
-//    public String toString() {
-//        return '[' + gradedTestsIndv + ']';
-//    }
 
 }
