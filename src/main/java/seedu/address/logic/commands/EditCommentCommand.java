@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMENT;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -21,37 +21,36 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
-import seedu.address.model.person.assignment.Grade;
+import seedu.address.model.person.assignment.Comment;
 import seedu.address.model.tag.Tag;
 
-
 /**
- * Edits a grade to a person's assignment.
+ * Edits a comment to a person's assignment.
  */
-public class EditGradeCommand extends Command {
+public class EditCommentCommand extends Command {
 
-    public static final String COMMAND_WORD = "editgrade";
+    public static final String COMMAND_WORD = "editcomment";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a grade to a person’s assignment identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a comment to a person’s assignment identified "
             + "by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
-            + PREFIX_GRADE + "GRADE ";
+            + PREFIX_COMMENT + "COMMENT ";
 
-    public static final String MESSAGE_SUCCESS = "Edited grade to assignment: %1$s";
+    public static final String MESSAGE_SUCCESS = "Edited comment to assignment: %1$s";
 
     private final AssignmentName assignmentName;
-    private final Grade grade;
+    private final Comment comment;
     private final Index index;
 
     /**
-     * Creates an EditGradeCommand to edit the specified grade to a person's assignment.
+     * Creates an EditCommentCommand to edit the specified comment to a person's assignment.
      */
-    public EditGradeCommand(Index index, AssignmentName assignmentName, Grade grade) {
-        requireAllNonNull(index, assignmentName, grade);
+    public EditCommentCommand(Index index, AssignmentName assignmentName, Comment comment) {
+        requireAllNonNull(index, assignmentName, comment);
         this.index = index;
         this.assignmentName = assignmentName;
-        this.grade = grade;
+        this.comment = comment;
     }
 
     @Override
@@ -67,15 +66,8 @@ public class EditGradeCommand extends Command {
             throw new CommandException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
 
-        String[] gradeArray = this.grade.toString().split("/");
-        String actualGrade = gradeArray[0];
-
-        if (!Grade.isValidGrade(actualGrade, this.grade.getMax())) {
-            throw new CommandException(Grade.MESSAGE_CONSTRAINTS);
-        }
-
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createGradedPerson(personToEdit);
+        Person editedPerson = createCommentedPerson(personToEdit);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -83,12 +75,12 @@ public class EditGradeCommand extends Command {
     }
 
     /**
-     * Creates a new Person with the newly graded assignment.
+     * Creates a new Person with the newly commented on assignment.
      *
-     * @param reference The person to be graded.
-     * @return New person with a graded assignment.
+     * @param reference The person whose assignment is being commented on.
+     * @return New person with a comment on their assignment.
      */
-    public Person createGradedPerson(Person reference) {
+    public Person createCommentedPerson(Person reference) {
         Name name = reference.getName();
         Phone phone = reference.getPhone();
         Email email = reference.getEmail();
@@ -96,7 +88,7 @@ public class EditGradeCommand extends Command {
         Set<Tag> tags = reference.getTags();
         Set<GradedTest> gradedTest = reference.getGradedTest();
         AssignmentMap updatedAssignmentMap =
-            reference.getAllAssignments().createUpdatedMap(this.assignmentName, this.grade);
+                reference.getAllAssignments().createUpdatedMap(this.assignmentName, this.comment);
         return new Person(name, phone, email, address, tags, updatedAssignmentMap, gradedTest);
     }
 
@@ -107,16 +99,16 @@ public class EditGradeCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditGradeCommand)) {
+        if (!(other instanceof EditCommentCommand)) {
             return false;
         }
 
-        EditGradeCommand otherEditGradeCommand = (EditGradeCommand) other;
+        EditCommentCommand otherEditCommentCommand = (EditCommentCommand) other;
 
-        boolean isSameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
-        boolean isSameGrade = this.grade.equals(otherEditGradeCommand.grade);
-        boolean isSamePersonIndex = this.index.equals(otherEditGradeCommand.index);
+        boolean isSameAssignmentName = this.assignmentName.equals(otherEditCommentCommand.assignmentName);
+        boolean isSameComment = this.comment.equals(otherEditCommentCommand.comment);
+        boolean isSamePersonIndex = this.index.equals(otherEditCommentCommand.index);
 
-        return isSameAssignmentName && isSameGrade && isSamePersonIndex;
+        return isSameAssignmentName && isSameComment && isSamePersonIndex;
     }
 }

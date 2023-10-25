@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
@@ -70,6 +71,10 @@ public class CommandTestUtil {
     public static final String GRADE_TOO_HIGH = "3000000";
     public static final String GRADE_NOT_INT = "haha";
     public static final String GRADE_400 = "400";
+    public static final String VALID_COMMENT = "Great job!";
+    public static final String COMMENT_LENGTH_30 = "dddddddddddddddddddddddddddddd";
+    public static final String INVALID_COMMENT = COMMENT_LENGTH_30 + COMMENT_LENGTH_30 + COMMENT_LENGTH_30
+            + COMMENT_LENGTH_30 + COMMENT_LENGTH_30 + COMMENT_LENGTH_30 + COMMENT_LENGTH_30;
     public static final String VALID_DATE = "11/11/2023";
     public static final String VALID_TIME = "11:11";
 
@@ -99,6 +104,8 @@ public class CommandTestUtil {
     public static final String GRADE_DESC_400 = " " + PREFIX_GRADE + GRADE_400;
     public static final String GRADE_DESC_NOT_INT = " " + PREFIX_GRADE + GRADE_NOT_INT;
     public static final String GRADE_DESC_TOO_HIGH = " " + PREFIX_GRADE + GRADE_TOO_HIGH;
+    public static final String COMMENT_DESC = " " + PREFIX_COMMENT + VALID_COMMENT;
+    public static final String COMMENT_DESC_TOO_LONG = " " + PREFIX_COMMENT + INVALID_COMMENT;
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
