@@ -1,8 +1,8 @@
 {
   "persons": [ {
-    "name": "Hans Muster",
+    "name": "Valid Person Invalid AssignmentMap",
     "phone": "9482424",
-    "email": "invalid@email!3e",
+    "email": "hans@example.com",
     "address": "4th street",
     "assignmentMap" : {
       "assignments" : {
@@ -94,31 +94,6 @@
         "Curvaceous Wizardry" : {
           "assignmentName" : "Curvaceous Wizardry",
           "grade" : "UNGRADED/600",
-          "comment" : ""
-        },
-        "POTS and Pans" : {
-          "assignmentName" : "POTS and Pans",
-          "grade" : "UNGRADED/1200",
-          "comment" : ""
-        },
-        "Rune Reading" : {
-          "assignmentName" : "Rune Reading",
-          "grade" : "UNGRADED/1000",
-          "comment" : ""
-        },
-        "Cardioid Arrest" : {
-          "assignmentName" : "Cardioid Arrest",
-          "grade" : "UNGRADED/500",
-          "comment" : ""
-        },
-        "Curve Manipulation" : {
-          "assignmentName" : "Curve Manipulation",
-          "grade" : "UNGRADED/600",
-          "comment" : ""
-        },
-        "Echoes of the Past" : {
-          "assignmentName" : "Echoes of the Past",
-          "grade" : "UNGRADED/670",
           "comment" : ""
         }
       }

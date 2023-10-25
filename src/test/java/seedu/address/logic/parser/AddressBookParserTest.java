@@ -7,6 +7,8 @@ import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -24,9 +26,11 @@ import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteGradeCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -147,6 +151,28 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(CreateSessionCommand.COMMAND_WORD
                 + whiteSpace + PREFIX_SESSION + sessionNumber
                 + whiteSpace + PREFIX_NAME + studentName) instanceof CreateSessionCommand);
+    }
+
+    @Test
+    public void parseCommand_editGrade() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String grade = "800";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(EditGradeCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
+                + whiteSpace + PREFIX_GRADE + grade) instanceof EditGradeCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteGrade() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(DeleteGradeCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteGradeCommand);
     }
 
     @Test
