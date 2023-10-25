@@ -8,13 +8,24 @@ public class Assignment {
     // Identity fields
     private final AssignmentName assignmentName;
     private final Grade grade;
+    private final Comment comment;
 
     /**
-     * Creates an assignment.
+     * Creates an assignment without a comment.
      */
     public Assignment(AssignmentName name, Grade grade) {
         this.assignmentName = name;
         this.grade = grade;
+        this.comment = new Comment();
+    }
+
+    /**
+     * Creates an assignment with a comment.
+     */
+    public Assignment(AssignmentName name, Grade grade, Comment comment) {
+        this.assignmentName = name;
+        this.grade = grade;
+        this.comment = comment;
     }
 
     public AssignmentName getName() {
@@ -33,6 +44,14 @@ public class Assignment {
         return this.grade.getIsGraded();
     }
 
+    public Comment getComment() {
+        return this.comment;
+    }
+
+    public boolean commentStatus() {
+        return this.comment.getIsCommented();
+    }
+
     public Assignment copyAssignment() {
         return new Assignment(this.assignmentName, this.grade.copyGrade());
     }
@@ -47,7 +66,10 @@ public class Assignment {
             return false;
         }
 
-        Assignment otherName = (Assignment) other;
-        return assignmentName.equals(otherName.assignmentName) && grade.equals(otherName.grade);
+        Assignment otherAssignment = (Assignment) other;
+        boolean isNameEqual = assignmentName.equals(otherAssignment.assignmentName);
+        boolean isGradeEqual = grade.equals(otherAssignment.grade);
+        boolean isCommentEqual = comment.equals(otherAssignment.comment);
+        return isNameEqual && isGradeEqual && isCommentEqual;
     }
 }

@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import seedu.address.model.person.assignment.Assignment;
 import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.person.assignment.Comment;
 import seedu.address.model.person.assignment.Grade;
 
 /**
@@ -15,6 +16,7 @@ public class AssignmentBuilder {
 
     private AssignmentName name;
     private Grade grade;
+    private Comment comment;
 
     /**
      * Creates an {@code AssignmentBuilder} with the default details.
@@ -22,6 +24,7 @@ public class AssignmentBuilder {
     public AssignmentBuilder() {
         name = new AssignmentName(DEFAULT_NAME);
         grade = new Grade(DEFAULT_ACTUAL_GRADE, DEFAULT_MAX_GRADE);
+        comment = new Comment();
     }
 
     /**
@@ -30,6 +33,7 @@ public class AssignmentBuilder {
     public AssignmentBuilder(Assignment assignment) {
         name = assignment.getName();
         grade = assignment.getGrade();
+        comment = assignment.getComment();
     }
 
     /**
@@ -61,7 +65,15 @@ public class AssignmentBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Comment} of the {@code Assignment} that we are building.
+     */
+    public AssignmentBuilder withComment(String comment) {
+        this.comment = new Comment(comment);
+        return this;
+    }
+
     public Assignment build() {
-        return new Assignment(name, grade);
+        return new Assignment(name, grade, comment);
     }
 }
