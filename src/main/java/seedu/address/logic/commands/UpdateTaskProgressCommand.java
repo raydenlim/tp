@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PROGRESS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
@@ -40,6 +41,7 @@ public class UpdateTaskProgressCommand extends Command {
      * @param descriptor progress details to edit the task with
      */
     public UpdateTaskProgressCommand(Index targetIndex, EditProgressDescriptor descriptor) {
+        requireAllNonNull(targetIndex, descriptor);
         this.targetIndex = targetIndex;
         this.descriptor = descriptor;
     }

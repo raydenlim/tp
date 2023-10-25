@@ -1,11 +1,17 @@
 package seedu.address.ui;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
+import java.time.LocalDate;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskProgress;
 
 /**
  * A UI component that displays information of a {@code Task}.
@@ -28,6 +34,10 @@ public class TaskCard extends UiPart<Region> {
     private Text priority;
     @FXML
     private Text date;
+    @FXML
+    private FlowPane progress;
+    @FXML
+    private Label dueDate;
 
     /**
      * Creates a {@code TaskCard} with the given {@code Task} and index to display.
@@ -40,6 +50,21 @@ public class TaskCard extends UiPart<Region> {
         description.setText(task.getDescription().description);
         priority.setText(task.getPriority().name());
         date.setText(task.getDate() != null ? task.getDate().toString() : "");
+        Label progressLabel = new Label(task.getProgress().name().toLowerCase());
+        progress.getChildren().add(progressLabel);
+        dueDate.setText(LocalDate.now().until(task.getDate(), DAYS) + " Days");
+        boolean isDone = task.getProgress().equals(TaskProgress.DONE);
+
+        switch(task.getProgress()) {
+        case NOT_STARTED:
+            progressLabel.setStyle("-fx-background-color: red;");
+            break;
+        case DONE:
+            progressLabel.setStyle("-fx-background-color: green;");
+            break;
+        default:
+            progressLabel.setStyle("-fx-background-color: #3e7b91;");
+        }
 
         switch(task.getPriority()) {
         case LOW:
@@ -55,10 +80,10 @@ public class TaskCard extends UiPart<Region> {
             priority.setStyle("-fx-fill: white");
         }
 
-        name.setStrikethrough(task.getProgress().name().equals("done"));
-        description.setStrikethrough(task.getProgress().name().equals("done"));
-        priority.setStrikethrough(task.getProgress().name().equals("done"));
-        date.setStrikethrough(task.getProgress().name().equals("done"));
+        name.setStrikethrough(isDone);
+        description.setStrikethrough(isDone);
+        priority.setStrikethrough(isDone);
+        date.setStrikethrough(isDone);
 
     }
 }
