@@ -70,7 +70,7 @@ public class CommandTestUtil {
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
     public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
     public static final String INVALID_ASSIGNMENT_NAME = "Finding BOYD";
-    public static final String VALID_PROGRESS = "PENDING";
+    public static final String VALID_PROGRESS_PENDING = "PENDING";
     public static final String VALID_PROGRESS_DONE = "DONE";
     public static final String VALID_GRADE = "1200";
     public static final String GRADE_TOO_HIGH = "3000000";
@@ -130,7 +130,7 @@ public class CommandTestUtil {
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
     public static final String TASK_DESCRIPTION_TASK2 = " " + PREFIX_TASK_DESCRIPTION + "The green book";
-    public static final String TASK_PROGRESS_TASK1 = " " + PREFIX_TASK_PROGRESS + VALID_PROGRESS;
+    public static final String TASK_PROGRESS_TASK1 = " " + PREFIX_TASK_PROGRESS + VALID_PROGRESS_PENDING;
     public static final String DATE_TASK = " " + PREFIX_DATE + "22/10/2023";
     public static final String TASK_PRIORITY_TASK1 = " " + PREFIX_TASK_PRIORITY + "low";
     public static final String TASK_PRIORITY_TASK2 = " " + PREFIX_TASK_PRIORITY + "high";
@@ -177,7 +177,7 @@ public class CommandTestUtil {
     public static final UpdateTaskProgressCommand.EditProgressDescriptor DESC_TASK2;
 
     static {
-        DESC_TASK = new EditProgressDescriptorBuilder().withProgress(VALID_PROGRESS).build();
+        DESC_TASK = new EditProgressDescriptorBuilder().withProgress(VALID_PROGRESS_PENDING).build();
         DESC_TASK2 = new EditProgressDescriptorBuilder().withProgress(VALID_PROGRESS_DONE).build();
     }
 

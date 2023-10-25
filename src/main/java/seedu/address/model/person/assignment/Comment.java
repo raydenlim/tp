@@ -8,7 +8,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Comment {
 
-    public static final String MESSAGE_CONSTRAINTS = "Comment should be maximum 200 characters and not empty.";
+    public static final String MESSAGE_CONSTRAINTS = "Comment should be maximum 200 characters and cannot be empty.";
 
     public static final String VALIDATION_REGEX = "^.{1,200}$";
 

@@ -26,12 +26,11 @@ public class EditCommentCommandParser implements Parser<EditCommentCommand> {
     public EditCommentCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_ASSIGNMENT, PREFIX_COMMENT);
+        Index index;
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ASSIGNMENT, PREFIX_COMMENT)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommentCommand.MESSAGE_USAGE));
         }
-
-        Index index;
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());

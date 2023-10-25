@@ -25,14 +25,14 @@ import seedu.address.model.person.assignment.Comment;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits a comment to a person's assignment.
+ * Edits the comment given to a person's assignment.
  */
 public class EditCommentCommand extends Command {
 
     public static final String COMMAND_WORD = "editcomment";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a comment to a person’s assignment identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the comment given to a person's assignment, "
+            + "identified by the index number used in the displayed person list. "
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
             + PREFIX_COMMENT + "COMMENT ";
