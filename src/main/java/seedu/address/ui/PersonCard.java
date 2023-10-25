@@ -1,6 +1,8 @@
 package seedu.address.ui;
 
 import java.util.Comparator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -40,6 +42,8 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
     @FXML
     private FlowPane tags;
+    @FXML
+    private FlowPane gradedTests;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -55,5 +59,18 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+
+        person.getGradedTest().stream()
+                .sorted(Comparator.comparing(gradedTest -> gradedTest.gradedTestsIndv))
+                .forEach(gradedTest -> {
+            Label ra1Label = new Label("RA 1: " + gradedTest.getRA1());
+            Label ra2Label = new Label("RA 2: " + gradedTest.getRA2());
+            Label midTermsLabel = new Label("MidTerms: " + gradedTest.getMidTerms());
+            Label finalsLabel = new Label("Finals: " + gradedTest.getFinals());
+            Label peLabel = new Label("PE: " + gradedTest.getPracticalExam());
+
+            gradedTests.getChildren().addAll(ra1Label, ra2Label, midTermsLabel, finalsLabel, peLabel);
+        });
+
     }
 }
