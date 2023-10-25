@@ -23,7 +23,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncompleteTaskCommand;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.session.CreateSessionCommand;
+import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
