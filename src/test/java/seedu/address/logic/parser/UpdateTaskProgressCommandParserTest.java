@@ -36,4 +36,11 @@ public class UpdateTaskProgressCommandParserTest {
         assertParseFailure(parser, "a", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 UpdateTaskProgressCommand.MESSAGE_USAGE));
     }
+
+    @Test
+    public void parse_emptyPreamble_throwsParseException() {
+        assertParseFailure(parser, TASK_PROGRESS_TASK1, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                UpdateTaskProgressCommand.MESSAGE_USAGE));
+    }
+
 }

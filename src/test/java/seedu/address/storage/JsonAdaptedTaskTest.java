@@ -20,6 +20,7 @@ public class JsonAdaptedTaskTest {
     private static final String INVALID_TASK_DESCRIPTION = "sssssssssssssssssssssssssssssssssssss"
             + "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"; // >100 characters
     private static final String INVALID_TASK_PRIORITY = "jason"; // not low, medium or high
+    private static final String INVALID_PROGRESS = "jason"; // not not_started, pending or done
 
     private static final String VALID_NAME = TASK1.getName().toString();
     private static final String VALID_DESCRIPTION = TASK1.getDescription().toString();
@@ -80,6 +81,14 @@ public class JsonAdaptedTaskTest {
         JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_DESCRIPTION, null,
                 VALID_DATE, VALID_PROGRESS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, TaskPriority.class.getSimpleName());
+        assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
+    }
+
+    @Test
+    public void toModelType_invalidProgress_throwsIllegalValueException() {
+        JsonAdaptedTask task = new JsonAdaptedTask(VALID_NAME, VALID_DESCRIPTION,
+                VALID_PRIORITY, VALID_DATE, INVALID_PROGRESS);
+        String expectedMessage = TaskProgress.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, task::toModelType);
     }
 

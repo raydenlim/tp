@@ -58,10 +58,6 @@ public class UpdateTaskProgressCommand extends Command {
         Task taskToEdit = lastShownList.get(targetIndex.getZeroBased());
         Task editedTask = createTask(taskToEdit, descriptor);
 
-        if (!taskToEdit.isSameTask(editedTask) && model.hasTask(editedTask)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
-        }
-
         model.setTask(taskToEdit, editedTask);
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
 
