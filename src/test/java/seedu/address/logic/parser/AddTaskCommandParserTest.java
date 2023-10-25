@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.DATE_TASK;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_DESCRIPTION;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TASK_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
@@ -9,6 +10,7 @@ import static seedu.address.logic.commands.CommandTestUtil.TASK_DESCRIPTION_TASK
 import static seedu.address.logic.commands.CommandTestUtil.TASK_DESCRIPTION_TASK2;
 import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.TASK_PRIORITY_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TASK_DESCRIPTION;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
@@ -22,6 +24,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskDescription;
 import seedu.address.model.task.TaskName;
 import seedu.address.testutil.TaskBuilder;
 
@@ -34,7 +37,8 @@ public class AddTaskCommandParserTest {
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE
-                + TASK_NAME_TASK1 + TASK_DESCRIPTION_TASK1, new AddTaskCommand(expectedTask));
+                + TASK_NAME_TASK1 + TASK_DESCRIPTION_TASK1
+                + TASK_PRIORITY_TASK1 + DATE_TASK, new AddTaskCommand(expectedTask));
     }
 
     @Test
@@ -88,7 +92,8 @@ public class AddTaskCommandParserTest {
     @Test
     public void parse_optionalFieldsMissing_success() {
         // no description
-        Task expectedTask = new TaskBuilder(TASK1).withDescription("").build();
+        Task expectedTask = new TaskBuilder(TASK1).withDescription("")
+                .withDate("").build();
         assertParseSuccess(parser, TASK_NAME_TASK1, new AddTaskCommand(expectedTask));
     }
 
@@ -97,6 +102,10 @@ public class AddTaskCommandParserTest {
         // invalid name
         assertParseFailure(parser, INVALID_TASK_NAME + TASK_DESCRIPTION_TASK2,
                 TaskName.MESSAGE_CONSTRAINTS);
+
+        // invalid description
+        assertParseFailure(parser, TASK_NAME_TASK1 + INVALID_TASK_DESCRIPTION,
+                TaskDescription.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_TASK_NAME + INVALID_TASK_DESCRIPTION,
