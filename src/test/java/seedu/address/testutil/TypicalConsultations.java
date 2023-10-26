@@ -37,6 +37,12 @@ public class TypicalConsultations {
             .withStudents(TypicalPersons.ELLE)
             .build();
 
+    public static final Consultation CONSULTATION_UNKNOWN_PERSON = new ConsultationBuilder()
+            .withDate("03/03/2023")
+            .withTime("13:30")
+            .withStudents(TypicalPersons.AMY)
+            .build();
+
     private TypicalConsultations() {} // prevents initialising
 
     public static ConsultationListBook getTypicalConsultationListBook() {

@@ -69,6 +69,14 @@ public class AddToConsultCommandTest {
     }
 
     @Test
+    public void execute_personNotFound_failure() {
+        AddToConsultationDescriptor descriptor = new AddToConsultationDescriptorBuilder(
+                TypicalConsultations.CONSULTATION_UNKNOWN_PERSON).build();
+        AddToConsultCommand command = new AddToConsultCommand(INDEX_FIRST_CONSULTATION, descriptor);
+        assertCommandFailure(command, model, AddToConsultCommand.MESSAGE_PERSON_NOT_FOUND);
+    }
+
+    @Test
     public void execute_invalidIndex_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredConsultationList().size() + 1);
         AddToConsultationDescriptor descriptor = new AddToConsultationDescriptorBuilder().build();
