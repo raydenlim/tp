@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_ASSIGNMENT_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ASSIGNMENT_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -63,7 +64,15 @@ public class DeleteCommentCommandTest {
     }
 
     @Test
-    public void execute_ungradedAssignment_failure() {
+    public void execute_invalidAssignment_failure() {
+        AssignmentName assignmentName = new AssignmentName(INVALID_ASSIGNMENT_NAME);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
+
+        assertCommandFailure(deleteCommentCommand, model, AssignmentName.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void execute_noCommentAssignment_failure() {
         Index targetIndex = INDEX_FIRST_PERSON;
         List<Person> lastShownList = model.getFilteredPersonList();
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
