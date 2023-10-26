@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.TASK1;
-import static seedu.address.testutil.TypicalTasks.TASK3;
 import static seedu.address.testutil.TypicalTasks.TASK4;
+import static seedu.address.testutil.TypicalTasks.TASK5;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
 
 import java.io.IOException;
@@ -72,14 +72,14 @@ public class JsonTaskListStorageTest {
         assertEquals(original, new TaskListBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addTask(TASK3);
+        original.addTask(TASK4);
         original.removeTask(TASK1);
         jsonTaskListStorage.saveTaskList(original, filePath);
         readBack = jsonTaskListStorage.readTaskList(filePath).get();
         assertEquals(original, new TaskListBook(readBack));
 
         // Save and read without specifying file path
-        original.addTask(TASK4);
+        original.addTask(TASK5);
         jsonTaskListStorage.saveTaskList(original); // file path not specified
         readBack = jsonTaskListStorage.readTaskList().get(); // file path not specified
         assertEquals(original, new TaskListBook(readBack));
