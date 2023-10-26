@@ -85,7 +85,7 @@ public class AddToConsultCommand extends Command {
      * Creates and returns a {@code Consultation} with the details of {@code consultationToAddStudent}
      * edited with {@code addToConsultationDescriptor}.
      */
-    private static Consultation createUpdatedConsultation(Model model, Consultation consultationToAddStudent,
+    public static Consultation createUpdatedConsultation(Model model, Consultation consultationToAddStudent,
                                                           AddToConsultationDescriptor addToConsultationDescriptor) {
         assert consultationToAddStudent != null;
 
@@ -97,6 +97,22 @@ public class AddToConsultCommand extends Command {
         newStudents.addAll(students);
 
         return new Consultation(date, time, newStudents);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddToConsultCommand)) {
+            return false;
+        }
+
+        AddToConsultCommand otherCommand = (AddToConsultCommand) other;
+        return index.equals(otherCommand.index)
+                && addToConsultationDescriptor.equals(otherCommand.addToConsultationDescriptor);
     }
 
     /**
