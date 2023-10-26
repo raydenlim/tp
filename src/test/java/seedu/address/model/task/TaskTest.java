@@ -3,16 +3,18 @@ package seedu.address.model.task;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.model.task.Task.FORMATTER;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalTasks.TASK1;
 import static seedu.address.testutil.TypicalTasks.TASK2;
+
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.TaskBuilder;
 
 public class TaskTest {
-
     @Test
     public void isSameTask() {
         // same object -> returns true
@@ -65,25 +67,29 @@ public class TaskTest {
 
     @Test
     public void hashCode_sameFields_expectSameHashCode() {
-        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
-        Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
+                TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
+        Task task2 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
+                TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
 
         assertEquals(task1.hashCode(), task2.hashCode());
     }
 
     @Test
     public void hashCode_differentFields_expectDifferentHashCode() {
-        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"), false, TaskPriority.LOW);
-        Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"), true, TaskPriority.HIGH);
+        Task task1 = new Task(new TaskName("Task 1"), new TaskDescription("Description 1"),
+                TaskPriority.LOW, LocalDate.parse("22/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
+        Task task2 = new Task(new TaskName("Task 2"), new TaskDescription("Description 2"),
+                TaskPriority.HIGH, LocalDate.parse("23/10/2023", FORMATTER), TaskProgress.NOT_STARTED);
 
         assertThrows(AssertionError.class, () -> assertEquals(task1.hashCode(), task2.hashCode()));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = String.format("%s{name=%s, description=%s, isDone=%s, priority=%s}",
+        String expected = String.format("%s{name=%s, description=%s, priority=%s, date=%s, progress=%s}",
                 Task.class.getCanonicalName(), TASK1.getName(), TASK1.getDescription(),
-                TASK1.getIsDone(), TASK1.getPriority());
+                TASK1.getPriority(), TASK1.getDate(), TASK1.getProgress());
         assertEquals(expected, TASK1.toString());
     }
 }
