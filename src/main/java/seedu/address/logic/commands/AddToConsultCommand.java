@@ -39,7 +39,7 @@ public class AddToConsultCommand extends Command {
         + PREFIX_NAME + "John Doe ";
     public static final String MESSAGE_SUCCESS = "New student(s) added to consult at index %1$s: %1$s";
     public static final String MESSAGE_DUPLICATE_STUDENT = "The student(s) added are already in the consultation";
-    public static final String MESSAGE_PERSON_NOT_FOUND = "No student match given name(s)";
+    public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be added";
     private final Index index;
     private final AddToConsultationDescriptor addToConsultationDescriptor;
