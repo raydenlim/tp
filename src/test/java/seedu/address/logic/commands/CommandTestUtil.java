@@ -162,7 +162,6 @@ public class CommandTestUtil {
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
-    // public static final EditCommand.EditPersonDescriptor DESC_AMY2;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
     static {
