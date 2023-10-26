@@ -22,11 +22,9 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.SessionListBook;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.task.DateContainsKeywordsPredicate;
 import seedu.address.model.task.TaskDescriptionContainsKeywordsPredicate;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
-import seedu.address.model.task.TaskPriority;
 import seedu.address.model.task.TaskPriorityContainsKeywordsPredicate;
 import seedu.address.model.task.TaskProgressContainsKeywordsPredicate;
 
@@ -174,17 +172,20 @@ public class ViewTasksCommandTest {
         String expected = ViewTasksCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
         assertEquals(expected, viewTasksCommand.toString());
 
-        TaskDescriptionContainsKeywordsPredicate descPredicate = new TaskDescriptionContainsKeywordsPredicate(Arrays.asList("keyword"));
+        TaskDescriptionContainsKeywordsPredicate descPredicate =
+                new TaskDescriptionContainsKeywordsPredicate(Arrays.asList("keyword"));
         ViewTasksCommand viewTasksDescCommand = new ViewTasksCommand(descPredicate);
         String expectedDesc = ViewTasksCommand.class.getCanonicalName() + "{predicate=" + descPredicate + "}";
         assertEquals(expectedDesc, viewTasksDescCommand.toString());
 
-        TaskProgressContainsKeywordsPredicate progressPredicate = new TaskProgressContainsKeywordsPredicate(Arrays.asList("keyword"));
+        TaskProgressContainsKeywordsPredicate progressPredicate =
+                new TaskProgressContainsKeywordsPredicate(Arrays.asList("keyword"));
         ViewTasksCommand viewTasksProgressCommand = new ViewTasksCommand(progressPredicate);
         String expectedProgress = ViewTasksCommand.class.getCanonicalName() + "{predicate=" + progressPredicate + "}";
         assertEquals(expectedProgress, viewTasksProgressCommand.toString());
 
-        TaskPriorityContainsKeywordsPredicate priorityPredicate = new TaskPriorityContainsKeywordsPredicate(Arrays.asList("keyword"));
+        TaskPriorityContainsKeywordsPredicate priorityPredicate =
+                new TaskPriorityContainsKeywordsPredicate(Arrays.asList("keyword"));
         ViewTasksCommand viewTasksPriorityCommand = new ViewTasksCommand(priorityPredicate);
         String expectedPriority = ViewTasksCommand.class.getCanonicalName() + "{predicate=" + priorityPredicate + "}";
         assertEquals(expectedPriority, viewTasksPriorityCommand.toString());
