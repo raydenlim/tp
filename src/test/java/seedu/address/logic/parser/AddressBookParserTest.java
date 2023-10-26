@@ -7,6 +7,8 @@ import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -22,23 +24,26 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.CompleteTaskCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteGradeCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.IncompleteTaskCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.UpdateTaskProgressCommand;
+import seedu.address.logic.commands.UpdateTaskProgressCommand.EditProgressDescriptor;
 import seedu.address.logic.commands.session.CreateSessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.EditProgressDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 import seedu.address.testutil.TaskBuilder;
@@ -112,6 +117,7 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(inputCommandString) instanceof CreateConsultCommand);
     }
 
+    @Test
     public void parseCommand_addTask() throws Exception {
         Task task = new TaskBuilder().build();
         AddTaskCommand command = (AddTaskCommand) parser.parseCommand(TaskUtil.getAddCommand(task));
@@ -127,16 +133,14 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_completeTask() throws Exception {
-        CompleteTaskCommand command = (CompleteTaskCommand) parser.parseCommand(
-                CompleteTaskCommand.COMMAND_WORD + " " + INDEX_FIRST_TASK.getOneBased());
-        assertEquals(new CompleteTaskCommand(INDEX_FIRST_PERSON), command);
-    }
+        Task task = new TaskBuilder().build();
+        EditProgressDescriptor descriptor = new EditProgressDescriptorBuilder(task).build();
+        UpdateTaskProgressCommand command = (UpdateTaskProgressCommand) parser
+                .parseCommand(UpdateTaskProgressCommand.COMMAND_WORD + " "
+                        + INDEX_FIRST_TASK.getOneBased()
+                        + " " + TaskUtil.getUpdateProgressDetails(descriptor));
 
-    @Test
-    public void parseCommand_incompleteTask() throws Exception {
-        IncompleteTaskCommand command = (IncompleteTaskCommand) parser.parseCommand(
-                IncompleteTaskCommand.COMMAND_WORD + " " + INDEX_FIRST_TASK.getOneBased());
-        assertEquals(new IncompleteTaskCommand(INDEX_FIRST_PERSON), command);
+        assertEquals(new UpdateTaskProgressCommand(INDEX_FIRST_TASK, descriptor), command);
     }
 
     @Test
@@ -147,6 +151,28 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(CreateSessionCommand.COMMAND_WORD
                 + whiteSpace + PREFIX_SESSION + sessionNumber
                 + whiteSpace + PREFIX_NAME + studentName) instanceof CreateSessionCommand);
+    }
+
+    @Test
+    public void parseCommand_editGrade() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String grade = "800";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(EditGradeCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
+                + whiteSpace + PREFIX_GRADE + grade) instanceof EditGradeCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteGrade() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(DeleteGradeCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteGradeCommand);
     }
 
     @Test

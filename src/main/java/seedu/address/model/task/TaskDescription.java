@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class TaskDescription {
 
-    public static final String MESSAGE_CONSTRAINTS = "Description should not only consist of whitespace";
-    public static final String VALIDATION_REGEX = "^(?!\\s+$).*$";
+    public static final String MESSAGE_CONSTRAINTS = "Description should be less than 100 characters.";
+    public static final String VALIDATION_REGEX = "^.{0,100}$";
 
     public final String description;
 
