@@ -7,9 +7,11 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONSULTATIONS;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -141,6 +143,15 @@ public class AddToConsultCommand extends Command {
          */
         public void setNames(Set<Name> names) {
             this.names = (names != null) ? new HashSet<>(names) : null;
+        }
+
+        /**
+         * Returns an unmodifiable names set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code names} is null.
+         */
+        public Optional<Set<Name>> getNames() {
+            return (names != null) ? Optional.of(Collections.unmodifiableSet(names)) : Optional.empty();
         }
 
         @Override

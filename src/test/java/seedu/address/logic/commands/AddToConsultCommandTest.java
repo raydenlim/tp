@@ -104,5 +104,6 @@ public class AddToConsultCommandTest {
 
         // different descriptor -> returns false
         assertFalse(standardCommand.equals(new AddToConsultCommand(INDEX_FIRST_CONSULTATION, otherDescriptor)));
+
     }
 }
