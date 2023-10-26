@@ -42,6 +42,6 @@ public class DateContainsKeywordsPredicate implements Predicate<Task> {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("progress keywords", keywords).toString();
+        return new ToStringBuilder(this).add("date keywords", keywords).toString();
     }
 }
