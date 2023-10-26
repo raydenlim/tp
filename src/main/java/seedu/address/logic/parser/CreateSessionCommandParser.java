@@ -4,6 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
+import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.CreateSessionCommand;
@@ -35,9 +36,9 @@ public class CreateSessionCommandParser implements Parser<CreateSessionCommand> 
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
         SessionNumber sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Set<Name> names = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
 
-        return new CreateSessionCommand(sessionNumber, name);
+        return new CreateSessionCommand(sessionNumber, names);
     }
 
     /**

@@ -132,9 +132,7 @@ public class Session {
         }
 
         return other != null
-                && other.getSessionNumber().equals(sessionNumber)
-                && other.getStudents().equals(students)
-                && other.getSessionRemark().equals(sessionRemark);
+                && other.getSessionNumber().equals(sessionNumber);
     }
 
     /**

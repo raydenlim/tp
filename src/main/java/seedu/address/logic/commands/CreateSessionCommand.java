@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
+import static seedu.address.storage.JsonSerializableSessionList.MESSAGE_DUPLICATE_SESSION;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -13,6 +15,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionStudents;
@@ -32,9 +35,9 @@ public class CreateSessionCommand extends Command {
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";
+    public static final String MESSAGE_PERSON_NOT_FOUND = "No student match given name(s)";
 
     private SessionNumber sessionNumber;
-    private Name name;
     private Set<Name> names;
     private Session sessionToAdd;
 
@@ -48,7 +51,8 @@ public class CreateSessionCommand extends Command {
         requireAllNonNull(sessionNumber, name);
 
         this.sessionNumber = sessionNumber;
-        this.name = name;
+        this.names = new HashSet<>();
+        this.names.add(name);
     }
 
     /**
@@ -76,22 +80,21 @@ public class CreateSessionCommand extends Command {
         requireNonNull(model);
         this.sessionToAdd = new Session(sessionNumber);
 
-        if (name != null) {
-            // Get the student to add to the session
-            Person studentToAdd = model.getMatchingStudentName(name);
-            // Create the session to add
-            this.sessionToAdd = new Session(sessionNumber, studentToAdd);
-        }
-        if (names != null && !names.isEmpty()) {
+        try {
             SessionStudents studentsToAdd = new SessionStudents();
             for (Name name : names) {
                 Person studentToAdd = model.getMatchingStudentName(name);
                 studentsToAdd.add(studentToAdd);
             }
             this.sessionToAdd = new Session(sessionNumber, studentsToAdd);
+        } catch (PersonNotFoundException e) {
+            throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
         }
 
 
+        if (model.hasSession(this.sessionToAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_SESSION);
+        }
         // Add the session to the model
         model.addSession(this.sessionToAdd);
 
@@ -123,9 +126,7 @@ public class CreateSessionCommand extends Command {
                     && this.sessionNumber.equals(otherCreateSessionCommand.sessionNumber);
         } else if (names == null && otherCreateSessionCommand.names == null) {
             // Compare when both 'names' are null
-            return this.name == null ? otherCreateSessionCommand.name == null
-                    : this.name.equals(otherCreateSessionCommand.name)
-                    && this.sessionNumber.equals(otherCreateSessionCommand.sessionNumber);
+            return this.sessionNumber.equals(otherCreateSessionCommand.sessionNumber);
         } else {
             // 'names' is null in one of the objects
             return false;

@@ -33,8 +33,7 @@ public class UpdateSessionRemarkCommandParser implements Parser<UpdateSessionRem
                     MESSAGE_INVALID_COMMAND_FORMAT, UpdateSessionRemarkCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION_REMARK);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION, PREFIX_SESSION_REMARK);
         SessionNumber sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
         SessionRemark sessionRemark = ParserUtil.parseSessionRemark(argMultimap.getValue(PREFIX_SESSION_REMARK).get());
 
