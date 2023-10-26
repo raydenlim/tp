@@ -177,13 +177,58 @@ Below is a class diagram describing the implementation of `Task` and its respect
 **Alternative 2:** `isDone` Boolean for Task Completion.
 - Cons: Only allows for a binary state, i.e., either the task is done or not.
 
+### Grades
+The Grade component consists of the following set of features: Edit Grade, Delete Grade and View Grade.
+
+#### The Grade class
+The Grade Class is made up of an `actualGrade`, `maxGrade`, `isGraded`, and a set of getter methods that corresponds to most of these fields.
+
+Below is a class diagram describing the implementation of `Grade` and its respective fields.
+
+![Grade Class UML](images/GradeClass UML.png)
+
+#### Design Considerations:
+**Aspect: How the assignment a grade is being given to is determined:**
+
+**Alternative 1 (current choice):** `Grade` is a field in the `Assignment` it is being graded to.
+- Pros: This choice makes it easier to ensure that each assignment only has one grade, and also makes it easier to manage multiple features related to an assignment.
+- Cons: It requires additional time to add a grade to an assignment since the assignment needs to be obtained first.
+
+**Alternative 2:** `Assignment` is a field in the `Grade` being given to it.
+- Cons: It requires more checks to be done to ensure that each assignment only has one Grade.
+
+**Alternative 3:** `Assignment` is a field in the `Grade` being given to it and vice versa.
+- Cons: It increases coupling which increases the dependency of the classes.
+
+### Comments
+The Comment component consists of the following set of features: Edit Comment, Delete Comment and View Comment.
+
+#### The Comment class
+The Comment Class is made up of a `commentBody`, `isCommented`, and a set of getter methods that corresponds to most of these fields.
+
+Below is a class diagram describing the implementation of `Comment` and its respective fields.
+
+![Grade Class UML](images/CommentClass UML.png)
+
+#### Design Considerations:
+**Aspect: How the comment a grade is being given to is determined:**
+
+**Alternative 1 (current choice):** `Comment` is a field in the `Assignment` it is being graded to.
+- Pros: This choice makes it easier to ensure that each assignment only has one comment, and also makes it easier to manage multiple features related to an assignment.
+- Cons: It requires additional time to add a comment to an assignment since the assignment needs to be obtained first.
+
+**Alternative 2:** `Assignment` is a field in the `Comment` being given to it.
+- Cons: It requires more checks to be done to ensure that each assignment only has one Comment.
+
+**Alternative 3:** `Assignment` is a field in the `Comment` being given to it and vice versa.
+- Cons: It increases coupling which increases the dependency of the classes.
+
 ### Commands
 This section explains the general implementation of all commands.
 
 Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
 
 ![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
-
 
 ### \[Proposed\] Undo/redo feature
 
@@ -311,15 +356,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                        | So that I can…​                                                        |
-|----------|--------------------------------------------|-------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions              | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person                    |                                                                        |
-| `* * *`  | user                                       | delete a person                     | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name               | locate details of persons without having to go through the entire list |
-| `* * *`  | busy avenger                               | keep track of what needs to be done | better guide my students.                                              |
-| `* *`    | user                                       | hide private contact details        | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                     | So that I can…​                                                        |
+|----------|--------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                           | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                       | add a new person                                 |                                                                        |
+| `* * *`  | user                                       | delete a person                                  | remove entries that I no longer need                                   |
+| `* * *`  | user                                       | find a person by name                            | locate details of persons without having to go through the entire list |
+| `* * *`  | busy avenger                               | keep track of what needs to be done              | better guide my students.                                              |
+| `* * *`  | conscientious avenger                      | view my students' grades for their assignments   | better assess my students' competency.                                 |
+| `* * *`  | caring avenger                             | view my students' comments for their assignments | take note of my students' strengths and weaknesses.                    |
+| `* *`    | user                                       | hide private contact details                     | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book | sort persons by name                             | locate a person easily                                                 |
 
 *{More to be added}*
 
@@ -382,7 +429,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to grade an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. assigns given grade to the student
+4.  F.A.K.E.J.A.R.V.I.S. assigns given grade to the student's assignment
 
     Use case ends.
 
@@ -395,6 +442,123 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. The given index is invalid.
 
     * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given grade is invalid.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete the grade of an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to delete the grade of an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. deletes the grade of the student's assignment
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given assignment has not been commented on.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Comment on an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to comment on an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. assigns given comment to the student's assignment
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given comment is invalid.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete the comment of an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to delete the comment of an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. deletes the comment of the student's assignment
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given assignment has been commented on.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case resumes at step 2.
 
