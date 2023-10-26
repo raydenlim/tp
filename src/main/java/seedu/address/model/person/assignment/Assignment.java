@@ -53,7 +53,7 @@ public class Assignment {
     }
 
     public Assignment copyAssignment() {
-        return new Assignment(this.assignmentName, this.grade.copyGrade());
+        return new Assignment(this.assignmentName, this.grade.copyGrade(), this.comment);
     }
 
     @Override
