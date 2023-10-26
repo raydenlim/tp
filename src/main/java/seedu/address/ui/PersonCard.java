@@ -61,8 +61,8 @@ public class PersonCard extends UiPart<Region> {
         person.getGradedTest().stream()
                 .sorted(Comparator.comparing(gradedTest -> gradedTest.gradedTestsIndv))
                 .forEach(gradedTest -> {
-                    Label ra1Label = new Label("RA 1: " + gradedTest.getRA1());
-                    Label ra2Label = new Label("RA 2: " + gradedTest.getRA2());
+                    Label ra1Label = new Label("RA1: " + gradedTest.getRA1());
+                    Label ra2Label = new Label("RA2: " + gradedTest.getRA2());
                     Label midTermsLabel = new Label("MidTerms: " + gradedTest.getMidTerms());
                     Label finalsLabel = new Label("Finals: " + gradedTest.getFinals());
                     Label peLabel = new Label("PE: " + gradedTest.getPracticalExam());

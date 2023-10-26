@@ -4,31 +4,32 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Final result.
- * A Final result is a positive number and indicates the score achieved in the exam.
+ * Represents a Reading Assessment result.
+ * A Reading Assessment result is a positive number that indicates the score achieved in the assessment.
  * The result can be an integer or a decimal number.
  */
-public class Finals {
+public class ReadingAssessment1 {
     public static final String MESSAGE_CONSTRAINTS =
-            "Final scores should be a positive number";
+            "Reading Assessment 1 scores should be a positive number";
     public static final String VALIDATION_REGEX = "(?:-|\\d+(\\.\\d+)?)";
+
     public final String value;
 
     /**
      * Constructs a {@code Finals}.
      *
-     * @param finalResults A valid phone number.
+     * @param raResult A valid raResult number.
      */
-    public Finals(String finalResults) {
-        requireNonNull(finalResults);
-        checkArgument(isValidFinalsResult(finalResults), MESSAGE_CONSTRAINTS);
-        this.value = finalResults;
+    public ReadingAssessment1(String raResult) {
+        requireNonNull(raResult);
+        checkArgument(isValidRaResult(raResult), MESSAGE_CONSTRAINTS);
+        this.value = raResult;
     }
 
     /**
-     * Returns true if a given string is a valid finals result.
+     * Returns true if a given string is a valid RA result.
      */
-    public static boolean isValidFinalsResult(String test) {
+    public static boolean isValidRaResult(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
@@ -47,16 +48,17 @@ public class Finals {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Finals)) {
+        if (!(other instanceof ReadingAssessment1)) {
             return false;
         }
 
-        Finals otherFinals = (Finals) other;
-        return value.equals(otherFinals.value);
+        ReadingAssessment1 otherRA = (ReadingAssessment1) other;
+        return value.equals(otherRA.value);
     }
 
     @Override
     public int hashCode() {
         return value.hashCode();
     }
+
 }
