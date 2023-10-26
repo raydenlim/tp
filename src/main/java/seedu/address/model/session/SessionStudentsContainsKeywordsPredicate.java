@@ -6,12 +6,12 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Session}'s {@code SessionNumber} matches any of the keywords given.
+ * Tests that a {@code Session}'s {@code SessionStudents} matches any of the keywords given.
  */
-public class SessionNumberContainsKeywordsPredicate implements Predicate<Session> {
+public class SessionStudentsContainsKeywordsPredicate implements Predicate<Session> {
     private final List<String> keywords;
 
-    public SessionNumberContainsKeywordsPredicate(List<String> keywords) {
+    public SessionStudentsContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
 
@@ -19,7 +19,7 @@ public class SessionNumberContainsKeywordsPredicate implements Predicate<Session
     public boolean test(Session session) {
         return keywords.stream()
                 .anyMatch(keyword -> containsSubstringIgnoreCase(
-                        session.getSessionNumber().sessionNumber, keyword));
+                        session.getStudents().toStudentNames(), keyword));
     }
 
     private boolean containsSubstringIgnoreCase(String str, String substring) {
@@ -37,13 +37,13 @@ public class SessionNumberContainsKeywordsPredicate implements Predicate<Session
         }
 
         // instanceof handles nulls
-        if (!(other instanceof SessionNumberContainsKeywordsPredicate)) {
+        if (!(other instanceof SessionStudentsContainsKeywordsPredicate)) {
             return false;
         }
 
-        SessionNumberContainsKeywordsPredicate otherNumberContainsKeywordsPredicate =
-                (SessionNumberContainsKeywordsPredicate) other;
-        return keywords.equals(otherNumberContainsKeywordsPredicate.keywords);
+        SessionStudentsContainsKeywordsPredicate otherSessionStudentsContainsKeywordsPredicate =
+                (SessionStudentsContainsKeywordsPredicate) other;
+        return keywords.equals(otherSessionStudentsContainsKeywordsPredicate.keywords);
     }
 
     @Override
