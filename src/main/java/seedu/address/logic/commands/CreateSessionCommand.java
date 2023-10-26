@@ -1,4 +1,4 @@
-package seedu.address.logic.commands.session;
+package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -9,8 +9,6 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Name;
@@ -30,6 +28,7 @@ public class CreateSessionCommand extends Command {
             + PREFIX_SESSION + "SESSION_NUMBER "
             + "[" + PREFIX_NAME + "NAME]...\n"
             + "Example: " + COMMAND_WORD + " "
+            + PREFIX_SESSION + "3 "
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";
