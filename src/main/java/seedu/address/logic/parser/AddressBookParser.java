@@ -8,25 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.AddTaskCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CreateConsultCommand;
-import seedu.address.logic.commands.CreateSessionCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.DeleteConsultationCommand;
-import seedu.address.logic.commands.DeleteGradeCommand;
-import seedu.address.logic.commands.DeleteTaskCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditGradeCommand;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.TakeAttendanceCommand;
-import seedu.address.logic.commands.UpdateTaskProgressCommand;
-import seedu.address.logic.commands.ViewAttendanceCommand;
+import seedu.address.logic.commands.*;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -114,6 +96,12 @@ public class AddressBookParser {
 
         case DeleteGradeCommand.COMMAND_WORD:
             return new DeleteGradeCommandParser().parse(arguments);
+
+        case EditCommentCommand.COMMAND_WORD:
+            return new EditCommentCommandParser().parse(arguments);
+
+        case DeleteCommentCommand.COMMAND_WORD:
+            return new DeleteCommentCommandParser().parse(arguments);
 
         case TakeAttendanceCommand.COMMAND_WORD:
             return new TakeAttendanceCommandParser().parse(arguments);
