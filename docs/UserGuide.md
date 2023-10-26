@@ -6,32 +6,57 @@ pageNav: 3
 
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
+#### Table of Contents
+- TOC
+{:toc}
+
+## Introduction
+_Say goodbye to chaos and hello to an organized and efficient classroom experience._
+
+
 <p align="center">
   <img src="images/fakejarvis.png" width="200px">
 </p>
 
-_Say goodbye to chaos and hello to an organized and efficient classroom experience._
 
 F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
+The application is designed for efficient usage through a Command-Line Interface, all while preserving the advantages of having a Graphical User Interface.
+
+If you're new to the Command-Line Interface and need assistance, this User Guide is here to help you become familiar with it and use the application with ease.
+
 <!-- * Table of Contents -->
 <page-nav-print />
+
+### How to use the User Guide
+You may refer to the [Table of Contents](#table-of-contents) for quick navigation of the User Guide. 
+
+The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
+
+| Convention                                                                          | Description                                                     |
+|-------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| `Monospace`                                                                         | Used for command inputs, syntax, and file paths.                |
+| [Hyperlink](#)                                                                      | Indicates hyperlinks to external websites or within the guide.  |
+| **Bold text**                                                                       | Highlights important keywords.                                  |
+| **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
+| **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
+
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have [Java 11](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=406&field_operating_system_target_id=All&field_architecture_target_id=All&field_java_package_target_id=401) or above installed in your Computer.
 
-1. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases). _[Coming Soon]_
+2. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases). _[Coming Soon]_
 
-1. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
+3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
     * `list` : Lists all contacts.
@@ -44,7 +69,7 @@ F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage 
 
     * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
