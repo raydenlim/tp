@@ -29,7 +29,7 @@
                 </Label>
                 <Text fx:id="name" text="\$name" styleClass="cell_big_label" style="-fx-fill: white;" />
                 <Text fx:id="date" styleClass="cell_small_label" text="\$date" style="-fx-fill: white;" />
-                <Label fx:id="due_date" styleClass="date_small_label" text="\$dueDate" style="-fx-fill: white;" />
+                <Label fx:id="dueDate" styleClass="date_small_label" text="\$dueDate" style="-fx-fill: white;" />
             </HBox>
             <FlowPane fx:id="progress" />
             <Text fx:id="description" styleClass="cell_small_label" text="\$description" style="-fx-fill: white;" />

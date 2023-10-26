@@ -66,11 +66,15 @@ dependencies {
 }
 
 run {
-    enableAssertions = true;
+    enableAssertions = true
 }
 
 shadowJar {
-    archiveFileName = 'addressbook.jar'
+    archiveFileName = 'fakejarvis.jar'
+}
+
+run {
+    enableAssertions = true
 }
 
 defaultTasks 'clean', 'test'

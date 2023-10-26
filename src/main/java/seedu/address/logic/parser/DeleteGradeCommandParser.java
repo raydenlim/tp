@@ -23,13 +23,13 @@ public class DeleteGradeCommandParser implements Parser<DeleteGradeCommand> {
      */
     public DeleteGradeCommand parse(String args) throws ParseException {
         requireNonNull(args);
+
+        Index index;
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_ASSIGNMENT);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ASSIGNMENT)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteGradeCommand.MESSAGE_USAGE));
         }
-
-        Index index;
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());

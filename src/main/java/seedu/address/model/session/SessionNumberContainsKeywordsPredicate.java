@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Session}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Session}'s {@code SessionNumber} matches any of the keywords given.
  */
 public class SessionNumberContainsKeywordsPredicate implements Predicate<Session> {
     private final List<String> keywords;

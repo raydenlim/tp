@@ -60,7 +60,7 @@ public class DeleteGradeCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        if (!AssignmentName.isValidName(this.assignmentName.toString())) {
+        if (!AssignmentName.isValidName(this.assignmentName)) {
             throw new CommandException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
 
@@ -109,11 +109,11 @@ public class DeleteGradeCommand extends Command {
             return false;
         }
 
-        DeleteGradeCommand otherEditGradeCommand = (DeleteGradeCommand) other;
+        DeleteGradeCommand otherDeleteGradeCommand = (DeleteGradeCommand) other;
 
-        boolean sameAssignmentName = this.assignmentName.equals(otherEditGradeCommand.assignmentName);
-        boolean samePersonIndex = this.index.equals(otherEditGradeCommand.index);
+        boolean isSameAssignmentName = this.assignmentName.equals(otherDeleteGradeCommand.assignmentName);
+        boolean isSamePersonIndex = this.index.equals(otherDeleteGradeCommand.index);
 
-        return sameAssignmentName && samePersonIndex;
+        return isSameAssignmentName && isSamePersonIndex;
     }
 }
