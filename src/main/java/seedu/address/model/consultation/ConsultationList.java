@@ -54,6 +54,27 @@ public class ConsultationList implements Iterable<Consultation> {
         }
     }
 
+    /**
+     * Replaces the consultation {@code target} in the list with {@code updatedConsultation}.
+     * {@code target} must exist in the list.
+     * The consultation identity of {@code updatedConsultation} must not be the same as another existing consultation
+     * in the list.
+     */
+    public void setConsultation(Consultation target, Consultation updatedConsultation) {
+        requireAllNonNull(target, updatedConsultation);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new ConsultationNotFoundException();
+        }
+
+        if (!target.isSameConsultation(updatedConsultation) && contains(updatedConsultation)) {
+            throw new DuplicateConsultationException();
+        }
+
+        internalList.set(index, updatedConsultation);
+    }
+
     public ObservableList<Consultation> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }

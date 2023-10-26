@@ -241,6 +241,14 @@ public interface Model {
      */
     void deleteConsultation(Consultation consultationToDelete);
 
+    /**
+     * Replaces the given consultation {@code target} with {@code updatedConsultation}.
+     * {@code target} must exist in the consultation list.
+     * The consultation identity of {@code updatedConsultation} must not be the same as another existing consultation
+     * in the consultation list.
+     */
+    void setConsultation(Consultation consultationToAddStudent, Consultation updatedConsultation);
+
     /** Returns the ConsultationList */
     ReadOnlyConsultationList getConsultationList();
 
