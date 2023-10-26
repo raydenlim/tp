@@ -12,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CONSULTATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 
@@ -26,6 +27,7 @@ import seedu.address.logic.commands.AddTaskCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteConsultationCommand;
 import seedu.address.logic.commands.DeleteGradeCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -115,6 +117,13 @@ public class AddressBookParserTest {
         String inputCommandString = CreateConsultCommand.COMMAND_WORD + VALID_DATE_DESC + VALID_TIME_DESC
                 + NAME_DESC_AMY;
         assertTrue(parser.parseCommand(inputCommandString) instanceof CreateConsultCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteConsultation() throws Exception {
+        DeleteConsultationCommand command = (DeleteConsultationCommand) parser.parseCommand(
+                DeleteConsultationCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased());
+        assertEquals(new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION), command);
     }
 
     @Test
