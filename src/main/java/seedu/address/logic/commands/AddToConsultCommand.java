@@ -92,11 +92,11 @@ public class AddToConsultCommand extends Command {
         LocalDate date = consultationToAddStudent.getDate();
         LocalTime time = consultationToAddStudent.getTime();
         Set<Person> students = consultationToAddStudent.getStudents();
-        Set<Person> studentsToAdd = addToConsultationDescriptor.names.stream().map(model::getMatchingStudentName)
+        Set<Person> newStudents = addToConsultationDescriptor.names.stream().map(model::getMatchingStudentName)
                 .collect(Collectors.toSet());
-        students.addAll(studentsToAdd);
+        newStudents.addAll(students);
 
-        return new Consultation(date, time, students);
+        return new Consultation(date, time, newStudents);
     }
 
     /**
