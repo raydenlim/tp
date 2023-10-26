@@ -25,7 +25,7 @@ public class AssignmentName {
     }
 
     /**
-     * Checks if the assignment name exists.
+     * Checks if the assignment name exists using a string.
      *
      * @param test The assignment name as a string.
      * @return Whether the assignment exists.
@@ -33,6 +33,17 @@ public class AssignmentName {
     public static boolean isValidName(String test) {
         AssignmentInitialise.init();
         return checkIfValid.contains(new AssignmentName(test));
+    }
+
+    /**
+     * Checks if the assignment name exists using an AssignmentName object.
+     *
+     * @param test The assignment name as an AssignmentName.
+     * @return Whether the assignment exists.
+     */
+    public static boolean isValidName(AssignmentName test) {
+        AssignmentInitialise.init();
+        return checkIfValid.contains(test);
     }
 
     @Override

@@ -50,7 +50,8 @@ public class AssignmentMap {
         for (int i = 0; i < AssignmentInitialise.size(); i++) {
             AssignmentName assignmentName = AssignmentInitialise.getAssignmentName(i);
             if (assignmentName.equals(toBeGraded)) {
-                Assignment gradedAssignment = new Assignment(toBeGraded, newGrade);
+                Comment comment = this.assignments.get(assignmentName).getComment();
+                Assignment gradedAssignment = new Assignment(toBeGraded, newGrade, comment);
                 updateTo.assignments.replace(assignmentName, gradedAssignment);
             } else {
                 Assignment originalAssignment = this.assignments.get(assignmentName);

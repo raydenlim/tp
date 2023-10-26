@@ -42,6 +42,13 @@ public class TypicalTasks {
             .withDate("22/10/2023")
             .build();
 
+    public static final Task TASK5 = new TaskBuilder()
+            .withName("Plan for next sem")
+            .withDescription("atap")
+            .withPriority("MEDIUM")
+            .withDate("22/10/2023")
+            .build();
+
     private TypicalTasks() {} // prevents instantiation
 
     /**
@@ -56,7 +63,7 @@ public class TypicalTasks {
     }
 
     public static List<Task> getTypicalTasks() {
-        return new ArrayList<>(Arrays.asList(TASK1, TASK2));
+        return new ArrayList<>(Arrays.asList(TASK1, TASK2, TASK3));
     }
 
 }

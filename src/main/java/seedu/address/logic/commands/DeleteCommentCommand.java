@@ -60,7 +60,7 @@ public class DeleteCommentCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        if (!AssignmentName.isValidName(this.assignmentName.toString())) {
+        if (!AssignmentName.isValidName(this.assignmentName)) {
             throw new CommandException(AssignmentName.MESSAGE_CONSTRAINTS);
         }
 
