@@ -6,75 +6,136 @@ pageNav: 3
 
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
+## Introduction
+_Say goodbye to chaos and hello to an organized and efficient classroom experience._
+
+
 <p align="center">
   <img src="images/fakejarvis.png" width="200px">
 </p>
 
-_Say goodbye to chaos and hello to an organized and efficient classroom experience._
 
 F.A.K.E.J.A.R.V.I.S. is the **ultimate solution for CS1101S Avengers who manage a multitude of tutoring tasks.** This platform empowers you to efficiently track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. This is your one-stop solution to managing your time and students as a CS1101S Avenger!
 
+The application is designed for efficient usage through a Command-Line Interface, all while preserving the advantages of having a Graphical User Interface.
+
+If you're new to the Command-Line Interface and need assistance, this User Guide is here to help you become familiar with it and use the application with ease.
+
 <!-- * Table of Contents -->
 <page-nav-print />
+
+### How to use the User Guide
+You may refer to the **Table of Contents** on the right for easy navigation of the User Guide. 
+
+The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
+
+| Convention                                                                          | Description                                                     |
+|-------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| `Monospace`                                                                         | Used for command inputs, syntax, and file paths.                |
+| [Hyperlink](#)                                                                      | Indicates hyperlinks to external websites or within the guide.  |
+| **Bold text**                                                                       | Highlights important keywords.                                  |
+| **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
+| **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
+
+
+## Graphical User Interface
+
+![UI with Annotations](images/UiWithAnnotations.png)
+
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface consists of 5 main components:
+* Command Box
+* Command Result Display
+* Task List Panel
+* Consultations Panel
+* Tutorials Panel
+
+You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box.
+
+The following describes what each panel contains:
+* **Task List Panel:** Displays your set of tasks
+* **Consultations Panel:** Displays your consultations
+* **Tutorials Panel:** Displays your sessions
+
+### Task Card
+[Coming soon]
+
+### Consultation Card
+[Coming soon]
+
+### Session Card
+[Coming soon]
+
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+1. Ensure you have [Java 11](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=406&field_operating_system_target_id=All&field_architecture_target_id=All&field_java_package_target_id=401) or above installed in your Computer.
 
-1. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases). _[Coming Soon]_
+2. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases). _[Coming Soon]_
 
-1. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
+3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+    ![Ui](images/Ui.png)
+
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-    * `list` : Lists all contacts.
+    * `viewtasks` : Lists all tasks.
+    * `deletetask 3`: Deletes the 3rd task shown in the current task list.
 
-    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
-    * `delete 3` : Deletes the 3rd contact shown in the current list.
-
-    * `clear` : Deletes all contacts.
+    * `createsession 3 n/John Doe` : Creates a `No. 3` Session with the student `John Doe`.
 
     * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command and the [Command Format](#command-format) for the specifications of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
 
-<box type="info" seamless>
+## Command Format
 
-**Notes about the command format:**<br>
+**The commands in the user guide adopt the following conventions:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `addtask tn/TASK_NAME`, `TASK_NAME` is a parameter which can be specified, such as `addtask tn/Do User Guide`.
+
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `tn/TASK_NAME [td/do before feedback]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
+
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/ Foo Bar` etc.
+
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `tn/TASK_NAME td/TASK_DESCRIPTION`, `td/TASK_DESCRIPTION tn/TASK_NAME` is also acceptable.
+
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
-  </box>
+
+### Command Parameters
+Most commands given in the user guide utilise various parameters. Their formats and constraints are provided in the table below.
+
+[Table Coming soon]
+
+
+## Features
+This section describes each of the commands and features available in F.A.K.E.J.A.R.V.I.S.
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -181,67 +242,68 @@ _Details coming soon ..._
 
 
 ### 📝Adding a Task: `addtask`
-Adds a task to your tasklist
+Adds a task to your task list.
 
-Format: `addtask n/TASK_NAME d/DUE_DATE p/PRIORITY`
+Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 
 Parameters:
-* TASK_NAME The name or description of the task.
-* DUE_DATE The due date or deadline for the task.
-* PRIORITY The priority level of the task (e.g., high, medium, low).
+* TASK_NAME The name of the task.
+* TASK_DESCRIPTION The description of the task.
+* DUE_DATE The due date or deadline of the task.
+* TASK_PRIORITY The priority level of the task. Given as `high`, `medium` or `low`.
 
 Examples:
-* `addtask n/Prepare Lecture slides d/2023-09-30 p/high` creates a task to prepare lecture slides with a high priority due on September 30, 2023.
-* `addtask n/Read Chapter 5` creates a task to read Chapter 5 without specifying a due date or priority.
+* `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` creates a task to prepare lecture slides with a high priority due on September 30, 2023.
+* `addtask tn/Read Chapter 5` creates a task to read Chapter 5 without specifying a due date or priority.
 
 
 ### 👀Viewing Tasks: `viewtasks`
-Views the list of tasks
+Views the list of tasks.
 
-Format: `viewtasks d/DUE_DATE p/PRIORITY`
+Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
+
+* Only the task name, task description, due date, task priority and task progress are searched. 
+* Only one field can be searched at a time.
+* The search is case-insensitive, e.g. `cs2101` will match `CS2101`.
+* The order of the keywords does not matter, e.g. `quant book` will match `book quant`.
+* If no task matching the search criteria is found, the resulting task list will be blank.
 
 Parameters:
-* DUE_DATE The due date or deadline for the task.
-* PRIORITY The priority level of the task (e.g., high, medium, low).
+* TASK_NAME The name of the task.
+* TASK_DESCRIPTION The description of the task.
+* DUE_DATE The due date or deadline of the task.
+* TASK_PRIORITY The priority level of the task. Given as `high`, `medium` or `low`.
+* TASK_PROGRESS The progress level of the task. Given as `done`, `pending` or `not_started`.
 
 Examples:
 * `viewtasks` displays all tasks in the user's task list.
-* `viewtasks p/high` displays only high-priority tasks.
-* `viewtasks d/2023-09-30` displays tasks due on September 30, 2023.
+* `viewtasks tp/high` displays only high-priority tasks.
+* `viewtasks d/30/09/2023` displays tasks due on September 30, 2023.
 
-### ✅Completing a Task: `completetask`
+### ✅Updating a Task's Progress: `updateprogress`
 Marks a task as completed.
 
-Format: `completetask TASK_INDEX`
+Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
+
+* The index refers to the index number shown in the displayed task list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
 Parameters:
-* TASK_INDEX The index of the task to mark as completed.
+* TASK_INDEX The index of the task to update the progress.
+* NEW_PROGRESS The new progress level of the task. Given as `done`, `pending` or `not_started`.
 
 Examples:
-* `completetask 1` marks the task with index 1 as completed.
-* `completetask 3` marks the task with index 1 as completed.
-
-
-### 🛠️Editing a Task: `edittask`
-Edits the details of a task
-
-Format: `edittask TASK_INDEX n/NEW_TASK_NAME d/NEW_DUE_DATE p/NEW_PRIORITY`
-
-Parameters:
-* TASK_INDEX The index of the task to edit.
-* NEW_TASK_NAME The new name or description for the task.
-* NEW_DUE_DATE The new due date or deadline for the task.
-* NEW_PRIORITY The new priority level for the task.
-
-Examples:
-* `edittask 1 n/Updated TaskName` edits the name of the task with index 1.
-* `edittask 2 d/2023-10-15` updates the due date of the task with index 2 to October 15, 2023.
+* `completetask 1 tprog/pending` marks the task with index 1 as pending.
+* `completetask 3 tprog/done` marks the task with index 3 as done.
 
 
 ### ❌Deleting a Task: `deletetask`
-Deletes a task from the tasklist
+Deletes a task from the task list.
 
 Format: `deletetask TASK_INDEX`
+
+* The index refers to the index number shown in the displayed task list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
 Parameters:
 * TASK_INDEX The index of the task to delete.
