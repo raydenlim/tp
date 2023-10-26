@@ -13,14 +13,14 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalSessions.getTypicalSessionList;
 import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
 
+import org.junit.jupiter.api.Test;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.consultation.Consultation;
-
-import org.junit.jupiter.api.Test;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
@@ -32,7 +32,8 @@ public class DeleteConsultationCommandTest {
 
     @Test
     public void execute_validIndexUnfilteredList_success() {
-        Consultation consultationToDelete = model.getFilteredConsultationList().get(INDEX_FIRST_CONSULTATION.getZeroBased());
+        Consultation consultationToDelete = model.getFilteredConsultationList()
+                .get(INDEX_FIRST_CONSULTATION.getZeroBased());
         DeleteConsultationCommand deleteConsultationCommand = new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION);
 
         String expectedMessage = String.format(DeleteConsultationCommand.MESSAGE_DELETE_CONSULTATION_SUCCESS,
