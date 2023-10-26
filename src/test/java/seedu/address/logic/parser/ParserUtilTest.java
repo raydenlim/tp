@@ -42,6 +42,9 @@ public class ParserUtilTest {
     private static final String INVALID_ATTENDANCE_PRESENCE = "presen";
     private static final String VALID_SESSION_REMARK = "lgtm";
     private static final String INVALID_SESSION_REMARK = "pl@y3$";
+    private static final String INVALID_DESCRIPTION = "ssssssssssssssssssssssssssssssssssssssssssssssss"
+            + "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"; // more than 100 chars
+    private static final String INVALID_PROGRESS = "jason";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -233,6 +236,7 @@ public class ParserUtilTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void parseAttendancePresence_invalidValue_throwsParseException() {
         assertThrows(ParseException.class, () -> ParserUtil.parseAttendancePresence(INVALID_ATTENDANCE_PRESENCE));
     }
@@ -246,6 +250,16 @@ public class ParserUtilTest {
     @Test
     public void parseSessionRemark_invalidRemark_throwsParseException() throws ParseException {
         assertThrows(ParseException.class, () -> ParserUtil.parseSessionRemark(INVALID_SESSION_REMARK));
+    }
+
+    @Test
+    public void parseDescription_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTaskDescription(INVALID_DESCRIPTION));
+    }
+
+    @Test
+    public void parseProgress_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTaskProgress(INVALID_PROGRESS));
     }
 
 }
