@@ -285,7 +285,7 @@ Student to a Consultation.
 
 #### The Consultation Class
 
-The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods 
+The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods
 that corresponds to these fields.
 
 Below is a class diagram describing the implementation of `Consultation` and its respective fields.
