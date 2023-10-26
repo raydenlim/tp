@@ -49,7 +49,7 @@ public class TaskCard extends UiPart<Region> {
         name.setText(task.getName().taskName);
         description.setText(task.getDescription().description);
         priority.setText(task.getPriority().name());
-        date.setText(task.getDate() !=  null ? task.getDate().toString() : "");
+        date.setText(task.getDate() != null ? task.getDate().toString() : "");
         Label progressLabel = new Label(task.getProgress().name().toLowerCase());
         progress.getChildren().add(progressLabel);
 
