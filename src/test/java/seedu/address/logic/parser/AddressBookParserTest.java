@@ -7,8 +7,8 @@ import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
@@ -44,6 +44,7 @@ import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand.EditProgressDescriptor;
+import seedu.address.logic.commands.ViewAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -186,6 +187,14 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(UpdateSessionRemarkCommand.COMMAND_WORD
                 + whiteSpace + PREFIX_SESSION + sessionNumber
                 + whiteSpace + PREFIX_SESSION_REMARK + sessionRemark) instanceof UpdateSessionRemarkCommand);
+
+    }
+
+    @Test
+    public void parseCommand_viewAttendance() throws Exception {
+        String studentName = "abby";
+        assertTrue(parser.parseCommand(ViewAttendanceCommand.COMMAND_WORD
+                + " " + PREFIX_NAME + studentName) instanceof ViewAttendanceCommand);
     }
 
     @Test
