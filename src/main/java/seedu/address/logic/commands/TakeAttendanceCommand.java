@@ -91,7 +91,7 @@ public class TakeAttendanceCommand extends Command {
             // Get the student to add to the session
             Person student = model.getMatchingStudentName(name);
             this.students.add(student);
-            if (attendancePresence.isPresent()) {
+            if (attendancePresence.equals(AttendancePresence.PRESENT)) {
                 student.attendSession(this.session);
             } else {
                 student.missSession(this.session);
@@ -102,7 +102,7 @@ public class TakeAttendanceCommand extends Command {
             for (Name name : names) {
                 Person student = model.getMatchingStudentName(name);
                 this.students.add(student);
-                if (attendancePresence.isPresent()) {
+                if (attendancePresence.equals(AttendancePresence.PRESENT)) {
                     student.attendSession(this.session);
                 } else {
                     student.missSession(this.session);

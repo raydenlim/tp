@@ -19,7 +19,7 @@ public class TakeAttendanceCommandParserTest {
     public void parse_validArgs_returnsTakeAttendanceCommand() throws ParseException {
         String args = " s/1 n/Alice ap/present";
         TakeAttendanceCommand expectedCommand = new TakeAttendanceCommand(
-                new SessionNumber("1"), new Name("Alice"), new AttendancePresence("present"));
+                new SessionNumber("1"), new Name("Alice"), AttendancePresence.PRESENT);
         assertEquals(expectedCommand, parser.parse(args));
     }
 
@@ -27,7 +27,7 @@ public class TakeAttendanceCommandParserTest {
     public void parse_validArgsWithWhitespace_returnsTakeAttendanceCommand() throws ParseException {
         String args = " s/1 n/Alice ap/ present  ";
         TakeAttendanceCommand expectedCommand = new TakeAttendanceCommand(
-                new SessionNumber("1"), new Name("Alice"), new AttendancePresence("present"));
+                new SessionNumber("1"), new Name("Alice"), AttendancePresence.PRESENT);
         assertEquals(expectedCommand, parser.parse(args));
     }
 

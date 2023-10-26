@@ -36,13 +36,13 @@ public class TakeAttendanceCommandTest {
         assertTrue(currentSession.getStudents().contains(student));
 
         TakeAttendanceCommand command =
-                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
         command.execute(model);
         assertEquals(2, currentSession.getStudents().size());
         assertTrue(currentSession.getStudents().contains(newStudent));
 
         TakeAttendanceCommand markAbsentCommand =
-                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("absent"));
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.ABSENT);
         markAbsentCommand.execute(model);
         assertEquals(1, currentSession.getStudents().size());
         assertFalse(currentSession.getStudents().contains(newStudent));
@@ -65,7 +65,7 @@ public class TakeAttendanceCommandTest {
 
         assertEquals(0, currentSession.getStudents().size());
         TakeAttendanceCommand command = new TakeAttendanceCommand(
-                currentSession.getSessionNumber(), studentNames, new AttendancePresence("present"));
+                currentSession.getSessionNumber(), studentNames, AttendancePresence.PRESENT);
         command.execute(model);
 
         assertEquals(2, currentSession.getStudents().size());
@@ -73,7 +73,7 @@ public class TakeAttendanceCommandTest {
         assertTrue(currentSession.getStudents().contains(bob));
 
         TakeAttendanceCommand markAbsentCommand = new TakeAttendanceCommand(
-                currentSession.getSessionNumber(), studentNames, new AttendancePresence("absent"));
+                currentSession.getSessionNumber(), studentNames, AttendancePresence.ABSENT);
         markAbsentCommand.execute(model);
         assertEquals(0, currentSession.getStudents().size());
         assertFalse(currentSession.getStudents().contains(alice));
@@ -84,9 +84,9 @@ public class TakeAttendanceCommandTest {
     @Test
     public void equals_sameCommandArguments_returnsTrue() {
         TakeAttendanceCommand command1 =
-                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), new AttendancePresence("absent"));
+                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), AttendancePresence.ABSENT);
         TakeAttendanceCommand command2 =
-                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), new AttendancePresence("absent"));
+                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), AttendancePresence.ABSENT);
 
         assertTrue(command1.equals(command2));
     }
@@ -94,35 +94,35 @@ public class TakeAttendanceCommandTest {
     @Test
     public void equals_sameCommand_returnsTrue() {
         TakeAttendanceCommand command =
-                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
         assertTrue(command.equals(command));
     }
 
     @Test
     public void equals_otherInstance_returnsFalse() {
         TakeAttendanceCommand command =
-                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
         assertFalse(command.equals(1));
     }
 
     @Test
     public void equals_nullNames_returnsFalse() {
         TakeAttendanceCommand command1 =
-                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), new AttendancePresence("present"));
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
         Set<Name> names = new HashSet<>();
         TakeAttendanceCommand command2 =
-                new TakeAttendanceCommand(new SessionNumber("2"), names, new AttendancePresence("present"));
+                new TakeAttendanceCommand(new SessionNumber("2"), names, AttendancePresence.PRESENT);
         assertFalse(command1.equals(command2));
     }
 
     @Test
     public void equals_differentCommands_returnsFalse() {
         TakeAttendanceCommand command1 = new TakeAttendanceCommand(
-                new SessionNumber("1"), new Name("Alice"), new AttendancePresence("present"));
+                new SessionNumber("1"), new Name("Alice"), AttendancePresence.PRESENT);
         TakeAttendanceCommand command2 =
-                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Bob"), new AttendancePresence("present"));
+                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Bob"), AttendancePresence.PRESENT);
         TakeAttendanceCommand command3 =
-                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), new AttendancePresence("absent"));
+                new TakeAttendanceCommand(new SessionNumber("1"), new Name("Alice"), AttendancePresence.ABSENT);
         assertFalse(command1.equals(command2));
         assertFalse(command1.equals(command3));
     }
@@ -138,7 +138,7 @@ public class TakeAttendanceCommandTest {
         model.addSession(session);
 
         TakeAttendanceCommand command =
-                new TakeAttendanceCommand(sessionNumber, new Name(name), new AttendancePresence("present"));
+                new TakeAttendanceCommand(sessionNumber, new Name(name), AttendancePresence.PRESENT);
         command.execute(model);
 
 

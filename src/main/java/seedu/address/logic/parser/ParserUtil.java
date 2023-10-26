@@ -212,11 +212,13 @@ public class ParserUtil {
      */
     public static AttendancePresence parseAttendancePresence(String attendancePresence) throws ParseException {
         requireNonNull(attendancePresence);
-        String trimmedAttendancePresence = attendancePresence.trim().toLowerCase();
-        if (!AttendancePresence.isValidInput(trimmedAttendancePresence)) {
-            throw new ParseException(AttendancePresence.MESSAGE_CONSTRAINTS);
+        String trimmedPresence = attendancePresence.trim().toUpperCase();
+        for (AttendancePresence presence : AttendancePresence.values()) {
+            if (trimmedPresence.equals(presence.name())) {
+                return AttendancePresence.valueOf(trimmedPresence);
+            }
         }
-        return new AttendancePresence(attendancePresence);
+        throw new ParseException(AttendancePresence.MESSAGE_CONSTRAINTS);
     }
 
     /**
