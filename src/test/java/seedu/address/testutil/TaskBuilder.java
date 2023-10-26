@@ -68,7 +68,7 @@ public class TaskBuilder {
      * Sets the {@code priority} of the {@code Task} that we are building.
      */
     public TaskBuilder withPriority(String name) {
-        this.priority = TaskPriority.valueOf(name);
+        this.priority = TaskPriority.valueOf(name.trim().toUpperCase());
         return this;
     }
 

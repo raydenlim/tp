@@ -75,9 +75,9 @@ public class UpdateTaskProgressCommand extends Command {
             return false;
         }
 
-        UpdateTaskProgressCommand otherMarkCommand = (UpdateTaskProgressCommand) other;
-        return targetIndex.equals(otherMarkCommand.targetIndex)
-                && descriptor.equals(otherMarkCommand.descriptor);
+        UpdateTaskProgressCommand otherUpdateTaskProgressCommand = (UpdateTaskProgressCommand) other;
+        return targetIndex.equals(otherUpdateTaskProgressCommand.targetIndex)
+                && descriptor.equals(otherUpdateTaskProgressCommand.descriptor);
     }
 
     @Override

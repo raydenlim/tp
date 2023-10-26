@@ -16,7 +16,7 @@ public class EditProgressDescriptorBuilder {
     }
 
     public EditProgressDescriptorBuilder(EditProgressDescriptor descriptor) {
-        this.descriptor = descriptor;
+        this.descriptor = new EditProgressDescriptor(descriptor);
     }
 
     /**
