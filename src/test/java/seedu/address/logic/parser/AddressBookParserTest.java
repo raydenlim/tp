@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
@@ -43,6 +44,7 @@ import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand.EditProgressDescriptor;
 import seedu.address.logic.commands.ViewAttendanceCommand;
+import seedu.address.logic.commands.ViewTasksCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -127,6 +129,13 @@ public class AddressBookParserTest {
         DeleteConsultationCommand command = (DeleteConsultationCommand) parser.parseCommand(
                 DeleteConsultationCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased());
         assertEquals(new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION), command);
+    }
+
+    @Test
+    public void parseCommand_viewTasks() throws Exception {
+        assertTrue(parser.parseCommand(ViewTasksCommand.COMMAND_WORD) instanceof ViewTasksCommand);
+        assertTrue(parser.parseCommand(ViewTasksCommand.COMMAND_WORD
+                + " " + TASK_NAME_TASK1) instanceof ViewTasksCommand);
     }
 
     @Test
