@@ -290,6 +290,9 @@ that corresponds to these fields.
 
 Below is a class diagram describing the implementation of `Consultation` and its respective fields.
 
+<p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
+<p align="center">Consultation Class UML Diagram</p>
+
 ### Design Considerations:
 
 **Aspect: How the students are stored to a consultation:**
@@ -298,10 +301,10 @@ Below is a class diagram describing the implementation of `Consultation` and its
     * Pros: Store only one of the same person, no duplicates.
     * Cons: May have performance issues in terms of memory usage.
 
+
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
     * Cons: We must ensure there are no duplicates with additional checks.
 
-![Consultation Class Diagram](images/ConsultationClassUMLDiagram.png)
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
