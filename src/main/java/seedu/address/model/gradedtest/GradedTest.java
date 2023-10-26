@@ -110,29 +110,6 @@ public class GradedTest {
         return gradedTestsIndv;
     }
 
-
-    // Setter Methods
-    public GradedTest updateRA1(ReadingAssessment1 score) {
-        return new GradedTest(score, this.readingAssessment2, this.midTerms, this.finals, this.practicalExam);
-    }
-
-    public GradedTest updateRA2(ReadingAssessment2 score) {
-        return new GradedTest(this.readingAssessment1, score, this.midTerms, this.finals, this.practicalExam);
-    }
-
-    public GradedTest updateMidTerms(MidTerms score) {
-        return new GradedTest(this.readingAssessment1, this.readingAssessment2, score, this.finals, this.practicalExam);
-    }
-
-    public GradedTest updateFinals(Finals score) {
-        return new GradedTest(this.readingAssessment1,
-                this.readingAssessment2, this.midTerms, score, this.practicalExam);
-    }
-
-    public GradedTest updatePE(PracticalExam score) {
-        return new GradedTest(this.readingAssessment1, this.readingAssessment2, this.midTerms, this.finals, score);
-    }
-
     /**
      * Returns true if a given string is a valid gradedTest name.
      */
@@ -197,5 +174,4 @@ public class GradedTest {
                 .add("PE", practicalExam)
                 .toString();
     }
-
 }
