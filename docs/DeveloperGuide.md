@@ -305,6 +305,16 @@ Below is a class diagram describing the implementation of `Consultation` and its
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
     * Cons: We must ensure there are no duplicates with additional checks.
 
+**Aspect: Adding students to a new or existing consultation:**
+
+* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student 
+list
+  * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
+  * Cons: Require additional checking to inform exception cases.
+
+* **Alternative 2:** `AddToConsult` directly manipulate the attribute students in a Consultation object.
+  * Cons: Poor abstraction and room for errors.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -337,15 +347,17 @@ Below is a class diagram describing the implementation of `Consultation` and its
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                        | So that I can…​                                                        |
-|----------|--------------------------------------------|-------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions              | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person                    |                                                                        |
-| `* * *`  | user                                       | delete a person                     | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name               | locate details of persons without having to go through the entire list |
-| `* * *`  | busy avenger                               | keep track of what needs to be done | better guide my students.                                              |
-| `* *`    | user                                       | hide private contact details        | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                             | So that I can…​                                                        |
+|----------|--------------------------------------------|------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                   | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                       | add a new person                         |                                                                        |
+| `* * *`  | user                                       | delete a person                          | remove entries that I no longer need                                   |
+| `* * *`  | user                                       | find a person by name                    | locate details of persons without having to go through the entire list |
+| `* * *`  | busy avenger                               | keep track of what needs to be done      | better guide my students.                                              |
+| `* * *`  | user                                       | create a new consultation with students  | keep track of when and with who the consultation is held               |
+| `* * *`  | user                                       | add students to an existing consultation | invite more students to join a consultation discussion                 |
+| `* *`    | user                                       | hide private contact details             | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book | sort persons by name                     | locate a person easily                                                 |
 
 *{More to be added}*
 
