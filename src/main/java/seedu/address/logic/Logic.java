@@ -10,8 +10,10 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
+import seedu.address.ui.AssignmentNameCard;
 
 /**
  * API of the Logic component
@@ -44,6 +46,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of sessions */
     ObservableList<Session> getFilteredSessionList();
+
+    /** Returns an unmodifiable view of all assignment names */
+    ObservableList<AssignmentName> getAssignmentNameList();
 
     /**
      * Returns the user prefs' address book file path.

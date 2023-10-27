@@ -37,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     private SessionListPanel sessionListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private AssignmentNameListPanel assignmentNameListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -55,6 +56,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane sessionListPanelPlaceholder;
+
+    @FXML
+    private StackPane assignmentNameListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -133,6 +137,9 @@ public class MainWindow extends UiPart<Stage> {
 
         sessionListPanel = new SessionListPanel(logic.getFilteredSessionList());
         sessionListPanelPlaceholder.getChildren().add(sessionListPanel.getRoot());
+
+        assignmentNameListPanel = new AssignmentNameListPanel(logic.getAssignmentNameList());
+        assignmentNameListPanelPlaceholder.getChildren().add(assignmentNameListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
