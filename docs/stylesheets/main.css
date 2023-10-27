@@ -74,6 +74,15 @@ mark {
   width: 300px;
 }
 
+#main-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  max-width: 300px;
+  max-height: calc(100vh);
+  width: 300px;
+}
+
 #site-nav {
   border-right: 1px solid lightgrey;
   padding-bottom: 20px;
@@ -89,12 +98,14 @@ mark {
   overflow-y: auto;
 }
 
-#page-nav {
+#page-nav
+ #main-nav{
   border-left: 1px solid lightgrey;
 }
 
 @media screen and (max-width: 1299.98px) {
-  #page-nav {
+  #page-nav
+   #main-nav{
     display: none;
   }
 }
@@ -130,7 +141,8 @@ mark {
     display: none;
   }
 
-  #page-nav {
+  #page-nav
+   #main-nav{
     display: none;
   }
 }
