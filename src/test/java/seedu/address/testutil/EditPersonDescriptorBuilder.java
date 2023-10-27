@@ -9,7 +9,8 @@ import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -101,7 +102,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the Reading Assessment for the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withRA1(String ra1) {
-        descriptor.setReadingAssessment1(new ReadingAssessment(ra1));
+        descriptor.setReadingAssessment1(new ReadingAssessment1(ra1));
         return this;
     }
 
@@ -109,7 +110,7 @@ public class EditPersonDescriptorBuilder {
      * Sets the Reading Assessment for the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withRA2(String ra2) {
-        descriptor.setReadingAssessment2(new ReadingAssessment(ra2));
+        descriptor.setReadingAssessment2(new ReadingAssessment2(ra2));
         return this;
     }
 

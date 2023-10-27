@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class PracticalExam {
     public static final String MESSAGE_CONSTRAINTS =
-            "Scores should be a positive number";
+            "Practical Exam scores should be a positive number";
     public static final String VALIDATION_REGEX = "(?:-|\\d+(\\.\\d+)?)";
 
     public final String value;

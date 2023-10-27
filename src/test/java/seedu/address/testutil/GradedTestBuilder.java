@@ -4,7 +4,8 @@ import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 
 /**
  * A utility class for building GradedTest objects for testing.
@@ -19,8 +20,8 @@ public class GradedTestBuilder {
     public static final String DEFAULT_PE = "-";
 
 
-    private ReadingAssessment rA1;
-    private ReadingAssessment rA2;
+    private ReadingAssessment1 rA1;
+    private ReadingAssessment2 rA2;
     private MidTerms midterms;
     private Finals finals;
     private PracticalExam pE;
@@ -30,8 +31,8 @@ public class GradedTestBuilder {
      * Creates a {@code GradedTestBuilder} with the default details.
      */
     public GradedTestBuilder() {
-        rA1 = new ReadingAssessment(DEFAULT_RA1);
-        rA2 = new ReadingAssessment(DEFAULT_RA2);
+        rA1 = new ReadingAssessment1(DEFAULT_RA1);
+        rA2 = new ReadingAssessment2(DEFAULT_RA2);
         midterms = new MidTerms(DEFAULT_MIDTERMS);
         finals = new Finals(DEFAULT_FINALS);
         pE = new PracticalExam(DEFAULT_PE);
@@ -53,7 +54,7 @@ public class GradedTestBuilder {
      * Sets the {@code ReadingAssessment} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withReadingAssessment1(String rA1) {
-        this.rA1 = new ReadingAssessment(rA1);
+        this.rA1 = new ReadingAssessment1(rA1);
         return this;
     }
 
@@ -61,7 +62,7 @@ public class GradedTestBuilder {
      * Sets the {@code ReadingAssessment} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withReadingAssessment2(String rA2) {
-        this.rA2 = new ReadingAssessment(rA2);
+        this.rA2 = new ReadingAssessment2(rA2);
         return this;
     }
 
