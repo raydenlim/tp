@@ -2,9 +2,9 @@
 layout: default.md
 title: "Rayson Yeap's Project Portfolio Page"
 ---
-### Project: FAKEJARVIS
+### Project: F.A.K.E.J.A.R.V.I.S.
 
-FAKEJARVIS is a project to help CS1101S Avengers manage their time and job more effectively.
+F.A.K.E.J.A.R.V.I.S. is a project to help CS1101S Avengers manage their time and job more effectively.
 
 Given below are my contributions to the project.
 

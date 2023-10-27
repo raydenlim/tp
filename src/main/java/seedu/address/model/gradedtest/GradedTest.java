@@ -11,16 +11,16 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class GradedTest {
     public static final String MESSAGE_CONSTRAINTS =
             "GradedTest Names should only contain alphanumeric characters and spaces, and it should not be blank";
-    public static final String VALIDATION_REGEX = "Reading Assessment 1:[-\\d]+ \\| Reading Assessment 2:[-\\d]+ \\| "
-            + "MidTerms:[-\\d]+ \\| Finals:[-\\d]+ \\| Practical Exam:[-\\d]+";
+    public static final String VALIDATION_REGEX =
+            "RA1:[-\\d]+ \\| RA2:[-\\d]+ \\| MidTerms:[-\\d]+ \\| Finals:[-\\d]+ \\| PE:[-\\d]+";
 
     public static final String DEFAULT_VALUE = "-";
     // Identity fields
     public final String gradedTestsIndv;
 
     // Data fields
-    private final ReadingAssessment readingAssessment1;
-    private final ReadingAssessment readingAssessment2;
+    private final ReadingAssessment1 readingAssessment1;
+    private final ReadingAssessment2 readingAssessment2;
     private final MidTerms midTerms;
     private final Finals finals;
     private final PracticalExam practicalExam;
@@ -34,7 +34,7 @@ public class GradedTest {
      * @param finals The finals.
      * @param practicalExam The practical exam.
      */
-    public GradedTest(ReadingAssessment readingAssessment1, ReadingAssessment readingAssessment2,
+    public GradedTest(ReadingAssessment1 readingAssessment1, ReadingAssessment2 readingAssessment2,
                       MidTerms midTerms, Finals finals, PracticalExam practicalExam) {
         requireAllNonNull(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
         this.readingAssessment1 = readingAssessment1;
@@ -43,11 +43,11 @@ public class GradedTest {
         this.finals = finals;
         this.practicalExam = practicalExam;
         this.gradedTestsIndv =
-                "Reading Assessment 1:" + readingAssessment1.toString() + " | "
-                + "Reading Assessment 2:" + readingAssessment2.toString() + " | "
+                "RA1:" + readingAssessment1.toString() + " | "
+                + "RA2:" + readingAssessment2.toString() + " | "
                 + "MidTerms:" + midTerms.toString() + " | "
                 + "Finals:" + finals.toString() + " | "
-                + "Practical Exam:" + practicalExam.toString();
+                + "PE:" + practicalExam.toString();
     }
 
     /**
@@ -62,33 +62,35 @@ public class GradedTest {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
         try {
-            String[] components = gradedTestsIndv.split("\\|");
-
-            if (components.length != 5) {
-                throw new ParseException("Invalid GradedTest format. Expected 5 components.");
-            }
-
-            String ra1Score = components[0].replaceAll("Reading Assessment 1:", "").trim();
-            String ra2Score = components[1].replaceAll("Reading Assessment 2:", "").trim();
-            String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
-            String finalsScore = components[3].replaceAll("Finals:", "").trim();
-            String peScore = components[4].replaceAll("Practical Exam:", "").trim();
-
-            this.readingAssessment1 = new ReadingAssessment(ra1Score);
-            this.readingAssessment2 = new ReadingAssessment(ra2Score);
-            this.midTerms = new MidTerms(midTermsScore);
-            this.finals = new Finals(finalsScore);
-            this.practicalExam = new PracticalExam(peScore);
+            this.readingAssessment1 = new ReadingAssessment1(parseGradedTest(gradedTestsIndv)[0]);
+            this.readingAssessment2 = new ReadingAssessment2(parseGradedTest(gradedTestsIndv)[1]);
+            this.midTerms = new MidTerms(parseGradedTest(gradedTestsIndv)[2]);
+            this.finals = new Finals(parseGradedTest(gradedTestsIndv)[3]);
+            this.practicalExam = new PracticalExam(parseGradedTest(gradedTestsIndv)[4]);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ReadingAssessment getRA1() {
+    private String[] parseGradedTest(String gradedTestsIndv) throws ParseException {
+        String[] components = gradedTestsIndv.split("\\|");
+
+        if (components.length != 5) {
+            throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+        }
+        String ra1Score = components[0].replaceAll("RA1:", "").trim();
+        String ra2Score = components[1].replaceAll("RA2:", "").trim();
+        String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
+        String finalsScore = components[3].replaceAll("Finals:", "").trim();
+        String peScore = components[4].replaceAll("PE:", "").trim();
+        return new String[]{ra1Score, ra2Score, midTermsScore, finalsScore, peScore};
+    }
+
+    public ReadingAssessment1 getRA1() {
         return readingAssessment1;
     }
 
-    public ReadingAssessment getRA2() {
+    public ReadingAssessment2 getRA2() {
         return readingAssessment2;
     }
 
@@ -165,12 +167,11 @@ public class GradedTest {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("Reading Assessment 1", readingAssessment1)
-                .add("Reading Assessment 2", readingAssessment2)
+                .add("RA1", readingAssessment1)
+                .add("RA2", readingAssessment2)
                 .add("MidTerms", midTerms)
                 .add("Finals", finals)
-                .add("Practical Exam", practicalExam)
+                .add("PE", practicalExam)
                 .toString();
     }
-
 }

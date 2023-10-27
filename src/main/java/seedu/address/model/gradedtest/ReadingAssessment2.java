@@ -8,9 +8,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * A Reading Assessment result is a positive number that indicates the score achieved in the assessment.
  * The result can be an integer or a decimal number.
  */
-public class ReadingAssessment {
+public class ReadingAssessment2 {
     public static final String MESSAGE_CONSTRAINTS =
-            "Scores should be a positive number";
+            "Reading Assessment 2 scores should be a positive number";
     public static final String VALIDATION_REGEX = "(?:-|\\d+(\\.\\d+)?)";
 
     public final String value;
@@ -20,7 +20,7 @@ public class ReadingAssessment {
      *
      * @param raResult A valid raResult number.
      */
-    public ReadingAssessment(String raResult) {
+    public ReadingAssessment2(String raResult) {
         requireNonNull(raResult);
         checkArgument(isValidRaResult(raResult), MESSAGE_CONSTRAINTS);
         this.value = raResult;
@@ -48,11 +48,11 @@ public class ReadingAssessment {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof ReadingAssessment)) {
+        if (!(other instanceof ReadingAssessment2)) {
             return false;
         }
 
-        ReadingAssessment otherRA = (ReadingAssessment) other;
+        ReadingAssessment2 otherRA = (ReadingAssessment2) other;
         return value.equals(otherRA.value);
     }
 

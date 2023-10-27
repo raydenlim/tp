@@ -18,7 +18,8 @@ import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -268,14 +269,14 @@ public class ParserUtil {
                 throw new ParseException("Invalid GradedTest format. Expected 5 components.");
             }
 
-            String ra1Score = components[0].replaceAll("Reading Assessment 1:", "").trim();
-            String ra2Score = components[1].replaceAll("Reading Assessment 2:", "").trim();
+            String ra1Score = components[0].replaceAll("RA1:", "").trim();
+            String ra2Score = components[1].replaceAll("RA2:", "").trim();
             String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
             String finalsScore = components[3].replaceAll("Finals:", "").trim();
-            String peScore = components[4].replaceAll("Practical Exam:", "").trim();
+            String peScore = components[4].replaceAll("PE:", "").trim();
 
-            ReadingAssessment readingAssessment1 = new ReadingAssessment(ra1Score);
-            ReadingAssessment readingAssessment2 = new ReadingAssessment(ra2Score);
+            ReadingAssessment1 readingAssessment1 = new ReadingAssessment1(ra1Score);
+            ReadingAssessment2 readingAssessment2 = new ReadingAssessment2(ra2Score);
             MidTerms midTerms = new MidTerms(midTermsScore);
             Finals finals = new Finals(finalsScore);
             PracticalExam practicalExam = new PracticalExam(peScore);
@@ -307,13 +308,28 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static ReadingAssessment parseReadingAssessment(String name) throws ParseException {
+    public static ReadingAssessment1 parseReadingAssessment1(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!ReadingAssessment.isValidRaResult(trimmedName)) {
-            throw new ParseException(ReadingAssessment.MESSAGE_CONSTRAINTS);
+        if (!ReadingAssessment1.isValidRaResult(trimmedName)) {
+            throw new ParseException(ReadingAssessment1.MESSAGE_CONSTRAINTS);
         }
-        return new ReadingAssessment(trimmedName);
+        return new ReadingAssessment1(trimmedName);
+    }
+
+    /**
+     * Parses a {@code String readingAssessment} into a {@code readingAssessment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static ReadingAssessment2 parseReadingAssessment2(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!ReadingAssessment1.isValidRaResult(trimmedName)) {
+            throw new ParseException(ReadingAssessment1.MESSAGE_CONSTRAINTS);
+        }
+        return new ReadingAssessment2(trimmedName);
     }
 
     /**
