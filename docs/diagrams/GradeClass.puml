@@ -20,4 +20,5 @@ class Grade {
 +getIsGraded(): boolean
 +ungrade(): Grade
 }
+
 @enduml

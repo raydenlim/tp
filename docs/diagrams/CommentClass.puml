@@ -17,4 +17,5 @@ class Comment {
 +getIsCommented(): boolean
 +toString(): String
 }
+
 @enduml
