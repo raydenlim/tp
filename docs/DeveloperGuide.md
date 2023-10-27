@@ -422,14 +422,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Grade an assignment**
+**Use case: Edit grade of an assignment**
 
 **MSS**
 
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
-3.  User requests to grade an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. assigns given grade to the student's assignment
+3.  User requests to edit the grade of an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. edits grade of the student's assignment
 
     Use case ends.
 
@@ -492,14 +492,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Comment on an assignment**
+**Use case: Edit comment on an assignment**
 
 **MSS**
 
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
-3.  User requests to comment on an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. assigns given comment to the student's assignment
+3.  User requests to edit comment on an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. edits the comment of the student's assignment
 
     Use case ends.
 
