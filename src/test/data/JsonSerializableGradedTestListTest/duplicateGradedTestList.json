@@ -1,15 +1,15 @@
 {
   "gradedTests": [ {
-    "Reading Assessment 1": "-",
-    "Reading Assessment 2": "-",
+    "RA1": "-",
+    "RA2": "-",
     "MidTerms": "1",
     "Finals": "100",
-    "Practical Exam": "20.0"
+    "PE": "20.0"
   }, {
-    "Reading Assessment 1": "-",
-    "Reading Assessment 2": "-",
+    "RA1": "-",
+    "RA2": "-",
     "MidTerms": "1",
     "Finals": "100",
-    "Practical Exam": "20.0"
+    "PE": "20.0"
   } ]
 }

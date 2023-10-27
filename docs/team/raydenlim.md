@@ -12,10 +12,10 @@ title: "Jian Song (rayden)'s Project Portfolio Page"
 **QNS :** Why did the programmer constantly run into bugs? <br>
 **ANS :** Because he used light mode, and bugs are attracted to the light.
 
-### Project: FAKEJARVIS
+### Project: F.A.K.E.J.A.R.V.I.S.
 ![Logo](images/fakejarvis.png)
 
-FAKEJARVIS is a brownfield project built on Address Book 3 (AB3), with the intention to help CS1101S Avengers manage their Teaching Assistant (TA) duties.
+F.A.K.E.J.A.R.V.I.S. is a brownfield project built on Address Book 3 (AB3), with the intention to help CS1101S Avengers manage their Teaching Assistant (TA) duties.
 
 Given below are my contributions to the project.
 

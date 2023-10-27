@@ -8,7 +8,8 @@ import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 
 
 /**
@@ -27,11 +28,11 @@ class JsonAdaptedGradedTest {
      * Constructs a {@code JsonAdaptedGradedTest} with the given gradedTest details
      */
     @JsonCreator
-    public JsonAdaptedGradedTest(@JsonProperty("Reading Assessment 1") String readingAssessment1,
-                                 @JsonProperty("Reading Assessment 2") String readingAssessment2,
+    public JsonAdaptedGradedTest(@JsonProperty("RA1") String readingAssessment1,
+                                 @JsonProperty("RA2") String readingAssessment2,
                                  @JsonProperty("MidTerms") String midTerms,
                                  @JsonProperty("Finals") String finals,
-                                 @JsonProperty("Practical Exam") String practicalExam) {
+                                 @JsonProperty("PE") String practicalExam) {
         this.readingAssessment1 = readingAssessment1;
         this.readingAssessment2 = readingAssessment2;
         this.midTerms = midTerms;
@@ -58,21 +59,21 @@ class JsonAdaptedGradedTest {
     public GradedTest toModelType() throws IllegalValueException {
         if (readingAssessment1 == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ReadingAssessment.class.getSimpleName()));
+                    ReadingAssessment1.class.getSimpleName()));
         }
-        if (!ReadingAssessment.isValidRaResult(readingAssessment1)) {
-            throw new IllegalValueException(ReadingAssessment.MESSAGE_CONSTRAINTS);
+        if (!ReadingAssessment1.isValidRaResult(readingAssessment1)) {
+            throw new IllegalValueException(ReadingAssessment1.MESSAGE_CONSTRAINTS);
         }
-        final ReadingAssessment modelRA1 = new ReadingAssessment(readingAssessment1);
+        final ReadingAssessment1 modelRA1 = new ReadingAssessment1(readingAssessment1);
 
         if (readingAssessment2 == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ReadingAssessment.class.getSimpleName()));
+                    ReadingAssessment1.class.getSimpleName()));
         }
-        if (!ReadingAssessment.isValidRaResult(readingAssessment2)) {
-            throw new IllegalValueException(ReadingAssessment.MESSAGE_CONSTRAINTS);
+        if (!ReadingAssessment1.isValidRaResult(readingAssessment2)) {
+            throw new IllegalValueException(ReadingAssessment1.MESSAGE_CONSTRAINTS);
         }
-        final ReadingAssessment modelRA2 = new ReadingAssessment(readingAssessment2);
+        final ReadingAssessment2 modelRA2 = new ReadingAssessment2(readingAssessment2);
 
         if (midTerms == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

@@ -11,7 +11,8 @@ import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 import seedu.address.testutil.TypicalGradedTest;
 
 public class JsonAdaptedGradedTestTest {
@@ -21,8 +22,8 @@ public class JsonAdaptedGradedTestTest {
                 "80", "90", "-", "85", "-");
 
         GradedTest gradedTest = jsonAdaptedGradedTest.toModelType();
-        ReadingAssessment ra1 = new ReadingAssessment("80");
-        ReadingAssessment ra2 = new ReadingAssessment("90");
+        ReadingAssessment1 ra1 = new ReadingAssessment1("80");
+        ReadingAssessment2 ra2 = new ReadingAssessment2("90");
         MidTerms midTerms = new MidTerms("-");
         Finals finals = new Finals("85");
         PracticalExam pe = new PracticalExam("-");

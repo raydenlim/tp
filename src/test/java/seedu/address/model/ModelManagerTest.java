@@ -323,7 +323,6 @@ public class ModelManagerTest {
         String[] gradedTestKeywords = GT1.getGradedTests().toString().split("\\s+");
         modelManager.updateFilteredGradedTestList(
                 new GradedTestNameContainsKeywordsPredicate(Arrays.asList(gradedTestKeywords)));
-        System.out.println(GT1.getGradedTests());
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs,
                 new TaskListBook(), new SessionListBook(), new ConsultationListBook(), new GradedTestListBook())));
 
