@@ -88,7 +88,7 @@ public class ConsultationListTest {
         assertEquals(consultations, sameConsultations);
 
         // Object of different class -> returns false
-        assertFalse(consultations.equals(new Integer(1)));
+        assertFalse(consultations.equals(1));
     }
 
     @Test

@@ -54,7 +54,7 @@ public class ConsultationListBookTest {
         assertEquals(consultationListBook, consultationListBook);
 
         // Other class objects not equals to ConsultationListBook
-        assertFalse(consultationListBook.equals(new Integer(1)));
+        assertFalse(consultationListBook.equals(1));
 
         // ConsultationListBook with different data should not be equal
         ConsultationListBook other = new ConsultationListBook();
