@@ -497,8 +497,8 @@ Parameters:
 
 Examples:
 * `addconsult d/2023-10-30 t/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
-* `addconsult d/2023-09-30 t/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar
-  , Rayson and Wesley on 2023-09-30 15:30.
+* `addconsult d/2023-09-30 t/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo
+  Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
 ### 👀Showing list of consultations: `showconsults`

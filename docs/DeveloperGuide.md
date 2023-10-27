@@ -179,7 +179,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 
 
 ### GradedTest
-The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes
+The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes 
 features such as creating and updating graded test scores.
 
 #### The GradedTest class
@@ -209,7 +209,6 @@ This section explains the general implementation of all commands.
 Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
 
 ![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
-
 
 ### \[Proposed\] Undo/redo feature
 
