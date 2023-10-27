@@ -264,7 +264,7 @@ have a set of getter methods that corresponds to those fields.
 
 Below is a class diagram describing the implementation of `Task` and its respective fields.
 
-![GradedTest Class UML](images/GradedTestClassDiagram.png)
+![GradedTest Class UML](images/GradedTest UML.png)
 
 #### Design Considerations:
 **Aspect: How to represent the scores of individuals:**
