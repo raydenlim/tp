@@ -10,15 +10,18 @@ import java.util.regex.Pattern;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.AddToConsultCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteCommentCommand;
 import seedu.address.logic.commands.DeleteConsultationCommand;
 import seedu.address.logic.commands.DeleteGradeCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.EditCommentCommand;
 import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -28,6 +31,7 @@ import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
 import seedu.address.logic.commands.ViewAttendanceCommand;
+import seedu.address.logic.commands.ViewTasksCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -86,6 +90,8 @@ public class AddressBookParser {
         case AddTaskCommand.COMMAND_WORD:
             return new AddTaskCommandParser().parse(arguments);
 
+        case ViewTasksCommand.COMMAND_WORD:
+            return new ViewTasksCommandParser().parse(arguments);
 
         case DeleteTaskCommand.COMMAND_WORD:
             return new DeleteTaskCommandParser().parse(arguments);
@@ -110,11 +116,20 @@ public class AddressBookParser {
         case CreateSessionCommand.COMMAND_WORD:
             return new CreateSessionCommandParser().parse(arguments);
 
+        case AddToConsultCommand.COMMAND_WORD:
+            return new AddToConsultCommandParser().parse(arguments);
+
         case EditGradeCommand.COMMAND_WORD:
             return new EditGradeCommandParser().parse(arguments);
 
         case DeleteGradeCommand.COMMAND_WORD:
             return new DeleteGradeCommandParser().parse(arguments);
+
+        case EditCommentCommand.COMMAND_WORD:
+            return new EditCommentCommandParser().parse(arguments);
+
+        case DeleteCommentCommand.COMMAND_WORD:
+            return new DeleteCommentCommandParser().parse(arguments);
 
         case TakeAttendanceCommand.COMMAND_WORD:
             return new TakeAttendanceCommandParser().parse(arguments);

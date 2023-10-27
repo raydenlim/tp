@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
@@ -30,11 +32,13 @@ import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteCommentCommand;
 import seedu.address.logic.commands.DeleteConsultationCommand;
 import seedu.address.logic.commands.DeleteGradeCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommentCommand;
 import seedu.address.logic.commands.EditGradeCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -45,6 +49,7 @@ import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand.EditProgressDescriptor;
 import seedu.address.logic.commands.ViewAttendanceCommand;
+import seedu.address.logic.commands.ViewTasksCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -129,6 +134,13 @@ public class AddressBookParserTest {
         DeleteConsultationCommand command = (DeleteConsultationCommand) parser.parseCommand(
                 DeleteConsultationCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased());
         assertEquals(new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION), command);
+    }
+
+    @Test
+    public void parseCommand_viewTasks() throws Exception {
+        assertTrue(parser.parseCommand(ViewTasksCommand.COMMAND_WORD) instanceof ViewTasksCommand);
+        assertTrue(parser.parseCommand(ViewTasksCommand.COMMAND_WORD
+                + " " + TASK_NAME_TASK1) instanceof ViewTasksCommand);
     }
 
     @Test
@@ -217,6 +229,28 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(DeleteGradeCommand.COMMAND_WORD
                 + whiteSpace + personIndex
                 + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteGradeCommand);
+    }
+
+    @Test
+    public void parseCommand_editComment() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String comment = "Good job!";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(EditCommentCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
+                + whiteSpace + PREFIX_COMMENT + comment) instanceof EditCommentCommand);
+    }
+
+    @Test
+    public void parseCommand_deleteComment() throws Exception {
+        String personIndex = "1";
+        String assignmentName = "Finding ELDRIC";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(DeleteCommentCommand.COMMAND_WORD
+                + whiteSpace + personIndex
+                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteCommentCommand);
     }
 
     @Test

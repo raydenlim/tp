@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT1;
-import static seedu.address.testutil.TypicalAssignments.ASSIGNMENT2;
+import static seedu.address.testutil.TypicalComments.COMMENT1;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -33,9 +33,7 @@ import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.testutil.PersonBuilder;
 
-
-
-public class DeleteGradeCommandTest {
+public class DeleteCommentCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new TaskListBook(),
             new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
@@ -46,58 +44,58 @@ public class DeleteGradeCommandTest {
         List<Person> lastShownList = model.getFilteredPersonList();
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
         AssignmentMap assignments =
-            personToEdit.getAllAssignments().createUpdatedMap(ASSIGNMENT1.getName(), ASSIGNMENT1.getGrade());
+                personToEdit.getAllAssignments().createUpdatedMap(ASSIGNMENT1.getName(), COMMENT1);
         personToEdit = new PersonBuilder(personToEdit, assignments).build();
         model.setPerson(model.getFilteredPersonList().get(0), personToEdit);
 
 
         AssignmentName assignmentName = ASSIGNMENT1.getName();
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(targetIndex, assignmentName);
-        Person editedPerson = deleteGradeCommand.createUngradedPerson(personToEdit);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(targetIndex, assignmentName);
+        Person editedPerson = deleteCommentCommand.createRemovedCommentPerson(personToEdit);
 
-        String expectedMessage = String.format(DeleteGradeCommand.MESSAGE_SUCCESS, assignmentName);
+        String expectedMessage = String.format(DeleteCommentCommand.MESSAGE_SUCCESS, assignmentName);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
                 new UserPrefs(), new TaskListBook(), new SessionListBook(),
                 new ConsultationListBook(), new GradedTestListBook());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
-        assertCommandSuccess(deleteGradeCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteCommentCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidAssignment_failure() {
         AssignmentName assignmentName = new AssignmentName(INVALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
 
-        assertCommandFailure(deleteGradeCommand, model, AssignmentName.MESSAGE_CONSTRAINTS);
+        assertCommandFailure(deleteCommentCommand, model, AssignmentName.MESSAGE_CONSTRAINTS);
     }
 
     @Test
-    public void execute_ungradedAssignment_failure() {
+    public void execute_noCommentAssignment_failure() {
         Index targetIndex = INDEX_FIRST_PERSON;
         List<Person> lastShownList = model.getFilteredPersonList();
         Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
 
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(targetIndex, assignmentName);
-        Person editedPerson = deleteGradeCommand.createUngradedPerson(personToEdit);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(targetIndex, assignmentName);
+        Person editedPerson = deleteCommentCommand.createRemovedCommentPerson(personToEdit);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
                 new UserPrefs(), new TaskListBook(), new SessionListBook(),
                 new ConsultationListBook(), new GradedTestListBook());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedPerson);
 
-        assertCommandFailure(deleteGradeCommand, model, DeleteGradeCommand.MESSAGE_CONSTRAINT);
+        assertCommandFailure(deleteCommentCommand, model, DeleteCommentCommand.MESSAGE_CONSTRAINT);
     }
 
     @Test
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(outOfBoundIndex, assignmentName);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(outOfBoundIndex, assignmentName);
 
-        assertCommandFailure(deleteGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommentCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     /**
@@ -111,43 +109,45 @@ public class DeleteGradeCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(outOfBoundIndex, assignmentName);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(outOfBoundIndex, assignmentName);
 
-        assertCommandFailure(deleteGradeCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommentCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
     public void equal_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
 
-        assertEquals(deleteGradeCommand, deleteGradeCommand);
+        assertEquals(deleteCommentCommand, deleteCommentCommand);
     }
 
     @Test
     public void equals_differentObjectType_failure() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
+        DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
 
-        assertFalse(deleteGradeCommand.equals(assignmentName));
+        assertFalse(deleteCommentCommand.equals(5));
     }
 
     @Test
     public void equals_differentObjectSameContent_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
-        DeleteGradeCommand deleteGradeCommandFirst = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
-        DeleteGradeCommand deleteGradeCommandSecond = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
+        DeleteCommentCommand deleteCommentCommandFirst = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
+        DeleteCommentCommand deleteCommentCommandSecond = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
 
-        assertEquals(deleteGradeCommandFirst, deleteGradeCommandSecond);
+        assertEquals(deleteCommentCommandFirst, deleteCommentCommandSecond);
     }
 
     @Test
     public void equals_differentObjectDifferentContent_failure() {
-        AssignmentName assignmentNameFirst = new AssignmentName(ASSIGNMENT1.getName().toString());
-        AssignmentName assignmentNameSecond = new AssignmentName(ASSIGNMENT2.getName().toString());
-        DeleteGradeCommand deleteGradeCommandFirst = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentNameFirst);
-        DeleteGradeCommand deleteGradeCommandSecond = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentNameSecond);
+        AssignmentName assignmentNameFirst = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        AssignmentName assignmentNameSecond = ASSIGNMENT1.getName();
+        DeleteCommentCommand deleteCommentCommandFirst =
+            new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentNameFirst);
+        DeleteCommentCommand deleteCommentCommandSecond =
+            new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentNameSecond);
 
-        assertFalse(deleteGradeCommandFirst.equals(deleteGradeCommandSecond));
+        assertFalse(deleteCommentCommandFirst.equals(deleteCommentCommandSecond));
     }
 }
