@@ -5,7 +5,7 @@ class Person {
 }
 
 class GradedTest {
-    - gradedTestIndv: String
+    + gradedTestIndv: String
     - readingAssessment1: ReadingAssessment1
     - readingAssessment2: ReadingAssessment2
     - midTerms: MidTerms
@@ -25,43 +25,33 @@ class GradedTest {
 }
 
 class ReadingAssessment1 {
-    - value: String
+    + value: String
     + ReadingAssessment1(raResult: String)
     + isValidRaResult(test: String)
-    + toString(): String
-    + hashCode(): int
 }
 
 class ReadingAssessment2 {
-    - value: String
+    + value: String
     + ReadingAssessment2(raResult: String)
     + isValidRaResult(test: String)
-    + toString(): String
-    + hashCode(): int
 }
 
 class MidTerms {
-    - value: String
+    + value: String
     + MidTerms(midTermResults: String)
     + isValidMidTermResult(test: String)
-    + toString(): String
-    + hashCode(): int
 }
 
 class Finals {
-    - value: String
+    + value: String
     + Finals(finalResults: String)
     + isValidFinalsResult(test: String)
-    + toString(): String
-    + hashCode(): int
 }
 
 class PracticalExam {
-    - value: String
+    + value: String
     + Finals(peResults: String)
     + isValidPeResult(test: String)
-    + toString(): String
-    + hashCode(): int
 }
 
 
