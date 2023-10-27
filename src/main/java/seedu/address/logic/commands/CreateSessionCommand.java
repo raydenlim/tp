@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
-import static seedu.address.storage.JsonSerializableSessionList.MESSAGE_DUPLICATE_SESSION;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,6 +35,7 @@ public class CreateSessionCommand extends Command {
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student match given name(s)";
+    public static final String MESSAGE_DUPLICATE_SESSION = "Session list contains duplicate session(s).";
 
     private SessionNumber sessionNumber;
     private Set<Name> names;

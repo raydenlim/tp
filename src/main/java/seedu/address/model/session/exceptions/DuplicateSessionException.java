@@ -9,7 +9,7 @@ public class DuplicateSessionException extends RuntimeException {
      * Constructs a DuplicateSessionException with a default error message.
      */
     public DuplicateSessionException() {
-        super("Operation would result in duplicate sessions");
+        super("Session list contains duplicate session(s).");
     }
 
     // You can also add additional constructors or methods if needed

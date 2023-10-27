@@ -3,6 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CreateSessionCommand.MESSAGE_DUPLICATE_SESSION;
+import static seedu.address.logic.commands.CreateSessionCommand.MESSAGE_PERSON_NOT_FOUND;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.HashSet;
@@ -68,7 +70,22 @@ public class CreateSessionCommandTest {
 
         Set<Name> studentNames = new HashSet<>();
         CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), studentNames);
-        assertThrows(CommandException.class, () -> command.execute(model));
+        assertThrows(CommandException.class, MESSAGE_DUPLICATE_SESSION, () -> command.execute(model));
+    }
+
+    @Test
+    public void execute_createSessionWithoutExistingStudent_throwsCommandException() throws CommandException {
+        Model model = new ModelManager();
+        Session initialSession = new SessionBuilder().withSessionNumber("1").build();
+        Person alice = new PersonBuilder().withName("Alice").build();
+        model.addSession(initialSession);
+        model.addPerson(alice);
+
+        Set<Name> studentNames = new HashSet<>();
+        // Bob is not an existing student in the model
+        studentNames.add(new Name("Bob"));
+        CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), studentNames);
+        assertThrows(CommandException.class, MESSAGE_PERSON_NOT_FOUND, () -> command.execute(model));
     }
 
 
