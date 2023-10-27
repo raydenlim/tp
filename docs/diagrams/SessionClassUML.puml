@@ -7,8 +7,6 @@ class Session {
   + getSessionRemark(): SessionRemark
   + isSameSession(Session): boolean
   + getSessionInfo(): String
-  + hashCode(): int
-  + toString(): String
 }
 
 class SessionNumber {
@@ -16,8 +14,6 @@ class SessionNumber {
   + <u>MESSAGE_CONSTRAINTS: String
   + <u>VALIDATION_REGEX: String
   + <u>isValidSessionNumber(String): boolean
-  + hashCode(): int
-  + toString(): String
 }
 
 class SessionStudents {
@@ -29,8 +25,6 @@ class SessionStudents {
   + getStudents(): SessionStudents
   + toStudentNames(): String
   + contains(Person): boolean
-  + hashCode(): int
-  + toString(): String
 }
 
 class SessionRemark {
@@ -38,8 +32,6 @@ class SessionRemark {
   + <u>MESSAGE_CONSTRAINTS: String
   + <u>VALIDATION_REGEX: String
   + <u>isValidSessionRemark(String): boolean
-  + hashCode(): int
-  + toString(): String
 }
 
 class Person {

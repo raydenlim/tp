@@ -172,8 +172,6 @@ The Session class also provides a set of getter methods that enable access to th
 
 Below is a class diagram describing the implementation of `Session` and its respective fields.
 
-###### NEED TO ADD CLASS DIAGRAM
-
 ![Session Class UML](images/SessionClassUML.png)
 
 ### Design Considerations:
