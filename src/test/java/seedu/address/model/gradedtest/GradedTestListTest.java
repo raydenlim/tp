@@ -60,6 +60,23 @@ public class GradedTestListTest {
     }
 
     @Test
+    public void editGradedTest_throwsExceptionsForNullArguments() {
+        gradedTestList.add(GT1);
+        GradedTest target = GT2;
+        GradedTest editedGradedTest = GT3;
+        gradedTestList.add(target);
+
+        // Test for null arguments
+        assertThrows(NullPointerException.class, () -> {
+            gradedTestList.editGradedTest(target, null);
+        });
+
+        assertThrows(NullPointerException.class, () -> {
+            gradedTestList.editGradedTest(null, editedGradedTest);
+        });
+    }
+
+    @Test
     public void editGradedTest_targetGradedTestNotInList_throwsGradedTestNotFoundException() {
         assertThrows(GradedTestNotFoundException.class, () -> gradedTestList.editGradedTest(GT1, GT1));
     }
@@ -82,7 +99,63 @@ public class GradedTestListTest {
         assertTrue(expectedGradedTestList.equals(gradedTestList));
     }
 
+    @Test
+    public void editGradedTest_throwsGradedTestNotFoundException1() {
+        gradedTestList.add(GT1);
+        GradedTest target = GT2;
+        GradedTest editedGradedTest = GT3;
 
+        // Test the GradedTestNotFoundException
+        assertThrows(GradedTestNotFoundException.class, () -> {
+            gradedTestList.editGradedTest(target, editedGradedTest);
+        });
+    }
+
+    @Test
+    public void editGradedTest_throwsGradedTestNotFoundException2() {
+        // Create a GradedTestList instance and add some initial data
+        gradedTestList.add(GT1);
+        gradedTestList.add(GT2);
+        GradedTest target = GT3;
+        GradedTest editedGradedTest = GT2;
+
+        // Test the GradedTestNotFoundException
+        // target instance not added into gradedTestList
+        assertThrows(GradedTestNotFoundException.class, () -> {
+            gradedTestList.editGradedTest(target, editedGradedTest);
+        });
+    }
+
+    @Test
+    public void editGradedTest_throwsDuplicateGradedTestException1() {
+        // Create a GradedTestList instance and add some initial data
+        gradedTestList.add(GT1);
+        GradedTest target = GT2;
+        GradedTest editedGradedTest = GT1;
+
+        // Add the target to the list and also add the editedGradedTest
+        gradedTestList.add(target);
+
+        // Test the DuplicateGradedTestException
+        assertThrows(DuplicateGradedTestException.class, () -> {
+            gradedTestList.editGradedTest(target, editedGradedTest);
+        });
+    }
+
+    @Test
+    public void editGradedTest_throwsDuplicateGradedTestException2() {
+        // Create a GradedTestList instance and add some initial data
+        gradedTestList.add(GT1);
+        gradedTestList.add(GT2);
+        GradedTest target = GT3;
+        gradedTestList.add(target);
+        GradedTest editedGradedTest = GT2;
+
+        // Test the DuplicateGradedTestException
+        assertThrows(DuplicateGradedTestException.class, () -> {
+            gradedTestList.editGradedTest(target, editedGradedTest);
+        });
+    }
 
     @Test
     public void setGradedTest_editedGradedTestHasNonUniqueIdentity_throwsDuplicateGradedTestException() {

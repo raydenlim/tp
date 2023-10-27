@@ -43,6 +43,46 @@ public class GradedTestNameContainsKeywordsPredicateTest {
     }
 
     @Test
+    public void equals_sameInstance_returnsTrue() {
+        GradedTestNameContainsKeywordsPredicate predicate =
+                new GradedTestNameContainsKeywordsPredicate(List.of("keyword"));
+        assertTrue(predicate.equals(predicate));
+    }
+
+    @Test
+    public void equals_mainCase_returnsTrue() {
+        GradedTestNameContainsKeywordsPredicate predicate1 =
+                new GradedTestNameContainsKeywordsPredicate(List.of("keyword"));
+        GradedTestNameContainsKeywordsPredicate predicate2 =
+                new GradedTestNameContainsKeywordsPredicate(List.of("keyword"));
+        assertTrue(predicate1.equals(predicate2));
+    }
+
+    @Test
+    public void equals_mainCase_returnsFalse() {
+        GradedTestNameContainsKeywordsPredicate predicate1 =
+                new GradedTestNameContainsKeywordsPredicate(List.of("keyword"));
+        GradedTestNameContainsKeywordsPredicate predicate2 =
+                new GradedTestNameContainsKeywordsPredicate(List.of("differentKeyword"));
+        assertFalse(predicate1.equals(predicate2));
+    }
+
+    @Test
+    public void equals_null_returnsFalse() {
+        GradedTestNameContainsKeywordsPredicate predicate =
+                new GradedTestNameContainsKeywordsPredicate(List.of("keyword"));
+        assertFalse(predicate.equals(null));
+    }
+
+    @Test
+    public void equals_differentType_returnsFalse() {
+        GradedTestNameContainsKeywordsPredicate predicate =
+                new GradedTestNameContainsKeywordsPredicate(List.of("keyword"));
+        String notAPredicate = "notAPredicate";
+        assertFalse(predicate.equals(notAPredicate));
+    }
+
+    @Test
     public void test_gradedTestContainsKeywords_returnsTrue() {
         // One keyword
         GradedTestNameContainsKeywordsPredicate predicate =

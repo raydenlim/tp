@@ -16,7 +16,7 @@ public class TypicalConsultations {
     public static final Consultation CONSULTATION1 = new ConsultationBuilder()
             .withDate("11/11/2002")
             .withTime("10:00")
-            .withStudents(TypicalPersons.AMY)
+            .withStudents(TypicalPersons.FIONA)
             .build();
 
     public static final Consultation CONSULTATION2 = new ConsultationBuilder()
@@ -28,13 +28,19 @@ public class TypicalConsultations {
     public static final Consultation CONSULTATION3 = new ConsultationBuilder()
             .withDate("03/07/2023")
             .withTime("12:00")
-            .withStudents(TypicalPersons.CARL, TypicalPersons.BOB, TypicalPersons.BENSON)
+            .withStudents(TypicalPersons.CARL, TypicalPersons.FIONA, TypicalPersons.BENSON)
             .build();
 
     public static final Consultation CONSULTATION4 = new ConsultationBuilder()
             .withDate("03/03/2023")
             .withTime("13:30")
             .withStudents(TypicalPersons.ELLE)
+            .build();
+
+    public static final Consultation CONSULTATION_UNKNOWN_PERSON = new ConsultationBuilder()
+            .withDate("03/03/2023")
+            .withTime("13:30")
+            .withStudents(TypicalPersons.AMY)
             .build();
 
     private TypicalConsultations() {} // prevents initialising

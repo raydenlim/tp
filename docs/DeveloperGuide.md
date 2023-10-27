@@ -157,6 +157,35 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Sessions
+The Session component consists of the following set of features: Create Session
+
+#### The Session class
+The Session Class encompasses several important attributes:
+* `SessionNumber`: This unique identifier helps distinguish one session from another. It is an integral part of the Session class and is a primary key when searching for or referencing sessions within the system.
+
+* `SessionStudents`: An essential component of every session is the list of students participating. The SessionStudents class keeps track of the students present in a particular session. This class allows for efficient management of attendance records and plays a vital role in generating attendance reports.
+
+* `SessionRemark`: Sometimes, additional information about a session is necessary, such as special instructions, topics covered, or any other relevant remarks. The SessionRemark field offers the flexibility to include such notes.
+
+The Session class also provides a set of getter methods that enable access to these attributes. For instance, you can retrieve the session number, list of students, or session remarks using these methods.
+
+Below is a class diagram describing the implementation of `Session` and its respective fields.
+
+![Session Class UML](images/SessionClassUML.png)
+
+### Design Considerations:
+**Aspect: How the students are added to a session upon initialisation:**
+
+**Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
+- Pros:This choice offers a high degree of flexibility when it comes to adding students to a session. You can add any number of students when creating a session, which is essential for accommodating different class sizes and situations.
+**Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
+- Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach. 
+
+By opting for the current choice (Alternative 1), the implementation remains straightforward and user-friendly, allowing for versatile usage scenarios. It ensures that users can efficiently create sessions and add students to them without unnecessary constraints or complications.
+
+**Key Takeaway:** The chosen approach in the implementation of the `CreateSession` feature prioritises flexibility and ease of use for users, providing a more intuitive experience when managing class sessions and student attendance.
+
 ### Tasks
 The Task component consists of the following set of features: Add Task, Delete Task and Update Progress.
 
@@ -176,6 +205,52 @@ Below is a class diagram describing the implementation of `Task` and its respect
 
 **Alternative 2:** `isDone` Boolean for Task Completion.
 - Cons: Only allows for a binary state, i.e., either the task is done or not.
+
+### Grades
+The Grade component consists of the following set of features: Edit Grade, Delete Grade and View Grade.
+
+#### The Grade class
+The Grade Class is made up of an `actualGrade`, `maxGrade`, `isGraded`, and a set of getter methods that corresponds to most of these fields.
+
+Below is a class diagram describing the implementation of `Grade` and its respective fields.
+
+![Grade Class UML](images/GradeClass UML.png)
+
+#### Design Considerations:
+**Aspect: How the assignment a grade is being given to is determined:**
+
+**Alternative 1 (current choice):** `Grade` is a field in the `Assignment` it is being graded to.
+- Pros: This choice makes it easier to ensure that each assignment only has one grade, and also makes it easier to manage multiple features related to an assignment.
+- Cons: It requires additional time to add a grade to an assignment since the assignment needs to be obtained first.
+
+**Alternative 2:** `Assignment` is a field in the `Grade` being given to it.
+- Cons: It requires more checks to be done to ensure that each assignment only has one Grade.
+
+**Alternative 3:** `Assignment` is a field in the `Grade` being given to it and vice versa.
+- Cons: It increases coupling which increases the dependency of the classes.
+
+### Comments
+The Comment component consists of the following set of features: Edit Comment, Delete Comment and View Comment.
+
+#### The Comment class
+The Comment Class is made up of a `commentBody`, `isCommented`, and a set of getter methods that corresponds to most of these fields.
+
+Below is a class diagram describing the implementation of `Comment` and its respective fields.
+
+![Grade Class UML](images/CommentClass UML.png)
+
+#### Design Considerations:
+**Aspect: How the comment a grade is being given to is determined:**
+
+**Alternative 1 (current choice):** `Comment` is a field in the `Assignment` it is being graded to.
+- Pros: This choice makes it easier to ensure that each assignment only has one comment, and also makes it easier to manage multiple features related to an assignment.
+- Cons: It requires additional time to add a comment to an assignment since the assignment needs to be obtained first.
+
+**Alternative 2:** `Assignment` is a field in the `Comment` being given to it.
+- Cons: It requires more checks to be done to ensure that each assignment only has one Comment.
+
+**Alternative 3:** `Assignment` is a field in the `Comment` being given to it and vice versa.
+- Cons: It increases coupling which increases the dependency of the classes.
 
 
 ### GradedTest
@@ -303,6 +378,32 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Consultations:
+
+The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
+Student to a Consultation.
+
+#### The Consultation Class
+
+The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods
+that corresponds to these fields.
+
+Below is a class diagram describing the implementation of `Consultation` and its respective fields.
+
+<p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
+<p align="center">Consultation Class UML Diagram</p>
+
+### Design Considerations:
+
+**Aspect: How the students are stored to a consultation:**
+
+* **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
+    * Pros: Store only one of the same person, no duplicates.
+    * Cons: May have performance issues in terms of memory usage.
+
+
+* **Alternative 2:** Use ArrayList<Person> to keep track of students.
+    * Cons: We must ensure there are no duplicates with additional checks.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -336,15 +437,17 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                        | So that I can…​                                                        |
-|----------|--------------------------------------------|-------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions              | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person                    |                                                                        |
-| `* * *`  | user                                       | delete a person                     | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name               | locate details of persons without having to go through the entire list |
-| `* * *`  | busy avenger                               | keep track of what needs to be done | better guide my students.                                              |
-| `* *`    | user                                       | hide private contact details        | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                     | So that I can…​                                                        |
+|----------|--------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                           | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                       | add a new person                                 |                                                                        |
+| `* * *`  | user                                       | delete a person                                  | remove entries that I no longer need                                   |
+| `* * *`  | user                                       | find a person by name                            | locate details of persons without having to go through the entire list |
+| `* * *`  | busy avenger                               | keep track of what needs to be done              | better guide my students.                                              |
+| `* * *`  | conscientious avenger                      | view my students' grades for their assignments   | better assess my students' competency.                                 |
+| `* * *`  | caring avenger                             | view my students' comments for their assignments | take note of my students' strengths and weaknesses.                    |
+| `* *`    | user                                       | hide private contact details                     | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book | sort persons by name                             | locate a person easily                                                 |
 
 *{More to be added}*
 
@@ -400,14 +503,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Grade an assignment**
+**Use case: Edit grade of an assignment**
 
 **MSS**
 
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
-3.  User requests to grade an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. assigns given grade to the student
+3.  User requests to edit the grade of an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. edits grade of the student's assignment
 
     Use case ends.
 
@@ -420,6 +523,123 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. The given index is invalid.
 
     * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given grade is invalid.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete the grade of an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to delete the grade of an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. deletes the grade of the student's assignment
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given assignment has not been commented on.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Edit comment on an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to edit comment on an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. edits the comment of the student's assignment
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given comment is invalid.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Delete the comment of an assignment**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to delete the comment of an assignment for a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. deletes the comment of the student's assignment
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The given assignment name is invalid.
+
+    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given assignment has been commented on.
+
+    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case resumes at step 2.
 

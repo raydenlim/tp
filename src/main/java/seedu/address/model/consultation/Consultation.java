@@ -55,9 +55,9 @@ public class Consultation {
         }
 
         return other != null
-                && other.getDate().equals(getDate())
-                && other.getTime().equals(getTime())
-                && other.getStudents().equals(getStudents());
+                && other.getDate().equals(this.getDate())
+                && other.getTime().equals(this.getTime())
+                && other.getStudents().equals(this.getStudents());
     }
 
     public LocalDate getDate() {

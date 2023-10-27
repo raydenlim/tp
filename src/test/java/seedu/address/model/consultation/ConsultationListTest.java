@@ -62,6 +62,20 @@ public class ConsultationListTest {
     }
 
     @Test
+    public void set_targetConsultationNotFound_throwConsultationNotFoundException() {
+        assertThrows(ConsultationNotFoundException.class, () -> consultations
+                .setConsultation(CONSULTATION1, CONSULTATION2));
+    }
+
+    @Test
+    public void set_duplicateConsultation_throwDuplicateConsultationException() {
+        consultations.addConsultation(CONSULTATION1);
+        consultations.addConsultation(CONSULTATION2);
+        assertThrows(DuplicateConsultationException.class, () -> consultations
+                .setConsultation(CONSULTATION2, CONSULTATION1));
+    }
+
+    @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () ->
                 consultations.asUnmodifiableObservableList().remove(0));

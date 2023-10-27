@@ -25,7 +25,7 @@ If you're new to the Command-Line Interface and need assistance, this User Guide
 <page-nav-print />
 
 ### How to use the User Guide
-You may refer to the **Table of Contents** on the right for easy navigation of the User Guide. 
+You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
 
@@ -262,7 +262,7 @@ Views the list of tasks.
 
 Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
-* Only the task name, task description, due date, task priority and task progress are searched. 
+* Only the task name, task description, due date, task priority and task progress are searched.
 * Only one field can be searched at a time.
 * The search is case-insensitive, e.g. `cs2101` will match `CS2101`.
 * The order of the keywords does not matter, e.g. `quant book` will match `book quant`.
@@ -488,7 +488,7 @@ Examples:
 ### 📆Creating a Consult: `createconsult`
 Creates a consultation into upcoming consultations.
 
-Format: `addconsult d/DATE t/TIME n/STUDENT_NAME n/STUDENT_NAME …`
+Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 
 Parameters:
 * DATE The date of consultation
@@ -496,9 +496,9 @@ Parameters:
 * STUDENT_NAME The name of the student(s)
 
 Examples:
-* `addconsult d/2023-10-30 t/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
-* `addconsult d/2023-09-30 t/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo
-  Bar, Rayson and Wesley on 2023-09-30 15:30.
+* `createconsult d/2023-10-30 tt/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
+* `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, 
+Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
 ### 👀Showing list of consultations: `showconsults`
@@ -540,7 +540,7 @@ Parameters:
 Examples:
 * `addtoconsult 2 n/Foo Bar`.
 * `addtoconsult 1 n/Rayson n/Ryan Pang`.
-* `addtoconsult -1 n/Foo Bar`shows an error message “Consultation not found”.
+* `addtoconsult -1 n/Foo Bar`shows an error message.
 
 
 ### ❌Remove students from a consultation: `removefromconsult`

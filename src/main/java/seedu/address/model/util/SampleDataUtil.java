@@ -24,7 +24,8 @@ import seedu.address.model.gradedtest.Finals;
 import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
-import seedu.address.model.gradedtest.ReadingAssessment;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
@@ -46,9 +47,9 @@ import seedu.address.model.task.TaskPriority;
  */
 public class SampleDataUtil {
     public static final String VALID_GRADED_TEST_1 =
-            "Reading Assessment 1:- | Reading Assessment 2:- | MidTerms:3 | Finals:4 | Practical Exam:5";
+            "RA1:- | RA2:- | MidTerms:3 | Finals:4 | PE:5";
     public static final String VALID_GRADED_TEST_2 =
-            "Reading Assessment 1:100 | Reading Assessment 2:100 | MidTerms:100 | Finals:100 | Practical Exam:100";
+            "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
     public static final Person PERSON_ALEX = new Person(new Name("Alex Yeoh"), new Phone("87438807"),
             new Email("alexyeoh@example.com"), new Address("Blk 30 Geylang Street 29, #06-40"),
             getTagSet("friends"), getGradedTestSet(VALID_GRADED_TEST_1));
@@ -113,7 +114,7 @@ public class SampleDataUtil {
 
     public static GradedTest[] getSampleGradedTest() {
         return new GradedTest[] {
-            new GradedTest(new ReadingAssessment("1"), new ReadingAssessment("2"),
+            new GradedTest(new ReadingAssessment1("1"), new ReadingAssessment2("2"),
                     new MidTerms("3"), new Finals("4"), new PracticalExam("5"))
         };
     }

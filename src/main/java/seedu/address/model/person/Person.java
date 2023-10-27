@@ -94,7 +94,6 @@ public class Person {
         return Collections.unmodifiableSet(gradedTests);
     }
 
-
     /**
      * Adds a student to a session and a session to a student.
      *

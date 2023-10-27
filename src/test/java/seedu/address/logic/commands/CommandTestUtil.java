@@ -14,7 +14,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PRACTICAL_EXAM;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT1;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT2;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
@@ -63,9 +64,11 @@ public class CommandTestUtil {
     public static final String VALID_GT_FINALS = "4";
     public static final String VALID_GT_PE = "5";
     public static final String VALID_GRADED_TEST_1 =
-            "Reading Assessment 1:- | Reading Assessment 2:- | MidTerms:3 | Finals:4 | Practical Exam:5";
+            "RA1:- | RA2:- | MidTerms:3 | Finals:4 | PE:5";
     public static final String VALID_GRADED_TEST_2 =
-            "Reading Assessment 1:100 | Reading Assessment 2:100 | MidTerms:100 | Finals:100 | Practical Exam:100";
+            "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
+    public static final String VALID_GRADED_TEST_3 =
+            "RA1:1.0 | RA2:2 | MidTerms:3 | Finals:4 | PE:5";
     public static final String VALID_TASK_NAME = "Do cs2103t";
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
     public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
@@ -100,8 +103,8 @@ public class CommandTestUtil {
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
     public static final String GT_DESC_DEFAULT = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_1;
     public static final String GT_DESC_100 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_2;
-    public static final String GT_DESC_RA1 = " " + PREFIX_READING_ASSESSMENT + VALID_GT_RA1;
-    public static final String GT_DESC_RA2 = " " + PREFIX_READING_ASSESSMENT + VALID_GT_RA2;
+    public static final String GT_DESC_RA1 = " " + PREFIX_READING_ASSESSMENT1 + VALID_GT_RA1;
+    public static final String GT_DESC_RA2 = " " + PREFIX_READING_ASSESSMENT2 + VALID_GT_RA2;
     public static final String GT_DESC_MIDTERMS = " " + PREFIX_MIDTERMS + VALID_GT_MIDTERMS;
     public static final String GT_DESC_FINALS = " " + PREFIX_FINALS + VALID_GT_FINALS;
     public static final String GT_DESC_PE = " " + PREFIX_PRACTICAL_EXAM + VALID_GT_PE;
@@ -122,10 +125,10 @@ public class CommandTestUtil {
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_ASSIGNMENT_DESC = " " + PREFIX_ASSIGNMENT + "Finding BOYD";
 
-    public static final String INVALID_GRADED_TEST_DESC_1 = "Reading Assessment 1:-1 | Reading Assessment 2:0 "
-            + "| MidTerms:0 | Finals:-1 | Practical Exam:0"; // No negative scores
-    public static final String INVALID_GRADED_TEST_DESC_2 = "Reading Assessment 1:0 | Reading Assessment 2:0 "
-            + "| MidTerms:0 | Finals:0 | Practical Exam:*"; // No special char * allowed
+    public static final String INVALID_GRADED_TEST_DESC_1 = "RA1:-1 | RA2:0 "
+            + "| MidTerms:0 | Finals:-1 | PE:0"; // No negative scores
+    public static final String INVALID_GRADED_TEST_DESC_2 = "RA1:0 | RA2:0 "
+            + "| MidTerms:0 | Finals:0 | PE:*"; // No special char * allowed
     public static final String TASK_NAME_TASK1 = " " + PREFIX_TASK_NAME + VALID_TASK_NAME;
     public static final String TASK_DESCRIPTION_TASK1 = " " + PREFIX_TASK_DESCRIPTION + VALID_TASK_DESCRIPTION;
     public static final String TASK_NAME_TASK2 = " " + PREFIX_TASK_NAME + "Read quant guide";
@@ -140,7 +143,7 @@ public class CommandTestUtil {
     public static final String GRADED_TEST_2 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_2;
     public static final String INVALID_GRADED_TEST_1 = " " + PREFIX_GRADED_TEST + INVALID_GRADED_TEST_DESC_1;
     public static final String INVALID_GRADED_TEST_2 = " " + PREFIX_GRADED_TEST + INVALID_GRADED_TEST_DESC_2;
-    public static final String INVALID_RA_TEST = " " + PREFIX_READING_ASSESSMENT + INVALID_GT_RA_DESC;
+    public static final String INVALID_RA_TEST = " " + PREFIX_READING_ASSESSMENT1 + INVALID_GT_RA_DESC;
     public static final String INVALID_MIDTERMS_TEST = " " + PREFIX_MIDTERMS + INVALID_GT_MIDTERMS_DESC;
     public static final String INVALID_FINALS_TEST = " " + PREFIX_FINALS + INVALID_GT_FINALS_DESC;
     public static final String INVALID_PE_TEST = " " + PREFIX_PRACTICAL_EXAM + INVALID_GT_PE_DESC;

@@ -100,13 +100,13 @@ public class MainApp extends Application {
         logger.info("Using task list file : " + storage.getTaskListFilePath());
         logger.info("Using consultation list file : " + storage.getConsultationListFilePath());
         logger.info("Using session list file : " + storage.getSessionListFilePath());
+        logger.info("Using gradedtest list file : " + storage.getGradedTestListFilePath());
 
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
 
         Optional<ReadOnlyTaskList> taskListOptional;
         ReadOnlyTaskList initialTaskList;
-
 
         Optional<ReadOnlyGradedTestList> gradedTestListOptional;
         ReadOnlyGradedTestList initialGradedTestList;
