@@ -19,12 +19,14 @@ F.A.K.E.J.A.R.V.I.S. is a brownfield project built on Address Book 3 (AB3), with
 
 Given below are my contributions to the project.
 
-* **New Feature 1**:
-    * Highlights:
+* **New Features**:
+  * GradedTests
+    * View graded tests of students at a glance.
+    * Dynamically update/edit any graded test scores.
+      <br><br>
+  * Credits:
+    * My last braincell and his friend
 
-    * Credits:
-
-* **New Feature 2**:
 
 * **Code contributed**: [RepoSense link](https://tinyurl.com/CS2103T15raydenlim)
 
@@ -33,12 +35,14 @@ Given below are my contributions to the project.
 * **Enhancements to existing features**:
 
 * **Documentation**:
-    * User Guide:
+  * User Guide:
 
-    * Developer Guide:
+  * Developer Guide:
 
 * **Community**:
 
 * **Tools**:
-
-* _{you can add/remove categories in the list above}_
+  * Jave
+  * IntelliJ
+  * FXML
+  * PlantUML
