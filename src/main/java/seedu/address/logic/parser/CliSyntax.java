@@ -12,10 +12,11 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
     public static final Prefix PREFIX_GRADED_TEST = new Prefix("gt/");
-    public static final Prefix PREFIX_READING_ASSESSMENT = new Prefix("gt/ra/");
-    public static final Prefix PREFIX_MIDTERMS = new Prefix("gt/m/");
-    public static final Prefix PREFIX_FINALS = new Prefix("gt/f/");
-    public static final Prefix PREFIX_PRACTICAL_EXAM = new Prefix("gt/pe/");
+    public static final Prefix PREFIX_READING_ASSESSMENT1 = new Prefix("ra1/");
+    public static final Prefix PREFIX_READING_ASSESSMENT2 = new Prefix("ra2/");
+    public static final Prefix PREFIX_MIDTERMS = new Prefix("mt/");
+    public static final Prefix PREFIX_FINALS = new Prefix("f/");
+    public static final Prefix PREFIX_PRACTICAL_EXAM = new Prefix("pe/");
     public static final Prefix PREFIX_ASSIGNMENT = new Prefix("as/");
     public static final Prefix PREFIX_GRADE = new Prefix("g/");
     public static final Prefix PREFIX_COMMENT = new Prefix("c/");
