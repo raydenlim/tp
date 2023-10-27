@@ -77,7 +77,7 @@ The following describes what each panel contains:
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
+   A GUI similar to the image below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
 
     ![Ui](images/Ui.png)
 
@@ -326,24 +326,23 @@ Examples:
 * `takeattendance n/John Doe s/5 present` Marks John Doe as present on the 5th session.
 * `takeattendance n/Foo Bar s/2 absent` Marks Foo Bar as absent on the 2nd session.
 
-### 👀Viewing attendance: viewattendance
+### 👀Viewing attendance: `viewattendance`
 Views the attendance list
 
-Format: `viewattendance n/STUDENT_NAME s/SESSION`
+Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 Parameters:
-* STUDENT_NAME - The name of the student.
-* SESSION - The session number.
+* STUDENT_NAME - The name of the student you want to view the attendance of.
 
 Examples:
 * `viewattendance` Displays the overall attendance across all students and sessions.
-* `viewattendance n/Rayan` Displays Rayan’s overall attendance.
-* `viewattendance s/3` Displays all students’ attendance for the 3rd session.
+* `viewattendance n/Rayan` Displays all the sessions that Rayan has attended.
+* `viewattendance n/Jayson Resley` Displays all the sessions that Jayson and Resley have attended.
 
-### 🔎Finding a Student: find
+### 🔎Finding a Student: `find`
 Finds a student’s profile
 
-Format: `find n/STUDENT_NAME`
+Format: `find n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 Parameters:
 * STUDENT_NAME - The name of the student you want to find.
@@ -352,7 +351,7 @@ Examples:
 * `find n/John Doe` Finds and displays the profile of students with the name “John Doe”.
 * `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.
 
-### 🥅Filtering results: filter
+### 🥅Filtering results: `filter`
 Filters the results displayed on the dashboard
 
 Format:
@@ -506,7 +505,7 @@ Shows the list of upcoming consultations.
 
 Format: `showconsults`
 
-Examples:
+Example:
 * `showconsults` displays a list of upcoming consultations
 
 
@@ -543,7 +542,7 @@ Examples:
 * `addtoconsult -1 n/Foo Bar`shows an error message.
 
 
-### ❌Remove students from a consultation: `removefromconsult`
+### ❌Removing students from a consultation: `removefromconsult`
 Removes student(s) from a consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
@@ -574,7 +573,7 @@ Examples:
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous F.A.K.E.J.A.R.V.I.S. home folder.
 
 --------------------------------------------------------------------------------------------------------------------
