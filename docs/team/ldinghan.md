@@ -8,9 +8,13 @@ F.A.K.E.J.A.R.V.I.S. is a project to help CS1101S Avengers manage their time and
 
 Below are my contributions to the project:
 
-* **New Features**: To be added
+* **New Features**: 
+* Create session
+* Add remarks to sessions
+* Take attendance of students
+* View attendance of students
 
-* **Code contributed**: To be added
+* **Code contributed**: [RepoSense](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=ldinghan&breakdown=true)
 
 * **Project management**: To be added
 
@@ -26,7 +30,7 @@ Below are my contributions to the project:
 
 * **Review/mentoring contributions**: To be added
 
-* **Tools**: To be added
+* **Tools**: Java, IntelliJ, FXML, PlantUML
 
 * **Contributions beyond the project team**: To be added
 

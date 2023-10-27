@@ -1,14 +1,15 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
 import java.util.Arrays;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.ViewAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Name;
+import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionStudentsContainsKeywordsPredicate;
 
 /**
@@ -28,14 +29,14 @@ public class ViewAttendanceCommandParser implements Parser<ViewAttendanceCommand
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME) || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(
-                    MESSAGE_INVALID_COMMAND_FORMAT, ViewAttendanceCommand.MESSAGE_USAGE));
+        Predicate<Session> predicate = PREDICATE_SHOW_ALL_SESSIONS;
+
+        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            String[] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().split("\\s+");
+            predicate = new SessionStudentsContainsKeywordsPredicate(Arrays.asList(nameKeywords));
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        String[] nameKeywords = name.toString().split("\\s+");
-        return new ViewAttendanceCommand(new SessionStudentsContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new ViewAttendanceCommand(predicate);
     }
 
     /**
