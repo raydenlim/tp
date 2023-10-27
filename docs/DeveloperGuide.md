@@ -179,12 +179,13 @@ Below is a class diagram describing the implementation of `Task` and its respect
 
 
 ### GradedTest
-The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes 
+The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes
 features such as creating and updating graded test scores.
 
 #### The GradedTest class
-The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`, `MidTerms`, `Finals`, and 
-`PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also have a set of getter methods that corresponds to those fields.
+The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`, `MidTerms`, `Finals`, and
+`PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also 
+have a set of getter methods that corresponds to those fields.
 
 Below is a class diagram describing the implementation of `Task` and its respective fields.
 
@@ -195,7 +196,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 
 **Alternative 1 (current choice):** Utilizing `String` for individual graded test score.
 - Pros: This choice offers flexibility in representing graded tests (e.g Default value of `-`).
-- Cons: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average, 
+- Cons: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average,
   highest, lowest score).
 
 **Alternative 2:** Multiple constructors for GradedTest.
