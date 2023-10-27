@@ -26,6 +26,45 @@ If you're new to the CLI and need assistance, don't worry! This UserGuide is you
 <!-- * Table of Contents -->
 <page-nav-print />
 
+### Table of Contents
+
+* [Introduction](#introduction)
+  * [Table of Contents](#table-of-contents) 
+  * [How to use the User Guide](#how-to-use-the-user-guide)
+* [Graphical User Interface](#graphical-user-interface)
+  * [Task Card](#task-card)
+  * [Consultation Card](#consultation-card)
+  * [Session Card](#session-card)
+* [Quick start](#quick-start)
+* [Command Format](#command-format)
+  * [Command Parameters](#command-parameters)
+* [Features](#features)
+  * [Viewing help : `help`](#viewing-help--help)
+  * [Adding a person: `add`](#adding-a-person--add)
+  * [Listing all persons : `list`](#listing-all-persons--list)
+  * [Editing a person : `edit`](#editing-a-person--edit)
+  * [Locating persons by name: `find`](#locating-persons-by-name--find)
+  * [Deleting a person : `delete`](#deleting-a-person--delete)
+  * [Clearing all entries : `clear`](#clearing-all-entries--clear)
+  * [Exiting the program : `exit`](#exiting-the-program--exit)
+  * [Saving the data](#saving-the-data)
+  * [Editing the data file](#editing-the-data-file)
+  * [Archiving data files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+  * [Adding a Task: `addtask`](#adding-a-task--addtask)
+  * [Viewing Tasks: `viewtasks`](#viewing-tasks--viewtasks)
+  * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress--updateprogress)
+  * [Deleting a Task: `deletetask`](#deleting-a-task--deletetask)
+  * [Creating a Consult: `createconsult`](#creating-a-consult--createconsult)
+  * [Showing list of consultations: `showconsults`](#showing-list-of-consultations--showconsults)
+  * [Viewing details of a consultation: `viewconsult`](#viewing-details-of-a-consultation--viewconsult)
+  * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation--addtoconsult)
+  * [Removing students from a consultation: `removefromconsult`](#removing-students-from-a-consultation--removefromconsult)
+  * [Deleting a consultation: `deleteconsult`](#deleting-a-consultation--deleteconsult)
+* [FAQ](#faq)
+* [Known issues](#known-issues)
+* [Command summary](#command-summary)
+
+
 ### How to use the User Guide
 You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
 
@@ -38,6 +77,8 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **Bold text**                                                                       | Highlights important keywords.                                  |
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
+
+--------------------------------------------------------------------------------------------------------------------
 
 
 ## Graphical User Interface
