@@ -405,6 +405,16 @@ Below is a class diagram describing the implementation of `Consultation` and its
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
     * Cons: We must ensure there are no duplicates with additional checks.
 
+**Aspect: Adding students to a new or existing consultation:**
+
+* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student 
+list
+  * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
+  * Cons: Require additional checking to inform exception cases.
+
+* **Alternative 2:** `AddToConsult` directly manipulate the attribute students in a Consultation object.
+  * Cons: Poor abstraction and room for errors.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -446,6 +456,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | busy avenger                               | keep track of what needs to be done              | better guide my students.                                              |
 | `* * *`  | conscientious avenger                      | view my students' grades for their assignments   | better assess my students' competency.                                 |
 | `* * *`  | caring avenger                             | view my students' comments for their assignments | take note of my students' strengths and weaknesses.                    |
+| `* * *`  | user                                       | create a new consultation with students          | keep track of when and with who the consultation is held               |
+| `* * *`  | user                                       | add students to an existing consultation         | invite more students to join a consultation discussion                 |
 | `* *`    | user                                       | hide private contact details                     | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name                             | locate a person easily                                                 |
 
