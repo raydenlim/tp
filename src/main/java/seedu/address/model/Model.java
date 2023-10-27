@@ -115,6 +115,11 @@ public interface Model {
      */
     void addSession(Session session);
 
+    /**
+     * Returns true if a session with the same identity as {@code session} exists in the session list.
+     */
+    boolean hasSession(Session session);
+
     /** Returns an unmodifiable view of the filtered session list */
     ObservableList<Session> getFilteredSessionList();
 

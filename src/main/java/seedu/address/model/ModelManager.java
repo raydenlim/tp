@@ -175,6 +175,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasSession(Session session) {
+        requireNonNull(session);
+        return sessionList.hasSession(session);
+    }
+
+    @Override
     public ReadOnlySessionList getSessionList() {
         return sessionList;
     }

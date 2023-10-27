@@ -125,7 +125,8 @@
           }
         }
       }
-    }]
+    }],
+    "sessionRemark": "Duplicate remark"
   },
     {
       "sessionNumber": "3",
@@ -255,6 +256,7 @@
             }
           }
         }
-      ]
+      ],
+      "sessionRemark": "Duplicate remark"
     }]
 }
