@@ -274,7 +274,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average,
   highest, lowest score).
 
-**Alternative 2:** Multiple constructors for GradedTest.
+**Alternative 2:** Multiple constructors for `GradedTest`.
 - Pros: Provides flexibility in how users can create a `GradedTest` object.
 - Cons: Requires additional parsing. Different constructor will give different error messages.
 
