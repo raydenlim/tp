@@ -155,6 +155,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public void setConsultation(Consultation consultationToAddStudent, Consultation updatedConsultation) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public ReadOnlyConsultationList getConsultationList() {
         throw new AssertionError("This method should not be called.");
     }

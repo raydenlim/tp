@@ -278,6 +278,32 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Consultations:
+
+The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
+Student to a Consultation.
+
+#### The Consultation Class
+
+The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods
+that corresponds to these fields.
+
+Below is a class diagram describing the implementation of `Consultation` and its respective fields.
+
+<p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
+<p align="center">Consultation Class UML Diagram</p>
+
+### Design Considerations:
+
+**Aspect: How the students are stored to a consultation:**
+
+* **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
+    * Pros: Store only one of the same person, no duplicates.
+    * Cons: May have performance issues in terms of memory usage.
+
+
+* **Alternative 2:** Use ArrayList<Person> to keep track of students.
+    * Cons: We must ensure there are no duplicates with additional checks.
 
 --------------------------------------------------------------------------------------------------------------------
 

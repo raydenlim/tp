@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
@@ -80,6 +81,18 @@ public class ConsultationListBook implements ReadOnlyConsultationList {
     }
 
     /**
+     * Replaces the given consultation {@code target} in the list with {@code updatedConsultation}.
+     * {@code target} must exist in the consultation list.
+     * The consultation identity of {@code updatedConsultation} must not be the same as another existing consultation
+     * in the consultation list.
+     */
+    public void setConsultation(Consultation target, Consultation updatedConsultation) {
+        requireAllNonNull(target, updatedConsultation);
+
+        consultationList.setConsultation(target, updatedConsultation);
+    }
+
+    /**
      * Returns an observable list of consultations from the ConsultationListBook.
      *
      * @return An unmodifiable observable list of consultations.
@@ -101,6 +114,5 @@ public class ConsultationListBook implements ReadOnlyConsultationList {
         ConsultationListBook otherConsultationList = (ConsultationListBook) other;
         return consultationList.equals(otherConsultationList.consultationList);
     }
-
 
 }
