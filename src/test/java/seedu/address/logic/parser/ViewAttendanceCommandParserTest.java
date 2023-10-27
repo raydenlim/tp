@@ -1,7 +1,8 @@
 package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +45,8 @@ public class ViewAttendanceCommandParserTest {
     }
 
     @Test
-    public void parse_missingNamePrefix_throwsParseException() {
-        String invalidArgs = "John Doe";
-        assertThrows(ParseException.class, () -> parser.parse(invalidArgs));
-    }
-
-    @Test
-    public void parse_emptyName_throwsParseException() {
-        String invalidArgs = " n/";
-        assertThrows(ParseException.class, () -> parser.parse(invalidArgs));
+    public void parse_emptyArg_success() {
+        ViewAttendanceCommand expectedCommand = new ViewAttendanceCommand(PREDICATE_SHOW_ALL_SESSIONS);
+        assertParseSuccess(parser, "     ", expectedCommand);
     }
 }
