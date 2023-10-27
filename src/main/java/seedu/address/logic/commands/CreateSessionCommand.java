@@ -120,18 +120,8 @@ public class CreateSessionCommand extends Command {
         }
 
         CreateSessionCommand otherCreateSessionCommand = (CreateSessionCommand) other;
-        if (names != null && otherCreateSessionCommand.names != null) {
-            // Compare when both 'names' are not null
-            return this.names.equals(otherCreateSessionCommand.names)
-                    && this.sessionNumber.equals(otherCreateSessionCommand.sessionNumber);
-        } else if (names == null && otherCreateSessionCommand.names == null) {
-            // Compare when both 'names' are null
-            return this.sessionNumber.equals(otherCreateSessionCommand.sessionNumber);
-        } else {
-            // 'names' is null in one of the objects
-            return false;
-        }
-
+        return this.sessionNumber.equals(otherCreateSessionCommand.sessionNumber)
+                && this.names.equals(otherCreateSessionCommand.names);
     }
 
     /**

@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +18,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.SessionBuilder;
 
 
 public class CreateSessionCommandTest {
@@ -35,6 +37,7 @@ public class CreateSessionCommandTest {
         assertEquals(1, createdSession.getStudents().size());
         assertTrue(createdSession.getStudents().contains(student));
     }
+
 
     @Test
     public void execute_createSessionWithMultipleStudents_success() throws CommandException {
@@ -57,6 +60,17 @@ public class CreateSessionCommandTest {
         assertTrue(createdSession.getStudents().contains(bob));
     }
 
+    @Test
+    public void execute_createSessionWithExistingSessionNumber_throwsCommandException() throws CommandException {
+        Model model = new ModelManager();
+        Session initialSession = new SessionBuilder().withSessionNumber("1").build();
+        model.addSession(initialSession);
+
+        Set<Name> studentNames = new HashSet<>();
+        CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), studentNames);
+        assertThrows(CommandException.class, () -> command.execute(model));
+    }
+
 
     @Test
     public void equals_sameCommands_returnsTrue() {
@@ -73,6 +87,7 @@ public class CreateSessionCommandTest {
 
         assertFalse(command1.equals(command2));
     }
+
 
     @Test
     public void toStringMethod() throws CommandException {
