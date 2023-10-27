@@ -1,24 +1,23 @@
 @startuml
 skinparam arrowThickness 1.1
 skinparam classBackgroundColor LOGIC_COLOR
+skinparam classAttributeIconSize 0
 
 Assignment o-- Grade
 
 class Assignment {
-grade: Grade
-getGrade(): Grade
-maxGrade(): String
-gradingStatus(): boolean
+-grade: Grade
++getGrade(): Grade
++maxGrade(): String
++gradingStatus(): boolean
 }
 
 class Grade {
-actualGrade: String
-maxGrade: String
-isGraded: boolean
-getMax(): String
-getIsGraded(): boolean
-ungrade(): Grade
+-actualGrade: String
+-maxGrade: String
+-isGraded: boolean
++getMax(): String
++getIsGraded(): boolean
++ungrade(): Grade
 }
-
-
 @enduml
