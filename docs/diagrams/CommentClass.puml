@@ -3,8 +3,6 @@ skinparam arrowThickness 1.1
 skinparam classBackgroundColor LOGIC_COLOR
 skinparam classAttributeIconSize 0
 
-Assignment o-- Comment
-
 class Assignment {
 -comment: Comment
 +getComment(): Comment
@@ -17,5 +15,7 @@ class Comment {
 +getIsCommented(): boolean
 +toString(): String
 }
+
+Assignment o-- Comment
 
 @enduml

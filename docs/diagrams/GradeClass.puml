@@ -3,8 +3,6 @@ skinparam arrowThickness 1.1
 skinparam classBackgroundColor LOGIC_COLOR
 skinparam classAttributeIconSize 0
 
-Assignment o-- Grade
-
 class Assignment {
 -grade: Grade
 +getGrade(): Grade
@@ -20,5 +18,7 @@ class Grade {
 +getIsGraded(): boolean
 +ungrade(): Grade
 }
+
+Assignment o-- Grade
 
 @enduml
