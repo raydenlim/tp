@@ -252,6 +252,32 @@ Below is a class diagram describing the implementation of `Comment` and its resp
 **Alternative 3:** `Assignment` is a field in the `Comment` being given to it and vice versa.
 - Cons: It increases coupling which increases the dependency of the classes.
 
+
+### GradedTest
+The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes 
+features such as creating and updating graded test scores.
+
+#### The GradedTest class
+The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`, `MidTerms`, `Finals`, and
+`PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also 
+have a set of getter methods that corresponds to those fields.
+
+Below is a class diagram describing the implementation of `Task` and its respective fields.
+
+![GradedTest Class UML](images/GradedTest UML.png)
+
+#### Design Considerations:
+**Aspect: How to represent the scores of individuals:**
+
+**Alternative 1 (current choice):** Utilizing `String` for individual graded test score.
+- Pros: This choice offers flexibility in representing graded tests (e.g Default value of `-`).
+- Cons: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average,
+  highest, lowest score).
+
+**Alternative 2:** Multiple constructors for `GradedTest`.
+- Pros: Provides flexibility in how users can create a `GradedTest` object.
+- Cons: Requires additional parsing. Different constructor will give different error messages.
+
 ### Commands
 This section explains the general implementation of all commands.
 
