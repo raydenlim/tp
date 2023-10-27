@@ -23,8 +23,9 @@ If you're new to the Command-Line Interface and need assistance, this User Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
-* Table of Contents
-  {:toc}
+
+- TOC
+{:toc}
 
 ### How to use the User Guide
 You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
