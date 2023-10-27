@@ -10,6 +10,9 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.assignment.AssignmentName;
 
+/**
+ * Represents a UI component that displays assignment names in the user interface.
+ */
 public class AssignmentNameListPanel extends UiPart<Region> {
     private static final String FXML = "AssignmentNameListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(AssignmentNameListPanel.class);

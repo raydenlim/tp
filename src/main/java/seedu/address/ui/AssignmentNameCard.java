@@ -6,6 +6,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.assignment.AssignmentName;
 
+/**
+ * Represents a UI component that displays an assignment name in the user interface.
+ */
 public class AssignmentNameCard extends UiPart<Region> {
     private static final String FXML = "AssignmentNameListCard.fxml";
 

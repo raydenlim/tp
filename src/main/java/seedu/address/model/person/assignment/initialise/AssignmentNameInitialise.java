@@ -1,11 +1,9 @@
 package seedu.address.model.person.assignment.initialise;
 
-import java.util.ArrayList;
+import static javafx.collections.FXCollections.observableArrayList;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.assignment.AssignmentName;
-
-import static javafx.collections.FXCollections.observableArrayList;
 
 /**
  * Represents an initializer to create names for each assignment.

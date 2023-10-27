@@ -13,7 +13,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
-import seedu.address.ui.AssignmentNameCard;
 
 /**
  * API of the Logic component
