@@ -19,6 +19,5 @@ class Grade {
 +ungrade(): Grade
 }
 
-Assignment o-- Grade
-
+Assignment o-- "1" Grade: grade
 @enduml

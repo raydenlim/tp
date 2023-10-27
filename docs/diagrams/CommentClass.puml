@@ -16,6 +16,5 @@ class Comment {
 +toString(): String
 }
 
-Assignment o-- Comment
-
+Assignment o-- "1" Comment: comment
 @enduml
