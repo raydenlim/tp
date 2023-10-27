@@ -3,11 +3,13 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
+import java.util.function.Predicate;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.session.SessionStudentsContainsKeywordsPredicate;
+import seedu.address.model.session.Session;
 
 
 /**
@@ -21,14 +23,14 @@ public class ViewAttendanceCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe Alice";
 
-    private final SessionStudentsContainsKeywordsPredicate predicate;
+    private final Predicate<Session> predicate;
 
     /**
      * Creates a `ViewAttendanceCommand` to view attendance of student(s) listed.
      *
      * @param predicate The names of the student(s).
      */
-    public ViewAttendanceCommand(SessionStudentsContainsKeywordsPredicate predicate) {
+    public ViewAttendanceCommand(Predicate<Session> predicate) {
         this.predicate = predicate;
     }
 
