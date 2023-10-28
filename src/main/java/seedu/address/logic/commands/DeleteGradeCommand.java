@@ -12,11 +12,11 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.gradedtest.GradedTest;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.TelegramHandle;
 import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.person.assignment.Grade;
@@ -89,13 +89,13 @@ public class DeleteGradeCommand extends Command {
         Name name = reference.getName();
         Phone phone = reference.getPhone();
         Email email = reference.getEmail();
-        Address address = reference.getAddress();
+        TelegramHandle telegramHandle = reference.getTelegramHandle();
         Set<Tag> tags = reference.getTags();
         Set<GradedTest> gradedTest = reference.getGradedTest();
         Grade ungraded = reference.getAllAssignments().get(this.assignmentName).getGrade().ungrade();
         AssignmentMap updatedAssignmentMap =
                 reference.getAllAssignments().createUpdatedMap(this.assignmentName, ungraded);
-        return new Person(name, phone, email, address, tags, updatedAssignmentMap, gradedTest);
+        return new Person(name, phone, email, telegramHandle, tags, updatedAssignmentMap, gradedTest);
     }
 
     @Override

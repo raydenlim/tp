@@ -24,6 +24,45 @@ If you're new to the Command-Line Interface and need assistance, this User Guide
 <!-- * Table of Contents -->
 <page-nav-print />
 
+### Table of Contents
+
+* [Introduction](#introduction)
+  * [Table of Contents](#table-of-contents) 
+  * [How to use the User Guide](#how-to-use-the-user-guide)
+* [Graphical User Interface](#graphical-user-interface)
+  * [Task Card](#task-card)
+  * [Consultation Card](#consultation-card)
+  * [Session Card](#session-card)
+* [Quick start](#quick-start)
+* [Command Format](#command-format)
+  * [Command Parameters](#command-parameters)
+* [Features](#features)
+  * [Viewing help : `help`](#viewing-help--help)
+  * [Adding a person: `add`](#adding-a-person--add)
+  * [Listing all persons : `list`](#listing-all-persons--list)
+  * [Editing a person : `edit`](#editing-a-person--edit)
+  * [Locating persons by name: `find`](#locating-persons-by-name--find)
+  * [Deleting a person : `delete`](#deleting-a-person--delete)
+  * [Clearing all entries : `clear`](#clearing-all-entries--clear)
+  * [Exiting the program : `exit`](#exiting-the-program--exit)
+  * [Saving the data](#saving-the-data)
+  * [Editing the data file](#editing-the-data-file)
+  * [Archiving data files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+  * [Adding a Task: `addtask`](#adding-a-task--addtask)
+  * [Viewing Tasks: `viewtasks`](#viewing-tasks--viewtasks)
+  * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress--updateprogress)
+  * [Deleting a Task: `deletetask`](#deleting-a-task--deletetask)
+  * [Creating a Consult: `createconsult`](#creating-a-consult--createconsult)
+  * [Showing list of consultations: `showconsults`](#showing-list-of-consultations--showconsults)
+  * [Viewing details of a consultation: `viewconsult`](#viewing-details-of-a-consultation--viewconsult)
+  * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation--addtoconsult)
+  * [Removing students from a consultation: `removefromconsult`](#removing-students-from-a-consultation--removefromconsult)
+  * [Deleting a consultation: `deleteconsult`](#deleting-a-consultation--deleteconsult)
+* [FAQ](#faq)
+* [Known issues](#known-issues)
+* [Command summary](#command-summary)
+
+
 ### How to use the User Guide
 You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
 
@@ -36,6 +75,8 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **Bold text**                                                                       | Highlights important keywords.                                  |
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
+
+--------------------------------------------------------------------------------------------------------------------
 
 
 ## Graphical User Interface
@@ -77,7 +118,7 @@ The following describes what each panel contains:
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
+   A GUI similar to the image below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
 
     ![Ui](images/Ui.png)
 
@@ -326,24 +367,23 @@ Examples:
 * `takeattendance n/John Doe s/5 present` Marks John Doe as present on the 5th session.
 * `takeattendance n/Foo Bar s/2 absent` Marks Foo Bar as absent on the 2nd session.
 
-### 👀Viewing attendance: viewattendance
+### 👀Viewing attendance: `viewattendance`
 Views the attendance list
 
-Format: `viewattendance n/STUDENT_NAME s/SESSION`
+Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 Parameters:
-* STUDENT_NAME - The name of the student.
-* SESSION - The session number.
+* STUDENT_NAME - The name of the student you want to view the attendance of.
 
 Examples:
 * `viewattendance` Displays the overall attendance across all students and sessions.
-* `viewattendance n/Rayan` Displays Rayan’s overall attendance.
-* `viewattendance s/3` Displays all students’ attendance for the 3rd session.
+* `viewattendance n/Rayan` Displays all the sessions that Rayan has attended.
+* `viewattendance n/Jayson Resley` Displays all the sessions that Jayson and Resley have attended.
 
-### 🔎Finding a Student: find
+### 🔎Finding a Student: `find`
 Finds a student’s profile
 
-Format: `find n/STUDENT_NAME`
+Format: `find n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 Parameters:
 * STUDENT_NAME - The name of the student you want to find.
@@ -352,7 +392,7 @@ Examples:
 * `find n/John Doe` Finds and displays the profile of students with the name “John Doe”.
 * `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.
 
-### 🥅Filtering results: filter
+### 🥅Filtering results: `filter`
 Filters the results displayed on the dashboard
 
 Format:
@@ -506,7 +546,7 @@ Shows the list of upcoming consultations.
 
 Format: `showconsults`
 
-Examples:
+Example:
 * `showconsults` displays a list of upcoming consultations
 
 
@@ -543,7 +583,7 @@ Examples:
 * `addtoconsult -1 n/Foo Bar`shows an error message.
 
 
-### ❌Remove students from a consultation: `removefromconsult`
+### ❌Removing students from a consultation: `removefromconsult`
 Removes student(s) from a consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
@@ -574,7 +614,7 @@ Examples:
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous F.A.K.E.J.A.R.V.I.S. home folder.
 
 --------------------------------------------------------------------------------------------------------------------

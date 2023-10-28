@@ -25,11 +25,11 @@ import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
 import seedu.address.model.gradedtest.ReadingAssessment1;
 import seedu.address.model.gradedtest.ReadingAssessment2;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.TelegramHandle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -116,7 +116,7 @@ public class EditGradedTestCommand extends Command {
         Name name = reference.getName();
         Phone phone = reference.getPhone();
         Email email = reference.getEmail();
-        Address address = reference.getAddress();
+        TelegramHandle telegramHandle = reference.getTelegramHandle();
         Set<Tag> tags = reference.getTags();
         Set<GradedTest> gradedTest = new HashSet<>(reference.getGradedTest());
 
@@ -148,7 +148,7 @@ public class EditGradedTestCommand extends Command {
         gradedTest.remove(existingGradedTest);
         gradedTest.add(editedGradedTest);
 
-        return new Person(name, phone, email, address, tags, gradedTest);
+        return new Person(name, phone, email, telegramHandle, tags, gradedTest);
     }
 
     @Override

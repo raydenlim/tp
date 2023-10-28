@@ -27,7 +27,7 @@ public class Person {
     private final Email email;
 
     // Data fields
-    private final Address address;
+    private final TelegramHandle telegramHandle;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<GradedTest> gradedTests = new HashSet<>();
     private final AssignmentMap assignments;
@@ -35,12 +35,13 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<GradedTest> gradedTests) {
-        requireAllNonNull(name, phone, email, address, tags, gradedTests);
+    public Person(Name name, Phone phone, Email email, TelegramHandle telegramHandle,
+                  Set<Tag> tags, Set<GradedTest> gradedTests) {
+        requireAllNonNull(name, phone, email, telegramHandle, tags, gradedTests);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+        this.telegramHandle = telegramHandle;
         this.tags.addAll(tags);
         this.gradedTests.addAll(gradedTests);
         this.assignments = new AssignmentMap();
@@ -50,13 +51,13 @@ public class Person {
      * Creates a new Person object with a pre-set map of assignments.
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+    public Person(Name name, Phone phone, Email email, TelegramHandle telegramHandle, Set<Tag> tags,
                   AssignmentMap assignments, Set<GradedTest> gradedTests) {
-        requireAllNonNull(name, phone, email, address, tags, assignments);
+        requireAllNonNull(name, phone, email, telegramHandle, tags, assignments);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+        this.telegramHandle = telegramHandle;
         this.tags.addAll(tags);
         this.gradedTests.addAll(gradedTests);
         this.assignments = assignments;
@@ -74,8 +75,8 @@ public class Person {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
+    public TelegramHandle getTelegramHandle() {
+        return telegramHandle;
     }
 
     /**
@@ -164,7 +165,7 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
+                && telegramHandle.equals(otherPerson.telegramHandle)
                 && tags.equals(otherPerson.tags)
                 && assignments.equals(otherPerson.assignments)
                 && gradedTests.equals(otherPerson.gradedTests);
@@ -173,7 +174,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, gradedTests);
+        return Objects.hash(name, phone, email, telegramHandle, tags, gradedTests);
     }
 
     @Override
@@ -182,7 +183,7 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
-                .add("address", address)
+                .add("telegramHandle", telegramHandle)
                 .add("tags", tags)
                 .add("gradedTests", gradedTests)
                 .toString();

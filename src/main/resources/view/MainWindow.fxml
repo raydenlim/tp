@@ -47,7 +47,7 @@
           </padding>
         </StackPane>
 
-        <HBox styleClass="pane-with-border">
+        <HBox styleClass="pane-with-border" VBox.vgrow="ALWAYS">
           <VBox fx:id="personList"  minWidth="300" prefWidth="300" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <Label text="Person List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
             <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
