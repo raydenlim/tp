@@ -6,7 +6,7 @@
         "name" : "Alice Pauline",
         "phone" : "94351253",
         "email" : "alice@example.com",
-        "address" : "123, Jurong West Ave 6, #08-111",
+        "telegramHandle" : "alicePaulding7",
         "tags" : [ "friends" ],
         "assignmentMap" : {
           "assignments" : {
@@ -136,7 +136,7 @@
       "name" : "Benson Meier",
       "phone" : "98765432",
       "email" : "johnd@example.com",
-      "address" : "311, Clementi Ave 2, #02-25",
+      "telegramHandle" : "Bensonson",
       "tags" : [ "owesMoney", "friends" ],
       "assignmentMap" : {
         "assignments" : {
