@@ -67,6 +67,11 @@
             <Label text="Session List" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
             <StackPane VBox.vgrow="ALWAYS" fx:id="sessionListPanelPlaceholder" />
           </VBox>
+
+          <VBox fx:id="assignmentList" minWidth="300" prefWidth="300" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+            <Label fx:id="assignmentListLabel" text="\$assignmentListLabel" maxWidth="Infinity" wrapText="true" styleClass="section-label"/>
+            <StackPane VBox.vgrow="ALWAYS" fx:id="assignmentListPanelPlaceholder" />
+          </VBox>
         </HBox>
 
 

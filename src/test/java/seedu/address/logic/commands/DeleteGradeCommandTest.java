@@ -117,7 +117,7 @@ public class DeleteGradeCommandTest {
     }
 
     @Test
-    public void equal_sameObject_success() {
+    public void equals_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         DeleteGradeCommand deleteGradeCommand = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
 

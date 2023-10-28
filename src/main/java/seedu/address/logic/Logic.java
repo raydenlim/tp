@@ -4,12 +4,15 @@ import java.nio.file.Path;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.assignment.Assignment;
+import seedu.address.model.person.assignment.AssignmentName;
 import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
 
@@ -44,6 +47,15 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of sessions */
     ObservableList<Session> getFilteredSessionList();
+
+    /** Returns an unmodifiable view of all assignment names */
+    ObservableList<AssignmentName> getAssignmentNameList();
+
+    /** Returns an unmodifiable view of all assignments */
+    ObservableList<Assignment> getAssignments();
+
+    /** Returns the index of the student whose list of assignments was last displayed */
+    Index getIndex();
 
     /**
      * Returns the user prefs' address book file path.
