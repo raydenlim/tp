@@ -26,11 +26,11 @@ import seedu.address.model.gradedtest.MidTerms;
 import seedu.address.model.gradedtest.PracticalExam;
 import seedu.address.model.gradedtest.ReadingAssessment1;
 import seedu.address.model.gradedtest.ReadingAssessment2;
-import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.TelegramHandle;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionStudents;
@@ -51,22 +51,22 @@ public class SampleDataUtil {
     public static final String VALID_GRADED_TEST_2 =
             "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
     public static final Person PERSON_ALEX = new Person(new Name("Alex Yeoh"), new Phone("87438807"),
-            new Email("alexyeoh@example.com"), new Address("Blk 30 Geylang Street 29, #06-40"),
+            new Email("alexyeoh@example.com"), new TelegramHandle("AlexIsGOAT"),
             getTagSet("friends"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_BERNICE = new Person(new Name("Bernice Yu"), new Phone("99272758"),
-            new Email("berniceyu@example.com"), new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
+            new Email("berniceyu@example.com"), new TelegramHandle("berrynice123"),
             getTagSet("colleagues", "friends"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_CHARLOTTE = new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),
-            new Email("charlotte@example.com"), new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
+            new Email("charlotte@example.com"), new TelegramHandle("charl0tt3"),
             getTagSet("neighbours"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_DAVID = new Person(new Name("David Li"), new Phone("91031282"),
-            new Email("lidavid@example.com"), new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
+            new Email("lidavid@example.com"), new TelegramHandle("goliathMybestie"),
             getTagSet("family"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_IRFAN = new Person(new Name("Irfan Ibrahim"), new Phone("92492021"),
-            new Email("irfan@example.com"), new Address("Blk 47 Tampines Street 20, #17-35"),
+            new Email("irfan@example.com"), new TelegramHandle("nafri1104"),
             getTagSet("classmates"), getGradedTestSet(VALID_GRADED_TEST_2));
     public static final Person PERSON_ROY = new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),
-            new Email("royb@example.com"), new Address("Blk 45 Aljunied Street 85, #11-31"),
+            new Email("royb@example.com"), new TelegramHandle("RoytheBoy21"),
             getTagSet("colleagues"), getGradedTestSet(VALID_GRADED_TEST_2));
 
 
