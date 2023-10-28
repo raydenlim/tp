@@ -83,8 +83,10 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append("Session: ")
                 .append(session.getSessionNumber())
-                .append(";");
-        session.getStudents().forEach(builder::append);
+                .append("; Students: ");
+        session.getStudents().forEach(student -> builder.append(student.getName()));
+        builder.append("; Remark: ")
+                .append(session.getSessionRemark());
         return builder.toString();
     }
 
