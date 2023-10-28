@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -68,6 +69,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private Label assignmentListLabel;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -143,6 +147,7 @@ public class MainWindow extends UiPart<Stage> {
 
         assignmentNameListPanel = new AssignmentNameListPanel(logic.getAssignmentNameList());
         assignmentListPanelPlaceholder.getChildren().add(assignmentNameListPanel.getRoot());
+        assignmentListLabel.setText("Assignment List");
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -226,6 +231,7 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isAssignmentNames()) {
                 showAssignmentNames();
+                assignmentListLabel.setText("Assignment List");
             }
 
             boolean isAssignmentNames =
@@ -233,6 +239,7 @@ public class MainWindow extends UiPart<Stage> {
 
             if (!isAssignmentNames || commandResult.isPersonAssignments()) {
                 showStudentAssignments(logic.getAssignments());
+                assignmentListLabel.setText("Assignment List: Person " + logic.getIndex().getOneBased());
             }
 
             if (commandResult.isShowHelp()) {
