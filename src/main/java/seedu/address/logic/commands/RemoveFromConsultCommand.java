@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -131,7 +132,6 @@ public class RemoveFromConsultCommand extends Command {
     public static class RemoveFromConsultationDescriptor {
         private Set<Name> names;
         public RemoveFromConsultationDescriptor() {
-
         }
 
         public RemoveFromConsultationDescriptor(RemoveFromConsultationDescriptor toCopy) {
@@ -142,7 +142,7 @@ public class RemoveFromConsultCommand extends Command {
          * Returns true if students list is now empty.
          */
         public boolean isEmptyStudents() {
-            return names.isEmpty();
+            return names == null || names.isEmpty();
         }
 
         /**
@@ -175,6 +175,13 @@ public class RemoveFromConsultCommand extends Command {
 
             RemoveFromConsultationDescriptor otherDescriptor = (RemoveFromConsultationDescriptor) other;
             return Objects.equals(names, otherDescriptor.names);
+        }
+
+        @Override
+        public String toString() {
+            return new ToStringBuilder(this)
+                    .add("names", names)
+                    .toString();
         }
     }
 }
