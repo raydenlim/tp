@@ -8,7 +8,7 @@ F.A.K.E.J.A.R.V.I.S. is a project to help CS1101S Avengers manage their time and
 
 Below are my contributions to the project:
 
-* **New Features**: 
+* **New Features**:
   * Create consultation
   * Add students to consultation
   * Delete consultation

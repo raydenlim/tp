@@ -27,7 +27,7 @@ If you're new to the Command-Line Interface and need assistance, this User Guide
 ### Table of Contents
 
 * [Introduction](#introduction)
-  * [Table of Contents](#table-of-contents) 
+  * [Table of Contents](#table-of-contents)
   * [How to use the User Guide](#how-to-use-the-user-guide)
 * [Graphical User Interface](#graphical-user-interface)
   * [Task Card](#task-card)
@@ -537,8 +537,7 @@ Parameters:
 
 Examples:
 * `createconsult d/2023-10-30 tt/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
-* `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, 
-Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
+* `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
 ### 👀Showing list of consultations: `showconsults`

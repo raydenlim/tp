@@ -180,7 +180,7 @@ Below is a class diagram describing the implementation of `Session` and its resp
 **Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
 - Pros:This choice offers a high degree of flexibility when it comes to adding students to a session. You can add any number of students when creating a session, which is essential for accommodating different class sizes and situations.
 **Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
-- Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach. 
+- Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach.
 
 By opting for the current choice (Alternative 1), the implementation remains straightforward and user-friendly, allowing for versatile usage scenarios. It ensures that users can efficiently create sessions and add students to them without unnecessary constraints or complications.
 
@@ -254,13 +254,11 @@ Below is a class diagram describing the implementation of `Comment` and its resp
 
 
 ### GradedTest
-The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes 
-features such as creating and updating graded test scores.
+The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes features such as creating and updating graded test scores.
 
 #### The GradedTest class
 The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`, `MidTerms`, `Finals`, and
-`PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also 
-have a set of getter methods that corresponds to those fields.
+`PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also have a set of getter methods that corresponds to those fields.
 
 Below is a class diagram describing the implementation of `Task` and its respective fields.
 
@@ -308,8 +306,7 @@ Below is a class diagram describing the implementation of `Consultation` and its
 
 **Aspect: Adding students to a new or existing consultation:**
 
-* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student 
-list
+* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student list
   * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
   * Cons: Require additional checking to inform exception cases.
 
@@ -318,8 +315,7 @@ list
 
 
 ### Commands
-This section explains the general implementation of all commands. 
-The implementation of all commands can be generally split into two main event flows: commands with their own specific command parser, and commands without one.
+This section explains the general implementation of all commands. The implementation of all commands can be generally split into two main event flows: commands with their own specific command parser, and commands without one.
 
 #### Parser Commands
 This section explains the implementation and execution of commands that have their own parser.
@@ -353,7 +349,7 @@ The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 #### Add Tasks Feature
 This section explains the implementation of the Add Task feature via the `addtask` command.
 The `AddTaskCommand` causes the specified Task to be added to the Task List in the application.
-There is only one compulsory field which is the name of the task. There are several optional fields such as the description, priority and deadline. 
+There is only one compulsory field which is the name of the task. There are several optional fields such as the description, priority and deadline.
 
 Below is the sequence diagram outlining the execution of `AddTaskCommand`.
 
