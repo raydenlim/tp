@@ -50,6 +50,9 @@
   <div id="content-wrapper">
     {{ content }}
   </div>
+  <nav id="main-nav">
+      <main-nav />
+  </nav>
   <nav id="page-nav">
     <div class="nav-component slim-scroll">
       <page-nav />
