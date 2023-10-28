@@ -94,9 +94,12 @@ public class AddToConsultCommand extends Command {
 
         LocalDate date = consultationToAddStudent.getDate();
         LocalTime time = consultationToAddStudent.getTime();
+        // Original target student list
         Set<Person> students = consultationToAddStudent.getStudents();
+        // List with new students to be added
         Set<Person> newStudents = addToConsultationDescriptor.names.stream().map(model::getMatchingStudentName)
                 .collect(Collectors.toSet());
+        // Adding original students to new students list (replace)
         newStudents.addAll(students);
 
         return new Consultation(date, time, newStudents);

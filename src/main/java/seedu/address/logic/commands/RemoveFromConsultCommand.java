@@ -93,10 +93,13 @@ public class RemoveFromConsultCommand extends Command {
 
         LocalDate date = targetConsultation.getDate();
         LocalTime time = targetConsultation.getTime();
+        // Original list of students
         Set<Person> students = new HashSet<>(targetConsultation.getStudents());
+        // List of students to be removed from original
         Set<Person> studentsToRemove = descriptor.names.stream().map(model::getMatchingStudentName)
                 .collect(Collectors.toSet());
 
+        // Remove iteration while checking
         for (Person student : studentsToRemove) {
             if (!students.remove(student)) {
                 throw new PersonNotFoundInConsultException();
