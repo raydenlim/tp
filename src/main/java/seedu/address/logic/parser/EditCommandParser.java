@@ -110,7 +110,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
-        parseGradedTestForEdit(argMultimap.getAllValues(PREFIX_GRADED_TEST)).ifPresent(editPersonDescriptor::setGradedTest);
+        parseGradedTestForEdit(argMultimap.getAllValues(PREFIX_GRADED_TEST))
+                .ifPresent(editPersonDescriptor::setGradedTest);
 
     }
 

@@ -22,7 +22,6 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
@@ -92,11 +91,10 @@ public class AddressBookParserTest {
     public void parseCommand_edit() throws Exception {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        descriptor.setTags(null);
         descriptor.setGradedTest(null);
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-
+        System.out.println(command);
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 

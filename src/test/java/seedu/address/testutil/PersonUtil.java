@@ -56,10 +56,10 @@ public class PersonUtil {
         descriptor.getTelegramHandle().ifPresent(
                 telegramHandle -> sb.append(PREFIX_TELEGRAM_HANDLE).append(telegramHandle.value).append(" "));
         if (descriptor.getTags().isPresent()) {
-            sb.append(parseTagsToEdit(descriptor));
+            sb.append(parseTagsToEdit(descriptor)).append(" ");
         }
         if (descriptor.getGradedTests().isPresent()) {
-            sb.append(parseGradedTestToEdit(descriptor));
+            sb.append(parseGradedTestToEdit(descriptor)).append(" ");
         }
         return sb.toString();
     }
@@ -71,7 +71,7 @@ public class PersonUtil {
             sb.append(PREFIX_TAG);
             return sb.toString();
         } else {
-            tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+            tags.forEach(tag -> sb.append(PREFIX_TAG).append(tag.tagName).append(" "));
             return sb.toString();
         }
     }
@@ -83,7 +83,7 @@ public class PersonUtil {
             sb.append(PREFIX_GRADED_TEST);
             return sb.toString();
         } else {
-            gradedTests.forEach(s -> sb.append(PREFIX_GRADED_TEST).append(s.gradedTestsIndv).append(" "));
+            gradedTests.forEach(gt -> sb.append(PREFIX_GRADED_TEST).append(gt.gradedTestsIndv).append(" "));
             return sb.toString();
         }
     }
