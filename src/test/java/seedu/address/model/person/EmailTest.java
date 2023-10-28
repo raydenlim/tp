@@ -66,6 +66,24 @@ public class EmailTest {
         assertTrue(Email.isValidEmail("e1234567@u.nus.edu")); // more than one period in domain
     }
 
+
+    @Test
+    public void isValidEmailEdgeCasePass() {
+        assertTrue(Email.isValidEmail("A.B@cdomain.edu.fr")); // ends with .fr
+        assertTrue(Email.isValidEmail("iamsmart@bigbrain.io"));
+        assertTrue(Email.isValidEmail("someemail@stu.comp.nus.edu.sg")); // long domain labels
+        assertTrue(Email.isValidEmail("peterjack@example.a.b.c.e.d.f.g.com")); // long invalid domain labels
+        assertTrue(Email.isValidEmail("peterjack@example.a.b.c.e.d.f.g.com")); // long invalid domain labels
+    }
+
+    @Test
+    public void isValidEmailEdgeCaseFail() {
+        assertFalse(Email.isValidEmail("peterjack@example.com@")); // ends with @
+        assertFalse(Email.isValidEmail("www.thisismyemail.com")); // http format
+        assertFalse(Email.isValidEmail("user@[192.168.0.1].com")); // invalid char used
+        assertFalse(Email.isValidEmail("user@example..com")); // multiple .
+    }
+
     @Test
     public void equals() {
         Email email = new Email("valid@email");
