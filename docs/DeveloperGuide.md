@@ -194,7 +194,7 @@ The Task Class is made up of a `TaskName`, `TaskDescription`, `date`, `TaskPrior
 
 Below is a class diagram describing the implementation of `Task` and its respective fields.
 
-![Task Class UML](images/TaskClass UML.png)
+![Task Class UML](images/TaskClassUML.png)
 
 #### Design Considerations:
 **Aspect: How the status of a task is implemented:**
