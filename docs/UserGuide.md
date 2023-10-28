@@ -673,11 +673,11 @@ You can delete the consultation slot specified by an index.
 
 Format: `deleteconsult INDEX`
 
-> **Parameters:**
+> **Parameters:**git 
 > * INDEX The index of the consultation in the upcoming consultations.
 
 Examples:
-* `deleteconsult 1` deletes the first consultation.
+* `deleteconsult 1` deletes the first consultation in the consultation list.
 * `deleteconsult -1` shows an error message “Consultation not found”.
 
 
