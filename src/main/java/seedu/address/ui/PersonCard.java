@@ -4,6 +4,8 @@ import java.util.Comparator;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -29,6 +31,12 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
+    private ImageView emailLogo;
+    @FXML
+    private ImageView phoneLogo;
+    @FXML
+    private ImageView telegramLogo;
+    @FXML
     private Label name;
     @FXML
     private Label id;
@@ -51,9 +59,20 @@ public class PersonCard extends UiPart<Region> {
         this.person = person;
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
+
+
+        Image phoneImage = new Image(getClass().getResourceAsStream("/images/phonelogo.png"));
+        phoneLogo.setImage(phoneImage);
         phone.setText(person.getPhone().value);
+
+        Image telegramImage = new Image(getClass().getResourceAsStream("/images/telelogo.png"));
+        telegramLogo.setImage(telegramImage);
         telegramHandle.setText(String.format("@%s", person.getTelegramHandle().value));
+
+        Image emailImage = new Image(getClass().getResourceAsStream("/images/emaillogo.png"));
+        emailLogo.setImage(emailImage);
         email.setText(person.getEmail().value);
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
