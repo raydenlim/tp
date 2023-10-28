@@ -137,6 +137,15 @@
       "email" : "alice@example.com",
       "telegramHandle" : "alicePaulding7",
       "tags" : [ "friends" ],
+      "gradedTests": [
+        {
+          "RA1": "10",
+          "RA2": "20",
+          "MidTerms": "30",
+          "Finals": "40",
+          "PE": "50"
+        }
+      ],
       "assignmentMap" : {
         "assignments" : {
           "Beyond the First Dimension" : {

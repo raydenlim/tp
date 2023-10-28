@@ -66,9 +66,9 @@ public class PersonUtil {
         if (descriptor.getGradedTests().isPresent()) {
             Set<GradedTest> gradedTests = descriptor.getGradedTests().get();
             if (gradedTests.isEmpty()) {
-                sb.append(PREFIX_TAG);
+                sb.append(PREFIX_GRADED_TEST);
             } else {
-                gradedTests.forEach(s -> sb.append(PREFIX_TAG).append(s.gradedTestsIndv).append(" "));
+                gradedTests.forEach(s -> sb.append(PREFIX_GRADED_TEST).append(s.gradedTestsIndv).append(" "));
             }
         }
         return sb.toString();
