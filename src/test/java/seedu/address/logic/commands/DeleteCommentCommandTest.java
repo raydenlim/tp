@@ -115,7 +115,7 @@ public class DeleteCommentCommandTest {
     }
 
     @Test
-    public void equal_sameObject_success() {
+    public void equals_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
 

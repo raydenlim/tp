@@ -224,12 +224,15 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isPersonAssignments()) {
-                showStudentAssignments(logic.getAssignments());
-            }
-
             if (commandResult.isAssignmentNames()) {
                 showAssignmentNames();
+            }
+
+            boolean isAssignmentNames =
+                assignmentListPanelPlaceholder.getChildren().get(0).equals(assignmentNameListPanel.getRoot());
+
+            if (!isAssignmentNames || commandResult.isPersonAssignments()) {
+                showStudentAssignments(logic.getAssignments());
             }
 
             if (commandResult.isShowHelp()) {

@@ -21,4 +21,18 @@ public class ViewAllAssignmentsCommand extends Command {
         requireNonNull(model);
         return new CommandResult(MESSAGE_SUCCESS, false, false, false, true);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof ViewAllAssignmentsCommand)) {
+            return false;
+        }
+
+        return true;
+    }
 }
