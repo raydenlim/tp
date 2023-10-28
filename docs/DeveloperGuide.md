@@ -174,7 +174,7 @@ Below is a class diagram describing the implementation of `Session` and its resp
 
 ![Session Class UML](images/SessionClassUML.png)
 
-### Design Considerations:
+#### Design Considerations:
 **Aspect: How the students are added to a session upon initialisation:**
 
 **Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
@@ -278,105 +278,6 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Pros: Provides flexibility in how users can create a `GradedTest` object.
 - Cons: Requires additional parsing. Different constructor will give different error messages.
 
-### Commands
-This section explains the general implementation of all commands.
-
-Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
-
-![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-<puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-<puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-<puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
-
-<box type="info" seamless>
-
-**Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</box>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-<puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</box>
-
-The following sequence diagram shows how the undo operation works:
-
-<puml src="diagrams/UndoSequenceDiagram.puml" alt="UndoSequenceDiagram" />
-
-<box type="info" seamless>
-
-**Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</box>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<box type="info" seamless>
-
-**Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</box>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-<puml src="diagrams/UndoRedoState4.puml" alt="UndoRedoState4" />
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-<puml src="diagrams/UndoRedoState5.puml" alt="UndoRedoState5" />
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-<puml src="diagrams/CommitActivityDiagram.puml" width="250" />
-
-#### Design considerations:
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-    * Pros: Easy to implement.
-    * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-    * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
 
 ### Consultations:
 
@@ -393,7 +294,7 @@ Below is a class diagram describing the implementation of `Consultation` and its
 <p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
 <p align="center">Consultation Class UML Diagram</p>
 
-### Design Considerations:
+#### Design Considerations:
 
 **Aspect: How the students are stored to a consultation:**
 
@@ -414,6 +315,74 @@ list
 
 * **Alternative 2:** `AddToConsult` directly manipulate the attribute students in a Consultation object.
   * Cons: Poor abstraction and room for errors.
+
+
+### Commands
+This section explains the general implementation of all commands. 
+The implementation of all commands can be generally split into two main event flows: commands with their own specific command parser, and commands without one.
+
+#### Parser Commands
+This section explains the implementation and execution of commands that have their own parser.
+
+Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
+
+![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
+
+Step 1:
+The user enters a command with the necessary parameters which is then passed to the `LogicManager`.
+
+Step 2:
+The `LogicManager` calls `AddressBookParser::parseCommand` for it to identify the type of command.
+
+Step 3:
+The `AddressBookParser` parses the user input and creates a command parser for that specific command. (denoted by `XYZCommandParser`)
+
+Step 4:
+The command parser is returned to the `AddressBookParser` which then calls `XYZCommandParser::parse` to parse the additional parameters.
+
+Step 5:
+The `XYZCommandParser` creates its respective command object (denoted by `XYZCommand`) and returns it to `LogicManager`.
+
+Step 6:
+The `LogicManager` calls `XYZCommand::execute` where the interaction between the command and the model is handled.
+
+Step 7:
+The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
+
+
+#### Add Tasks Feature
+This section explains the implementation of the Add Task feature via the `addtask` command.
+The `AddTaskCommand` causes the specified Task to be added to the Task List in the application.
+There is only one compulsory field which is the name of the task. There are several optional fields such as the description, priority and deadline. 
+
+Below is the sequence diagram outlining the execution of `AddTaskCommand`.
+
+![AddTaskCommand sequence diagram](images/AddTaskSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `AddTaskCommand::execute`, which in turn calls `Model::addTask`.
+
+Step 2:
+The `Model` will invoke `addTask` in `TaskListBook`, which in turn calls `add` in `TaskList` to add it to the list.
+
+Step 3:
+The `Model` will call its own `updateFilteredTaskList` method in order to update the model's filter to display all tasks.
+
+Step 4:
+The `AddTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the AddTaskCommand:**
+
+* **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
+    * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
+
+* **Alternative 2:** Store the model in the `AddTaskCommand` itself.
+    * Pros: Easier to debug.
+    * Cons: The `AddTaskCommand` might be able to call other methods in the model.
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
