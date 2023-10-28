@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -22,6 +23,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -54,11 +56,11 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
-        // Parse GradedTest components SLAP
-        parseGradedTestComponents(argMultimap, editPersonDescriptor);
-
         // Parse other fields (name, phone, email, address, tags) SLAP
         parseFieldsForEdit(argMultimap, editPersonDescriptor);
+
+        // Parse GradedTest components SLAP
+        parseGradedTestComponents(argMultimap, editPersonDescriptor);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
@@ -108,6 +110,8 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+        parseGradedTestForEdit(argMultimap.getAllValues(PREFIX_GRADED_TEST)).ifPresent(editPersonDescriptor::setGradedTest);
+
     }
 
     /**
@@ -123,6 +127,22 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
+    }
+
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<GradedTest>} if {@code gradedTest} is non-empty.
+     * If {@code gradedTest} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set<GradedTest>} containing zero tags.
+     */
+    private Optional<Set<GradedTest>> parseGradedTestForEdit(Collection<String> gradedTest) throws ParseException {
+        assert gradedTest != null;
+
+        if (gradedTest.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> gradedTestSet = gradedTest.size() == 1
+                && gradedTest.contains("") ? Collections.emptySet() : gradedTest;
+        return Optional.of(ParserUtil.parseGradedTests(gradedTestSet));
     }
 
 }

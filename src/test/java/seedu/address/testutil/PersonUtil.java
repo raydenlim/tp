@@ -56,21 +56,35 @@ public class PersonUtil {
         descriptor.getTelegramHandle().ifPresent(
                 telegramHandle -> sb.append(PREFIX_TELEGRAM_HANDLE).append(telegramHandle.value).append(" "));
         if (descriptor.getTags().isPresent()) {
-            Set<Tag> tags = descriptor.getTags().get();
-            if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
-            } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
-            }
+            sb.append(parseTagsToEdit(descriptor));
         }
         if (descriptor.getGradedTests().isPresent()) {
-            Set<GradedTest> gradedTests = descriptor.getGradedTests().get();
-            if (gradedTests.isEmpty()) {
-                sb.append(PREFIX_GRADED_TEST);
-            } else {
-                gradedTests.forEach(s -> sb.append(PREFIX_GRADED_TEST).append(s.gradedTestsIndv).append(" "));
-            }
+            sb.append(parseGradedTestToEdit(descriptor));
         }
         return sb.toString();
+    }
+
+    private static String parseTagsToEdit(EditPersonDescriptor descriptor) {
+        StringBuilder sb = new StringBuilder();
+        Set<Tag> tags = descriptor.getTags().get();
+        if (tags.isEmpty()) {
+            sb.append(PREFIX_TAG);
+            return sb.toString();
+        } else {
+            tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+            return sb.toString();
+        }
+    }
+
+    private static String parseGradedTestToEdit(EditPersonDescriptor descriptor) {
+        StringBuilder sb = new StringBuilder();
+        Set<GradedTest> gradedTests = descriptor.getGradedTests().get();
+        if (gradedTests.isEmpty()) {
+            sb.append(PREFIX_GRADED_TEST);
+            return sb.toString();
+        } else {
+            gradedTests.forEach(s -> sb.append(PREFIX_GRADED_TEST).append(s.gradedTestsIndv).append(" "));
+            return sb.toString();
+        }
     }
 }
