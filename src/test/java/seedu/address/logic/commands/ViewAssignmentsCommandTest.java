@@ -67,6 +67,12 @@ public class ViewAssignmentsCommandTest {
     }
 
     @Test
+    public void getIndexCommand() {
+        ViewAssignmentsCommand viewAssignmentsCommand = new ViewAssignmentsCommand(INDEX_FIRST_PERSON);
+        assertEquals(viewAssignmentsCommand.getIndex(), INDEX_FIRST_PERSON);
+    }
+
+    @Test
     public void equals_sameObject_success() {
         ViewAssignmentsCommand viewAssignmentsCommand = new ViewAssignmentsCommand(INDEX_FIRST_PERSON);
         assertEquals(viewAssignmentsCommand, viewAssignmentsCommand);
