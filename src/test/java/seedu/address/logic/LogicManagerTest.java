@@ -32,6 +32,8 @@ import seedu.address.model.SessionListBook;
 import seedu.address.model.TaskListBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
+import seedu.address.model.person.assignment.initialise.AssignmentNameInitialise;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonConsultationListStorage;
 import seedu.address.storage.JsonGradedTestListStorage;
@@ -111,6 +113,12 @@ public class LogicManagerTest {
     @Test
     public void getFilteredSessionList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredSessionList().remove(0));
+    }
+
+    @Test
+    public void getAssignmentNameList_modifyList_throwsUnsupportedOperationException() {
+        AssignmentInitialise.init();
+        assertEquals(logic.getAssignmentNameList(), AssignmentNameInitialise.getAllNames());
     }
 
     /**

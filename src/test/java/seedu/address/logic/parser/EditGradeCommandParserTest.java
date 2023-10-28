@@ -9,7 +9,6 @@ import static seedu.address.logic.commands.CommandTestUtil.GRADE_DESC_TOO_HIGH;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ASSIGNMENT_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ASSIGNMENT_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -33,7 +32,7 @@ public class EditGradeCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, ASSIGNMENT_DESC + GRADE_DESC_400, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", MESSAGE_INVALID_FORMAT);

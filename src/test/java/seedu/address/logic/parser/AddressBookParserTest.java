@@ -48,6 +48,8 @@ import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand.EditProgressDescriptor;
+import seedu.address.logic.commands.ViewAllAssignmentsCommand;
+import seedu.address.logic.commands.ViewAssignmentsCommand;
 import seedu.address.logic.commands.ViewAttendanceCommand;
 import seedu.address.logic.commands.ViewTasksCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -251,6 +253,19 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(DeleteCommentCommand.COMMAND_WORD
                 + whiteSpace + personIndex
                 + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteCommentCommand);
+    }
+
+    @Test
+    public void parseCommand_viewAssignmentsCommand() throws Exception {
+        String personIndex = "1";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(ViewAssignmentsCommand.COMMAND_WORD
+                + whiteSpace + personIndex) instanceof ViewAssignmentsCommand);
+    }
+
+    @Test
+    public void parseCommand_viewAllAssignmentsCommand() throws Exception {
+        assertTrue(parser.parseCommand(ViewAllAssignmentsCommand.COMMAND_WORD) instanceof ViewAllAssignmentsCommand);
     }
 
     @Test

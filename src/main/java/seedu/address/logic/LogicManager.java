@@ -1,5 +1,7 @@
 package seedu.address.logic;
 
+import static javafx.collections.FXCollections.observableArrayList;
+
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
@@ -8,8 +10,10 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.ViewAssignmentsCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -17,6 +21,11 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.assignment.Assignment;
+import seedu.address.model.person.assignment.AssignmentMap;
+import seedu.address.model.person.assignment.AssignmentName;
+import seedu.address.model.person.assignment.initialise.AssignmentInitialise;
+import seedu.address.model.person.assignment.initialise.AssignmentNameInitialise;
 import seedu.address.model.session.Session;
 import seedu.address.model.task.Task;
 import seedu.address.storage.Storage;
@@ -35,6 +44,7 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private Index indexToDisplay;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -58,6 +68,11 @@ public class LogicManager implements Logic {
             storage.saveTaskList(model.getTaskList());
             storage.saveSessionList(model.getSessionList());
             storage.saveConsultationList(model.getConsultationList());
+
+            if (command instanceof ViewAssignmentsCommand) {
+                ViewAssignmentsCommand viewAssignmentsCommand = (ViewAssignmentsCommand) command;
+                indexToDisplay = viewAssignmentsCommand.getIndex();
+            }
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -90,6 +105,27 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Session> getFilteredSessionList() {
         return model.getFilteredSessionList();
+    }
+
+    @Override
+    public ObservableList<AssignmentName> getAssignmentNameList() {
+        AssignmentInitialise.init();
+        return AssignmentNameInitialise.getAllNames();
+    }
+
+    @Override
+    public ObservableList<Assignment> getAssignments() {
+        Person person = model.getAddressBook().getPersonList().get(indexToDisplay.getZeroBased());
+        AssignmentMap assignmentMap = person.getAllAssignments();
+        ObservableList<AssignmentName> assignmentNameList = AssignmentNameInitialise.getAllNames();
+        ObservableList<Assignment> assignmentList = observableArrayList();
+        AssignmentInitialise.init();
+        for (int i = 0; i < assignmentNameList.size(); i++) {
+            AssignmentName assignmentName = assignmentNameList.get(i);
+            Assignment assignment = assignmentMap.get(assignmentName);
+            assignmentList.add(assignment);
+        }
+        return assignmentList;
     }
 
     @Override
