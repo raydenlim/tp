@@ -48,7 +48,7 @@ public class Messages {
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
+        builder.append("Name: ").append(person.getName())
                 .append("; Phone: ")
                 .append(person.getPhone())
                 .append("; Email: ")
@@ -57,8 +57,7 @@ public class Messages {
                 .append(person.getTelegramHandle())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
-        builder.append("; Graded Tests: ");
-        person.getGradedTest().forEach(gradedTest -> builder.append(person.getGradedTest()).append(", "));
+        person.getGradedTest().forEach(gradedTest -> builder.append(format(gradedTest)));
         return builder.toString();
     }
 
@@ -108,12 +107,12 @@ public class Messages {
      */
     public static String format(GradedTest gradedTest) {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Graded Test:")
-                .append("; Reading Assessment 1: ").append(gradedTest.getRA1())
-                .append("; Reading Assessment 2: ").append(gradedTest.getRA2())
+        builder.append("; Graded Test: ")
+                .append("RA1: ").append(gradedTest.getRA1())
+                .append("; RA2: ").append(gradedTest.getRA2())
                 .append("; MidTerms: ").append(gradedTest.getMidTerms())
                 .append("; Final: ").append(gradedTest.getFinals())
-                .append("; Practical Exam: ").append(gradedTest.getPracticalExam());
+                .append("; PE: ").append(gradedTest.getPracticalExam());
         return builder.toString();
     }
 }

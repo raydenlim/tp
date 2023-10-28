@@ -166,7 +166,7 @@ public class GradedTest {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
+        return new ToStringBuilder("")
                 .add("RA1", readingAssessment1)
                 .add("RA2", readingAssessment2)
                 .add("MidTerms", midTerms)

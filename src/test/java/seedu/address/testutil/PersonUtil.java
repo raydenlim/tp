@@ -11,6 +11,7 @@ import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
@@ -60,6 +61,14 @@ public class PersonUtil {
                 sb.append(PREFIX_TAG);
             } else {
                 tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
+            }
+        }
+        if (descriptor.getGradedTests().isPresent()) {
+            Set<GradedTest> gradedTests = descriptor.getGradedTests().get();
+            if (gradedTests.isEmpty()) {
+                sb.append(PREFIX_TAG);
+            } else {
+                gradedTests.forEach(s -> sb.append(PREFIX_TAG).append(s.gradedTestsIndv).append(" "));
             }
         }
         return sb.toString();

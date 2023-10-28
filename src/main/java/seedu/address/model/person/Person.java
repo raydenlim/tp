@@ -184,8 +184,7 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("telegramHandle", telegramHandle)
-                .add("tags", tags)
-                .add("gradedTests", gradedTests)
+                .add("tags", tags).add("gradedTests", gradedTests)
                 .toString();
     }
 
