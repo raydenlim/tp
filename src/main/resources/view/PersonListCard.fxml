@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -29,9 +30,18 @@
       </HBox>
       <FlowPane fx:id="tags" />
       <FlowPane fx:id="gradedTests"/>
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="telegramHandle" styleClass="cell_small_label" text="\$telegramHandle" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <ImageView fx:id="phoneLogo" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+      </HBox>
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <ImageView fx:id="telegramLogo" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="telegramHandle" styleClass="cell_small_label" text="\$telegramHandle" />
+      </HBox>
+      <HBox spacing="5" alignment="CENTER_LEFT">
+        <ImageView fx:id="emailLogo" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      </HBox>
     </VBox>
   </GridPane>
 </HBox>
