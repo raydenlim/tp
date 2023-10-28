@@ -1,14 +1,15 @@
 package seedu.address.model.person.assignment.initialise;
 
-import java.util.ArrayList;
+import static javafx.collections.FXCollections.observableArrayList;
 
+import javafx.collections.ObservableList;
 import seedu.address.model.person.assignment.AssignmentName;
 
 /**
  * Represents an initializer to create names for each assignment.
  */
 public class AssignmentNameInitialise {
-    private static ArrayList<AssignmentName> assignmentNames = new ArrayList<>();
+    private static ObservableList<AssignmentName> assignmentNames = observableArrayList();
 
     /**
      * Initialises mission names.
@@ -47,6 +48,10 @@ public class AssignmentNameInitialise {
 
     public AssignmentName getName(int index) {
         return assignmentNames.get(index);
+    }
+
+    public static ObservableList<AssignmentName> getAllNames() {
+        return assignmentNames;
     }
 
     public boolean contains(AssignmentName assignmentName) {

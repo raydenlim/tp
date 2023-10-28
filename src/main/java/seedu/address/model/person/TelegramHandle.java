@@ -10,7 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class TelegramHandle {
     public static final String MESSAGE_CONSTRAINTS = "Telegram Handles can only use a-z, 0-9 and underscores. "
-            + "Usernames are case-insensitive";
+            + "Usernames are case-insensitive\n"
+            + "Omit the @ in front of the handle";
 
     public static final String VALIDATION_REGEX = "^[a-zA-Z0-9_]{1,}$";
 

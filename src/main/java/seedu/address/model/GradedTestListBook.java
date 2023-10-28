@@ -37,10 +37,8 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
         resetData(toBeCopied);
     }
 
-    //// list overwrite operations
-
     /**
-     * Replaces the contents of the GradedTest list with {@code gradedTEst}.
+     * Replaces the contents of the GradedTest list with {@code gradedTest}.
      * {@code gradedTests} must not contain duplicate gradedTest.
      */
     public void setGradedTests(List<GradedTest> gradedTests) {
@@ -67,8 +65,6 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
         setGradedTests(newData.getGradedTestList());
     }
 
-    //// gradedTest-level operations
-
     /**
      * Returns the gradedTest at the given index.
      */
@@ -92,8 +88,6 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
         gradedTests.add(gt);
     }
 
-
-
     /**
      * Removes {@code key} from this {@code GradedTestListBook}.
      * {@code key} must exist in the gradedTest list book.
@@ -102,7 +96,6 @@ public class GradedTestListBook implements ReadOnlyGradedTestList {
         gradedTests.remove(key);
     }
 
-    //// util methods
 
     @Override
     public String toString() {
