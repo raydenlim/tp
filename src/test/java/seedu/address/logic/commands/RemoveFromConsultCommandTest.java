@@ -2,9 +2,9 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.RemoveFromConsultCommand.createUpdatedConsultation;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.RemoveFromConsultCommand.createUpdatedConsultation;
 import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CONSULTATION;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CONSULTATION;
