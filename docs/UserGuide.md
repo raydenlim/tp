@@ -186,9 +186,9 @@ Shows a message explaining how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a Student: `add`
 
-You can add a person to your address book.
+You can add a student to your address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
@@ -200,15 +200,15 @@ Examples:
 **Tip:** You can add any number of tags to a person! (including 0)
 </box>
 
-### Listing All Persons : `list`
+### Listing All Students : `list`
 
-You can list out all persons in your address book.
+You can list out all students in your address book.
 
 Format: `list`
 
-### Editing a Person : `edit`
+### Editing a Student Field : `edit`
 
-You can edit an existing person in your address book.
+You can edit an existing student's fields in your address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
@@ -226,9 +226,9 @@ Examples:
 > * You can remove all the person’s tags by typing `t/` without
       specifying any tags after it.
 
-### Locating Persons by Name: `find`
+### Locating Student by Name: `find`
 
-You can find a person whose name contain any of the given keywords.
+You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -245,9 +245,9 @@ Examples:
 > * Only full words will be matched e.g. `Han` will not match `Hans`
 > * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
-### Deleting a person : `delete`
+### Deleting a Student : `delete`
 
-You can delete any specific person from your address book.
+You can delete any specific student from your address book.
 
 Format: `delete INDEX`
 
@@ -260,23 +260,23 @@ Examples:
 > * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
 
-### Clearing all entries : `clear`
+### Clearing all Entries : `clear`
 
 You can clear all entries from your address book.
 
 Format: `clear`
 
-### Exiting the program : `exit`
+### Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
 
-You can exit the program.
+You can exit the F.A.K.E.J.A.R.V.I.S.
 
 Format: `exit`
 
-### Saving the data
+### Saving the Data
 
-No need to worry about saving. F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data.
+F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. Ther is no need to save data manually.
 
-### Editing the data file
+### Editing the Data File
 
 F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
 
@@ -284,7 +284,7 @@ F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file loca
 If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+### Archiving Data Files `[coming in v2.0]`
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
 
@@ -310,7 +310,7 @@ Examples:
 
 ### 👀Viewing Tasks: `viewtasks`
 
-You can view your task lists.
+You can view you list of tasks.
 
 Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
@@ -528,7 +528,7 @@ Examples:
 * `addcomment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
 
 
-### 👀Viewing a Comment: `viewcomment`
+### 👀Viewing an Assignment Comment: `viewcomment`
 
 You can view the comment(s) tagged to your student’s assignment.
 
@@ -543,7 +543,7 @@ Examples:
 * `viewcomment n/Wesley a/Rune Reading` shows the comment on Wesley’s Rune Reading assignment.
 
 
-### 🛠️Editing a Comment: `editcomment`
+### 🛠️Editing an Assignment Comment: `editcomment`
 
 You can edit the comment of your student’s assignment.
 
@@ -559,7 +559,7 @@ Examples:
 * `editcomment n/Wesley a/Rune Reading c/Great` changes the comment on Wesley’s Rune Reading assignment to “Great”.
 
 
-### ❌Deleting a Comment: `deletecomment`
+### ❌Deleting an Assignment Comment: `deletecomment`
 
 You can delete the comment tagged to your student’s assignment.
 
@@ -591,7 +591,7 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 
 ## Consultation Management
 
-### 📆Creating a Consult: `createconsult`
+### 📆Creating a Consultation: `createconsult`
 
 You can create a consultation for any upcoming consultations.
 
@@ -607,7 +607,7 @@ Examples:
 * `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
-### 👀Showing List of Consultations: `showconsults`
+### 👀Showing a List of Consultations: `showconsults`
 
 You can view the list of all upcoming consultation(s).
 
@@ -617,7 +617,7 @@ Example:
 * `showconsults` displays a list of upcoming consultation(s)
 
 
-### 👀Viewing Details of a Consultation: `viewconsult`
+### 👀Viewing the Details of a Consultation: `viewconsult`
 
 You can view the details of your consultation(s).
 
