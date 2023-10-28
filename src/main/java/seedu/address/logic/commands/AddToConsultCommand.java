@@ -33,11 +33,12 @@ public class AddToConsultCommand extends Command {
     public static final String COMMAND_WORD = "addtoconsult";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a student to a consultation at INDEX."
-        + "Parameters: INDEX (must be a positive integer)"
+        + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_NAME + "NAME]...\n"
         + "Example: " + COMMAND_WORD + " "
         + PREFIX_NAME + "John Doe ";
-    public static final String MESSAGE_SUCCESS = "New student(s) added to consult at index %1$s: %1$s";
+
+    public static final String MESSAGE_SUCCESS = "New student(s) added to consultation at index %1$s: %1$s";
     public static final String MESSAGE_DUPLICATE_STUDENT = "The student(s) added are already in the consultation";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be added";

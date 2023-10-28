@@ -541,15 +541,6 @@ Examples:
 Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
-### 👀Showing list of consultations: `showconsults`
-Shows the list of upcoming consultations.
-
-Format: `showconsults`
-
-Example:
-* `showconsults` displays a list of upcoming consultations
-
-
 ### 👀Viewing details of a consultation: `viewconsult`
 Shows the details of a consultation.
 
