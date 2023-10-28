@@ -541,24 +541,6 @@ Examples:
 Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
-### 👀Viewing details of a consultation: `viewconsult`
-Shows the details of a consultation.
-
-Format: `viewconsult INDEX`
-
-Parameters:
-* INDEX The index of the consultation in the upcoming consultations.
-
-Examples:
-* `viewconsult 1` shows the details of the consultation (if there is a consult scheduled).
-  <br>2023-09-30 15:30
-  <br>John Doe
-  <br>Foo Bar
-  <br>Rayson
-  <br>Wesley
-* `viewconsult -1`shows an error message “Consultation not found” (if there is no consult scheduled).
-
-
 ### 🛠️Adding students to a consultation: `addtoconsult`
 Adds student(s) into a consultation.
 
