@@ -387,7 +387,7 @@
     "students" : [ {
       "name" : "Alice Pauline",
       "phone" : "94351253",
-      "email" : "alice@example.com",
+      "email" : "alice@u.nus.edu",
       "telegramHandle" : "alicePaulding7",
       "tags" : [ "friends" ],
       "assignmentMap" : {
@@ -512,7 +512,7 @@
     }, {
       "name" : "George Best",
       "phone" : "9482442",
-      "email" : "anna@example.com",
+      "email" : "anna@u.nus.edu",
       "telegramHandle" : "georgeBes17",
       "assignmentMap" : {
         "assignments" : {
@@ -636,7 +636,7 @@
     }, {
       "name" : "Fiona Kunz",
       "phone" : "9482427",
-      "email" : "lydia@example.com",
+      "email" : "lydia@u.nus.edu",
       "telegramHandle" : "phi0na",
       "tags" : [ ],
       "assignmentMap" : {
