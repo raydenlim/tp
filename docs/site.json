@@ -1,8 +1,8 @@
 {
   "baseUrl": "",
   "titlePrefix": "F.A.K.E.J.A.R.V.I.S.",
-  "titleSuffix": "AddressBook Level-3",
-  "faviconPath": "images/SeEduLogo.png",
+  "titleSuffix": "F.A.K.E.J.A.R.V.I.S.",
+  "faviconPath": "images/fakejarvis.png",
   "style": {
     "codeTheme": "light"
   },
