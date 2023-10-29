@@ -3,7 +3,7 @@
     "name": "Valid Person",
     "phone": "9482424",
     "email": "hans@u.nus.edu",
-    "address": "4th street",
+    "telegramHandle" : "valid",
     "assignmentMap" : {
       "assignments" : {
         "Beyond the First Dimension" : {
@@ -127,7 +127,7 @@
     "name": "Person With Invalid Phone Field",
     "phone": "948asdf2424",
     "email": "hans@u.nus.edu",
-    "address": "4th street",
+    "telegramHandle" : "valid",
     "assignmentMap" : {
       "assignments" : {
         "Beyond the First Dimension" : {
