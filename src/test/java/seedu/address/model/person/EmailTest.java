@@ -29,7 +29,7 @@ public class EmailTest {
         assertFalse(Email.isValidEmail(" ")); // spaces only
 
         // missing parts
-        assertFalse(Email.isValidEmail("@example.com")); // not the same as u.nus.edu
+        assertFalse(Email.isValidEmail("@u.nus.edu")); // missing local part
         assertFalse(Email.isValidEmail("peterjacku.nus.edu")); // missing '@' symbol
         assertFalse(Email.isValidEmail("peterjack@")); // missing domain name
 
