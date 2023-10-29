@@ -45,8 +45,7 @@ public class AddToConsultCommandTest {
         AddToConsultationDescriptor descriptor = new AddToConsultationDescriptorBuilder(consultationToAddStudent)
                 .build();
         AddToConsultCommand command = new AddToConsultCommand(targetIndex, descriptor);
-        Consultation updatedConsultation = createUpdatedConsultation(model, targetConsultation,
-                descriptor);
+        Consultation updatedConsultation = createUpdatedConsultation(model, targetConsultation, descriptor);
 
         String expectedMessage = String.format(AddToConsultCommand.MESSAGE_SUCCESS,
                 Messages.format(updatedConsultation));

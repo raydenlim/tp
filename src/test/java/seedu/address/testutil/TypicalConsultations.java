@@ -43,6 +43,17 @@ public class TypicalConsultations {
             .withStudents(TypicalPersons.AMY)
             .build();
 
+    public static final Consultation CONSULTATION_TO_REMOVE_FROM = new ConsultationBuilder()
+            .withDate("12/12/2022")
+            .withTime("19:00")
+            .withStudents(TypicalPersons.ALICE, TypicalPersons.GEORGE, TypicalPersons.FIONA)
+            .build();
+    public static final Consultation CONSULTATION_WITH_STUDENTS_TO_REMOVE = new ConsultationBuilder()
+            .withDate("12/12/2022")
+            .withTime("19:00")
+            .withStudents(TypicalPersons.ALICE)
+            .build();
+
     private TypicalConsultations() {} // prevents initialising
 
     public static ConsultationListBook getTypicalConsultationListBook() {
@@ -55,7 +66,8 @@ public class TypicalConsultations {
 
     public static ConsultationList getTypicalConsultations() {
         ConsultationList typicalConsultations = new ConsultationList();
-        List<Consultation> consultationList = new ArrayList<>(Arrays.asList(CONSULTATION1, CONSULTATION2));
+        List<Consultation> consultationList = new ArrayList<>(Arrays.asList(CONSULTATION1, CONSULTATION2,
+                CONSULTATION_TO_REMOVE_FROM));
         typicalConsultations.setConsultationList(consultationList);
         return typicalConsultations;
     }
