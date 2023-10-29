@@ -341,12 +341,11 @@ You can clear all students from your address book.
 
 Format: `clear`
 
-
+<br>
 
 ### Task Management
 
 This section describes commands that help you manage your tasks.
-
 
 <br>
 
