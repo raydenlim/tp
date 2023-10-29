@@ -18,6 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * Creates a consultation to the consultation list.
@@ -35,6 +36,7 @@ public class CreateConsultCommand extends Command {
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
+    public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
     private final LocalDate date;
     private final LocalTime time;
     private Set<Name> names;
@@ -54,7 +56,15 @@ public class CreateConsultCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Set<Person> studentsToAdd = names.stream().map(model::getMatchingStudentName).collect(Collectors.toSet());
+
+        Set<Person> studentsToAdd;
+
+        try {
+            studentsToAdd = names.stream().map(model::getMatchingStudentName).collect(Collectors.toSet());
+        } catch (PersonNotFoundException pe) {
+            throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
+        }
+
         this.consultationToAdd = new Consultation(date, time, studentsToAdd);
         model.addConsultation(this.consultationToAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)));

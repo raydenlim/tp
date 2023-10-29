@@ -382,6 +382,7 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons)
                 && taskList.equals(otherModelManager.taskList)
+                && consultationList.equals(otherModelManager.consultationList)
                 && filteredTasks.equals(otherModelManager.filteredTasks)
                 && filteredGradedTest.equals(otherModelManager.filteredGradedTest);
     }

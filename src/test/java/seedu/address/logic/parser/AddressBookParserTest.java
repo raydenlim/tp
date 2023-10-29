@@ -7,6 +7,7 @@ import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TASK_NAME_TASK1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIME_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ASSIGNMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
@@ -28,6 +29,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.AddToConsultCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.CreateConsultCommand;
 import seedu.address.logic.commands.CreateSessionCommand;
@@ -44,6 +46,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.RemoveFromConsultCommand;
 import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
@@ -56,10 +59,12 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+import seedu.address.testutil.AddToConsultationDescriptorBuilder;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.EditProgressDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
+import seedu.address.testutil.RemoveFromConsultationDescriptorBuilder;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TaskUtil;
 
@@ -136,6 +141,28 @@ public class AddressBookParserTest {
         DeleteConsultationCommand command = (DeleteConsultationCommand) parser.parseCommand(
                 DeleteConsultationCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased());
         assertEquals(new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION), command);
+    }
+
+    @Test
+    public void parseCommand_addToConsultation() throws Exception {
+        AddToConsultCommand command = (AddToConsultCommand) parser.parseCommand(
+                AddToConsultCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased()
+                        + NAME_DESC_AMY);
+        AddToConsultCommand.AddToConsultationDescriptor descriptor = new AddToConsultationDescriptorBuilder()
+                .withNames(VALID_NAME_AMY).build();
+
+        assertEquals(new AddToConsultCommand(INDEX_FIRST_CONSULTATION, descriptor), command);
+    }
+
+    @Test
+    public void parseCommand_removeFromConsultation() throws Exception {
+        RemoveFromConsultCommand command = (RemoveFromConsultCommand) parser.parseCommand(
+                RemoveFromConsultCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased()
+                        + NAME_DESC_AMY);
+        RemoveFromConsultCommand.RemoveFromConsultationDescriptor descriptor = new
+                RemoveFromConsultationDescriptorBuilder().withNames(VALID_NAME_AMY).build();
+
+        assertEquals(new RemoveFromConsultCommand(INDEX_FIRST_CONSULTATION, descriptor), command);
     }
 
     @Test
