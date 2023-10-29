@@ -1,7 +1,7 @@
 {
   "baseUrl": "",
   "titlePrefix": "F.A.K.E.J.A.R.V.I.S.",
-  "titleSuffix": "F.A.K.E.J.A.R.V.I.S.",
+  "titleSuffix": "",
   "faviconPath": "images/fakejarvis.png",
   "style": {
     "codeTheme": "light"
