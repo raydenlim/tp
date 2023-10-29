@@ -27,6 +27,8 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 <!-- * Table of Contents -->
 <page-nav-print />
 
+<br>
+
 ### Table of Contents
 
 * [Introduction](#introduction)
@@ -66,6 +68,9 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 * [Command summary](#command-summary)
 
 
+<br>
+
+
 ### How to use the User Guide
 You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
 
@@ -100,11 +105,17 @@ The following describes what each panel contains:
 * **Consultations Panel:** Displays your consultations
 * **Tutorials Panel:** Displays your sessions
 
+<br>
+
 ### Task Card
 [Coming soon]
 
+<br>
+
 ### Consultation Card
 [Coming soon]
+
+<br>
 
 ### Session Card
 [Coming soon]
@@ -168,25 +179,75 @@ The following describes what each panel contains:
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
+<br>
+
 ### Command Parameters
 Most commands given in the user guide utilise various parameters. Their formats and constraints are provided in the table below.
 
 [Table Coming soon]
 
 
+<br>
+
 ## Features
 This section describes each of the commands and features available in F.A.K.E.J.A.R.V.I.S.
 
-### Viewing help : `help`
+<br>
 
-Shows a message explaining how to access the help page.
+### Miscellaneous Commands
+This section describes commands that fit in no special category.
+
+<br>
+
+#### Viewing help : `help`
+
+Shows you a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
 
-### Adding a Student: `add`
+<br>
+
+#### Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
+
+You can exit the F.A.K.E.J.A.R.V.I.S.
+
+Format: `exit`
+
+
+<br>
+
+#### Saving the Data
+
+F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save data manually.
+
+
+<br>
+
+#### Editing the Data File
+
+F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
+
+**Caution:**
+If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
+</box>
+
+
+<br>
+
+#### Archiving Data Files `[coming in v2.0]`
+
+_Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
+
+
+<br>
+
+### Student Management
+This section describes commands that help you manage your students.
+
+#### Adding a Student: `add`
 
 You can add a student to your address book.
 
@@ -200,17 +261,22 @@ Examples:
 **Tip:** You can add any number of tags to a person! (including 0)
 </box>
 
-### Listing All Students : `list`
+
+<br>
+
+#### Listing All Students : `list`
 
 You can list out all students in your address book.
 
 Format: `list`
 
-### Editing a Student Field : `edit`
+<br>
+
+#### Editing a Student Field : `edit`
 
 You can edit an existing student's fields in your address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
 [//]: # (* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed 
 person list. The index **must be a positive integer** 1, 2, 3, …​   THIS CAN BE IN THE GLOSSARY)
@@ -226,7 +292,10 @@ Examples:
 > * You can remove all the person’s tags by typing `t/` without
       specifying any tags after it.
 
-### Locating Student by Name: `find`
+
+<br>
+
+#### Locating Student by Name: `find`
 
 You can find a student whose name contain any of the given keywords.
 
@@ -245,9 +314,12 @@ Examples:
 > * Only full words will be matched e.g. `Han` will not match `Hans`
 > * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
-### Deleting a Student : `delete`
 
-You can delete any specific student from your address book.
+<br>
+
+#### Deleting a Student : `delete`
+
+You can delete a specific student from your address book.
 
 Format: `delete INDEX`
 
@@ -260,39 +332,25 @@ Examples:
 > * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
 
-### Clearing all Entries : `clear`
 
-You can clear all entries from your address book.
+<br>
+
+#### Clearing all Entries : `clear`
+
+You can clear all students from your address book.
 
 Format: `clear`
 
-### Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
 
-You can exit the F.A.K.E.J.A.R.V.I.S.
 
-Format: `exit`
+### Task Management
 
-### Saving the Data
+This section describes commands that help you manage your tasks.
 
-F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. Ther is no need to save data manually.
 
-### Editing the Data File
+<br>
 
-F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
-
-**Caution:**
-If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
-</box>
-
-### Archiving Data Files `[coming in v2.0]`
-
-_Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
-
-## Task Management
-
-F.A.K.E.J.A.R.V.I.S. also simplifies task management. Here's how to make the most of it:
-
-### 📝Adding a Task: `addtask`
+#### 📝Adding a Task: `addtask`
 
 You can add a task to your task list.
 
@@ -308,7 +366,10 @@ Examples:
 * `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` creates a task to prepare lecture slides with a high priority due on September 30, 2023.
 * `addtask tn/Read Chapter 5` creates a task to read Chapter 5 without specifying a due date or priority.
 
-### 👀Viewing Tasks: `viewtasks`
+
+<br>
+
+#### 👀Viewing Tasks: `viewtasks`
 
 You can view you list of tasks.
 
@@ -333,7 +394,10 @@ Examples:
 > * The order of the keywords does not matter, e.g. `quant book` will match `book quant`.
 > * If no task matching the search criteria is found, the resulting task list will be blank.
 
-### ✅Updating a Task's Progress: `updateprogress`
+
+<br>
+
+#### ✅Updating a Task's Progress: `updateprogress`
 
 You can mark a task as completed.
 
@@ -351,7 +415,10 @@ Examples:
 > * The index refers to the index number shown in the displayed task list.
 > * The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
-### ❌Deleting a Task: `deletetask`
+
+<br>
+
+#### ❌Deleting a Task: `deletetask`
 
 Deletes a task from the task list.
 
@@ -368,9 +435,16 @@ Examples:
 > * The index refers to the index number shown in the displayed task list.
 > * The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
-## Attendance Management
 
-### 📆Taking Attendance: `takeattendance`
+<br>
+
+### Attendance Management
+This section describes commands that help you manage your students' attendance.
+
+
+<br>
+
+#### 📆Taking Attendance: `takeattendance`
 
 You can take the attendance of your student(s).
 
@@ -385,7 +459,10 @@ Examples:
 > * SESSION - The session number.
 > * PRESENCE - The attendance status of the student (e.g., present, absent).
 
-### 👀Viewing Attendance: `viewattendance`
+
+<br>
+
+#### 👀Viewing Attendance: `viewattendance`
 
 You can view the attendance list of your students.
 
@@ -448,9 +525,16 @@ Examples:
 
 [//]: # (* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.)
 
-## Assignment Management
 
-### 📝Adding a Grade to an Assignment: `addgrade`
+<br>
+
+### Assignment Management
+This section describes commands that help you manage your students' assignments.
+
+
+<br>
+
+#### 📝Adding a Grade to an Assignment: `addgrade`
 
 You can add a grade to your student’s assignment.
 
@@ -466,7 +550,9 @@ Examples:
 * `addgrade 2 as/Rune Reading g/600` adds a grade of 600 to student 2's Rune Reading assignment.
 
 
-### 👀Viewing an Assignment Grade: `viewgrade`
+<br>
+
+#### 👀Viewing an Assignment Grade: `viewgrade`
 
 You can view your student’s assignment grade.
 
@@ -481,7 +567,9 @@ Examples:
 * `viewgrade 2 as/Rune Reading` shows student 2's Rune Reading grade.
 
 
-### 🛠️Editing an Assignment Grade: `editgrade`
+<br>
+
+#### 🛠️Editing an Assignment Grade: `editgrade`
 
 You can edit your student’s assignment grade.
 
@@ -497,7 +585,9 @@ Examples:
 * `editgrade 2 as/Rune Reading g/1000` edits the grade of student 2's Rune Reading assignment to 1000.
 
 
-### ❌Deleting an Assignment Grade: `deletegrade`
+<br>
+
+#### ❌Deleting an Assignment Grade: `deletegrade`
 
 You can delete your student’s assignment grade.
 
@@ -512,7 +602,9 @@ Examples:
 * `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade.
 
 
-### 📝Adding a Comment to an Assignment: `addcomment`
+<br>
+
+#### 📝Adding a Comment to an Assignment: `addcomment`
 
 You can add a comment to your student’s assignment.
 
@@ -528,7 +620,9 @@ Examples:
 * `addcomment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
 
 
-### 👀Viewing an Assignment Comment: `viewcomment`
+<br>
+
+#### 👀Viewing an Assignment Comment: `viewcomment`
 
 You can view the comment(s) tagged to your student’s assignment.
 
@@ -543,7 +637,9 @@ Examples:
 * `viewcomment n/Wesley a/Rune Reading` shows the comment on Wesley’s Rune Reading assignment.
 
 
-### 🛠️Editing an Assignment Comment: `editcomment`
+<br>
+
+#### 🛠️Editing an Assignment Comment: `editcomment`
 
 You can edit the comment of your student’s assignment.
 
@@ -559,7 +655,9 @@ Examples:
 * `editcomment n/Wesley a/Rune Reading c/Great` changes the comment on Wesley’s Rune Reading assignment to “Great”.
 
 
-### ❌Deleting an Assignment Comment: `deletecomment`
+<br>
+
+#### ❌Deleting an Assignment Comment: `deletecomment`
 
 You can delete the comment tagged to your student’s assignment.
 
@@ -573,8 +671,15 @@ Examples:
 * `deletecomment n/Rayson a/Functional Expressionism` deletes the comment on Rayson’s Functional Expressionism assignment.
 * `deletecomment n/Wesley a/Rune Reading` deletes the comment on Wesley’s Rune Reading assignment.
 
-## Graded Test Management
-### 🛠️Editing a Graded Test Score: `editgradedtest`
+<br>
+
+### Graded Test Management
+This section describes commands tht help you manage your students' graded tests.
+
+
+<br>
+
+#### 🛠️Editing a Graded Test Score: `editgradedtest`
 
 You can edit your student’s graded test scores.
 
@@ -589,9 +694,15 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 > * PRACTICALEXAM The score of the student's Practical Exams.
 
 
-## Consultation Management
+<br>
 
-### 📆Creating a Consultation: `createconsult`
+### Consultation Management
+This section describes commands that help you manage your consultations with students.
+
+
+<br>
+
+#### 📆Creating a Consultation: `createconsult`
 
 You can create a consultation for any upcoming consultations.
 
@@ -607,7 +718,10 @@ Examples:
 * `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
-### 👀Showing a List of Consultations: `showconsults`
+
+<br>
+
+#### 👀Showing a List of Consultations: `showconsults`
 
 You can view the list of all upcoming consultation(s).
 
@@ -617,7 +731,9 @@ Example:
 * `showconsults` displays a list of upcoming consultation(s)
 
 
-### 👀Viewing the Details of a Consultation: `viewconsult`
+<br>
+
+#### 👀Viewing the Details of a Consultation: `viewconsult`
 
 You can view the details of your consultation(s).
 
@@ -636,7 +752,9 @@ Examples:
 * `viewconsult -1`shows an error message “Consultation not found” (if there is no consult scheduled).
 
 
-### 🛠️Adding Students to a Consultation: `addtoconsult`
+<br>
+
+#### 🛠️Adding Students to a Consultation: `addtoconsult`
 
 You can add your student(s) into a consultation slot.
 
@@ -652,7 +770,9 @@ Examples:
 * `addtoconsult -1 n/Foo Bar`shows an error message.
 
 
-### ❌Removing Students from a Consultation: `removefromconsult`
+<br>
+
+#### ❌Removing Students from a Consultation: `removefromconsult`
 
 You can remove your student(s) from a consultation.
 
@@ -667,7 +787,9 @@ Examples:
 * `removefromconsult 1 n/NOTINCONSULT` shows an error message “Student not found”.
 
 
-### ❌Deleting a Consultation: `deleteconsult`
+<br>
+
+#### ❌Deleting a Consultation: `deleteconsult`
 
 You can delete the consultation slot specified by an index.
 
@@ -698,12 +820,28 @@ Examples:
 
 ## Command summary
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`
+| **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`                                               | `add n/James Ho p/22224444 e/jamesho@example.com a/james03 t/friend t/colleague`                                               |
+| **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
+| **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
+| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                                         | `edit 2 n/James Lee e/jameslee@example.com`                                                                                    |
+| **Find**                      | `find KEYWORD [MORE_KEYWORDS]`                                                                                 | `find John` or `find alex david`                                                                                               |
+| **View**                      | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]` | `viewtasks`, `viewtasks tp/high`, `viewtasks d/30/09/2023`                                                                     |
+| **Update Progress**           | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                 | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                                |
+| **Delete Task**               | `deletetask TASK_INDEX`                                                                                        | `deletetask 3`, `deletetask 2`                                                                                                 |
+| **Take Attendance**           | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                           | `takeattendance n/John Doe s/5 present`, `takeattendance n/Foo Bar s/2 absent`                                                 |
+| **View Attendance**           | `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`                                                           | `viewattendance`, `viewattendance n/Rayan`, `viewattendance n/Jayson Resley`                                                   |
+| **Add Grade**                 | `addgrade INDEX as/ASSIGNMENT g/GRADE`                                                                         | `addgrade 1 as/Functional Expressionism g/1300`, `addgrade 2 as/Rune Reading g/600`                                            |
+| **View Grade**                | `viewgrade INDEX as/ASSIGNMENT`                                                                                | `viewgrade 1 as/Functional Expressionism`, `viewgrade 2 as/Rune Reading`                                                       |
+| **Edit Grade**                | `editgrade INDEX as/ASSIGNMENT g/GRADE`                                                                        | `editgrade 1 as/Functional Expressionism g/1200`, `editgrade 2 as/Rune Reading g/1000`                                         |
+| **Delete Grade**              | `deletegrade INDEX as/ASSIGNMENT`                                                                              | `deletegrade 1 as/Functional Expressionism`, `deletegrade 2 as/Rune Reading`                                                   |
+| **Add Comment**               | `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                             | `addcomment n/Rayson a/Functional Expressionism c/Excellent`, `addcomment n/Wesley a/Rune Reading c/Not bad`                   |
+| **View Comment**              | `viewcomment n/STUDENT_NAME a/ASSIGNMENT`                                                                      | `viewcomment n/Rayson a/Functional Expressionism`, `viewcomment n/Wesley a/Rune Reading`                                       |
+| **Edit Comment**              | `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                            | `editcomment n/Rayson a/Functional Expressionism c/Decent`, `editcomment n/Wesley a/Rune Reading c/Great`                      |
+| **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                    | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
+| **Edit Graded Test**          | `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                           |
+| **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                                 | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
+| **Show Consultations**        | `showconsults`                                                                                                 | `showconsults`                                                                                                                 |
+| **View Consultation Details** | `viewconsult INDEX`                                                                                            | `viewconsult 1`, `viewconsult 2`                                                                                               |
+
