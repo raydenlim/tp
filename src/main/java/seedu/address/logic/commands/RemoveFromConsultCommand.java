@@ -33,15 +33,15 @@ public class RemoveFromConsultCommand extends Command {
     public static final String COMMAND_WORD = "removefromconsult";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Removes a person identified using his/her name from the specified consultation "
-            + "by index in the displayed consultation list.\n"
+            + ": Removes a person identified using his/her name from the specified consultation. "
+            + "The consultation is specified by its index in the displayed consultation list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_NAME + "NAME\n"
             + "Example: " + COMMAND_WORD + " 1" + PREFIX_NAME + "John Doe";
 
     public static final String MESSAGE_SUCCESS = "Student(s) removed from consultation at index %1$s: %1$s";
-    public static final String MESSAGE_PERSON_NOT_FOUND = "No student(s) in address book matching given name(s)";
-    public static final String MESSAGE_NOT_FOUND_IN_CONSULT = "No student(s) in consultation matching given name(s)";
+    public static final String MESSAGE_PERSON_NOT_FOUND = "No student(s) in address book matches given name(s)";
+    public static final String MESSAGE_NOT_FOUND_IN_CONSULT = "No student(s) in consultation matches given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be removed";
     private final Index index;
     private final RemoveFromConsultationDescriptor removeFromConsultationDescriptor;
