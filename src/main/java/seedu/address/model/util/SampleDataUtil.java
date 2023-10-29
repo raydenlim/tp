@@ -51,22 +51,22 @@ public class SampleDataUtil {
     public static final String VALID_GRADED_TEST_2 =
             "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
     public static final Person PERSON_ALEX = new Person(new Name("Alex Yeoh"), new Phone("87438807"),
-            new Email("alexyeoh@u.nus.edu.sg"), new TelegramHandle("alexYeohh"),
+            new Email("alexyeoh@u.nus.edu"), new TelegramHandle("alexYeohh"),
             getTagSet("friends"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_BERNICE = new Person(new Name("Bernice Yu"), new Phone("99272758"),
-            new Email("berniceyu@u.nus.edu.sg"), new TelegramHandle("berrynice123"),
+            new Email("berniceyu@u.nus.edu"), new TelegramHandle("berrynice123"),
             getTagSet("colleagues", "friends"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_CHARLOTTE = new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),
-            new Email("charlotte@u.nus.edu.sg"), new TelegramHandle("charl0tt0"),
+            new Email("charlotte@u.nus.edu"), new TelegramHandle("charl0tt0"),
             getTagSet("neighbours"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_DAVID = new Person(new Name("David Li"), new Phone("91031282"),
-            new Email("lidavid@u.nus.edu.sg"), new TelegramHandle("goliathMyBestie"),
+            new Email("lidavid@u.nus.edu"), new TelegramHandle("goliathMyBestie"),
             getTagSet("family"), getGradedTestSet(VALID_GRADED_TEST_1));
     public static final Person PERSON_IRFAN = new Person(new Name("Irfan Ibrahim"), new Phone("92492021"),
-            new Email("irfan@u.nus.edu.sg"), new TelegramHandle("nafri00"),
+            new Email("irfan@u.nus.edu"), new TelegramHandle("nafri00"),
             getTagSet("classmates"), getGradedTestSet(VALID_GRADED_TEST_2));
     public static final Person PERSON_ROY = new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),
-            new Email("royb@u.nus.edu.sg"), new TelegramHandle("RoytheBoy"),
+            new Email("royb@u.nus.edu"), new TelegramHandle("RoytheBoy"),
             getTagSet("colleagues"), getGradedTestSet(VALID_GRADED_TEST_2));
 
 

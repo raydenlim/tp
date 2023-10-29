@@ -18,13 +18,13 @@ public class Email {
             + "the parentheses, (" + SPECIAL_CHARACTERS + "). The local-part may not start or end with any special "
             + "characters.\n"
             + "2. This is followed by a '@' and then a domain name. As the app is currently developed for NUS teaching"
-            + "assistants, the domain name must be \"u.nus.ed.sg\".";
+            + "assistants, the domain name must be \"u.nus.edu\".";
 
     // alphanumeric and special characters
     private static final String ALPHANUMERIC_NO_UNDERSCORE = "[^\\W_]+"; // alphanumeric characters except underscore
     private static final String LOCAL_PART_REGEX = "^" + ALPHANUMERIC_NO_UNDERSCORE + "([" + SPECIAL_CHARACTERS + "]"
             + ALPHANUMERIC_NO_UNDERSCORE + ")*";
-    private static final String NUS_DOMAIN = "u.nus.edu.sg";
+    private static final String NUS_DOMAIN = "u.nus.edu";
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + Pattern.quote(NUS_DOMAIN);
 
     public final String value;

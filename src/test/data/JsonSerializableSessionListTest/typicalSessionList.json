@@ -5,7 +5,7 @@
       {
         "name" : "Alice Pauline",
         "phone" : "94351253",
-        "email" : "alice@u.nus.edu.sg",
+        "email" : "alice@u.nus.edu",
         "telegramHandle" : "alicePaulding7",
         "tags" : [ "friends" ],
         "assignmentMap" : {
@@ -135,7 +135,7 @@
     "students" : [{
       "name" : "Benson Meier",
       "phone" : "98765432",
-      "email" : "johnd@u.nus.edu.sg",
+      "email" : "johnd@u.nus.edu",
       "telegramHandle" : "Bensonson",
       "tags" : [ "owesMoney", "friends" ],
       "assignmentMap" : {

@@ -2,7 +2,7 @@
   "persons": [ {
     "name": "Alice Pauline",
     "phone": "94351253",
-    "email": "alice@u.nus.edu.sg",
+    "email": "alice@u.nus.edu",
     "telegramHandle": "alicePaulding7",
     "tags": [ "friends" ],
     "assignmentMap" : {
@@ -127,7 +127,7 @@
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
-    "email": "pauline@u.nus.edu.sg",
+    "email": "pauline@u.nus.edu",
     "telegramHandle": "alicePaulding7",
     "assignmentMap" : {
       "assignments" : {
