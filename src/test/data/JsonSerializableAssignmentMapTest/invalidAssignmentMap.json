@@ -2,7 +2,7 @@
   "persons": [ {
     "name": "Valid Person Invalid AssignmentMap",
     "phone": "9482424",
-    "email": "hans@example.com",
+    "email": "hans@u.nus.edu.sg",
     "address": "4th street",
     "assignmentMap" : {
       "assignments" : {
