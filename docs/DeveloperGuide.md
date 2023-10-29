@@ -297,7 +297,7 @@ Below is a class diagram describing the implementation of `Consultation` and its
 **Aspect: How the students are stored to a consultation:**
 
 * **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
-    * Pros: Store only one of the same person, no duplicates.
+    * Pros: Stores only 1 instance of a unique person, no duplicates.
     * Cons: May have performance issues in terms of memory usage.
 
 
@@ -310,7 +310,7 @@ Below is a class diagram describing the implementation of `Consultation` and its
   * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
   * Cons: Require additional checking to inform exception cases.
 
-* **Alternative 2:** `AddToConsult` directly manipulate the attribute students in a Consultation object.
+* **Alternative 2:** `AddToConsult` directly manipulate the attribute `students` in a Consultation object.
   * Cons: Poor abstraction and room for errors.
 
 
