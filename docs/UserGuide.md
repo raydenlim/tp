@@ -607,37 +607,7 @@ Examples:
 * `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
 
 
-### 👀Showing a List of Consultations: `showconsults`
-
-You can view the list of all upcoming consultation(s).
-
-Format: `showconsults`
-
-Example:
-* `showconsults` displays a list of upcoming consultation(s)
-
-
-### 👀Viewing the Details of a Consultation: `viewconsult`
-
-You can view the details of your consultation(s).
-
-Format: `viewconsult INDEX`
-
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultation(s).
-
-Examples:
-* `viewconsult 1` shows the details of the consultation (if there is a consult scheduled).
-  <br>2023-09-30 15:30
-  <br>John Doe
-  <br>Foo Bar
-  <br>Rayson
-  <br>Wesley
-* `viewconsult -1`shows an error message “Consultation not found” (if there is no consult scheduled).
-
-
-### 🛠️Adding Students to a Consultation: `addtoconsult`
-
+### 🛠️Adding students to a consultation: `addtoconsult`
 You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
