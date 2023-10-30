@@ -19,7 +19,7 @@ public class DeleteSessionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the session identified by the session number.\n"
             + "Parameters: "
-            + PREFIX_SESSION + "SESSION_NUMBER (session must already be created) "
+            + PREFIX_SESSION + "SESSION_NUMBER (session must already be created)\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_SESSION + "1";
 
