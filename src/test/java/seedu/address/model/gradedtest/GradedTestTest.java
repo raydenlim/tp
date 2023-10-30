@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADED_TEST_1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADED_TEST_2;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADED_TEST_3;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
@@ -35,30 +34,71 @@ public class GradedTestTest {
     }
 
     @Test
-    public void testValidateFieldValidRA1() {
+    public void testValidateFieldValidRA1_valid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
         String result = gradedTest.validateField("RA1", "-");
         assertEquals(null, result);
     }
 
     @Test
-    public void testValidateFieldInvalidRA1() {
+    public void testValidateFieldInvalidRA1_invalid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
         String result = gradedTest.validateField("RA1", "-100");
         assertEquals(GradedTest.MESSAGE_CONSTRAINTS_RA1, result);
     }
 
     @Test
-    public void testValidateFieldValidFinals() {
-        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
-        String result = gradedTest.validateField("Finals", "98.5");
+    public void testValidateFieldValidRA2_valid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
+        String result = gradedTest.validateField("RA2", "4564132");
         assertEquals(null, result);
     }
 
     @Test
-    public void testValidateFieldInvalidPE() {
+    public void testValidateFieldInvalidRA2_invalid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
+        String result = gradedTest.validateField("RA2", "^#*&");
+        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_RA2, result);
+    }
+
+    @Test
+    public void testValidateFieldValidMidTerms_valid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
+        String result = gradedTest.validateField("MidTerms", "123.456");
+        assertEquals(null, result);
+    }
+
+    @Test
+    public void testValidateFieldInvalidMidTerms_invalid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
+        String result = gradedTest.validateField("MidTerms", "onetwothree");
+        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_MIDTERMS, result);
+    }
+
+    @Test
+    public void testValidateFieldValidFinals_valid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
-        String result = gradedTest.validateField("PE", "abc"); // Invalid non-numeric value
+        String result = gradedTest.validateField("Finals", "4");
+        assertEquals(null, result);
+    }
+
+    @Test
+    public void testValidateFieldValidFinals_invalid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
+        String result = gradedTest.validateField("Finals", "--");
+        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_FINALS, result);
+    }
+
+    @Test
+    public void testValidateFieldInvalidPE_valid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
+        String result = gradedTest.validateField("PE", "-"); // 1 - is ok
+        assertEquals(null, result);
+    }
+    @Test
+    public void testValidateFieldInvalidPE_invalid() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
+        String result = gradedTest.validateField("PE", "-----------"); // Cant have so many -
         assertEquals(GradedTest.MESSAGE_CONSTRAINTS_PE, result);
     }
 

@@ -117,31 +117,32 @@ public class GradedTest {
 
     public String validateField(String fieldName, String fieldValue) {
         switch (fieldName) {
-            case "RA1":
-                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
-                    return MESSAGE_CONSTRAINTS_RA1;
-                }
-                break;
-            case "RA2":
-                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
-                    return MESSAGE_CONSTRAINTS_RA2;
-                }
-                break;
-            case "MidTerms":
-                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
-                    return MESSAGE_CONSTRAINTS_MIDTERMS;
-                }
-                break;
-            case "Finals":
-                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
-                    return MESSAGE_CONSTRAINTS_FINALS;
-                }
-                break;
-            case "PE":
-                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
-                    return MESSAGE_CONSTRAINTS_PE;
-                }
-                break;
+        case "RA1":
+            if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                return MESSAGE_CONSTRAINTS_RA1;
+            }
+            break;
+        case "RA2":
+            if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                return MESSAGE_CONSTRAINTS_RA2;
+            }
+            break;
+        case "MidTerms":
+            if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                return MESSAGE_CONSTRAINTS_MIDTERMS;
+            }
+            break;
+        case "Finals":
+            if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                return MESSAGE_CONSTRAINTS_FINALS;
+            }
+            break;
+        case "PE":
+            if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                return MESSAGE_CONSTRAINTS_PE;
+            }
+            break;
+        default:
         }
         return null; // No error
     }
