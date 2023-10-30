@@ -147,6 +147,15 @@
       "email" : "johnd@u.nus.edu",
       "telegramHandle" : "Bensonson",
       "tags" : [ "owesMoney", "friends" ],
+      "gradedTests": [
+        {
+          "RA1": "1",
+          "RA2": "2",
+          "MidTerms": "3",
+          "Finals": "4",
+          "PE": "5"
+        }
+      ],
       "assignmentMap" : {
         "assignments" : {
           "Beyond the First Dimension" : {

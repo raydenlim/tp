@@ -91,7 +91,7 @@ public class GradedTestTest {
 
     @Test
     public void toStringMethod() {
-        String expected = String.format("%s RA1:%s, RA2:%s, MidTerms:%s, Finals:%s, PE:%s",
+        String expected = String.format("%s{RA1:%s, RA2:%s, MidTerms:%s, Finals:%s, PE:%s}",
                 GradedTest.class.getCanonicalName(), GT1.getRA1(), GT1.getRA2(),
                 GT1.getMidTerms(), GT1.getFinals(), GT1.getPracticalExam());
         assertEquals(expected, expected);

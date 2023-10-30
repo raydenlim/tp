@@ -72,7 +72,6 @@ public class AddCommandParserTest {
                 + TELEGRAM_HANDLE_DESC_BOB + TAG_DESC_FRIEND;
 
         // multiple names
-        System.out.println(NAME_DESC_AMY + validExpectedPersonString);
         assertParseFailure(parser, NAME_DESC_AMY + validExpectedPersonString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 

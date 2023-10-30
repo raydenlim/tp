@@ -165,7 +165,6 @@ public class PersonTest {
                 + ", email=" + ALICE.getEmail() + ", telegramHandle=" + ALICE.getTelegramHandle()
                 + ", tags=" + ALICE.getTags()
                 + ", gradedTests=" + ALICE.getGradedTest() + "}";
-        System.out.println(expected);
         assertEquals(expected, ALICE.toString());
     }
 }

@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.GRADED_TEST_2;
 import static seedu.address.logic.commands.CommandTestUtil.GRADED_TEST_3;
 import static seedu.address.logic.commands.CommandTestUtil.GRADED_TEST_4;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_2;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_DESC_1;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;

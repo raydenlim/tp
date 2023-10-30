@@ -25,28 +25,47 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class TypicalPersons {
 
-    public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
+    public static final Person ALICE = new PersonBuilder()
+            .withName("Alice Pauline")
             .withTelegramHandle("alicePaulding7").withEmail("alice@u.nus.edu")
             .withPhone("94351253")
             .withTags("friends")
             .withGradedTest("RA1:10 | RA2:20 | MidTerms:30 | Finals:40 | PE:50").build();
-    public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
+    public static final Person BENSON = new PersonBuilder()
+            .withName("Benson Meier")
             .withTelegramHandle("Bensonson")
-            .withEmail("johnd@u.nus.edu").withPhone("98765432")
+            .withEmail("johnd@u.nus.edu")
+            .withPhone("98765432")
             .withTags("owesMoney", "friends")
-            .withGradedTest().build();
-    public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
-            .withEmail("heinz@u.nus.edu").withTelegramHandle("richcarlton1101")
-            .withGradedTest().build();
-    public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
-            .withEmail("cornelia@u.nus.edu").withTelegramHandle("dantheman").withTags("friends")
-            .withGradedTest().build();
-    public static final Person ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
-            .withEmail("werner@u.nus.edu").withTelegramHandle("AllieWithAnEButNoI").withGradedTest().build();
-    public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz").withPhone("9482427")
-            .withEmail("lydia@u.nus.edu").withTelegramHandle("phi0na").withGradedTest().build();
-    public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
-            .withEmail("anna@u.nus.edu").withTelegramHandle("georgeBes17").withGradedTest().build();
+            .withGradedTest("RA1:1 | RA2:2 | MidTerms:3 | Finals:4 | PE:5").build();
+    public static final Person CARL = new PersonBuilder()
+            .withName("Carl Kurz")
+            .withPhone("95352563")
+            .withEmail("heinz@u.nus.edu")
+            .withTelegramHandle("richcarlton1101")
+            .withGradedTest("RA1:5 | RA2:4 | MidTerms:3 | Finals:2 | PE:1").build();
+    public static final Person DANIEL = new PersonBuilder()
+            .withName("Daniel Meier").withPhone("87652533")
+            .withEmail("cornelia@u.nus.edu")
+            .withTelegramHandle("dantheman")
+            .withTags("friends")
+            .withGradedTest("RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0").build();
+    public static final Person ELLE = new PersonBuilder()
+            .withName("Elle Meyer")
+            .withPhone("9482224")
+            .withEmail("werner@u.nus.edu")
+            .withTelegramHandle("AllieWithAnEButNoI").build();
+    public static final Person FIONA = new PersonBuilder()
+            .withName("Fiona Kunz")
+            .withPhone("9482427")
+            .withEmail("lydia@u.nus.edu")
+            .withTelegramHandle("phi0na").build();
+
+    public static final Person GEORGE = new PersonBuilder()
+            .withName("George Best")
+            .withPhone("9482442")
+            .withEmail("anna@u.nus.edu")
+            .withTelegramHandle("georgeBes17").build();
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
