@@ -28,10 +28,42 @@ public class GradedTestTest {
     }
 
     @Test
-    public void isValidGradedTestName() {
+    public void constructor_invalidGradedTestNameDefault_throwsIllegalArgumentException() {
+        String validGradedTestName = "default";
+        assertTrue(() -> GradedTest.isValidGradeTestNameDefault(validGradedTestName));
+        assertFalse(() -> GradedTest.isValidGradeTestName(validGradedTestName));
+    }
+
+    @Test
+    public void constructor_isValidGradedTestName_throwsNullPointerException() {
         // null gradedTest name
         assertThrows(NullPointerException.class, () -> GradedTest.isValidGradeTestName(null));
     }
+
+    @Test
+    public void constructor_isValidGradedTestNameDefault_throwsNullPointerException() {
+        // null gradedTest name
+        assertThrows(NullPointerException.class, () -> GradedTest.isValidGradeTestNameDefault(null));
+    }
+
+    @Test
+    public void constructor_validGradedTestNameSmallLetters_pass() {
+        String testName = "default";
+        assertTrue(GradedTest.isValidGradeTestNameDefault(testName));
+    }
+
+    @Test
+    public void constructor_validGradedTestNameBlockLetters_pass() {
+        String testName = "DEFAULT";
+        assertTrue(GradedTest.isValidGradeTestNameDefault(testName));
+    }
+
+    @Test
+    public void constructor_validGradedTestNameMixCase_pass() {
+        String testName = "dEfAUlT";
+        assertTrue(GradedTest.isValidGradeTestNameDefault(testName));
+    }
+
 
     @Test
     public void testValidateFieldValidRA1_valid() {
@@ -44,7 +76,7 @@ public class GradedTestTest {
     public void testValidateFieldInvalidRA1_invalid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
         String result = gradedTest.validateField("RA1", "-100");
-        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_RA1, result);
+        assertEquals(ReadingAssessment1.MESSAGE_CONSTRAINTS, result);
     }
 
     @Test
@@ -58,7 +90,7 @@ public class GradedTestTest {
     public void testValidateFieldInvalidRA2_invalid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
         String result = gradedTest.validateField("RA2", "^#*&");
-        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_RA2, result);
+        assertEquals(ReadingAssessment2.MESSAGE_CONSTRAINTS, result);
     }
 
     @Test
@@ -72,7 +104,7 @@ public class GradedTestTest {
     public void testValidateFieldInvalidMidTerms_invalid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
         String result = gradedTest.validateField("MidTerms", "onetwothree");
-        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_MIDTERMS, result);
+        assertEquals(MidTerms.MESSAGE_CONSTRAINTS, result);
     }
 
     @Test
@@ -86,7 +118,7 @@ public class GradedTestTest {
     public void testValidateFieldValidFinals_invalid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
         String result = gradedTest.validateField("Finals", "--");
-        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_FINALS, result);
+        assertEquals(Finals.MESSAGE_CONSTRAINTS, result);
     }
 
     @Test
@@ -99,7 +131,7 @@ public class GradedTestTest {
     public void testValidateFieldInvalidPE_invalid() {
         GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
         String result = gradedTest.validateField("PE", "-----------"); // Cant have so many -
-        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_PE, result);
+        assertEquals(PracticalExam.MESSAGE_CONSTRAINTS, result);
     }
 
     @Test

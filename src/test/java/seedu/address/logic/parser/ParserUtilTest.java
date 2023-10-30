@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_DESC_1;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -16,6 +17,12 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.gradedtest.Finals;
+import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.gradedtest.MidTerms;
+import seedu.address.model.gradedtest.PracticalExam;
+import seedu.address.model.gradedtest.ReadingAssessment1;
+import seedu.address.model.gradedtest.ReadingAssessment2;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -37,6 +44,12 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@u.nus.edu";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    public static final String VALID_GRADED_TEST_1 =
+            "RA1:- | RA2:- | MidTerms:3 | Finals:4 | PE:5";
+    public static final String VALID_GRADED_TEST_2 =
+            "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
+    public static final String VALID_GRADED_TEST_4 =
+            "RA1:- | RA2:- | MidTerms:- | Finals:- | PE:-";
 
     private static final String WHITESPACE = " \t\r\n";
     private static final String INVALID_PRIORITY = "jason";
@@ -205,6 +218,104 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    // Graded Test
+    @Test
+    public void parseGradedTest_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseGradedTest(null));
+    }
+
+    @Test
+    public void parseGradedTest_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseGradedTest("SOMEONE THAT WE USED TO KNOW"));
+    }
+
+    @Test
+    public void parseGradedTest_validValueWithoutWhitespace_returnsGradedTest() throws Exception {
+        GradedTest expectedGradedTest = new GradedTest(VALID_GRADED_TEST_2);
+        assertEquals(expectedGradedTest, ParserUtil.parseGradedTest(VALID_GRADED_TEST_2));
+    }
+
+    @Test
+    public void parseGradedTest_validValueWithWhitespace_returnsTrimmedGradedTest() throws Exception {
+        String gradedTestWithWhitespace = WHITESPACE + VALID_GRADED_TEST_4 + WHITESPACE;
+        GradedTest expectedGradededTest = new GradedTest(VALID_GRADED_TEST_4);
+        assertEquals(expectedGradededTest, ParserUtil.parseGradedTest(gradedTestWithWhitespace));
+    }
+
+    @Test
+    public void parseGradedTests_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseGradedTest(null));
+    }
+
+    @Test
+    public void parseGradedTests_collectionWithInvalidGradedTests_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseGradedTests(Arrays.asList(VALID_TAG_1, INVALID_TAG)));
+    }
+
+    @Test
+    public void parseGradedTests_emptyCollection_returnsEmptySet() throws Exception {
+        assertTrue(ParserUtil.parseGradedTests(Collections.emptyList()).isEmpty());
+    }
+
+    @Test
+    public void parseGradedTests_collectionWithValidGradedTests_returnsGradedTestSet() throws Exception {
+        Set<GradedTest> actualGradedTestSet = ParserUtil.parseGradedTests(Arrays.asList(VALID_GRADED_TEST_1, VALID_GRADED_TEST_2));
+        Set<GradedTest> expectedGradedTestSet = new HashSet<GradedTest>(Arrays.asList(new GradedTest(VALID_GRADED_TEST_1),
+                new GradedTest(VALID_GRADED_TEST_2)));
+
+        assertEquals(expectedGradedTestSet, actualGradedTestSet);
+    }
+
+    @Test
+    public void parseGradedTest_validInput_returnsGradedTest() throws ParseException {
+        String input = "RA1:10 | RA2:20 | MidTerms:30 | Finals:40 | PE:50";
+        GradedTest expectedGradedTest = new GradedTest(
+                new ReadingAssessment1("10"),
+                new ReadingAssessment2("20"),
+                new MidTerms("30"),
+                new Finals("40"),
+                new PracticalExam("50")
+        );
+        assertEquals(expectedGradedTest, ParserUtil.parseGradedTest(input));
+    }
+
+    @Test
+    public void parseGradedTest_validDefaultInput_returnsDefaultGradedTest() throws ParseException {
+        String input = "default";
+        GradedTest expectedGradedTest = new GradedTest(
+                new ReadingAssessment1(GradedTest.DEFAULT_VALUE),
+                new ReadingAssessment2(GradedTest.DEFAULT_VALUE),
+                new MidTerms(GradedTest.DEFAULT_VALUE),
+                new Finals(GradedTest.DEFAULT_VALUE),
+                new PracticalExam(GradedTest.DEFAULT_VALUE)
+        );
+        assertEquals(expectedGradedTest, ParserUtil.parseGradedTest(input));
+    }
+
+    @Test
+    public void parseGradedTest_missingComponents_throwsParseException() {
+        String input = "RA1:10 | Finals:20 | PE:30";
+        assertThrows(ParseException.class, () -> ParserUtil.parseGradedTest(input));
+    }
+
+    @Test
+    public void parseGradedTest_invalidComponentValues_throwsParseException() {
+        String input = "RA1:abc | RA2:90 | MidTerms:50 | Finals:60 | PE:70";
+        assertThrows(ParseException.class, () -> ParserUtil.parseGradedTest(input));
+    }
+
+    @Test
+    public void parseGradedTest_invalidFormat_throwsParseException() {
+        String input = "RA1:10 | RA2:20 | MidTerms:30 | Finals:40 | PE:50 | ExtraComponent:60";
+        assertThrows(ParseException.class, () -> ParserUtil.parseGradedTest(input));
+    }
+
+    @Test
+    public void parseGradedTest_emptyInput_throwsParseException() {
+        String input = "";
+        assertThrows(ParseException.class, () -> ParserUtil.parseGradedTest(input));
     }
 
     @Test
