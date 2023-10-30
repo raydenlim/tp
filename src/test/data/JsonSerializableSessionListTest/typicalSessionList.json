@@ -5,7 +5,7 @@
       {
         "name" : "Alice Pauline",
         "phone" : "94351253",
-        "email" : "alice@example.com",
+        "email" : "alice@u.nus.edu",
         "telegramHandle" : "alicePaulding7",
         "tags" : [ "friends" ],
         "gradedTests": [
@@ -144,7 +144,7 @@
     "students" : [{
       "name" : "Benson Meier",
       "phone" : "98765432",
-      "email" : "johnd@example.com",
+      "email" : "johnd@u.nus.edu",
       "telegramHandle" : "Bensonson",
       "tags" : [ "owesMoney", "friends" ],
       "assignmentMap" : {

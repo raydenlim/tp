@@ -5,7 +5,7 @@
     "students" : [ {
       "name" : "Alex Yeoh",
       "phone" : "87438807",
-      "email" : "alexyeoh@example.com",
+      "email" : "alexyeoh@u.nus.edu",
       "telegramHandle" : "alexYeohh",
       "tags" : [ "friends" ],
       "assignmentMap" : {
@@ -134,7 +134,7 @@
     "students" : [ {
       "name" : "Alex Yeoh",
       "phone" : "87438807",
-      "email" : "alexyeoh@example.com",
+      "email" : "alexyeoh@u.nus.edu",
       "telegramHandle" : "alexYeohh",
       "tags" : [ "friends" ],
       "assignmentMap" : {

@@ -253,7 +253,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns true if a task with the same identity as {@code gradedTest} exists in the gradedTest.
+     * Returns true if a gradedTest with the same identity as {@code gradedTest} exists in the gradedTest.
      */
     public boolean hasGradedTest(GradedTest gradedTest) {
         requireNonNull(gradedTest);
@@ -276,7 +276,7 @@ public class ModelManager implements Model {
      */
     public void addGradedTest(GradedTest gradedTest) {
         gradedTestList.addGradedTest(gradedTest);
-        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        updateFilteredGradedTestList(PREDICATE_SHOW_ALL_GRADED_TEST);
     }
 
     @Override
@@ -382,6 +382,7 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons)
                 && taskList.equals(otherModelManager.taskList)
+                && consultationList.equals(otherModelManager.consultationList)
                 && filteredTasks.equals(otherModelManager.filteredTasks)
                 && filteredGradedTest.equals(otherModelManager.filteredGradedTest);
     }

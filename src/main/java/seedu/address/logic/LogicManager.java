@@ -129,6 +129,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public Index getIndex() {
+        return this.indexToDisplay;
+    }
+
+    @Override
     public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();
     }
