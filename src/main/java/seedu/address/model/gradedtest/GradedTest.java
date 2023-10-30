@@ -12,10 +12,17 @@ public class GradedTest {
     public static final String MESSAGE_CONSTRAINTS =
             "GradedTest Names should only contain alphanumeric characters and spaces, and it should not be blank \n"
             + "Format: RA1:<Score> | RA2:<Score> | MidTerms:<Score> | Finals:<Score> | PE:<Score>";
+
+    public static final String MESSAGE_CONSTRAINTS_RA1 = "Reading Assessment 1 scores should be a positive number";
+    public static final String MESSAGE_CONSTRAINTS_RA2 = "Reading Assessment 2 scores should be a positive number";
+    public static final String MESSAGE_CONSTRAINTS_MIDTERMS = "MidTerm scores should be a positive number";
+    public static final String MESSAGE_CONSTRAINTS_FINALS = "Finals scores should be a positive number";
+    public static final String MESSAGE_CONSTRAINTS_PE = "Practical Exam scores should be a positive number";
+
     public static final String VALIDATION_REGEX =
             "RA1:[-\\d]+ \\| RA2:[-\\d]+ \\| MidTerms:[-\\d]+ \\| Finals:[-\\d]+ \\| PE:[-\\d]+";
-
     public static final String VALIDATION_REGEX_DEFAULT = "(?i)default";
+    public static final String VALIDATION_REGEX_ALPHANUMERIC = "(?:-|\\d+(\\.\\d+)?)";
 
     public static final String DEFAULT_VALUE = "-";
     // Identity fields
@@ -88,12 +95,55 @@ public class GradedTest {
         if (components.length != 5) {
             throw new ParseException("Invalid GradedTest format. Expected 5 components.");
         }
-        String ra1Score = components[0].replaceAll("RA1:", "").trim();
-        String ra2Score = components[1].replaceAll("RA2:", "").trim();
-        String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
-        String finalsScore = components[3].replaceAll("Finals:", "").trim();
-        String peScore = components[4].replaceAll("PE:", "").trim();
-        return new String[]{ra1Score, ra2Score, midTermsScore, finalsScore, peScore};
+
+        String[] scores = new String[5];
+
+        for (int i = 0; i < components.length; i++) {
+            String[] fieldParts = components[i].split(":");
+            if (fieldParts.length != 2) {
+                throw new ParseException("Invalid GradedTest format for field " + i);
+            }
+            String fieldName = fieldParts[0].trim();
+            String fieldValue = fieldParts[1].trim();
+            String errorMessage = validateField(fieldName, fieldValue);
+            if (errorMessage != null) {
+                throw new ParseException(errorMessage);
+            }
+            scores[i] = fieldValue;
+        }
+
+        return scores;
+    }
+
+    public String validateField(String fieldName, String fieldValue) {
+        switch (fieldName) {
+            case "RA1":
+                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                    return MESSAGE_CONSTRAINTS_RA1;
+                }
+                break;
+            case "RA2":
+                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                    return MESSAGE_CONSTRAINTS_RA2;
+                }
+                break;
+            case "MidTerms":
+                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                    return MESSAGE_CONSTRAINTS_MIDTERMS;
+                }
+                break;
+            case "Finals":
+                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                    return MESSAGE_CONSTRAINTS_FINALS;
+                }
+                break;
+            case "PE":
+                if (!fieldValue.matches(VALIDATION_REGEX_ALPHANUMERIC)) {
+                    return MESSAGE_CONSTRAINTS_PE;
+                }
+                break;
+        }
+        return null; // No error
     }
 
     public ReadingAssessment1 getRA1() {

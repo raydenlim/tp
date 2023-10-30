@@ -3,6 +3,9 @@ package seedu.address.model.gradedtest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADED_TEST_1;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADED_TEST_2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_GRADED_TEST_3;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
 import static seedu.address.testutil.TypicalGradedTest.GT3;
@@ -29,6 +32,34 @@ public class GradedTestTest {
     public void isValidGradedTestName() {
         // null gradedTest name
         assertThrows(NullPointerException.class, () -> GradedTest.isValidGradeTestName(null));
+    }
+
+    @Test
+    public void testValidateFieldValidRA1() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
+        String result = gradedTest.validateField("RA1", "-");
+        assertEquals(null, result);
+    }
+
+    @Test
+    public void testValidateFieldInvalidRA1() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_1);
+        String result = gradedTest.validateField("RA1", "-100");
+        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_RA1, result);
+    }
+
+    @Test
+    public void testValidateFieldValidFinals() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
+        String result = gradedTest.validateField("Finals", "98.5");
+        assertEquals(null, result);
+    }
+
+    @Test
+    public void testValidateFieldInvalidPE() {
+        GradedTest gradedTest = new GradedTest(VALID_GRADED_TEST_2);
+        String result = gradedTest.validateField("PE", "abc"); // Invalid non-numeric value
+        assertEquals(GradedTest.MESSAGE_CONSTRAINTS_PE, result);
     }
 
     @Test
