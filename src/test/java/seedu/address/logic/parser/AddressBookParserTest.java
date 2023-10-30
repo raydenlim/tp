@@ -37,6 +37,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteCommentCommand;
 import seedu.address.logic.commands.DeleteConsultationCommand;
 import seedu.address.logic.commands.DeleteGradeCommand;
+import seedu.address.logic.commands.DeleteSessionCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -228,7 +229,14 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(UpdateSessionRemarkCommand.COMMAND_WORD
                 + whiteSpace + PREFIX_SESSION + sessionNumber
                 + whiteSpace + PREFIX_SESSION_REMARK + sessionRemark) instanceof UpdateSessionRemarkCommand);
+    }
 
+    @Test
+    public void parseCommand_deleteSession() throws Exception {
+        String sessionNumber = "1";
+        String whiteSpace = " ";
+        assertTrue(parser.parseCommand(DeleteSessionCommand.COMMAND_WORD
+                + whiteSpace + PREFIX_SESSION + sessionNumber) instanceof DeleteSessionCommand);
     }
 
     @Test
