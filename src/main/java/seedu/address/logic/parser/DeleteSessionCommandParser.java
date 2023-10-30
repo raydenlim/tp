@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.CreateSessionCommand;
 import seedu.address.logic.commands.DeleteSessionCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.session.SessionNumber;
@@ -29,7 +28,7 @@ public class DeleteSessionCommandParser implements Parser<DeleteSessionCommand> 
 
         if (!arePrefixesPresent(argMultimap, PREFIX_SESSION)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CreateSessionCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteSessionCommand.MESSAGE_USAGE));
         }
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
         SessionNumber targetSessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());

@@ -13,7 +13,6 @@ import static seedu.address.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -78,9 +77,10 @@ public class DeleteSessionCommandTest {
 
     @Test
     public void toStringMethod() {
-        Index targetIndex = Index.fromOneBased(1);
-        DeleteConsultationCommand deleteConsultationCommand = new DeleteConsultationCommand(targetIndex);
-        String expected = DeleteConsultationCommand.class.getCanonicalName() + "{targetIndex=" + targetIndex + "}";
-        assertEquals(expected, deleteConsultationCommand.toString());
+        SessionNumber targetSessionNumber = new SessionNumber("2");
+        DeleteSessionCommand deleteSessionCommand = new DeleteSessionCommand(targetSessionNumber);
+        String expected = DeleteSessionCommand.class.getCanonicalName()
+                + "{targetSessionNumber=" + targetSessionNumber + "}";
+        assertEquals(expected, deleteSessionCommand.toString());
     }
 }
