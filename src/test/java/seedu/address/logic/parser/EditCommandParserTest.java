@@ -8,6 +8,8 @@ import static seedu.address.logic.commands.CommandTestUtil.GRADED_TEST_2;
 import static seedu.address.logic.commands.CommandTestUtil.GRADED_TEST_3;
 import static seedu.address.logic.commands.CommandTestUtil.GRADED_TEST_4;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_2;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_DESC_1;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
@@ -111,6 +113,10 @@ public class EditCommandParserTest {
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC
                         + VALID_TELEGRAM_HANDLE_AMY + VALID_PHONE_AMY, Name.MESSAGE_CONSTRAINTS);
+
+        // multiple invalid values, but only the first invalid value is captured
+        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC
+                + VALID_TELEGRAM_HANDLE_AMY + VALID_PHONE_AMY + INVALID_GRADED_TEST_DESC_1, Name.MESSAGE_CONSTRAINTS);
     }
 
     @Test
