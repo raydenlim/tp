@@ -37,7 +37,8 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney "
             + PREFIX_GRADED_TEST + "RA1:0" + " | " + "RA2:0" + " | "
-                    + "MidTerms:0" + " | " + "Finals:0" + " | " + "PE:0";
+                    + "MidTerms:0" + " | " + "Finals:0" + " | " + "PE:0 \n"
+            + "Note: You can do gt/default to set default values to graded test as '-' ";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";

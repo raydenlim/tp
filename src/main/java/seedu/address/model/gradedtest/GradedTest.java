@@ -10,20 +10,23 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 public class GradedTest {
     public static final String MESSAGE_CONSTRAINTS =
-            "GradedTest Names should only contain alphanumeric characters and spaces, and it should not be blank";
+            "GradedTest Names should only contain alphanumeric characters and spaces, and it should not be blank \n"
+            + "Format: RA1:<Score> | RA2:<Score> | MidTerms:<Score> | Finals:<Score> | PE:<Score>";
     public static final String VALIDATION_REGEX =
             "RA1:[-\\d]+ \\| RA2:[-\\d]+ \\| MidTerms:[-\\d]+ \\| Finals:[-\\d]+ \\| PE:[-\\d]+";
+
+    public static final String VALIDATION_REGEX_DEFAULT = "(?i)default";
 
     public static final String DEFAULT_VALUE = "-";
     // Identity fields
     public final String gradedTestsIndv;
 
     // Data fields
-    private final ReadingAssessment1 readingAssessment1;
-    private final ReadingAssessment2 readingAssessment2;
-    private final MidTerms midTerms;
-    private final Finals finals;
-    private final PracticalExam practicalExam;
+    private ReadingAssessment1 readingAssessment1;
+    private ReadingAssessment2 readingAssessment2;
+    private MidTerms midTerms;
+    private Finals finals;
+    private PracticalExam practicalExam;
 
     /**
      * Constructs a {@code GradedTest}.
@@ -58,7 +61,14 @@ public class GradedTest {
     public GradedTest(String gradedTestsIndv) {
         this.gradedTestsIndv = gradedTestsIndv;
         requireNonNull(gradedTestsIndv);
-        if (!isValidGradeTestName(gradedTestsIndv)) {
+        if (isValidGradeTestNameDefault(gradedTestsIndv)) {
+            this.readingAssessment1 = new ReadingAssessment1(DEFAULT_VALUE);
+            this.readingAssessment2 = new ReadingAssessment2(DEFAULT_VALUE);
+            this.midTerms = new MidTerms(DEFAULT_VALUE);
+            this.finals = new Finals(DEFAULT_VALUE);
+            this.practicalExam = new PracticalExam(DEFAULT_VALUE);
+        }
+        if (!isValidGradeTestName(gradedTestsIndv) && !isValidGradeTestNameDefault(gradedTestsIndv)) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
         try {
@@ -115,6 +125,13 @@ public class GradedTest {
      */
     public static boolean isValidGradeTestName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if a given string is a valid gradedTest name.
+     */
+    public static boolean isValidGradeTestNameDefault(String test) {
+        return test.matches(VALIDATION_REGEX_DEFAULT);
     }
 
     /**

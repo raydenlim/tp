@@ -281,23 +281,11 @@ public class ParserUtil {
         String trimmedGradedTest = gradedTest.trim();
 
         try {
-            String[] components = trimmedGradedTest.split("\\|");
-
-            if (components.length != 5) {
-                throw new ParseException("Invalid GradedTest format. Expected 5 components.");
-            }
-
-            String ra1Score = components[0].replaceAll("RA1:", "").trim();
-            String ra2Score = components[1].replaceAll("RA2:", "").trim();
-            String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
-            String finalsScore = components[3].replaceAll("Finals:", "").trim();
-            String peScore = components[4].replaceAll("PE:", "").trim();
-
-            ReadingAssessment1 readingAssessment1 = new ReadingAssessment1(ra1Score);
-            ReadingAssessment2 readingAssessment2 = new ReadingAssessment2(ra2Score);
-            MidTerms midTerms = new MidTerms(midTermsScore);
-            Finals finals = new Finals(finalsScore);
-            PracticalExam practicalExam = new PracticalExam(peScore);
+            ReadingAssessment1 readingAssessment1 = new ReadingAssessment1(gradedTestParser(trimmedGradedTest)[0]);
+            ReadingAssessment2 readingAssessment2 = new ReadingAssessment2(gradedTestParser(trimmedGradedTest)[1]);
+            MidTerms midTerms = new MidTerms(gradedTestParser(trimmedGradedTest)[2]);
+            Finals finals = new Finals(gradedTestParser(trimmedGradedTest)[3]);
+            PracticalExam practicalExam = new PracticalExam(gradedTestParser(trimmedGradedTest)[4]);
 
             return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
         } catch (ParseException e) {
@@ -306,6 +294,20 @@ public class ParserUtil {
             }
             return new GradedTest(trimmedGradedTest);
         }
+    }
+
+    private static String[] gradedTestParser(String gradedTestsIndv) throws ParseException {
+        String[] components = gradedTestsIndv.split("\\|");
+
+        if (components.length != 5) {
+            throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+        }
+        String ra1Score = components[0].replaceAll("RA1:", "").trim();
+        String ra2Score = components[1].replaceAll("RA2:", "").trim();
+        String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
+        String finalsScore = components[3].replaceAll("Finals:", "").trim();
+        String peScore = components[4].replaceAll("PE:", "").trim();
+        return new String[]{ra1Score, ra2Score, midTermsScore, finalsScore, peScore};
     }
 
     /**
