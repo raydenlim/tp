@@ -2,7 +2,6 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_GRADED_TEST_DESC_1;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -44,11 +43,11 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@u.nus.edu";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
-    public static final String VALID_GRADED_TEST_1 =
+    private static final String VALID_GRADED_TEST_1 =
             "RA1:- | RA2:- | MidTerms:3 | Finals:4 | PE:5";
-    public static final String VALID_GRADED_TEST_2 =
+    private static final String VALID_GRADED_TEST_2 =
             "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
-    public static final String VALID_GRADED_TEST_4 =
+    private static final String VALID_GRADED_TEST_4 =
             "RA1:- | RA2:- | MidTerms:- | Finals:- | PE:-";
 
     private static final String WHITESPACE = " \t\r\n";
@@ -261,9 +260,10 @@ public class ParserUtilTest {
 
     @Test
     public void parseGradedTests_collectionWithValidGradedTests_returnsGradedTestSet() throws Exception {
-        Set<GradedTest> actualGradedTestSet = ParserUtil.parseGradedTests(Arrays.asList(VALID_GRADED_TEST_1, VALID_GRADED_TEST_2));
-        Set<GradedTest> expectedGradedTestSet = new HashSet<GradedTest>(Arrays.asList(new GradedTest(VALID_GRADED_TEST_1),
-                new GradedTest(VALID_GRADED_TEST_2)));
+        Set<GradedTest> actualGradedTestSet = ParserUtil.parseGradedTests(
+                Arrays.asList(VALID_GRADED_TEST_1, VALID_GRADED_TEST_2));
+        Set<GradedTest> expectedGradedTestSet = new HashSet<GradedTest>(
+                Arrays.asList(new GradedTest(VALID_GRADED_TEST_1), new GradedTest(VALID_GRADED_TEST_2)));
 
         assertEquals(expectedGradedTestSet, actualGradedTestSet);
     }
