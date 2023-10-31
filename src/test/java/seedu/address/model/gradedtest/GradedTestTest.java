@@ -66,6 +66,18 @@ public class GradedTestTest {
         assertTrue(GradedTest.isValidGradeTestNameDefault(testName));
     }
 
+    @Test
+    public void constructor_gradedTest_pass() {
+        String testName = "dEfAUlT";
+        String expected = "-";
+        GradedTest gradedTest = new GradedTest(testName);
+        assertEquals(gradedTest.getRA1().toString(), expected);
+        assertEquals(gradedTest.getRA2().toString(), expected);
+        assertEquals(gradedTest.getMidTerms().toString(), expected);
+        assertEquals(gradedTest.getFinals().toString(), expected);
+        assertEquals(gradedTest.getPracticalExam().toString(), expected);
+    }
+
 
     @Test
     public void testValidateFieldValidRA1_valid() {
