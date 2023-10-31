@@ -57,8 +57,8 @@ public class EditCommand extends Command {
             + PREFIX_EMAIL + "johndoe@u.nus.edu "
             + PREFIX_GRADED_TEST + "RA1:0" + " | " + "RA2:0" + " | "
             + "MidTerms:0" + " | " + "Finals:0" + " | " + "PE:0 \n"
-            + "Tip: you can use " + COMMAND_WORD + " " + PREFIX_GRADED_TEST + "default to reset graded test " +
-            "scores!";
+            + "Tip: you can use " + COMMAND_WORD + " " + PREFIX_GRADED_TEST + "default to reset graded test "
+            + "scores!";
 
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";

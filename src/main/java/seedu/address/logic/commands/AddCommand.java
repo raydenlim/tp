@@ -38,7 +38,7 @@ public class AddCommand extends Command {
             + PREFIX_TAG + "owesMoney "
             + PREFIX_GRADED_TEST + "RA1:0" + " | " + "RA2:0" + " | "
                     + "MidTerms:0" + " | " + "Finals:0" + " | " + "PE:0 \n"
-            + "Tip: You can use " + COMMAND_WORD + " "+ PREFIX_GRADED_TEST + "default to set graded tests"
+            + "Tip: You can use " + COMMAND_WORD + " " + PREFIX_GRADED_TEST + "default to set graded tests"
             + " scores as '-' ! ";
 
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
