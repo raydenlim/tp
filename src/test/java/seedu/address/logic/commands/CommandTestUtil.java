@@ -69,6 +69,8 @@ public class CommandTestUtil {
             "RA1:100 | RA2:100 | MidTerms:100 | Finals:100 | PE:100";
     public static final String VALID_GRADED_TEST_3 =
             "RA1:1.0 | RA2:2 | MidTerms:3 | Finals:4 | PE:5";
+    public static final String VALID_GRADED_TEST_4 =
+            "RA1:- | RA2:- | MidTerms:- | Finals:- | PE:-";
     public static final String VALID_TASK_NAME = "Do cs2103t";
     public static final String VALID_TASK_DESCRIPTION = "Complete PRS";
     public static final String VALID_ASSIGNMENT_NAME = "Finding ELDRIC";
@@ -127,7 +129,7 @@ public class CommandTestUtil {
     public static final String INVALID_ASSIGNMENT_DESC = " " + PREFIX_ASSIGNMENT + "Finding BOYD";
 
     public static final String INVALID_GRADED_TEST_DESC_1 = "RA1:-1 | RA2:0 "
-            + "| MidTerms:0 | Finals:-1 | PE:0"; // No negative scores
+            + "| MidTerms:0 | Finals:0 | PE:0"; // No negative scores
     public static final String INVALID_GRADED_TEST_DESC_2 = "RA1:0 | RA2:0 "
             + "| MidTerms:0 | Finals:0 | PE:*"; // No special char * allowed
     public static final String TASK_NAME_TASK1 = " " + PREFIX_TASK_NAME + VALID_TASK_NAME;
@@ -142,6 +144,8 @@ public class CommandTestUtil {
 
     public static final String GRADED_TEST_1 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_1;
     public static final String GRADED_TEST_2 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_2;
+    public static final String GRADED_TEST_3 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_3;
+    public static final String GRADED_TEST_4 = " " + PREFIX_GRADED_TEST + VALID_GRADED_TEST_4;
     public static final String INVALID_GRADED_TEST_1 = " " + PREFIX_GRADED_TEST + INVALID_GRADED_TEST_DESC_1;
     public static final String INVALID_GRADED_TEST_2 = " " + PREFIX_GRADED_TEST + INVALID_GRADED_TEST_DESC_2;
     public static final String INVALID_RA_TEST = " " + PREFIX_READING_ASSESSMENT1 + INVALID_GT_RA_DESC;

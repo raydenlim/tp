@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalGradedTest.GT1;
-import static seedu.address.testutil.TypicalGradedTest.GT3;
-import static seedu.address.testutil.TypicalGradedTest.GT4;
+import static seedu.address.testutil.TypicalGradedTest.GT10;
+import static seedu.address.testutil.TypicalGradedTest.GT9;
 import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
 
 import java.io.IOException;
@@ -78,14 +78,14 @@ public class JsonGradedTestListStorageTest {
         assertEquals(original, new GradedTestListBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addGradedTest(GT3);
+        original.addGradedTest(GT9);
         original.removeGradedTest(GT1);
         jsonGradedTestListStorage.saveGradedTestList(original, filePath);
         readBack = jsonGradedTestListStorage.readGradedTestList(filePath).get();
         assertEquals(original, new GradedTestListBook(readBack));
 
         // Save and read without specifying file path
-        original.addGradedTest(GT4);
+        original.addGradedTest(GT10);
         jsonGradedTestListStorage.saveGradedTestList(original); // file path not specified
         readBack = jsonGradedTestListStorage.readGradedTestList().get(); // file path not specified
         assertEquals(original, new GradedTestListBook(readBack));
