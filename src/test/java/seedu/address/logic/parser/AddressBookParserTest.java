@@ -37,6 +37,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteCommentCommand;
 import seedu.address.logic.commands.DeleteConsultationCommand;
 import seedu.address.logic.commands.DeleteGradeCommand;
+import seedu.address.logic.commands.DeleteSessionCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -70,6 +71,7 @@ import seedu.address.testutil.TaskUtil;
 
 public class AddressBookParserTest {
 
+    public static final String WHITESPACE = " ";
     private final AddressBookParser parser = new AddressBookParser();
 
     @Test
@@ -88,7 +90,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+                DeleteCommand.COMMAND_WORD + WHITESPACE + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
     }
 
@@ -96,9 +98,9 @@ public class AddressBookParserTest {
     public void parseCommand_edit() throws Exception {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        descriptor.setGradedTest(null);
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD
+                + WHITESPACE + INDEX_FIRST_PERSON.getOneBased()
+                + WHITESPACE + PersonUtil.getEditPersonDescriptorDetails(descriptor));
 
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
@@ -113,7 +115,7 @@ public class AddressBookParserTest {
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+                FindCommand.COMMAND_WORD + WHITESPACE + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
@@ -139,14 +141,14 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_deleteConsultation() throws Exception {
         DeleteConsultationCommand command = (DeleteConsultationCommand) parser.parseCommand(
-                DeleteConsultationCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased());
+                DeleteConsultationCommand.COMMAND_WORD + WHITESPACE + INDEX_FIRST_CONSULTATION.getOneBased());
         assertEquals(new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION), command);
     }
 
     @Test
     public void parseCommand_addToConsultation() throws Exception {
         AddToConsultCommand command = (AddToConsultCommand) parser.parseCommand(
-                AddToConsultCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased()
+                AddToConsultCommand.COMMAND_WORD + WHITESPACE + INDEX_FIRST_CONSULTATION.getOneBased()
                         + NAME_DESC_AMY);
         AddToConsultCommand.AddToConsultationDescriptor descriptor = new AddToConsultationDescriptorBuilder()
                 .withNames(VALID_NAME_AMY).build();
@@ -157,7 +159,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_removeFromConsultation() throws Exception {
         RemoveFromConsultCommand command = (RemoveFromConsultCommand) parser.parseCommand(
-                RemoveFromConsultCommand.COMMAND_WORD + " " + INDEX_FIRST_CONSULTATION.getOneBased()
+                RemoveFromConsultCommand.COMMAND_WORD + WHITESPACE + INDEX_FIRST_CONSULTATION.getOneBased()
                         + NAME_DESC_AMY);
         RemoveFromConsultCommand.RemoveFromConsultationDescriptor descriptor = new
                 RemoveFromConsultationDescriptorBuilder().withNames(VALID_NAME_AMY).build();
@@ -169,7 +171,7 @@ public class AddressBookParserTest {
     public void parseCommand_viewTasks() throws Exception {
         assertTrue(parser.parseCommand(ViewTasksCommand.COMMAND_WORD) instanceof ViewTasksCommand);
         assertTrue(parser.parseCommand(ViewTasksCommand.COMMAND_WORD
-                + " " + TASK_NAME_TASK1) instanceof ViewTasksCommand);
+                + WHITESPACE + TASK_NAME_TASK1) instanceof ViewTasksCommand);
     }
 
     @Test
@@ -182,7 +184,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_deleteTask() throws Exception {
         DeleteTaskCommand command = (DeleteTaskCommand) parser.parseCommand(
-                DeleteTaskCommand.COMMAND_WORD + " " + INDEX_FIRST_TASK.getOneBased());
+                DeleteTaskCommand.COMMAND_WORD + WHITESPACE + INDEX_FIRST_TASK.getOneBased());
         assertEquals(new DeleteTaskCommand(INDEX_FIRST_PERSON), command);
     }
 
@@ -191,9 +193,9 @@ public class AddressBookParserTest {
         Task task = new TaskBuilder().build();
         EditProgressDescriptor descriptor = new EditProgressDescriptorBuilder(task).build();
         UpdateTaskProgressCommand command = (UpdateTaskProgressCommand) parser
-                .parseCommand(UpdateTaskProgressCommand.COMMAND_WORD + " "
+                .parseCommand(UpdateTaskProgressCommand.COMMAND_WORD + WHITESPACE
                         + INDEX_FIRST_TASK.getOneBased()
-                        + " " + TaskUtil.getUpdateProgressDetails(descriptor));
+                        + WHITESPACE + TaskUtil.getUpdateProgressDetails(descriptor));
 
         assertEquals(new UpdateTaskProgressCommand(INDEX_FIRST_TASK, descriptor), command);
     }
@@ -202,10 +204,9 @@ public class AddressBookParserTest {
     public void parseCommand_createSession() throws Exception {
         String sessionNumber = "1";
         String studentName = "Ding Han";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(CreateSessionCommand.COMMAND_WORD
-                + whiteSpace + PREFIX_SESSION + sessionNumber
-                + whiteSpace + PREFIX_NAME + studentName) instanceof CreateSessionCommand);
+                + WHITESPACE + PREFIX_SESSION + sessionNumber
+                + WHITESPACE + PREFIX_NAME + studentName) instanceof CreateSessionCommand);
     }
 
     @Test
@@ -213,29 +214,33 @@ public class AddressBookParserTest {
         String sessionNumber = "1";
         String studentName = "ldinghan";
         String attendancePresence = "present";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(TakeAttendanceCommand.COMMAND_WORD
-                + whiteSpace + PREFIX_SESSION + sessionNumber
-                + whiteSpace + PREFIX_NAME + studentName
-                + whiteSpace + PREFIX_ATTENDANCE_PRESENCE + attendancePresence) instanceof TakeAttendanceCommand);
+                + WHITESPACE + PREFIX_SESSION + sessionNumber
+                + WHITESPACE + PREFIX_NAME + studentName
+                + WHITESPACE + PREFIX_ATTENDANCE_PRESENCE + attendancePresence) instanceof TakeAttendanceCommand);
     }
 
     @Test
     public void parseCommand_updateSessionRemark() throws Exception {
         String sessionNumber = "2";
         String sessionRemark = "Fun times in this session";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(UpdateSessionRemarkCommand.COMMAND_WORD
-                + whiteSpace + PREFIX_SESSION + sessionNumber
-                + whiteSpace + PREFIX_SESSION_REMARK + sessionRemark) instanceof UpdateSessionRemarkCommand);
+                + WHITESPACE + PREFIX_SESSION + sessionNumber
+                + WHITESPACE + PREFIX_SESSION_REMARK + sessionRemark) instanceof UpdateSessionRemarkCommand);
+    }
 
+    @Test
+    public void parseCommand_deleteSession() throws Exception {
+        String sessionNumber = "1";
+        assertTrue(parser.parseCommand(DeleteSessionCommand.COMMAND_WORD
+                + WHITESPACE + PREFIX_SESSION + sessionNumber) instanceof DeleteSessionCommand);
     }
 
     @Test
     public void parseCommand_viewAttendance() throws Exception {
         String studentName = "abby";
         assertTrue(parser.parseCommand(ViewAttendanceCommand.COMMAND_WORD
-                + " " + PREFIX_NAME + studentName) instanceof ViewAttendanceCommand);
+                + WHITESPACE + PREFIX_NAME + studentName) instanceof ViewAttendanceCommand);
     }
 
     @Test
@@ -243,21 +248,19 @@ public class AddressBookParserTest {
         String personIndex = "1";
         String assignmentName = "Finding ELDRIC";
         String grade = "800";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(EditGradeCommand.COMMAND_WORD
-                + whiteSpace + personIndex
-                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
-                + whiteSpace + PREFIX_GRADE + grade) instanceof EditGradeCommand);
+                + WHITESPACE + personIndex
+                + WHITESPACE + PREFIX_ASSIGNMENT + assignmentName
+                + WHITESPACE + PREFIX_GRADE + grade) instanceof EditGradeCommand);
     }
 
     @Test
     public void parseCommand_deleteGrade() throws Exception {
         String personIndex = "1";
         String assignmentName = "Finding ELDRIC";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(DeleteGradeCommand.COMMAND_WORD
-                + whiteSpace + personIndex
-                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteGradeCommand);
+                + WHITESPACE + personIndex
+                + WHITESPACE + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteGradeCommand);
     }
 
     @Test
@@ -265,29 +268,26 @@ public class AddressBookParserTest {
         String personIndex = "1";
         String assignmentName = "Finding ELDRIC";
         String comment = "Good job!";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(EditCommentCommand.COMMAND_WORD
-                + whiteSpace + personIndex
-                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName
-                + whiteSpace + PREFIX_COMMENT + comment) instanceof EditCommentCommand);
+                + WHITESPACE + personIndex
+                + WHITESPACE + PREFIX_ASSIGNMENT + assignmentName
+                + WHITESPACE + PREFIX_COMMENT + comment) instanceof EditCommentCommand);
     }
 
     @Test
     public void parseCommand_deleteComment() throws Exception {
         String personIndex = "1";
         String assignmentName = "Finding ELDRIC";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(DeleteCommentCommand.COMMAND_WORD
-                + whiteSpace + personIndex
-                + whiteSpace + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteCommentCommand);
+                + WHITESPACE + personIndex
+                + WHITESPACE + PREFIX_ASSIGNMENT + assignmentName) instanceof DeleteCommentCommand);
     }
 
     @Test
     public void parseCommand_viewAssignmentsCommand() throws Exception {
         String personIndex = "1";
-        String whiteSpace = " ";
         assertTrue(parser.parseCommand(ViewAssignmentsCommand.COMMAND_WORD
-                + whiteSpace + personIndex) instanceof ViewAssignmentsCommand);
+                + WHITESPACE + personIndex) instanceof ViewAssignmentsCommand);
     }
 
     @Test

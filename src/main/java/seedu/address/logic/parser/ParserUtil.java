@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.gradedtest.GradedTest.DEFAULT_VALUE;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -279,32 +280,98 @@ public class ParserUtil {
     public static GradedTest parseGradedTest(String gradedTest) throws ParseException {
         requireNonNull(gradedTest);
         String trimmedGradedTest = gradedTest.trim();
-
-        try {
-            String[] components = trimmedGradedTest.split("\\|");
-
-            if (components.length != 5) {
-                throw new ParseException("Invalid GradedTest format. Expected 5 components.");
-            }
-
-            String ra1Score = components[0].replaceAll("RA1:", "").trim();
-            String ra2Score = components[1].replaceAll("RA2:", "").trim();
-            String midTermsScore = components[2].replaceAll("MidTerms:", "").trim();
-            String finalsScore = components[3].replaceAll("Finals:", "").trim();
-            String peScore = components[4].replaceAll("PE:", "").trim();
-
-            ReadingAssessment1 readingAssessment1 = new ReadingAssessment1(ra1Score);
-            ReadingAssessment2 readingAssessment2 = new ReadingAssessment2(ra2Score);
-            MidTerms midTerms = new MidTerms(midTermsScore);
-            Finals finals = new Finals(finalsScore);
-            PracticalExam practicalExam = new PracticalExam(peScore);
+        if ("default".equalsIgnoreCase(gradedTest)) {
+            ReadingAssessment1 readingAssessment1 = new ReadingAssessment1(DEFAULT_VALUE);
+            ReadingAssessment2 readingAssessment2 = new ReadingAssessment2(DEFAULT_VALUE);
+            MidTerms midTerms = new MidTerms(DEFAULT_VALUE);
+            Finals finals = new Finals(DEFAULT_VALUE);
+            PracticalExam practicalExam = new PracticalExam(DEFAULT_VALUE);
 
             return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
-        } catch (ParseException e) {
-            if (!GradedTest.isValidGradeTestName(trimmedGradedTest)) {
-                throw new ParseException(GradedTest.MESSAGE_CONSTRAINTS);
+        } else {
+            try {
+                ReadingAssessment1 readingAssessment1 = new ReadingAssessment1(gradedTestParser(trimmedGradedTest)[0]);
+                ReadingAssessment2 readingAssessment2 = new ReadingAssessment2(gradedTestParser(trimmedGradedTest)[1]);
+                MidTerms midTerms = new MidTerms(gradedTestParser(trimmedGradedTest)[2]);
+                Finals finals = new Finals(gradedTestParser(trimmedGradedTest)[3]);
+                PracticalExam practicalExam = new PracticalExam(gradedTestParser(trimmedGradedTest)[4]);
+
+                return new GradedTest(readingAssessment1, readingAssessment2, midTerms, finals, practicalExam);
+            } catch (ParseException e) {
+                if (!GradedTest.isValidGradeTestName(trimmedGradedTest)) {
+                    throw new ParseException(GradedTest.MESSAGE_CONSTRAINTS);
+                }
+                return new GradedTest(trimmedGradedTest);
             }
-            return new GradedTest(trimmedGradedTest);
+        }
+    }
+
+    /**
+     * Parses a string representing a GradedTest into its component scores.
+     *
+     * @param gradedTestsIndv The input string to be parsed.
+     * @return An array of five strings, each representing the score for a specific component.
+     * @throws ParseException If the input string is not in the expected format or if any of the scores are invalid.
+     */
+    public static String[] gradedTestParser(String gradedTestsIndv) throws ParseException {
+        String[] components = gradedTestsIndv.split("\\|");
+
+        if (components.length != 5) {
+            throw new ParseException("Invalid GradedTest format. Expected 5 components.");
+        }
+
+        String[] scores = new String[5];
+
+        for (int i = 0; i < components.length; i++) {
+            String[] fieldParts = components[i].split(":");
+            if (fieldParts.length != 2) {
+                throw new ParseException("Invalid GradedTest format for field " + i);
+            }
+            String fieldName = fieldParts[0].trim();
+            String fieldValue = fieldParts[1].trim();
+            validateGradedTestField(fieldName, fieldValue);
+            scores[i] = fieldValue;
+        }
+
+        return scores;
+    }
+
+    /**
+     * Validates a field within a GradedTest by checking if it conforms to specific criteria.
+     *
+     * @param fieldName The name of the GradedTest component, e.g., "RA1", "RA2", "MidTerms", "Finals", or "PE".
+     * @param fieldValue The value of the field to be validated.
+     * @throws ParseException If the field does not meet the validation criteria.
+     */
+    public static void validateGradedTestField(String fieldName, String fieldValue) throws ParseException {
+        switch (fieldName) {
+        case "RA1":
+            if (!fieldValue.matches(ReadingAssessment1.VALIDATION_REGEX)) {
+                throw new ParseException(ReadingAssessment1.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case "RA2":
+            if (!fieldValue.matches(ReadingAssessment2.VALIDATION_REGEX)) {
+                throw new ParseException(ReadingAssessment2.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case "MidTerms":
+            if (!fieldValue.matches(MidTerms.VALIDATION_REGEX)) {
+                throw new ParseException(MidTerms.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case "Finals":
+            if (!fieldValue.matches(Finals.VALIDATION_REGEX)) {
+                throw new ParseException(Finals.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        case "PE":
+            if (!fieldValue.matches(PracticalExam.VALIDATION_REGEX)) {
+                throw new ParseException(PracticalExam.MESSAGE_CONSTRAINTS);
+            }
+            break;
+        default:
+            throw new ParseException("Invalid field name: " + fieldName);
         }
     }
 

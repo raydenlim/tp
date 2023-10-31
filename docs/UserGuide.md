@@ -251,8 +251,8 @@ You can add a student to your address book.
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@u.nus.edu a/John street, block 123, #01-01`
+* `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu a/Newgate Prison p/1234567 t/criminal`
 
 <box type="tip" seamless>
 **Tip:** You can add any number of tags to a person! (including 0)
@@ -279,7 +279,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 person list. The index **must be a positive integer** 1, 2, 3, …​   THIS CAN BE IN THE GLOSSARY)
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 > **Note:** 
@@ -783,10 +783,10 @@ Examples:
 
 | **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`                                               | `add n/James Ho p/22224444 e/jamesho@example.com a/james03 t/friend t/colleague`                                               |
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`                                               | `add n/James Ho p/22224444 e/jamesho@u.nus.edu a/james03 t/friend t/colleague`                                               |
 | **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
 | **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
-| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                                         | `edit 2 n/James Lee e/jameslee@example.com`                                                                                    |
+| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                                         | `edit 2 n/James Lee e/jameslee@u.nus.edu`                                                                                    |
 | **Find**                      | `find KEYWORD [MORE_KEYWORDS]`                                                                                 | `find John` or `find alex david`                                                                                               |
 | **View**                      | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]` | `viewtasks`, `viewtasks tp/high`, `viewtasks d/30/09/2023`                                                                     |
 | **Update Progress**           | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                 | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                                |

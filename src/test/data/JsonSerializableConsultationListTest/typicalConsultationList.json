@@ -7,7 +7,6 @@
       "phone" : "9482427",
       "email" : "lydia@u.nus.edu",
       "telegramHandle" : "phi0na",
-      "tags" : [ ],
       "assignmentMap" : {
         "assignments" : {
           "Beyond the First Dimension" : {
@@ -137,6 +136,15 @@
       "email" : "alice@u.nus.edu",
       "telegramHandle" : "alicePaulding7",
       "tags" : [ "friends" ],
+      "gradedTests": [
+        {
+          "RA1": "10",
+          "RA2": "20",
+          "MidTerms": "30",
+          "Finals": "40",
+          "PE": "50"
+        }
+      ],
       "assignmentMap" : {
         "assignments" : {
           "Beyond the First Dimension" : {
@@ -390,6 +398,15 @@
       "email" : "alice@u.nus.edu",
       "telegramHandle" : "alicePaulding7",
       "tags" : [ "friends" ],
+      "gradedTests": [
+        {
+          "RA1": "10",
+          "RA2": "20",
+          "MidTerms": "30",
+          "Finals": "40",
+          "PE": "50"
+        }
+      ],
       "assignmentMap" : {
         "assignments" : {
           "Beyond the First Dimension" : {

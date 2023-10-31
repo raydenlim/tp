@@ -19,6 +19,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.DeleteCommentCommand;
 import seedu.address.logic.commands.DeleteConsultationCommand;
 import seedu.address.logic.commands.DeleteGradeCommand;
+import seedu.address.logic.commands.DeleteSessionCommand;
 import seedu.address.logic.commands.DeleteTaskCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommentCommand;
@@ -109,6 +110,24 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
+        // SESSIONS
+
+        case CreateSessionCommand.COMMAND_WORD:
+            return new CreateSessionCommandParser().parse(arguments);
+
+        case UpdateSessionRemarkCommand.COMMAND_WORD:
+            return new UpdateSessionRemarkCommandParser().parse(arguments);
+
+        case DeleteSessionCommand.COMMAND_WORD:
+            return new DeleteSessionCommandParser().parse(arguments);
+
+        case TakeAttendanceCommand.COMMAND_WORD:
+            return new TakeAttendanceCommandParser().parse(arguments);
+
+        case ViewAttendanceCommand.COMMAND_WORD:
+            return new ViewAttendanceCommandParser().parse(arguments);
+
+
         // CONSULTATIONS
 
         case CreateConsultCommand.COMMAND_WORD:
@@ -116,9 +135,6 @@ public class AddressBookParser {
 
         case DeleteConsultationCommand.COMMAND_WORD:
             return new DeleteConsultationCommandParser().parse(arguments);
-
-        case CreateSessionCommand.COMMAND_WORD:
-            return new CreateSessionCommandParser().parse(arguments);
 
         case AddToConsultCommand.COMMAND_WORD:
             return new AddToConsultCommandParser().parse(arguments);
@@ -143,14 +159,6 @@ public class AddressBookParser {
         case DeleteCommentCommand.COMMAND_WORD:
             return new DeleteCommentCommandParser().parse(arguments);
 
-        case TakeAttendanceCommand.COMMAND_WORD:
-            return new TakeAttendanceCommandParser().parse(arguments);
-
-        case UpdateSessionRemarkCommand.COMMAND_WORD:
-            return new UpdateSessionRemarkCommandParser().parse(arguments);
-
-        case ViewAttendanceCommand.COMMAND_WORD:
-            return new ViewAttendanceCommandParser().parse(arguments);
 
         case ViewAssignmentsCommand.COMMAND_WORD:
             return new ViewAssignmentsCommandParser().parse(arguments);

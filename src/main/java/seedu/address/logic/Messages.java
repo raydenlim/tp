@@ -22,6 +22,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_DATE_TIME = "The date or time provided is invalid";
     public static final String MESSAGE_INVALID_CONSULTATION_DISPLAYED_INDEX =
             "The consultation index provided is invalid";
+    public static final String MESSAGE_SESSION_NOT_FOUND = "The session number provided is invalid";
     public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_TASKS_LISTED_OVERVIEW = "%1$d tasks listed!";
@@ -48,7 +49,7 @@ public class Messages {
      */
     public static String format(Person person) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(person.getName())
+        builder.append("Name: ").append(person.getName())
                 .append("; Phone: ")
                 .append(person.getPhone())
                 .append("; Email: ")
@@ -57,8 +58,7 @@ public class Messages {
                 .append(person.getTelegramHandle())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
-        builder.append("; Graded Tests: ");
-        person.getGradedTest().forEach(gradedTest -> builder.append(person.getGradedTest()).append(", "));
+        person.getGradedTest().forEach(gradedTest -> builder.append(format(gradedTest)));
         return builder.toString();
     }
 
@@ -110,12 +110,12 @@ public class Messages {
      */
     public static String format(GradedTest gradedTest) {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Graded Test:")
-                .append("; Reading Assessment 1: ").append(gradedTest.getRA1())
-                .append("; Reading Assessment 2: ").append(gradedTest.getRA2())
+        builder.append("; Graded Test: ")
+                .append("RA1: ").append(gradedTest.getRA1())
+                .append("; RA2: ").append(gradedTest.getRA2())
                 .append("; MidTerms: ").append(gradedTest.getMidTerms())
                 .append("; Final: ").append(gradedTest.getFinals())
-                .append("; Practical Exam: ").append(gradedTest.getPracticalExam());
+                .append("; PE: ").append(gradedTest.getPracticalExam());
         return builder.toString();
     }
 }

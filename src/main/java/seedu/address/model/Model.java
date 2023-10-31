@@ -111,9 +111,14 @@ public interface Model {
     Session findSessionBySessionNumber(SessionNumber sessionNumber);
 
     /**
-     * Adds the given sesssion.
+     * Adds the given session.
      */
     void addSession(Session session);
+
+    /**
+     * Deletes the given session.
+     */
+    void deleteSession(Session session);
 
     /**
      * Returns true if a session with the same identity as {@code session} exists in the session list.

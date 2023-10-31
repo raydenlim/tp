@@ -63,7 +63,7 @@ public class EmailTest {
     }
 
     @Test
-    public void isValidEmail_edgeCase_fail() {
+    public void isInValidEmail_edgeCase_fail() {
         // invalid domain names
         assertFalse(Email.isValidEmail("A.B@cdomain.edu.fr"));
         assertFalse(Email.isValidEmail("iamsmart@bigbrain.io"));

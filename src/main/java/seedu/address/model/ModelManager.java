@@ -175,6 +175,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteSession(Session session) {
+        requireNonNull(session);
+        sessionList.removeSession(session);
+        updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
+    }
+
+    @Override
     public boolean hasSession(Session session) {
         requireNonNull(session);
         return sessionList.hasSession(session);

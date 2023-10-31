@@ -11,6 +11,7 @@ import java.util.Set;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
@@ -55,13 +56,35 @@ public class PersonUtil {
         descriptor.getTelegramHandle().ifPresent(
                 telegramHandle -> sb.append(PREFIX_TELEGRAM_HANDLE).append(telegramHandle.value).append(" "));
         if (descriptor.getTags().isPresent()) {
-            Set<Tag> tags = descriptor.getTags().get();
-            if (tags.isEmpty()) {
-                sb.append(PREFIX_TAG);
-            } else {
-                tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
-            }
+            sb.append(parseTagsToEdit(descriptor)).append(" ");
+        }
+        if (descriptor.getGradedTests().isPresent()) {
+            sb.append(parseGradedTestToEdit(descriptor)).append(" ");
         }
         return sb.toString();
+    }
+
+    private static String parseTagsToEdit(EditPersonDescriptor descriptor) {
+        StringBuilder sb = new StringBuilder();
+        Set<Tag> tags = descriptor.getTags().get();
+        if (tags.isEmpty()) {
+            sb.append(PREFIX_TAG);
+            return sb.toString();
+        } else {
+            tags.forEach(tag -> sb.append(PREFIX_TAG).append(tag.tagName).append(" "));
+            return sb.toString();
+        }
+    }
+
+    private static String parseGradedTestToEdit(EditPersonDescriptor descriptor) {
+        StringBuilder sb = new StringBuilder();
+        Set<GradedTest> gradedTests = descriptor.getGradedTests().get();
+        if (gradedTests.isEmpty()) {
+            sb.append(PREFIX_GRADED_TEST);
+            return sb.toString();
+        } else {
+            gradedTests.forEach(gt -> sb.append(PREFIX_GRADED_TEST).append(gt.gradedTestsIndv).append(" "));
+            return sb.toString();
+        }
     }
 }
