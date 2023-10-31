@@ -30,8 +30,30 @@
 }
 
 .tab-pane {
-    -fx-padding: 0 0 0 1;
+    -fx-tab-min-height:32px;
+    -fx-tab-padding: 0 6;
 }
+
+.tab-pane .tab {
+    -fx-background-color: #383838;
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #3c3e3f;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #3c3c3c;
+}
+
 
 .tab-pane .tab-header-area {
     -fx-padding: 0 0 0 0;
@@ -373,3 +395,5 @@
     -fx-font-size: 13px;
     -fx-text-fill: #010504;
 }
+
+
