@@ -409,6 +409,25 @@ Similar to the `AddTaskCommand`, the main considerations for this command is rel
 
 
 
+#### View Tasks Feature
+This section explains the implementation of the View Tasks feature via the `viewtasks` command. The `ViewTasksCommand` displays the Tasks filtered using the `predicate` specified by the user. There are multiple optional fields that the user can use to filter the list by, such as the progress, priority, name, description and date. However, only one field is able to be applied as a filter at a specific time. 
+
+Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
+
+![ViewTaskCommand Sequence Diagram](images/ViewTasksSequenceDiagram.png)
+
+##### Design Considerations:
+**Aspect: How we execute the ViewTasksCommand:**
+
+* **Alternative 1 (current choice):** Combine the list and find functionality into one.
+    * Pros: Promotes user experience due to the reduction in the number of different commands.
+    * Cons: More checks need to be done to ensure that the correct predicate is applied and the correct field is being checked against. 
+
+* **Alternative 2:** Separate out into 2 separate functions.
+    * Pros: Easier to debug since they're implemented independently of one another.
+    * Cons: More commands make it messier.
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
