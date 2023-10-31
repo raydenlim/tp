@@ -214,7 +214,7 @@ The Grade Class is made up of an `actualGrade`, `maxGrade`, `isGraded`, and a se
 
 Below is a class diagram describing the implementation of `Grade` and its respective fields.
 
-![Grade Class UML](images/GradeClass UML.png)
+![Grade Class UML](images/GradeClass.png)
 
 #### Design Considerations:
 **Aspect: How the assignment a grade is being given to is determined:**
@@ -237,7 +237,7 @@ The Comment Class is made up of a `commentBody`, `isCommented`, and a set of get
 
 Below is a class diagram describing the implementation of `Comment` and its respective fields.
 
-![Grade Class UML](images/CommentClass UML.png)
+![Grade Class UML](images/CommentClass.png)
 
 #### Design Considerations:
 **Aspect: How the comment a grade is being given to is determined:**
@@ -262,7 +262,7 @@ The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`,
 
 Below is a class diagram describing the implementation of `Task` and its respective fields.
 
-![GradedTest Class UML](images/GradedTest UML.png)
+![GradedTest Class UML](images/GradedTest.png)
 
 #### Design Considerations:
 **Aspect: How to represent the scores of individuals:**
@@ -329,7 +329,7 @@ This section explains the implementation and execution of commands that have the
 
 Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
 
-![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
+![Command Parser Sequence Diagram](images/CommandsParserSequenceDiagram.png)
 
 Step 1:
 The user enters a command with the necessary parameters which is then passed to the `LogicManager`.
@@ -401,6 +401,11 @@ The `Model` will invoke `removeTask` in `TaskListBook`, which in turn calls `rem
 
 Step 3:
 The `DeleteTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the DeleteTaskCommand:**
+Similar to the `AddTaskCommand`, the main considerations for this command is related to the way that the model is stored.
 
 
 

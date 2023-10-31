@@ -171,7 +171,7 @@ public class ModelManager implements Model {
     public void addSession(Session session) {
         requireNonNull(session);
         sessionList.addSession(session);
-        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+        updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
     }
 
     @Override
