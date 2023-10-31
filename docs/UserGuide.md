@@ -29,37 +29,53 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 ### Table of Contents
 
 * [Introduction](#introduction)
-  * [Table of Contents](#table-of-contents)
-  * [How to use the User Guide](#how-to-use-the-user-guide)
+    * [Table of Contents](#table-of-contents)
+    * [How to use the User Guide](#how-to-use-the-user-guide)
 * [Graphical User Interface](#graphical-user-interface)
-  * [Task Card](#task-card)
-  * [Consultation Card](#consultation-card)
-  * [Session Card](#session-card)
+    * [Task Card](#task-card)
+    * [Consultation Card](#consultation-card)
+    * [Session Card](#session-card)
 * [Quick start](#quick-start)
 * [Command Format](#command-format)
-  * [Command Parameters](#command-parameters)
+    * [Command Parameters](#command-parameters)
 * [Features](#features)
-  * [Viewing help : `help`](#viewing-help--help)
-  * [Adding a person: `add`](#adding-a-person--add)
-  * [Listing all persons : `list`](#listing-all-persons--list)
-  * [Editing a person : `edit`](#editing-a-person--edit)
-  * [Locating persons by name: `find`](#locating-persons-by-name--find)
-  * [Deleting a person : `delete`](#deleting-a-person--delete)
-  * [Clearing all entries : `clear`](#clearing-all-entries--clear)
-  * [Exiting the program : `exit`](#exiting-the-program--exit)
-  * [Saving the data](#saving-the-data)
-  * [Editing the data file](#editing-the-data-file)
-  * [Archiving data files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
-  * [Adding a Task: `addtask`](#adding-a-task--addtask)
-  * [Viewing Tasks: `viewtasks`](#viewing-tasks--viewtasks)
-  * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress--updateprogress)
-  * [Deleting a Task: `deletetask`](#deleting-a-task--deletetask)
-  * [Creating a Consult: `createconsult`](#creating-a-consult--createconsult)
-  * [Showing list of consultations: `showconsults`](#showing-list-of-consultations--showconsults)
-  * [Viewing details of a consultation: `viewconsult`](#viewing-details-of-a-consultation--viewconsult)
-  * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation--addtoconsult)
-  * [Removing students from a consultation: `removefromconsult`](#removing-students-from-a-consultation--removefromconsult)
-  * [Deleting a consultation: `deleteconsult`](#deleting-a-consultation--deleteconsult)
+    * [Miscellaneous Commands](#miscellaneous-commands)
+        * [Viewing help : `help`](#viewing-help-help)
+        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-fakejarvis-exit)
+        * [Saving the Data](#saving-the-data)
+        * [Editing the Data File](#editing-the-data-file)
+        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+    * [Student Management](#student-management)
+        * [Adding a Student: `add`](#adding-a-student-add)
+        * [Listing All Students : `list`](#listing-all-students-list)
+        * [Editing a Student Field : `edit`](#editing-a-student-field-edit)
+        * [Locating Student by Name: `find`](#locating-student-by-name-find)
+        * [Deleting a Student : `delete`](#deleting-a-student-delete)
+        * [Clearing all Entries : `clear`](#clearing-all-entries-clear)
+    * [Task Management](#task-management)
+        * [Adding a Task: `addtask`](#adding-a-task-addtask)
+        * [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)
+        * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress-updateprogress)
+        * [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)
+    * [Attendance Management](#attendance-management)
+        * [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)
+        * [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)
+    * [Assignment Management](#assignment-management)
+        * [Adding a Grade to an Assignment: `addgrade`](#adding-a-grade-to-an-assignment-addgrade)
+        * [Viewing an Assignment Grade: `viewgrade`](#viewing-an-assignment-grade-viewgrade)
+        * [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)
+        * [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)
+        * [Adding a Comment to an Assignment: `addcomment`](#adding-a-comment-to-an-assignment-addcomment)
+        * [Viewing an Assignment Comment: `viewcomment`](#viewing-an-assignment-comment-viewcomment)
+        * [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)
+        * [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)
+    * [Graded Test Management](#graded-test-management)
+        * [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)
+    * [Consultation Management](#consultation-management)
+        * [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)
+        * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)
+        * [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)
+        * [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)
 * [FAQ](#faq)
 * [Known issues](#known-issues)
 * [Command summary](#command-summary)
@@ -80,6 +96,10 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **Bold text**                                                                       | Highlights important keywords.                                  |
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
+
+
+[Back to Table of Contents](#table-of-contents)
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -147,6 +167,10 @@ The following describes what each panel contains:
 
 6. Refer to the [Features](#features) below for details of each command and the [Command Format](#command-format) for the specifications of each command.
 
+
+[Back to Table of Contents](#table-of-contents)
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 
@@ -183,6 +207,9 @@ Most commands given in the user guide utilise various parameters. Their formats 
 
 [Table Coming soon]
 
+
+
+[Back to Table of Contents](#table-of-contents)
 
 <br>
 
@@ -240,6 +267,10 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 
 
 <br>
+
+
+[Back to Table of Contents](#table-of-contents)
+
 
 ### Student Management
 This section describes commands that help you manage your students.
@@ -338,6 +369,9 @@ You can clear all students from your address book.
 
 Format: `clear`
 
+[Back to Table of Contents](#table-of-contents)
+
+
 <br>
 
 ### Task Management
@@ -432,6 +466,9 @@ Examples:
 > * The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
 
+
+[Back to Table of Contents](#table-of-contents)
+
 <br>
 
 ### Attendance Management
@@ -520,6 +557,9 @@ Examples:
 [//]: # (* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade.)
 
 [//]: # (* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.)
+
+
+[Back to Table of Contents](#table-of-contents)
 
 
 <br>
@@ -667,6 +707,9 @@ Examples:
 * `deletecomment n/Rayson a/Functional Expressionism` deletes the comment on Rayson’s Functional Expressionism assignment.
 * `deletecomment n/Wesley a/Rune Reading` deletes the comment on Wesley’s Rune Reading assignment.
 
+[Back to Table of Contents](#table-of-contents)
+
+
 <br>
 
 ### Graded Test Management
@@ -688,6 +731,9 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 > * MIDTERMS The score of the student's MidTerms.
 > * FINALS The score of the student's Final Assessment.
 > * PRACTICALEXAM The score of the student's Practical Exams.
+
+
+[Back to Table of Contents](#table-of-contents)
 
 
 <br>
@@ -806,3 +852,4 @@ Examples:
 | **Show Consultations**        | `showconsults`                                                                                                 | `showconsults`                                                                                                                 |
 | **View Consultation Details** | `viewconsult INDEX`                                                                                            | `viewconsult 1`, `viewconsult 2`                                                                                               |
 
+[Back to Table of Contents](#table-of-contents)
