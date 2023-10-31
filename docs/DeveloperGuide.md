@@ -315,10 +315,17 @@ Below is a class diagram describing the implementation of `Consultation` and its
 
 
 ### Commands
-This section explains the general implementation of all commands. The implementation of all commands can be generally split into two main event flows: commands with their own specific command parser, and commands without one.
+This section explains the general implementation of all commands.
+
+The following activity diagram generally shows the overall flow of events that the user will experience.
+
+
+[//]: # (INSERT ACTVITY DIAGRAM HERE)
+
+
 
 #### Parser Commands
-This section explains the implementation and execution of commands that have their own parser.
+This section explains the implementation and execution of commands that have their own specific parser.
 
 Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
 
@@ -348,7 +355,7 @@ The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 
 #### Add Tasks Feature
 This section explains the implementation of the Add Task feature via the `addtask` command.
-The `AddTaskCommand` causes the specified Task to be added to the Task List in the application.
+The `AddTaskCommand` causes the specified `Task` to be added to the Task List in the application.
 There is only one compulsory field which is the name of the task. There are several optional fields such as the description, priority and deadline.
 
 Below is the sequence diagram outlining the execution of `AddTaskCommand`.
@@ -377,6 +384,23 @@ The `AddTaskCommand` then continues its execution as defined by [this](#parser-c
 * **Alternative 2:** Store the model in the `AddTaskCommand` itself.
     * Pros: Easier to debug.
     * Cons: The `AddTaskCommand` might be able to call other methods in the model.
+
+
+#### Delete Tasks Feature
+This section explains the implementation of the Delete Task feature via the `deletetask` command. The `DeleteTaskCommand` causes the specified `Task` identified using the `Index` to be deleted from the Task List in the application. There is one compulsory field which is the Index of the Task to delete. 
+
+Below is the sequence diagram outlining the execution of `DeleteTaskCommand`.
+
+![DeleteTaskCommand Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `DeleteTaskCommand::execute`, which in turn calls `Model::deleteTask`.
+
+Step 2:
+The `Model` will invoke `removeTask` in `TaskListBook`, which in turn calls `remove` in `TaskList` to remove it from the list.
+
+Step 3:
+The `DeleteTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
 
 
