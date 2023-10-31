@@ -84,7 +84,7 @@ public class GradedTest {
         }
     }
 
-    private String[] parseGradedTest(String gradedTestsIndv) throws ParseException {
+    public static String[] parseGradedTest(String gradedTestsIndv) throws ParseException {
         String[] components = gradedTestsIndv.split("\\|");
 
         if (components.length != 5) {
@@ -110,7 +110,7 @@ public class GradedTest {
         return scores;
     }
 
-    public String validateField(String fieldName, String fieldValue) {
+    public static String validateField(String fieldName, String fieldValue) {
         switch (fieldName) {
         case "RA1":
             if (!fieldValue.matches(ReadingAssessment1.VALIDATION_REGEX)) {

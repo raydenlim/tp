@@ -313,7 +313,7 @@ public class ParserUtil {
      * @return An array of five strings, each representing the score for a specific component.
      * @throws ParseException If the input string is not in the expected format or if any of the scores are invalid.
      */
-    private static String[] gradedTestParser(String gradedTestsIndv) throws ParseException {
+    public static String[] gradedTestParser(String gradedTestsIndv) throws ParseException {
         String[] components = gradedTestsIndv.split("\\|");
 
         if (components.length != 5) {

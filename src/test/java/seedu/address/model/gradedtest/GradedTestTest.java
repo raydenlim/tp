@@ -1,5 +1,6 @@
 package seedu.address.model.gradedtest;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,6 +12,7 @@ import static seedu.address.testutil.TypicalGradedTest.GT3;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.testutil.GradedTestBuilder;
 
 
@@ -133,6 +135,57 @@ public class GradedTestTest {
         String result = gradedTest.validateField("PE", "-----------"); // Cant have so many -
         assertEquals(PracticalExam.MESSAGE_CONSTRAINTS, result);
     }
+
+    @Test
+    public void gradedTest_invalidInput1_throwsParseException() {
+        String invalidInput = "RA1:90 RA2:85 MidTerms:75 Finals:80 PE:95"; // not separated by |
+        assertThrows(IllegalArgumentException.class, () -> new GradedTest(invalidInput));
+    }
+
+    @Test
+    public void gradedTest_invalidInput2_throwsParseException() {
+        // No spacing fails for parseGradedTest
+        String invalidInput = "RA1:90|RA2:85|MidTerms:75|Finals:80|PE:95"; // no spacing between |
+        assertThrows(IllegalArgumentException.class, () -> new GradedTest(invalidInput));
+    }
+
+    @Test
+    public void parseGradedTest_validInput1_throwsParseException() {
+        String validInput = "RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95";
+        assertDoesNotThrow(()-> GradedTest.parseGradedTest(validInput));
+    }
+
+    @Test
+    public void parseGradedTest_validInput2_throwsParseException() {
+        String validInput = "RA1:- | RA2:- | MidTerms:75 | Finals:80 | PE:-";
+        assertDoesNotThrow(()-> GradedTest.parseGradedTest(validInput));
+    }
+
+    @Test
+    public void parseGradedTest_validInput3_throwsParseException() {
+        // No spacing passes for parseGradedTest
+        String validInput = "RA1:-|RA2:-|MidTerms:75|Finals:80|PE:-";
+        assertDoesNotThrow(()-> GradedTest.parseGradedTest(validInput));
+    }
+
+    @Test
+    public void parseGradedTest_invalidInput1_throwsParseException() {
+        String validInput = "RA1:90 | RA2:85 |";
+        assertThrows(ParseException.class, ()-> GradedTest.parseGradedTest(validInput));
+    }
+
+    @Test
+    public void parseGradedTest_invalidInput2_throwsParseException() {
+        String validInput = "RA1=- | RA2=- | MidTerms=75 | Finals=80 | PE=-";
+        assertThrows(ParseException.class, ()-> GradedTest.parseGradedTest(validInput));
+    }
+
+    @Test
+    public void parseGradedTest_invalidInput3_throwsParseException() {
+        String validInput = "RA1:- | RA2:- | MidTerms:75 | Finals:80 | PE:- | INVALIDFIELD:-";
+        assertThrows(ParseException.class, ()-> GradedTest.parseGradedTest(validInput));
+    }
+
 
     @Test
     public void isSameGradedTest() {
