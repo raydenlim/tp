@@ -319,6 +319,57 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void validateGradedTestField_testInvalidRA1_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA1", "-100"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA1", "%#&^%*#&"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA1", "onetwothree"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA1", "------"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA1", "--"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA1", "一二三"));
+    }
+
+    @Test
+    public void validateGradedTestField_testInvalidRA2_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA2", "-100"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA2", "%#&^%*#&"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA2", "onetwothree"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA2", "------"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA2", "--"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("RA2", "一二三"));;
+    }
+
+    @Test
+    public void validateGradedTestField_testInvalidMidTerms_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("MidTerms", "-100"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("MidTerms", "%#&^%*#&"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("MidTerms", "onetwothree"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("MidTerms", "------"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("MidTerms", "--"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("MidTerms", "一二三"));
+    }
+
+    @Test
+    public void validateGradedTestField_testInvalidFinals_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("Finals", "-100"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("Finals", "%#&^%*#&"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("Finals", "onetwothree"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("Finals", "------"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("Finals", "--"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("Finals", "一二三"));
+    }
+
+    @Test
+    public void validateGradedTestField_testInvalidPE_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("PE", "-100"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("PE", "%#&^%*#&"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("PE", "onetwothree"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("PE", "------"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("PE", "--"));
+        assertThrows(ParseException.class, () -> ParserUtil.validateGradedTestField("PE", "一二三"));
+    }
+
+
+    @Test
     public void parseNames_validNames_returnsSetOfNames() throws ParseException {
         Collection<String> names = Collections.singletonList("Alice");
         Set<Name> expectedNameSet = Collections.singleton(new Name("Alice"));
