@@ -416,6 +416,13 @@ Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
 
 ![ViewTaskCommand Sequence Diagram](images/ViewTasksSequenceDiagram.png)
 
+
+Step 1:
+The `LogicManager` invokes `ViewTasksCommand::execute`, which in turn calls `Model::updateFilteredTaskList` with the given `Predicate<Task>`.
+
+Step 2:
+The `ViewTasksCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
 ##### Design Considerations:
 **Aspect: How we execute the ViewTasksCommand:**
 
@@ -426,6 +433,40 @@ Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
 * **Alternative 2:** Separate out into 2 separate functions.
     * Pros: Easier to debug since they're implemented independently of one another.
     * Cons: More commands make the interface messier, negatively impacting user experience.
+
+
+#### Update Task Progress Feature
+This section explains the implementation of the Update Task Progress feature via the `updateprogress` command. The `UpdateTasksProgressCommand` updates the progress of the task identified using the Index. There are 2 compulsory fields, which are the Index of the task to update, and the new progress status of the task. The progress must be one of the 3 values: `not_started`, `pending`, `done`.
+
+Below is the sequence diagram outlining the execution of `UpdateTasksProgressCommand`.
+
+![UpdateTasksProgressCommand Sequence Diagram](images/UpdateTaskProgressSequenceDiagram.png)
+
+
+Step 1:
+The `LogicManager` invokes `UpdateTaskProgressCommand::execute`, which in turn calls `UpdateTaskProgressCommand::createTask` to create a new immutable Task object with the updated progress.
+
+Step 2:
+The `UpdateTaskProgressCommand` will invoke `setTask` in `Model`, which in turn calls `setTask` in `TaskListBook`. This finally calls `editTask` in `TaskList` to update the existing `Task` with the new `Task`.
+
+Step 3:
+The `UpdateTaskProgressCommand` then invokes `updateFilteredTaskList` in `Model` to display all the tasks.
+
+Step 4:
+The `UpdateTaskProgressCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+
+##### Design Considerations:
+**Aspect: How we execute the UpdateTasksProgressCommand:**
+
+* **Alternative 1 (current choice):** Create a new immutable object of the Task and replace the previous Task with the new Task.
+    * Pros: Easier to debug since the state of immutable objects cannot be changed.
+    * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
+
+* **Alternative 2:** Mutate the existing Task in the Task list to reflect the new progress.
+    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
 --------------------------------------------------------------------------------------------------------------------
