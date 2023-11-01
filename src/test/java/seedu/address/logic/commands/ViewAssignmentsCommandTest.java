@@ -40,7 +40,7 @@ public class ViewAssignmentsCommandTest {
         ViewAssignmentsCommand viewAssignmentsCommand = new ViewAssignmentsCommand(targetIndex);
         CommandResult expectedResult = viewAssignmentsCommand.execute(model);
         String expectedMessage = String.format(ViewAssignmentsCommand.MESSAGE_SUCCESS, person.getName());
-        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, false, false, true, false)));
+        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, CommandType.VIEW_ASSIGNMENTS)));
     }
 
     @Test
@@ -64,6 +64,13 @@ public class ViewAssignmentsCommandTest {
         ViewAssignmentsCommand viewAssignmentsCommand = new ViewAssignmentsCommand(outOfBoundIndex);
 
         assertCommandFailure(viewAssignmentsCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void getCommandType() {
+        ViewAssignmentsCommand command = new ViewAssignmentsCommand(INDEX_FIRST_PERSON);
+
+        assertEquals(command.getCommandType(), CommandType.VIEW_ASSIGNMENTS);
     }
 
     @Test

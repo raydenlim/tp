@@ -54,6 +54,17 @@ public class UpdateSessionRemarkCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        Session validSession = new SessionBuilder().build();
+        UpdateSessionRemarkCommand command = new UpdateSessionRemarkCommand(
+                validSession.getSessionNumber(),
+                new SessionRemark("New Remarks"));
+
+        assertEquals(command.getCommandType(), CommandType.UPDATE_SESSION_REMARK);
+
+    }
+
+    @Test
     public void equals() {
         final UpdateSessionRemarkCommand standardCommand = new UpdateSessionRemarkCommand(
                 new SessionNumber("1"),

@@ -115,6 +115,19 @@ public class EditGradeCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        Index targetIndex = INDEX_FIRST_PERSON;
+        List<Person> lastShownList = model.getFilteredPersonList();
+        Person personToEdit = lastShownList.get(targetIndex.getZeroBased());
+
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Grade actualGrade = new Grade(VALID_GRADE, personToEdit.getAssignment(assignmentName).maxGrade());
+        EditGradeCommand command = new EditGradeCommand(targetIndex, assignmentName, actualGrade);
+
+        assertEquals(command.getCommandType(), CommandType.EDIT_GRADE);
+    }
+
+    @Test
     public void equals_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         Grade validGrade = new Grade(VALID_GRADE, VALID_GRADE);

@@ -32,6 +32,8 @@ public class ViewTasksCommand extends Command {
             + "[" + PREFIX_TASK_PROGRESS + "pending] "
             + "[" + PREFIX_DATE + "22/10/2023] ";
 
+    public static final CommandType COMMAND_TYPE = CommandType.VIEW_TASKS;
+
     public static final String MESSAGE_MANY_PREFIXES = "Too many prefixes given.";
 
     private final Predicate<Task> predicate;
@@ -45,7 +47,13 @@ public class ViewTasksCommand extends Command {
         requireNonNull(model);
         model.updateFilteredTaskList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_TASKS_LISTED_OVERVIEW, model.getFilteredTaskList().size()));
+                String.format(Messages.MESSAGE_TASKS_LISTED_OVERVIEW, model.getFilteredTaskList().size()),
+                COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

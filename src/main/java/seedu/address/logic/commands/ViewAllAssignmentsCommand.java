@@ -14,12 +14,19 @@ public class ViewAllAssignmentsCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows a list of assignment names.";
 
-    public static final String MESSAGE_SUCCESS = "Showing all assignment names";
+    public static final String MESSAGE_SUCCESS = "Switched to assignments tab";
+
+    public static final CommandType COMMAND_TYPE = CommandType.VIEW_ALL_ASSIGNMENTS;
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        return new CommandResult(MESSAGE_SUCCESS, false, false, false, true);
+        return new CommandResult(MESSAGE_SUCCESS, COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

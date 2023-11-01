@@ -38,6 +38,8 @@ public class DeleteGradeCommand extends Command {
 
     public static final String MESSAGE_CONSTRAINT = "Cannot delete the grade from an ungraded assignment";
 
+    public static final CommandType COMMAND_TYPE = CommandType.DELETE_GRADE;
+
     private final AssignmentName assignmentName;
     private final Index index;
 
@@ -76,7 +78,12 @@ public class DeleteGradeCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, this.assignmentName));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, this.assignmentName), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     /**

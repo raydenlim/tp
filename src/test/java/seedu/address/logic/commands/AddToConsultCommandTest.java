@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.AddToConsultCommand.createUpdatedConsultation;
@@ -82,6 +83,15 @@ public class AddToConsultCommandTest {
         AddToConsultCommand command = new AddToConsultCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(command, model, Messages.MESSAGE_INVALID_CONSULTATION_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void getCommandType() {
+        AddToConsultationDescriptor descriptor = new AddToConsultationDescriptorBuilder(
+                TypicalConsultations.CONSULTATION_UNKNOWN_PERSON).build();
+        AddToConsultCommand command = new AddToConsultCommand(INDEX_FIRST_CONSULTATION, descriptor);
+
+        assertEquals(command.getCommandType(), CommandType.ADD_TO_CONSULT);
     }
 
     @Test

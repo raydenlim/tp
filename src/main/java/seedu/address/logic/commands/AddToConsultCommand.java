@@ -42,6 +42,8 @@ public class AddToConsultCommand extends Command {
     public static final String MESSAGE_DUPLICATE_STUDENT = "The student(s) added are already in the consultation";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be added";
+
+    public static final CommandType COMMAND_TYPE = CommandType.ADD_TO_CONSULT;
     private final Index index;
     private final AddToConsultationDescriptor addToConsultationDescriptor;
 
@@ -81,7 +83,12 @@ public class AddToConsultCommand extends Command {
 
         model.setConsultation(consultationToAddStudent, updatedConsultation);
         model.updateFilteredConsultationList(PREDICATE_SHOW_ALL_CONSULTATIONS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(updatedConsultation)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(updatedConsultation)), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     /**

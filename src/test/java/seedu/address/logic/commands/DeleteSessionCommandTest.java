@@ -51,6 +51,14 @@ public class DeleteSessionCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        SessionNumber targetSessionNumber = new SessionNumber("12312");
+        DeleteSessionCommand command = new DeleteSessionCommand(targetSessionNumber);
+
+        assertEquals(command.getCommandType(), CommandType.DELETE_SESSION);
+    }
+
+    @Test
     public void equals() {
         DeleteSessionCommand deleteFirstCommand = new DeleteSessionCommand(
                 TypicalSessions.SESSION_TYPICAL1.getSessionNumber());

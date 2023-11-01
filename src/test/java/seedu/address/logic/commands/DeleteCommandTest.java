@@ -88,6 +88,13 @@ public class DeleteCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        DeleteCommand deleteCommand = new DeleteCommand(INDEX_FIRST_PERSON);
+
+        assertEquals(deleteCommand.getCommandType(), CommandType.DELETE);
+    }
+
+    @Test
     public void equals() {
         DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
         DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);

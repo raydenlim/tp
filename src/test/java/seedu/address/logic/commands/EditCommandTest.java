@@ -190,6 +190,15 @@ public class EditCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        Person editedPerson = new PersonBuilder().build();
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedPerson).build();
+        EditCommand command = new EditCommand(INDEX_FIRST_PERSON, descriptor);
+
+        assertEquals(command.getCommandType(), CommandType.EDIT);
+    }
+
+    @Test
     public void equals() {
         final EditCommand standardCommand = new EditCommand(INDEX_FIRST_PERSON, DESC_AMY);
 

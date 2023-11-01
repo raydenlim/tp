@@ -37,6 +37,8 @@ public class TakeAttendanceCommand extends Command {
             + PREFIX_ATTENDANCE_PRESENCE + "present";
     public static final String MESSAGE_SUCCESS = "Attendance taken";
 
+    public static final CommandType COMMAND_TYPE = CommandType.TAKE_ATTENDANCE;
+
     private SessionNumber sessionNumber;
     private Name name;
     private Set<Name> names;
@@ -111,7 +113,13 @@ public class TakeAttendanceCommand extends Command {
         }
 
         // Return a success message
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.session)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.session)),
+                COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     /**

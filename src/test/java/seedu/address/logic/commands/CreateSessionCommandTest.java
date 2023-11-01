@@ -88,6 +88,12 @@ public class CreateSessionCommandTest {
         assertThrows(CommandException.class, MESSAGE_PERSON_NOT_FOUND, () -> command.execute(model));
     }
 
+    @Test
+    public void getCommandType() {
+        CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), new HashSet<Name>());
+        assertEquals(command.getCommandType(), CommandType.CREATE_SESSION);
+    }
+
 
     @Test
     public void equals_sameCommands_returnsTrue() {

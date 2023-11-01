@@ -36,6 +36,8 @@ public class AddTaskCommand extends Command {
 
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
 
+    public static final CommandType COMMAND_TYPE = CommandType.ADD_TASK;
+
     private final Task task;
 
     /**
@@ -55,7 +57,12 @@ public class AddTaskCommand extends Command {
         }
 
         model.addTask(task);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(task)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(task)), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

@@ -95,6 +95,15 @@ public class EditCommentCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        Comment comment = new Comment(VALID_COMMENT);
+        EditCommentCommand command = new EditCommentCommand(INDEX_FIRST_PERSON, assignmentName, comment);
+
+        assertEquals(command.getCommandType(), CommandType.EDIT_COMMENT);
+    }
+
+    @Test
     public void equals_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         Comment comment = new Comment(VALID_COMMENT);

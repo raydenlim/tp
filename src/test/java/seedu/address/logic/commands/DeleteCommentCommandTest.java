@@ -115,6 +115,14 @@ public class DeleteCommentCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
+        DeleteCommentCommand command = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
+
+        assertEquals(command.getCommandType(), CommandType.DELETE_COMMENT);
+    }
+
+    @Test
     public void equals_sameObject_success() {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         DeleteCommentCommand deleteCommentCommand = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);

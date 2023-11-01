@@ -49,6 +49,14 @@ public class AddCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        Person validPerson = new PersonBuilder().build();
+        AddCommand addCommand = new AddCommand(validPerson);
+
+        assertEquals(addCommand.getCommandType(), CommandType.ADD);
+    }
+
+    @Test
     public void equals() {
         Person alice = new PersonBuilder().withName("Alice").build();
         Person bob = new PersonBuilder().withName("Bob").build();

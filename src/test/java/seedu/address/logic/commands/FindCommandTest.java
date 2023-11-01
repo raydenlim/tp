@@ -34,6 +34,15 @@ public class FindCommandTest {
             new SessionListBook(), new ConsultationListBook(), new GradedTestListBook());
 
     @Test
+    public void getCommandType() {
+        NameContainsKeywordsPredicate firstPredicate =
+                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
+        FindCommand command = new FindCommand(firstPredicate);
+
+        assertEquals(command.getCommandType(), CommandType.FIND);
+    }
+
+    @Test
     public void equals() {
         NameContainsKeywordsPredicate firstPredicate =
                 new NameContainsKeywordsPredicate(Collections.singletonList("first"));

@@ -2,11 +2,11 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -18,15 +18,20 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.assignment.Assignment;
 
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-
     private static final String FXML = "MainWindow.fxml";
+
+    private static final int TAB_PERSONS_INDEX = 0;
+    private static final int TAB_TASKS_INDEX = 1;
+    private static final int TAB_ASSIGNMENTS_INDEX = 2;
+    private static final int TAB_SESSIONS_INDEX = 3;
+    private static final int TAB_CONSULTATIONS_INDEX = 4;
+
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -39,6 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private ConsultationListPanel consultationListPanel;
     private SessionListPanel sessionListPanel;
     private ResultDisplay resultDisplay;
+    private ResultGraphicalDisplay resultGraphicalDisplay;
     private HelpWindow helpWindow;
     private AssignmentNameListPanel assignmentNameListPanel;
     private AssignmentListPanel assignmentListPanel;
@@ -68,10 +74,16 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane resultDisplayPlaceholder;
 
     @FXML
+    private StackPane resultGraphicalDisplayPlaceholder;
+
+    @FXML
     private StackPane statusbarPlaceholder;
 
     @FXML
     private Label assignmentListLabel;
+
+    @FXML
+    private TabPane listTabs;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -147,31 +159,18 @@ public class MainWindow extends UiPart<Stage> {
 
         assignmentNameListPanel = new AssignmentNameListPanel(logic.getAssignmentNameList());
         assignmentListPanelPlaceholder.getChildren().add(assignmentNameListPanel.getRoot());
-        assignmentListLabel.setText("Assignment List");
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+
+        resultGraphicalDisplay = new ResultGraphicalDisplay();
+        resultGraphicalDisplayPlaceholder.getChildren().add(resultGraphicalDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-    }
-
-    /**
-     * Fills up assignmentListPanelPlaceholder with a student's assignments
-     */
-    public void showStudentAssignments(ObservableList<Assignment> assignments) {
-        assignmentListPanel = new AssignmentListPanel(assignments);
-        assignmentListPanelPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
-    }
-
-    /**
-     * Fills up assignmentListPanelPlaceholder with assignment names
-     */
-    public void showAssignmentNames() {
-        assignmentListPanelPlaceholder.getChildren().set(0, assignmentNameListPanel.getRoot());
     }
 
     /**
@@ -198,6 +197,21 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Switches to Assignments tab.
+     */
+    public void handleViewAllAssignments() {
+        selectTab(TAB_ASSIGNMENTS_INDEX);
+    }
+
+    /**
+     * Displays graphically the list of assignments for a student.
+     */
+    public void handleViewAssignments() {
+        assignmentListPanel = new AssignmentListPanel(logic.getAssignments());
+        resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -212,6 +226,15 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
+    }
+
+    /**
+     * Select the tab of the TabPane listTabs by an integer index tabIndex.
+     *
+     * @param tabIndex The index of tab to be switched to.
+     */
+    public void selectTab(int tabIndex) {
+        listTabs.getSelectionModel().select(tabIndex);
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -229,28 +252,52 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isAssignmentNames()) {
-                showAssignmentNames();
-                assignmentListLabel.setText("Assignment List");
-            }
-
-            boolean isAssignmentNames =
-                assignmentListPanelPlaceholder.getChildren().get(0).equals(assignmentNameListPanel.getRoot());
-
-            if (!isAssignmentNames || commandResult.isPersonAssignments()) {
-                showStudentAssignments(logic.getAssignments());
-                assignmentListLabel.setText("Assignment List: Person " + logic.getIndex().getOneBased());
-            }
-
-            if (commandResult.isShowHelp()) {
+            switch(commandResult.getCommandType()) {
+            case HELP:
                 handleHelp();
-            }
-
-            if (commandResult.isExit()) {
+                break;
+            case EXIT:
                 handleExit();
+                break;
+            case VIEW_ALL_ASSIGNMENTS:
+                handleViewAllAssignments();
+                break;
+            case VIEW_ASSIGNMENTS:
+                handleViewAssignments();
+                break;
+            case TAB:
+                selectTab(commandResult.getTabIndex());
+                break;
+            case ADD:
+            case ADD_TASK:
+            case ADD_TO_CONSULT:
+            case CLEAR:
+            case CREATE_CONSULT:
+            case CREATE_SESSION:
+            case DELETE:
+            case DELETE_COMMENT:
+            case DELETE_CONSULT:
+            case DELETE_GRADE:
+            case DELETE_SESSION:
+            case DELETE_TASK:
+            case EDIT:
+            case EDIT_COMMENT:
+            case EDIT_GRADE:
+            case EDIT_GRADED_TEST:
+            case FIND:
+            case LIST:
+            case REMOVE_FROM_CONSULT:
+            case TAKE_ATTENDANCE:
+            case UPDATE_SESSION_REMARK:
+            case UPDATE_TASK_PROGRESS:
+            case VIEW_ATTENDANCE:
+            case VIEW_TASKS:
+            default:
+                break;
             }
 
             return commandResult;
+
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());

@@ -29,14 +29,40 @@
     -fx-font-family: "Segoe UI Semibold";
 }
 
+/* Tab styling */
 .tab-pane {
-    -fx-padding: 0 0 0 1;
+    -fx-tab-min-height:32px;
 }
 
-.tab-pane .tab-header-area {
-    -fx-padding: 0 0 0 0;
-    -fx-min-height: 0;
-    -fx-max-height: 0;
+.tab-pane *.tab-header-background {
+    -fx-background-color: #17181B;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected {
+     -fx-background-color: #383838;
+}
+
+.tab:focused {
+    -fx-focus-color: red;
+}
+
+.tab {
+    /* Remove small gap between tabs */
+    -fx-background-insets: 0.0;
+    -fx-background-color: #17181B;
+    -fx-padding: 0 10 0 10;
+}
+
+.tab:selected .focus-indicator {
+    -fx-focus-color: transparent;
+    -fx-border-color: transparent;
 }
 
 .table-view {
@@ -109,6 +135,7 @@
 
 .list-cell:filled:selected {
     -fx-background-color: #424d5f;
+    -fx-border-color: white;
 }
 
 .list-cell:filled:selected #cardPane {
@@ -373,3 +400,5 @@
     -fx-font-size: 13px;
     -fx-text-fill: #010504;
 }
+
+
