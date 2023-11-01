@@ -43,6 +43,8 @@ public class RemoveFromConsultCommand extends Command {
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student(s) in address book matches given name(s)";
     public static final String MESSAGE_NOT_FOUND_IN_CONSULT = "No student(s) in consultation matches given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be removed";
+
+    public static final CommandType COMMAND_TYPE = CommandType.REMOVEFROMCONSULT;
     private final Index index;
     private final RemoveFromConsultationDescriptor removeFromConsultationDescriptor;
 
@@ -81,7 +83,13 @@ public class RemoveFromConsultCommand extends Command {
 
         model.setConsultation(targetConsultation, updatedConsultation);
         model.updateFilteredConsultationList(PREDICATE_SHOW_ALL_CONSULTATIONS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(updatedConsultation)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(updatedConsultation)),
+                COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     /**

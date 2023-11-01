@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -18,7 +17,6 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.assignment.Assignment;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -39,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     private ConsultationListPanel consultationListPanel;
     private SessionListPanel sessionListPanel;
     private ResultDisplay resultDisplay;
+    private ResultGraphicalDisplay resultGraphicalDisplay;
     private HelpWindow helpWindow;
     private AssignmentNameListPanel assignmentNameListPanel;
     private AssignmentListPanel assignmentListPanel;
@@ -66,6 +65,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane resultDisplayPlaceholder;
+
+    @FXML
+    private StackPane resultGraphicalDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -151,26 +153,14 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
+        resultGraphicalDisplay = new ResultGraphicalDisplay();
+        resultGraphicalDisplayPlaceholder.getChildren().add(resultGraphicalDisplay.getRoot());
+
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-    }
-
-    /**
-     * Fills up assignmentListPanelPlaceholder with a student's assignments
-     */
-    public void showStudentAssignments(ObservableList<Assignment> assignments) {
-        assignmentListPanel = new AssignmentListPanel(assignments);
-        assignmentListPanelPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
-    }
-
-    /**
-     * Fills up assignmentListPanelPlaceholder with assignment names
-     */
-    public void showAssignmentNames() {
-        assignmentListPanelPlaceholder.getChildren().set(0, assignmentNameListPanel.getRoot());
     }
 
     /**
@@ -195,6 +185,21 @@ public class MainWindow extends UiPart<Stage> {
         } else {
             helpWindow.focus();
         }
+    }
+
+    /**
+     * Displays graphically the list of all assignments.
+     */
+    public void handleViewAllAssignments() {
+        resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentNameListPanel.getRoot());
+    }
+
+    /**
+     * Displays graphically the list of assignments for a student.
+     */
+    public void handleViewAssignments() {
+        assignmentListPanel = new AssignmentListPanel(logic.getAssignments());
+        resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
     }
 
     void show() {
@@ -228,28 +233,49 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isAssignmentNames()) {
-                showAssignmentNames();
-                assignmentListLabel.setText("Assignment List");
-            }
-
-            boolean isAssignmentNames =
-                assignmentListPanelPlaceholder.getChildren().get(0).equals(assignmentNameListPanel.getRoot());
-
-            if (!isAssignmentNames || commandResult.isPersonAssignments()) {
-                showStudentAssignments(logic.getAssignments());
-                assignmentListLabel.setText("Assignment List: Person " + logic.getIndex().getOneBased());
-            }
-
-            if (commandResult.isShowHelp()) {
+            switch(commandResult.getCommandType()) {
+            case HELP:
                 handleHelp();
-            }
-
-            if (commandResult.isExit()) {
+                break;
+            case EXIT:
                 handleExit();
+                break;
+            case VIEWALLASSIGNMENTS:
+                handleViewAllAssignments();
+                break;
+            case VIEWASSIGNMENTS:
+                handleViewAssignments();
+                break;
+            case ADD:
+            case ADDTASK:
+            case ADDTOCONSULT:
+            case CLEAR:
+            case CREATECONSULT:
+            case CREATESESSION:
+            case DELETE:
+            case DELETECOMMENT:
+            case DELETECONSULT:
+            case DELETEGRADE:
+            case DELETESESSION:
+            case DELETETASK:
+            case EDIT:
+            case EDITCOMMENT:
+            case EDITGRADE:
+            case EDITGRADEDTEST:
+            case FIND:
+            case LIST:
+            case REMOVEFROMCONSULT:
+            case TAKEATTENDANCE:
+            case UPDATESESSIONREMARK:
+            case UPDATETASKPROGRESS:
+            case VIEWATTENDANCE:
+            case VIEWTASKS:
+            default:
+                break;
             }
 
             return commandResult;
+
         } catch (CommandException | ParseException e) {
             logger.info("An error occurred while executing command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());

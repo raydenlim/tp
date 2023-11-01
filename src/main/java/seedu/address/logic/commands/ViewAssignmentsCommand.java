@@ -23,6 +23,8 @@ public class ViewAssignmentsCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Showing all assignment details of: %1$s";
 
+    public static final CommandType COMMAND_TYPE = CommandType.VIEWASSIGNMENTS;
+
     private final Index index;
 
     /**
@@ -44,7 +46,12 @@ public class ViewAssignmentsCommand extends Command {
 
         Person person = lastShownList.get(index.getZeroBased());
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, person.getName()), false, false, true, false);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, person.getName()), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     public Index getIndex() {

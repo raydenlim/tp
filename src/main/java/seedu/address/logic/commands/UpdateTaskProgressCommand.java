@@ -33,6 +33,8 @@ public class UpdateTaskProgressCommand extends Command {
     public static final String MESSAGE_MARK_TASK_SUCCESS = "Updated Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "Progress must be updated";
     public static final String MESSAGE_DUPLICATE_TASK = "Task already exists in the task list";
+
+    public static final CommandType COMMAND_TYPE = CommandType.UPDATETASKPROGRESS;
     private final Index targetIndex;
     private final EditProgressDescriptor descriptor;
 
@@ -61,7 +63,12 @@ public class UpdateTaskProgressCommand extends Command {
         model.setTask(taskToEdit, editedTask);
         model.updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
 
-        return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, Messages.format(editedTask)));
+        return new CommandResult(String.format(MESSAGE_MARK_TASK_SUCCESS, Messages.format(editedTask)), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

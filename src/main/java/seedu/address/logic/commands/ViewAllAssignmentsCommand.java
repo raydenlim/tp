@@ -16,10 +16,17 @@ public class ViewAllAssignmentsCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Showing all assignment names";
 
+    public static final CommandType COMMAND_TYPE = CommandType.VIEWALLASSIGNMENTS;
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        return new CommandResult(MESSAGE_SUCCESS, false, false, false, true);
+        return new CommandResult(MESSAGE_SUCCESS, COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

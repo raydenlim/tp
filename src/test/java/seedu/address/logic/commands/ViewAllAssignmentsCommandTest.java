@@ -26,7 +26,7 @@ public class ViewAllAssignmentsCommandTest {
         ViewAllAssignmentsCommand viewAllAssignmentsCommand = new ViewAllAssignmentsCommand();
         CommandResult expectedResult = viewAllAssignmentsCommand.execute(model);
         String expectedMessage = String.format(ViewAllAssignmentsCommand.MESSAGE_SUCCESS);
-        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, false, false, false, true)));
+        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, CommandType.VIEWALLASSIGNMENTS)));
     }
 
     @Test

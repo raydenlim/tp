@@ -23,6 +23,8 @@ public class ViewAttendanceCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe Alice";
 
+    public static final CommandType COMMAND_TYPE = CommandType.VIEWATTENDANCE;
+
     private final Predicate<Session> predicate;
 
     /**
@@ -49,7 +51,13 @@ public class ViewAttendanceCommand extends Command {
 
         // Return a success message
         return new CommandResult(
-                String.format(Messages.MESSAGE_SESSIONS_LISTED_OVERVIEW, model.getFilteredSessionList().size()));
+                String.format(Messages.MESSAGE_SESSIONS_LISTED_OVERVIEW, model.getFilteredSessionList().size()),
+                CommandType.VIEWATTENDANCE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     /**

@@ -40,7 +40,7 @@ public class ViewAssignmentsCommandTest {
         ViewAssignmentsCommand viewAssignmentsCommand = new ViewAssignmentsCommand(targetIndex);
         CommandResult expectedResult = viewAssignmentsCommand.execute(model);
         String expectedMessage = String.format(ViewAssignmentsCommand.MESSAGE_SUCCESS, person.getName());
-        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, false, false, true, false)));
+        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, CommandType.VIEWASSIGNMENTS)));
     }
 
     @Test

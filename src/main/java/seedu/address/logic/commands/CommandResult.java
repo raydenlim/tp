@@ -13,28 +13,15 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
-    private final boolean showHelp;
-
-    /** The application should exit. */
-    private final boolean exit;
-
-    /** The application should show a person's assignments. */
-    private final boolean personAssignments;
-
-    /** The application should show assignment names. */
-    private final boolean assignmentNames;
+    /** The command type producing the result, used for deciding application UI action **/
+    private final CommandType commandType;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
-        boolean personAssignments, boolean assignmentNames) {
+    public CommandResult(String feedbackToUser, CommandType commandType) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.showHelp = showHelp;
-        this.exit = exit;
-        this.personAssignments = personAssignments;
-        this.assignmentNames = assignmentNames;
+        this.commandType = commandType;
     }
 
     /**
@@ -42,27 +29,15 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, false);
+        this(feedbackToUser, null);
     }
 
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
 
-    public boolean isShowHelp() {
-        return showHelp;
-    }
-
-    public boolean isExit() {
-        return exit;
-    }
-
-    public boolean isPersonAssignments() {
-        return personAssignments;
-    }
-
-    public boolean isAssignmentNames() {
-        return assignmentNames;
+    public CommandType getCommandType() {
+        return commandType;
     }
 
     @Override
@@ -78,25 +53,19 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit
-                && personAssignments == otherCommandResult.personAssignments
-                && assignmentNames == otherCommandResult.assignmentNames;
+                && commandType == otherCommandResult.commandType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit, personAssignments, assignmentNames);
+        return Objects.hash(feedbackToUser, commandType);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("feedbackToUser", feedbackToUser)
-                .add("showHelp", showHelp)
-                .add("exit", exit)
-                .add("personAssignments", personAssignments)
-                .add("assignmentNames", assignmentNames)
+                .add("commandType", commandType)
                 .toString();
     }
 

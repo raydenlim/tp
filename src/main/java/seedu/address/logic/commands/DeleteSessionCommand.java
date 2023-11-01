@@ -25,6 +25,8 @@ public class DeleteSessionCommand extends Command {
 
     public static final String MESSAGE_DELETE_SESSION_SUCCESS = "Deleted Session: %1$s";
 
+    public static final CommandType COMMAND_TYPE = CommandType.DELETESESSION;
+
     private final SessionNumber targetSessionNumber;
 
     public DeleteSessionCommand(SessionNumber targetSessionNumber) {
@@ -41,7 +43,12 @@ public class DeleteSessionCommand extends Command {
 
         model.deleteSession(sessionToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_SESSION_SUCCESS,
-                Messages.format(sessionToDelete)));
+                Messages.format(sessionToDelete)), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

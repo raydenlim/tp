@@ -24,6 +24,8 @@ public class DeleteConsultationCommand extends Command {
 
     public static final String MESSAGE_DELETE_CONSULTATION_SUCCESS = "Deleted Consultation: %1$s";
 
+    public static final CommandType COMMAND_TYPE = CommandType.DELETECONSULT;
+
     private final Index targetIndex;
 
     public DeleteConsultationCommand(Index targetIndex) {
@@ -42,7 +44,12 @@ public class DeleteConsultationCommand extends Command {
         Consultation consultationToDelete = lastShownConsultation.get(targetIndex.getZeroBased());
         model.deleteConsultation(consultationToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_CONSULTATION_SUCCESS,
-                Messages.format(consultationToDelete)));
+                Messages.format(consultationToDelete)), COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

@@ -37,6 +37,8 @@ public class CreateConsultCommand extends Command {
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
+
+    public static final CommandType COMMAND_TYPE = CommandType.CREATECONSULT;
     private final LocalDate date;
     private final LocalTime time;
     private Set<Name> names;
@@ -67,7 +69,13 @@ public class CreateConsultCommand extends Command {
 
         this.consultationToAdd = new Consultation(date, time, studentsToAdd);
         model.addConsultation(this.consultationToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)),
+                COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override

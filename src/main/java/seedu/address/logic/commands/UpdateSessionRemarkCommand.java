@@ -27,6 +27,8 @@ public class UpdateSessionRemarkCommand extends Command {
             + PREFIX_SESSION_REMARK + "Teach students how to perform recursion.";
     public static final String MESSAGE_SUCCESS = "Session remarks updated: %1$s";
 
+    public static final CommandType COMMAND_TYPE = CommandType.UPDATESESSIONREMARK;
+
     private SessionNumber sessionNumber;
     private SessionRemark sessionRemark;
     private Session sessionToUpdate;
@@ -60,7 +62,13 @@ public class UpdateSessionRemarkCommand extends Command {
         sessionToUpdate.updateRemark(sessionRemark);
 
         // Return a success message
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(sessionToUpdate)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(sessionToUpdate)),
+                COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     /**

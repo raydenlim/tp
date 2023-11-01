@@ -25,6 +25,8 @@ public class DeleteTaskCommand extends Command {
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 
+    public static final CommandType COMMAND_TYPE = CommandType.DELETETASK;
+
     private final Index targetIndex;
 
     public DeleteTaskCommand(Index targetIndex) {
@@ -42,7 +44,13 @@ public class DeleteTaskCommand extends Command {
 
         Task taskToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteTask(taskToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, Messages.format(taskToDelete)));
+        return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, Messages.format(taskToDelete)),
+                COMMAND_TYPE);
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return COMMAND_TYPE;
     }
 
     @Override
