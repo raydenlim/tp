@@ -32,7 +32,6 @@ public class UpdateTaskProgressCommand extends Command {
 
     public static final String MESSAGE_MARK_TASK_SUCCESS = "Updated Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "Progress must be updated";
-    public static final String MESSAGE_DUPLICATE_TASK = "Task already exists in the task list";
     private final Index targetIndex;
     private final EditProgressDescriptor descriptor;
 
