@@ -76,6 +76,16 @@ public class CreateConsultationCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        Consultation validConsultation = new ConsultationBuilder().build();
+        CreateConsultCommand command = new CreateConsultCommand(
+                validConsultation.getDate(),
+                validConsultation.getTime(),
+                validConsultation.getStudentsNames());
+        assertEquals(command.getCommandType(), CommandType.CREATECONSULT);
+    }
+
+    @Test
     public void equals() {
         LocalDate date = VALID_DATE_OBJ;
         LocalTime time = VALID_TIME_OBJ;

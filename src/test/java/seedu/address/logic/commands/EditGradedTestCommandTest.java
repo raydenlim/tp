@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_GT_FINALS;
@@ -115,6 +116,19 @@ public class EditGradedTestCommandTest {
 
         // Check if the command execution is successful
         assertCommandSuccess(editGradedTestCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void getCommandType() {
+        EditGradedTestCommand command = new EditGradedTestCommand(
+                INDEX_FIRST_PERSON,
+                Optional.of(new ReadingAssessment1(VALID_GT_RA1)),
+                Optional.of(new ReadingAssessment2(VALID_GT_RA2)),
+                Optional.of(new MidTerms(VALID_GT_MIDTERMS)),
+                Optional.of(new Finals(VALID_GT_FINALS)),
+                Optional.of(new PracticalExam(VALID_GT_PE)));
+
+        assertEquals(command.getCommandType(), CommandType.EDITGRADEDTEST);
     }
 
     @Test

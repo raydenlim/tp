@@ -86,6 +86,15 @@ public class ViewAttendanceCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        SessionStudentsContainsKeywordsPredicate firstPredicate =
+                new SessionStudentsContainsKeywordsPredicate(Collections.singletonList("first"));
+        ViewAttendanceCommand command = new ViewAttendanceCommand(firstPredicate);
+
+        assertEquals(command.getCommandType(), CommandType.VIEWATTENDANCE);
+    }
+
+    @Test
     public void toStringMethod() {
         SessionStudentsContainsKeywordsPredicate predicate =
                 new SessionStudentsContainsKeywordsPredicate(Arrays.asList("keyword"));

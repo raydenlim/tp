@@ -80,6 +80,13 @@ public class TakeAttendanceCommandTest {
         assertFalse(currentSession.getStudents().contains(bob));
     }
 
+    @Test
+    public void getCommandType() {
+        TakeAttendanceCommand command =
+                new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
+
+        assertEquals(command.getCommandType(), CommandType.TAKEATTENDANCE);
+    }
 
     @Test
     public void equals_sameCommandArguments_returnsTrue() {

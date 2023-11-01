@@ -166,6 +166,15 @@ public class ViewTasksCommandTest {
     }
 
     @Test
+    public void getCOmmandType() {
+        TaskNameContainsKeywordsPredicate firstPredicate =
+                new TaskNameContainsKeywordsPredicate(Collections.singletonList("first"));
+        ViewTasksCommand command = new ViewTasksCommand(firstPredicate);
+
+        assertEquals(command.getCommandType(), CommandType.VIEWTASKS);
+    }
+
+    @Test
     public void toStringMethod() {
         TaskNameContainsKeywordsPredicate predicate = new TaskNameContainsKeywordsPredicate(Arrays.asList("keyword"));
         ViewTasksCommand viewTasksCommand = new ViewTasksCommand(predicate);

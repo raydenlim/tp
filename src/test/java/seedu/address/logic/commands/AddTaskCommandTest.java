@@ -50,6 +50,14 @@ public class AddTaskCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        Task task = new TaskBuilder().build();
+        AddTaskCommand addCommand = new AddTaskCommand(task);
+
+        assertEquals(addCommand.getCommandType(), CommandType.ADDTASK);
+    }
+
+    @Test
     public void equals() {
         Task task1 = new TaskBuilder().withName("do cs2101").build();
         Task task2 = new TaskBuilder().withName("do cs2100").build();

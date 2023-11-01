@@ -56,6 +56,13 @@ public class DeleteConsultationCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        DeleteConsultationCommand command = new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION);
+
+        assertEquals(command.getCommandType(), CommandType.DELETECONSULT);
+    }
+
+    @Test
     public void equals() {
         DeleteConsultationCommand deleteFirstCommand = new DeleteConsultationCommand(INDEX_FIRST_CONSULTATION);
         DeleteConsultationCommand deleteSecondCommand = new DeleteConsultationCommand(INDEX_SECOND_CONSULTATION);

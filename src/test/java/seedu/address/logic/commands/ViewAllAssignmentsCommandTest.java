@@ -30,6 +30,13 @@ public class ViewAllAssignmentsCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        ViewAllAssignmentsCommand command = new ViewAllAssignmentsCommand();
+
+        assertEquals(command.getCommandType(), CommandType.VIEWALLASSIGNMENTS);
+    }
+
+    @Test
     public void equals() {
         // same object -> returns true
         ViewAllAssignmentsCommand viewAllAssignmentsCommand = new ViewAllAssignmentsCommand();

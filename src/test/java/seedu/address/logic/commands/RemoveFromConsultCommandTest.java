@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
@@ -91,6 +92,16 @@ public class RemoveFromConsultCommandTest {
         RemoveFromConsultCommand command = new RemoveFromConsultCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(command, model, Messages.MESSAGE_INVALID_CONSULTATION_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void getCommandType() {
+        Consultation consultationToRemoveStudent = TypicalConsultations.CONSULTATION_WITH_STUDENTS_TO_REMOVE;
+        RemoveFromConsultationDescriptor descriptor = new RemoveFromConsultationDescriptorBuilder(
+                consultationToRemoveStudent).build();
+        RemoveFromConsultCommand command = new RemoveFromConsultCommand(INDEX_FIRST_CONSULTATION, descriptor);
+
+        assertEquals(command.getCommandType(), CommandType.REMOVEFROMCONSULT);
     }
 
     @Test

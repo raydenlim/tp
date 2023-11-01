@@ -67,6 +67,13 @@ public class ViewAssignmentsCommandTest {
     }
 
     @Test
+    public void getCommandType() {
+        ViewAssignmentsCommand command = new ViewAssignmentsCommand(INDEX_FIRST_PERSON);
+
+        assertEquals(command.getCommandType(), CommandType.VIEWASSIGNMENTS);
+    }
+
+    @Test
     public void getIndexCommand() {
         ViewAssignmentsCommand viewAssignmentsCommand = new ViewAssignmentsCommand(INDEX_FIRST_PERSON);
         assertEquals(viewAssignmentsCommand.getIndex(), INDEX_FIRST_PERSON);
