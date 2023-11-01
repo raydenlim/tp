@@ -26,14 +26,14 @@ public class ViewAllAssignmentsCommandTest {
         ViewAllAssignmentsCommand viewAllAssignmentsCommand = new ViewAllAssignmentsCommand();
         CommandResult expectedResult = viewAllAssignmentsCommand.execute(model);
         String expectedMessage = String.format(ViewAllAssignmentsCommand.MESSAGE_SUCCESS);
-        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, CommandType.VIEWALLASSIGNMENTS)));
+        assertTrue(expectedResult.equals(new CommandResult(expectedMessage, CommandType.VIEW_ALL_ASSIGNMENTS)));
     }
 
     @Test
     public void getCommandType() {
         ViewAllAssignmentsCommand command = new ViewAllAssignmentsCommand();
 
-        assertEquals(command.getCommandType(), CommandType.VIEWALLASSIGNMENTS);
+        assertEquals(command.getCommandType(), CommandType.VIEW_ALL_ASSIGNMENTS);
     }
 
     @Test

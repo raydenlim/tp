@@ -54,7 +54,7 @@ public class AddTaskCommandTest {
         Task task = new TaskBuilder().build();
         AddTaskCommand addCommand = new AddTaskCommand(task);
 
-        assertEquals(addCommand.getCommandType(), CommandType.ADDTASK);
+        assertEquals(addCommand.getCommandType(), CommandType.ADD_TASK);
     }
 
     @Test

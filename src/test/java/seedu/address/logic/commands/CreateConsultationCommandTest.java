@@ -82,7 +82,7 @@ public class CreateConsultationCommandTest {
                 validConsultation.getDate(),
                 validConsultation.getTime(),
                 validConsultation.getStudentsNames());
-        assertEquals(command.getCommandType(), CommandType.CREATECONSULT);
+        assertEquals(command.getCommandType(), CommandType.CREATE_CONSULT);
     }
 
     @Test

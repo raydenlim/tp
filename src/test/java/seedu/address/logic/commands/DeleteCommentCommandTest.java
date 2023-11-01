@@ -119,7 +119,7 @@ public class DeleteCommentCommandTest {
         AssignmentName assignmentName = new AssignmentName(VALID_ASSIGNMENT_NAME);
         DeleteCommentCommand command = new DeleteCommentCommand(INDEX_FIRST_PERSON, assignmentName);
 
-        assertEquals(command.getCommandType(), CommandType.DELETECOMMENT);
+        assertEquals(command.getCommandType(), CommandType.DELETE_COMMENT);
     }
 
     @Test

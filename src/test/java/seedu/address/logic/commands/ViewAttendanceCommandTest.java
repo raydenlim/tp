@@ -91,7 +91,7 @@ public class ViewAttendanceCommandTest {
                 new SessionStudentsContainsKeywordsPredicate(Collections.singletonList("first"));
         ViewAttendanceCommand command = new ViewAttendanceCommand(firstPredicate);
 
-        assertEquals(command.getCommandType(), CommandType.VIEWATTENDANCE);
+        assertEquals(command.getCommandType(), CommandType.VIEW_ATTENDANCE);
     }
 
     @Test

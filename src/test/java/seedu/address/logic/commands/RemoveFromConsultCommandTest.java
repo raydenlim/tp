@@ -101,7 +101,7 @@ public class RemoveFromConsultCommandTest {
                 consultationToRemoveStudent).build();
         RemoveFromConsultCommand command = new RemoveFromConsultCommand(INDEX_FIRST_CONSULTATION, descriptor);
 
-        assertEquals(command.getCommandType(), CommandType.REMOVEFROMCONSULT);
+        assertEquals(command.getCommandType(), CommandType.REMOVE_FROM_CONSULT);
     }
 
     @Test

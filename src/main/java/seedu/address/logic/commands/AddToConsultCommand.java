@@ -43,7 +43,7 @@ public class AddToConsultCommand extends Command {
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be added";
 
-    public static final CommandType COMMAND_TYPE = CommandType.ADDTOCONSULT;
+    public static final CommandType COMMAND_TYPE = CommandType.ADD_TO_CONSULT;
     private final Index index;
     private final AddToConsultationDescriptor addToConsultationDescriptor;
 

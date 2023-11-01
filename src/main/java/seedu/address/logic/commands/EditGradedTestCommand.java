@@ -57,7 +57,7 @@ public class EditGradedTestCommand extends Command {
     public static final String MESSAGE_EDIT_GRADEDTEST_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 
-    public static final CommandType COMMAND_TYPE = CommandType.EDITGRADEDTEST;
+    public static final CommandType COMMAND_TYPE = CommandType.EDIT_GRADED_TEST;
 
     private final Optional<ReadingAssessment1> ra1;
     private final Optional<ReadingAssessment2> ra2;

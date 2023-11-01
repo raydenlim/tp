@@ -121,7 +121,7 @@ public class DeleteGradeCommandTest {
         AssignmentName assignmentName = ASSIGNMENT1.getName();
         DeleteGradeCommand command = new DeleteGradeCommand(INDEX_FIRST_PERSON, assignmentName);
 
-        assertEquals(command.getCommandType(), CommandType.DELETEGRADE);
+        assertEquals(command.getCommandType(), CommandType.DELETE_GRADE);
     }
 
     @Test

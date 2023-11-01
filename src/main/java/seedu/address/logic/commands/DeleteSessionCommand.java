@@ -25,7 +25,7 @@ public class DeleteSessionCommand extends Command {
 
     public static final String MESSAGE_DELETE_SESSION_SUCCESS = "Deleted Session: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.DELETESESSION;
+    public static final CommandType COMMAND_TYPE = CommandType.DELETE_SESSION;
 
     private final SessionNumber targetSessionNumber;
 

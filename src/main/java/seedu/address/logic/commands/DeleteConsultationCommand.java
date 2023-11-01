@@ -24,7 +24,7 @@ public class DeleteConsultationCommand extends Command {
 
     public static final String MESSAGE_DELETE_CONSULTATION_SUCCESS = "Deleted Consultation: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.DELETECONSULT;
+    public static final CommandType COMMAND_TYPE = CommandType.DELETE_CONSULT;
 
     private final Index targetIndex;
 

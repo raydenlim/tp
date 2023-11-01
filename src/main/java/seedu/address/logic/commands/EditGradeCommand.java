@@ -40,7 +40,7 @@ public class EditGradeCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Edited grade to assignment: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.EDITGRADE;
+    public static final CommandType COMMAND_TYPE = CommandType.EDIT_GRADE;
 
     private final AssignmentName assignmentName;
     private final Grade grade;

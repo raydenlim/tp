@@ -39,7 +39,7 @@ public class DeleteCommentCommand extends Command {
 
     public static final String MESSAGE_CONSTRAINT = "Cannot delete the comment from an assignment with no comment";
 
-    public static final CommandType COMMAND_TYPE = CommandType.DELETECOMMENT;
+    public static final CommandType COMMAND_TYPE = CommandType.DELETE_COMMENT;
 
     private final AssignmentName assignmentName;
     private final Index index;

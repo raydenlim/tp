@@ -31,6 +31,7 @@ public class Messages {
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_ASSIGNMENT_GRADED = "The assignment has already been graded";
     public static final String MESSAGE_ASSIGNMENT_UNGRADED = "The assignment has not been graded";
+    public static final String MESSAGE_INVALID_TAB_INDEX = "The inputted index is out of valid range";
 
     /**
      * Returns an error message indicating the duplicate prefixes.

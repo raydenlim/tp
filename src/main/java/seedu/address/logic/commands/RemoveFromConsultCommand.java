@@ -44,7 +44,7 @@ public class RemoveFromConsultCommand extends Command {
     public static final String MESSAGE_NOT_FOUND_IN_CONSULT = "No student(s) in consultation matches given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be removed";
 
-    public static final CommandType COMMAND_TYPE = CommandType.REMOVEFROMCONSULT;
+    public static final CommandType COMMAND_TYPE = CommandType.REMOVE_FROM_CONSULT;
     private final Index index;
     private final RemoveFromConsultationDescriptor removeFromConsultationDescriptor;
 

@@ -106,7 +106,7 @@ public class UpdateTaskProgressCommandTest {
         EditProgressDescriptor descriptor = new EditProgressDescriptorBuilder(editedTask).build();
         UpdateTaskProgressCommand command = new UpdateTaskProgressCommand(INDEX_FIRST_TASK, descriptor);
 
-        assertEquals(command.getCommandType(), CommandType.UPDATETASKPROGRESS);
+        assertEquals(command.getCommandType(), CommandType.UPDATE_TASK_PROGRESS);
     }
 
     @Test

@@ -38,7 +38,7 @@ public class DeleteGradeCommand extends Command {
 
     public static final String MESSAGE_CONSTRAINT = "Cannot delete the grade from an ungraded assignment";
 
-    public static final CommandType COMMAND_TYPE = CommandType.DELETEGRADE;
+    public static final CommandType COMMAND_TYPE = CommandType.DELETE_GRADE;
 
     private final AssignmentName assignmentName;
     private final Index index;

@@ -27,7 +27,7 @@ public class UpdateSessionRemarkCommand extends Command {
             + PREFIX_SESSION_REMARK + "Teach students how to perform recursion.";
     public static final String MESSAGE_SUCCESS = "Session remarks updated: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.UPDATESESSIONREMARK;
+    public static final CommandType COMMAND_TYPE = CommandType.UPDATE_SESSION_REMARK;
 
     private SessionNumber sessionNumber;
     private SessionRemark sessionRemark;

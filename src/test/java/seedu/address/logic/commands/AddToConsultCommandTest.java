@@ -91,7 +91,7 @@ public class AddToConsultCommandTest {
                 TypicalConsultations.CONSULTATION_UNKNOWN_PERSON).build();
         AddToConsultCommand command = new AddToConsultCommand(INDEX_FIRST_CONSULTATION, descriptor);
 
-        assertEquals(command.getCommandType(), CommandType.ADDTOCONSULT);
+        assertEquals(command.getCommandType(), CommandType.ADD_TO_CONSULT);
     }
 
     @Test

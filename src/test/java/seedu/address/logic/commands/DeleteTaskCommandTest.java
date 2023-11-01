@@ -91,7 +91,7 @@ public class DeleteTaskCommandTest {
     public void getCommandType() {
         DeleteTaskCommand command = new DeleteTaskCommand(INDEX_FIRST_TASK);
 
-        assertEquals(command.getCommandType(), CommandType.DELETETASK);
+        assertEquals(command.getCommandType(), CommandType.DELETE_TASK);
     }
 
     @Test

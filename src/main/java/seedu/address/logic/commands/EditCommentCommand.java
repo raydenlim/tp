@@ -39,7 +39,7 @@ public class EditCommentCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Edited comment to assignment: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.EDITCOMMENT;
+    public static final CommandType COMMAND_TYPE = CommandType.EDIT_COMMENT;
 
     private final AssignmentName assignmentName;
     private final Comment comment;

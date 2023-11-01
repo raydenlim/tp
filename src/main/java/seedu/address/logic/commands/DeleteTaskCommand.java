@@ -25,7 +25,7 @@ public class DeleteTaskCommand extends Command {
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.DELETETASK;
+    public static final CommandType COMMAND_TYPE = CommandType.DELETE_TASK;
 
     private final Index targetIndex;
 

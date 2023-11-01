@@ -37,7 +37,7 @@ public class TakeAttendanceCommand extends Command {
             + PREFIX_ATTENDANCE_PRESENCE + "present";
     public static final String MESSAGE_SUCCESS = "Attendance taken";
 
-    public static final CommandType COMMAND_TYPE = CommandType.TAKEATTENDANCE;
+    public static final CommandType COMMAND_TYPE = CommandType.TAKE_ATTENDANCE;
 
     private SessionNumber sessionNumber;
     private Name name;

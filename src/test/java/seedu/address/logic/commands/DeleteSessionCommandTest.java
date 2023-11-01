@@ -55,7 +55,7 @@ public class DeleteSessionCommandTest {
         SessionNumber targetSessionNumber = new SessionNumber("12312");
         DeleteSessionCommand command = new DeleteSessionCommand(targetSessionNumber);
 
-        assertEquals(command.getCommandType(), CommandType.DELETESESSION);
+        assertEquals(command.getCommandType(), CommandType.DELETE_SESSION);
     }
 
     @Test

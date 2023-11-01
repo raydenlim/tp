@@ -24,8 +24,14 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-
     private static final String FXML = "MainWindow.fxml";
+
+    private static final int TAB_PERSONS_INDEX = 0;
+    private static final int TAB_TASKS_INDEX = 1;
+    private static final int TAB_ASSIGNMENTS_INDEX = 2;
+    private static final int TAB_SESSIONS_INDEX = 3;
+    private static final int TAB_CONSULTATIONS_INDEX = 4;
+
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -195,7 +201,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to Assignments tab.
      */
     public void handleViewAllAssignments() {
-        selectTab(3);
+        selectTab(TAB_ASSIGNMENTS_INDEX);
     }
 
     /**
@@ -225,7 +231,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Select the tab of the TabPane listTabs by an integer index tabIndex.
      *
-     * @param tabIndex
+     * @param tabIndex The index of tab to be switched to.
      */
     public void selectTab(int tabIndex) {
         listTabs.getSelectionModel().select(tabIndex);
@@ -253,36 +259,39 @@ public class MainWindow extends UiPart<Stage> {
             case EXIT:
                 handleExit();
                 break;
-            case VIEWALLASSIGNMENTS:
+            case VIEW_ALL_ASSIGNMENTS:
                 handleViewAllAssignments();
                 break;
-            case VIEWASSIGNMENTS:
+            case VIEW_ASSIGNMENTS:
                 handleViewAssignments();
                 break;
+            case TAB:
+                selectTab(commandResult.getTabIndex());
+                break;
             case ADD:
-            case ADDTASK:
-            case ADDTOCONSULT:
+            case ADD_TASK:
+            case ADD_TO_CONSULT:
             case CLEAR:
-            case CREATECONSULT:
-            case CREATESESSION:
+            case CREATE_CONSULT:
+            case CREATE_SESSION:
             case DELETE:
-            case DELETECOMMENT:
-            case DELETECONSULT:
-            case DELETEGRADE:
-            case DELETESESSION:
-            case DELETETASK:
+            case DELETE_COMMENT:
+            case DELETE_CONSULT:
+            case DELETE_GRADE:
+            case DELETE_SESSION:
+            case DELETE_TASK:
             case EDIT:
-            case EDITCOMMENT:
-            case EDITGRADE:
-            case EDITGRADEDTEST:
+            case EDIT_COMMENT:
+            case EDIT_GRADE:
+            case EDIT_GRADED_TEST:
             case FIND:
             case LIST:
-            case REMOVEFROMCONSULT:
-            case TAKEATTENDANCE:
-            case UPDATESESSIONREMARK:
-            case UPDATETASKPROGRESS:
-            case VIEWATTENDANCE:
-            case VIEWTASKS:
+            case REMOVE_FROM_CONSULT:
+            case TAKE_ATTENDANCE:
+            case UPDATE_SESSION_REMARK:
+            case UPDATE_TASK_PROGRESS:
+            case VIEW_ATTENDANCE:
+            case VIEW_TASKS:
             default:
                 break;
             }

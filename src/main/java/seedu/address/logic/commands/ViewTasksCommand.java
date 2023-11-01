@@ -32,7 +32,7 @@ public class ViewTasksCommand extends Command {
             + "[" + PREFIX_TASK_PROGRESS + "pending] "
             + "[" + PREFIX_DATE + "22/10/2023] ";
 
-    public static final CommandType COMMAND_TYPE = CommandType.VIEWTASKS;
+    public static final CommandType COMMAND_TYPE = CommandType.VIEW_TASKS;
 
     private final Predicate<Task> predicate;
 

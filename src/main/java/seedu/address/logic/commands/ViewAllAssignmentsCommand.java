@@ -16,7 +16,7 @@ public class ViewAllAssignmentsCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Switched to assignments tab";
 
-    public static final CommandType COMMAND_TYPE = CommandType.VIEWALLASSIGNMENTS;
+    public static final CommandType COMMAND_TYPE = CommandType.VIEW_ALL_ASSIGNMENTS;
 
     @Override
     public CommandResult execute(Model model) throws CommandException {

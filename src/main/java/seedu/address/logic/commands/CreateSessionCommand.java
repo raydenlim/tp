@@ -37,7 +37,7 @@ public class CreateSessionCommand extends Command {
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student match given name(s)";
     public static final String MESSAGE_DUPLICATE_SESSION = "Session list contains duplicate session(s).";
 
-    public static final CommandType COMMAND_TYPE = CommandType.CREATESESSION;
+    public static final CommandType COMMAND_TYPE = CommandType.CREATE_SESSION;
 
     private SessionNumber sessionNumber;
     private Set<Name> names;

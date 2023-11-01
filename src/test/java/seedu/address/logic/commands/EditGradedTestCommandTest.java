@@ -128,7 +128,7 @@ public class EditGradedTestCommandTest {
                 Optional.of(new Finals(VALID_GT_FINALS)),
                 Optional.of(new PracticalExam(VALID_GT_PE)));
 
-        assertEquals(command.getCommandType(), CommandType.EDITGRADEDTEST);
+        assertEquals(command.getCommandType(), CommandType.EDIT_GRADED_TEST);
     }
 
     @Test

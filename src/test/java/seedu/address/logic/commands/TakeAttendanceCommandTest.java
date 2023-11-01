@@ -85,7 +85,7 @@ public class TakeAttendanceCommandTest {
         TakeAttendanceCommand command =
                 new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
 
-        assertEquals(command.getCommandType(), CommandType.TAKEATTENDANCE);
+        assertEquals(command.getCommandType(), CommandType.TAKE_ATTENDANCE);
     }
 
     @Test

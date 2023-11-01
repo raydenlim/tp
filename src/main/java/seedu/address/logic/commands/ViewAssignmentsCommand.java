@@ -23,7 +23,7 @@ public class ViewAssignmentsCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Showing all assignment details of: %1$s";
 
-    public static final CommandType COMMAND_TYPE = CommandType.VIEWASSIGNMENTS;
+    public static final CommandType COMMAND_TYPE = CommandType.VIEW_ASSIGNMENTS;
 
     private final Index index;
 

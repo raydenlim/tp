@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
@@ -16,12 +17,24 @@ public class CommandResult {
     /** The command type producing the result, used for deciding application UI action **/
     private final CommandType commandType;
 
+    /** The tab index to switch to **/
+    private final Index tabIndex;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, CommandType commandType) {
+    public CommandResult(String feedbackToUser, CommandType commandType, Index index) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.commandType = commandType;
+        this.tabIndex = index;
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser}
+     * and {@code commandType}, and index field set to their default value.
+     */
+    public CommandResult(String feedbackToUser, CommandType commandType) {
+        this(feedbackToUser, commandType, null);
     }
 
     /**
@@ -29,7 +42,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, null);
+        this(feedbackToUser, null, null);
     }
 
     public String getFeedbackToUser() {
@@ -54,6 +67,15 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && commandType == otherCommandResult.commandType;
+    }
+
+    /**
+     * A method to return the target tab index.
+     *
+     * @return The zero based index of the target tab.
+     */
+    public int getTabIndex() {
+        return this.tabIndex.getZeroBased();
     }
 
     @Override

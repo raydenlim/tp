@@ -124,7 +124,7 @@ public class EditGradeCommandTest {
         Grade actualGrade = new Grade(VALID_GRADE, personToEdit.getAssignment(assignmentName).maxGrade());
         EditGradeCommand command = new EditGradeCommand(targetIndex, assignmentName, actualGrade);
 
-        assertEquals(command.getCommandType(), CommandType.EDITGRADE);
+        assertEquals(command.getCommandType(), CommandType.EDIT_GRADE);
     }
 
     @Test

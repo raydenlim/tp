@@ -38,7 +38,7 @@ public class CreateConsultCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
 
-    public static final CommandType COMMAND_TYPE = CommandType.CREATECONSULT;
+    public static final CommandType COMMAND_TYPE = CommandType.CREATE_CONSULT;
     private final LocalDate date;
     private final LocalTime time;
     private Set<Name> names;

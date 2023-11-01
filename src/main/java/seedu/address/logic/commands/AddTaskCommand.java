@@ -36,7 +36,7 @@ public class AddTaskCommand extends Command {
 
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the task list.";
 
-    public static final CommandType COMMAND_TYPE = CommandType.ADDTASK;
+    public static final CommandType COMMAND_TYPE = CommandType.ADD_TASK;
 
     private final Task task;
 

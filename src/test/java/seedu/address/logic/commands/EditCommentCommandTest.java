@@ -100,7 +100,7 @@ public class EditCommentCommandTest {
         Comment comment = new Comment(VALID_COMMENT);
         EditCommentCommand command = new EditCommentCommand(INDEX_FIRST_PERSON, assignmentName, comment);
 
-        assertEquals(command.getCommandType(), CommandType.EDITCOMMENT);
+        assertEquals(command.getCommandType(), CommandType.EDIT_COMMENT);
     }
 
     @Test

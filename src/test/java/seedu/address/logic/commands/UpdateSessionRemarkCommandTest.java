@@ -60,7 +60,7 @@ public class UpdateSessionRemarkCommandTest {
                 validSession.getSessionNumber(),
                 new SessionRemark("New Remarks"));
 
-        assertEquals(command.getCommandType(), CommandType.UPDATESESSIONREMARK);
+        assertEquals(command.getCommandType(), CommandType.UPDATE_SESSION_REMARK);
 
     }
 

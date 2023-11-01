@@ -171,7 +171,7 @@ public class ViewTasksCommandTest {
                 new TaskNameContainsKeywordsPredicate(Collections.singletonList("first"));
         ViewTasksCommand command = new ViewTasksCommand(firstPredicate);
 
-        assertEquals(command.getCommandType(), CommandType.VIEWTASKS);
+        assertEquals(command.getCommandType(), CommandType.VIEW_TASKS);
     }
 
     @Test

@@ -91,7 +91,7 @@ public class CreateSessionCommandTest {
     @Test
     public void getCommandType() {
         CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), new HashSet<Name>());
-        assertEquals(command.getCommandType(), CommandType.CREATESESSION);
+        assertEquals(command.getCommandType(), CommandType.CREATE_SESSION);
     }
 
 
