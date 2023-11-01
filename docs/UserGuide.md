@@ -39,7 +39,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 * [Command Format](#command-format)
     * [Command Parameters](#command-parameters)
 * [Features](#features)
-    * [Miscellaneous Commands](#miscellaneous-commands)
+    * [General Commands](#general-commands)
         * [Viewing help : `help`](#viewing-help-help)
         * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-fakejarvis-exit)
         * [Saving the Data](#saving-the-data)
@@ -89,13 +89,20 @@ You may refer to the **Table of Contents** on the right for easy navigation of t
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
 
+| Convention     | Description                                                    |
+|----------------|----------------------------------------------------------------|
+| `Monospace`    | Used for command inputs, syntax, and file paths.               |
+| **Bold text**  | Highlights important keywords.                                 |
+| [Hyperlink](#) | Indicates hyperlinks to external websites or within the guide. |
+
+
+
 | Convention                                                                          | Description                                                     |
 |-------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| `Monospace`                                                                         | Used for command inputs, syntax, and file paths.                |
-| [Hyperlink](#)                                                                      | Indicates hyperlinks to external websites or within the guide.  |
-| **Bold text**                                                                       | Highlights important keywords.                                  |
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
+
+
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -242,14 +249,14 @@ This section describes each of the commands and features available in F.A.K.E.J.
 
 <br>
 
-### Miscellaneous Commands
+### General Commands
 This section describes commands that fit in no special category.
 
 <br>
 
 #### Viewing help : `help`
 
-Shows you a message explaining how to access the help page.
+You can view a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -260,7 +267,7 @@ Format: `help`
 
 #### Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
 
-You can exit the F.A.K.E.J.A.R.V.I.S.
+You can exit the F.A.K.E.J.A.R.V.I.S. application.
 
 Format: `exit`
 
@@ -289,11 +296,9 @@ If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. 
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
 
+[Back to Table of Contents](#table-of-contents)
 
 <br>
-
-
-[Back to Table of Contents](#table-of-contents)
 
 
 ### Student Management
@@ -301,24 +306,25 @@ This section describes commands that help you manage your students.
 
 #### Adding a Student: `add`
 
-You can add a student to your address book.
+You can add a student to F.A.K.E.J.A.R.V.I.S.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@u.nus.edu a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01`
+* `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/criminal`
 
-<box type="tip" seamless>
-**Tip:** You can add any number of tags to a person! (including 0)
-</box>
+
+<div markdown="span" class="alert alert-info"> 
+    :information_source: You can add any number of tags to a person! (including 0)
+</div>
 
 
 <br>
 
 #### Listing All Students : `list`
 
-You can list out all students in your address book.
+You can list out all students in F.A.K.E.J.A.R.V.I.S.
 
 Format: `list`
 
@@ -326,7 +332,7 @@ Format: `list`
 
 #### Editing a Student Field : `edit`
 
-You can edit an existing student's fields in your address book.
+You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
@@ -334,11 +340,11 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 person list. The index **must be a positive integer** 1, 2, 3, …​   THIS CAN BE IN THE GLOSSARY)
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 > **Note:** 
-> * At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, ADDRESS)
+> * At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
 > * Editing tags overwrites existing tags; it's not cumulative. To remove all tags, use `t/` without specifying any
 > tags after it.
 > * You can remove all the person’s tags by typing `t/` without
@@ -371,12 +377,12 @@ Examples:
 
 #### Deleting a Student : `delete`
 
-You can delete a specific student from your address book.
+You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
 Format: `delete INDEX`
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `list` followed by `delete 2` deletes the 2nd person in F.A.K.E.J.A.R.V.I.S.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 > **Note:**
@@ -389,7 +395,7 @@ Examples:
 
 #### Clearing all Entries : `clear`
 
-You can clear all students from your address book.
+You can clear all students from F.A.K.E.J.A.R.V.I.S.
 
 Format: `clear`
 
@@ -826,7 +832,7 @@ You can delete the consultation slot specified by an index.
 
 Format: `deleteconsult INDEX`
 
-> **Parameters:**git 
+> **Parameters:**
 > * INDEX The index of the consultation in the upcoming consultations.
 
 Examples:
@@ -853,10 +859,10 @@ Examples:
 
 | **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`                                               | `add n/James Ho p/22224444 e/jamesho@u.nus.edu a/james03 t/friend t/colleague`                                               |
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`                                               | `add n/James Ho p/22224444 e/jamesho@u.nus.edu th/james03 t/friend t/colleague`                                                |
 | **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
 | **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
-| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`                                         | `edit 2 n/James Lee e/jameslee@u.nus.edu`                                                                                    |
+| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…​`                                 | `edit 2 n/James Lee e/jameslee@u.nus.edu`                                                                                      |
 | **Find**                      | `find KEYWORD [MORE_KEYWORDS]`                                                                                 | `find John` or `find alex david`                                                                                               |
 | **View**                      | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]` | `viewtasks`, `viewtasks tp/high`, `viewtasks d/30/09/2023`                                                                     |
 | **Update Progress**           | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                 | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                                |

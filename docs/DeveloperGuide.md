@@ -425,7 +425,7 @@ Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
 
 * **Alternative 2:** Separate out into 2 separate functions.
     * Pros: Easier to debug since they're implemented independently of one another.
-    * Cons: More commands make it messier.
+    * Cons: More commands make the interface messier, negatively impacting user experience.
 
 
 --------------------------------------------------------------------------------------------------------------------
