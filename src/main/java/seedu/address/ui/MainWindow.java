@@ -147,7 +147,6 @@ public class MainWindow extends UiPart<Stage> {
 
         assignmentNameListPanel = new AssignmentNameListPanel(logic.getAssignmentNameList());
         assignmentListPanelPlaceholder.getChildren().add(assignmentNameListPanel.getRoot());
-        assignmentListLabel.setText("Assignment List");
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
