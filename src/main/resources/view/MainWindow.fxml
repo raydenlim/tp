@@ -32,7 +32,7 @@
 
           <HBox styleClass="pane-with-border" VBox.vgrow="ALWAYS">
               <children>
-                  <TabPane maxHeight="Infinity" prefWidth="460" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                  <TabPane fx:id="listTabs" maxHeight="Infinity" prefWidth="460" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                       <tabs>
                           <Tab text="Students">
                               <VBox fx:id="personList" VBox.vgrow="ALWAYS">

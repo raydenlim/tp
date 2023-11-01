@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -74,6 +75,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private Label assignmentListLabel;
+
+    @FXML
+    private TabPane listTabs;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -188,10 +192,10 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Displays graphically the list of all assignments.
+     * Switches to Assignments tab.
      */
     public void handleViewAllAssignments() {
-        resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentNameListPanel.getRoot());
+        selectTab(3);
     }
 
     /**
@@ -216,6 +220,15 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
+    }
+
+    /**
+     * Select the tab of the TabPane listTabs by an integer index tabIndex.
+     *
+     * @param tabIndex
+     */
+    public void selectTab(int tabIndex) {
+        listTabs.getSelectionModel().select(tabIndex);
     }
 
     public PersonListPanel getPersonListPanel() {
