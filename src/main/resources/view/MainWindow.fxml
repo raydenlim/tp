@@ -36,35 +36,51 @@
                       <tabs>
                           <Tab text="Students">
                               <VBox fx:id="personList" VBox.vgrow="ALWAYS">
-                                  <Label maxWidth="Infinity" styleClass="section-label" text="Person List" wrapText="true" />
+                                  <Label maxWidth="Infinity"
+                                         styleClass="section-label"
+                                         text="Person List"
+                                         wrapText="true" />
                                   <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                               </VBox>
                           </Tab>
 
                           <Tab text="Tasks">
                               <VBox fx:id="taskList" VBox.vgrow="ALWAYS">
-                                  <Label maxWidth="Infinity" styleClass="section-label" text="Task List" wrapText="true" />
+                                  <Label maxWidth="Infinity"
+                                         styleClass="section-label"
+                                         text="Task List"
+                                         wrapText="true" />
                                   <StackPane fx:id="taskListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                               </VBox>
                           </Tab>
 
                           <Tab text="Assignments">
                               <VBox fx:id="assignmentList" VBox.vgrow="ALWAYS">
-                                  <Label fx:id="assignmentListLabel" maxWidth="Infinity" styleClass="section-label" text="\$assignmentListLabel" wrapText="true" />
+                                  <Label fx:id="assignmentListLabel"
+                                         maxWidth="Infinity"
+                                         styleClass="section-label"
+                                         text="\$assignmentListLabel"
+                                         wrapText="true" />
                                   <StackPane fx:id="assignmentListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                               </VBox>
                           </Tab>
 
                           <Tab text="Sessions">
                               <VBox fx:id="sessionList" VBox.vgrow="ALWAYS">
-                                  <Label maxWidth="Infinity" styleClass="section-label" text="Session List" wrapText="true" />
+                                  <Label maxWidth="Infinity"
+                                         styleClass="section-label"
+                                         text="Session List"
+                                         wrapText="true" />
                                   <StackPane fx:id="sessionListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                               </VBox>
                           </Tab>
 
                           <Tab text="Consultations">
                               <VBox fx:id="consultationList" VBox.vgrow="ALWAYS">
-                                  <Label maxWidth="Infinity" styleClass="section-label" text="Consultation List" wrapText="true" />
+                                  <Label maxWidth="Infinity"
+                                         styleClass="section-label"
+                                         text="Consultation List"
+                                         wrapText="true" />
                                   <StackPane fx:id="consultationListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                               </VBox>
                           </Tab>
@@ -74,13 +90,19 @@
                   <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                       <children>
 
-                          <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
+                          <StackPane fx:id="commandBoxPlaceholder"
+                                     styleClass="pane-with-border"
+                                     VBox.vgrow="NEVER">
                               <padding>
                                   <Insets bottom="5" left="10" right="10" top="5" />
                               </padding>
                           </StackPane>
 
-                          <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border">
+                          <StackPane fx:id="resultDisplayPlaceholder"
+                                     maxHeight="100"
+                                     minHeight="100"
+                                     prefHeight="100"
+                                     styleClass="pane-with-border">
                               <padding>
                                   <Insets bottom="5" left="10" right="10" top="5" />
                               </padding>
