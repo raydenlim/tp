@@ -32,6 +32,8 @@ public class ViewTasksCommand extends Command {
             + "[" + PREFIX_TASK_PROGRESS + "pending] "
             + "[" + PREFIX_DATE + "22/10/2023] ";
 
+    public static final String MESSAGE_MANY_PREFIXES = "Too many prefixes given.";
+
     private final Predicate<Task> predicate;
 
     public ViewTasksCommand(Predicate<Task> predicate) {
