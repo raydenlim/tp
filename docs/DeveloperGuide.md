@@ -214,7 +214,7 @@ The Grade Class is made up of an `actualGrade`, `maxGrade`, `isGraded`, and a se
 
 Below is a class diagram describing the implementation of `Grade` and its respective fields.
 
-![Grade Class UML](images/GradeClass UML.png)
+![Grade Class UML](images/GradeClass.png)
 
 #### Design Considerations:
 **Aspect: How the assignment a grade is being given to is determined:**
@@ -237,7 +237,7 @@ The Comment Class is made up of a `commentBody`, `isCommented`, and a set of get
 
 Below is a class diagram describing the implementation of `Comment` and its respective fields.
 
-![Grade Class UML](images/CommentClass UML.png)
+![Grade Class UML](images/CommentClass.png)
 
 #### Design Considerations:
 **Aspect: How the comment a grade is being given to is determined:**
@@ -262,7 +262,7 @@ The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`,
 
 Below is a class diagram describing the implementation of `Task` and its respective fields.
 
-![GradedTest Class UML](images/GradedTest UML.png)
+![GradedTest Class UML](images/GradedTest.png)
 
 #### Design Considerations:
 **Aspect: How to represent the scores of individuals:**
@@ -315,14 +315,21 @@ Below is a class diagram describing the implementation of `Consultation` and its
 
 
 ### Commands
-This section explains the general implementation of all commands. The implementation of all commands can be generally split into two main event flows: commands with their own specific command parser, and commands without one.
+This section explains the general implementation of all commands.
+
+The following activity diagram generally shows the overall flow of events that the user will experience.
+
+
+[//]: # (INSERT ACTVITY DIAGRAM HERE)
+
+
 
 #### Parser Commands
-This section explains the implementation and execution of commands that have their own parser.
+This section explains the implementation and execution of commands that have their own specific parser.
 
 Below is the sequence diagram for the execution of these commands (denoted by `XYZCommand`) after user input is sent to `LogicManager`. The execution of each of the command has been omitted due to their inherent differences and will be covered in their respective command sections below.
 
-![Command Parser Sequence Diagram](images/CommandParserSequenceDiagram.png)
+![Command Parser Sequence Diagram](images/CommandsParserSequenceDiagram.png)
 
 Step 1:
 The user enters a command with the necessary parameters which is then passed to the `LogicManager`.
@@ -348,7 +355,7 @@ The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 
 #### Add Tasks Feature
 This section explains the implementation of the Add Task feature via the `addtask` command.
-The `AddTaskCommand` causes the specified Task to be added to the Task List in the application.
+The `AddTaskCommand` causes the specified `Task` to be added to the Task List in the application.
 There is only one compulsory field which is the name of the task. There are several optional fields such as the description, priority and deadline.
 
 Below is the sequence diagram outlining the execution of `AddTaskCommand`.
@@ -378,6 +385,88 @@ The `AddTaskCommand` then continues its execution as defined by [this](#parser-c
     * Pros: Easier to debug.
     * Cons: The `AddTaskCommand` might be able to call other methods in the model.
 
+
+#### Delete Tasks Feature
+This section explains the implementation of the Delete Task feature via the `deletetask` command. The `DeleteTaskCommand` causes the specified `Task` identified using the `Index` to be deleted from the Task List in the application. There is one compulsory field which is the Index of the Task to delete. 
+
+Below is the sequence diagram outlining the execution of `DeleteTaskCommand`.
+
+![DeleteTaskCommand Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `DeleteTaskCommand::execute`, which in turn calls `Model::deleteTask`.
+
+Step 2:
+The `Model` will invoke `removeTask` in `TaskListBook`, which in turn calls `remove` in `TaskList` to remove it from the list.
+
+Step 3:
+The `DeleteTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the DeleteTaskCommand:**
+Similar to the `AddTaskCommand`, the main considerations for this command is related to the way that the model is stored.
+
+
+
+#### View Tasks Feature
+This section explains the implementation of the View Tasks feature via the `viewtasks` command. The `ViewTasksCommand` displays the Tasks filtered using the `predicate` specified by the user. There are multiple optional fields that the user can use to filter the list by, such as the progress, priority, name, description and date. However, only one field is able to be applied as a filter at a specific time. 
+
+Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
+
+![ViewTaskCommand Sequence Diagram](images/ViewTasksSequenceDiagram.png)
+
+
+Step 1:
+The `LogicManager` invokes `ViewTasksCommand::execute`, which in turn calls `Model::updateFilteredTaskList` with the given `Predicate<Task>`.
+
+Step 2:
+The `ViewTasksCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+##### Design Considerations:
+**Aspect: How we execute the ViewTasksCommand:**
+
+* **Alternative 1 (current choice):** Combine the list and find functionality into one.
+    * Pros: Promotes user experience due to the reduction in the number of different commands.
+    * Cons: More checks need to be done to ensure that the correct predicate is applied and the correct field is being checked against. 
+
+* **Alternative 2:** Separate out into 2 separate functions.
+    * Pros: Easier to debug since they're implemented independently of one another.
+    * Cons: More commands make the interface messier, negatively impacting user experience.
+
+
+#### Update Task Progress Feature
+This section explains the implementation of the Update Task Progress feature via the `updateprogress` command. The `UpdateTasksProgressCommand` updates the progress of the task identified using the Index. There are 2 compulsory fields, which are the Index of the task to update, and the new progress status of the task. The progress must be one of the 3 values: `not_started`, `pending`, `done`.
+
+Below is the sequence diagram outlining the execution of `UpdateTasksProgressCommand`.
+
+![UpdateTasksProgressCommand Sequence Diagram](images/UpdateTaskProgressSequenceDiagram.png)
+
+
+Step 1:
+The `LogicManager` invokes `UpdateTaskProgressCommand::execute`, which in turn calls `UpdateTaskProgressCommand::createTask` to create a new immutable Task object with the updated progress.
+
+Step 2:
+The `UpdateTaskProgressCommand` will invoke `setTask` in `Model`, which in turn calls `setTask` in `TaskListBook`. This finally calls `editTask` in `TaskList` to update the existing `Task` with the new `Task`.
+
+Step 3:
+The `UpdateTaskProgressCommand` then invokes `updateFilteredTaskList` in `Model` to display all the tasks.
+
+Step 4:
+The `UpdateTaskProgressCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+
+##### Design Considerations:
+**Aspect: How we execute the UpdateTasksProgressCommand:**
+
+* **Alternative 1 (current choice):** Create a new immutable object of the Task and replace the previous Task with the new Task.
+    * Pros: Easier to debug since the state of immutable objects cannot be changed.
+    * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
+
+* **Alternative 2:** Mutate the existing Task in the Task list to reflect the new progress.
+    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
 --------------------------------------------------------------------------------------------------------------------

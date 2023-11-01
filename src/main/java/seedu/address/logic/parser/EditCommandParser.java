@@ -3,13 +3,9 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_FINALS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_MIDTERMS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_GRADED_TEST;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PRACTICAL_EXAM;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT1;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_READING_ASSESSMENT2;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM_HANDLE;
 
@@ -22,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.gradedtest.GradedTest;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -38,9 +35,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                        PREFIX_TELEGRAM_HANDLE, PREFIX_TAG,
-                        PREFIX_READING_ASSESSMENT1, PREFIX_READING_ASSESSMENT2,
-                        PREFIX_MIDTERMS, PREFIX_FINALS, PREFIX_PRACTICAL_EXAM);
+                        PREFIX_TELEGRAM_HANDLE, PREFIX_TAG, PREFIX_GRADED_TEST);
 
         Index index;
 
@@ -54,10 +49,7 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
-        // Parse GradedTest components SLAP
-        parseGradedTestComponents(argMultimap, editPersonDescriptor);
-
-        // Parse other fields (name, phone, email, address, tags) SLAP
+        // Parse other fields (name, phone, email, address, tags, gradedtest) SLAP
         parseFieldsForEdit(argMultimap, editPersonDescriptor);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
@@ -67,29 +59,6 @@ public class EditCommandParser implements Parser<EditCommand> {
         return new EditCommand(index, editPersonDescriptor);
     }
 
-    private void parseGradedTestComponents(ArgumentMultimap argMultimap, EditPersonDescriptor editPersonDescriptor)
-            throws ParseException {
-        if (argMultimap.getValue(PREFIX_READING_ASSESSMENT1).isPresent()) {
-            editPersonDescriptor.setReadingAssessment1(
-                    ParserUtil.parseReadingAssessment1(argMultimap.getValue(PREFIX_READING_ASSESSMENT1).get()));
-        }
-        if (argMultimap.getValue(PREFIX_READING_ASSESSMENT2).isPresent()) {
-            editPersonDescriptor.setReadingAssessment2(
-                    ParserUtil.parseReadingAssessment2(argMultimap.getValue(PREFIX_READING_ASSESSMENT2).get()));
-        }
-        if (argMultimap.getValue(PREFIX_MIDTERMS).isPresent()) {
-            editPersonDescriptor.setMidTerms(
-                    ParserUtil.parseMidTerms(argMultimap.getValue(PREFIX_MIDTERMS).get()));
-        }
-        if (argMultimap.getValue(PREFIX_FINALS).isPresent()) {
-            editPersonDescriptor.setFinals(
-                    ParserUtil.parseFinals(argMultimap.getValue(PREFIX_FINALS).get()));
-        }
-        if (argMultimap.getValue(PREFIX_PRACTICAL_EXAM).isPresent()) {
-            editPersonDescriptor.setPracticalExam(
-                    ParserUtil.parsePracticalExam(argMultimap.getValue(PREFIX_PRACTICAL_EXAM).get()));
-        }
-    }
 
     private void parseFieldsForEdit(ArgumentMultimap argMultimap, EditPersonDescriptor editPersonDescriptor)
             throws ParseException {
@@ -108,6 +77,9 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
+        parseGradedTestForEdit(argMultimap.getAllValues(PREFIX_GRADED_TEST))
+                .ifPresent(editPersonDescriptor::setGradedTest);
+
     }
 
     /**
@@ -123,6 +95,22 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
+    }
+
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<GradedTest>} if {@code gradedTest} is non-empty.
+     * If {@code gradedTest} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set<GradedTest>} containing zero tags.
+     */
+    public Optional<Set<GradedTest>> parseGradedTestForEdit(Collection<String> gradedTest) throws ParseException {
+        assert gradedTest != null;
+
+        if (gradedTest.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> gradedTestSet = gradedTest.size() == 1
+                && gradedTest.contains("") ? Collections.emptySet() : gradedTest;
+        return Optional.of(ParserUtil.parseGradedTests(gradedTestSet));
     }
 
 }

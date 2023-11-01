@@ -6,6 +6,15 @@
     "email" : "alice@u.nus.edu",
     "telegramHandle" : "alicePaulding7",
     "tags" : [ "friends" ],
+    "gradedTests": [
+      {
+        "RA1": "10",
+        "RA2": "20",
+        "MidTerms": "30",
+        "Finals": "40",
+        "PE": "50"
+      }
+    ],
     "assignmentMap" : {
       "assignments" : {
         "Beyond the First Dimension" : {
@@ -131,6 +140,15 @@
     "email" : "johnd@u.nus.edu",
     "telegramHandle" : "Bensonson",
     "tags" : [ "owesMoney", "friends" ],
+    "gradedTests": [
+      {
+        "RA1": "1",
+        "RA2": "2",
+        "MidTerms": "3",
+        "Finals": "4",
+        "PE": "5"
+      }
+    ],
     "assignmentMap" : {
       "assignments" : {
         "Beyond the First Dimension" : {
@@ -256,6 +274,15 @@
     "email" : "heinz@u.nus.edu",
     "telegramHandle" : "richcarlton1101",
     "tags" : [ ],
+    "gradedTests": [
+      {
+        "RA1": "5",
+        "RA2": "4",
+        "MidTerms": "3",
+        "Finals": "2",
+        "PE": "1"
+      }
+    ],
     "assignmentMap" : {
       "assignments" : {
         "Beyond the First Dimension" : {
@@ -381,6 +408,15 @@
     "email" : "cornelia@u.nus.edu",
     "telegramHandle" : "dantheman",
     "tags" : [ "friends" ],
+    "gradedTests": [
+      {
+        "RA1": "0",
+        "RA2": "0",
+        "MidTerms": "0",
+        "Finals": "0",
+        "PE": "0"
+      }
+    ],
     "assignmentMap" : {
       "assignments" : {
         "Beyond the First Dimension" : {

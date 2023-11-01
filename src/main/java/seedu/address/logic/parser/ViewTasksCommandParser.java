@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.commands.ViewTasksCommand.MESSAGE_MANY_PREFIXES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
@@ -37,6 +38,10 @@ public class ViewTasksCommandParser implements Parser<ViewTasksCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_TASK_NAME, PREFIX_TASK_DESCRIPTION,
                 PREFIX_TASK_PRIORITY, PREFIX_TASK_PROGRESS, PREFIX_DATE);
+
+        if (argMultimap.getCountOfPrefixes() > 2) {
+            throw new ParseException(MESSAGE_MANY_PREFIXES);
+        }
 
         Predicate<Task> predicate = PREDICATE_SHOW_ALL_TASKS;
 

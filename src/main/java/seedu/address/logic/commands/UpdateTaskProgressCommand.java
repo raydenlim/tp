@@ -31,11 +31,15 @@ public class UpdateTaskProgressCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_TASK_PROGRESS + "PENDING";
 
     public static final String MESSAGE_MARK_TASK_SUCCESS = "Updated Task: %1$s";
+
     public static final String MESSAGE_NOT_EDITED = "Progress must be updated";
+
     public static final String MESSAGE_DUPLICATE_TASK = "Task already exists in the task list";
 
     public static final CommandType COMMAND_TYPE = CommandType.UPDATE_TASK_PROGRESS;
+
     private final Index targetIndex;
+
     private final EditProgressDescriptor descriptor;
 
     /**

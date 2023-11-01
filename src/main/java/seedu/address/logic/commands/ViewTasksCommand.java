@@ -34,6 +34,8 @@ public class ViewTasksCommand extends Command {
 
     public static final CommandType COMMAND_TYPE = CommandType.VIEW_TASKS;
 
+    public static final String MESSAGE_MANY_PREFIXES = "Too many prefixes given.";
+
     private final Predicate<Task> predicate;
 
     public ViewTasksCommand(Predicate<Task> predicate) {

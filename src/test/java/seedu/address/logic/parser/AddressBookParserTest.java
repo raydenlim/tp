@@ -98,7 +98,6 @@ public class AddressBookParserTest {
     public void parseCommand_edit() throws Exception {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        descriptor.setGradedTest(null);
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD
                 + WHITESPACE + INDEX_FIRST_PERSON.getOneBased()
                 + WHITESPACE + PersonUtil.getEditPersonDescriptorDetails(descriptor));
