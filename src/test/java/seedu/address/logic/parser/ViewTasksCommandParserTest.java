@@ -1,10 +1,14 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.commands.CommandTestUtil.TASK_DESCRIPTION_TASK2;
+import static seedu.address.logic.commands.CommandTestUtil.TASK_PRIORITY_TASK1;
+import static seedu.address.logic.commands.ViewTasksCommand.MESSAGE_MANY_PREFIXES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PRIORITY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TASK_PROGRESS;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TASKS;
 
@@ -82,6 +86,11 @@ public class ViewTasksCommandParserTest {
 
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " " + PREFIX_DATE + "22/10/2023 \n \t", expectedCommand);
+    }
+
+    @Test
+    public void parse_manyPrefixes_throwsParseException() {
+        assertParseFailure(parser, TASK_DESCRIPTION_TASK2 + TASK_PRIORITY_TASK1, MESSAGE_MANY_PREFIXES);
     }
 
 }
