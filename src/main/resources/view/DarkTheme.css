@@ -29,36 +29,40 @@
     -fx-font-family: "Segoe UI Semibold";
 }
 
+/* Tab styling */
 .tab-pane {
     -fx-tab-min-height:32px;
-    -fx-tab-padding: 0 6;
 }
 
-.tab-pane .tab {
-    -fx-background-color: #383838;
+.tab-pane *.tab-header-background {
+    -fx-background-color: #17181B;
 }
 
-.tab-pane .tab:selected
-{
-    -fx-background-color: #3c3e3f;
-}
-
-.tab-pane .tab .tab-label {
+.tab .tab-label {
     -fx-alignment: CENTER;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-background-color: #3c3c3c;
+.tab:selected {
+     -fx-background-color: #383838;
 }
 
+.tab:focused {
+    -fx-focus-color: red;
+}
 
-.tab-pane .tab-header-area {
-    -fx-padding: 0 0 0 0;
-    -fx-min-height: 0;
-    -fx-max-height: 0;
+.tab {
+    /* Remove small gap between tabs */
+    -fx-background-insets: 0.0;
+    -fx-background-color: #17181B;
+    -fx-padding: 0 10 0 10;
+}
+
+.tab:selected .focus-indicator {
+    -fx-focus-color: transparent;
+    -fx-border-color: transparent;
 }
 
 .table-view {
@@ -131,6 +135,7 @@
 
 .list-cell:filled:selected {
     -fx-background-color: #424d5f;
+    -fx-border-color: white;
 }
 
 .list-cell:filled:selected #cardPane {
