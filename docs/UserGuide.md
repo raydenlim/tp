@@ -310,7 +310,7 @@ You can add a student to F.A.K.E.J.A.R.V.I.S.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
-<div markdown="span" class="alert alert-info"> :information_source: Note: You can add any number of tags to a person! (including 0) </div>
+<div markdown="1" class="alert alert-info"> :information_source: Note: You can add any number of tags to a person! (including 0) </div>
 
 > Example 1:
 > 
@@ -358,7 +358,7 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
-<div class="alert alert-info"> :information_source: Note: 
+<div markdown="1" class="alert alert-info"> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
 * The index refers to the index number shown in the displayed person list. 
