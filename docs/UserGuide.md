@@ -310,14 +310,26 @@ You can add a student to F.A.K.E.J.A.R.V.I.S.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
-Examples:
-* `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/criminal`
+<div markdown="span" class="alert alert-info"> :information_source: Note: You can add any number of tags to a person! (including 0) </div>
+
+> Example 1:
+> 
+> **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. 
+> 
+> **Output:**
+>`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags:`
+> 
+> [IMAGE COMING SOON]
 
 
-<div markdown="span" class="alert alert-info"> 
-    :information_source: You can add any number of tags to a person! (including 0)
-</div>
+> Example 2:
+>
+> **Input:** `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/criminal` Adds a person called Betty Crowe into F.A.K.E.J.A.R.V.I.S. She has 1234567 as her phone number, betsycrowe@u.nus.edu as her email, itsybetsyspider as her telegram handle and criminal and friend as tags.
+>
+> **Output:**
+>`New person added: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: [friend][criminal]`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -328,6 +340,16 @@ You can list out all students in F.A.K.E.J.A.R.V.I.S.
 
 Format: `list`
 
+> Example 1:
+>
+> **Input:** `list` Shows all the students currently in F.A.K.E.J.A.R.V.I.S.
+>
+> **Output:**
+>`Listed all persons`
+>
+> [IMAGE COMING SOON]
+
+
 <br>
 
 #### Editing a Student Field : `edit`
@@ -336,19 +358,37 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
-[//]: # (* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed 
-person list. The index **must be a positive integer** 1, 2, 3, …​   THIS CAN BE IN THE GLOSSARY)
+<div class="alert alert-info"> :information_source: Note: 
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* Edits the person at the specified `INDEX`. 
+* The index refers to the index number shown in the displayed person list. 
+* The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
+* Editing tags overwrites existing tags; it's not cumulative.
+* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 
-> **Note:** 
-> * At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
-> * Editing tags overwrites existing tags; it's not cumulative. To remove all tags, use `t/` without specifying any
-> tags after it.
-> * You can remove all the person’s tags by typing `t/` without
-      specifying any tags after it.
+</div>
+
+
+
+> Example 1:
+>
+> **Input:** `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu`.
+>
+> **Output:**
+>`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 10; RA2: 10; MidTerms: 3; Final: 4; PE: 5`
+>
+> [IMAGE COMING SOON]
+
+
+> Example 2:
+>
+> **Input:** `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+>
+> **Output:**
+>`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 10; RA2: 10; MidTerms: 3; Final: 4; PE: 5`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -359,18 +399,36 @@ You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-> **Note:**
-> * The search is case-insensitive. e.g `hans` will match `Hans`
-> * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-> * You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
-> * Only full words will be matched e.g. `Han` will not match `Hans`
-> * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+<div class="alert alert-info"> :information_source: Note: 
+
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
+* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
+* Only full words will be matched e.g. `Han` will not match `Hans`.
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
+
+</div>
+
+
+> Example 1:
+>
+> **Input:** `find John` Finds students who have the `john` in their name.
+>
+> **Output:**
+>`1 persons listed!`
+>
+> [IMAGE COMING SOON]
+
+
+> Example 2:
+>
+> **Input:** `find alex david` Finds the students who have `alex` or `david` in their name.
+>
+> **Output:**
+>`2 persons listed!`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -381,14 +439,39 @@ You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
 Format: `delete INDEX`
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in F.A.K.E.J.A.R.V.I.S.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+<div class="alert alert-info"> 
 
-> **Note:**
+:information_source: Note: 
+
 > * Deletes the person at the specified `INDEX`.
 > * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
+
+</div>
+
+
+> **Note:**
+
+
+
+> Example 1:
+>
+> **Input:** `list` followed by `delete 2` Deletes the 2nd student in F.A.K.E.J.A.R.V.I.S.
+>
+> **Output:**
+>`Deleted Person: Name: Bernice Yu; Phone: 99272758; Email: berniceyu@u.nus.edu; Telegram Handle: berrynice123; Tags: [colleagues][friends]; Graded Test: RA1: -; RA2: -; MidTerms: 3; Final: 4; PE: 5`
+>
+> [IMAGE COMING SOON]
+
+
+> Example 2:
+>
+> **Input:** `find Betsy` followed by `delete 1` Deletes the 1st student in the results of the `find` command.
+>
+> **Output:**
+>`Deleted Person: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: [friend][criminal]`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -398,6 +481,15 @@ Examples:
 You can clear all students from F.A.K.E.J.A.R.V.I.S.
 
 Format: `clear`
+
+> Example 1:
+>
+> **Input:** `clear` Deletes all students in F.A.K.E.J.A.R.V.I.S.
+>
+> **Output:**
+>`Address book has been cleared!`
+>
+> [IMAGE COMING SOON]
 
 [Back to Table of Contents](#table-of-contents)
 
