@@ -56,7 +56,7 @@ public class TaskCard extends UiPart<Region> {
         if (task.getDate() != null) {
             String deadline = LocalDate.now().until(task.getDate(), DAYS) + " Day(s)";
             dueDate.setText(deadline);
-            if (deadline.charAt(0) == '-') {
+            if (LocalDate.now().until(task.getDate(), DAYS) < 0L) {
                 dueDate.setStyle("-fx-background-color: red;");
             }
         } else {
