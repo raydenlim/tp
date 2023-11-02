@@ -17,7 +17,7 @@ public class Email {
             + "1. The local-part should only contain alphanumeric characters and these special characters, excluding "
             + "the parentheses, (" + SPECIAL_CHARACTERS + "). The local-part may not start or end with any special "
             + "characters.\n"
-            + "2. This is followed by a '@' and then a domain name. As the app is currently developed for NUS teaching"
+            + "2. This is followed by a '@' and then a domain name. As the app is currently developed for NUS teaching "
             + "assistants, the domain name must be \"u.nus.edu\".";
 
     // alphanumeric and special characters

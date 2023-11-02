@@ -103,6 +103,16 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
 
+| Convention    | Description                    |
+|---------------|--------------------------------|
+| 📝      | Add <br/> Create               |
+| ❌           | Delete <br/> Remove            |
+| 🛠️       | Edit <br/> Modify <br/> Update |
+| 🔎         | Find                           |
+| 📆     | Take Attendance                |
+| 👀         | View <br/> Display </br> List  |
+
+
 
 
 
@@ -305,7 +315,7 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 ### Student Management
 This section describes commands that help you manage your students.
 
-#### Adding a Student: `add`
+#### 📝Adding a Student: `add`
 
 You can add a student to F.A.K.E.J.A.R.V.I.S.
 
@@ -320,7 +330,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 > **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. 
 > 
 > **Output:**
->`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags:`
+>`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags: ; GradedTest: ;`
 > 
 > [IMAGE COMING SOON]
 
@@ -330,14 +340,14 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 > **Input:** `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/criminal` Adds a person called Betty Crowe into F.A.K.E.J.A.R.V.I.S. She has 1234567 as her phone number, betsycrowe@u.nus.edu as her email, itsybetsyspider as her telegram handle and criminal and friend as tags.
 >
 > **Output:**
->`New person added: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: [friend][criminal]`
+>`New person added: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: ; Graded Test: [friend][criminal]; Graded Test: RA1: -; RA2: -; MidTerms: -; Final: -; PE: -`
 >
 > [IMAGE COMING SOON]
 
 
 <br>
 
-#### Listing All Students : `list`
+#### 👀Listing All Students : `list`
 
 You can list out all students in F.A.K.E.J.A.R.V.I.S.
 
@@ -355,7 +365,7 @@ Format: `list`
 
 <br>
 
-#### Editing a Student Field : `edit`
+#### 🛠️Editing a Student Field : `edit`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
@@ -369,6 +379,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 * At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
+* You can remove all the person’s graded tests by typing `gt/` without specifying any graded test parameters after it.
 
 </md>
 </div>
@@ -397,7 +408,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 
 <br>
 
-#### Locating Student by Name: `find`
+#### 🔎Locating Student by Name: `find`
 
 You can find a student whose name contain any of the given keywords.
 
@@ -455,11 +466,6 @@ Format: `delete INDEX`
 
 </md>
 </div>
-
-
-> **Note:**
-
-
 
 > Example 1:
 >
@@ -556,7 +562,7 @@ Examples:
 
 <br>
 
-#### ✅Updating a Task's Progress: `updateprogress`
+#### 🛠️Updating a Task's Progress: `updateprogress`
 
 You can mark a task as completed.
 
@@ -638,64 +644,12 @@ Examples:
 * `viewattendance n/Rayan` Displays all the sessions that Rayan has attended.
 * `viewattendance n/Jayson Resley` Displays all the sessions that Jayson and Resley have attended.
 
-[//]: # (### 🔎Finding a Student: `find`)
-
-[//]: # ()
-[//]: # (Finds a student’s profile)
-
-[//]: # ()
-[//]: # (Format: `find n/STUDENT_NAME [MORE_STUDENT_NAMES]`)
-
-[//]: # ()
-[//]: # (Parameters:)
-
-[//]: # (* STUDENT_NAME - The name of the student you want to find.)
-
-[//]: # ()
-[//]: # (Examples:)
-
-[//]: # (* `find n/John Doe` Finds and displays the profile of students with the name “John Doe”.)
-
-[//]: # (* `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.)
-
-[//]: # (### 🥅Filtering results: `filter`)
-
-[//]: # (Filters the results displayed on the dashboard)
-
-[//]: # ()
-[//]: # (Format:)
-
-[//]: # (* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`)
-
-[//]: # (* `filter_delete n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`)
-
-[//]: # ()
-[//]: # (Parameters:)
-
-[//]: # (* `FILTER_ATTRIBUTE` - The filter type filter_studentScores)
-
-[//]: # (  * `filter_studentScores`)
-
-[//]: # (  * `filter_studentGrades`)
-
-[//]: # (* `FILTER_DESCRIPTION` - The conditions for the filter)
-
-[//]: # ()
-[//]: # (Examples:)
-
-[//]: # (* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade.)
-
-[//]: # (* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.)
-
-
 [Back to Table of Contents](#table-of-contents)
-
 
 <br>
 
 ### Assignment Management
 This section describes commands that help you manage your students' assignments.
-
 
 <br>
 
@@ -807,7 +761,26 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 > * FINALS The score of the student's Final Assessment.
 > * PRACTICALEXAM The score of the student's Practical Exams.
 
+> Example 1:
+>
+> **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh. 
+>
+>
+> **Output:**
+>`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:[friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
 
+
+> Example 2:
+>
+> **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st 
+> person Alex Yeoh.
+>
+>
+> **Output:**
+>`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:
+> [friends]; Graded Test: RA1: 100; RA2: 2; MidTerms: 3; Final: 4; PE: 100`
+> 
+>
 [Back to Table of Contents](#table-of-contents)
 
 
@@ -879,7 +852,7 @@ This section describes commands that help you manage your consultations with stu
 
 <br>
 
-#### 📆Creating a Consultation: `createconsult`
+#### 📝Creating a Consultation: `createconsult`
 
 You can create a consultation for any upcoming consultations.
 
@@ -897,7 +870,7 @@ Examples:
 
 <br>
 
-#### 🛠️Adding students to a consultation: `addtoconsult`
+#### 📝️Adding students to a consultation: `addtoconsult`
 You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
@@ -962,30 +935,30 @@ Examples:
 
 ## Command summary
 
-| **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
-|-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`                                               | `add n/James Ho p/22224444 e/jamesho@u.nus.edu th/james03 t/friend t/colleague`                                                |
-| **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
-| **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
-| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…​`                                 | `edit 2 n/James Lee e/jameslee@u.nus.edu`                                                                                      |
-| **Find**                      | `find KEYWORD [MORE_KEYWORDS]`                                                                                 | `find John` or `find alex david`                                                                                               |
+| **Action**                    | **Format**                                                                                              | **Examples**                                                                                                                   |
+|-------------------------------|---------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]...[gt/GRADEDTEST]…​`                      | `add n/James Ho p/22224444 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
+| **Clear**                     | `clear`                                                                                                 | `clear`                                                                                                                        |
+| **Delete**                    | `delete INDEX`                                                                                          | `delete 3`                                                                                                                     |
+| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`            | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                           |
+| **Find**                      | `find KEYWORD [MORE_KEYWORDS]`                                                                          | `find John` or `find alex david`                                                                                               |
 | **View**                      | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]` | `viewtasks`, `viewtasks tp/high`, `viewtasks d/30/09/2023`                                                                     |
-| **Update Progress**           | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                 | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                                |
-| **Delete Task**               | `deletetask TASK_INDEX`                                                                                        | `deletetask 3`, `deletetask 2`                                                                                                 |
-| **Take Attendance**           | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                           | `takeattendance n/John Doe s/5 present`, `takeattendance n/Foo Bar s/2 absent`                                                 |
-| **View Attendance**           | `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`                                                           | `viewattendance`, `viewattendance n/Rayan`, `viewattendance n/Jayson Resley`                                                   |
-| **Add Grade**                 | `addgrade INDEX as/ASSIGNMENT g/GRADE`                                                                         | `addgrade 1 as/Functional Expressionism g/1300`, `addgrade 2 as/Rune Reading g/600`                                            |
-| **View Grade**                | `viewgrade INDEX as/ASSIGNMENT`                                                                                | `viewgrade 1 as/Functional Expressionism`, `viewgrade 2 as/Rune Reading`                                                       |
-| **Edit Grade**                | `editgrade INDEX as/ASSIGNMENT g/GRADE`                                                                        | `editgrade 1 as/Functional Expressionism g/1200`, `editgrade 2 as/Rune Reading g/1000`                                         |
-| **Delete Grade**              | `deletegrade INDEX as/ASSIGNMENT`                                                                              | `deletegrade 1 as/Functional Expressionism`, `deletegrade 2 as/Rune Reading`                                                   |
-| **Add Comment**               | `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                             | `addcomment n/Rayson a/Functional Expressionism c/Excellent`, `addcomment n/Wesley a/Rune Reading c/Not bad`                   |
-| **View Comment**              | `viewcomment n/STUDENT_NAME a/ASSIGNMENT`                                                                      | `viewcomment n/Rayson a/Functional Expressionism`, `viewcomment n/Wesley a/Rune Reading`                                       |
-| **Edit Comment**              | `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                            | `editcomment n/Rayson a/Functional Expressionism c/Decent`, `editcomment n/Wesley a/Rune Reading c/Great`                      |
-| **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                    | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
+| **Update Progress**           | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                          | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                                |
+| **Delete Task**               | `deletetask TASK_INDEX`                                                                                 | `deletetask 3`, `deletetask 2`                                                                                                 |
+| **Take Attendance**           | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                    | `takeattendance n/John Doe s/5 present`, `takeattendance n/Foo Bar s/2 absent`                                                 |
+| **View Attendance**           | `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`                                                    | `viewattendance`, `viewattendance n/Rayan`, `viewattendance n/Jayson Resley`                                                   |
+| **Add Grade**                 | `addgrade INDEX as/ASSIGNMENT g/GRADE`                                                                  | `addgrade 1 as/Functional Expressionism g/1300`, `addgrade 2 as/Rune Reading g/600`                                            |
+| **View Grade**                | `viewgrade INDEX as/ASSIGNMENT`                                                                         | `viewgrade 1 as/Functional Expressionism`, `viewgrade 2 as/Rune Reading`                                                       |
+| **Edit Grade**                | `editgrade INDEX as/ASSIGNMENT g/GRADE`                                                                 | `editgrade 1 as/Functional Expressionism g/1200`, `editgrade 2 as/Rune Reading g/1000`                                         |
+| **Delete Grade**              | `deletegrade INDEX as/ASSIGNMENT`                                                                       | `deletegrade 1 as/Functional Expressionism`, `deletegrade 2 as/Rune Reading`                                                   |
+| **Add Comment**               | `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                      | `addcomment n/Rayson a/Functional Expressionism c/Excellent`, `addcomment n/Wesley a/Rune Reading c/Not bad`                   |
+| **View Comment**              | `viewcomment n/STUDENT_NAME a/ASSIGNMENT`                                                               | `viewcomment n/Rayson a/Functional Expressionism`, `viewcomment n/Wesley a/Rune Reading`                                       |
+| **Edit Comment**              | `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                     | `editcomment n/Rayson a/Functional Expressionism c/Decent`, `editcomment n/Wesley a/Rune Reading c/Great`                      |
+| **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                             | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
 | **Edit Graded Test**          | `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                           |
-| **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                                 | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
-| **Show Consultations**        | `showconsults`                                                                                                 | `showconsults`                                                                                                                 |
-| **View Consultation Details** | `viewconsult INDEX`                                                                                            | `viewconsult 1`, `viewconsult 2`                                                                                               |
+| **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                          | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
+| **Show Consultations**        | `showconsults`                                                                                          | `showconsults`                                                                                                                 |
+| **View Consultation Details** | `viewconsult INDEX`                                                                                     | `viewconsult 1`, `viewconsult 2`                                                                                               |
 
 [Back to Table of Contents](#table-of-contents)
 
