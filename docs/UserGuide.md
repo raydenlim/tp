@@ -808,7 +808,7 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
 Examples:
 * `updatesessionremark s/2 r/Teach Essence of Recursion` updates the remark for session number 2 to "Teach Essence of Recursion"
-* `updatesessionremark s/4 r/Taught streams and metacircular evalutator` updates the remark for session 4 to be "Taught streams and metacircular evaluator"
+* `updatesessionremark s/4 r/Taught streams and metacircular evalutator` updates the remark for session 4 to "Taught streams and metacircular evaluator"
 
 
 <br>
