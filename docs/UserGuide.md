@@ -105,12 +105,12 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 | Convention    | Description                    |
 |---------------|--------------------------------|
-| 📝      | Add <br/> Create               |
-| ❌           | Delete <br/> Remove            |
-| 🛠️       | Edit <br/> Modify <br/> Update |
-| 🔎         | Find                           |
-| 📆     | Take Attendance                |
-| 👀         | View <br/> Display </br> List  |
+| 📝            | Add <br/> Create               |
+| ❌            | Delete <br/> Remove            |
+| 🛠️            | Edit <br/> Modify <br/> Update |
+| 🔎            | Find                           |
+| 📆            | Take Attendance                |
+| 👀            | View <br/> Display </br> List  |
 
 
 
