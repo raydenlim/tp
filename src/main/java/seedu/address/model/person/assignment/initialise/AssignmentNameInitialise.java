@@ -30,6 +30,11 @@ public class AssignmentNameInitialise {
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Moving about on Planet Y"));
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Finding ELDRIC"));
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Know Your Environment"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Corrective Sky Surgery"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Reuse Your Pairs"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Streaming the Anomaly"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("The Anomaly in Focus"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("The Essence of the Source"));
     }
 
     /**
@@ -44,6 +49,9 @@ public class AssignmentNameInitialise {
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("The Magical Tone Matrix"));
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Echoes of the Past"));
         AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Grading a Sort"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Stellar Motion Detector"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("ELDROW - The Riddle"));
+        AssignmentNameInitialise.assignmentNames.add(new AssignmentName("Rescue the Space Lizard"));
     }
 
     public AssignmentName getName(int index) {

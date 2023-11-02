@@ -29,6 +29,11 @@ public class AssignmentMaxGradeInitialise {
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1000"));
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1200"));
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1200"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1500"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1000"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1000"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1000"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1500"));
     }
 
     /**
@@ -43,6 +48,9 @@ public class AssignmentMaxGradeInitialise {
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("800"));
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("670"));
         AssignmentMaxGradeInitialise.maxGrades.add(new Grade("750"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("600"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("1000"));
+        AssignmentMaxGradeInitialise.maxGrades.add(new Grade("800"));
     }
 
     public Grade getGrade(int index) {
