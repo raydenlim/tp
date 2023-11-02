@@ -310,7 +310,9 @@ You can add a student to F.A.K.E.J.A.R.V.I.S.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
-<div markdown="1" class="alert alert-info"> :information_source: Note: You can add any number of tags to a person! (including 0) </div>
+<div class="alert alert-info">
+<md>
+:information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
 
 > Example 1:
 > 
@@ -358,7 +360,7 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
-<div markdown="1" class="alert alert-info"> :information_source: Note: 
+<div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
 * The index refers to the index number shown in the displayed person list. 
@@ -367,6 +369,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 
+</md>
 </div>
 
 
@@ -400,7 +403,7 @@ You can find a student whose name contain any of the given keywords.
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 
-<div class="alert alert-info"> :information_source: Note: 
+<div class="alert alert-info"> <md> :information_source: Note: 
 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
@@ -408,6 +411,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
+</md>
 </div>
 
 
@@ -440,6 +444,7 @@ You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 Format: `delete INDEX`
 
 <div class="alert alert-info"> 
+<md>
 
 :information_source: Note: 
 
@@ -447,6 +452,7 @@ Format: `delete INDEX`
 > * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
 
+</md>
 </div>
 
 
