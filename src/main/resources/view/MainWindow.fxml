@@ -87,7 +87,7 @@
                       </tabs>
                   </TabPane>
 
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox maxHeight="Infinity" prefWidth="100.0" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
                       <children>
 
                           <StackPane fx:id="commandBoxPlaceholder"
@@ -108,13 +108,11 @@
                               </padding>
                           </StackPane>
 
-                          <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                              <children>
-                                  <StackPane fx:id="resultGraphicalDisplayPlaceholder"
-                                             maxHeight="Infinity"
-                                             styleClass="pane-with-border"/>
-                              </children>
-                          </VBox>
+                          <StackPane fx:id="resultGraphicalDisplayPlaceholder"
+                                     maxHeight="Infinity"
+                                     styleClass="pane-with-border"
+                                     VBox.vgrow="ALWAYS"/>
+
                       </children>
                   </VBox>
 

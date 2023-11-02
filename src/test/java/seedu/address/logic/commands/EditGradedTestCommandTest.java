@@ -59,7 +59,8 @@ public class EditGradedTestCommandTest {
         Person editedPerson = editGradedTestCommand.createEditedGradedTestPerson(personToEdit);
 
         // Define the expected message
-        String expectedMessage = String.format(EditGradedTestCommand.MESSAGE_EDIT_GRADEDTEST_SUCCESS, editedPerson);
+        String expectedMessage = String.format(EditGradedTestCommand.MESSAGE_EDIT_GRADEDTEST_SUCCESS,
+                Messages.format(editedPerson));
 
         // Create a new model with the expected changes
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
@@ -106,7 +107,8 @@ public class EditGradedTestCommandTest {
         Person editedPerson = editGradedTestCommand.createEditedGradedTestPerson(personToEdit);
 
         // Define the expected message
-        String expectedMessage = String.format(EditGradedTestCommand.MESSAGE_EDIT_GRADEDTEST_SUCCESS, editedPerson);
+        String expectedMessage = String.format(EditGradedTestCommand.MESSAGE_EDIT_GRADEDTEST_SUCCESS,
+                Messages.format(editedPerson));
 
         // Create a new model with the expected changes
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),
