@@ -713,16 +713,34 @@ This section describes commands that help you manage your students' attendance.
 
 You can take the attendance of your student(s).
 
-Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER p/PRESENCE`
+Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 Examples:
-* `takeattendance n/John Doe s/5 present` Marks John Doe as present on the 5th session.
-* `takeattendance n/Foo Bar s/2 absent` Marks Foo Bar as absent on the 2nd session.
+
 
 > **Parameters:**
 > * STUDENT_NAME The name of the student.
 > * SESSION_NUMBER The session number of the session.
 > * PRESENCE The attendance status of the student (e.g., present, absent).
+
+> **Example 1:**
+>
+> **Input:** `takeattendance n/Alex Yeoh s/2 ap/present` Marks Alex Yeoh as present on the 5th session.
+>
+> **Output:**
+>`Attendance taken`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `takeattendance n/David Li s/2 ap/absent` Marks David Li as absent on the 2nd session.
+>
+> **Output:**
+>`Attendance taken`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
