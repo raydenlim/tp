@@ -34,7 +34,6 @@ import seedu.address.logic.commands.TabCommand;
 import seedu.address.logic.commands.TakeAttendanceCommand;
 import seedu.address.logic.commands.UpdateSessionRemarkCommand;
 import seedu.address.logic.commands.UpdateTaskProgressCommand;
-import seedu.address.logic.commands.ViewAllAssignmentsCommand;
 import seedu.address.logic.commands.ViewAssignmentsCommand;
 import seedu.address.logic.commands.ViewAttendanceCommand;
 import seedu.address.logic.commands.ViewTasksCommand;
@@ -160,12 +159,8 @@ public class AddressBookParser {
         case DeleteCommentCommand.COMMAND_WORD:
             return new DeleteCommentCommandParser().parse(arguments);
 
-
         case ViewAssignmentsCommand.COMMAND_WORD:
             return new ViewAssignmentsCommandParser().parse(arguments);
-
-        case ViewAllAssignmentsCommand.COMMAND_WORD:
-            return new ViewAllAssignmentsCommandParser().parse(arguments);
 
         case TabCommand.COMMAND_WORD:
             return new TabCommandParser().parse(arguments);
