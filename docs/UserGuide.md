@@ -102,16 +102,17 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
 
-| Convention     | Description                                                    |
-|----------------|----------------------------------------------------------------|
-| :x:            | Delete or Remove                                               |
-| :pencil2:      | Add or Create                                                 |
-| :eyes:         | View or Display                                               |
-| :white_check_mark: | Update or Mark as Complete                              |
-| :calendar:     | Manage Dates and Schedule                                      |
-| :wrench:       | Edit or Modify                                                |
-| :heavy_plus_sign: | Add or Include in                                              |
-| :heavy_minus_sign: | Remove or Exclude from   |
+| Convention    | Description                    |
+|---------------|--------------------------------|
+| 📝      | Add <br/> Create               |
+| ❌           | Delete <br/> Remove            |
+| 🛠️       | Edit <br/> Modify <br/> Update |
+| 🔎         | Find                           |
+| 📆     | Take Attendance                |
+| 👀         | View <br/> Display </br> List  |
+
+
+
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -313,7 +314,7 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 ### Student Management
 This section describes commands that help you manage your students.
 
-#### Adding a Student: `add`
+#### 📝Adding a Student: `add`
 
 You can add a student to F.A.K.E.J.A.R.V.I.S.
 
@@ -343,7 +344,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
 <br>
 
-#### Listing All Students : `list`
+#### 👀Listing All Students : `list`
 
 You can list out all students in F.A.K.E.J.A.R.V.I.S.
 
@@ -361,7 +362,7 @@ Format: `list`
 
 <br>
 
-#### Editing a Student Field : `edit`
+#### 🛠️Editing a Student Field : `edit`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
@@ -403,7 +404,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 
 <br>
 
-#### Locating Student by Name: `find`
+#### 🔎Locating Student by Name: `find`
 
 You can find a student whose name contain any of the given keywords.
 
@@ -559,7 +560,7 @@ Examples:
 
 <br>
 
-#### ✅Updating a Task's Progress: `updateprogress`
+#### 🛠️Updating a Task's Progress: `updateprogress`
 
 You can mark a task as completed.
 
@@ -895,7 +896,7 @@ This section describes commands that help you manage your consultations with stu
 
 <br>
 
-#### 📆Creating a Consultation: `createconsult`
+#### 📝Creating a Consultation: `createconsult`
 
 You can create a consultation for any upcoming consultations.
 
@@ -913,7 +914,7 @@ Examples:
 
 <br>
 
-#### 🛠️Adding students to a consultation: `addtoconsult`
+#### 📝️Adding students to a consultation: `addtoconsult`
 You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
