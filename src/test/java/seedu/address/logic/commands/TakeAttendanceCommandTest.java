@@ -38,14 +38,19 @@ public class TakeAttendanceCommandTest {
         TakeAttendanceCommand command =
                 new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.PRESENT);
         command.execute(model);
-        assertEquals(2, currentSession.getStudents().size());
-        assertTrue(currentSession.getStudents().contains(newStudent));
+
+        Session updatedSession = model.findSessionBySessionNumber(currentSession.getSessionNumber());
+
+        assertEquals(2, updatedSession.getStudents().size());
+        assertTrue(updatedSession.getStudents().contains(newStudent));
 
         TakeAttendanceCommand markAbsentCommand =
                 new TakeAttendanceCommand(new SessionNumber("2"), new Name("Bob"), AttendancePresence.ABSENT);
         markAbsentCommand.execute(model);
-        assertEquals(1, currentSession.getStudents().size());
-        assertFalse(currentSession.getStudents().contains(newStudent));
+
+        updatedSession = model.findSessionBySessionNumber(updatedSession.getSessionNumber());
+        assertEquals(1, updatedSession.getStudents().size());
+        assertFalse(updatedSession.getStudents().contains(newStudent));
     }
 
 
@@ -68,16 +73,21 @@ public class TakeAttendanceCommandTest {
                 currentSession.getSessionNumber(), studentNames, AttendancePresence.PRESENT);
         command.execute(model);
 
-        assertEquals(2, currentSession.getStudents().size());
-        assertTrue(currentSession.getStudents().contains(alice));
-        assertTrue(currentSession.getStudents().contains(bob));
+        Session updatedSession = model.findSessionBySessionNumber(currentSession.getSessionNumber());
+
+        assertEquals(2, updatedSession.getStudents().size());
+        assertTrue(updatedSession.getStudents().contains(alice));
+        assertTrue(updatedSession.getStudents().contains(bob));
 
         TakeAttendanceCommand markAbsentCommand = new TakeAttendanceCommand(
                 currentSession.getSessionNumber(), studentNames, AttendancePresence.ABSENT);
         markAbsentCommand.execute(model);
-        assertEquals(0, currentSession.getStudents().size());
-        assertFalse(currentSession.getStudents().contains(alice));
-        assertFalse(currentSession.getStudents().contains(bob));
+
+        updatedSession = model.findSessionBySessionNumber(updatedSession.getSessionNumber());
+
+        assertEquals(0, updatedSession.getStudents().size());
+        assertFalse(updatedSession.getStudents().contains(alice));
+        assertFalse(updatedSession.getStudents().contains(bob));
     }
 
     @Test

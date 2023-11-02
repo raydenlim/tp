@@ -99,6 +99,7 @@ public class TakeAttendanceCommand extends Command {
                 student.attendSession(this.session);
             } else {
                 student.missSession(this.session);
+                this.students.remove(student);
             }
         }
 
@@ -110,6 +111,7 @@ public class TakeAttendanceCommand extends Command {
                     student.attendSession(this.session);
                 } else {
                     student.missSession(this.session);
+                    this.students.remove(student);
                 }
             }
         }
