@@ -57,7 +57,8 @@ public class Messages {
                 .append(person.getEmail())
                 .append("; Telegram Handle: ")
                 .append(person.getTelegramHandle())
-                .append("; Tags: ");
+                .append("; Tags: ")
+                .append("; Graded Test: ");
         person.getTags().forEach(builder::append);
         person.getGradedTest().forEach(gradedTest -> builder.append(format(gradedTest)));
         return builder.toString();

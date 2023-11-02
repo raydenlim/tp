@@ -99,9 +99,9 @@
                           </StackPane>
 
                           <StackPane fx:id="resultDisplayPlaceholder"
-                                     maxHeight="100"
+                                     maxHeight="200"
                                      minHeight="100"
-                                     prefHeight="100"
+                                     prefHeight="150"
                                      styleClass="pane-with-border">
                               <padding>
                                   <Insets bottom="5" left="10" right="10" top="5" />
