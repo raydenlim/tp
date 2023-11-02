@@ -54,7 +54,11 @@ public class TaskCard extends UiPart<Region> {
         progress.getChildren().add(progressLabel);
 
         if (task.getDate() != null) {
-            dueDate.setText(LocalDate.now().until(task.getDate(), DAYS) + " Days");
+            String deadline = LocalDate.now().until(task.getDate(), DAYS) + " Day(s)";
+            dueDate.setText(deadline);
+            if (deadline.charAt(0) == '-') {
+                dueDate.setStyle("-fx-background-color: red;");
+            }
         } else {
             dueDate.setText("-");
         }
