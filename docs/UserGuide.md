@@ -460,11 +460,6 @@ Format: `delete INDEX`
 
 </div>
 
-
-> **Note:**
-
-
-
 > Example 1:
 >
 > **Input:** `list` followed by `delete 2` Deletes the 2nd student in F.A.K.E.J.A.R.V.I.S.
