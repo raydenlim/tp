@@ -5,6 +5,8 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
 import java.util.Set;
 
@@ -13,11 +15,18 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.attendance.AttendancePresence;
+import seedu.address.model.gradedtest.GradedTest;
+import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.SessionRemark;
 import seedu.address.model.session.SessionStudents;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents a command for taking attendance of one or more students in a session.
@@ -87,7 +96,7 @@ public class TakeAttendanceCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         this.session = model.findSessionBySessionNumber(sessionNumber);
-        this.students = new SessionStudents();
+        this.students = this.session.getStudents();
 
         if (name != null) {
             // Get the student to add to the session
@@ -111,10 +120,26 @@ public class TakeAttendanceCommand extends Command {
                 }
             }
         }
-
+        Session newSession = createUpdatedSession(this.session);
+        model.setSession(this.session, newSession);
+        model.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
         // Return a success message
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.session)),
                 COMMAND_TYPE);
+    }
+
+    /**
+     * Creates a new Session with the newly added students.
+     *
+     * @param reference The session to be edited.
+     * @return New session with the added students.
+     */
+    public Session createUpdatedSession(Session reference) {
+        SessionNumber sessionNumber = reference.getSessionNumber();
+        SessionStudents sessionStudents = this.students;
+        SessionRemark sessionRemark = reference.getSessionRemark();
+
+        return new Session(sessionNumber, sessionStudents, sessionRemark);
     }
 
     @Override
