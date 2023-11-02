@@ -198,13 +198,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Switches to Assignments tab.
-     */
-    public void handleViewAllAssignments() {
-        selectTab(TAB_ASSIGNMENTS_INDEX);
-    }
-
-    /**
      * Displays graphically the list of assignments for a student.
      */
     public void handleViewAssignments() {
@@ -237,10 +230,6 @@ public class MainWindow extends UiPart<Stage> {
         listTabs.getSelectionModel().select(tabIndex);
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
-    }
-
     /**
      * Executes the command and returns the result.
      *
@@ -253,14 +242,12 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             switch(commandResult.getCommandType()) {
+            // General Commands
             case HELP:
                 handleHelp();
                 break;
             case EXIT:
                 handleExit();
-                break;
-            case VIEW_ALL_ASSIGNMENTS:
-                handleViewAllAssignments();
                 break;
             case VIEW_ASSIGNMENTS:
                 handleViewAssignments();
@@ -268,30 +255,45 @@ public class MainWindow extends UiPart<Stage> {
             case TAB:
                 selectTab(commandResult.getTabIndex());
                 break;
+            // Students Address Book
             case ADD:
-            case ADD_TASK:
-            case ADD_TO_CONSULT:
             case CLEAR:
-            case CREATE_CONSULT:
-            case CREATE_SESSION:
             case DELETE:
-            case DELETE_COMMENT:
-            case DELETE_CONSULT:
-            case DELETE_GRADE:
-            case DELETE_SESSION:
-            case DELETE_TASK:
             case EDIT:
+            case FIND:
+            case LIST:
+                selectTab(TAB_PERSONS_INDEX);
+                break;
+            // Tasks
+            case ADD_TASK:
+            case DELETE_TASK:
+            case UPDATE_TASK_PROGRESS:
+            case VIEW_TASKS:
+                selectTab(TAB_TASKS_INDEX);
+                break;
+            // Assignments
+            case DELETE_COMMENT:
+            case DELETE_GRADE:
             case EDIT_COMMENT:
             case EDIT_GRADE:
             case EDIT_GRADED_TEST:
-            case FIND:
-            case LIST:
+                selectTab(TAB_ASSIGNMENTS_INDEX);
+                break;
+            // Consultations
+            case CREATE_CONSULT:
+            case ADD_TO_CONSULT:
+            case DELETE_CONSULT:
             case REMOVE_FROM_CONSULT:
-            case TAKE_ATTENDANCE:
+                selectTab(TAB_CONSULTATIONS_INDEX);
+                break;
+            // Sessions
+            case CREATE_SESSION:
+            case DELETE_SESSION:
             case UPDATE_SESSION_REMARK:
-            case UPDATE_TASK_PROGRESS:
+            case TAKE_ATTENDANCE:
             case VIEW_ATTENDANCE:
-            case VIEW_TASKS:
+                selectTab(TAB_SESSIONS_INDEX);
+                break;
             default:
                 break;
             }
