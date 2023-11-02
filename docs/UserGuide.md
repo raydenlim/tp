@@ -642,64 +642,12 @@ Examples:
 * `viewattendance n/Rayan` Displays all the sessions that Rayan has attended.
 * `viewattendance n/Jayson Resley` Displays all the sessions that Jayson and Resley have attended.
 
-[//]: # (### 🔎Finding a Student: `find`)
-
-[//]: # ()
-[//]: # (Finds a student’s profile)
-
-[//]: # ()
-[//]: # (Format: `find n/STUDENT_NAME [MORE_STUDENT_NAMES]`)
-
-[//]: # ()
-[//]: # (Parameters:)
-
-[//]: # (* STUDENT_NAME - The name of the student you want to find.)
-
-[//]: # ()
-[//]: # (Examples:)
-
-[//]: # (* `find n/John Doe` Finds and displays the profile of students with the name “John Doe”.)
-
-[//]: # (* `find n/Jane Doe` Finds and displays the profile of students with the name “Jane Doe”.)
-
-[//]: # (### 🥅Filtering results: `filter`)
-
-[//]: # (Filters the results displayed on the dashboard)
-
-[//]: # ()
-[//]: # (Format:)
-
-[//]: # (* `filter_add n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`)
-
-[//]: # (* `filter_delete n/FILTER_ATTRIBUTE n/FILTER_DESCRIPTION`)
-
-[//]: # ()
-[//]: # (Parameters:)
-
-[//]: # (* `FILTER_ATTRIBUTE` - The filter type filter_studentScores)
-
-[//]: # (  * `filter_studentScores`)
-
-[//]: # (  * `filter_studentGrades`)
-
-[//]: # (* `FILTER_DESCRIPTION` - The conditions for the filter)
-
-[//]: # ()
-[//]: # (Examples:)
-
-[//]: # (* `filter_add n/filter_studentGrades n/A` Sets the dashboard to display students who have an “A” grade.)
-
-[//]: # (* `Filter_add n/filter_studentScores n/>80` Sets the dashboard to show students with test scores above 80.)
-
-
 [Back to Table of Contents](#table-of-contents)
-
 
 <br>
 
 ### Assignment Management
 This section describes commands that help you manage your students' assignments.
-
 
 <br>
 
