@@ -61,12 +61,9 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
         * [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)
         * [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)
     * [Assignment Management](#assignment-management)
-        * [Adding a Grade to an Assignment: `addgrade`](#adding-a-grade-to-an-assignment-addgrade)
-        * [Viewing an Assignment Grade: `viewgrade`](#viewing-an-assignment-grade-viewgrade)
+        * [Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)
         * [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)
         * [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)
-        * [Adding a Comment to an Assignment: `addcomment`](#adding-a-comment-to-an-assignment-addcomment)
-        * [Viewing an Assignment Comment: `viewcomment`](#viewing-an-assignment-comment-viewcomment)
         * [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)
         * [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)
     * [Graded Test Management](#graded-test-management)
@@ -702,37 +699,18 @@ This section describes commands that help you manage your students' assignments.
 
 <br>
 
-#### 📝Adding a Grade to an Assignment: `addgrade`
+#### 👀Viewing a List of Assignments: `viewassignments`
 
-You can add a grade to your student’s assignment.
+You can view a list of assignment grades and comments.
 
-Format: `addgrade INDEX as/ASSIGNMENT g/GRADE`
+Format: `viewassignments INDEX`
 
 > **Parameters:**
 > * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment. 
-> * GRADE The grade of the student.
 
 Examples:
-* `addgrade 1 as/Functional Expressionism g/1300` adds a grade of 1300 to student 1's Functional Expressionism assignment.
-* `addgrade 2 as/Rune Reading g/600` adds a grade of 600 to student 2's Rune Reading assignment.
-
-
-<br>
-
-#### 👀Viewing an Assignment Grade: `viewgrade`
-
-You can view your student’s assignment grade.
-
-Format: `viewgrade INDEX as/ASSIGNMENT`
-
-> **Parameters:**
-> * INDEX The index of the student. 
-> * ASSIGNMENT The name of the assignment.
-
-Examples:
-* `viewgrade 1 as/Functional Expressionism` shows student 1's Functional Expressionism grade.
-* `viewgrade 2 as/Rune Reading` shows student 2's Rune Reading grade.
+* `viewgrade 1` shows a list of student 1's assignment names, grades and comments.
+* `viewgrade 2` shows a list of student 2's assignment names, grades and comments.
 
 
 <br>
@@ -749,8 +727,8 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 > * GRADE The score of the student.
 
 Examples:
-* `editgrade 1 as/Functional Expressionism g/1200` edits the grade of student 1's Functional Expressionism assignment to 1200.
-* `editgrade 2 as/Rune Reading g/1000` edits the grade of student 2's Rune Reading assignment to 1000.
+* `editgrade 1 as/Functional Expressionism g/500` edits the grade of student 1's Functional Expressionism assignment to 500.
+* `editgrade 2 as/Rune Reading g/300` edits the grade of student 2's Rune Reading assignment to 300.
 
 
 <br>
@@ -766,43 +744,8 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 > * ASSIGNMENT The name of the assignment.
 
 Examples:
-* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade.
-* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade.
-
-
-<br>
-
-#### 📝Adding a Comment to an Assignment: `addcomment`
-
-You can add a comment to your student’s assignment.
-
-Format: `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
-
-> **Parameters:**
-> * STUDENT_NAME The name of the student.
-> * ASSIGNMENT The name of the assignment.
-> * COMMENT The comment.
-
-Examples:
-* `addcomment n/Rayson a/Functional Expressionism c/Excellent` adds the comment “Excellent” on Rayson’s Functional Expressionism assignment.
-* `addcomment n/Wesley a/Rune Reading c/Not bad` adds the comment “Not bad” on Wesley’s Rune Reading assignment.
-
-
-<br>
-
-#### 👀Viewing an Assignment Comment: `viewcomment`
-
-You can view the comment(s) tagged to your student’s assignment.
-
-Format: `viewcomment n/STUDENT_NAME a/ASSIGNMENT`
-
-> **Parameters:**
-> * STUDENT_NAME The name of the student.
-> * ASSIGNMENT The name of the assignment.
-
-Examples:
-* `viewcomment n/Rayson a/Functional Expressionism` shows the comment on Rayson’s Functional Expressionism assignment.
-* `viewcomment n/Wesley a/Rune Reading` shows the comment on Wesley’s Rune Reading assignment.
+* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade if its graded.
+* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade if its graded.
 
 
 <br>
@@ -811,16 +754,16 @@ Examples:
 
 You can edit the comment of your student’s assignment.
 
-Format: `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`
+Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
 > **Parameters:**
-> * STUDENT_NAME The name of the student.
+> * INDEX The index of the student.
 > * ASSIGNMENT The name of the assignment.
 > * COMMENT The new comment.
 
 Examples:
-* `editcomment n/Rayson a/Functional Expressionism c/Decent` changes the comment on Rayson’s Functional Expressionism assignment to “Decent”.
-* `editcomment n/Wesley a/Rune Reading c/Great` changes the comment on Wesley’s Rune Reading assignment to “Great”.
+* `editcomment 1 as/Functional Expressionism c/Decent` changes the comment on student 1's Functional Expressionism assignment to “Decent”.
+* `editcomment 2 as/Rune Reading c/Great` changes the comment on student 2's Rune Reading assignment to “Great”.
 
 
 <br>
@@ -829,15 +772,15 @@ Examples:
 
 You can delete the comment tagged to your student’s assignment.
 
-Format: `deletecomment n/STUDENT_NAME a/ASSIGNMENT`
+Format: `deletecomment INDEX as/ASSIGNMENT`
 
 > **Parameters:**
-> * STUDENT_NAME The name of the student.
+> * INDEX The index of the student.
 > * ASSIGNMENT The name of the assignment.
 
 Examples:
-* `deletecomment n/Rayson a/Functional Expressionism` deletes the comment on Rayson’s Functional Expressionism assignment.
-* `deletecomment n/Wesley a/Rune Reading` deletes the comment on Wesley’s Rune Reading assignment.
+* `deletecomment 1 a/Functional Expressionism` deletes the comment on student 1's Functional Expressionism assignment if it exists.
+* `deletecomment 2 a/Rune Reading` deletes the comment on student 2's Rune Reading assignment if it exists.
 
 [Back to Table of Contents](#table-of-contents)
 

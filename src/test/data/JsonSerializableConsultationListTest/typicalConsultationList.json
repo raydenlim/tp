@@ -14,23 +14,53 @@
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Colorful Carpets" : {
-            "assignmentName" : "Colorful Carpets",
-            "grade" : "UNGRADED/600",
-            "comment" : ""
-          },
           "Premorseal Communications" : {
             "assignmentName" : "Premorseal Communications",
             "grade" : "UNGRADED/950",
             "comment" : ""
           },
-          "The Magical Tone Matrix" : {
-            "assignmentName" : "The Magical Tone Matrix",
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Beyond the Second Dimension" : {
-            "assignmentName" : "Beyond the Second Dimension",
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300",
+            "comment" : ""
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950",
+            "comment" : ""
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750",
+            "comment" : ""
+          },
+          "Stellar Motion Detector" : {
+            "assignmentName" : "Stellar Motion Detector",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200",
+            "comment" : ""
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
@@ -54,9 +84,9 @@
             "grade" : "UNGRADED/720",
             "comment" : ""
           },
-          "Musical Diversions" : {
-            "assignmentName" : "Musical Diversions",
-            "grade" : "UNGRADED/1300",
+          "The Anomaly in Focus" : {
+            "assignmentName" : "The Anomaly in Focus",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           },
           "Functional Expressionism" : {
@@ -67,16 +97,6 @@
           "Know Your Environment" : {
             "assignmentName" : "Know Your Environment",
             "grade" : "UNGRADED/1200",
-            "comment" : ""
-          },
-          "Sorting Things Out" : {
-            "assignmentName" : "Sorting Things Out",
-            "grade" : "UNGRADED/950",
-            "comment" : ""
-          },
-          "Grading a Sort" : {
-            "assignmentName" : "Grading a Sort",
-            "grade" : "UNGRADED/750",
             "comment" : ""
           },
           "Robotic Trials" : {
@@ -99,13 +119,23 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
-          "POTS and Pans" : {
-            "assignmentName" : "POTS and Pans",
-            "grade" : "UNGRADED/1200",
+          "Rescue the Space Lizard" : {
+            "assignmentName" : "Rescue the Space Lizard",
+            "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Rune Reading" : {
-            "assignmentName" : "Rune Reading",
+          "Streaming the Anomaly" : {
+            "assignmentName" : "Streaming the Anomaly",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Corrective Sky Surgery" : {
+            "assignmentName" : "Corrective Sky Surgery",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
+          "ELDROW - The Riddle" : {
+            "assignmentName" : "ELDROW - The Riddle",
             "grade" : "UNGRADED/1000",
             "comment" : ""
           },
@@ -119,9 +149,19 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
+          "The Essence of the Source" : {
+            "assignmentName" : "The Essence of the Source",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
           "Echoes of the Past" : {
             "assignmentName" : "Echoes of the Past",
             "grade" : "UNGRADED/670",
+            "comment" : ""
+          },
+          "Reuse Your Pairs" : {
+            "assignmentName" : "Reuse Your Pairs",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           }
         }
@@ -152,23 +192,53 @@
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Colorful Carpets" : {
-            "assignmentName" : "Colorful Carpets",
-            "grade" : "UNGRADED/600",
-            "comment" : ""
-          },
           "Premorseal Communications" : {
             "assignmentName" : "Premorseal Communications",
             "grade" : "UNGRADED/950",
             "comment" : ""
           },
-          "The Magical Tone Matrix" : {
-            "assignmentName" : "The Magical Tone Matrix",
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Beyond the Second Dimension" : {
-            "assignmentName" : "Beyond the Second Dimension",
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300",
+            "comment" : ""
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950",
+            "comment" : ""
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750",
+            "comment" : ""
+          },
+          "Stellar Motion Detector" : {
+            "assignmentName" : "Stellar Motion Detector",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200",
+            "comment" : ""
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
@@ -192,9 +262,9 @@
             "grade" : "UNGRADED/720",
             "comment" : ""
           },
-          "Musical Diversions" : {
-            "assignmentName" : "Musical Diversions",
-            "grade" : "UNGRADED/1300",
+          "The Anomaly in Focus" : {
+            "assignmentName" : "The Anomaly in Focus",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           },
           "Functional Expressionism" : {
@@ -205,16 +275,6 @@
           "Know Your Environment" : {
             "assignmentName" : "Know Your Environment",
             "grade" : "UNGRADED/1200",
-            "comment" : ""
-          },
-          "Sorting Things Out" : {
-            "assignmentName" : "Sorting Things Out",
-            "grade" : "UNGRADED/950",
-            "comment" : ""
-          },
-          "Grading a Sort" : {
-            "assignmentName" : "Grading a Sort",
-            "grade" : "UNGRADED/750",
             "comment" : ""
           },
           "Robotic Trials" : {
@@ -237,13 +297,23 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
-          "POTS and Pans" : {
-            "assignmentName" : "POTS and Pans",
-            "grade" : "UNGRADED/1200",
+          "Rescue the Space Lizard" : {
+            "assignmentName" : "Rescue the Space Lizard",
+            "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Rune Reading" : {
-            "assignmentName" : "Rune Reading",
+          "Streaming the Anomaly" : {
+            "assignmentName" : "Streaming the Anomaly",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Corrective Sky Surgery" : {
+            "assignmentName" : "Corrective Sky Surgery",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
+          "ELDROW - The Riddle" : {
+            "assignmentName" : "ELDROW - The Riddle",
             "grade" : "UNGRADED/1000",
             "comment" : ""
           },
@@ -257,9 +327,19 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
+          "The Essence of the Source" : {
+            "assignmentName" : "The Essence of the Source",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
           "Echoes of the Past" : {
             "assignmentName" : "Echoes of the Past",
             "grade" : "UNGRADED/670",
+            "comment" : ""
+          },
+          "Reuse Your Pairs" : {
+            "assignmentName" : "Reuse Your Pairs",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           }
         }
@@ -276,23 +356,53 @@
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Colorful Carpets" : {
-            "assignmentName" : "Colorful Carpets",
-            "grade" : "UNGRADED/600",
-            "comment" : ""
-          },
           "Premorseal Communications" : {
             "assignmentName" : "Premorseal Communications",
             "grade" : "UNGRADED/950",
             "comment" : ""
           },
-          "The Magical Tone Matrix" : {
-            "assignmentName" : "The Magical Tone Matrix",
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Beyond the Second Dimension" : {
-            "assignmentName" : "Beyond the Second Dimension",
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300",
+            "comment" : ""
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950",
+            "comment" : ""
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750",
+            "comment" : ""
+          },
+          "Stellar Motion Detector" : {
+            "assignmentName" : "Stellar Motion Detector",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200",
+            "comment" : ""
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
@@ -316,9 +426,9 @@
             "grade" : "UNGRADED/720",
             "comment" : ""
           },
-          "Musical Diversions" : {
-            "assignmentName" : "Musical Diversions",
-            "grade" : "UNGRADED/1300",
+          "The Anomaly in Focus" : {
+            "assignmentName" : "The Anomaly in Focus",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           },
           "Functional Expressionism" : {
@@ -329,16 +439,6 @@
           "Know Your Environment" : {
             "assignmentName" : "Know Your Environment",
             "grade" : "UNGRADED/1200",
-            "comment" : ""
-          },
-          "Sorting Things Out" : {
-            "assignmentName" : "Sorting Things Out",
-            "grade" : "UNGRADED/950",
-            "comment" : ""
-          },
-          "Grading a Sort" : {
-            "assignmentName" : "Grading a Sort",
-            "grade" : "UNGRADED/750",
             "comment" : ""
           },
           "Robotic Trials" : {
@@ -361,13 +461,23 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
-          "POTS and Pans" : {
-            "assignmentName" : "POTS and Pans",
-            "grade" : "UNGRADED/1200",
+          "Rescue the Space Lizard" : {
+            "assignmentName" : "Rescue the Space Lizard",
+            "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Rune Reading" : {
-            "assignmentName" : "Rune Reading",
+          "Streaming the Anomaly" : {
+            "assignmentName" : "Streaming the Anomaly",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Corrective Sky Surgery" : {
+            "assignmentName" : "Corrective Sky Surgery",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
+          "ELDROW - The Riddle" : {
+            "assignmentName" : "ELDROW - The Riddle",
             "grade" : "UNGRADED/1000",
             "comment" : ""
           },
@@ -381,9 +491,19 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
+          "The Essence of the Source" : {
+            "assignmentName" : "The Essence of the Source",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
           "Echoes of the Past" : {
             "assignmentName" : "Echoes of the Past",
             "grade" : "UNGRADED/670",
+            "comment" : ""
+          },
+          "Reuse Your Pairs" : {
+            "assignmentName" : "Reuse Your Pairs",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           }
         }
@@ -414,23 +534,53 @@
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Colorful Carpets" : {
-            "assignmentName" : "Colorful Carpets",
-            "grade" : "UNGRADED/600",
-            "comment" : ""
-          },
           "Premorseal Communications" : {
             "assignmentName" : "Premorseal Communications",
             "grade" : "UNGRADED/950",
             "comment" : ""
           },
-          "The Magical Tone Matrix" : {
-            "assignmentName" : "The Magical Tone Matrix",
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Beyond the Second Dimension" : {
-            "assignmentName" : "Beyond the Second Dimension",
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300",
+            "comment" : ""
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950",
+            "comment" : ""
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750",
+            "comment" : ""
+          },
+          "Stellar Motion Detector" : {
+            "assignmentName" : "Stellar Motion Detector",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200",
+            "comment" : ""
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
@@ -454,9 +604,9 @@
             "grade" : "UNGRADED/720",
             "comment" : ""
           },
-          "Musical Diversions" : {
-            "assignmentName" : "Musical Diversions",
-            "grade" : "UNGRADED/1300",
+          "The Anomaly in Focus" : {
+            "assignmentName" : "The Anomaly in Focus",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           },
           "Functional Expressionism" : {
@@ -467,16 +617,6 @@
           "Know Your Environment" : {
             "assignmentName" : "Know Your Environment",
             "grade" : "UNGRADED/1200",
-            "comment" : ""
-          },
-          "Sorting Things Out" : {
-            "assignmentName" : "Sorting Things Out",
-            "grade" : "UNGRADED/950",
-            "comment" : ""
-          },
-          "Grading a Sort" : {
-            "assignmentName" : "Grading a Sort",
-            "grade" : "UNGRADED/750",
             "comment" : ""
           },
           "Robotic Trials" : {
@@ -499,13 +639,23 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
-          "POTS and Pans" : {
-            "assignmentName" : "POTS and Pans",
-            "grade" : "UNGRADED/1200",
+          "Rescue the Space Lizard" : {
+            "assignmentName" : "Rescue the Space Lizard",
+            "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Rune Reading" : {
-            "assignmentName" : "Rune Reading",
+          "Streaming the Anomaly" : {
+            "assignmentName" : "Streaming the Anomaly",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Corrective Sky Surgery" : {
+            "assignmentName" : "Corrective Sky Surgery",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
+          "ELDROW - The Riddle" : {
+            "assignmentName" : "ELDROW - The Riddle",
             "grade" : "UNGRADED/1000",
             "comment" : ""
           },
@@ -519,9 +669,19 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
+          "The Essence of the Source" : {
+            "assignmentName" : "The Essence of the Source",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
           "Echoes of the Past" : {
             "assignmentName" : "Echoes of the Past",
             "grade" : "UNGRADED/670",
+            "comment" : ""
+          },
+          "Reuse Your Pairs" : {
+            "assignmentName" : "Reuse Your Pairs",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           }
         }
@@ -538,23 +698,53 @@
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Colorful Carpets" : {
-            "assignmentName" : "Colorful Carpets",
-            "grade" : "UNGRADED/600",
-            "comment" : ""
-          },
           "Premorseal Communications" : {
             "assignmentName" : "Premorseal Communications",
             "grade" : "UNGRADED/950",
             "comment" : ""
           },
-          "The Magical Tone Matrix" : {
-            "assignmentName" : "The Magical Tone Matrix",
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Beyond the Second Dimension" : {
-            "assignmentName" : "Beyond the Second Dimension",
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300",
+            "comment" : ""
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950",
+            "comment" : ""
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750",
+            "comment" : ""
+          },
+          "Stellar Motion Detector" : {
+            "assignmentName" : "Stellar Motion Detector",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200",
+            "comment" : ""
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
@@ -578,9 +768,9 @@
             "grade" : "UNGRADED/720",
             "comment" : ""
           },
-          "Musical Diversions" : {
-            "assignmentName" : "Musical Diversions",
-            "grade" : "UNGRADED/1300",
+          "The Anomaly in Focus" : {
+            "assignmentName" : "The Anomaly in Focus",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           },
           "Functional Expressionism" : {
@@ -591,16 +781,6 @@
           "Know Your Environment" : {
             "assignmentName" : "Know Your Environment",
             "grade" : "UNGRADED/1200",
-            "comment" : ""
-          },
-          "Sorting Things Out" : {
-            "assignmentName" : "Sorting Things Out",
-            "grade" : "UNGRADED/950",
-            "comment" : ""
-          },
-          "Grading a Sort" : {
-            "assignmentName" : "Grading a Sort",
-            "grade" : "UNGRADED/750",
             "comment" : ""
           },
           "Robotic Trials" : {
@@ -623,13 +803,23 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
-          "POTS and Pans" : {
-            "assignmentName" : "POTS and Pans",
-            "grade" : "UNGRADED/1200",
+          "Rescue the Space Lizard" : {
+            "assignmentName" : "Rescue the Space Lizard",
+            "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Rune Reading" : {
-            "assignmentName" : "Rune Reading",
+          "Streaming the Anomaly" : {
+            "assignmentName" : "Streaming the Anomaly",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Corrective Sky Surgery" : {
+            "assignmentName" : "Corrective Sky Surgery",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
+          "ELDROW - The Riddle" : {
+            "assignmentName" : "ELDROW - The Riddle",
             "grade" : "UNGRADED/1000",
             "comment" : ""
           },
@@ -643,9 +833,19 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
+          "The Essence of the Source" : {
+            "assignmentName" : "The Essence of the Source",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
           "Echoes of the Past" : {
             "assignmentName" : "Echoes of the Past",
             "grade" : "UNGRADED/670",
+            "comment" : ""
+          },
+          "Reuse Your Pairs" : {
+            "assignmentName" : "Reuse Your Pairs",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           }
         }
@@ -663,23 +863,53 @@
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Colorful Carpets" : {
-            "assignmentName" : "Colorful Carpets",
-            "grade" : "UNGRADED/600",
-            "comment" : ""
-          },
           "Premorseal Communications" : {
             "assignmentName" : "Premorseal Communications",
             "grade" : "UNGRADED/950",
             "comment" : ""
           },
-          "The Magical Tone Matrix" : {
-            "assignmentName" : "The Magical Tone Matrix",
+          "Beyond the Second Dimension" : {
+            "assignmentName" : "Beyond the Second Dimension",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Beyond the Second Dimension" : {
-            "assignmentName" : "Beyond the Second Dimension",
+          "Musical Diversions" : {
+            "assignmentName" : "Musical Diversions",
+            "grade" : "UNGRADED/1300",
+            "comment" : ""
+          },
+          "Sorting Things Out" : {
+            "assignmentName" : "Sorting Things Out",
+            "grade" : "UNGRADED/950",
+            "comment" : ""
+          },
+          "Grading a Sort" : {
+            "assignmentName" : "Grading a Sort",
+            "grade" : "UNGRADED/750",
+            "comment" : ""
+          },
+          "Stellar Motion Detector" : {
+            "assignmentName" : "Stellar Motion Detector",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "POTS and Pans" : {
+            "assignmentName" : "POTS and Pans",
+            "grade" : "UNGRADED/1200",
+            "comment" : ""
+          },
+          "Rune Reading" : {
+            "assignmentName" : "Rune Reading",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Colorful Carpets" : {
+            "assignmentName" : "Colorful Carpets",
+            "grade" : "UNGRADED/600",
+            "comment" : ""
+          },
+          "The Magical Tone Matrix" : {
+            "assignmentName" : "The Magical Tone Matrix",
             "grade" : "UNGRADED/800",
             "comment" : ""
           },
@@ -703,9 +933,9 @@
             "grade" : "UNGRADED/720",
             "comment" : ""
           },
-          "Musical Diversions" : {
-            "assignmentName" : "Musical Diversions",
-            "grade" : "UNGRADED/1300",
+          "The Anomaly in Focus" : {
+            "assignmentName" : "The Anomaly in Focus",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           },
           "Functional Expressionism" : {
@@ -716,16 +946,6 @@
           "Know Your Environment" : {
             "assignmentName" : "Know Your Environment",
             "grade" : "UNGRADED/1200",
-            "comment" : ""
-          },
-          "Sorting Things Out" : {
-            "assignmentName" : "Sorting Things Out",
-            "grade" : "UNGRADED/950",
-            "comment" : ""
-          },
-          "Grading a Sort" : {
-            "assignmentName" : "Grading a Sort",
-            "grade" : "UNGRADED/750",
             "comment" : ""
           },
           "Robotic Trials" : {
@@ -748,13 +968,23 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
-          "POTS and Pans" : {
-            "assignmentName" : "POTS and Pans",
-            "grade" : "UNGRADED/1200",
+          "Rescue the Space Lizard" : {
+            "assignmentName" : "Rescue the Space Lizard",
+            "grade" : "UNGRADED/800",
             "comment" : ""
           },
-          "Rune Reading" : {
-            "assignmentName" : "Rune Reading",
+          "Streaming the Anomaly" : {
+            "assignmentName" : "Streaming the Anomaly",
+            "grade" : "UNGRADED/1000",
+            "comment" : ""
+          },
+          "Corrective Sky Surgery" : {
+            "assignmentName" : "Corrective Sky Surgery",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
+          "ELDROW - The Riddle" : {
+            "assignmentName" : "ELDROW - The Riddle",
             "grade" : "UNGRADED/1000",
             "comment" : ""
           },
@@ -768,9 +998,19 @@
             "grade" : "UNGRADED/600",
             "comment" : ""
           },
+          "The Essence of the Source" : {
+            "assignmentName" : "The Essence of the Source",
+            "grade" : "UNGRADED/1500",
+            "comment" : ""
+          },
           "Echoes of the Past" : {
             "assignmentName" : "Echoes of the Past",
             "grade" : "UNGRADED/670",
+            "comment" : ""
+          },
+          "Reuse Your Pairs" : {
+            "assignmentName" : "Reuse Your Pairs",
+            "grade" : "UNGRADED/1000",
             "comment" : ""
           }
         }
