@@ -205,6 +205,10 @@ public class MainWindow extends UiPart<Stage> {
         resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
     }
 
+    public void clearGraphicalResultDisplay() {
+        resultGraphicalDisplayPlaceholder.getChildren().clear();
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -263,6 +267,7 @@ public class MainWindow extends UiPart<Stage> {
             case FIND:
             case LIST:
                 selectTab(TAB_PERSONS_INDEX);
+                clearGraphicalResultDisplay();
                 break;
             // Tasks
             case ADD_TASK:
@@ -270,6 +275,7 @@ public class MainWindow extends UiPart<Stage> {
             case UPDATE_TASK_PROGRESS:
             case VIEW_TASKS:
                 selectTab(TAB_TASKS_INDEX);
+                clearGraphicalResultDisplay();
                 break;
             // Assignments
             case DELETE_COMMENT:
@@ -278,6 +284,7 @@ public class MainWindow extends UiPart<Stage> {
             case EDIT_GRADE:
             case EDIT_GRADED_TEST:
                 selectTab(TAB_ASSIGNMENTS_INDEX);
+                clearGraphicalResultDisplay();
                 break;
             // Consultations
             case CREATE_CONSULT:
@@ -285,6 +292,7 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE_CONSULT:
             case REMOVE_FROM_CONSULT:
                 selectTab(TAB_CONSULTATIONS_INDEX);
+                clearGraphicalResultDisplay();
                 break;
             // Sessions
             case CREATE_SESSION:
@@ -293,8 +301,10 @@ public class MainWindow extends UiPart<Stage> {
             case TAKE_ATTENDANCE:
             case VIEW_ATTENDANCE:
                 selectTab(TAB_SESSIONS_INDEX);
+                clearGraphicalResultDisplay();
                 break;
             default:
+                clearGraphicalResultDisplay();
                 break;
             }
 
