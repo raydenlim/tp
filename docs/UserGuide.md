@@ -727,8 +727,8 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 > * GRADE The score of the student.
 
 Examples:
-* `editgrade 1 as/Functional Expressionism g/1200` edits the grade of student 1's Functional Expressionism assignment to 1200.
-* `editgrade 2 as/Rune Reading g/1000` edits the grade of student 2's Rune Reading assignment to 1000.
+* `editgrade 1 as/Functional Expressionism g/500` edits the grade of student 1's Functional Expressionism assignment to 500.
+* `editgrade 2 as/Rune Reading g/300` edits the grade of student 2's Rune Reading assignment to 300.
 
 
 <br>
@@ -744,8 +744,8 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 > * ASSIGNMENT The name of the assignment.
 
 Examples:
-* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade.
-* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade.
+* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade if its graded.
+* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade if its graded.
 
 
 <br>
@@ -779,8 +779,8 @@ Format: `deletecomment INDEX as/ASSIGNMENT`
 > * ASSIGNMENT The name of the assignment.
 
 Examples:
-* `deletecomment 1 a/Functional Expressionism` deletes the comment on student 1's Functional Expressionism assignment.
-* `deletecomment 2 a/Rune Reading` deletes the comment on student 2's Rune Reading assignment.
+* `deletecomment 1 a/Functional Expressionism` deletes the comment on student 1's Functional Expressionism assignment if it exists.
+* `deletecomment 2 a/Rune Reading` deletes the comment on student 2's Rune Reading assignment if it exists.
 
 [Back to Table of Contents](#table-of-contents)
 
