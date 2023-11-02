@@ -102,7 +102,16 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
 
-
+| Convention     | Description                                                    |
+|----------------|----------------------------------------------------------------|
+| :x:            | Delete or Remove                                               |
+| :pencil2:      | Add or Create                                                 |
+| :eyes:         | View or Display                                               |
+| :white_check_mark: | Update or Mark as Complete                              |
+| :calendar:     | Manage Dates and Schedule                                      |
+| :wrench:       | Edit or Modify                                                |
+| :heavy_plus_sign: | Add or Include in                                              |
+| :heavy_minus_sign: | Remove or Exclude from   |
 
 
 [Back to Table of Contents](#table-of-contents)
