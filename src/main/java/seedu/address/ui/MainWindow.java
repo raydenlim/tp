@@ -242,7 +242,7 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             switch(commandResult.getCommandType()) {
-            // General Commands
+            // General
             case HELP:
                 handleHelp();
                 break;
