@@ -68,6 +68,10 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
         * [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)
     * [Graded Test Management](#graded-test-management)
         * [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)
+    * [Session Management](#session-management)
+        * [Creating a Session: `createsession`](#creating-a-session-createsession)
+        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-sessions-remark-updatesessionremark)
+        * [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)
     * [Consultation Management](#consultation-management)
         * [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)
         * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)
@@ -307,7 +311,9 @@ You can add a student to F.A.K.E.J.A.R.V.I.S.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
-<div markdown="span" class="alert alert-info"> :information_source: Note: You can add any number of tags to a person! (including 0) </div>
+<div class="alert alert-info">
+<md>
+:information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
 
 > Example 1:
 > 
@@ -355,7 +361,7 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
-<div class="alert alert-info"> :information_source: Note: 
+<div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
 * The index refers to the index number shown in the displayed person list. 
@@ -364,6 +370,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 
+</md>
 </div>
 
 
@@ -397,7 +404,7 @@ You can find a student whose name contain any of the given keywords.
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 
-<div class="alert alert-info"> :information_source: Note: 
+<div class="alert alert-info"> <md> :information_source: Note: 
 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
@@ -405,6 +412,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
+</md>
 </div>
 
 
@@ -437,6 +445,7 @@ You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 Format: `delete INDEX`
 
 <div class="alert alert-info"> 
+<md>
 
 :information_source: Note: 
 
@@ -444,6 +453,7 @@ Format: `delete INDEX`
 > * The index refers to the index number shown in the displayed person list.
 > * The index **must be a positive integer** 1, 2, 3, …​
 
+</md>
 </div>
 
 
@@ -600,16 +610,16 @@ This section describes commands that help you manage your students' attendance.
 
 You can take the attendance of your student(s).
 
-Format: `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`
+Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER p/PRESENCE`
 
 Examples:
 * `takeattendance n/John Doe s/5 present` Marks John Doe as present on the 5th session.
 * `takeattendance n/Foo Bar s/2 absent` Marks Foo Bar as absent on the 2nd session.
 
 > **Parameters:**
-> * STUDENT_NAME - The name of the student.
-> * SESSION - The session number.
-> * PRESENCE - The attendance status of the student (e.g., present, absent).
+> * STUDENT_NAME The name of the student.
+> * SESSION_NUMBER The session number of the session.
+> * PRESENCE The attendance status of the student (e.g., present, absent).
 
 
 <br>
@@ -621,7 +631,7 @@ You can view the attendance list of your students.
 Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 > **Parameters:**
-> * STUDENT_NAME - The name of the student you want to view the attendance of.
+> * STUDENT_NAME The name of the student(s) you want to view the attendance of.
 
 Examples:
 * `viewattendance` Displays the overall attendance across all students and sessions.
@@ -799,6 +809,66 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 
 
 [Back to Table of Contents](#table-of-contents)
+
+
+<br>
+
+### Session Management
+This section describes commands that help you manage your sessions.
+
+
+<br>
+
+#### 📝Creating a Session: `createsession`
+
+You can create a session for any upcoming or past sessions.
+
+Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
+
+> **Parameters:**
+> * SESSION_NUMBER The session number of the session
+> * STUDENT_NAME The name of the student(s)
+
+Examples:
+* `createsession s/2 n/John Doe` creates a session, which has session number 2 with John Doe.
+* `createsession s/3 n/John Doe n/Foo Bar` creates a session, which has session number 3, with John Doe and Foo Bar.
+
+
+<br>
+
+
+#### 🛠️Updating a Session's Remark: `updatesessionremark`
+
+You can update an existing session's remark.
+
+Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
+
+> **Parameters:**
+> * SESSION_NUMBER The session number of the session
+> * REMARK The new remark to be updated for the session
+
+Examples:
+* `updatesessionremark s/2 r/Teach Essence of Recursion` updates the remark for session number 2 to "Teach Essence of Recursion"
+* `updatesessionremark s/4 r/Taught streams and metacircular evalutator` updates the remark for session 4 to "Taught streams and metacircular evaluator"
+
+
+<br>
+
+
+#### ❌Deleting a Session: `deletesession`
+
+You can delete an existing session specified by its session number.
+
+Format: `deletesession s/SESSION_NUMBER`
+
+> **Parameters:**
+> * SESSION_NUMBER The session number of the session
+
+Examples:
+* `deletesession s/1` deletes the session with session number 1 from the session list.
+* `deletesession s/4` deletes the session with session number 4 from the session list.
+
+
 
 
 <br>

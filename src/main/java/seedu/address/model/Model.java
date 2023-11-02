@@ -125,6 +125,14 @@ public interface Model {
      */
     boolean hasSession(Session session);
 
+    /**
+     * Replaces the given session {@code target} with {@code updatedSession}.
+     * {@code target} must exist in the session list.
+     * The session identity of {@code updatedSession} must not be the same as another existing session
+     * in the session list.
+     */
+    void setSession(Session session, Session updatedSession);
+
     /** Returns an unmodifiable view of the filtered session list */
     ObservableList<Session> getFilteredSessionList();
 
