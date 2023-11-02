@@ -199,6 +199,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public void setSession(Session session, Session updatedSession) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public ObservableList<Session> getFilteredSessionList() {
         throw new AssertionError("This method should not be called.");
     }

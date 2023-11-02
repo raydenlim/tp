@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION_REMARK;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -12,6 +13,7 @@ import seedu.address.model.Model;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
+import seedu.address.model.session.SessionStudents;
 
 /**
  * Command to update the remarks of a session.
@@ -61,10 +63,30 @@ public class UpdateSessionRemarkCommand extends Command {
         sessionToUpdate = model.findSessionBySessionNumber(this.sessionNumber);
         sessionToUpdate.updateRemark(sessionRemark);
 
+        Session newSession = createUpdatedSession(sessionToUpdate);
+        model.setSession(sessionToUpdate, newSession);
+        model.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
+
         // Return a success message
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(sessionToUpdate)),
                 COMMAND_TYPE);
     }
+
+
+    /**
+     * Creates a new Session with the newly added students.
+     *
+     * @param reference The session to be edited.
+     * @return New session with the added students.
+     */
+    public Session createUpdatedSession(Session reference) {
+        SessionNumber sessionNumber = reference.getSessionNumber();
+        SessionStudents sessionStudents = reference.getStudents();
+        SessionRemark sessionRemark = this.sessionRemark;
+
+        return new Session(sessionNumber, sessionStudents, sessionRemark);
+    }
+
 
     @Override
     public CommandType getCommandType() {

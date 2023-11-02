@@ -188,6 +188,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setSession(Session target, Session updatedSession) {
+        requireAllNonNull(target, updatedSession);
+
+        sessionList.setSession(target, updatedSession);
+    }
+
+    @Override
     public ReadOnlySessionList getSessionList() {
         return sessionList;
     }
