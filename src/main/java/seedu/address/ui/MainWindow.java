@@ -205,6 +205,9 @@ public class MainWindow extends UiPart<Stage> {
         resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
     }
 
+    /**
+     * Clears GraphicalDisplayPlaceholder.
+     */
     public void clearGraphicalResultDisplay() {
         resultGraphicalDisplayPlaceholder.getChildren().clear();
     }
