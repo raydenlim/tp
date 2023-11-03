@@ -321,6 +321,15 @@ You can add a student to F.A.K.E.J.A.R.V.I.S.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
+| Parameter          | Description                                  |
+|--------------------|----------------------------------------------|
+| n/NAME             | The name of the student to be added.         |
+| p/PHONE_NUMBER     | The phone number of the student.             |
+| e/EMAIL            | The email address of the student.            |
+| th/TELEGRAM_HANDLE | The Telegram handle of the student.          |
+| t/TAG              | (Optional) Tags associated with the student. |
+
+
 <div class="alert alert-info">
 <md>
 :information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
@@ -371,6 +380,16 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
+| Parameter          | Description                                         |
+|--------------------|-----------------------------------------------------|
+| INDEX              | The index of the student to be edited.              |
+| n/NAME             | (Optional) The new name for the student.            |
+| p/PHONE            | (Optional) The new phone number for the student.    |
+| e/EMAIL            | (Optional) The new email address for the student.   |
+| th/TELEGRAM_HANDLE | (Optional) The new Telegram handle for the student. |
+| t/TAG              | (Optional) New tags associated with the student.    |
+
+
 <div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
@@ -414,6 +433,12 @@ You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
+| Parameter     | Description                                    |
+|---------------|------------------------------------------------|
+| KEYWORD       | The main keyword to search for.                |
+| MORE_KEYWORDS | (Optional) Additional keywords for the search. |
+
+
 
 <div class="alert alert-info"> <md> :information_source: Note: 
 
@@ -454,6 +479,11 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
 Format: `delete INDEX`
+
+| Parameter | Description                             |
+|-----------|-----------------------------------------|
+| INDEX     | The index of the student to be deleted. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -521,11 +551,13 @@ You can add a task to your task list.
 
 Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 
-> **Parameters:**
-> * TASK_NAME The name of the task.
-> * TASK_DESCRIPTION The description of the task.
-> * DUE_DATE The due date or deadline of the task.
-> * TASK_PRIORITY The priority level of the task. Given as `high`, `medium` or `low`.
+| Parameter        | Description                                                         |
+|------------------|---------------------------------------------------------------------|
+| TASK_NAME        | The name of the task.                                               |
+| TASK_DESCRIPTION | The description of the task.                                        |
+| DUE_DATE         | The due date or deadline of the task.                               |
+| TASK_PRIORITY    | The priority level of the task. Given as `high`, `medium` or `low`. |
+
 
 > **Example 1:**
 >
@@ -555,12 +587,14 @@ You can view you list of tasks.
 
 Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
-> **Parameters:**
-> * TASK_NAME The name of the task.
-> * TASK_DESCRIPTION The description of the task.
-> * DUE_DATE The due date or deadline of the task.
-> * TASK_PRIORITY The priority level of the task. Given as `high`, `medium` or `low`.
-> * TASK_PROGRESS The progress level of the task. Given as `done`, `pending` or `not_started`.
+| Parameter        | Description                                                                  |
+|------------------|------------------------------------------------------------------------------|
+| TASK_NAME        | The name of the task.                                                        |
+| TASK_DESCRIPTION | The description of the task.                                                 |
+| DUE_DATE         | The due date or deadline of the task.                                        |
+| TASK_PRIORITY    | The priority level of the task. Given as `high`, `medium` or `low`.          |
+| TASK_PROGRESS    | The progress level of the task. Given as `done`, `pending` or `not_started`. |
+    
 
 <div class="alert alert-info"> 
 <md>
@@ -619,9 +653,11 @@ You can mark a task as completed.
 
 Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
-> **Parameters:**
-> * TASK_INDEX The index of the task to update the progress.
-> * NEW_PROGRESS The new progress level of the task. Given as `done`, `pending` or `not_started`.
+| Parameter    | Description                                                                       |
+|--------------|-----------------------------------------------------------------------------------|
+| TASK_INDEX   | The index of the task to update the progress.                                     |
+| NEW_PROGRESS | The new progress level of the task. Given as `done`, `pending`, or `not_started`. |
+
 
 
 <div class="alert alert-info"> 
@@ -664,8 +700,10 @@ Deletes a task from the task list.
 
 Format: `deletetask TASK_INDEX`
 
-> **Parameters:**
-> * TASK_INDEX The index of the task to delete.
+| Parameter  | Description                      |
+|------------|----------------------------------|
+| TASK_INDEX | The index of the task to delete. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -716,10 +754,12 @@ You can take the attendance of your student(s).
 Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 
-> **Parameters:**
-> * STUDENT_NAME The name of the student.
-> * SESSION_NUMBER The session number of the session.
-> * PRESENCE The attendance status of the student (e.g., present, absent).
+| Parameter      | Description                                                           |
+|----------------|-----------------------------------------------------------------------|
+| STUDENT_NAME   | The name of the student.                                              |
+| SESSION_NUMBER | The session number of the session.                                    |
+| PRESENCE       | The attendance status of the student. Given as `present` or `absent`. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -759,8 +799,10 @@ You can view the attendance list of your students.
 
 Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
-> **Parameters:**
-> * STUDENT_NAME The name of the student(s) you want to view the attendance of.
+| Parameter    | Description                                                    |
+|--------------|----------------------------------------------------------------|
+| STUDENT_NAME | The name of the student(s) you want to view the attendance of. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -818,8 +860,10 @@ You can view a list of assignment grades and comments.
 
 Format: `viewassignments INDEX`
 
-> **Parameters:**
-> * INDEX The index of the student.
+| Parameter | Description               |
+|-----------|---------------------------|
+| INDEX     | The index of the student. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -860,10 +904,12 @@ You can edit your student’s assignment grade.
 
 Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
-> * GRADE The score of the student.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
+| GRADE      | The score of the student.   |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -906,9 +952,11 @@ You can delete your student’s assignment grade.
 
 Format: `deletegrade INDEX as/ASSIGNMENT`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -952,10 +1000,12 @@ You can edit the comment of your student’s assignment.
 
 Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
-> * COMMENT The new comment.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
+| COMMENT    | The new comment.            |
+
 
 
 <div class="alert alert-info"> 
@@ -1000,9 +1050,11 @@ You can delete the comment tagged to your student’s assignment.
 
 Format: `deletecomment INDEX as/ASSIGNMENT`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
+
 
 
 <div class="alert alert-info"> 
@@ -1055,13 +1107,15 @@ You can edit your student’s graded test scores.
 
 Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * READING_ASSESSMENT_1 The score of the student's Reading Assessment 1.
-> * READING_ASSESSMENT_2 The score of the student's Reading Assessment 2.
-> * MIDTERMS The score of the student's MidTerms.
-> * FINALS The score of the student's Final Assessment.
-> * PRACTICALEXAM The score of the student's Practical Exams.
+| Parameter            | Description                                      |
+|----------------------|--------------------------------------------------|
+| INDEX                | The index of the student.                        |
+| READING_ASSESSMENT_1 | The score of the student's Reading Assessment 1. |
+| READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
+| MIDTERMS             | The score of the student's MidTerms.             |
+| FINALS               | The score of the student's Final Assessment.     |
+| PRACTICALEXAM        | The score of the student's Practical Exams.      |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -1114,9 +1168,11 @@ You can create a session for any upcoming or past sessions.
 
 Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 
-> **Parameters:**
-> * SESSION_NUMBER The session number of the session
-> * STUDENT_NAME The name of the student(s)
+| Parameter      | Description                        |
+|----------------|------------------------------------|
+| SESSION_NUMBER | The session number of the session. |
+| STUDENT_NAME   | The name of the student(s).        |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -1157,9 +1213,11 @@ You can update an existing session's remark.
 
 Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
-> **Parameters:**
-> * SESSION_NUMBER The session number of the session
-> * REMARK The new remark to be updated for the session
+| Parameter      | Description                                   |
+|----------------|-----------------------------------------------|
+| SESSION_NUMBER | The session number of the session.            |
+| REMARK         | The new remark to be updated for the session. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -1200,8 +1258,10 @@ You can delete an existing session specified by its session number.
 
 Format: `deletesession s/SESSION_NUMBER`
 
-> **Parameters:**
-> * SESSION_NUMBER The session number of the session
+| Parameter      | Description                        |
+|----------------|------------------------------------|
+| SESSION_NUMBER | The session number of the session. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -1248,10 +1308,12 @@ You can create a consultation for any upcoming consultations.
 
 Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 
-> **Parameters:**
-> * DATE The date of consultation
-> * TIME The time of consultation 
-> * STUDENT_NAME The name of the student(s)
+| Parameter    | Description                 |
+|--------------|-----------------------------|
+| DATE         | The date of consultation.   |
+| TIME         | The time of consultation.   |
+| STUDENT_NAME | The name of the student(s). |
+
 
 
 <div class="alert alert-info"> 
@@ -1291,9 +1353,11 @@ You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultations.
-> * STUDENT_NAME The name of student to be added into the consultation.
+| Parameter    | Description                                                  |
+|--------------|--------------------------------------------------------------|
+| INDEX        | The index of the consultation in the upcoming consultations. |
+| STUDENT_NAME | The name of the student to be added to the consultation.     |
+
 
 
 <div class="alert alert-info"> 
@@ -1336,9 +1400,11 @@ You can remove your student(s) from a consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultations.
-> * STUDENT_NAME The name of student to be added into the consultation.
+| Parameter    | Description                                                  |
+|--------------|--------------------------------------------------------------|
+| INDEX        | The index of the consultation in the upcoming consultations. |
+| STUDENT_NAME | The name of the student to be added to the consultation.     |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -1370,8 +1436,10 @@ You can delete the consultation slot specified by an index.
 
 Format: `deleteconsult INDEX`
 
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultations.
+| Parameter | Description                                                  |
+|-----------|--------------------------------------------------------------|
+| INDEX     | The index of the consultation in the upcoming consultations. |
+
 
 <div class="alert alert-info"> 
 <md>
