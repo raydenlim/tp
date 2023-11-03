@@ -35,7 +35,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
     * [Task Card](#task-card)
     * [Consultation Card](#consultation-card)
     * [Session Card](#session-card)
-* [Quick start](#quick-start)
+* [Quick Start](#quick-start)
 * [Command Format](#command-format)
     * [Command Parameters](#command-parameters)
 * [Features](#features)
@@ -78,8 +78,9 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
         * [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)
         * [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)
 * [FAQ](#faq)
-* [Known issues](#known-issues)
-* [Command summary](#command-summary)
+* [Known Issues](#known-issues)
+* [Command Summary](#command-summary)
+* [Encountering Errors](#encountering-errors)
 
 
 <br>
@@ -96,21 +97,23 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **Bold text**  | Highlights important keywords.                                 |
 | [Hyperlink](#) | Indicates hyperlinks to external websites or within the guide. |
 
-
+<br>
 
 | Convention                                                                          | Description                                                     |
 |-------------------------------------------------------------------------------------|-----------------------------------------------------------------|
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
 
-| Convention    | Description                    |
-|---------------|--------------------------------|
-| 📝            | Add <br/> Create               |
-| ❌            | Delete <br/> Remove            |
-| 🛠️            | Edit <br/> Modify <br/> Update |
-| 🔎            | Find                           |
-| 📆            | Take Attendance                |
-| 👀            | View <br/> Display </br> List  |
+<br>
+
+| Convention | Description                    |
+|------------|--------------------------------|
+| 📝         | Add <br/> Create               |
+| ❌          | Delete <br/> Remove            |
+| 🛠️        | Edit <br/> Modify <br/> Update |
+| 🔎         | Find                           |
+| 📆         | Take Attendance                |
+| 👀         | View <br/> Display </br> List  |
 
 
 
@@ -230,25 +233,25 @@ Most commands given in the user guide utilise various parameters which are also 
 | PHONE               | `p/`     | `add` `edit`                                                                                                      | The Phone number of a student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                          |
 | EMAIL               | `e/`     | `add` `edit`                                                                                                      | The Email of a student. <ul><li>Emails should be of the format `local-part@domain`</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`</li><li>The domain name must be `@u.nus.edu`.</li> </ul> |
 | TELEGRAM_HANDLE     | `th/`    | `add` `edit`                                                                                                      | The Telegram handle of a student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                        |
-| TAG                 | `t/`     | `add` `edit`                                                                                                      | The tag belonging to a student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                               |
+| TAG                 | `t/`     | `add` `edit`                                                                                                      | The Tag belonging to a student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                               |
 | GRADED_TEST         | `gt/`    | `add` `edit`                                                                                                      | The scores of respective graded tests. <ul><li>Names should only contain alphanumeric characters and spaces. </li><li> Names should not be blank. </li></ul>                                                                                       |
 | READING_ASSESSMENT1 | `ra1/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
 | READING_ASSESSMENT2 | `ra2/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
 | MIDTERMS            | `mt/`    | `editgradedtest`                                                                                                  | The score of a Midterms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                 |
 | FINALS              | `f/`     | `editgradedtest`                                                                                                  | The score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                   |
 | PRACTICAL_EXAM      | `pe/`    | `editgradedtest`                                                                                                  | The score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                |
-| ASSIGNMENT          | `as/`    | `deletecomment` `editcomment` `editgrade`                                                                         | The Name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                |
-| GRADE               | `g/`     | `editgrade`                                                                                                       | The Grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                        |
+| ASSIGNMENT          | `as/`    | `deletecomment` `editcomment` `editgrade`                                                                         | The name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                |
+| GRADE               | `g/`     | `editgrade`                                                                                                       | The grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                        |
 | COMMENT             | `c/`     | `editcomment`                                                                                                     | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                        |
 | DATE                | `d/`     | `addtask` `viewtasks` `createconsult`                                                                             | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                        |
 | TIME                | `tt/`    | `createconsult`                                                                                                   | The Time. <ul><li>The format must be HH:mm.</li><li>Date must also be in 24-hour format.</li></ul>                                                                                                                                                 |
 | SESSION             | `s/`     | `createsession` `deletesession` `takeattendance` `updatesessionremark`                                            | The Session Number of a Tutorial. <ul><li> Session must only contain numbers. </li><li>Session should not be blank.</li> </ul>                                                                                                                     |
-| SESSION_REMARK      | `r/`     | `updatesessionremark`                                                                                             | The remarks of a session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                         |
+| SESSION_REMARK      | `r/`     | `updatesessionremark`                                                                                             | The remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                         |
 | ATTENDANCE_PRESENCE | `ap/`    | `takeattendance`                                                                                                  | The presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                            |
-| TASK_NAME           | `tn/`    | `addtask` `viewtasks`                                                                                             | The name of a task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                             |
-| TASK_DESCRIPTION    | `td/`    | `addtask` `viewtasks`                                                                                             | The description of a task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                     |
-| TASK_PRIORITY       | `tp/`    | `addtask` `viewtasks`                                                                                             | The priority of a task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                           |
-| TASK_PROGRESS       | `tprog/` | `addtask` `viewtasks` `updateprogress`                                                                            | The progress of a task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                  |
+| TASK_NAME           | `tn/`    | `addtask` `viewtasks`                                                                                             | The name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                             |
+| TASK_DESCRIPTION    | `td/`    | `addtask` `viewtasks`                                                                                             | The description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                     |
+| TASK_PRIORITY       | `tp/`    | `addtask` `viewtasks`                                                                                             | The priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                           |
+| TASK_PROGRESS       | `tprog/` | `addtask` `viewtasks` `updateprogress`                                                                            | The progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                  |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -321,6 +324,15 @@ You can add a student to F.A.K.E.J.A.R.V.I.S.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
 
+| Parameter          | Description                                  |
+|--------------------|----------------------------------------------|
+| n/NAME             | The name of the student to be added.         |
+| p/PHONE_NUMBER     | The phone number of the student.             |
+| e/EMAIL            | The email address of the student.            |
+| th/TELEGRAM_HANDLE | The Telegram handle of the student.          |
+| t/TAG              | (Optional) Tags associated with the student. |
+
+
 <div class="alert alert-info">
 <md>
 :information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
@@ -371,6 +383,16 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
 
+| Parameter          | Description                                         |
+|--------------------|-----------------------------------------------------|
+| INDEX              | The index of the student to be edited.              |
+| n/NAME             | (Optional) The new name for the student.            |
+| p/PHONE            | (Optional) The new phone number for the student.    |
+| e/EMAIL            | (Optional) The new email address for the student.   |
+| th/TELEGRAM_HANDLE | (Optional) The new Telegram handle for the student. |
+| t/TAG              | (Optional) New tags associated with the student.    |
+
+
 <div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
@@ -414,6 +436,12 @@ You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
+| Parameter     | Description                                    |
+|---------------|------------------------------------------------|
+| KEYWORD       | The main keyword to search for.                |
+| MORE_KEYWORDS | (Optional) Additional keywords for the search. |
+
+
 
 <div class="alert alert-info"> <md> :information_source: Note: 
 
@@ -454,6 +482,11 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
 Format: `delete INDEX`
+
+| Parameter | Description                             |
+|-----------|-----------------------------------------|
+| INDEX     | The index of the student to be deleted. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -521,11 +554,13 @@ You can add a task to your task list.
 
 Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 
-> **Parameters:**
-> * TASK_NAME The name of the task.
-> * TASK_DESCRIPTION The description of the task.
-> * DUE_DATE The due date or deadline of the task.
-> * TASK_PRIORITY The priority level of the task. Given as `high`, `medium` or `low`.
+| Parameter        | Description                                                         |
+|------------------|---------------------------------------------------------------------|
+| TASK_NAME        | The name of the task.                                               |
+| TASK_DESCRIPTION | The description of the task.                                        |
+| DUE_DATE         | The due date or deadline of the task.                               |
+| TASK_PRIORITY    | The priority level of the task. Given as `high`, `medium` or `low`. |
+
 
 > **Example 1:**
 >
@@ -555,12 +590,14 @@ You can view you list of tasks.
 
 Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
-> **Parameters:**
-> * TASK_NAME The name of the task.
-> * TASK_DESCRIPTION The description of the task.
-> * DUE_DATE The due date or deadline of the task.
-> * TASK_PRIORITY The priority level of the task. Given as `high`, `medium` or `low`.
-> * TASK_PROGRESS The progress level of the task. Given as `done`, `pending` or `not_started`.
+| Parameter        | Description                                                                  |
+|------------------|------------------------------------------------------------------------------|
+| TASK_NAME        | The name of the task.                                                        |
+| TASK_DESCRIPTION | The description of the task.                                                 |
+| DUE_DATE         | The due date or deadline of the task.                                        |
+| TASK_PRIORITY    | The priority level of the task. Given as `high`, `medium` or `low`.          |
+| TASK_PROGRESS    | The progress level of the task. Given as `done`, `pending` or `not_started`. |
+    
 
 <div class="alert alert-info"> 
 <md>
@@ -619,9 +656,11 @@ You can mark a task as completed.
 
 Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
-> **Parameters:**
-> * TASK_INDEX The index of the task to update the progress.
-> * NEW_PROGRESS The new progress level of the task. Given as `done`, `pending` or `not_started`.
+| Parameter    | Description                                                                       |
+|--------------|-----------------------------------------------------------------------------------|
+| TASK_INDEX   | The index of the task to update the progress.                                     |
+| NEW_PROGRESS | The new progress level of the task. Given as `done`, `pending`, or `not_started`. |
+
 
 
 <div class="alert alert-info"> 
@@ -664,8 +703,10 @@ Deletes a task from the task list.
 
 Format: `deletetask TASK_INDEX`
 
-> **Parameters:**
-> * TASK_INDEX The index of the task to delete.
+| Parameter  | Description                      |
+|------------|----------------------------------|
+| TASK_INDEX | The index of the task to delete. |
+
 
 <div class="alert alert-info"> 
 <md>
@@ -715,13 +756,23 @@ You can take the attendance of your student(s).
 
 Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
-Examples:
+
+| Parameter      | Description                                                           |
+|----------------|-----------------------------------------------------------------------|
+| STUDENT_NAME   | The name of the student.                                              |
+| SESSION_NUMBER | The session number of the session.                                    |
+| PRESENCE       | The attendance status of the student. Given as `present` or `absent`. |
 
 
-> **Parameters:**
-> * STUDENT_NAME The name of the student.
-> * SESSION_NUMBER The session number of the session.
-> * PRESENCE The attendance status of the student (e.g., present, absent).
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -751,13 +802,51 @@ You can view the attendance list of your students.
 
 Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
-> **Parameters:**
-> * STUDENT_NAME The name of the student(s) you want to view the attendance of.
+| Parameter    | Description                                                    |
+|--------------|----------------------------------------------------------------|
+| STUDENT_NAME | The name of the student(s) you want to view the attendance of. |
 
-Examples:
-* `viewattendance` Displays the overall attendance across all students and sessions.
-* `viewattendance n/Rayan` Displays all the sessions that Rayan has attended.
-* `viewattendance n/Jayson Resley` Displays all the sessions that Jayson and Resley have attended.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+
+> **Example 1:**
+>
+> **Input:** `viewattendance` Displays the overall attendance across all students and sessions.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `viewattendance n/Alex` Displays all the sessions that Alex has attended.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 3:**
+>
+> **Input:** `viewattendance n/Bernice Alex` Displays all the sessions that Bernice and Alex have attended.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -774,12 +863,40 @@ You can view a list of assignment grades and comments.
 
 Format: `viewassignments INDEX`
 
-> **Parameters:**
-> * INDEX The index of the student.
+| Parameter | Description               |
+|-----------|---------------------------|
+| INDEX     | The index of the student. |
 
-Examples:
-* `viewgrade 1` shows a list of student 1's assignment names, grades and comments.
-* `viewgrade 2` shows a list of student 2's assignment names, grades and comments.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `viewassignments 1` Shows a list of the 1st student's assignment names, grades and comments.
+>
+> **Output:**
+>`Showing all assignment details of: Alex Yeoh`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `viewassignments 2` shows a list of the 2nd student's assignment names, grades and comments.
+>
+> **Output:**
+>`Showing all assignment details of: Betsy Crower`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -790,14 +907,44 @@ You can edit your student’s assignment grade.
 
 Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
-> * GRADE The score of the student.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
+| GRADE      | The score of the student.   |
 
-Examples:
-* `editgrade 1 as/Functional Expressionism g/500` edits the grade of student 1's Functional Expressionism assignment to 500.
-* `editgrade 2 as/Rune Reading g/300` edits the grade of student 2's Rune Reading assignment to 300.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `editgrade 1 as/Functional Expressionism g/500` Edits the grade of the 1st student's Functional Expressionism assignment to 500.
+>
+> **Output:**
+>`Edited grade to assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `editgrade 2 as/Rune Reading g/300` edits the grade of the 2nd student's Rune Reading assignment to 300.
+>
+> **Output:**
+>`Edited grade to assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
 
 
 <br>
@@ -808,13 +955,44 @@ You can delete your student’s assignment grade.
 
 Format: `deletegrade INDEX as/ASSIGNMENT`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
 
-Examples:
-* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade if its graded.
-* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade if its graded.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+
+> **Example 1:**
+>
+> **Input:** `deletegrade 1 as/Functional Expressionism` deletes the 1st student's Functional Expressionism grade if its graded.
+>
+> **Output:**
+>`Deleted grade from assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `deletegrade 2 as/Rune Reading` deletes the 2nd student's Rune Reading grade if its graded.
+>
+> **Output:**
+>`Deleted grade from assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
 
 
 <br>
@@ -825,14 +1003,46 @@ You can edit the comment of your student’s assignment.
 
 Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
-> * COMMENT The new comment.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
+| COMMENT    | The new comment.            |
 
-Examples:
-* `editcomment 1 as/Functional Expressionism c/Decent` changes the comment on student 1's Functional Expressionism assignment to “Decent”.
-* `editcomment 2 as/Rune Reading c/Great` changes the comment on student 2's Rune Reading assignment to “Great”.
+
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+> 
+> **Input:** `editcomment 1 as/Functional Expressionism c/Decent` Changes the comment on the 1st student's Functional Expressionism assignment to “Decent”.
+>
+> **Output:**
+>`Edited comment to assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `editcomment 2 as/Rune Reading c/Great` Changes the comment on the 2nd student's Rune Reading assignment to “Great”.
+>
+> **Output:**
+>`Edited comment to assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
+
 
 
 <br>
@@ -843,13 +1053,45 @@ You can delete the comment tagged to your student’s assignment.
 
 Format: `deletecomment INDEX as/ASSIGNMENT`
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * ASSIGNMENT The name of the assignment.
+| Parameter  | Description                 |
+|------------|-----------------------------|
+| INDEX      | The index of the student.   |
+| ASSIGNMENT | The name of the assignment. |
 
-Examples:
-* `deletecomment 1 a/Functional Expressionism` deletes the comment on student 1's Functional Expressionism assignment if it exists.
-* `deletecomment 2 a/Rune Reading` deletes the comment on student 2's Rune Reading assignment if it exists.
+
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `deletecomment 1 as/Functional Expressionism` Deletes the comment on the 1st student's Functional Expressionism assignment if it exists.
+>
+> **Output:**
+>`Deleted comment from assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `deletecomment 2 as/Rune Reading` Deletes the comment on the 2nd student's Rune Reading assignment if it exists.
+>
+> **Output:**
+>`Deleted comment from assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
+
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -868,21 +1110,36 @@ You can edit your student’s graded test scores.
 
 Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
 
-> **Parameters:**
-> * INDEX The index of the student.
-> * READING_ASSESSMENT_1 The score of the student's Reading Assessment 1.
-> * READING_ASSESSMENT_2 The score of the student's Reading Assessment 2.
-> * MIDTERMS The score of the student's MidTerms.
-> * FINALS The score of the student's Final Assessment.
-> * PRACTICALEXAM The score of the student's Practical Exams.
+| Parameter            | Description                                      |
+|----------------------|--------------------------------------------------|
+| INDEX                | The index of the student.                        |
+| READING_ASSESSMENT_1 | The score of the student's Reading Assessment 1. |
+| READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
+| MIDTERMS             | The score of the student's MidTerms.             |
+| FINALS               | The score of the student's Final Assessment.     |
+| PRACTICALEXAM        | The score of the student's Practical Exams.      |
+
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+
+</md>
+</div>
+
 
 > **Example 1:**
 >
 > **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh. 
 >
->
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:[friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
+>
+> [IMAGE COMING SOON]
 
 
 > **Example 2:**
@@ -890,12 +1147,13 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 > **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st 
 > person Alex Yeoh.
 >
->
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:
 > [friends]; Graded Test: RA1: 100; RA2: 2; MidTerms: 3; Final: 4; PE: 100`
 > 
->
+> [IMAGE COMING SOON]
+
+
 [Back to Table of Contents](#table-of-contents)
 
 
@@ -913,13 +1171,40 @@ You can create a session for any upcoming or past sessions.
 
 Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 
-> **Parameters:**
-> * SESSION_NUMBER The session number of the session
-> * STUDENT_NAME The name of the student(s)
+| Parameter      | Description                        |
+|----------------|------------------------------------|
+| SESSION_NUMBER | The session number of the session. |
+| STUDENT_NAME   | The name of the student(s).        |
 
-Examples:
-* `createsession s/2 n/John Doe` creates a session, which has session number 2 with John Doe.
-* `createsession s/3 n/John Doe n/Foo Bar` creates a session, which has session number 3, with John Doe and Foo Bar.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `createsession s/3 n/Alex Yeoh` Creates a session, which has session number 3 with Alex Yeoh.
+>
+> **Output:**
+>`New session added: Session: 3; Students: Alex Yeoh; Remark: NA`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `createsession s/4 n/Betsy Crower n/David Li` Creates a session, which has session number 3, with Betsy Crower and David Li.
+>
+> **Output:**
+>`New session added: Session: 4; Students: Betsy CrowerDavid Li; Remark: NA`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -931,13 +1216,40 @@ You can update an existing session's remark.
 
 Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
-> **Parameters:**
-> * SESSION_NUMBER The session number of the session
-> * REMARK The new remark to be updated for the session
+| Parameter      | Description                                   |
+|----------------|-----------------------------------------------|
+| SESSION_NUMBER | The session number of the session.            |
+| REMARK         | The new remark to be updated for the session. |
 
-Examples:
-* `updatesessionremark s/2 r/Teach Essence of Recursion` updates the remark for session number 2 to "Teach Essence of Recursion"
-* `updatesessionremark s/4 r/Taught streams and metacircular evalutator` updates the remark for session 4 to "Taught streams and metacircular evaluator"
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The session number must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `updatesessionremark s/2 r/Teach Essence of Recursion` Updates the remark for session number 2 to "Teach Essence of Recursion".
+>
+> **Output:**
+>`Session remarks updated: Session: 2; Students: Bernice YuCharlotte OliveiroAlex YeohIrfan IbrahimRoy Balakrishnan; Remark: Teach Essence of Recursion`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `updatesessionremark s/4 r/Taught streams and metacircular evalutator` Updates the remark for session 4 to "Taught streams and metacircular evaluator".
+>
+> **Output:**
+>`Session remarks updated: Session: 4; Students: Betsy CrowerDavid Li; Remark: Taught streams and metacircular evalutator`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -949,14 +1261,40 @@ You can delete an existing session specified by its session number.
 
 Format: `deletesession s/SESSION_NUMBER`
 
-> **Parameters:**
-> * SESSION_NUMBER The session number of the session
-
-Examples:
-* `deletesession s/1` deletes the session with session number 1 from the session list.
-* `deletesession s/4` deletes the session with session number 4 from the session list.
+| Parameter      | Description                        |
+|----------------|------------------------------------|
+| SESSION_NUMBER | The session number of the session. |
 
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The session number must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+
+> **Example 1:**
+>
+> **Input:** `deletesession s/1` Deletes the session with session number 1 from the session list.
+>
+> **Output:**
+>`Deleted Session: Session: 1; Students: Bernice YuCharlotte OliveiroDavid LiAlex YeohIrfan IbrahimRoy Balakrishnan; Remark: NA`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `deletesession s/4` Deletes the session with session number 4 from the session list.
+>
+> **Output:**
+>`Deleted Session: Session: 4; Students: Betsy CrowerDavid Li; Remark: Taught streams and metacircular evalutator`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -973,14 +1311,42 @@ You can create a consultation for any upcoming consultations.
 
 Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 
-> **Parameters:**
-> * DATE The date of consultation
-> * TIME The time of consultation 
-> * STUDENT_NAME The name of the student(s)
+| Parameter    | Description                 |
+|--------------|-----------------------------|
+| DATE         | The date of consultation.   |
+| TIME         | The time of consultation.   |
+| STUDENT_NAME | The name of the student(s). |
 
-Examples:
-* `createconsult d/2023-10-30 tt/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
-* `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
+
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The name of the students must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh` Creates a consultation for Alex Yeoh on 2023-10-30 12:30.
+>
+> **Output:**
+>`New consultation added: ; Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li` Creates a consultation for Alex Yeoh, Betsy Crower and David Li on 2023-09-30 15:30.
+>
+> **Output:**
+>`New consultation added: ; Date: 2023-09-30; Time: 15:30; Students: Betsy CrowerDavid LiAlex Yeoh`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -990,14 +1356,43 @@ You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultations.
-> * STUDENT_NAME The name of student to be added into the consultation.
+| Parameter    | Description                                                  |
+|--------------|--------------------------------------------------------------|
+| INDEX        | The index of the consultation in the upcoming consultations. |
+| STUDENT_NAME | The name of the student to be added to the consultation.     |
 
-Examples:
-* `addtoconsult 2 n/Foo Bar`.
-* `addtoconsult 1 n/Rayson n/Ryan Pang`.
-* `addtoconsult -1 n/Foo Bar`shows an error message.
+
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed consultation list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `addtoconsult 2 n/Betsy Crower` Adds Betsy Crower to the 2nd consultation on the list.
+>
+> **Output:**
+>`New student(s) added to consultation at index ; Date: 2023-11-01; Time: 10:00; Students: Betsy CrowerAlex Yeoh: ; Date: 2023-11-01; Time: 10:00; Students: Betsy CrowerAlex Yeoh`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `addtoconsult 1 n/David Li n/Roy Balakrishnan` Adds David Li and Roy Balakrishnan to the 1st consultation in the list.
+>
+> **Output:**
+>`New student(s) added to consultation at index ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuDavid LiAlex YeohRoy Balakrishnan: ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuDavid LiAlex YeohRoy Balakrishnan`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -1008,13 +1403,32 @@ You can remove your student(s) from a consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultations.
-> * STUDENT_NAME The name of student to be added into the consultation.
+| Parameter    | Description                                                  |
+|--------------|--------------------------------------------------------------|
+| INDEX        | The index of the consultation in the upcoming consultations. |
+| STUDENT_NAME | The name of the student to be added to the consultation.     |
 
-Examples:
-* `removefromconsult 2 n/Foo Bar`.
-* `removefromconsult 1 n/NOTINCONSULT` shows an error message “Student not found”.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed consultation list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `removefromconsult 2 n/Betsy Crower` Removes Betsy Crower from the 2nd consultation in the list.
+>
+> **Output:**
+>`Student(s) removed from consultation at index ; Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh: ; Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -1025,13 +1439,30 @@ You can delete the consultation slot specified by an index.
 
 Format: `deleteconsult INDEX`
 
-> **Parameters:**
-> * INDEX The index of the consultation in the upcoming consultations.
+| Parameter | Description                                                  |
+|-----------|--------------------------------------------------------------|
+| INDEX     | The index of the consultation in the upcoming consultations. |
 
-Examples:
-* `deleteconsult 1` deletes the first consultation in the consultation list.
-* `deleteconsult -1` shows an error message “Consultation not found”.
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed consultation list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+
+</md>
+</div>
+
+> **Example 1:**
+>
+> **Input:** `deleteconsult 1` Deletes the 1st consultation in the consultation list.
+>
+> **Output:**
+>`Deleted Consultation: ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuAlex YeohRoy Balakrishnan`
+>
+> [IMAGE COMING SOON]
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1079,7 +1510,7 @@ Examples:
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Interpreting Errors
+## Encountering Errors
 This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
 
 _[Coming soon]_
