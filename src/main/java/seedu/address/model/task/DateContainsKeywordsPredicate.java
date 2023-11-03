@@ -20,8 +20,8 @@ public class DateContainsKeywordsPredicate implements Predicate<Task> {
     @Override
     public boolean test(Task task) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(task.getDate()
-                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(task.getDate() != null ? task.getDate()
+                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "", keyword));
     }
 
     @Override
