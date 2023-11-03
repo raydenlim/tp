@@ -283,6 +283,51 @@ This section describes commands that fit in no special category.
 
 <br>
 
+#### Switching between different tabs: `tab`
+
+You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S.
+
+Format: `tab INDEX`
+
+| Parameter | Description                        |
+|-----------|------------------------------------|
+| INDEX     | The Index of the tab to switch to. |
+
+
+<div class="alert alert-info">
+<md>
+:information_source: Note: 
+
+* For the list of indexes to use:
+* **Students List:** 1
+* **Tasks List:** 2
+* **Assignments List:** 3
+* **Sessions List:** 4
+* **Consultations List:** 5
+
+</md> </div>
+
+> **Example 1:**
+>
+> **Input:** `tab 1` Switches to the student list tab.
+>
+> **Output:**
+>`Switched to tab 1`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `tab 2` Switches to the students list tab.
+>
+> **Output:**
+>`Switched to tab 2`
+>
+> [IMAGE COMING SOON]
+ 
+<br>
+
 #### Viewing help : `help`
 
 You can view a message explaining how to access the help page.
