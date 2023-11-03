@@ -754,10 +754,35 @@ Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 > **Parameters:**
 > * STUDENT_NAME The name of the student(s) you want to view the attendance of.
 
-Examples:
-* `viewattendance` Displays the overall attendance across all students and sessions.
-* `viewattendance n/Rayan` Displays all the sessions that Rayan has attended.
-* `viewattendance n/Jayson Resley` Displays all the sessions that Jayson and Resley have attended.
+> **Example 1:**
+>
+> **Input:** `viewattendance` Displays the overall attendance across all students and sessions.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `viewattendance n/Alex` Displays all the sessions that Alex has attended.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 3:**
+>
+> **Input:** `viewattendance n/Bernice Alex` Displays all the sessions that Bernice and Alex have attended.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -778,8 +803,28 @@ Format: `viewassignments INDEX`
 > * INDEX The index of the student.
 
 Examples:
-* `viewgrade 1` shows a list of student 1's assignment names, grades and comments.
+* 
 * `viewgrade 2` shows a list of student 2's assignment names, grades and comments.
+
+
+> **Example 1:**
+>
+> **Input:** `viewgrade 1` shows a list of student 1's assignment names, grades and comments.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `viewattendance n/Alex` Displays all the sessions that Alex has attended.
+>
+> **Output:**
+>`2 sessions listed!`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
