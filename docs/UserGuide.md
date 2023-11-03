@@ -127,36 +127,51 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ## Graphical User Interface
 
-![UI with Annotations](images/UiWithAnnotations.png)
+![UI with Annotations](images/newUiWithAnnotations.png)
 
-F.A.K.E.J.A.R.V.I.S.'s graphical user interface consists of 5 main components:
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface consists of 4 main components:
 * Command Box
 * Command Result Display
-* Task List Panel
-* Consultations Panel
-* Tutorials Panel
+* Current Panel
+* Tabs
 
 You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box.
 
 The following describes what each panel contains:
-* **Task List Panel:** Displays your set of tasks
-* **Consultations Panel:** Displays your consultations
-* **Tutorials Panel:** Displays your sessions
+* **Student List Panel:** Displays your students' details
+* **Task List Panel:** Displays your tasks' details
+* **Assignment List Panel:** Displays your students' assignment details
+* **Sessions Panel:** Displays your sessions' details
+* **Consultations Panel:** Displays your consultations' details
+
+
+<br>
+
+### Student Card
+![Student Card with Annotations](images/StudentCardAnnotated.png)
 
 <br>
 
 ### Task Card
-[Coming soon]
+![Task Card with Annotations](images/TaskCardAnnotated.png)
 
 <br>
 
-### Consultation Card
-[Coming soon]
+### Assignment Card
+![Assignment Card with Annotations](images/AssignmentCardAnnotated.png)
 
 <br>
 
 ### Session Card
-[Coming soon]
+![Session Card with Annotations](images/SessionCardAnnotated.png)
+
+<br>
+
+### Consultation Card
+![Consultation Card with Annotations](images/ConsultationCardAnnotated.png)
+
+<br>
+
 
 
 --------------------------------------------------------------------------------------------------------------------
