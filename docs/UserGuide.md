@@ -97,21 +97,23 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 | **Bold text**  | Highlights important keywords.                                 |
 | [Hyperlink](#) | Indicates hyperlinks to external websites or within the guide. |
 
-
+<br>
 
 | Convention                                                                          | Description                                                     |
 |-------------------------------------------------------------------------------------|-----------------------------------------------------------------|
 | **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** | Provides information of special interest or importance.         |
 | **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**     | Alerts to potentially irreversible actions with data loss risk. |
 
-| Convention    | Description                    |
-|---------------|--------------------------------|
-| 📝            | Add <br/> Create               |
-| ❌            | Delete <br/> Remove            |
-| 🛠️            | Edit <br/> Modify <br/> Update |
-| 🔎            | Find                           |
-| 📆            | Take Attendance                |
-| 👀            | View <br/> Display </br> List  |
+<br>
+
+| Convention | Description                    |
+|------------|--------------------------------|
+| 📝         | Add <br/> Create               |
+| ❌          | Delete <br/> Remove            |
+| 🛠️        | Edit <br/> Modify <br/> Update |
+| 🔎         | Find                           |
+| 📆         | Take Attendance                |
+| 👀         | View <br/> Display </br> List  |
 
 
 
