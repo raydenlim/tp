@@ -715,13 +715,21 @@ You can take the attendance of your student(s).
 
 Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
-Examples:
-
 
 > **Parameters:**
 > * STUDENT_NAME The name of the student.
 > * SESSION_NUMBER The session number of the session.
 > * PRESENCE The attendance status of the student (e.g., present, absent).
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -753,6 +761,17 @@ Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 > **Parameters:**
 > * STUDENT_NAME The name of the student(s) you want to view the attendance of.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
 
 > **Example 1:**
 >
@@ -802,6 +821,16 @@ Format: `viewassignments INDEX`
 > **Parameters:**
 > * INDEX The index of the student.
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -836,6 +865,17 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 > * ASSIGNMENT The name of the assignment.
 > * GRADE The score of the student.
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -869,6 +909,18 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 > **Parameters:**
 > * INDEX The index of the student.
 > * ASSIGNMENT The name of the assignment.
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 
 > **Example 1:**
@@ -906,6 +958,18 @@ Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 > * COMMENT The new comment.
 
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
 > **Example 1:**
 > 
 > **Input:** `editcomment 1 as/Functional Expressionism c/Decent` Changes the comment on the 1st student's Functional Expressionism assignment to “Decent”.
@@ -940,6 +1004,18 @@ Format: `deletecomment INDEX as/ASSIGNMENT`
 > * INDEX The index of the student.
 > * ASSIGNMENT The name of the assignment.
 
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -987,6 +1063,18 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 > * FINALS The score of the student's Final Assessment.
 > * PRACTICALEXAM The score of the student's Practical Exams.
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed student list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+
+</md>
+</div>
+
+
 > **Example 1:**
 >
 > **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh. 
@@ -1030,6 +1118,15 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 > * SESSION_NUMBER The session number of the session
 > * STUDENT_NAME The name of the student(s)
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -1064,6 +1161,15 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 > * SESSION_NUMBER The session number of the session
 > * REMARK The new remark to be updated for the session
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The session number must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -1096,6 +1202,16 @@ Format: `deletesession s/SESSION_NUMBER`
 
 > **Parameters:**
 > * SESSION_NUMBER The session number of the session
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The session number must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 
 > **Example 1:**
@@ -1138,6 +1254,16 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 > * STUDENT_NAME The name of the student(s)
 
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The name of the students must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
+
 > **Example 1:**
 >
 > **Input:** `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh` Creates a consultation for Alex Yeoh on 2023-10-30 12:30.
@@ -1165,12 +1291,22 @@ You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
-// create note need to be positive number
-
 > **Parameters:**
 > * INDEX The index of the consultation in the upcoming consultations.
 > * STUDENT_NAME The name of student to be added into the consultation.
 
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed consultation list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -1204,6 +1340,17 @@ Format: `removefromconsult INDEX n/STUDENT_NAME …`
 > * INDEX The index of the consultation in the upcoming consultations.
 > * STUDENT_NAME The name of student to be added into the consultation.
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed consultation list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
+</div>
 
 > **Example 1:**
 >
@@ -1226,6 +1373,16 @@ Format: `deleteconsult INDEX`
 > **Parameters:**
 > * INDEX The index of the consultation in the upcoming consultations.
 
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The index refers to the index number shown in the displayed consultation list.
+* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+
+</md>
+</div>
 
 > **Example 1:**
 >
