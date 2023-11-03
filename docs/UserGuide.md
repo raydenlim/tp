@@ -802,27 +802,23 @@ Format: `viewassignments INDEX`
 > **Parameters:**
 > * INDEX The index of the student.
 
-Examples:
-* 
-* `viewgrade 2` shows a list of student 2's assignment names, grades and comments.
-
 
 > **Example 1:**
 >
-> **Input:** `viewgrade 1` shows a list of student 1's assignment names, grades and comments.
+> **Input:** `viewassignments 1` Shows a list of the 1st student's assignment names, grades and comments.
 >
 > **Output:**
->`2 sessions listed!`
+>`Showing all assignment details of: Alex Yeoh`
 >
 > [IMAGE COMING SOON]
 
 
 > **Example 2:**
 >
-> **Input:** `viewattendance n/Alex` Displays all the sessions that Alex has attended.
+> **Input:** `viewassignments 2` shows a list of the 2nd student's assignment names, grades and comments.
 >
 > **Output:**
->`2 sessions listed!`
+>`Showing all assignment details of: Betsy Crower`
 >
 > [IMAGE COMING SOON]
 
@@ -840,9 +836,26 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 > * ASSIGNMENT The name of the assignment.
 > * GRADE The score of the student.
 
-Examples:
-* `editgrade 1 as/Functional Expressionism g/500` edits the grade of student 1's Functional Expressionism assignment to 500.
-* `editgrade 2 as/Rune Reading g/300` edits the grade of student 2's Rune Reading assignment to 300.
+
+> **Example 1:**
+>
+> **Input:** `editgrade 1 as/Functional Expressionism g/500` Edits the grade of the 1st student's Functional Expressionism assignment to 500.
+>
+> **Output:**
+>`Edited grade to assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `editgrade 2 as/Rune Reading g/300` edits the grade of the 2nd student's Rune Reading assignment to 300.
+>
+> **Output:**
+>`Edited grade to assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
 
 
 <br>
@@ -857,9 +870,26 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 > * INDEX The index of the student.
 > * ASSIGNMENT The name of the assignment.
 
-Examples:
-* `deletegrade 1 as/Functional Expressionism` deletes student 1's Functional Expressionism grade if its graded.
-* `deletegrade 2 as/Rune Reading` deletes student 2's Rune Reading grade if its graded.
+
+> **Example 1:**
+>
+> **Input:** `deletegrade 1 as/Functional Expressionism` deletes the 1st student's Functional Expressionism grade if its graded.
+>
+> **Output:**
+>`Deleted grade from assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `deletegrade 2 as/Rune Reading` deletes the 2nd student's Rune Reading grade if its graded.
+>
+> **Output:**
+>`Deleted grade from assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
 
 
 <br>
@@ -875,9 +905,27 @@ Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 > * ASSIGNMENT The name of the assignment.
 > * COMMENT The new comment.
 
-Examples:
-* `editcomment 1 as/Functional Expressionism c/Decent` changes the comment on student 1's Functional Expressionism assignment to “Decent”.
-* `editcomment 2 as/Rune Reading c/Great` changes the comment on student 2's Rune Reading assignment to “Great”.
+
+> **Example 1:**
+> 
+> **Input:** `editcomment 1 as/Functional Expressionism c/Decent` Changes the comment on the 1st student's Functional Expressionism assignment to “Decent”.
+>
+> **Output:**
+>`Edited comment to assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `editcomment 2 as/Rune Reading c/Great` Changes the comment on the 2nd student's Rune Reading assignment to “Great”.
+>
+> **Output:**
+>`Edited comment to assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
+
 
 
 <br>
@@ -892,9 +940,27 @@ Format: `deletecomment INDEX as/ASSIGNMENT`
 > * INDEX The index of the student.
 > * ASSIGNMENT The name of the assignment.
 
-Examples:
-* `deletecomment 1 a/Functional Expressionism` deletes the comment on student 1's Functional Expressionism assignment if it exists.
-* `deletecomment 2 a/Rune Reading` deletes the comment on student 2's Rune Reading assignment if it exists.
+
+> **Example 1:**
+>
+> **Input:** `deletecomment 1 as/Functional Expressionism` Deletes the comment on the 1st student's Functional Expressionism assignment if it exists.
+>
+> **Output:**
+>`Deleted comment from assignment: Functional Expressionism`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `deletecomment 2 as/Rune Reading` Deletes the comment on the 2nd student's Rune Reading assignment if it exists.
+>
+> **Output:**
+>`Deleted comment from assignment: Rune Reading`
+>
+> [IMAGE COMING SOON]
+
+
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -925,9 +991,10 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 >
 > **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh. 
 >
->
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:[friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
+>
+> [IMAGE COMING SOON]
 
 
 > **Example 2:**
@@ -935,12 +1002,13 @@ Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MI
 > **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st 
 > person Alex Yeoh.
 >
->
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:
 > [friends]; Graded Test: RA1: 100; RA2: 2; MidTerms: 3; Final: 4; PE: 100`
 > 
->
+> [IMAGE COMING SOON]
+
+
 [Back to Table of Contents](#table-of-contents)
 
 
@@ -962,9 +1030,25 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 > * SESSION_NUMBER The session number of the session
 > * STUDENT_NAME The name of the student(s)
 
-Examples:
-* `createsession s/2 n/John Doe` creates a session, which has session number 2 with John Doe.
-* `createsession s/3 n/John Doe n/Foo Bar` creates a session, which has session number 3, with John Doe and Foo Bar.
+
+> **Example 1:**
+>
+> **Input:** `createsession s/3 n/Alex Yeoh` Creates a session, which has session number 3 with Alex Yeoh.
+>
+> **Output:**
+>`New session added: Session: 3; Students: Alex Yeoh; Remark: NA`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `createsession s/4 n/Betsy Crower n/David Li` Creates a session, which has session number 3, with Betsy Crower and David Li.
+>
+> **Output:**
+>`New session added: Session: 4; Students: Betsy CrowerDavid Li; Remark: NA`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -980,9 +1064,25 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 > * SESSION_NUMBER The session number of the session
 > * REMARK The new remark to be updated for the session
 
-Examples:
-* `updatesessionremark s/2 r/Teach Essence of Recursion` updates the remark for session number 2 to "Teach Essence of Recursion"
-* `updatesessionremark s/4 r/Taught streams and metacircular evalutator` updates the remark for session 4 to "Taught streams and metacircular evaluator"
+
+> **Example 1:**
+>
+> **Input:** `updatesessionremark s/2 r/Teach Essence of Recursion` Updates the remark for session number 2 to "Teach Essence of Recursion".
+>
+> **Output:**
+>`Session remarks updated: Session: 2; Students: Bernice YuCharlotte OliveiroAlex YeohIrfan IbrahimRoy Balakrishnan; Remark: Teach Essence of Recursion`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `updatesessionremark s/4 r/Taught streams and metacircular evalutator` Updates the remark for session 4 to "Taught streams and metacircular evaluator".
+>
+> **Output:**
+>`Session remarks updated: Session: 4; Students: Betsy CrowerDavid Li; Remark: Taught streams and metacircular evalutator`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -997,11 +1097,25 @@ Format: `deletesession s/SESSION_NUMBER`
 > **Parameters:**
 > * SESSION_NUMBER The session number of the session
 
-Examples:
-* `deletesession s/1` deletes the session with session number 1 from the session list.
-* `deletesession s/4` deletes the session with session number 4 from the session list.
+
+> **Example 1:**
+>
+> **Input:** `deletesession s/1` Deletes the session with session number 1 from the session list.
+>
+> **Output:**
+>`Deleted Session: Session: 1; Students: Bernice YuCharlotte OliveiroDavid LiAlex YeohIrfan IbrahimRoy Balakrishnan; Remark: NA`
+>
+> [IMAGE COMING SOON]
 
 
+> **Example 2:**
+>
+> **Input:** `deletesession s/4` Deletes the session with session number 4 from the session list.
+>
+> **Output:**
+>`Deleted Session: Session: 4; Students: Betsy CrowerDavid Li; Remark: Taught streams and metacircular evalutator`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -1023,9 +1137,25 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 > * TIME The time of consultation 
 > * STUDENT_NAME The name of the student(s)
 
-Examples:
-* `createconsult d/2023-10-30 tt/12:30 n/John Doe` creates a consultation for John Doe on 2023-10-30 12:30.
-* `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` creates a consultation for John Doe, Foo Bar, Rayson and Wesley on 2023-09-30 15:30.
+
+> **Example 1:**
+>
+> **Input:** `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh` Creates a consultation for Alex Yeoh on 2023-10-30 12:30.
+>
+> **Output:**
+>`New consultation added: ; Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li` Creates a consultation for Alex Yeoh, Betsy Crower and David Li on 2023-09-30 15:30.
+>
+> **Output:**
+>`New consultation added: ; Date: 2023-09-30; Time: 15:30; Students: Betsy CrowerDavid LiAlex Yeoh`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -1035,14 +1165,31 @@ You can add your student(s) into a consultation slot.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
+// create note need to be positive number
+
 > **Parameters:**
 > * INDEX The index of the consultation in the upcoming consultations.
 > * STUDENT_NAME The name of student to be added into the consultation.
 
-Examples:
-* `addtoconsult 2 n/Foo Bar`.
-* `addtoconsult 1 n/Rayson n/Ryan Pang`.
-* `addtoconsult -1 n/Foo Bar`shows an error message.
+
+> **Example 1:**
+>
+> **Input:** `addtoconsult 2 n/Betsy Crower` Adds Betsy Crower to the 2nd consultation on the list.
+>
+> **Output:**
+>`New student(s) added to consultation at index ; Date: 2023-11-01; Time: 10:00; Students: Betsy CrowerAlex Yeoh: ; Date: 2023-11-01; Time: 10:00; Students: Betsy CrowerAlex Yeoh`
+>
+> [IMAGE COMING SOON]
+
+
+> **Example 2:**
+>
+> **Input:** `addtoconsult 1 n/David Li n/Roy Balakrishnan` Adds David Li and Roy Balakrishnan to the 1st consultation in the list.
+>
+> **Output:**
+>`New student(s) added to consultation at index ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuDavid LiAlex YeohRoy Balakrishnan: ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuDavid LiAlex YeohRoy Balakrishnan`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -1057,9 +1204,15 @@ Format: `removefromconsult INDEX n/STUDENT_NAME …`
 > * INDEX The index of the consultation in the upcoming consultations.
 > * STUDENT_NAME The name of student to be added into the consultation.
 
-Examples:
-* `removefromconsult 2 n/Foo Bar`.
-* `removefromconsult 1 n/NOTINCONSULT` shows an error message “Student not found”.
+
+> **Example 1:**
+>
+> **Input:** `removefromconsult 2 n/Betsy Crower` Removes Betsy Crower from the 2nd consultation in the list.
+>
+> **Output:**
+>`Student(s) removed from consultation at index ; Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh: ; Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh`
+>
+> [IMAGE COMING SOON]
 
 
 <br>
@@ -1073,10 +1226,15 @@ Format: `deleteconsult INDEX`
 > **Parameters:**
 > * INDEX The index of the consultation in the upcoming consultations.
 
-Examples:
-* `deleteconsult 1` deletes the first consultation in the consultation list.
-* `deleteconsult -1` shows an error message “Consultation not found”.
 
+> **Example 1:**
+>
+> **Input:** `deleteconsult 1` Deletes the 1st consultation in the consultation list.
+>
+> **Output:**
+>`Deleted Consultation: ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuAlex YeohRoy Balakrishnan`
+>
+> [IMAGE COMING SOON]
 
 --------------------------------------------------------------------------------------------------------------------
 
