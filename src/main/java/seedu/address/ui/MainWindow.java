@@ -202,7 +202,11 @@ public class MainWindow extends UiPart<Stage> {
      */
     public void handleViewAssignments() {
         assignmentListPanel = new AssignmentListPanel(logic.getAssignments());
-        resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
+        if (resultGraphicalDisplayPlaceholder.getChildren().size() != 0) {
+            resultGraphicalDisplayPlaceholder.getChildren().set(0, assignmentListPanel.getRoot());
+        } else {
+            resultGraphicalDisplayPlaceholder.getChildren().add(assignmentListPanel.getRoot());
+        }
     }
 
     /**
@@ -256,6 +260,11 @@ public class MainWindow extends UiPart<Stage> {
             case EXIT:
                 handleExit();
                 break;
+            // Assignments
+            case DELETE_COMMENT:
+            case DELETE_GRADE:
+            case EDIT_COMMENT:
+            case EDIT_GRADE:
             case VIEW_ASSIGNMENTS:
                 handleViewAssignments();
                 break;
@@ -268,6 +277,7 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE:
             case EDIT:
             case FIND:
+                break;
             case LIST:
                 selectTab(TAB_PERSONS_INDEX);
                 clearGraphicalResultDisplay();
@@ -276,15 +286,11 @@ public class MainWindow extends UiPart<Stage> {
             case ADD_TASK:
             case DELETE_TASK:
             case UPDATE_TASK_PROGRESS:
+                break;
             case VIEW_TASKS:
                 selectTab(TAB_TASKS_INDEX);
                 clearGraphicalResultDisplay();
                 break;
-            // Assignments
-            case DELETE_COMMENT:
-            case DELETE_GRADE:
-            case EDIT_COMMENT:
-            case EDIT_GRADE:
             case EDIT_GRADED_TEST:
                 selectTab(TAB_ASSIGNMENTS_INDEX);
                 clearGraphicalResultDisplay();
@@ -293,6 +299,7 @@ public class MainWindow extends UiPart<Stage> {
             case CREATE_CONSULT:
             case ADD_TO_CONSULT:
             case DELETE_CONSULT:
+                break;
             case REMOVE_FROM_CONSULT:
                 selectTab(TAB_CONSULTATIONS_INDEX);
                 clearGraphicalResultDisplay();
@@ -302,6 +309,7 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE_SESSION:
             case UPDATE_SESSION_REMARK:
             case TAKE_ATTENDANCE:
+                break;
             case VIEW_ATTENDANCE:
                 selectTab(TAB_SESSIONS_INDEX);
                 clearGraphicalResultDisplay();
