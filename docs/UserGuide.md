@@ -836,7 +836,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 > **Example 1:**
 >
-> **Input:** `takeattendance n/Alex Yeoh s/2 ap/present` Marks Alex Yeoh as present on the 5th session.
+> **Input:** `takeattendance n/Alex Yeoh s/5 ap/present` Marks Alex Yeoh as present on the 5th session.
 >
 > **Output:**
 >`Attendance taken`
