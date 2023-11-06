@@ -197,7 +197,7 @@ The following describes what each panel contains:
 
     * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
-    * `createsession s/3 n/John Doe` : Creates a `No. 3` Session with the student `John Doe`.
+    * `createsession s/3 n/John Doe` : Creates a session with session number 3 with the student `John Doe`.
 
     * `exit` : Exits the app.
 
