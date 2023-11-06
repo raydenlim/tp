@@ -1550,7 +1550,7 @@ Format: `deleteconsult INDEX`
 
 | **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]...[gt/GRADEDTEST]…​`                             | `add n/James Ho p/22224444 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                             | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
 | **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
 | **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`                  | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                           |
@@ -1570,8 +1570,6 @@ Format: `deleteconsult INDEX`
 | **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                    | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
 | **Edit Graded Test**          | `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                           |
 | **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                                 | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
-| **Show Consultations**        | `showconsults`                                                                                                 | `showconsults`                                                                                                                 |
-| **View Consultation Details** | `viewconsult INDEX`                                                                                            | `viewconsult 1`, `viewconsult 2`                                                                                               |
 
 [Back to Table of Contents](#table-of-contents)
 
