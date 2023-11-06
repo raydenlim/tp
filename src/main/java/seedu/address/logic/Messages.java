@@ -86,7 +86,7 @@ public class Messages {
         builder.append("Session: ")
                 .append(session.getSessionNumber())
                 .append("; Students: ");
-        session.getStudents().forEach(student -> builder.append(student.getName()));
+        session.getStudents().forEach(student -> builder.append(String.format("%s ", student.getName())));
         builder.append("; Remark: ")
                 .append(session.getSessionRemark());
         return builder.toString();

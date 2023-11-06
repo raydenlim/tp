@@ -197,7 +197,7 @@ The following describes what each panel contains:
 
     * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
-    * `createsession 3 n/John Doe` : Creates a `No. 3` Session with the student `John Doe`.
+    * `createsession s/3 n/John Doe` : Creates a `No. 3` Session with the student `John Doe`.
 
     * `exit` : Exits the app.
 
@@ -1262,7 +1262,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 > **Input:** `createsession s/4 n/Betsy Crower n/David Li` Creates a session, which has session number 3, with Betsy Crower and David Li.
 >
 > **Output:**
->`New session added: Session: 4; Students: Betsy CrowerDavid Li; Remark: NA`
+>`New session added: Session: 4; Students: Betsy Crower David Li; Remark: NA`
 >
 > [IMAGE COMING SOON]
 
