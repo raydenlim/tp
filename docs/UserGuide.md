@@ -319,7 +319,7 @@ Format: `tab INDEX`
 
 > **Example 2:**
 >
-> **Input:** `tab 2` Switches to the students list tab.
+> **Input:** `tab 2` Switches to the tasks list tab.
 >
 > **Output:**
 >`Switched to tab 2`
