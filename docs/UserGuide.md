@@ -382,20 +382,26 @@ This section describes commands that help you manage your students.
 
 You can add a student to F.A.K.E.J.A.R.V.I.S.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| Parameter          | Description                                  |
-|--------------------|----------------------------------------------|
-| n/NAME             | The name of the student to be added.         |
-| p/PHONE_NUMBER     | The phone number of the student.             |
-| e/EMAIL            | The email address of the student.            |
-| th/TELEGRAM_HANDLE | The Telegram handle of the student.          |
-| t/TAG              | (Optional) Tags associated with the student. |
-
+| Parameter       | Description                                             |
+|-----------------|---------------------------------------------------------|
+| NAME            | The name of the student to be added.                    |
+| PHONE_NUMBER    | The phone number of the student.                        |
+| EMAIL           | The email address of the student.                       |
+| TELEGRAM_HANDLE | The Telegram handle of the student.                     |
+| TAG             | Tags associated with the student.                       |
+| GRADED_TESTS    | Scores of the graded tests associated with the student. |
 
 <div class="alert alert-info">
 <md>
-:information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
+:information_source: Note: 
+
+* You can add any number of tags to a student! (including 0)
+* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* You can use `gt/default` to set graded tests scores as '-' !
+
+</md> </div>
 
 > **Example 1:**
 > 
@@ -441,27 +447,29 @@ Format: `list`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| Parameter          | Description                                         |
-|--------------------|-----------------------------------------------------|
-| INDEX              | The index of the student to be edited.              |
-| n/NAME             | (Optional) The new name for the student.            |
-| p/PHONE            | (Optional) The new phone number for the student.    |
-| e/EMAIL            | (Optional) The new email address for the student.   |
-| th/TELEGRAM_HANDLE | (Optional) The new Telegram handle for the student. |
-| t/TAG              | (Optional) New tags associated with the student.    |
+| Parameter       | Description                                             |
+|-----------------|---------------------------------------------------------|
+| INDEX           | The index of the student to be edited.                  |
+| NAME            | The new name for the student.                           |
+| PHONE           | The new phone number for the student.                   |
+| EMAIL           | The new email address for the student.                  |
+| TELEGRAM_HANDLE | The new Telegram handle for the student.                |
+| TAG             | New tags associated with the student.                   |
+| GRADED_TESTS    | Scores of the graded tests associated with the student. |
 
 
 <div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed person list. 
+* The index refers to the index number shown in the displayed student list. 
 * The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
+* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
-* You can remove all the person’s graded tests by typing `gt/` without specifying any graded test parameters after it.
+* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* You can use `gt/default` to reset graded tests scores as '-' !
 
 </md>
 </div>
