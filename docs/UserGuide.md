@@ -41,10 +41,10 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 * [Features](#features)
     * [General Commands](#general-commands)
         * [Viewing help : `help`](#viewing-help-help)
-        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-fakejarvis-exit)
+        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)
         * [Saving the Data](#saving-the-data)
         * [Editing the Data File](#editing-the-data-file)
-        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
     * [Student Management](#student-management)
         * [Adding a Student: `add`](#adding-a-student-add)
         * [Listing All Students : `list`](#listing-all-students-list)
@@ -55,7 +55,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
     * [Task Management](#task-management)
         * [Adding a Task: `addtask`](#adding-a-task-addtask)
         * [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)
-        * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress-updateprogress)
+        * [Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)
         * [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)
     * [Attendance Management](#attendance-management)
         * [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)
@@ -70,7 +70,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
         * [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)
     * [Session Management](#session-management)
         * [Creating a Session: `createsession`](#creating-a-session-createsession)
-        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-sessions-remark-updatesessionremark)
+        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)
         * [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)
     * [Consultation Management](#consultation-management)
         * [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)
@@ -129,7 +129,7 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ![UI with Annotations](images/newUiWithAnnotations.png)
 
-F.A.K.E.J.A.R.V.I.S.'s graphical user interface consists of 4 main components:
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 4 main components:
 * Command Box
 * Command Result Display
 * Current Panel
@@ -298,7 +298,7 @@ Format: `tab INDEX`
 <md>
 :information_source: Note: 
 
-* For the list of indexes to use:
+For the list of indexes to use:
 * **Students List:** 1
 * **Tasks List:** 2
 * **Assignments List:** 3
