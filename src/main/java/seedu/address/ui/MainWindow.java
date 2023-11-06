@@ -285,8 +285,10 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE_GRADE:
             case EDIT_COMMENT:
             case EDIT_GRADE:
-            case EDIT_GRADED_TEST:
                 selectTab(TAB_ASSIGNMENTS_INDEX);
+                clearGraphicalResultDisplay();
+            case EDIT_GRADED_TEST:
+                selectTab(TAB_PERSONS_INDEX);
                 clearGraphicalResultDisplay();
                 break;
             // Consultations
