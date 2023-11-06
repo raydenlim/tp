@@ -3,12 +3,14 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -89,6 +91,32 @@ public class TakeAttendanceCommandTest {
         assertFalse(updatedSession.getStudents().contains(alice));
         assertFalse(updatedSession.getStudents().contains(bob));
     }
+
+    @Test
+    public void execute_invalidArguments_throwsCommandException() {
+        Model model = new ModelManager();
+        Person alice = new PersonBuilder().withName("Alice").build(); // Alice in model
+        Person bob = new PersonBuilder().withName("Bob").build(); // Bob not in model
+        Session currentSession = new Session(new SessionNumber("3"));
+        model.addPerson(alice);
+        model.addSession(currentSession);
+
+        Set<Name> studentNames = new HashSet<>();
+        studentNames.add(new Name("Alice"));
+        studentNames.add(new Name("Bob"));
+
+
+        TakeAttendanceCommand markPresentCommandInvalidName = new TakeAttendanceCommand(
+                currentSession.getSessionNumber(), studentNames, AttendancePresence.PRESENT);
+        assertCommandFailure(markPresentCommandInvalidName, model, TakeAttendanceCommand.MESSAGE_PERSON_NOT_FOUND);
+
+        model.addPerson(bob); // Bob is now in model
+        TakeAttendanceCommand markPresentCommandInvalidSessionNumber = new TakeAttendanceCommand(
+                new SessionNumber("5"), studentNames, AttendancePresence.PRESENT);
+        assertCommandFailure(markPresentCommandInvalidSessionNumber, model, Messages.MESSAGE_SESSION_NOT_FOUND);
+
+    }
+
 
     @Test
     public void getCommandType() {

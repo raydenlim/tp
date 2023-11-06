@@ -85,8 +85,8 @@ public class SessionListTest {
     @Test
     public void find_findSessionByNumber_notInSessionList() {
         sessionList.addSession(SESSION1B);
-        assertThrows(SessionNotFoundException.class,
-                () -> sessionList.findSessionBySessionNumber(new SessionNumber("5")));
+        assertThrows(SessionNotFoundException.class, () -> sessionList.findSessionBySessionNumber(
+                new SessionNumber("5")));
     }
 
     @Test
