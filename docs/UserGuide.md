@@ -496,10 +496,10 @@ You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-| Parameter     | Description                                    |
-|---------------|------------------------------------------------|
-| KEYWORD       | The main keyword to search for.                |
-| MORE_KEYWORDS | (Optional) Additional keywords for the search. |
+| Parameter     | Description                         |
+|---------------|-------------------------------------|
+| KEYWORD       | The main keyword to search for.     |
+| MORE_KEYWORDS | Additional keywords for the search. |
 
 
 
@@ -507,7 +507,6 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
-* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
