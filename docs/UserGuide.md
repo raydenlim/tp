@@ -547,7 +547,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 <br>
 
-#### Deleting a Student : `delete`
+#### ❌Deleting a Student : `delete`
 
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
