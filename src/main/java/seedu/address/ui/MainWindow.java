@@ -265,6 +265,11 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE_GRADE:
             case EDIT_COMMENT:
             case EDIT_GRADE:
+                if (assignmentListPanel != null && !resultGraphicalDisplayPlaceholder.getChildren().isEmpty()
+                    && resultGraphicalDisplayPlaceholder.getChildren().get(0).equals(assignmentListPanel.getRoot())) {
+                    handleViewAssignments();
+                }
+                break;
             case VIEW_ASSIGNMENTS:
                 handleViewAssignments();
                 break;
