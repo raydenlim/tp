@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalConsultations.getTypicalConsultationListBook;
 import static seedu.address.testutil.TypicalGradedTest.getTypicalGradedTestList;
@@ -19,6 +19,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.exceptions.SessionNotFoundException;
 import seedu.address.testutil.TypicalSessions;
 
 public class DeleteSessionCommandTest {
@@ -43,11 +44,12 @@ public class DeleteSessionCommandTest {
     }
 
     @Test
-    public void execute_invalidSessionNumber_throwsCommandException() {
+    public void execute_invalidSessionNumber_throwsSessionNotFoundException() {
         SessionNumber targetSessionNumber = new SessionNumber("12312");
         DeleteSessionCommand deleteSessionCommand = new DeleteSessionCommand(targetSessionNumber);
 
-        assertCommandFailure(deleteSessionCommand, model, Messages.MESSAGE_SESSION_NOT_FOUND);
+        assertThrows(SessionNotFoundException.class,
+                () -> deleteSessionCommand.execute(model));
     }
 
     @Test

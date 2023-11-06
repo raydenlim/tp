@@ -2,11 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.Messages.MESSAGE_SESSION_NOT_FOUND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
@@ -16,10 +18,12 @@ import seedu.address.model.Model;
 import seedu.address.model.attendance.AttendancePresence;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
 import seedu.address.model.session.SessionStudents;
+import seedu.address.model.session.exceptions.SessionNotFoundException;
 
 /**
  * Represents a command for taking attendance of one or more students in a session.
@@ -41,8 +45,9 @@ public class TakeAttendanceCommand extends Command {
 
     public static final CommandType COMMAND_TYPE = CommandType.TAKE_ATTENDANCE;
 
+    public static final String MESSAGE_PERSON_NOT_FOUND = "Not all names given are valid students";
+
     private SessionNumber sessionNumber;
-    private Name name;
     private Set<Name> names;
     private SessionStudents students;
     private Session session;
@@ -59,7 +64,8 @@ public class TakeAttendanceCommand extends Command {
         requireAllNonNull(sessionNumber, name, attendancePresence);
 
         this.sessionNumber = sessionNumber;
-        this.name = name;
+        this.names = new HashSet<>();
+        this.names.add(name);
         this.attendancePresence = attendancePresence;
     }
 
@@ -88,33 +94,31 @@ public class TakeAttendanceCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        this.session = model.findSessionBySessionNumber(sessionNumber);
+        try {
+            this.session = model.findSessionBySessionNumber(sessionNumber);
+        } catch (SessionNotFoundException e) {
+            throw new CommandException(MESSAGE_SESSION_NOT_FOUND);
+        }
+
         this.students = this.session.getStudents();
 
-        if (name != null) {
-            // Get the student to add to the session
-            Person student = model.getMatchingStudentName(name);
-            this.students.add(student);
-            if (attendancePresence.equals(AttendancePresence.PRESENT)) {
-                student.attendSession(this.session);
-            } else {
-                student.missSession(this.session);
-                this.students.remove(student);
-            }
-        }
-
-        if (names != null && !names.isEmpty()) {
-            for (Name name : names) {
-                Person student = model.getMatchingStudentName(name);
-                this.students.add(student);
-                if (attendancePresence.equals(AttendancePresence.PRESENT)) {
-                    student.attendSession(this.session);
-                } else {
-                    student.missSession(this.session);
-                    this.students.remove(student);
+        try {
+            if (names != null && !names.isEmpty()) {
+                for (Name name : names) {
+                    Person student = model.getMatchingStudentName(name);
+                    this.students.add(student);
+                    if (attendancePresence.equals(AttendancePresence.PRESENT)) {
+                        student.attendSession(this.session);
+                    } else {
+                        student.missSession(this.session);
+                        this.students.remove(student);
+                    }
                 }
             }
+        } catch (PersonNotFoundException e) {
+            throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
         }
+
         Session newSession = createUpdatedSession(this.session);
         model.setSession(this.session, newSession);
         model.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
@@ -169,9 +173,7 @@ public class TakeAttendanceCommand extends Command {
                     && this.sessionNumber.equals(otherTakeAttendanceCommand.sessionNumber);
         } else if (names == null && otherTakeAttendanceCommand.names == null) {
             // Compare when both 'names' are null
-            return this.name == null ? otherTakeAttendanceCommand.name == null
-                    : this.name.equals(otherTakeAttendanceCommand.name)
-                    && this.sessionNumber.equals(otherTakeAttendanceCommand.sessionNumber);
+            return this.sessionNumber.equals(otherTakeAttendanceCommand.sessionNumber);
         } else {
             // 'names' is null in one of the objects
             return false;
