@@ -860,7 +860,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 You can view the attendance list of your students.
 
-Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
+Format: `viewattendance n/STUDENT_NAME n/STUDENT_NAME …`
 
 | Parameter    | Description                                                    |
 |--------------|----------------------------------------------------------------|
@@ -890,7 +890,7 @@ Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 > **Example 2:**
 >
-> **Input:** `viewattendance n/Alex` Displays all the sessions that Alex has attended.
+> **Input:** `viewattendance n/Alex Yeoh` Displays all the sessions that Alex Yeoh has attended.
 >
 > **Output:**
 >`2 sessions listed!`
@@ -900,7 +900,7 @@ Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 > **Example 3:**
 >
-> **Input:** `viewattendance n/Bernice Alex` Displays all the sessions that Bernice and Alex have attended.
+> **Input:** `viewattendance n/Bernice Yu n/Alex Yeoh` Displays all the sessions that Bernice Yu and Alex Yeoh have attended.
 >
 > **Output:**
 >`2 sessions listed!`

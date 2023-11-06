@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,22 +17,25 @@ import seedu.address.testutil.SessionBuilder;
 import seedu.address.testutil.TypicalPersons;
 
 public class SessionStudentsContainsKeywordsPredicateTest {
+
     @Test
     public void equals() {
-        List<String> firstPredicateKeywordList = Collections.singletonList("Alice");
-        List<String> secondPredicateKeywordList = Arrays.asList("Alice", "Alex");
+        Set<Person> firstPredicateKeywordSet = Collections.singleton(
+                new PersonBuilder(TypicalPersons.ALICE).build());
+        Set<Person> secondPredicateKeywordSet = new HashSet<>(Arrays.asList(
+                new PersonBuilder(TypicalPersons.ALICE).build(), new PersonBuilder(TypicalPersons.BOB).build()));
 
         SessionStudentsContainsKeywordsPredicate firstPredicate =
-                new SessionStudentsContainsKeywordsPredicate(firstPredicateKeywordList);
-        SessionNumberContainsKeywordsPredicate secondPredicate =
-                new SessionNumberContainsKeywordsPredicate(secondPredicateKeywordList);
+                new SessionStudentsContainsKeywordsPredicate(firstPredicateKeywordSet);
+        SessionStudentsContainsKeywordsPredicate secondPredicate =
+                new SessionStudentsContainsKeywordsPredicate(secondPredicateKeywordSet);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
         SessionStudentsContainsKeywordsPredicate firstPredicateCopy =
-                new SessionStudentsContainsKeywordsPredicate(firstPredicateKeywordList);
+                new SessionStudentsContainsKeywordsPredicate(firstPredicateKeywordSet);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -40,48 +44,50 @@ public class SessionStudentsContainsKeywordsPredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different task -> returns false
+        // different predicate -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
     public void test_sessionStudentsContainsKeywords_returnsTrue() {
         // One keyword
-        Person alice = new PersonBuilder(TypicalPersons.ALICE).build();
-        Person bob = new PersonBuilder(TypicalPersons.BOB).build();
+        Set<Person> firstPredicateKeywordSet = Collections.singleton(new PersonBuilder(TypicalPersons.ALICE).build());
         SessionStudentsContainsKeywordsPredicate predicate =
-                new SessionStudentsContainsKeywordsPredicate(Collections.singletonList("Alice"));
-        assertTrue(predicate.test(new SessionBuilder().withStudent(alice).build()));
+                new SessionStudentsContainsKeywordsPredicate(firstPredicateKeywordSet);
+        assertTrue(predicate.test(new SessionBuilder().withStudent(TypicalPersons.ALICE).build()));
 
         // Multiple keywords
-        predicate = new SessionStudentsContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        assertTrue(predicate.test(new SessionBuilder().withStudents(alice, bob).build()));
+        Set<Person> secondPredicateKeywordSet = new HashSet<>(Arrays.asList(
+                new PersonBuilder(TypicalPersons.ALICE).build(), new PersonBuilder(TypicalPersons.BOB).build()));
+        predicate = new SessionStudentsContainsKeywordsPredicate(secondPredicateKeywordSet);
+        assertTrue(predicate.test(new SessionBuilder().withStudents(TypicalPersons.ALICE, TypicalPersons.BOB).build()));
 
         // Only one matching keyword
-        predicate = new SessionStudentsContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        assertTrue(predicate.test(new SessionBuilder().withStudent(bob).build()));
+        predicate = new SessionStudentsContainsKeywordsPredicate(secondPredicateKeywordSet);
+        assertTrue(predicate.test(new SessionBuilder().withStudent(TypicalPersons.BOB).build()));
     }
 
     @Test
     public void test_sessionStudentDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         SessionStudentsContainsKeywordsPredicate predicate =
-                new SessionStudentsContainsKeywordsPredicate(Collections.emptyList());
+                new SessionStudentsContainsKeywordsPredicate(Collections.emptySet());
         assertFalse(predicate.test(new SessionBuilder().withStudent(TypicalPersons.CARL).build()));
 
         // Non-matching keyword
-        predicate = new SessionStudentsContainsKeywordsPredicate(Arrays.asList("Alice"));
+        Set<Person> keywordSet = Collections.singleton(new PersonBuilder().withName("Alice").build());
+        predicate = new SessionStudentsContainsKeywordsPredicate(keywordSet);
         assertFalse(predicate.test(new SessionBuilder().withStudent(TypicalPersons.CARL).build()));
-
     }
 
     @Test
     public void toStringMethod() {
-        List<String> keywords = List.of("keyword1", "keyword2");
-        SessionStudentsContainsKeywordsPredicate predicate = new SessionStudentsContainsKeywordsPredicate(keywords);
+        Set<Person> keywordSet = new HashSet<>(Arrays.asList(
+                new PersonBuilder().withName("keyword1").build(), new PersonBuilder().withName("keyword2").build()));
+        SessionStudentsContainsKeywordsPredicate predicate = new SessionStudentsContainsKeywordsPredicate(keywordSet);
 
         String expected = SessionStudentsContainsKeywordsPredicate.class.getCanonicalName()
-                + "{session keywords=" + keywords + "}";
+                + "{session students=" + keywordSet + "}";
         assertEquals(expected, predicate.toString());
     }
 }
