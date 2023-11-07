@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.StudentSet;
 
 /**
  * Represents a Consultation with a date, time and specified students.
@@ -14,7 +15,7 @@ import seedu.address.model.person.Person;
 public class Consultation {
     private LocalDate date;
     private LocalTime time;
-    private Set<Person> students;
+    private StudentSet students;
 
     /**
      * Constructs an {@code Consultation}.
@@ -23,7 +24,7 @@ public class Consultation {
      * @param time A valid time object.
      * @param students A set of students.
      */
-    public Consultation(LocalDate date, LocalTime time, Set<Person> students) {
+    public Consultation(LocalDate date, LocalTime time, StudentSet students) {
         this.date = date;
         this.time = time;
         this.students = students;
@@ -60,14 +61,36 @@ public class Consultation {
                 && other.getStudents().equals(this.getStudents());
     }
 
+    /**
+     * Generates a human-readable representation of the session, including the session number and the set of students.
+     *
+     * @return A string representation of the session.
+     */
+    public String getConsultationInfo() {
+        String studentNames = "";
+        if (students != null) {
+            studentNames = students.toStudentNames();
+        }
+        return String.format("%s - %s - %s", date, time, studentNames);
+    }
+
     public LocalDate getDate() {
         return date;
     }
     public LocalTime getTime() {
         return time;
     }
-    public Set<Person> getStudents() {
-        return students;
+
+    /**
+     * Retrieves the set of students in this consultation.
+     *
+     * @return The set of students.
+     */
+    public StudentSet getStudents() {
+        if (students == null) {
+            students = new StudentSet();
+        }
+        return students.getStudents();
     }
     public Set<Name> getStudentsNames() {
         return students.stream().map(Person::getName).collect(Collectors.toSet());

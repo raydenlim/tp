@@ -22,7 +22,7 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
-import seedu.address.model.session.SessionStudents;
+import seedu.address.model.session.StudentSet;
 import seedu.address.model.session.exceptions.SessionNotFoundException;
 
 /**
@@ -49,7 +49,7 @@ public class TakeAttendanceCommand extends Command {
 
     private SessionNumber sessionNumber;
     private Set<Name> names;
-    private SessionStudents students;
+    private StudentSet students;
     private Session session;
     private AttendancePresence attendancePresence;
 
@@ -135,10 +135,10 @@ public class TakeAttendanceCommand extends Command {
      */
     public Session createUpdatedSession(Session reference) {
         SessionNumber sessionNumber = reference.getSessionNumber();
-        SessionStudents sessionStudents = this.students;
+        StudentSet studentSet = this.students;
         SessionRemark sessionRemark = reference.getSessionRemark();
 
-        return new Session(sessionNumber, sessionStudents, sessionRemark);
+        return new Session(sessionNumber, studentSet, sessionRemark);
     }
 
     @Override

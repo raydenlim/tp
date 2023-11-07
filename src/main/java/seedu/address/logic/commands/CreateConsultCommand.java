@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -19,6 +18,7 @@ import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.session.StudentSet;
 
 /**
  * Creates a consultation to the consultation list.
@@ -59,16 +59,19 @@ public class CreateConsultCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Set<Person> studentsToAdd;
-
         try {
-            studentsToAdd = names.stream().map(model::getMatchingStudentName).collect(Collectors.toSet());
+            StudentSet studentsToAdd = new StudentSet();
+            for (Name name : names) {
+                Person studentToAdd = model.getMatchingStudentName(name);
+                studentsToAdd.add(studentToAdd);
+            }
+            this.consultationToAdd = new Consultation(date, time, studentsToAdd);
         } catch (PersonNotFoundException pe) {
             throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
         }
 
-        this.consultationToAdd = new Consultation(date, time, studentsToAdd);
         model.addConsultation(this.consultationToAdd);
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)),
                 COMMAND_TYPE);
     }

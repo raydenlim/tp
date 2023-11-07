@@ -17,7 +17,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
-import seedu.address.model.session.SessionStudents;
+import seedu.address.model.session.StudentSet;
 
 
 /**
@@ -82,7 +82,7 @@ public class CreateSessionCommand extends Command {
         this.sessionToAdd = new Session(sessionNumber);
 
         try {
-            SessionStudents studentsToAdd = new SessionStudents();
+            StudentSet studentsToAdd = new StudentSet();
             for (Name name : names) {
                 Person studentToAdd = model.getMatchingStudentName(name);
                 studentsToAdd.add(studentToAdd);

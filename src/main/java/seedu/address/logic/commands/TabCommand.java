@@ -14,7 +14,7 @@ public class TabCommand extends Command {
     public static final String COMMAND_WORD = "tab";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Switches tab based on index.\n"
-            + "Parameters: INDEX (ranging from 1 for Students to 5 for Consultations\n"
+            + "Parameters: INDEX (ranging from 1 for Students to 5 for Consultations)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SUCCESS = "Switched to tab %1$s";

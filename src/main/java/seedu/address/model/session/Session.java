@@ -14,7 +14,7 @@ public class Session {
     public static final SessionRemark DEFAULT_SESSION_REMARK = new SessionRemark("NA");
 
     private final SessionNumber sessionNumber;
-    private SessionStudents students;
+    private StudentSet students;
     private SessionRemark sessionRemark;
 
     /**
@@ -24,7 +24,7 @@ public class Session {
      * @param presentStudents The set of students present in this session.
      * @param sessionRemark The remarks for this session.
      */
-    public Session(SessionNumber sessionNumber, SessionStudents presentStudents, SessionRemark sessionRemark) {
+    public Session(SessionNumber sessionNumber, StudentSet presentStudents, SessionRemark sessionRemark) {
         requireAllNonNull(sessionNumber, presentStudents, sessionRemark);
         this.sessionNumber = sessionNumber;
         this.students = presentStudents;
@@ -37,7 +37,7 @@ public class Session {
      * @param sessionNumber The unique identifier for this session.
      * @param presentStudents The set of students present in this session.
      */
-    public Session(SessionNumber sessionNumber, SessionStudents presentStudents) {
+    public Session(SessionNumber sessionNumber, StudentSet presentStudents) {
         requireAllNonNull(sessionNumber, presentStudents);
         this.sessionNumber = sessionNumber;
         this.students = presentStudents;
@@ -53,7 +53,7 @@ public class Session {
     public Session(SessionNumber sessionNumber, Person student) {
         requireAllNonNull(sessionNumber, student);
         this.sessionNumber = sessionNumber;
-        this.students = new SessionStudents(student);
+        this.students = new StudentSet(student);
         this.sessionRemark = DEFAULT_SESSION_REMARK;
     }
 
@@ -140,9 +140,9 @@ public class Session {
      *
      * @return The set of students.
      */
-    public SessionStudents getStudents() {
+    public StudentSet getStudents() {
         if (students == null) {
-            students = new SessionStudents();
+            students = new StudentSet();
         }
         return students.getStudents();
     }

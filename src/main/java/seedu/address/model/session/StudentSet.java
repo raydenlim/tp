@@ -16,7 +16,7 @@ import seedu.address.model.person.Person;
  * Represents a collection of students in a session. This class provides methods for managing and manipulating
  * the set of students within a session.
  */
-public class SessionStudents implements Iterable<Person> {
+public class StudentSet implements Iterable<Person> {
     public static final String MESSAGE_CONSTRAINTS =
             "Session students must not be null";
 
@@ -26,7 +26,7 @@ public class SessionStudents implements Iterable<Person> {
     /**
      * Constructs an empty SessionStudents object.
      */
-    public SessionStudents() {
+    public StudentSet() {
         this.students = new HashSet<>();
     }
 
@@ -35,7 +35,7 @@ public class SessionStudents implements Iterable<Person> {
      *
      * @param students The set of students to initialize the object with.
      */
-    public SessionStudents(Set<Person> students) {
+    public StudentSet(Set<Person> students) {
         requireNonNull(students);
         this.students = students;
     }
@@ -45,7 +45,7 @@ public class SessionStudents implements Iterable<Person> {
      *
      * @param student The student to add to the session.
      */
-    public SessionStudents(Person student) {
+    public StudentSet(Person student) {
         requireNonNull(student);
         this.students = new HashSet<>();
         this.students.add(student);
@@ -57,7 +57,7 @@ public class SessionStudents implements Iterable<Person> {
      *
      * @param students The students to add to the session.
      */
-    public SessionStudents(Person ...students) {
+    public StudentSet(Person ...students) {
         this.students = new HashSet<>();
         for (Person student : students) {
             this.students.add(student);
@@ -65,7 +65,7 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Adds a student to the session.
+     * Adds a student to the set of students.
      *
      * @param student The student to add.
      */
@@ -74,12 +74,21 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
+     * Adds multiple students to the set of students.
+     *
+     * @param students The students to add.
+     */
+    public void addAll(StudentSet students) {
+        this.students.addAll(students.getSetOfStudents());
+    }
+
+    /**
      * Removes a student from the session.
      *
      * @param student The student to remove.
      */
-    public void remove(Person student) {
-        this.students.remove(student);
+    public boolean remove(Person student) {
+        return this.students.remove(student);
     }
 
     /**
@@ -100,18 +109,26 @@ public class SessionStudents implements Iterable<Person> {
         return studentNames.toString();
     }
 
-
     /**
      * Creates and returns a new SessionStudents object with the same students as this one.
      *
      * @return A new SessionStudents object with a copy of the students.
      */
-    public SessionStudents getStudents() {
-        SessionStudents anotherSet = new SessionStudents();
+    public StudentSet getStudents() {
+        StudentSet anotherSet = new StudentSet();
         for (Person student : students) {
             anotherSet.add(student);
         }
         return anotherSet;
+    }
+
+    /**
+     * Returns the set of students stored.
+     *
+     * @return The set of Person stored in this StudentSet.
+     */
+    public Set<Person> getSetOfStudents() {
+        return this.students;
     }
 
     /**
@@ -175,12 +192,12 @@ public class SessionStudents implements Iterable<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof SessionStudents)) {
+        if (!(other instanceof StudentSet)) {
             return false;
         }
 
-        SessionStudents otherSessionStudents = (SessionStudents) other;
-        return students.equals(otherSessionStudents.students);
+        StudentSet otherStudentSet = (StudentSet) other;
+        return students.equals(otherStudentSet.students);
     }
 
     /**

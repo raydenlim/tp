@@ -4,7 +4,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
-import seedu.address.model.session.SessionStudents;
+import seedu.address.model.session.StudentSet;
 
 /**
  * A utility class for building Session objects for testing purposes.
@@ -14,7 +14,7 @@ public class SessionBuilder {
     public static final String DEFAULT_SESSION_REMARK = "NA";
 
     private SessionNumber sessionNumber;
-    private SessionStudents students;
+    private StudentSet students;
     private SessionRemark sessionRemark;
 
     /**
@@ -22,7 +22,7 @@ public class SessionBuilder {
      */
     public SessionBuilder() {
         this.sessionNumber = new SessionNumber(DEFAULT_SESSION_NUMBER);
-        this.students = new SessionStudents();
+        this.students = new StudentSet();
         this.sessionRemark = new SessionRemark(DEFAULT_SESSION_REMARK);
     }
 
@@ -42,7 +42,7 @@ public class SessionBuilder {
      */
     public SessionBuilder(SessionNumber sessionNumber) {
         this.sessionNumber = sessionNumber;
-        this.students = new SessionStudents();
+        this.students = new StudentSet();
         this.sessionRemark = new SessionRemark(DEFAULT_SESSION_REMARK);
     }
 
@@ -63,7 +63,7 @@ public class SessionBuilder {
      * @param students The students to add to the session.
      * @return The SessionBuilder object with the updated students.
      */
-    public SessionBuilder withStudents(SessionStudents students) {
+    public SessionBuilder withStudents(StudentSet students) {
         this.students = students;
         return this;
     }
@@ -75,7 +75,7 @@ public class SessionBuilder {
      * @return The SessionBuilder object with the updated students.
      */
     public SessionBuilder withStudents(Person... students) {
-        this.students = new SessionStudents();
+        this.students = new StudentSet();
         for (Person student : students) {
             this.students.add(student);
         }
@@ -89,7 +89,7 @@ public class SessionBuilder {
      * @return The SessionBuilder object with the updated student.
      */
     public SessionBuilder withStudent(Person student) {
-        this.students = new SessionStudents();
+        this.students = new StudentSet();
         students.add(student);
         return this;
     }

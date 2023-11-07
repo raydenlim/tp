@@ -14,10 +14,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TELEGRAM_HANDLE
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.person.Person;
+import seedu.address.model.session.StudentSet;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -82,7 +82,7 @@ public class TypicalPersons {
             .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
             .withGradedTest().build();
 
-    public static final Set<Person> DEFAULT_PERSONS = SampleDataUtil.getStudentSet(AMY);
+    public static final StudentSet DEFAULT_PERSONS = SampleDataUtil.getStudentSet(AMY);
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 

@@ -269,6 +269,7 @@ public class MainWindow extends UiPart<Stage> {
             case EDIT:
             case FIND:
             case LIST:
+            case EDIT_GRADED_TEST:
                 selectTab(TAB_PERSONS_INDEX);
                 clearGraphicalResultDisplay();
                 break;
@@ -286,10 +287,6 @@ public class MainWindow extends UiPart<Stage> {
             case EDIT_COMMENT:
             case EDIT_GRADE:
                 selectTab(TAB_ASSIGNMENTS_INDEX);
-                clearGraphicalResultDisplay();
-                break;
-            case EDIT_GRADED_TEST:
-                selectTab(TAB_PERSONS_INDEX);
                 clearGraphicalResultDisplay();
                 break;
             // Consultations

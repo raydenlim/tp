@@ -16,7 +16,7 @@ import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.SessionBuilder;
 import seedu.address.testutil.TypicalPersons;
 
-public class SessionStudentsContainsStudentsPredicateTest {
+public class StudentSetPredicateTest {
 
     @Test
     public void equals() {
