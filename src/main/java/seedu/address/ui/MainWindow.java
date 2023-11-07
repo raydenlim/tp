@@ -260,6 +260,9 @@ public class MainWindow extends UiPart<Stage> {
             case EXIT:
                 handleExit();
                 break;
+            case TAB:
+                selectTab(commandResult.getTabIndex());
+                break;
             // Assignments
             case DELETE_COMMENT:
             case DELETE_GRADE:
@@ -271,10 +274,8 @@ public class MainWindow extends UiPart<Stage> {
                 }
                 break;
             case VIEW_ASSIGNMENTS:
+                selectTab(TAB_ASSIGNMENTS_INDEX);
                 handleViewAssignments();
-                break;
-            case TAB:
-                selectTab(commandResult.getTabIndex());
                 break;
             // Students Address Book
             case ADD:
@@ -282,7 +283,6 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE:
             case EDIT:
             case FIND:
-                break;
             case LIST:
             case EDIT_GRADED_TEST:
                 selectTab(TAB_PERSONS_INDEX);
@@ -301,7 +301,6 @@ public class MainWindow extends UiPart<Stage> {
             case CREATE_CONSULT:
             case ADD_TO_CONSULT:
             case DELETE_CONSULT:
-                break;
             case REMOVE_FROM_CONSULT:
                 selectTab(TAB_CONSULTATIONS_INDEX);
                 clearGraphicalResultDisplay();
@@ -311,7 +310,6 @@ public class MainWindow extends UiPart<Stage> {
             case DELETE_SESSION:
             case UPDATE_SESSION_REMARK:
             case TAKE_ATTENDANCE:
-                break;
             case VIEW_ATTENDANCE:
                 selectTab(TAB_SESSIONS_INDEX);
                 clearGraphicalResultDisplay();
