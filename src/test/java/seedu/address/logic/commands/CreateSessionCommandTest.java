@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CreateSessionCommand.MESSAGE_DUPLICATE_SESSION;
-import static seedu.address.logic.commands.CreateSessionCommand.MESSAGE_PERSON_NOT_FOUND;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.HashSet;
@@ -12,6 +11,7 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -85,7 +85,7 @@ public class CreateSessionCommandTest {
         // Bob is not an existing student in the model
         studentNames.add(new Name("Bob"));
         CreateSessionCommand command = new CreateSessionCommand(new SessionNumber("1"), studentNames);
-        assertThrows(CommandException.class, MESSAGE_PERSON_NOT_FOUND, () -> command.execute(model));
+        assertThrows(CommandException.class, Messages.MESSAGE_PERSON_NOT_FOUND, () -> command.execute(model));
     }
 
     @Test

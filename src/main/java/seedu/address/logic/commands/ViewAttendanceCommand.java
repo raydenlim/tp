@@ -2,14 +2,21 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
+import seedu.address.model.session.SessionStudentsContainsStudentsPredicate;
 
 
 /**
@@ -25,15 +32,15 @@ public class ViewAttendanceCommand extends Command {
 
     public static final CommandType COMMAND_TYPE = CommandType.VIEW_ATTENDANCE;
 
-    private final Predicate<Session> predicate;
+    private final Set<Name> names;
 
     /**
      * Creates a `ViewAttendanceCommand` to view attendance of student(s) listed.
      *
-     * @param predicate The names of the student(s).
+     * @param names A set of names of the student(s).
      */
-    public ViewAttendanceCommand(Predicate<Session> predicate) {
-        this.predicate = predicate;
+    public ViewAttendanceCommand(Set<Name> names) {
+        this.names = names;
     }
 
     /**
@@ -46,6 +53,20 @@ public class ViewAttendanceCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        Predicate<Session> predicate = PREDICATE_SHOW_ALL_SESSIONS;
+        try {
+            if (!names.isEmpty()) {
+                Set<Person> students = new HashSet<>();
+                for (Name name : names) {
+                    students.add(model.getMatchingStudentName(name));
+                }
+                predicate = new SessionStudentsContainsStudentsPredicate(students);
+            }
+        } catch (PersonNotFoundException e) {
+            throw new CommandException(Messages.MESSAGE_PERSON_NOT_FOUND);
+        }
+
 
         model.updateFilteredSessionList(predicate);
 
@@ -78,7 +99,7 @@ public class ViewAttendanceCommand extends Command {
         }
 
         ViewAttendanceCommand otherViewAttendanceCommand = (ViewAttendanceCommand) other;
-        return predicate.equals(otherViewAttendanceCommand.predicate);
+        return names.equals(otherViewAttendanceCommand.names);
     }
 
     /**
@@ -89,7 +110,7 @@ public class ViewAttendanceCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("predicate", predicate)
+                .add("names", names)
                 .toString();
     }
 }

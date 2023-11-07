@@ -34,7 +34,6 @@ public class CreateSessionCommand extends Command {
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New session added: %1$s";
-    public static final String MESSAGE_PERSON_NOT_FOUND = "No student match given name(s)";
     public static final String MESSAGE_DUPLICATE_SESSION = "Session list contains duplicate session(s).";
 
     public static final CommandType COMMAND_TYPE = CommandType.CREATE_SESSION;
@@ -90,7 +89,7 @@ public class CreateSessionCommand extends Command {
             }
             this.sessionToAdd = new Session(sessionNumber, studentsToAdd);
         } catch (PersonNotFoundException e) {
-            throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
+            throw new CommandException(Messages.MESSAGE_PERSON_NOT_FOUND);
         }
 
 

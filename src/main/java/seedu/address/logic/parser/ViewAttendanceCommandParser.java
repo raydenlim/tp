@@ -1,16 +1,13 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SESSIONS;
 
-import java.util.Arrays;
-import java.util.function.Predicate;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.ViewAttendanceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.session.Session;
-import seedu.address.model.session.SessionStudentsContainsKeywordsPredicate;
+import seedu.address.model.person.Name;
 
 /**
  * Parses input arguments and creates a new ViewAttendanceCommand object.
@@ -27,16 +24,9 @@ public class ViewAttendanceCommandParser implements Parser<ViewAttendanceCommand
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME);
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
+        Set<Name> names = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
 
-        Predicate<Session> predicate = PREDICATE_SHOW_ALL_SESSIONS;
-
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            String[] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().split("\\s+");
-            predicate = new SessionStudentsContainsKeywordsPredicate(Arrays.asList(nameKeywords));
-        }
-
-        return new ViewAttendanceCommand(predicate);
+        return new ViewAttendanceCommand(names);
     }
 
     /**
