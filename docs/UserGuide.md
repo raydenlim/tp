@@ -1176,7 +1176,8 @@ This section describes commands tht help you manage your students' graded tests.
 
 You can edit your student’s graded test scores.
 
-Format: `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
+Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] 
+[pe/PRACTICALEXAM] `
 
 | Parameter            | Description                                      |
 |----------------------|--------------------------------------------------|
@@ -1195,6 +1196,7 @@ Format: `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 
 
 * The index refers to the index number shown in the displayed student list.
 * The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* At least 1 field must be present after the `INDEX`.
 
 </md>
 </div>
