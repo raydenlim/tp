@@ -9,6 +9,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
+import seedu.address.model.session.exceptions.SessionNotFoundException;
 
 /**
  * Deletes a session identified using it's displayed index from the session list book.
@@ -36,14 +37,14 @@ public class DeleteSessionCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        Session sessionToDelete = model.findSessionBySessionNumber(targetSessionNumber);
-        if (sessionToDelete == null) {
+        try {
+            Session sessionToDelete = model.findSessionBySessionNumber(targetSessionNumber);
+            model.deleteSession(sessionToDelete);
+            return new CommandResult(String.format(MESSAGE_DELETE_SESSION_SUCCESS,
+                    Messages.format(sessionToDelete)), COMMAND_TYPE);
+        } catch (SessionNotFoundException e) {
             throw new CommandException(Messages.MESSAGE_SESSION_NOT_FOUND);
         }
-
-        model.deleteSession(sessionToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_SESSION_SUCCESS,
-                Messages.format(sessionToDelete)), COMMAND_TYPE);
     }
 
     @Override

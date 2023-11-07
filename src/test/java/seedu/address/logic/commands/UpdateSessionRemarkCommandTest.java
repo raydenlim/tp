@@ -3,10 +3,12 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -51,6 +53,18 @@ public class UpdateSessionRemarkCommandTest {
 
         // Verify that the session has been updated with the new remark.
         assertEquals(expectedSession, updatedSession);
+    }
+
+    @Test
+    public void execute_invalidSessionNumber_throwsSessionNotFoundException() {
+        Session validSession = new SessionBuilder().withSessionNumber("1").build();
+        Model model = new ModelManager();
+        model.addSession(validSession);
+
+        UpdateSessionRemarkCommand updateSessionRemarkCommand = new UpdateSessionRemarkCommand(
+                new SessionNumber("3"),
+                new SessionRemark("New Remarks"));
+        assertCommandFailure(updateSessionRemarkCommand, model, Messages.MESSAGE_SESSION_NOT_FOUND);
     }
 
     @Test

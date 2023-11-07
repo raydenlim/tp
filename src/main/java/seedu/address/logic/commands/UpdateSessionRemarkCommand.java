@@ -14,6 +14,7 @@ import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
 import seedu.address.model.session.SessionStudents;
+import seedu.address.model.session.exceptions.SessionNotFoundException;
 
 /**
  * Command to update the remarks of a session.
@@ -60,16 +61,21 @@ public class UpdateSessionRemarkCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        sessionToUpdate = model.findSessionBySessionNumber(this.sessionNumber);
-        sessionToUpdate.updateRemark(sessionRemark);
+        try {
+            sessionToUpdate = model.findSessionBySessionNumber(this.sessionNumber);
+            sessionToUpdate.updateRemark(sessionRemark);
 
-        Session newSession = createUpdatedSession(sessionToUpdate);
-        model.setSession(sessionToUpdate, newSession);
-        model.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
+            Session newSession = createUpdatedSession(sessionToUpdate);
+            model.setSession(sessionToUpdate, newSession);
+            model.updateFilteredSessionList(PREDICATE_SHOW_ALL_SESSIONS);
 
-        // Return a success message
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(sessionToUpdate)),
-                COMMAND_TYPE);
+            // Return a success message
+            return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(sessionToUpdate)),
+                    COMMAND_TYPE);
+        } catch (SessionNotFoundException e) {
+            throw new CommandException(Messages.MESSAGE_SESSION_NOT_FOUND);
+        }
+
     }
 
 

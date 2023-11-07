@@ -83,13 +83,14 @@ public class SessionListTest {
     }
 
     @Test
-    public void find_findSessionByNumber_notInSessionList() {
+    public void find_sessionNotInSessionList_throwsSessionNotFoundException() {
         sessionList.addSession(SESSION1B);
-        assertEquals(sessionList.findSessionBySessionNumber(new SessionNumber("5")), null);
+        assertThrows(SessionNotFoundException.class, () -> sessionList.findSessionBySessionNumber(
+                new SessionNumber("5")));
     }
 
     @Test
-    public void find_findSessionByNumber_successfulFind() {
+    public void find_validSession_returnsTrue() {
         sessionList.addSession(SESSION3A);
         assertEquals(SESSION3A, sessionList.findSessionBySessionNumber(new SessionNumber("3")));
     }
