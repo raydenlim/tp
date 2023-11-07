@@ -28,59 +28,60 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 ### Table of Contents
 
-* [Introduction](#introduction)
-    * [Table of Contents](#table-of-contents)
-    * [How to use the User Guide](#how-to-use-the-user-guide)
-* [Graphical User Interface](#graphical-user-interface)
-    * [Task Card](#task-card)
-    * [Consultation Card](#consultation-card)
-    * [Session Card](#session-card)
-* [Quick Start](#quick-start)
-* [Command Format](#command-format)
-    * [Command Parameters](#command-parameters)
-* [Features](#features)
-    * [General Commands](#general-commands)
-        * [Viewing help : `help`](#viewing-help-help)
-        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)
-        * [Saving the Data](#saving-the-data)
-        * [Editing the Data File](#editing-the-data-file)
-        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
-    * [Student Management](#student-management)
-        * [Adding a Student: `add`](#adding-a-student-add)
-        * [Listing All Students : `list`](#listing-all-students-list)
-        * [Editing a Student Field : `edit`](#editing-a-student-field-edit)
-        * [Locating Student by Name: `find`](#locating-student-by-name-find)
-        * [Deleting a Student : `delete`](#deleting-a-student-delete)
-        * [Clearing all Entries : `clear`](#clearing-all-entries-clear)
-    * [Task Management](#task-management)
-        * [Adding a Task: `addtask`](#adding-a-task-addtask)
-        * [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)
-        * [Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)
-        * [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)
-    * [Attendance Management](#attendance-management)
-        * [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)
-        * [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)
-    * [Assignment Management](#assignment-management)
-        * [Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)
-        * [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)
-        * [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)
-        * [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)
-        * [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)
-    * [Graded Test Management](#graded-test-management)
-        * [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)
-    * [Session Management](#session-management)
-        * [Creating a Session: `createsession`](#creating-a-session-createsession)
-        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)
-        * [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)
-    * [Consultation Management](#consultation-management)
-        * [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)
-        * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)
-        * [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)
-        * [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)
-* [FAQ](#faq)
-* [Known Issues](#known-issues)
-* [Command Summary](#command-summary)
-* [Encountering Errors](#encountering-errors)
+&nbsp;1 [Introduction](#introduction)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 [Table of Contents](#table-of-contents)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 [How to use the User Guide](#how-to-use-the-user-guide)  
+&nbsp;2 [Graphical User Interface](#graphical-user-interface)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 [Task Card](#task-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 [Consultation Card](#consultation-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.3 [Session Card](#session-card)  
+&nbsp;3 [Quick Start](#quick-start)  
+&nbsp;4 [Command Format](#command-format)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 [Command Parameters](#command-parameters)  
+&nbsp;5 [Features](#features)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1 [General Commands](#general-commands)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [Viewing help : `help`](#viewing-help-help)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [Saving the Data](#saving-the-data)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [Editing the Data File](#editing-the-data-file)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [Adding a Student: `add`](#adding-a-student-add)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [Listing All Students : `list`](#listing-all-students-list)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [Editing a Student Field : `edit`](#editing-a-student-field-edit)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [Locating Student by Name: `find`](#locating-student-by-name-find)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [Deleting a Student : `delete`](#deleting-a-student-delete)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [Clearing all Entries : `clear`](#clearing-all-entries-clear)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3 [Task Management](#task-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.1 [Adding a Task: `addtask`](#adding-a-task-addtask)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.2 [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.4 [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4 [Attendance Management](#attendance-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.2 [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5 [Assignment Management](#assignment-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.1 [Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.2 [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.3 [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.4 [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.5 [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6 [Graded Test Management](#graded-test-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6.1 [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7 [Session Management](#session-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.1 [Creating a Session: `createsession`](#creating-a-session-createsession)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.2 [Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.3 [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8 [Consultation Management](#consultation-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)  
+&nbsp;6 [FAQ](#faq)  
+&nbsp;7 [Known Issues](#known-issues)  
+&nbsp;8 [Command Summary](#command-summary)  
+&nbsp;9 [Encountering Errors](#encountering-errors)
+
 
 
 <br>
@@ -250,8 +251,8 @@ Most commands given in the user guide utilise various parameters which are also 
 | TELEGRAM_HANDLE     | `th/`    | `add` `edit`                                                                                                      | The Telegram handle of a student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                        |
 | TAG                 | `t/`     | `add` `edit`                                                                                                      | The Tag belonging to a student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                               |
 | GRADED_TEST         | `gt/`    | `add` `edit`                                                                                                      | The scores of respective graded tests. <ul><li>Names should only contain alphanumeric characters and spaces. </li><li> Names should not be blank. </li></ul>                                                                                       |
-| READING_ASSESSMENT1 | `ra1/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
-| READING_ASSESSMENT2 | `ra2/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
+| READING_ASSESSMENT_1 | `ra1/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
+| READING_ASSESSMENT_2 | `ra2/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
 | MIDTERMS            | `mt/`    | `editgradedtest`                                                                                                  | The score of a Midterms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                 |
 | FINALS              | `f/`     | `editgradedtest`                                                                                                  | The score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                   |
 | PRACTICAL_EXAM      | `pe/`    | `editgradedtest`                                                                                                  | The score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                |
@@ -544,7 +545,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 <br>
 
-#### Deleting a Student : `delete`
+#### ❌Deleting a Student : `delete`
 
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
@@ -1175,7 +1176,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 You can edit your student’s graded test scores.
 
-Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
+Format: `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
 
 | Parameter            | Description                                      |
 |----------------------|--------------------------------------------------|
