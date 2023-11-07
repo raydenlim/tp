@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.person.Person;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
 import seedu.address.model.session.SessionNumber;
@@ -104,6 +105,13 @@ public class SessionListBook implements ReadOnlySessionList {
      */
     public void removeSession(Session session) {
         sessionList.remove(session);
+    }
+
+    /**
+     * Removes {@code student} from all sessions in the {@code SessionListBook}.
+     */
+    public void removeStudent(Person student) {
+        sessionList.removePerson(student);
     }
 
     @Override

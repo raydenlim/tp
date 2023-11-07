@@ -146,6 +146,7 @@ public class ModelManager implements Model {
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
         consultationList.removeStudent(target);
+        sessionList.removeStudent(target);
     }
 
     @Override

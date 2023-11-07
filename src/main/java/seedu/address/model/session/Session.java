@@ -95,8 +95,18 @@ public class Session {
      *
      * @param student The student to remove.
      */
-    public void removeStudent(Person student) {
+    public Session removeStudent(Person student) {
         this.students.remove(student);
+        return this;
+    }
+
+    /**
+     * Checks if StudentSet has no students.
+     *
+     * @return Returns true if there is no students in the StudentSet and false if there are at least 1 student.
+     */
+    public boolean isEmpty() {
+        return this.students.size() < 1;
     }
 
     /**
