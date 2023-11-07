@@ -114,6 +114,13 @@ public class SessionListBook implements ReadOnlySessionList {
         sessionList.removePerson(student);
     }
 
+    /**
+     * Replaces the {@code target} student with the new {@code editedStudent}.
+     */
+    public void setStudent(Person target, Person editedStudent) {
+        sessionList.setStudent(target, editedStudent);
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

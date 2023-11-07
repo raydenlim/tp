@@ -123,7 +123,6 @@ public class SessionList implements Iterable<Session> {
         }
     }
 
-
     /**
      * Removes the {@code student} from all sessions in the sessions list.
      */
@@ -136,6 +135,23 @@ public class SessionList implements Iterable<Session> {
             if (!updatedSession.isEmpty()) {
                 newSessions.add(updatedSession);
             }
+        }
+        internalList.setAll(newSessions);
+    }
+
+    /**
+     * Replaces the student {@code target} in the list with {@code editedStudent}.
+     */
+    public void setStudent(Person target, Person editedStudent) {
+        requireAllNonNull(target, editedStudent);
+        List<Session> newSessions = new ArrayList<>();
+
+        for (Session session : internalList) {
+            if (session.contains(target)) {
+                session.removeStudent(target);
+                session.addStudent(editedStudent);
+            }
+            newSessions.add(session);
         }
         internalList.setAll(newSessions);
     }

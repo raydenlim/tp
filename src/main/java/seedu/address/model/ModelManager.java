@@ -160,6 +160,7 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
         addressBook.setPerson(target, editedPerson);
         consultationList.setStudent(target, editedPerson);
+        sessionList.setStudent(target, editedPerson);
     }
 
     //=========== SessionList =================================================================================

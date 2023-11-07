@@ -101,6 +101,13 @@ public class Session {
     }
 
     /**
+     * Check if StudentSet contains the {@code student}.
+     */
+    public boolean contains(Person student) {
+        return this.students.contains(student);
+    }
+
+    /**
      * Checks if StudentSet has no students.
      *
      * @return Returns true if there is no students in the StudentSet and false if there are at least 1 student.
