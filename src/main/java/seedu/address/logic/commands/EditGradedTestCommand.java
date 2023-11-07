@@ -126,7 +126,7 @@ public class EditGradedTestCommand extends Command {
         Email email = reference.getEmail();
         TelegramHandle telegramHandle = reference.getTelegramHandle();
         Set<Tag> tags = reference.getTags();
-        Set<GradedTest> gradedTest = new HashSet<>(reference.getGradedTest());
+        Set<GradedTest> gradedTest = reference.getGradedTest();
 
         GradedTest existingGradedTest = null;
         for (GradedTest gt : gradedTest) {
