@@ -41,10 +41,10 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 * [Features](#features)
     * [General Commands](#general-commands)
         * [Viewing help : `help`](#viewing-help-help)
-        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-fakejarvis-exit)
+        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)
         * [Saving the Data](#saving-the-data)
         * [Editing the Data File](#editing-the-data-file)
-        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
     * [Student Management](#student-management)
         * [Adding a Student: `add`](#adding-a-student-add)
         * [Listing All Students : `list`](#listing-all-students-list)
@@ -55,7 +55,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
     * [Task Management](#task-management)
         * [Adding a Task: `addtask`](#adding-a-task-addtask)
         * [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)
-        * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress-updateprogress)
+        * [Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)
         * [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)
     * [Attendance Management](#attendance-management)
         * [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)
@@ -70,7 +70,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
         * [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)
     * [Session Management](#session-management)
         * [Creating a Session: `createsession`](#creating-a-session-createsession)
-        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-sessions-remark-updatesessionremark)
+        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)
         * [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)
     * [Consultation Management](#consultation-management)
         * [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)
@@ -129,7 +129,7 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ![UI with Annotations](images/newUiWithAnnotations.png)
 
-F.A.K.E.J.A.R.V.I.S.'s graphical user interface consists of 4 main components:
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 4 main components:
 * Command Box
 * Command Result Display
 * Current Panel
@@ -185,7 +185,7 @@ The following describes what each panel contains:
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the image below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
+   A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 
     ![Ui](images/Ui.png)
 
@@ -259,7 +259,7 @@ Most commands given in the user guide utilise various parameters which are also 
 | GRADE               | `g/`     | `editgrade`                                                                                                       | The grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                        |
 | COMMENT             | `c/`     | `editcomment`                                                                                                     | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                        |
 | DATE                | `d/`     | `addtask` `viewtasks` `createconsult`                                                                             | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                        |
-| TIME                | `tt/`    | `createconsult`                                                                                                   | The Time. <ul><li>The format must be HH:mm.</li><li>Date must also be in 24-hour format.</li></ul>                                                                                                                                                 |
+| TIME                | `tt/`    | `createconsult`                                                                                                   | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                 |
 | SESSION             | `s/`     | `createsession` `deletesession` `takeattendance` `updatesessionremark`                                            | The Session Number of a Tutorial. <ul><li> Session must only contain numbers. </li><li>Session should not be blank.</li> </ul>                                                                                                                     |
 | SESSION_REMARK      | `r/`     | `updatesessionremark`                                                                                             | The remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                         |
 | ATTENDANCE_PRESENCE | `ap/`    | `takeattendance`                                                                                                  | The presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                            |
@@ -298,7 +298,7 @@ Format: `tab INDEX`
 <md>
 :information_source: Note: 
 
-* For the list of indexes to use:
+For the list of indexes to use:
 * **Students List:** 1
 * **Tasks List:** 2
 * **Assignments List:** 3
@@ -319,7 +319,7 @@ Format: `tab INDEX`
 
 > **Example 2:**
 >
-> **Input:** `tab 2` Switches to the students list tab.
+> **Input:** `tab 2` Switches to the tasks list tab.
 >
 > **Output:**
 >`Switched to tab 2`
@@ -382,20 +382,26 @@ This section describes commands that help you manage your students.
 
 You can add a student to F.A.K.E.J.A.R.V.I.S.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| Parameter          | Description                                  |
-|--------------------|----------------------------------------------|
-| n/NAME             | The name of the student to be added.         |
-| p/PHONE_NUMBER     | The phone number of the student.             |
-| e/EMAIL            | The email address of the student.            |
-| th/TELEGRAM_HANDLE | The Telegram handle of the student.          |
-| t/TAG              | (Optional) Tags associated with the student. |
-
+| Parameter       | Description                                             |
+|-----------------|---------------------------------------------------------|
+| NAME            | The name of the student to be added.                    |
+| PHONE_NUMBER    | The phone number of the student.                        |
+| EMAIL           | The email address of the student.                       |
+| TELEGRAM_HANDLE | The Telegram handle of the student.                     |
+| TAG             | Tags associated with the student.                       |
+| GRADED_TESTS    | Scores of the graded tests associated with the student. |
 
 <div class="alert alert-info">
 <md>
-:information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
+:information_source: Note: 
+
+* You can add any number of tags to a student! (including 0)
+* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* You can use `gt/default` to set graded tests scores as '-' !
+
+</md> </div>
 
 > **Example 1:**
 > 
@@ -441,27 +447,29 @@ Format: `list`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| Parameter          | Description                                         |
-|--------------------|-----------------------------------------------------|
-| INDEX              | The index of the student to be edited.              |
-| n/NAME             | (Optional) The new name for the student.            |
-| p/PHONE            | (Optional) The new phone number for the student.    |
-| e/EMAIL            | (Optional) The new email address for the student.   |
-| th/TELEGRAM_HANDLE | (Optional) The new Telegram handle for the student. |
-| t/TAG              | (Optional) New tags associated with the student.    |
+| Parameter       | Description                                             |
+|-----------------|---------------------------------------------------------|
+| INDEX           | The index of the student to be edited.                  |
+| NAME            | The new name for the student.                           |
+| PHONE           | The new phone number for the student.                   |
+| EMAIL           | The new email address for the student.                  |
+| TELEGRAM_HANDLE | The new Telegram handle for the student.                |
+| TAG             | New tags associated with the student.                   |
+| GRADED_TESTS    | Scores of the graded tests associated with the student. |
 
 
 <div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed person list. 
+* The index refers to the index number shown in the displayed student list. 
 * The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
+* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
-* You can remove all the person’s graded tests by typing `gt/` without specifying any graded test parameters after it.
+* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* You can use `gt/default` to reset graded tests scores as '-' !
 
 </md>
 </div>
@@ -496,10 +504,10 @@ You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-| Parameter     | Description                                    |
-|---------------|------------------------------------------------|
-| KEYWORD       | The main keyword to search for.                |
-| MORE_KEYWORDS | (Optional) Additional keywords for the search. |
+| Parameter     | Description                         |
+|---------------|-------------------------------------|
+| KEYWORD       | The main keyword to search for.     |
+| MORE_KEYWORDS | Additional keywords for the search. |
 
 
 
@@ -507,7 +515,6 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
-* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
@@ -1543,7 +1550,7 @@ Format: `deleteconsult INDEX`
 
 | **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]...[gt/GRADEDTEST]…​`                             | `add n/James Ho p/22224444 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                             | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
 | **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
 | **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`                  | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                           |
@@ -1563,8 +1570,6 @@ Format: `deleteconsult INDEX`
 | **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                    | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
 | **Edit Graded Test**          | `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                           |
 | **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                                 | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
-| **Show Consultations**        | `showconsults`                                                                                                 | `showconsults`                                                                                                                 |
-| **View Consultation Details** | `viewconsult INDEX`                                                                                            | `viewconsult 1`, `viewconsult 2`                                                                                               |
 
 [Back to Table of Contents](#table-of-contents)
 
