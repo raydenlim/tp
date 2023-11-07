@@ -31,6 +31,17 @@ public class Consultation {
     }
 
     /**
+     * Adds a person to the StudentSet in a Consultation.
+     *
+     * @param student The student to be removed from the StudentSet.
+     * @return Returns itself after removing student.
+     */
+    public Consultation addStudent(Person student) {
+        this.students.add(student);
+        return this;
+    }
+
+    /**
      * Removes a person from the StudentSet in a Consultation.
      *
      * @param student The student to be removed from the StudentSet.
@@ -39,6 +50,13 @@ public class Consultation {
     public Consultation removeStudent(Person student) {
         this.students.remove(student);
         return this;
+    }
+
+    /**
+     * Check if StudentSet contains the {@code student}.
+     */
+    public boolean contains(Person student) {
+        return this.students.contains(student);
     }
 
     /**

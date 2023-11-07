@@ -90,6 +90,13 @@ public class ConsultationListBook implements ReadOnlyConsultationList {
     }
 
     /**
+     * Replaces the {@code target} student with the new {@code editedStudent}.
+     */
+    public void setStudent(Person target, Person editedStudent) {
+        consultationList.setStudent(target, editedStudent);
+    }
+
+    /**
      * Replaces the given consultation {@code target} in the list with {@code updatedConsultation}.
      * {@code target} must exist in the consultation list.
      * The consultation identity of {@code updatedConsultation} must not be the same as another existing consultation

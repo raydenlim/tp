@@ -73,6 +73,23 @@ public class ConsultationList implements Iterable<Consultation> {
     }
 
     /**
+     * Replaces the student {@code target} in the list with {@code editedStudent}.
+     */
+    public void setStudent(Person target, Person editedStudent) {
+        requireAllNonNull(target, editedStudent);
+        List<Consultation> newConsultations = new ArrayList<>();
+
+        for (Consultation consultation : internalList) {
+            if (consultation.contains(target)) {
+                consultation.removeStudent(target);
+                consultation.addStudent(editedStudent);
+            }
+            newConsultations.add(consultation);
+        }
+        internalList.setAll(newConsultations);
+    }
+
+    /**
      * Replaces the consultation {@code target} in the list with {@code updatedConsultation}.
      * {@code target} must exist in the list.
      * The consultation identity of {@code updatedConsultation} must not be the same as another existing consultation
