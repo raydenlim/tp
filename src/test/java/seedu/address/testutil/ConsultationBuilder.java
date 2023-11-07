@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
-import seedu.address.model.session.StudentSet;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.util.SampleDataUtil;
 
 /**

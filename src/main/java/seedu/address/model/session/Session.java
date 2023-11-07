@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 
 /**
  * Represents a class for managing a session, which can hold a list of students and session-specific details.

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
-import seedu.address.model.session.StudentSet;
+import seedu.address.model.person.StudentSet;
 
 /**
  * Jackson-friendly version of {@link Consultation}.

@@ -23,8 +23,8 @@ import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.exceptions.PersonNotFoundInConsultException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.session.StudentSet;
 
 /**
  * Removes a person identified using his/her name from the specified consultation by index.

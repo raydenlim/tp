@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
-import seedu.address.model.session.StudentSet;
+import seedu.address.model.person.StudentSet;
 
 /**
  * Represents a Consultation with a date, time and specified students.
@@ -62,16 +62,21 @@ public class Consultation {
     }
 
     /**
-     * Generates a human-readable representation of the session, including the session number and the set of students.
+     * Generates a human-readable representation of the consultation, including the date, time and the set of students.
      *
-     * @return A string representation of the session.
+     * @return A string representation of the consultation.
      */
     public String getConsultationInfo() {
         String studentNames = "";
         if (students != null) {
             studentNames = students.toStudentNames();
         }
-        return String.format("%s - %s - %s", date, time, studentNames);
+        return String.format("Date: %s, Time: %s, Students: %s", date, time, studentNames);
+    }
+
+    @Override
+    public String toString() {
+        return this.getConsultationInfo();
     }
 
     public LocalDate getDate() {

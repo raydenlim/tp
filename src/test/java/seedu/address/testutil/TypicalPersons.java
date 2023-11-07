@@ -17,7 +17,7 @@ import java.util.List;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.person.Person;
-import seedu.address.model.session.StudentSet;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.util.SampleDataUtil;
 
 /**

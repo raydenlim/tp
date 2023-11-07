@@ -3,9 +3,9 @@ package seedu.address.model.attendance;
 import java.util.Set;
 
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionList;
-import seedu.address.model.session.StudentSet;
 
 
 /**

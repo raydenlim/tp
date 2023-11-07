@@ -15,10 +15,11 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.session.StudentSet;
 
 /**
  * Creates a consultation to the consultation list.
@@ -37,6 +38,7 @@ public class CreateConsultCommand extends Command {
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
+    public static final String MESSAGE_DUPLICATE_CONSULTATION = "Consultation list contains duplicate consultation(s).";
 
     public static final CommandType COMMAND_TYPE = CommandType.CREATE_CONSULT;
     private final LocalDate date;
@@ -70,7 +72,11 @@ public class CreateConsultCommand extends Command {
             throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
         }
 
-        model.addConsultation(this.consultationToAdd);
+        try {
+            model.addConsultation(this.consultationToAdd);
+        } catch (DuplicateConsultationException dce) {
+            throw new CommandException(MESSAGE_DUPLICATE_CONSULTATION);
+        }
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)),
                 COMMAND_TYPE);

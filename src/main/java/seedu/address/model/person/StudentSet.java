@@ -1,4 +1,4 @@
-package seedu.address.model.session;
+package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
@@ -9,8 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
-
-import seedu.address.model.person.Person;
 
 /**
  * Represents a collection of students in a session. This class provides methods for managing and manipulating

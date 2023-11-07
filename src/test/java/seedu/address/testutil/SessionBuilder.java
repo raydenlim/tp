@@ -1,10 +1,10 @@
 package seedu.address.testutil;
 
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
-import seedu.address.model.session.StudentSet;
 
 /**
  * A utility class for building Session objects for testing purposes.
