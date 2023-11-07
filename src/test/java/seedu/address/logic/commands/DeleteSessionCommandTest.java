@@ -43,7 +43,7 @@ public class DeleteSessionCommandTest {
     }
 
     @Test
-    public void execute_invalidSessionNumber_throwsCommandException() {
+    public void execute_invalidSessionNumber_throwsSessionNotFoundException() {
         SessionNumber targetSessionNumber = new SessionNumber("12312");
         DeleteSessionCommand deleteSessionCommand = new DeleteSessionCommand(targetSessionNumber);
 

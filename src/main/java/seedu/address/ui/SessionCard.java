@@ -35,7 +35,7 @@ public class SessionCard extends UiPart<Region> {
     public SessionCard(Session session) {
         super(FXML);
         this.session = session;
-        sessionNumberLabel.setText(session.getSessionNumber() + ". ");
+        sessionNumberLabel.setText(String.format("Session %s.", session.getSessionNumber()));
         session.getStudents().stream()
                 .sorted(Comparator.comparing(student -> student.getName().fullName))
                 .forEach(student -> students.getChildren().add(new Label(student.getName().fullName)));

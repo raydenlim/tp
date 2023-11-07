@@ -89,9 +89,7 @@ public class SessionList implements Iterable<Session> {
                 return session;
             }
         }
-
-        // Session not found, return null or handle the situation as needed.
-        return null;
+        throw new SessionNotFoundException();
     }
 
     /**

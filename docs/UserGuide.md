@@ -28,59 +28,60 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 ### Table of Contents
 
-* [Introduction](#introduction)
-    * [Table of Contents](#table-of-contents)
-    * [How to use the User Guide](#how-to-use-the-user-guide)
-* [Graphical User Interface](#graphical-user-interface)
-    * [Task Card](#task-card)
-    * [Consultation Card](#consultation-card)
-    * [Session Card](#session-card)
-* [Quick Start](#quick-start)
-* [Command Format](#command-format)
-    * [Command Parameters](#command-parameters)
-* [Features](#features)
-    * [General Commands](#general-commands)
-        * [Viewing help : `help`](#viewing-help-help)
-        * [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-fakejarvis-exit)
-        * [Saving the Data](#saving-the-data)
-        * [Editing the Data File](#editing-the-data-file)
-        * [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
-    * [Student Management](#student-management)
-        * [Adding a Student: `add`](#adding-a-student-add)
-        * [Listing All Students : `list`](#listing-all-students-list)
-        * [Editing a Student Field : `edit`](#editing-a-student-field-edit)
-        * [Locating Student by Name: `find`](#locating-student-by-name-find)
-        * [Deleting a Student : `delete`](#deleting-a-student-delete)
-        * [Clearing all Entries : `clear`](#clearing-all-entries-clear)
-    * [Task Management](#task-management)
-        * [Adding a Task: `addtask`](#adding-a-task-addtask)
-        * [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)
-        * [Updating a Task's Progress: `updateprogress`](#updating-a-tasks-progress-updateprogress)
-        * [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)
-    * [Attendance Management](#attendance-management)
-        * [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)
-        * [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)
-    * [Assignment Management](#assignment-management)
-        * [Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)
-        * [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)
-        * [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)
-        * [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)
-        * [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)
-    * [Graded Test Management](#graded-test-management)
-        * [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)
-    * [Session Management](#session-management)
-        * [Creating a Session: `createsession`](#creating-a-session-createsession)
-        * [Updating a Session's Remark: `updatesessionremark`](#updating-a-sessions-remark-updatesessionremark)
-        * [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)
-    * [Consultation Management](#consultation-management)
-        * [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)
-        * [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)
-        * [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)
-        * [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)
-* [FAQ](#faq)
-* [Known Issues](#known-issues)
-* [Command Summary](#command-summary)
-* [Encountering Errors](#encountering-errors)
+&nbsp;1 [Introduction](#introduction)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 [Table of Contents](#table-of-contents)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 [How to use the User Guide](#how-to-use-the-user-guide)  
+&nbsp;2 [Graphical User Interface](#graphical-user-interface)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 [Task Card](#task-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 [Consultation Card](#consultation-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.3 [Session Card](#session-card)  
+&nbsp;3 [Quick Start](#quick-start)  
+&nbsp;4 [Command Format](#command-format)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 [Command Parameters](#command-parameters)  
+&nbsp;5 [Features](#features)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1 [General Commands](#general-commands)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [Viewing help : `help`](#viewing-help-help)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [Saving the Data](#saving-the-data)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [Editing the Data File](#editing-the-data-file)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [Adding a Student: `add`](#adding-a-student-add)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [Listing All Students : `list`](#listing-all-students-list)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [Editing a Student Field : `edit`](#editing-a-student-field-edit)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [Locating Student by Name: `find`](#locating-student-by-name-find)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [Deleting a Student : `delete`](#deleting-a-student-delete)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [Clearing all Entries : `clear`](#clearing-all-entries-clear)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3 [Task Management](#task-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.1 [Adding a Task: `addtask`](#adding-a-task-addtask)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.2 [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.4 [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4 [Attendance Management](#attendance-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.2 [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5 [Assignment Management](#assignment-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.1 [Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.2 [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.3 [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.4 [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.5 [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6 [Graded Test Management](#graded-test-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6.1 [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7 [Session Management](#session-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.1 [Creating a Session: `createsession`](#creating-a-session-createsession)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.2 [Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.3 [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8 [Consultation Management](#consultation-management)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)  
+&nbsp;6 [FAQ](#faq)  
+&nbsp;7 [Known Issues](#known-issues)  
+&nbsp;8 [Command Summary](#command-summary)  
+&nbsp;9 [Encountering Errors](#encountering-errors)
+
 
 
 <br>
@@ -129,7 +130,7 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ![UI with Annotations](images/newUiWithAnnotations.png)
 
-F.A.K.E.J.A.R.V.I.S.'s graphical user interface consists of 4 main components:
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 4 main components:
 * Command Box
 * Command Result Display
 * Current Panel
@@ -185,7 +186,7 @@ The following describes what each panel contains:
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the image below should appear in a few seconds. (Currently, the image below is a mock-up of our GUI) Note how the app contains some sample data.<br>
+   A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 
     ![Ui](images/Ui.png)
 
@@ -197,7 +198,7 @@ The following describes what each panel contains:
 
     * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
-    * `createsession 3 n/John Doe` : Creates a `No. 3` Session with the student `John Doe`.
+    * `createsession s/3 n/John Doe` : Creates a session with session number 3 with the student `John Doe`.
 
     * `exit` : Exits the app.
 
@@ -250,8 +251,8 @@ Most commands given in the user guide utilise various parameters which are also 
 | TELEGRAM_HANDLE     | `th/`    | `add` `edit`                                                                                                      | The Telegram handle of a student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                        |
 | TAG                 | `t/`     | `add` `edit`                                                                                                      | The Tag belonging to a student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                               |
 | GRADED_TEST         | `gt/`    | `add` `edit`                                                                                                      | The scores of respective graded tests. <ul><li>Names should only contain alphanumeric characters and spaces. </li><li> Names should not be blank. </li></ul>                                                                                       |
-| READING_ASSESSMENT1 | `ra1/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
-| READING_ASSESSMENT2 | `ra2/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
+| READING_ASSESSMENT_1 | `ra1/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
+| READING_ASSESSMENT_2 | `ra2/`   | `editgradedtest`                                                                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
 | MIDTERMS            | `mt/`    | `editgradedtest`                                                                                                  | The score of a Midterms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                 |
 | FINALS              | `f/`     | `editgradedtest`                                                                                                  | The score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                   |
 | PRACTICAL_EXAM      | `pe/`    | `editgradedtest`                                                                                                  | The score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                |
@@ -259,7 +260,7 @@ Most commands given in the user guide utilise various parameters which are also 
 | GRADE               | `g/`     | `editgrade`                                                                                                       | The grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                        |
 | COMMENT             | `c/`     | `editcomment`                                                                                                     | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                        |
 | DATE                | `d/`     | `addtask` `viewtasks` `createconsult`                                                                             | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                        |
-| TIME                | `tt/`    | `createconsult`                                                                                                   | The Time. <ul><li>The format must be HH:mm.</li><li>Date must also be in 24-hour format.</li></ul>                                                                                                                                                 |
+| TIME                | `tt/`    | `createconsult`                                                                                                   | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                 |
 | SESSION             | `s/`     | `createsession` `deletesession` `takeattendance` `updatesessionremark`                                            | The Session Number of a Tutorial. <ul><li> Session must only contain numbers. </li><li>Session should not be blank.</li> </ul>                                                                                                                     |
 | SESSION_REMARK      | `r/`     | `updatesessionremark`                                                                                             | The remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                         |
 | ATTENDANCE_PRESENCE | `ap/`    | `takeattendance`                                                                                                  | The presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                            |
@@ -298,7 +299,7 @@ Format: `tab INDEX`
 <md>
 :information_source: Note: 
 
-* For the list of indexes to use:
+For the list of indexes to use:
 * **Students List:** 1
 * **Tasks List:** 2
 * **Assignments List:** 3
@@ -319,7 +320,7 @@ Format: `tab INDEX`
 
 > **Example 2:**
 >
-> **Input:** `tab 2` Switches to the students list tab.
+> **Input:** `tab 2` Switches to the tasks list tab.
 >
 > **Output:**
 >`Switched to tab 2`
@@ -382,20 +383,26 @@ This section describes commands that help you manage your students.
 
 You can add a student to F.A.K.E.J.A.R.V.I.S.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| Parameter          | Description                                  |
-|--------------------|----------------------------------------------|
-| n/NAME             | The name of the student to be added.         |
-| p/PHONE_NUMBER     | The phone number of the student.             |
-| e/EMAIL            | The email address of the student.            |
-| th/TELEGRAM_HANDLE | The Telegram handle of the student.          |
-| t/TAG              | (Optional) Tags associated with the student. |
-
+| Parameter       | Description                                             |
+|-----------------|---------------------------------------------------------|
+| NAME            | The name of the student to be added.                    |
+| PHONE_NUMBER    | The phone number of the student.                        |
+| EMAIL           | The email address of the student.                       |
+| TELEGRAM_HANDLE | The Telegram handle of the student.                     |
+| TAG             | Tags associated with the student.                       |
+| GRADED_TESTS    | Scores of the graded tests associated with the student. |
 
 <div class="alert alert-info">
 <md>
-:information_source: Note: You can add any number of tags to a person! (including 0)</md> </div>
+:information_source: Note: 
+
+* You can add any number of tags to a student! (including 0)
+* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* You can use `gt/default` to set graded tests scores as '-' !
+
+</md> </div>
 
 > **Example 1:**
 > 
@@ -441,27 +448,29 @@ Format: `list`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| Parameter          | Description                                         |
-|--------------------|-----------------------------------------------------|
-| INDEX              | The index of the student to be edited.              |
-| n/NAME             | (Optional) The new name for the student.            |
-| p/PHONE            | (Optional) The new phone number for the student.    |
-| e/EMAIL            | (Optional) The new email address for the student.   |
-| th/TELEGRAM_HANDLE | (Optional) The new Telegram handle for the student. |
-| t/TAG              | (Optional) New tags associated with the student.    |
+| Parameter       | Description                                             |
+|-----------------|---------------------------------------------------------|
+| INDEX           | The index of the student to be edited.                  |
+| NAME            | The new name for the student.                           |
+| PHONE           | The new phone number for the student.                   |
+| EMAIL           | The new email address for the student.                  |
+| TELEGRAM_HANDLE | The new Telegram handle for the student.                |
+| TAG             | New tags associated with the student.                   |
+| GRADED_TESTS    | Scores of the graded tests associated with the student. |
 
 
 <div class="alert alert-info"><md> :information_source: Note: 
 
 * Edits the person at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed person list. 
+* The index refers to the index number shown in the displayed student list. 
 * The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE)
+* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
-* You can remove all the person’s graded tests by typing `gt/` without specifying any graded test parameters after it.
+* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* You can use `gt/default` to reset graded tests scores as '-' !
 
 </md>
 </div>
@@ -496,10 +505,10 @@ You can find a student whose name contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-| Parameter     | Description                                    |
-|---------------|------------------------------------------------|
-| KEYWORD       | The main keyword to search for.                |
-| MORE_KEYWORDS | (Optional) Additional keywords for the search. |
+| Parameter     | Description                         |
+|---------------|-------------------------------------|
+| KEYWORD       | The main keyword to search for.     |
+| MORE_KEYWORDS | Additional keywords for the search. |
 
 
 
@@ -507,7 +516,6 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`.
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
-* You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
@@ -537,7 +545,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 <br>
 
-#### Deleting a Student : `delete`
+#### ❌Deleting a Student : `delete`
 
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
@@ -836,7 +844,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 > **Example 1:**
 >
-> **Input:** `takeattendance n/Alex Yeoh s/2 ap/present` Marks Alex Yeoh as present on the 5th session.
+> **Input:** `takeattendance n/Alex Yeoh s/5 ap/present` Marks Alex Yeoh as present on the 5th session.
 >
 > **Output:**
 >`Attendance taken`
@@ -860,7 +868,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 You can view the attendance list of your students.
 
-Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
+Format: `viewattendance n/STUDENT_NAME n/STUDENT_NAME …`
 
 | Parameter    | Description                                                    |
 |--------------|----------------------------------------------------------------|
@@ -890,7 +898,7 @@ Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 > **Example 2:**
 >
-> **Input:** `viewattendance n/Alex` Displays all the sessions that Alex has attended.
+> **Input:** `viewattendance n/Alex Yeoh` Displays all the sessions that Alex Yeoh has attended.
 >
 > **Output:**
 >`2 sessions listed!`
@@ -900,7 +908,7 @@ Format: `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`
 
 > **Example 3:**
 >
-> **Input:** `viewattendance n/Bernice Alex` Displays all the sessions that Bernice and Alex have attended.
+> **Input:** `viewattendance n/Bernice Yu n/Alex Yeoh` Displays all the sessions that Bernice Yu and Alex Yeoh have attended.
 >
 > **Output:**
 >`2 sessions listed!`
@@ -1168,7 +1176,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 You can edit your student’s graded test scores.
 
-Format: `editgrade INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
+Format: `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM `
 
 | Parameter            | Description                                      |
 |----------------------|--------------------------------------------------|
@@ -1262,7 +1270,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 > **Input:** `createsession s/4 n/Betsy Crower n/David Li` Creates a session, which has session number 3, with Betsy Crower and David Li.
 >
 > **Output:**
->`New session added: Session: 4; Students: Betsy CrowerDavid Li; Remark: NA`
+>`New session added: Session: 4; Students: Betsy Crower David Li; Remark: NA`
 >
 > [IMAGE COMING SOON]
 
@@ -1543,7 +1551,7 @@ Format: `deleteconsult INDEX`
 
 | **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]...[gt/GRADEDTEST]…​`                             | `add n/James Ho p/22224444 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
+| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                             | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
 | **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
 | **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
 | **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`                  | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                           |
@@ -1563,8 +1571,6 @@ Format: `deleteconsult INDEX`
 | **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                    | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
 | **Edit Graded Test**          | `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                           |
 | **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                                 | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
-| **Show Consultations**        | `showconsults`                                                                                                 | `showconsults`                                                                                                                 |
-| **View Consultation Details** | `viewconsult INDEX`                                                                                            | `viewconsult 1`, `viewconsult 2`                                                                                               |
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -1573,4 +1579,12 @@ Format: `deleteconsult INDEX`
 ## Encountering Errors
 This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
 
-_[Coming soon]_
+| Error                                                                           | What it means                                                                                                                                       | How to resolve                                                                                                                                                 |
+|---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Unknown command**                                                             | You have supplied a command that was unrecognisable. <br/> E.g., Command word was given in upper case.                                              | 1. Double-check the spelling and case of the command. <br/> 2. Refer to the [features](#features) section above for the correct commands.                      |
+| **Invalid command format!**                                                     | You have supplied a command with the incorrect format. <br/> E.g., Command is missing the compulsory parameters.                                    | 1. Double-check the command format and the parameters required. <br/> 2. Refer to the [features](#features) section above for the correct command formats.     |
+| **The Index provided is invalid**                                               | You have provided an index that is out of the range of the items.                                                                                   | 1. Only provide Indexes that are within the range of the list. <br/> E.g., if there are 3 items in the list, the valid indexes that can be used are (1, 2, 3). |
+| **At least one field to edit must be provided.**                                | You have not provided a field to edit.                                                                                                              | 1. Double-check that a prefix and a field was provided together with the command.                                                                              |                                   
+| **This `task` / `person` already exists in the `task list` / `students list`.** | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                  |
+| **Date needs to be in the format dd/MM/yyyy, or date has already crossed.**     | You have either supplied the date in an unrecognisable format, or provided a date that is in the past.                                              | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023) <br /> 2. Choose a date from today or later.                              |
+| **Time needs to be in the format HH:mm.**                                       | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                     |
