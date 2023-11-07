@@ -52,7 +52,8 @@ public class EditGradedTestCommand extends Command {
             + PREFIX_READING_ASSESSMENT2 + "20 "
             + PREFIX_MIDTERMS + "70 "
             + PREFIX_FINALS + "100 "
-            + PREFIX_PRACTICAL_EXAM + "100";
+            + PREFIX_PRACTICAL_EXAM + "100 \n"
+            + "Note: At least 1 field must be present after the INDEX";
 
     public static final String MESSAGE_EDIT_GRADEDTEST_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
