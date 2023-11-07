@@ -16,7 +16,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.session.Session;
-import seedu.address.model.session.SessionStudentsContainsKeywordsPredicate;
+import seedu.address.model.session.SessionStudentsContainsStudentsPredicate;
 
 
 /**
@@ -37,7 +37,7 @@ public class ViewAttendanceCommand extends Command {
     /**
      * Creates a `ViewAttendanceCommand` to view attendance of student(s) listed.
      *
-     * @param names The names of the student(s).
+     * @param names A set of names of the student(s).
      */
     public ViewAttendanceCommand(Set<Name> names) {
         this.names = names;
@@ -61,7 +61,7 @@ public class ViewAttendanceCommand extends Command {
                 for (Name name : names) {
                     students.add(model.getMatchingStudentName(name));
                 }
-                predicate = new SessionStudentsContainsKeywordsPredicate(students);
+                predicate = new SessionStudentsContainsStudentsPredicate(students);
             }
         } catch (PersonNotFoundException e) {
             throw new CommandException(Messages.MESSAGE_PERSON_NOT_FOUND);

@@ -9,10 +9,10 @@ import seedu.address.model.person.Person;
 /**
  * Tests that a {@code Session}'s {@code SessionStudents} matches any of the keywords given.
  */
-public class SessionStudentsContainsKeywordsPredicate implements Predicate<Session> {
+public class SessionStudentsContainsStudentsPredicate implements Predicate<Session> {
     private final Set<Person> students;
 
-    public SessionStudentsContainsKeywordsPredicate(Set<Person> students) {
+    public SessionStudentsContainsStudentsPredicate(Set<Person> students) {
         this.students = students;
     }
 
@@ -34,13 +34,13 @@ public class SessionStudentsContainsKeywordsPredicate implements Predicate<Sessi
         }
 
         // instanceof handles nulls
-        if (!(other instanceof SessionStudentsContainsKeywordsPredicate)) {
+        if (!(other instanceof SessionStudentsContainsStudentsPredicate)) {
             return false;
         }
 
-        SessionStudentsContainsKeywordsPredicate otherSessionStudentsContainsKeywordsPredicate =
-                (SessionStudentsContainsKeywordsPredicate) other;
-        return students.equals(otherSessionStudentsContainsKeywordsPredicate.students);
+        SessionStudentsContainsStudentsPredicate otherSessionStudentsContainsStudentsPredicate =
+                (SessionStudentsContainsStudentsPredicate) other;
+        return students.equals(otherSessionStudentsContainsStudentsPredicate.students);
     }
 
     @Override
