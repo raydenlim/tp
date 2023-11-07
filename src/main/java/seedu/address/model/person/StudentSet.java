@@ -81,7 +81,7 @@ public class StudentSet implements Iterable<Person> {
     }
 
     /**
-     * Removes a student from the session.
+     * Removes a student from the consultation/session.
      *
      * @param student The student to remove.
      */

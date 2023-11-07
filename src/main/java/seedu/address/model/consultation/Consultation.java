@@ -30,6 +30,26 @@ public class Consultation {
         this.students = students;
     }
 
+    /**
+     * Removes a person from the StudentSet in a Consultation.
+     *
+     * @param student The student to be removed from the StudentSet.
+     * @return Returns itself after removing student.
+     */
+    public Consultation removeStudent(Person student) {
+        this.students.remove(student);
+        return this;
+    }
+
+    /**
+     * Checks if StudentSet has no students.
+     *
+     * @return Returns true if there is no students in the StudentSet and false if there are at least 1 student.
+     */
+    public boolean isEmpty() {
+        return this.students.size() < 1;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

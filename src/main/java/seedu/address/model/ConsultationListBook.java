@@ -8,6 +8,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.ConsultationList;
+import seedu.address.model.person.Person;
 
 /**
  * Represents a collection of consultations. This class is responsible for managing and manipulating
@@ -73,11 +74,19 @@ public class ConsultationListBook implements ReadOnlyConsultationList {
     }
 
     /**
-     * Removes {@code key} from this {@code ConsultationListBook}.
-     * {@code key} must exist in the ConsultationListBook.
+     * Removes {@code consultation} from this {@code ConsultationListBook}.
+     * {@code consultation} must exist in the ConsultationListBook.
      */
     public void removeConsultation(Consultation consultation) {
         consultationList.remove(consultation);
+    }
+
+
+    /**
+     * Removes {@code student} from all consultations in the {@code ConsultationListBook}.
+     */
+    public void removeStudent(Person student) {
+        consultationList.removePerson(student);
     }
 
     /**
