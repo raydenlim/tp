@@ -56,7 +56,7 @@ public class UpdateSessionRemarkCommandTest {
     }
 
     @Test
-    public void execute_invalidSessionNumber_throwsCommandException() {
+    public void execute_invalidSessionNumber_throwsSessionNotFoundException() {
         Session validSession = new SessionBuilder().withSessionNumber("1").build();
         Model model = new ModelManager();
         model.addSession(validSession);

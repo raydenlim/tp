@@ -93,24 +93,34 @@ public class TakeAttendanceCommandTest {
     }
 
     @Test
-    public void execute_invalidArguments_throwsCommandException() {
+    public void execute_invalidArguments_throwsPersonNotFoundException() {
         Model model = new ModelManager();
-        Person alice = new PersonBuilder().withName("Alice").build(); // Alice in model
-        Person bob = new PersonBuilder().withName("Bob").build(); // Bob not in model
+        Person alice = new PersonBuilder().withName("Alice").build();
         Session currentSession = new Session(new SessionNumber("3"));
         model.addPerson(alice);
         model.addSession(currentSession);
 
         Set<Name> studentNames = new HashSet<>();
-        studentNames.add(new Name("Alice"));
-        studentNames.add(new Name("Bob"));
+        studentNames.add(new Name("Alice")); // Alice in model
+        studentNames.add(new Name("Bob")); // Bob not in model
 
 
         TakeAttendanceCommand markPresentCommandInvalidName = new TakeAttendanceCommand(
                 currentSession.getSessionNumber(), studentNames, AttendancePresence.PRESENT);
         assertCommandFailure(markPresentCommandInvalidName, model, TakeAttendanceCommand.MESSAGE_PERSON_NOT_FOUND);
+    }
 
-        model.addPerson(bob); // Bob is now in model
+    @Test
+    public void execute_invalidArguments_throwsSessionNotFoundException() {
+        Model model = new ModelManager();
+        Person alice = new PersonBuilder().withName("Alice").build();
+        Session currentSession = new Session(new SessionNumber("3"));
+        model.addPerson(alice);
+        model.addSession(currentSession); // Session with SessionNumber 3 in model
+
+        Set<Name> studentNames = new HashSet<>();
+        studentNames.add(new Name("Alice"));
+
         TakeAttendanceCommand markPresentCommandInvalidSessionNumber = new TakeAttendanceCommand(
                 new SessionNumber("5"), studentNames, AttendancePresence.PRESENT);
         assertCommandFailure(markPresentCommandInvalidSessionNumber, model, Messages.MESSAGE_SESSION_NOT_FOUND);
