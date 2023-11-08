@@ -984,7 +984,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 :information_source: Note:
 
 * The student must exist in F.A.K.E.J.A.R.V.I.S.
-* Leaving the `STUDENT_NAME` field blank will display the overall attendance across all students and sessions. 
+* Omitting `n/STUDENT_NAME` will display the overall attendance across all students and sessions. 
 
 </md>
 </div>
@@ -1002,7 +1002,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 
 > **Example 2:**
 >
-> **Input:** `viewattendance n/Alex Yeoh` Displays all the sessions that Alex Yeoh has attended.
+> **Input:** `s n/Alex Yeoh` Displays all the sessions that Alex Yeoh has attended.
 >
 > **Output:**
 >`2 sessions listed!`
