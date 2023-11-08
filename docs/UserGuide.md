@@ -21,6 +21,8 @@ As Avengers ourselves, we understand the importance of managing both our time an
 
 If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offers and need assistance, don't worry! This UserGuide is your trusted assistant, and will guide you through every step and ensure that you can unlock the full potential of F.A.K.E.J.A.R.V.I.S. Let's get started!
 
+<br>
+<br>
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -85,12 +87,14 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 
 <br>
-
+<br>
 
 ### How to use the User Guide
 You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
+
+<br>
 
 | Convention     | Description                                                    |
 |----------------|----------------------------------------------------------------|
@@ -122,9 +126,11 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 [Back to Table of Contents](#table-of-contents)
 
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
+<br>
 
 ## Graphical User Interface
 
@@ -147,25 +153,30 @@ The following describes what each panel contains:
 
 
 <br>
+<br>
 
 ### Student Card
 ![Student Card with Annotations](images/StudentCardAnnotated.png)
 
+<br>
 <br>
 
 ### Task Card
 ![Task Card with Annotations](images/TaskCardAnnotated.png)
 
 <br>
+<br>
 
 ### Assignment Card
 ![Assignment Card with Annotations](images/AssignmentCardAnnotated.png)
 
 <br>
+<br>
 
 ### Session Card
 ![Session Card with Annotations](images/SessionCardAnnotated.png)
 
+<br>
 <br>
 
 ### Consultation Card
@@ -173,9 +184,9 @@ The following describes what each panel contains:
 
 <br>
 
-
-
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
 
 ## Quick start
 
@@ -207,9 +218,12 @@ The following describes what each panel contains:
 
 [Back to Table of Contents](#table-of-contents)
 
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
+
+<br>
 
 ## Command Format
 
@@ -237,6 +251,7 @@ The following describes what each panel contains:
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
+<br>
 <br>
 
 ### Command Parameters
@@ -274,14 +289,21 @@ Most commands given in the user guide utilise various parameters which are also 
 
 <br>
 
+--------------------------------------------------------------------------------------------------------------------
+
+
+<br>
+
 ## Features
 This section describes each of the commands and features available in F.A.K.E.J.A.R.V.I.S.
 
+<br>
 <br>
 
 ### General Commands
 This section describes commands that fit in no special category.
 
+<br>
 <br>
 
 #### Switching between different tabs: `tab`
@@ -374,10 +396,12 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 [Back to Table of Contents](#table-of-contents)
 
 <br>
-
+<br>
 
 ### Student Management
 This section describes commands that help you manage your students.
+
+<br>
 
 #### 📝Adding a Student: `add`
 
@@ -425,6 +449,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 
 <br>
+<br>
 
 #### 👀Listing All Students : `list`
 
@@ -442,6 +467,7 @@ Format: `list`
 > [IMAGE COMING SOON]
 
 
+<br>
 <br>
 
 #### 🛠️Editing a Student Field : `edit`
@@ -498,6 +524,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 
 
 <br>
+<br>
 
 #### 🔎Locating Student by Name: `find`
 
@@ -544,6 +571,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 
 <br>
+<br>
 
 #### ❌Deleting a Student : `delete`
 
@@ -589,6 +617,7 @@ Format: `delete INDEX`
 
 
 <br>
+<br>
 
 #### Clearing all Entries : `clear`
 
@@ -609,11 +638,14 @@ Format: `clear`
 
 
 <br>
+<br>
+<br>
 
 ### Task Management
 
 This section describes commands that help you manage your tasks.
 
+<br>
 <br>
 
 #### 📝Adding a Task: `addtask`
@@ -650,6 +682,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 > [IMAGE COMING SOON]
 
 
+<br>
 <br>
 
 #### 👀Viewing Tasks: `viewtasks`
@@ -715,7 +748,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 
 
 
-
+<br>
 <br>
 
 #### 🛠️Updating a Task's Progress: `updateprogress`
@@ -764,6 +797,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
 
 <br>
+<br>
 
 #### ❌Deleting a Task: `deletetask`
 
@@ -811,11 +845,14 @@ Format: `deletetask TASK_INDEX`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
+<br>
 
 ### Attendance Management
 This section describes commands that help you manage your students' attendance.
 
 
+<br>
 <br>
 
 #### 📆Taking Attendance: `takeattendance`
@@ -862,6 +899,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 > [IMAGE COMING SOON]
 
 
+<br>
 <br>
 
 #### 👀Viewing Attendance: `viewattendance`
@@ -919,10 +957,13 @@ Format: `viewattendance n/STUDENT_NAME n/STUDENT_NAME …`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
+<br>
 
 ### Assignment Management
 This section describes commands that help you manage your students' assignments.
 
+<br>
 <br>
 
 #### 👀Viewing a List of Assignments: `viewassignments`
@@ -967,6 +1008,7 @@ Format: `viewassignments INDEX`
 > [IMAGE COMING SOON]
 
 
+<br>
 <br>
 
 #### 🛠️Editing an Assignment Grade: `editgrade`
@@ -1014,7 +1056,7 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 > [IMAGE COMING SOON]
 
 
-
+<br>
 <br>
 
 #### ❌Deleting an Assignment Grade: `deletegrade`
@@ -1062,7 +1104,7 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 > [IMAGE COMING SOON]
 
 
-
+<br>
 <br>
 
 #### 🛠️Editing an Assignment Comment: `editcomment`
@@ -1112,7 +1154,7 @@ Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
 
 
-
+<br>
 <br>
 
 #### ❌Deleting an Assignment Comment: `deletecomment`
@@ -1163,12 +1205,12 @@ Format: `deletecomment INDEX as/ASSIGNMENT`
 
 [Back to Table of Contents](#table-of-contents)
 
-
+<br>
+<br>
 <br>
 
 ### Graded Test Management
 This section describes commands tht help you manage your students' graded tests.
-
 
 <br>
 
@@ -1226,7 +1268,8 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 [Back to Table of Contents](#table-of-contents)
 
-
+<br>
+<br>
 <br>
 
 ### Session Management
@@ -1278,6 +1321,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 
 
 <br>
+<br>
 
 
 #### 🛠️Updating a Session's Remark: `updatesessionremark`
@@ -1323,6 +1367,7 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
 
 <br>
+<br>
 
 
 #### ❌Deleting a Session: `deletesession`
@@ -1367,6 +1412,8 @@ Format: `deletesession s/SESSION_NUMBER`
 > [IMAGE COMING SOON]
 
 
+<br>
+<br>
 <br>
 
 ### Consultation Management
@@ -1420,6 +1467,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 
 
 <br>
+<br>
 
 #### 📝️Adding students to a consultation: `addtoconsult`
 You can add your student(s) into a consultation slot.
@@ -1466,6 +1514,7 @@ Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
 
 <br>
+<br>
 
 #### ❌Removing Students from a Consultation: `removefromconsult`
 
@@ -1502,6 +1551,7 @@ Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
 
 <br>
+<br>
 
 #### ❌Deleting a Consultation: `deleteconsult`
 
@@ -1534,20 +1584,35 @@ Format: `deleteconsult INDEX`
 >
 > [IMAGE COMING SOON]
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
+
+
+<br>
+<br>
 
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous F.A.K.E.J.A.R.V.I.S. home folder.
 
+<br>
+
+
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
 
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
 
 ## Command summary
 
@@ -1576,7 +1641,11 @@ Format: `deleteconsult INDEX`
 
 [Back to Table of Contents](#table-of-contents)
 
+<br>
+
 --------------------------------------------------------------------------------------------------------------------
+
+<br>
 
 ## Encountering Errors
 This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
@@ -1590,3 +1659,5 @@ This section outlines a list of error messages that you may encounter during you
 | **This `task` / `person` already exists in the `task list` / `students list`.** | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                  |
 | **Date needs to be in the format dd/MM/yyyy, or date has already crossed.**     | You have either supplied the date in an unrecognisable format, or provided a date that is in the past.                                              | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023) <br /> 2. Choose a date from today or later.                              |
 | **Time needs to be in the format HH:mm.**                                       | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                     |
+
+[Back to Table of Contents](#table-of-contents)
