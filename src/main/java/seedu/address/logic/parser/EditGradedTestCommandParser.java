@@ -57,6 +57,32 @@ public class EditGradedTestCommandParser implements Parser<EditGradedTestCommand
         Finals finals = null;
         PracticalExam practicalExam = null;
 
+        // Parse the graded test fields SLAPP
+        GradedTestFields gradedTestFields = parseGradedTestFields(argMultimap, segments, index, ra1,
+                ra2, midTerms, finals, practicalExam);
+
+        // Update the variables with the parsed values
+        index = gradedTestFields.index;
+        ra1 = gradedTestFields.ra1;
+        ra2 = gradedTestFields.ra2;
+        midTerms = gradedTestFields.midTerms;
+        finals = gradedTestFields.finals;
+        practicalExam = gradedTestFields.practicalExam;
+
+        // Check if the necessary prefixes are present
+        if (index == null || (ra1 == null && ra2 == null && midTerms == null
+                && finals == null && practicalExam == null)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditGradedTestCommand.MESSAGE_USAGE));
+        }
+
+        return new EditGradedTestCommand(index, Optional.ofNullable(ra1), Optional.ofNullable(ra2),
+                Optional.ofNullable(midTerms), Optional.ofNullable(finals), Optional.ofNullable(practicalExam));
+    }
+
+    private GradedTestFields parseGradedTestFields(ArgumentMultimap argMultimap, String[] segments, Index index,
+                                                   ReadingAssessment1 ra1, ReadingAssessment2 ra2, MidTerms midTerms,
+                                                   Finals finals, PracticalExam practicalExam) throws ParseException {
         for (String segment : segments) {
             if (segment.startsWith("ra1/")) {
                 ra1 = ParserUtil.parseReadingAssessment1(argMultimap.getValue(PREFIX_READING_ASSESSMENT1).get());
@@ -77,16 +103,7 @@ public class EditGradedTestCommandParser implements Parser<EditGradedTestCommand
                 }
             }
         }
-
-        // Check if the necessary prefixes are present
-        if (index == null || (ra1 == null && ra2 == null && midTerms == null
-                && finals == null && practicalExam == null)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditGradedTestCommand.MESSAGE_USAGE));
-        }
-
-        return new EditGradedTestCommand(index, Optional.ofNullable(ra1), Optional.ofNullable(ra2),
-                Optional.ofNullable(midTerms), Optional.ofNullable(finals), Optional.ofNullable(practicalExam));
+        return new GradedTestFields(index, ra1, ra2, midTerms, finals, practicalExam);
     }
 
     /**
@@ -95,5 +112,39 @@ public class EditGradedTestCommandParser implements Parser<EditGradedTestCommand
      */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
+    /**
+     * This is a private static class used to encapsulate the fields related to a graded test.
+     * It includes an index and various assessment components such as ReadingAssessment1, ReadingAssessment2,
+     * MidTerms, Finals, and PracticalExam.
+     */
+    private static class GradedTestFields {
+        private final Index index;
+        private final ReadingAssessment1 ra1;
+        private final ReadingAssessment2 ra2;
+        private final MidTerms midTerms;
+        private final Finals finals;
+        private final PracticalExam practicalExam;
+
+        /**
+         * Constructs a new GradedTestFields object with the given parameters.
+         *
+         * @param index          The index of the graded test.
+         * @param ra1            The first reading assessment component.
+         * @param ra2            The second reading assessment component.
+         * @param midTerms       The midterms component.
+         * @param finals         The finals component.
+         * @param practicalExam  The practical exam component.
+         */
+        GradedTestFields(Index index, ReadingAssessment1 ra1, ReadingAssessment2 ra2, MidTerms midTerms,
+                         Finals finals, PracticalExam practicalExam) {
+            this.index = index;
+            this.ra1 = ra1;
+            this.ra2 = ra2;
+            this.midTerms = midTerms;
+            this.finals = finals;
+            this.practicalExam = practicalExam;
+        }
     }
 }
