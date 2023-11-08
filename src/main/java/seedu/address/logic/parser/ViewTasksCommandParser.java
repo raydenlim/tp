@@ -84,7 +84,7 @@ public class ViewTasksCommandParser implements Parser<ViewTasksCommand> {
 
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             String[] dateKeywords = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get())
-                    .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).split("\\s+");
+                    .format(DateTimeFormatter.ofPattern("dd/MM/uuuu")).split("\\s+");
             predicate = new DateContainsKeywordsPredicate(Arrays.asList(dateKeywords));
         }
 
