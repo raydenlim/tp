@@ -41,7 +41,7 @@ import seedu.address.model.task.TaskProgress;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Task index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_DATE = "Date is needs to be in the format dd/MM/yyyy.";
     public static final String MESSAGE_INVALID_TIME = "Time is needs to be in the format HH:mm.";
 

@@ -33,8 +33,8 @@ public class EditGradeCommand extends Command {
     public static final String COMMAND_WORD = "editgrade";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits a grade to a person’s assignment identified "
-            + "by the index number used in the displayed person list. "
-            + "Parameters: INDEX (must be a positive integer) "
+            + "by the student index number used in the displayed person list. "
+            + "Parameters: STUDENT_INDEX (must be a positive integer) "
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
             + PREFIX_GRADE + "GRADE ";
 

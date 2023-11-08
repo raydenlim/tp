@@ -41,8 +41,8 @@ public class EditGradedTestCommand extends Command {
     public static final String COMMAND_WORD = "editgradedtest";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the graded test of a person, "
-            + "identified by the index number used in the displayed person list. \n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "identified by the student index number used in the displayed person list. \n"
+            + "Parameters: STUDENT_INDEX (must be a positive integer) "
             + "[" + PREFIX_READING_ASSESSMENT1 + "RA1] "
             + "[" + PREFIX_READING_ASSESSMENT2 + "RA2] "
             + "[" + PREFIX_MIDTERMS + "MIDTERMS] "
