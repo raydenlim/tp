@@ -33,6 +33,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -121,9 +122,11 @@ public class EditCommand extends Command {
         TelegramHandle updatedTelegramHandle = editPersonDescriptor.getTelegramHandle()
                 .orElse(personToEdit.getTelegramHandle());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        AssignmentMap assignmentMap = editPersonDescriptor.getAssignmentMap().orElse(personToEdit.getAllAssignments());
         Set<GradedTest> updatedGrades = editPersonDescriptor.getGradedTests().orElse(personToEdit.getGradedTest());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegramHandle, updatedTags, updatedGrades);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegramHandle, updatedTags,
+            assignmentMap, updatedGrades);
     }
 
     @Override
@@ -165,6 +168,7 @@ public class EditCommand extends Command {
         private Finals finals;
         private PracticalExam pe;
         private Set<Tag> tags;
+        private AssignmentMap assignmentMap;
         private Set<GradedTest> gradedTests;
 
         public EditPersonDescriptor() {}
@@ -180,6 +184,7 @@ public class EditCommand extends Command {
             setTelegramHandle(toCopy.telegramHandle);
             setTags(toCopy.tags);
             setGradedTest(toCopy.gradedTests);
+            setAssignmentMap(toCopy.assignmentMap);
         }
 
         /**
@@ -219,6 +224,14 @@ public class EditCommand extends Command {
 
         public Optional<TelegramHandle> getTelegramHandle() {
             return Optional.ofNullable(telegramHandle);
+        }
+
+        public void setAssignmentMap(AssignmentMap assignmentMap) {
+            this.assignmentMap = assignmentMap;
+        }
+
+        public Optional<AssignmentMap> getAssignmentMap() {
+            return Optional.ofNullable(assignmentMap);
         }
 
         public void setReadingAssessment1(ReadingAssessment1 ra1) {

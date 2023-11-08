@@ -30,6 +30,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.TelegramHandle;
+import seedu.address.model.person.assignment.AssignmentMap;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -127,6 +128,7 @@ public class EditGradedTestCommand extends Command {
         Email email = reference.getEmail();
         TelegramHandle telegramHandle = reference.getTelegramHandle();
         Set<Tag> tags = reference.getTags();
+        AssignmentMap assignmentMap = reference.getAllAssignments();
         Set<GradedTest> gradedTest = new HashSet<>(reference.getGradedTest());
 
         GradedTest existingGradedTest = null;
@@ -157,7 +159,7 @@ public class EditGradedTestCommand extends Command {
         gradedTest.remove(existingGradedTest);
         gradedTest.add(editedGradedTest);
 
-        return new Person(name, phone, email, telegramHandle, tags, gradedTest);
+        return new Person(name, phone, email, telegramHandle, tags, assignmentMap, gradedTest);
     }
 
     @Override
