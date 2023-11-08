@@ -971,7 +971,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 You can view the attendance list of your students.
 
-Format: `viewattendance n/STUDENT_NAME…`
+Format: `viewattendance [n/STUDENT_NAME]…`
 
 | <center>**Parameter**</center> | <center>**Description**</center>                                                |
 |--------------------------------|---------------------------------------------------------------------------------|
@@ -984,6 +984,7 @@ Format: `viewattendance n/STUDENT_NAME…`
 :information_source: Note:
 
 * The student must exist in F.A.K.E.J.A.R.V.I.S.
+* Leaving the `STUDENT_NAME` field blank will display the overall attendance across all students and sessions. 
 
 </md>
 </div>
