@@ -483,11 +483,11 @@ Format: `list`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
+Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
 | Parameter       | Description                                             |
 |-----------------|---------------------------------------------------------|
-| INDEX           | The index of the student to be edited.                  |
+| STUDENT_INDEX   | The index of the student to be edited.                  |
 | NAME            | The new name for the student.                           |
 | PHONE           | The new phone number for the student.                   |
 | EMAIL           | The new email address for the student.                  |
@@ -498,9 +498,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 
 <div class="alert alert-info"><md> :information_source: Note: 
 
-* Edits the person at the specified `INDEX`. 
-* The index refers to the index number shown in the displayed student list. 
-* The index **must be a positive integer** 1, 2, 3, …​
+* Edits the person at the specified `STUDENT_INDEX`. 
+* The student index refers to the index number shown in the displayed student list. 
+* The student index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
@@ -539,12 +539,11 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 
 You can find a student whose name contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD…`
 
 | Parameter     | Description                         |
 |---------------|-------------------------------------|
 | KEYWORD       | The main keyword to search for.     |
-| MORE_KEYWORDS | Additional keywords for the search. |
 
 
 
@@ -586,11 +585,11 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
 
-Format: `delete INDEX`
+Format: `delete STUDENT_INDEX`
 
 | Parameter | Description                             |
 |-----------|-----------------------------------------|
-| INDEX     | The index of the student to be deleted. |
+| STUDENT_INDEX     | The index of the student to be deleted. |
 
 
 <div class="alert alert-info"> 
@@ -598,9 +597,9 @@ Format: `delete INDEX`
 
 :information_source: Note: 
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person at the specified `STUDENT_INDEX`.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​
 
 </md>
 </div>
@@ -755,8 +754,6 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 
 
 
-
-
 <br>
 <br>
 
@@ -778,8 +775,8 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed task list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
+* The task index refers to the index number shown in the displayed task list.
+* The task index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
 </md>
 </div>
@@ -824,8 +821,8 @@ Format: `deletetask TASK_INDEX`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed task list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
+* The task index refers to the index number shown in the displayed task list.
+* The task index **must be a positive integer** 1, 2, 3, …​ that is within the range of the task list.
 
 </md>
 </div>
@@ -915,7 +912,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 You can view the attendance list of your students.
 
-Format: `viewattendance n/STUDENT_NAME n/STUDENT_NAME …`
+Format: `viewattendance n/STUDENT_NAME…`
 
 | Parameter    | Description                                                    |
 |--------------|----------------------------------------------------------------|
@@ -973,17 +970,16 @@ Format: `viewattendance n/STUDENT_NAME n/STUDENT_NAME …`
 This section describes commands that help you manage your students' assignments.
 
 <br>
-<br>
 
 #### 👀Viewing a List of Assignments: `viewassignments`
 
 You can view a list of assignment grades and comments.
 
-Format: `viewassignments INDEX`
+Format: `viewassignments STUDENT_INDEX`
 
 | Parameter | Description               |
 |-----------|---------------------------|
-| INDEX     | The index of the student. |
+| STUDENT_INDEX     | The index of the student. |
 
 
 <div class="alert alert-info"> 
@@ -991,8 +987,8 @@ Format: `viewassignments INDEX`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 
 </md>
 </div>
@@ -1024,11 +1020,11 @@ Format: `viewassignments INDEX`
 
 You can edit your student’s assignment grade.
 
-Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
+Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 
 | Parameter  | Description                 |
 |------------|-----------------------------|
-| INDEX      | The index of the student.   |
+| STUDENT_INDEX      | The index of the student.   |
 | ASSIGNMENT | The name of the assignment. |
 | GRADE      | The score of the student.   |
 
@@ -1038,8 +1034,8 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
@@ -1072,11 +1068,11 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
 You can delete your student’s assignment grade.
 
-Format: `deletegrade INDEX as/ASSIGNMENT`
+Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 
 | Parameter  | Description                 |
 |------------|-----------------------------|
-| INDEX      | The index of the student.   |
+| STUDENT_INDEX      | The index of the student.   |
 | ASSIGNMENT | The name of the assignment. |
 
 
@@ -1085,8 +1081,8 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
@@ -1120,11 +1116,11 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 
 You can edit the comment of your student’s assignment.
 
-Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
+Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 
 | Parameter  | Description                 |
 |------------|-----------------------------|
-| INDEX      | The index of the student.   |
+| STUDENT_INDEX      | The index of the student.   |
 | ASSIGNMENT | The name of the assignment. |
 | COMMENT    | The new comment.            |
 
@@ -1135,8 +1131,8 @@ Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
@@ -1170,11 +1166,11 @@ Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
 You can delete the comment tagged to your student’s assignment.
 
-Format: `deletecomment INDEX as/ASSIGNMENT`
+Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 
 | Parameter  | Description                 |
 |------------|-----------------------------|
-| INDEX      | The index of the student.   |
+| STUDENT_INDEX      | The index of the student.   |
 | ASSIGNMENT | The name of the assignment. |
 
 
@@ -1184,8 +1180,8 @@ Format: `deletecomment INDEX as/ASSIGNMENT`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
@@ -1232,7 +1228,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 | Parameter            | Description                                      |
 |----------------------|--------------------------------------------------|
-| INDEX                | The index of the student.                        |
+| STUDENT_INDEX                | The index of the student.                        |
 | READING_ASSESSMENT_1 | The score of the student's Reading Assessment 1. |
 | READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
 | MIDTERMS             | The score of the student's MidTerms.             |
@@ -1245,8 +1241,8 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The student index refers to the index number shown in the displayed student list.
+* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * At least 1 field must be present after the `INDEX`.
 
 </md>
@@ -1291,7 +1287,7 @@ This section describes commands that help you manage your sessions.
 
 You can create a session for any upcoming or past sessions.
 
-Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
+Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 
 | Parameter      | Description                        |
 |----------------|------------------------------------|
@@ -1435,7 +1431,7 @@ This section describes commands that help you manage your consultations with stu
 
 You can create a consultation for any upcoming consultations.
 
-Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
+Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 
 | Parameter    | Description                 |
 |--------------|-----------------------------|
@@ -1481,11 +1477,11 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 #### 📝️Adding students to a consultation: `addtoconsult`
 You can add your student(s) into a consultation slot.
 
-Format: `addtoconsult INDEX n/STUDENT_NAME …`
+Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 | Parameter    | Description                                                  |
 |--------------|--------------------------------------------------------------|
-| INDEX        | The index of the consultation in the upcoming consultations. |
+| CONSULTATION_INDEX        | The index of the consultation in the upcoming consultations. |
 | STUDENT_NAME | The name of the student to be added to the consultation.     |
 
 
@@ -1495,8 +1491,8 @@ Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed consultation list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The consultation index refers to the index number shown in the displayed consultation list.
+* The consultation index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
 * The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
@@ -1529,12 +1525,12 @@ Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
 You can remove your student(s) from a consultation.
 
-Format: `removefromconsult INDEX n/STUDENT_NAME …`
+Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
-| Parameter    | Description                                                  |
-|--------------|--------------------------------------------------------------|
-| INDEX        | The index of the consultation in the upcoming consultations. |
-| STUDENT_NAME | The name of the student to be added to the consultation.     |
+| Parameter          | Description                                                  |
+|--------------------|--------------------------------------------------------------|
+| CONSULTATION_INDEX | The index of the consultation in the upcoming consultations. |
+| STUDENT_NAME       | The name of the student to be added to the consultation.     |
 
 
 <div class="alert alert-info"> 
@@ -1542,8 +1538,8 @@ Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed consultation list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The consultation index refers to the index number shown in the displayed consultation list.
+* The consultation index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
 * The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
@@ -1566,11 +1562,11 @@ Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
 You can delete the consultation slot specified by an index.
 
-Format: `deleteconsult INDEX`
+Format: `deleteconsult CONSULTATION_INDEX`
 
 | Parameter | Description                                                  |
 |-----------|--------------------------------------------------------------|
-| INDEX     | The index of the consultation in the upcoming consultations. |
+| CONSULTATION_INDEX     | The index of the consultation in the upcoming consultations. |
 
 
 <div class="alert alert-info"> 
@@ -1578,8 +1574,8 @@ Format: `deleteconsult INDEX`
 
 :information_source: Note:
 
-* The index refers to the index number shown in the displayed consultation list.
-* The index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
+* The consultation index refers to the index number shown in the displayed consultation list.
+* The consultation index **must be a positive integer** 1, 2, 3, …​ that is within the range of the consultation list.
 
 </md>
 </div>
@@ -1625,33 +1621,33 @@ Format: `deleteconsult INDEX`
 
 ## Command summary
 
-| <center>**Action**</center>                | <center>**Format**</center>                                                                                              | <center>**Examples**</center>                                                                                                      |
-|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| <center>**Add**</center>                   | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`      <br/>                            | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
-| <center>**Clear**</center>                 | `clear`                                                                                                                  | `clear`                                                                                                                            |
-| <center>**Delete**</center>                | `delete INDEX`                                                                                                           | `delete 3`                                                                                                                         |
-| <center>**Edit**</center>                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`                            | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
-| <center>**Find**</center>                  | `find KEYWORD [MORE_KEYWORDS]`                                                         <br/>                             | `find John`<br> `find alex david`                                                                                                  |
-| <center>**List**</center>                  | `list`                                                                                                                   | `list`                                                                                                                             |
-| <center>**Add Task**</center>              | `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                                                   | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                          |
-| <center>**View Tasks**</center>            | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`      | `viewtasks`,<br> `viewtasks tp/high`,<br> `viewtasks d/30/09/2023`                                                                 |
-| <center>**Update Progress**</center>       | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                           | `updateprogress 1 tprog/pending`,<br>`updateprogress 3 tprog/done`                                                                 |
-| <center>**Delete Task**</center>           | `deletetask TASK_INDEX`                                                                                                  | `deletetask 3`,<br>`deletetask 2`                                                                                                  |
-| <center>**View Grade**</center>            | `viewgrade INDEX as/ASSIGNMENT`                                                                                          | `viewgrade 1 as/Functional Expressionism`,<br>`viewgrade 2 as/Rune Reading`                                                        |
-| <center>**Edit Grade**</center>            | `editgrade INDEX as/ASSIGNMENT g/GRADE`                                                                                  | `editgrade 1 as/Functional Expressionism g/1200`,<br>`editgrade 2 as/Rune Reading g/1000`                                          |
-| <center>**Delete Grade**</center>          | `deletegrade INDEX as/ASSIGNMENT`                                                                                        | `deletegrade 1 as/Functional Expressionism`,<br>`deletegrade 2 as/Rune Reading`                                                    |
-| <center>**Edit Comment**</center>          | `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                                      | `editcomment n/Rayson a/Functional Expressionism c/Decent`,<br> `editcomment n/Wesley a/Rune Reading c/Great`                      |
-| <center>**Delete Comment**</center>        | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                              | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                       |
-| <center>**Edit Graded Test**</center>      | `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
-| <center>**Take Attendance**</center>       | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                                     | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
-| <center>**View Attendance**</center>       | `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`                                                                     | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
-| <center>**Create Consultation**</center>   | `createconsult d/DATE tt/TIME n/STUDENT_NAME …`                                                                          | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
-| <center>**Add To Consult**</center>        | `addtoconsult INDEX n/STUDENT_NAME …`                                                                                    | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
-| <center>**Remove From Consult**</center>   | `removefromconsult INDEX n/STUDENT_NAME …`                                                                               | `removefromconsult 2 n/Betsy Crower`                                                                                               |
-| <center>**Delete Consult**</center>        | `deleteconsult INDEX`                                                                                                    | `deleteconsult 1`                                                                                                                  |
-| <center>**Create Session**</center>        | `createsession s/SESSION_NUMBER n/STUDENT_NAME …`                                                                        | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
-| <center>**Update Session Remark**</center> | `updatesessionremark s/SESSION_NUMBER r/REMARK`                                                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
-| <center>**Delete Session**</center>        | `deletesession s/SESSION_NUMBER`                                                                                         | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
+| <center>**Action**</center>                | <center>**Format**</center>                                                                                                      | <center>**Examples**</center>                                                                                                      |
+|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| <center>**Add**</center>                   | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`      <br/>                                    | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
+| <center>**Clear**</center>                 | `clear`                                                                                                                          | `clear`                                                                                                                            |
+| <center>**Delete**</center>                | `delete STUDENT_INDEX`                                                      <br/>                                                | `delete 3`                                                                                                                         |
+| <center>**Edit**</center>                  | `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`                             | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
+| <center>**Find**</center>                  | `find KEYWORD [MORE_KEYWORDS]`                                                         <br/>                                     | `find John`<br> `find alex david`                                                                                                  |
+| <center>**List**</center>                  | `list`                                                                                                                           | `list`                                                                                                                             |
+| <center>**Add Task**</center>              | `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                                                           | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                          |
+| <center>**View Tasks**</center>            | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`              | `viewtasks`,<br> `viewtasks tp/high`,<br> `viewtasks d/30/09/2023`                                                                 |
+| <center>**Update Progress**</center>       | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                                   | `updateprogress 1 tprog/pending`,<br>`updateprogress 3 tprog/done`                                                                 |
+| <center>**Delete Task**</center>           | `deletetask TASK_INDEX`                                                                                                          | `deletetask 3`,<br>`deletetask 2`                                                                                                  |
+| <center>**View Grade**</center>            | `viewgrade STUDENT_INDEX as/ASSIGNMENT`                                                                                          | `viewgrade 1 as/Functional Expressionism`,<br>`viewgrade 2 as/Rune Reading`                                                        |
+| <center>**Edit Grade**</center>            | `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`                                                                                  | `editgrade 1 as/Functional Expressionism g/1200`,<br>`editgrade 2 as/Rune Reading g/1000`                                          |
+| <center>**Delete Grade**</center>          | `deletegrade STUDENT_INDEX as/ASSIGNMENT`                                                                                        | `deletegrade 1 as/Functional Expressionism`,<br>`deletegrade 2 as/Rune Reading`                                                    |
+| <center>**Edit Comment**</center>          | `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`                                                                              | `editcomment 1 as/Functional Expressionism c/Decent`,<br> `editcomment 2 as/Rune Reading c/Great`                                  |
+| <center>**Delete Comment**</center>        | `deletecomment STUDENT_INDEX as/ASSIGNMENT`                                                                                      | `deletecomment 1 as/Functional Expressionism`,<br> `deletecomment 2 as/Rune Reading`                                               |
+| <center>**Edit Graded Test**</center>      | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
+| <center>**Take Attendance**</center>       | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                                             | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
+| <center>**View Attendance**</center>       | `viewattendance n/STUDENT_NAME…`                                                                                                 | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
+| <center>**Create Consultation**</center>   | `createconsult d/DATE tt/TIME n/STUDENT_NAME…`                                                                                   | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
+| <center>**Add To Consult**</center>        | `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`                               <br/>                                            | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
+| <center>**Remove From Consult**</center>   | `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                                                                        | `removefromconsult 2 n/Betsy Crower`                                                                                               |
+| <center>**Delete Consult**</center>        | `deleteconsult CONSULTATION_INDEX`                                                                                                            | `deleteconsult 1`                                                                                                                  |
+| <center>**Create Session**</center>        | `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                                                                 | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
+| <center>**Update Session Remark**</center> | `updatesessionremark s/SESSION_NUMBER r/REMARK`                                                                                  | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
+| <center>**Delete Session**</center>        | `deletesession s/SESSION_NUMBER`                                                                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
 
 [Back to Table of Contents](#table-of-contents)
 
