@@ -3,7 +3,19 @@ layout: default.md
 title: "User Guide"
 pageNav: 3
 ---
-
+<style>
+    table {
+        width: 90%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+    info {
+        background: white;
+    }
+</style>
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
 ## Introduction
@@ -95,18 +107,6 @@ You may refer to the **Table of Contents** on the right for easy navigation of t
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
 
 <br>
-
-<style>
-    table {
-        width: 90%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 10px;
-        text-align: center;
-    }
-</style>
-
 
 <div align="center">
 
@@ -1135,16 +1135,19 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
 <br>
 
-<div class="alert alert-info"> 
-<md>
-
-:information_source: Note:
-
-* The student index refers to the index number shown in the displayed student list.
-* The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
-* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
-
-</md>
+<div class="wrapper">
+    <div class="alert alert-info"> 
+        <md>
+            :information_source: Note:
+        </md>
+    </div>
+    <div class="info">
+        <md>
+            * The student index refers to the index number shown in the displayed student list.
+            * The student index <b>must be a positive integer</b> 1, 2, 3, …​ that is within the range of the student list.
+            * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+        </md>
+    </div>
 </div>
 
 
