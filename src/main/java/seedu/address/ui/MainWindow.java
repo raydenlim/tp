@@ -273,6 +273,10 @@ public class MainWindow extends UiPart<Stage> {
             case VIEW_ASSIGNMENTS:
                 handleViewAssignments();
                 break;
+            case EDIT_GRADED_TEST:
+                selectTab(TAB_PERSONS_INDEX);
+                clearGraphicalResultDisplay();
+                break;
             case TAB:
                 selectTab(commandResult.getTabIndex());
                 break;
@@ -294,10 +298,6 @@ public class MainWindow extends UiPart<Stage> {
                 break;
             case VIEW_TASKS:
                 selectTab(TAB_TASKS_INDEX);
-                clearGraphicalResultDisplay();
-                break;
-            case EDIT_GRADED_TEST:
-                selectTab(TAB_PERSONS_INDEX);
                 clearGraphicalResultDisplay();
                 break;
             // Consultations
