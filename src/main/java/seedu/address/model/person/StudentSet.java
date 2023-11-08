@@ -18,7 +18,7 @@ public class StudentSet implements Iterable<Person> {
     public static final String MESSAGE_CONSTRAINTS =
             "Session students must not be null";
 
-    /** The set of students in the session. */
+    /** The set of students in the consultation/session. */
     public final Set<Person> students;
 
     /**

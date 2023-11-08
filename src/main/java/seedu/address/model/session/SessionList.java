@@ -148,8 +148,7 @@ public class SessionList implements Iterable<Session> {
 
         for (Session session : internalList) {
             if (session.contains(target)) {
-                session.removeStudent(target);
-                session.addStudent(editedStudent);
+                session.replaceStudent(target, editedStudent);
             }
             newSessions.add(session);
         }

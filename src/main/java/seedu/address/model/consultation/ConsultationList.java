@@ -81,8 +81,7 @@ public class ConsultationList implements Iterable<Consultation> {
 
         for (Consultation consultation : internalList) {
             if (consultation.contains(target)) {
-                consultation.removeStudent(target);
-                consultation.addStudent(editedStudent);
+                consultation.replaceStudent(target, editedStudent);
             }
             newConsultations.add(consultation);
         }

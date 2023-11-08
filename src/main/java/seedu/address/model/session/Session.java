@@ -101,6 +101,17 @@ public class Session {
     }
 
     /**
+     * Replaces a student in the session with another new student.
+     *
+     * @param target The target student to remove.
+     * @param newStudent The new student to add.
+     */
+    public void replaceStudent(Person target, Person newStudent) {
+        this.students.remove(target);
+        this.students.add(newStudent);
+    }
+
+    /**
      * Check if StudentSet contains the {@code student}.
      */
     public boolean contains(Person student) {
