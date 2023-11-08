@@ -430,7 +430,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 > **Example 1:**
 > 
-> **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. 
+> **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01 gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. All his grades are also set to `0`. 
 > 
 > **Output:**
 >`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags: ; GradedTest: `
@@ -440,10 +440,10 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 > **Example 2:**
 >
-> **Input:** `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/criminal` Adds a person called Betty Crowe into F.A.K.E.J.A.R.V.I.S. She has 1234567 as her phone number, betsycrowe@u.nus.edu as her email, itsybetsyspider as her telegram handle and criminal and friend as tags.
+> **Input:** `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/bestie gt/default` Adds a person called Betty Crowe into F.A.K.E.J.A.R.V.I.S. She has 1234567 as her phone number, betsycrowe@u.nus.edu as her email, itsybetsyspider as her telegram handle and bestie as tags. All her grades are also set to `-`.
 >
 > **Output:**
->`New person added: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: ; Graded Test: [friend][criminal]; Graded Test: RA1: -; RA2: -; MidTerms: -; Final: -; PE: -`
+>`New person added: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: ; Graded Test: [bestie]; Graded Test: RA1: -; RA2: -; MidTerms: -; Final: -; PE: -`
 >
 > [IMAGE COMING SOON]
 
@@ -1616,28 +1616,33 @@ Format: `deleteconsult INDEX`
 
 ## Command summary
 
-| **Action**                    | **Format**                                                                                                     | **Examples**                                                                                                                   |
-|-------------------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Add**                       | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                             | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                     |
-| **Clear**                     | `clear`                                                                                                        | `clear`                                                                                                                        |
-| **Delete**                    | `delete INDEX`                                                                                                 | `delete 3`                                                                                                                     |
-| **Edit**                      | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`                  | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                           |
-| **Find**                      | `find KEYWORD [MORE_KEYWORDS]`                                                                                 | `find John` or `find alex david`                                                                                               |
-| **View**                      | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]` | `viewtasks`, `viewtasks tp/high`, `viewtasks d/30/09/2023`                                                                     |
-| **Update Progress**           | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                 | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                                |
-| **Delete Task**               | `deletetask TASK_INDEX`                                                                                        | `deletetask 3`, `deletetask 2`                                                                                                 |
-| **Take Attendance**           | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                           | `takeattendance n/John Doe s/5 present`, `takeattendance n/Foo Bar s/2 absent`                                                 |
-| **View Attendance**           | `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`                                                           | `viewattendance`, `viewattendance n/Rayan`, `viewattendance n/Jayson Resley`                                                   |
-| **Add Grade**                 | `addgrade INDEX as/ASSIGNMENT g/GRADE`                                                                         | `addgrade 1 as/Functional Expressionism g/1300`, `addgrade 2 as/Rune Reading g/600`                                            |
-| **View Grade**                | `viewgrade INDEX as/ASSIGNMENT`                                                                                | `viewgrade 1 as/Functional Expressionism`, `viewgrade 2 as/Rune Reading`                                                       |
-| **Edit Grade**                | `editgrade INDEX as/ASSIGNMENT g/GRADE`                                                                        | `editgrade 1 as/Functional Expressionism g/1200`, `editgrade 2 as/Rune Reading g/1000`                                         |
-| **Delete Grade**              | `deletegrade INDEX as/ASSIGNMENT`                                                                              | `deletegrade 1 as/Functional Expressionism`, `deletegrade 2 as/Rune Reading`                                                   |
-| **Add Comment**               | `addcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                             | `addcomment n/Rayson a/Functional Expressionism c/Excellent`, `addcomment n/Wesley a/Rune Reading c/Not bad`                   |
-| **View Comment**              | `viewcomment n/STUDENT_NAME a/ASSIGNMENT`                                                                      | `viewcomment n/Rayson a/Functional Expressionism`, `viewcomment n/Wesley a/Rune Reading`                                       |
-| **Edit Comment**              | `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                            | `editcomment n/Rayson a/Functional Expressionism c/Decent`, `editcomment n/Wesley a/Rune Reading c/Great`                      |
-| **Delete Comment**            | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                    | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                   |
-| **Edit Graded Test**          | `editgradedtest INDEX ra1/READING_ASSESSMENT_1 ra2/READING_ASSESSMENT_2 mt/MIDTERMS f/FINALS pe/PRACTICALEXAM` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                           |
-| **Create Consultation**       | `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`                                                 | `createconsult d/2023-10-30 tt/12:30 n/John Doe`, `createconsult d/2023-09-30 tt/15:30 n/John Doe n/Foo Bar n/Rayson n/Wesley` |
+| **Action**                | **Format**                                                                                                               | **Examples**                                                                                                                |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| **Add**                   | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                                       | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                  |
+| **Clear**                 | `clear`                                                                                                                  | `clear`                                                                                                                     |
+| **Delete**                | `delete INDEX`                                                                                                           | `delete 3`                                                                                                                  |
+| **Edit**                  | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]…`                            | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                        |
+| **Find**                  | `find KEYWORD [MORE_KEYWORDS]`                                                                                           | `find John` or `find alex david`                                                                                            |
+| **List**                  | `list`                                                                                                                   | `list`                                                                                                                      |
+| **Add Task**              | `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                                                   | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                   |
+| **View Tasks**            | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`      | `viewtasks`, `viewtasks tp/high`, `viewtasks d/30/09/2023`                                                                  |
+| **Update Progress**       | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                           | `updateprogress 1 tprog/pending`, `updateprogress 3 tprog/done`                                                             |
+| **Delete Task**           | `deletetask TASK_INDEX`                                                                                                  | `deletetask 3`, `deletetask 2`                                                                                              |
+| **View Grade**            | `viewgrade INDEX as/ASSIGNMENT`                                                                                          | `viewgrade 1 as/Functional Expressionism`, `viewgrade 2 as/Rune Reading`                                                    |
+| **Edit Grade**            | `editgrade INDEX as/ASSIGNMENT g/GRADE`                                                                                  | `editgrade 1 as/Functional Expressionism g/1200`, `editgrade 2 as/Rune Reading g/1000`                                      |
+| **Delete Grade**          | `deletegrade INDEX as/ASSIGNMENT`                                                                                        | `deletegrade 1 as/Functional Expressionism`, `deletegrade 2 as/Rune Reading`                                                |
+| **Edit Comment**          | `editcomment n/STUDENT_NAME a/ASSIGNMENT c/COMMENT`                                                                      | `editcomment n/Rayson a/Functional Expressionism c/Decent`, `editcomment n/Wesley a/Rune Reading c/Great`                   |
+| **Delete Comment**        | `deletecomment n/STUDENT_NAME a/ASSIGNMENT`                                                                              | `deletecomment n/Rayson a/Functional Expressionism`, `deletecomment n/Wesley a/Rune Reading`                                |
+| **Edit Graded Test**      | `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`, `editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                        |
+| **Take Attendance**       | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                                     | `takeattendance n/John Doe s/5 present`, `takeattendance n/Foo Bar s/2 absent`                                              |
+| **View Attendance**       | `viewattendance n/STUDENT_NAME [MORE_STUDENT_NAMES]`                                                                     | `viewattendance`, `viewattendance n/Rayan`, `viewattendance n/Jayson Resley`                                                |
+| **Create Consultation**   | `createconsult d/DATE tt/TIME n/STUDENT_NAME …`                                                                          | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`, `createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li` |
+| **Add To Consult**        | `addtoconsult INDEX n/STUDENT_NAME …`                                                                                    | `addtoconsult 2 n/Betsy Crower`,`addtoconsult 1 n/David Li n/Roy Balakrishnan` |
+| **Remove From Consult**   | `removefromconsult INDEX n/STUDENT_NAME …`                                                                               | `removefromconsult 2 n/Betsy Crower` |
+| **Delete Consult**        | `deleteconsult INDEX`                                                                                                    | `deleteconsult 1` |
+| **Create Session**        | `createsession s/SESSION_NUMBER n/STUDENT_NAME …`                                                                        | `createsession s/4 n/Betsy Crower n/David Li` |
+| **Update Session Remark** | `updatesessionremark s/SESSION_NUMBER r/REMARK`                                                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`, `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
+| **Delete Session**        | `deletesession s/SESSION_NUMBER`                                                                                         | `deletesession s/1`, `deletesession s/4` |
 
 [Back to Table of Contents](#table-of-contents)
 
