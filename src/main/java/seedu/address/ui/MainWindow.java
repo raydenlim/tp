@@ -277,6 +277,10 @@ public class MainWindow extends UiPart<Stage> {
                 selectTab(TAB_ASSIGNMENTS_INDEX);
                 handleViewAssignments();
                 break;
+            case EDIT_GRADED_TEST:
+                selectTab(TAB_PERSONS_INDEX);
+                clearGraphicalResultDisplay();
+                break;
             // Students Address Book
             case ADD:
             case CLEAR:
@@ -284,10 +288,6 @@ public class MainWindow extends UiPart<Stage> {
             case EDIT:
             case FIND:
             case LIST:
-            case EDIT_GRADED_TEST:
-                selectTab(TAB_PERSONS_INDEX);
-                clearGraphicalResultDisplay();
-                break;
             // Tasks
             case ADD_TASK:
             case DELETE_TASK:
