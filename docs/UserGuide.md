@@ -27,7 +27,7 @@ _Say goodbye to chaos and hello to an organized and efficient classroom experien
 </p>
 
 
-F.A.K.E.J.A.R.V.I.S. is your **friendly companion for efficient task and administrative management**, allowing you to excel as a CS1101S Avenger. With this tool, you can effortlessly track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks. 
+F.A.K.E.J.A.R.V.I.S. is your **friendly companion for efficient task and administrative management**, allowing you to excel as a CS1101S Avenger. With this tool, you can effortlessly track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks.
 
 As Avengers ourselves, we understand the importance of managing both our time and our students effectively. F.A.K.E.J.A.R.V.I.S. is the one-stop solution to streamlining your workload, making your life easier. It is designed to empower you with the benefits of a Command-Line Interface(CLI), all while preserving the advantages of having a Graphical User Interface(GUI).
 
@@ -214,7 +214,7 @@ The following describes what each panel contains:
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
    A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
 
-    ![Ui](images/Ui.png)
+   ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -363,7 +363,7 @@ For the list of tab indexes to use:
 >`Switched to tab 2`
 >
 > [IMAGE COMING SOON]
- 
+
 <br>
 
 #### Viewing help : `help`
@@ -433,6 +433,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 | <center>TELEGRAM_HANDLE</center> | <center>The Telegram handle of the student.</center>                     |
 | <center>TAG</center>             | <center>Tags associated with the student.</center>                       |
 | <center>GRADED_TESTS</center>    | <center>Scores of the graded tests associated with the student.</center> |
+
 <br>
 
 <div class="alert alert-info">
@@ -446,12 +447,12 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 </md> </div>
 
 > **Example 1:**
-> 
-> **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01 gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. All his grades are also set to `0`. 
-> 
+>
+> **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01 gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. All his grades are also set to `0`.
+>
 > **Output:**
 >`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags: ; GradedTest: `
-> 
+>
 > [IMAGE COMING SOON]
 
 
@@ -501,12 +502,13 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 | <center>TELEGRAM_HANDLE</center> | <center>The new Telegram handle for the student.</center>                |
 | <center>TAG</center>             | <center>New tags associated with the student.</center>                   |
 | <center>GRADED_TESTS</center>    | <center>Scores of the graded tests associated with the student.</center> |
+
 <br>
 
 <div class="alert alert-info"><md> :information_source: Note: 
 
-* Edits the person at the specified `STUDENT_INDEX`. 
-* The student index refers to the index number shown in the displayed student list. 
+* Edits the person at the specified `STUDENT_INDEX`.
+* The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
 * Editing tags overwrites existing tags; it's not cumulative.
@@ -551,6 +553,7 @@ Format: `find KEYWORD…`
 | <center>**Parameter**</center> | <center>**Description**</center>                 |
 |--------------------------------|--------------------------------------------------|
 | <center>KEYWORD</center>       | <center>The main keyword to search for.</center> |
+
 <br>
 
 
@@ -602,7 +605,7 @@ Format: `delete STUDENT_INDEX`
 <div class="alert alert-info"> 
 <md>
 
-:information_source: Note: 
+:information_source: Note:
 
 * Deletes the person at the specified `STUDENT_INDEX`.
 * The student index refers to the index number shown in the displayed student list.
@@ -675,6 +678,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 | <center>TASK_DESCRIPTION</center> | <center>The description of the task.</center>                                        |
 | <center>DUE_DATE</center>         | <center>The due date or deadline of the task.</center>                               |
 | <center>TASK_PRIORITY</center>    | <center>The priority level of the task. Given as `high`, `medium` or `low`.</center> |
+
 <br>
 
 > **Example 1:**
@@ -713,6 +717,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 | <center>DUE_DATE</center>         | <center>The due date or deadline of the task.</center>                                        |
 | <center>TASK_PRIORITY</center>    | <center>The priority level of the task. Given as `high`, `medium` or `low`.</center>          |
 | <center>TASK_PROGRESS</center>    | <center>The progress level of the task. Given as `done`, `pending` or `not_started`.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -774,6 +779,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 |--------------------------------|----------------------------------------------------------------------------------------------------|
 | <center>TASK_INDEX</center>    | <center>The index of the task to update the progress.</center>                                     |
 | <center>NEW_PROGRESS</center>  | <center>The new progress level of the task. Given as `done`, `pending`, or `not_started`.</center> |
+
 <br>
 
 
@@ -821,6 +827,7 @@ Format: `deletetask TASK_INDEX`
 | <center>**Parameter**</center> | <center>**Description**</center>          |
 |--------------------------------|-------------------------------------------|
 | <center>TASK_INDEX</center>            | <center>The index of the task to delete.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -880,6 +887,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 | <center>STUDENT_NAME</center>   | <center>The name of the student.</center>                                              |
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center>                                    |
 | <center>PRESENCE</center>       | <center>The attendance status of the student. Given as `present` or `absent`.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -924,6 +932,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 | <center>**Parameter**</center> | <center>**Description**</center>                                                |
 |--------------------------------|---------------------------------------------------------------------------------|
 | <center>STUDENT_NAME</center>  | <center>The name of the student(s) you want to view the attendance of.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -932,7 +941,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 :information_source: Note:
 
 * The student must exist in F.A.K.E.J.A.R.V.I.S.
-* Omitting `n/STUDENT_NAME` will display the overall attendance across all students and sessions. 
+* Omitting `n/STUDENT_NAME` will display the overall attendance across all students and sessions.
 
 </md>
 </div>
@@ -988,6 +997,7 @@ Format: `viewassignments STUDENT_INDEX`
 | <center>**Parameter**</center> | <center>**Description**</center>           |
 |--------------------------------|--------------------------------------------|
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1035,6 +1045,7 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
 | <center>GRADE</center>         | <center>The score of the student.</center>   |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1082,21 +1093,19 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 |--------------------------------|----------------------------------------------|
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
+
 <br>
 
-<div class="wrapper">
-    <div class="alert alert-info"> 
-        <md>
-            :information_source: Note:
-        </md>
-    </div>
-    <div class="info">
-        <md>
-            * The student index refers to the index number shown in the displayed student list.
-            * The student index <b>must be a positive integer</b> 1, 2, 3, …​ that is within the range of the student list.
-            * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
-        </md>
-    </div>
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The student index refers to the index number shown in the displayed student list.
+* The student index <b>must be a positive integer</b> 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
 </div>
 
 
@@ -1134,6 +1143,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 | <center>TUDENT_INDEX</center>  | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
 | <center>COMMENT</center>       | <center>The new comment.</center>            |
+
 <br>
 
 
@@ -1150,7 +1160,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 </div>
 
 > **Example 1:**
-> 
+>
 > **Input:** `editcomment 1 as/Functional Expressionism c/Decent` Changes the comment on the 1st student's Functional Expressionism assignment to “Decent”.
 >
 > **Output:**
@@ -1183,6 +1193,7 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 |--------------------------------|----------------------------------------------|
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
+
 <br>
 
 
@@ -1234,7 +1245,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 You can edit your student's graded test scores if you need to make adjustments or corrections to their initially recorded test scores.
 
-Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] 
+Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
 [pe/PRACTICALEXAM] `
 
 | <center>**Parameter**</center>        | <center>**Description**</center>                                  |
@@ -1245,6 +1256,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 | <center>MIDTERMS</center>             | <center>The score of the student's MidTerms.</center>             |
 | <center>FINALS</center>               | <center>The score of the student's Final Assessment.</center>     |
 | <center>PRACTICALEXAM</center>        | <center>The score of the student's Practical Exams.</center>      |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1262,7 +1274,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 > **Example 1:**
 >
-> **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh. 
+> **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh.
 >
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:[friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
@@ -1272,13 +1284,13 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 > **Example 2:**
 >
-> **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st 
+> **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st
 > person Alex Yeoh.
 >
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:
 > [friends]; Graded Test: RA1: 100; RA2: 2; MidTerms: 3; Final: 4; PE: 100`
-> 
+>
 > [IMAGE COMING SOON]
 
 
@@ -1304,6 +1316,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 |---------------------------------|-----------------------------------------------------|
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center> |
 | <center>STUDENT_NAME</center>   | <center>The name of the student(s).</center>        |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1350,6 +1363,7 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 |---------------------------------|----------------------------------------------------------------|
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center>            |
 | <center>REMARK</center>         | <center>The new remark to be updated for the session.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1395,6 +1409,7 @@ Format: `deletesession s/SESSION_NUMBER`
 | <center>**Parameter**</center>  | <center>**Description**</center>                    |
 |---------------------------------|-----------------------------------------------------|
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1448,6 +1463,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 | <center>DATE</center>          | <center>The date of consultation.</center>   |
 | <center>TIME</center>          | <center>The time of consultation.</center>   |
 | <center>STUDENT_NAME</center>  | <center>The name of the student(s).</center> |
+
 <br>
 
 
@@ -1493,6 +1509,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 |-------------------------------------|-------------------------------------------------------------------------------|
 | <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming</center> consultations. |
 | <center>STUDENT_NAME</center>       | <center>The name of the student to be added to the consultation.</center>     |
+
 <br>
 
 
@@ -1541,6 +1558,7 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 |-------------------------------------|-------------------------------------------------------------------------------|
 | <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming consultations.</center> |
 | <center>STUDENT_NAME</center>       | <center>The name of the student to be added to the consultation.</center>     |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1577,6 +1595,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 | <center>**Parameter**</center>      | <center>**Description**</center>                                              |
 |-------------------------------------|-------------------------------------------------------------------------------|
 | <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming</center> consultations. |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1660,6 +1679,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 | <center>**Delete Session**</center>        | `deletesession s/SESSION_NUMBER`                                                                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
 
 <br>
+
 [Back to Table of Contents](#table-of-contents)
 
 <br>
