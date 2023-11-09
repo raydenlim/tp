@@ -1660,6 +1660,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 | <center>**Delete Session**</center>        | `deletesession s/SESSION_NUMBER`                                                                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
 
 <br>
+
 [Back to Table of Contents](#table-of-contents)
 
 <br>
