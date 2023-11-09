@@ -472,7 +472,7 @@ This section describes commands that help you manage your students.
 
 #### 📝Adding a Student: `add`
 
-You can add a student to F.A.K.E.J.A.R.V.I.S., if you need to keep track of new students.
+You can add a student to F.A.K.E.J.A.R.V.I.S. if you need to keep track of new students.
 
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
@@ -522,7 +522,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 #### 👀Listing All Students : `list`
 
-You can list out all students in F.A.K.E.J.A.R.V.I.S., if you need to view the complete student roster.
+You can list out all students in F.A.K.E.J.A.R.V.I.S. if you need to view the complete student roster.
 Format: `list`
 
 > **Example 1:**
@@ -540,7 +540,7 @@ Format: `list`
 
 #### 🛠️Editing a Student Field : `edit`
 
-You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S., if you need to make changes to a student's information.
+You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S. if you need to make changes to a student's information.
 
 Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
@@ -1284,7 +1284,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 #### 🛠️Editing a Graded Test Score: `editgradedtest`
 
-You can edit your student's graded test scores if there is a need to make adjustments or corrections to the initially recorded test scores.
+You can edit your student's graded test scores if you need to make adjustments or corrections to their initially recorded test scores.
 
 Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] 
 [pe/PRACTICALEXAM] `
@@ -1348,7 +1348,7 @@ This section describes commands that help you manage your sessions.
 
 #### 📝Creating a Session: `createsession`
 
-You can create a session for any upcoming or past sessions if you need to schedule or document class sessions in the system.
+You can create a session for any upcoming or past sessions if you need to schedule or document your class sessions in the system.
 
 Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 
@@ -1394,7 +1394,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 
 #### 🛠️Updating a Session's Remark: `updatesessionremark`
 
-You can update an existing session's remark if there are changes or additional information that you want to include in the session notes or details.
+You can update an existing session's remark if you need to change or add additional information to the session notes or details.
 
 Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
@@ -1491,7 +1491,6 @@ This section describes commands that help you manage your consultations with stu
 <br>
 
 #### 📝Creating a Consultation: `createconsult`
-
 You can create a consultation for any upcoming consultations if you need to schedule or document consultations in the system.
 
 Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
@@ -1538,7 +1537,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 <br>
 
 #### 📝️Adding students to a consultation: `addtoconsult`
-You can add your student(s) into a consultation slot if you want to schedule or allocate specific individuals for the consultation.
+You can add your student(s) into a consultation slot if you need to schedule or allocate specific individuals for your consultation.
 
 Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
@@ -1586,7 +1585,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 #### ❌Removing Students from a Consultation: `removefromconsult`
 
-You can remove your student(s) from a consultation if there is a need to reschedule or cancel their participation in the scheduled consultation.
+You can remove your student(s) from a consultation if you need to reschedule or cancel your student's participation in the scheduled consultation.
 
 Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
