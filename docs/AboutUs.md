@@ -36,7 +36,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/ldinghan.png" width="200px">
 
-[[github](http://github.com/ldinghan)] [[portfolio](team/ldinghan.md)]
+[[homepage](http://linkedin.com/in/dinghanlim/)]
+[[github](http://github.com/ldinghan)]
+[[portfolio](team/ldinghan.md)]
 
 * Role: Developer
 * Responsibilities: Data
