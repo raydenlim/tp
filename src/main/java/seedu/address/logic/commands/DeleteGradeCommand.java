@@ -25,7 +25,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Deletes the grade from a person's assignment.
  */
-public class DeleteGradeCommand extends Command {
+public class DeleteGradeCommand extends AssignmentCommand {
 
     public static final String COMMAND_WORD = "deletegrade";
 
@@ -84,6 +84,11 @@ public class DeleteGradeCommand extends Command {
     @Override
     public CommandType getCommandType() {
         return COMMAND_TYPE;
+    }
+
+    @Override
+    public Index getIndex() {
+        return this.index;
     }
 
     /**

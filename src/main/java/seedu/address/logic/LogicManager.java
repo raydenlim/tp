@@ -11,9 +11,9 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.AssignmentCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ViewAssignmentsCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -69,9 +69,9 @@ public class LogicManager implements Logic {
             storage.saveSessionList(model.getSessionList());
             storage.saveConsultationList(model.getConsultationList());
 
-            if (command instanceof ViewAssignmentsCommand) {
-                ViewAssignmentsCommand viewAssignmentsCommand = (ViewAssignmentsCommand) command;
-                indexToDisplay = viewAssignmentsCommand.getIndex();
+            if (command instanceof AssignmentCommand) {
+                AssignmentCommand assignmentCommand = (AssignmentCommand) command;
+                indexToDisplay = assignmentCommand.getIndex();
             }
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
