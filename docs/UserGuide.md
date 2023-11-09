@@ -207,10 +207,18 @@ The following describes what each panel contains:
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the image below should appear in a few seconds. <br>
 
    ![Ui](images/Ui.png)
 
+   Note that the app will contain some sample data initially. You can use the `clear` command for a blank state. <br>
+    <div class="alert alert-warning">
+    <md>
+    :bangbang: Warning:
+    * This action is irreversible
+    </md> 
+   </div>
+    
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
