@@ -3,9 +3,7 @@ layout: default.md
 title: "User Guide"
 pageNav: 3
 ---
-<style>
-    
-</style>
+
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
 ## Introduction
