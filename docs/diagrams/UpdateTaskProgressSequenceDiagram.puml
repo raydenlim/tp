@@ -38,7 +38,7 @@ deactivate TaskListBook
 
 Model --> UpdateTaskProgressCommand
 
-UpdateTaskProgressCommand --> Model : updateFilteredTaskList()
+UpdateTaskProgressCommand -> Model : updateFilteredTaskList()
 
 Model ---> UpdateTaskProgressCommand
 deactivate Model
