@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 
 /**
  * Jackson-friendly version of {@link Consultation}.
@@ -63,12 +64,14 @@ public class JsonAdaptedConsultation {
         LocalTime formattedTime = LocalTime.parse(time, timeFormatter);
 
         final List<Person> studentsList = new ArrayList<>();
+        StudentSet studentSet = new StudentSet();
         if (students != null) {
             for (JsonAdaptedPerson student : students) {
                 studentsList.add(student.toModelType());
             }
+            final Set<Person> students = new HashSet<>(studentsList);
+            studentSet = new StudentSet(students);
         }
-        final Set<Person> studentSet = new HashSet<>(studentsList);
         return new Consultation(formattedDate, formattedTime, studentSet);
     }
 

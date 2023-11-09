@@ -1,7 +1,5 @@
 package seedu.address.storage;
 
-
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,10 +11,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
-import seedu.address.model.session.SessionStudents;
 
 /**
  * Jackson-friendly version of {@link Session}.
@@ -64,13 +62,13 @@ public class JsonAdaptedSession {
         final SessionNumber modelSessionNumber = new SessionNumber(sessionNumber);
 
         final List<Person> studentsList = new ArrayList<>();
-        SessionStudents sessionStudents = new SessionStudents();
+        StudentSet sessionStudents = new StudentSet();
         if (students != null) {
             for (JsonAdaptedPerson student : students) {
                 studentsList.add(student.toModelType());
             }
             final Set<Person> studentSet = new HashSet<>(studentsList);
-            sessionStudents = new SessionStudents(studentSet);
+            sessionStudents = new StudentSet(studentSet);
         }
 
         if (sessionRemark == null) {

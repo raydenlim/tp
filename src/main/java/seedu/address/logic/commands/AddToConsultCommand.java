@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -24,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
@@ -101,11 +101,14 @@ public class AddToConsultCommand extends Command {
 
         LocalDate date = consultationToAddStudent.getDate();
         LocalTime time = consultationToAddStudent.getTime();
-        // Original target student list
-        Set<Person> students = consultationToAddStudent.getStudents();
-        // List with new students to be added
-        Set<Person> newStudents = addToConsultationDescriptor.names.stream().map(model::getMatchingStudentName)
-                .collect(Collectors.toSet());
+        // Original target StudentSet
+        StudentSet students = consultationToAddStudent.getStudents();
+        // StudentSet with new students to be added
+        StudentSet newStudents = new StudentSet();
+        for (Name name : addToConsultationDescriptor.names) {
+            Person studentToAdd = model.getMatchingStudentName(name);
+            newStudents.add(studentToAdd);
+        }
         // Adding original students to new students list (replace)
         newStudents.addAll(students);
 

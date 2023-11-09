@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
@@ -24,6 +23,7 @@ import seedu.address.model.consultation.Consultation;
 import seedu.address.model.consultation.exceptions.PersonNotFoundInConsultException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
@@ -102,14 +102,17 @@ public class RemoveFromConsultCommand extends Command {
 
         LocalDate date = targetConsultation.getDate();
         LocalTime time = targetConsultation.getTime();
-        // Original list of students
-        Set<Person> students = new HashSet<>(targetConsultation.getStudents());
-        // List of students to be removed from original
-        Set<Person> studentsToRemove = descriptor.names.stream().map(model::getMatchingStudentName)
-                .collect(Collectors.toSet());
+        // Original StudentSet
+        StudentSet students = targetConsultation.getStudents();
+        // StudentSet with students to be removed from original
+        StudentSet studentsToRemove = new StudentSet();
+        for (Name name : descriptor.names) {
+            Person studentToRemove = model.getMatchingStudentName(name);
+            studentsToRemove.add(studentToRemove);
+        }
 
         // Remove iteration while checking
-        for (Person student : studentsToRemove) {
+        for (Person student : studentsToRemove.getSetOfStudents()) {
             if (!students.remove(student)) {
                 throw new PersonNotFoundInConsultException();
             }

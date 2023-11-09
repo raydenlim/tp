@@ -3,10 +3,10 @@ package seedu.address.testutil;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Set;
 
 import seedu.address.model.consultation.Consultation;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -15,12 +15,12 @@ import seedu.address.model.util.SampleDataUtil;
 public class ConsultationBuilder {
     public static final String DEFAULT_DATE = "11/11/2023";
     public static final String DEFAULT_TIME = "11:11";
-    public static final Set<Person> DEFAULT_STUDENTS = TypicalPersons.DEFAULT_PERSONS;
+    public static final StudentSet DEFAULT_STUDENTS = TypicalPersons.DEFAULT_PERSONS;
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
     private LocalDate date;
     private LocalTime time;
-    private Set<Person> students;
+    private StudentSet students;
 
     /**
      * Creates a {@code ConsultationBuilder} with the default details.

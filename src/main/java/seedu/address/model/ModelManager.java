@@ -145,6 +145,8 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+        consultationList.removeStudent(target);
+        sessionList.removeStudent(target);
     }
 
     @Override
@@ -156,8 +158,9 @@ public class ModelManager implements Model {
     @Override
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
-
         addressBook.setPerson(target, editedPerson);
+        consultationList.setStudent(target, editedPerson);
+        sessionList.setStudent(target, editedPerson);
     }
 
     //=========== SessionList =================================================================================

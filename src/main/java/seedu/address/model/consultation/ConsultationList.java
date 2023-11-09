@@ -3,6 +3,7 @@ package seedu.address.model.consultation;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.consultation.exceptions.ConsultationNotFoundException;
 import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
+import seedu.address.model.person.Person;
 
 /**
  * A list of Consultations.
@@ -52,6 +54,38 @@ public class ConsultationList implements Iterable<Consultation> {
         if (!internalList.remove(toRemove)) {
             throw new ConsultationNotFoundException();
         }
+    }
+
+    /**
+     * Removes the {@code student} from all consultations in the consultation list.
+     */
+    public void removePerson(Person student) {
+        requireNonNull(student);
+        List<Consultation> newConsultations = new ArrayList<>();
+
+        for (Consultation consultation : internalList) {
+            Consultation updatedConsultation = consultation.removeStudent(student);
+            if (!updatedConsultation.isEmpty()) {
+                newConsultations.add(updatedConsultation);
+            }
+        }
+        internalList.setAll(newConsultations);
+    }
+
+    /**
+     * Replaces the student {@code target} in the list with {@code editedStudent}.
+     */
+    public void setStudent(Person target, Person editedStudent) {
+        requireAllNonNull(target, editedStudent);
+        List<Consultation> newConsultations = new ArrayList<>();
+
+        for (Consultation consultation : internalList) {
+            if (consultation.contains(target)) {
+                consultation.replaceStudent(target, editedStudent);
+            }
+            newConsultations.add(consultation);
+        }
+        internalList.setAll(newConsultations);
     }
 
     /**

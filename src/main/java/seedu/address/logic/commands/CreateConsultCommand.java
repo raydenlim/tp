@@ -9,15 +9,16 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.consultation.Consultation;
+import seedu.address.model.consultation.exceptions.DuplicateConsultationException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
@@ -37,6 +38,7 @@ public class CreateConsultCommand extends Command {
             + PREFIX_NAME + "Foo Bar";
     public static final String MESSAGE_SUCCESS = "New consultation added: %1$s";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student matching given name(s)";
+    public static final String MESSAGE_DUPLICATE_CONSULTATION = "Consultation list contains duplicate consultation(s).";
 
     public static final CommandType COMMAND_TYPE = CommandType.CREATE_CONSULT;
     private final LocalDate date;
@@ -59,16 +61,23 @@ public class CreateConsultCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        Set<Person> studentsToAdd;
-
         try {
-            studentsToAdd = names.stream().map(model::getMatchingStudentName).collect(Collectors.toSet());
+            StudentSet studentsToAdd = new StudentSet();
+            for (Name name : names) {
+                Person studentToAdd = model.getMatchingStudentName(name);
+                studentsToAdd.add(studentToAdd);
+            }
+            this.consultationToAdd = new Consultation(date, time, studentsToAdd);
         } catch (PersonNotFoundException pe) {
             throw new CommandException(MESSAGE_PERSON_NOT_FOUND);
         }
 
-        this.consultationToAdd = new Consultation(date, time, studentsToAdd);
-        model.addConsultation(this.consultationToAdd);
+        try {
+            model.addConsultation(this.consultationToAdd);
+        } catch (DuplicateConsultationException dce) {
+            throw new CommandException(MESSAGE_DUPLICATE_CONSULTATION);
+        }
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(this.consultationToAdd)),
                 COMMAND_TYPE);
     }

@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import seedu.address.model.person.Person;
+import seedu.address.model.person.StudentSet;
 
 /**
  * Represents a class for managing a session, which can hold a list of students and session-specific details.
@@ -14,7 +15,7 @@ public class Session {
     public static final SessionRemark DEFAULT_SESSION_REMARK = new SessionRemark("NA");
 
     private final SessionNumber sessionNumber;
-    private SessionStudents students;
+    private StudentSet students;
     private SessionRemark sessionRemark;
 
     /**
@@ -24,7 +25,7 @@ public class Session {
      * @param presentStudents The set of students present in this session.
      * @param sessionRemark The remarks for this session.
      */
-    public Session(SessionNumber sessionNumber, SessionStudents presentStudents, SessionRemark sessionRemark) {
+    public Session(SessionNumber sessionNumber, StudentSet presentStudents, SessionRemark sessionRemark) {
         requireAllNonNull(sessionNumber, presentStudents, sessionRemark);
         this.sessionNumber = sessionNumber;
         this.students = presentStudents;
@@ -37,7 +38,7 @@ public class Session {
      * @param sessionNumber The unique identifier for this session.
      * @param presentStudents The set of students present in this session.
      */
-    public Session(SessionNumber sessionNumber, SessionStudents presentStudents) {
+    public Session(SessionNumber sessionNumber, StudentSet presentStudents) {
         requireAllNonNull(sessionNumber, presentStudents);
         this.sessionNumber = sessionNumber;
         this.students = presentStudents;
@@ -53,7 +54,7 @@ public class Session {
     public Session(SessionNumber sessionNumber, Person student) {
         requireAllNonNull(sessionNumber, student);
         this.sessionNumber = sessionNumber;
-        this.students = new SessionStudents(student);
+        this.students = new StudentSet(student);
         this.sessionRemark = DEFAULT_SESSION_REMARK;
     }
 
@@ -81,21 +82,50 @@ public class Session {
 
 
     /**
-     * Adds a student to the session.
+     * Adds a person to the StudentSet in a Session.
      *
-     * @param student The student to add.
+     * @param student The student to be added into the StudentSet.
      */
     public void addStudent(Person student) {
         this.students.add(student);
     }
 
     /**
-     * Removes a student from the session.
+     * Removes a person from the StudentSet in the session.
      *
-     * @param student The student to remove.
+     * @param student The student to be removed from the StudentSet.
+     * @return Returns itself after removing student.
      */
-    public void removeStudent(Person student) {
+    public Session removeStudent(Person student) {
         this.students.remove(student);
+        return this;
+    }
+
+    /**
+     * Replaces a student in the session with another new student.
+     *
+     * @param target The target student to remove.
+     * @param newStudent The new student to add.
+     */
+    public void replaceStudent(Person target, Person newStudent) {
+        this.students.remove(target);
+        this.students.add(newStudent);
+    }
+
+    /**
+     * Check if StudentSet contains the {@code student}.
+     */
+    public boolean contains(Person student) {
+        return this.students.contains(student);
+    }
+
+    /**
+     * Checks if StudentSet has no students.
+     *
+     * @return Returns true if there is no students in the StudentSet and false if there are at least 1 student.
+     */
+    public boolean isEmpty() {
+        return this.students.size() < 1;
     }
 
     /**
@@ -140,9 +170,9 @@ public class Session {
      *
      * @return The set of students.
      */
-    public SessionStudents getStudents() {
+    public StudentSet getStudents() {
         if (students == null) {
-            students = new SessionStudents();
+            students = new StudentSet();
         }
         return students.getStudents();
     }

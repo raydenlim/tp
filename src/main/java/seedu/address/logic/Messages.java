@@ -69,14 +69,7 @@ public class Messages {
      * Formats the {@code consultation} for display to the user.
      */
     public static String format(Consultation consultation) {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("; Date: ")
-                .append(consultation.getDate())
-                .append("; Time: ")
-                .append(consultation.getTime())
-                .append("; Students: ");
-        consultation.getStudents().forEach(student -> builder.append(student.getName()));
-        return builder.toString();
+        return consultation.toString();
     }
 
     /**

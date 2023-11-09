@@ -10,10 +10,10 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
 import seedu.address.model.session.SessionRemark;
-import seedu.address.model.session.SessionStudents;
 import seedu.address.model.session.exceptions.SessionNotFoundException;
 
 /**
@@ -87,10 +87,10 @@ public class UpdateSessionRemarkCommand extends Command {
      */
     public Session createUpdatedSession(Session reference) {
         SessionNumber sessionNumber = reference.getSessionNumber();
-        SessionStudents sessionStudents = reference.getStudents();
+        StudentSet studentSet = reference.getStudents();
         SessionRemark sessionRemark = this.sessionRemark;
 
-        return new Session(sessionNumber, sessionStudents, sessionRemark);
+        return new Session(sessionNumber, studentSet, sessionRemark);
     }
 
 

@@ -30,10 +30,10 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.StudentSet;
 import seedu.address.model.person.TelegramHandle;
 import seedu.address.model.session.Session;
 import seedu.address.model.session.SessionNumber;
-import seedu.address.model.session.SessionStudents;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskDescription;
@@ -107,8 +107,8 @@ public class SampleDataUtil {
 
     public static Session[] getSampleSessions() {
         return new Session[] {
-            new Session(new SessionNumber("1"), new SessionStudents(getSamplePersons())),
-            new Session(new SessionNumber("2"), new SessionStudents(getSamplePersons()))
+            new Session(new SessionNumber("1"), new StudentSet(getSamplePersons())),
+            new Session(new SessionNumber("2"), new StudentSet(getSamplePersons()))
         };
     }
 
@@ -161,11 +161,12 @@ public class SampleDataUtil {
     }
 
     /**
-     * Returns a student set containing the list of person given.
+     * Returns a StudentSet object containing the list of person given.
      */
-    public static Set<Person> getStudentSet(Person ... students) {
-        return Arrays.stream(students)
+    public static StudentSet getStudentSet(Person ... students) {
+        Set<Person> setOfStudents = Arrays.stream(students)
                 .collect(Collectors.toSet());
+        return new StudentSet(setOfStudents);
     }
 
     /**

@@ -3,6 +3,7 @@ package seedu.address.model.session;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -120,6 +121,38 @@ public class SessionList implements Iterable<Session> {
         if (!internalList.remove(toRemove)) {
             throw new SessionNotFoundException();
         }
+    }
+
+    /**
+     * Removes the {@code student} from all sessions in the sessions list.
+     */
+    public void removePerson(Person student) {
+        requireNonNull(student);
+        List<Session> newSessions = new ArrayList<>();
+
+        for (Session session : internalList) {
+            Session updatedSession = session.removeStudent(student);
+            if (!updatedSession.isEmpty()) {
+                newSessions.add(updatedSession);
+            }
+        }
+        internalList.setAll(newSessions);
+    }
+
+    /**
+     * Replaces the student {@code target} in the list with {@code editedStudent}.
+     */
+    public void setStudent(Person target, Person editedStudent) {
+        requireAllNonNull(target, editedStudent);
+        List<Session> newSessions = new ArrayList<>();
+
+        for (Session session : internalList) {
+            if (session.contains(target)) {
+                session.replaceStudent(target, editedStudent);
+            }
+            newSessions.add(session);
+        }
+        internalList.setAll(newSessions);
     }
 
     /**

@@ -1,4 +1,4 @@
-package seedu.address.model.session;
+package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
@@ -10,42 +10,40 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.model.person.Person;
-
 /**
- * Represents a collection of students in a session. This class provides methods for managing and manipulating
- * the set of students within a session.
+ * Represents a collection of students in a consultation/session. This class provides methods for managing
+ * and manipulating the set of students within a consultation/session.
  */
-public class SessionStudents implements Iterable<Person> {
+public class StudentSet implements Iterable<Person> {
     public static final String MESSAGE_CONSTRAINTS =
             "Session students must not be null";
 
-    /** The set of students in the session. */
+    /** The set of students in the consultation/session. */
     public final Set<Person> students;
 
     /**
-     * Constructs an empty SessionStudents object.
+     * Constructs an empty StudentSet object.
      */
-    public SessionStudents() {
+    public StudentSet() {
         this.students = new HashSet<>();
     }
 
     /**
-     * Constructs a SessionStudents object with a given set of students.
+     * Constructs a StudentSet object with a given set of students.
      *
      * @param students The set of students to initialize the object with.
      */
-    public SessionStudents(Set<Person> students) {
+    public StudentSet(Set<Person> students) {
         requireNonNull(students);
         this.students = students;
     }
 
     /**
-     * Constructs a SessionStudents object with a single student.
+     * Constructs a StudentSet object with a single student.
      *
-     * @param student The student to add to the session.
+     * @param student The student to add to the consultation/session.
      */
-    public SessionStudents(Person student) {
+    public StudentSet(Person student) {
         requireNonNull(student);
         this.students = new HashSet<>();
         this.students.add(student);
@@ -53,11 +51,11 @@ public class SessionStudents implements Iterable<Person> {
 
 
     /**
-     * Constructs a SessionStudents object with an array of students.
+     * Constructs a StudentSet object with an array of students.
      *
-     * @param students The students to add to the session.
+     * @param students The students to add to the consultation/session.
      */
-    public SessionStudents(Person ...students) {
+    public StudentSet(Person ...students) {
         this.students = new HashSet<>();
         for (Person student : students) {
             this.students.add(student);
@@ -65,7 +63,7 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Adds a student to the session.
+     * Adds a student to the set of students.
      *
      * @param student The student to add.
      */
@@ -74,16 +72,25 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Removes a student from the session.
+     * Adds multiple students to the set of students.
      *
-     * @param student The student to remove.
+     * @param students The students to add.
      */
-    public void remove(Person student) {
-        this.students.remove(student);
+    public void addAll(StudentSet students) {
+        this.students.addAll(students.getSetOfStudents());
     }
 
     /**
-     * Returns a string containing the names of the students in the session, sorted alphabetically.
+     * Removes a student from the consultation/session.
+     *
+     * @param student The student to remove.
+     */
+    public boolean remove(Person student) {
+        return this.students.remove(student);
+    }
+
+    /**
+     * Returns a string containing the names of the students in the consultation/session, sorted alphabetically.
      *
      * @return A string with student names.
      */
@@ -100,14 +107,13 @@ public class SessionStudents implements Iterable<Person> {
         return studentNames.toString();
     }
 
-
     /**
-     * Creates and returns a new SessionStudents object with the same students as this one.
+     * Creates and returns a new StudentSet object with the same students as this one.
      *
      * @return A new SessionStudents object with a copy of the students.
      */
-    public SessionStudents getStudents() {
-        SessionStudents anotherSet = new SessionStudents();
+    public StudentSet getStudents() {
+        StudentSet anotherSet = new StudentSet();
         for (Person student : students) {
             anotherSet.add(student);
         }
@@ -115,17 +121,26 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Checks if the session contains a specific student.
+     * Returns the set of students stored.
+     *
+     * @return The set of Person stored in this StudentSet.
+     */
+    public Set<Person> getSetOfStudents() {
+        return this.students;
+    }
+
+    /**
+     * Checks if the consultation/session contains a specific student.
      *
      * @param student The student to check for existence.
-     * @return True if the student exists in the session, false otherwise.
+     * @return True if the student exists in the consultation/session, false otherwise.
      */
     public boolean contains(Person student) {
         return students.contains(student);
     }
 
     /**
-     * Provides a stream of students in the session.
+     * Provides a stream of students in the consultation/session.
      *
      * @return A stream of students.
      */
@@ -134,18 +149,18 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Returns the number of students in the session.
+     * Returns the number of students in the consultation/session.
      *
-     * @return The number of students in the session.
+     * @return The number of students in the consultation/session.
      */
     public int size() {
         return students.size();
     }
 
     /**
-     * Provides an iterator to iterate through the students in the session.
+     * Provides an iterator to iterate through the students in the consultation/session.
      *
-     * @return An iterator for the students in the session.
+     * @return An iterator for the students in the consultation/session.
      */
     @Override
     public Iterator<Person> iterator() {
@@ -153,7 +168,7 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Returns a string representation of the students in the session.
+     * Returns a string representation of the students in the consultation/session.
      *
      * @return A string representation of the students.
      */
@@ -163,7 +178,7 @@ public class SessionStudents implements Iterable<Person> {
     }
 
     /**
-     * Checks if this SessionStudents object is equal to another object.
+     * Checks if this StudentSet object is equal to another object.
      *
      * @param other The object to compare with.
      * @return True if the objects are equal, false otherwise.
@@ -175,16 +190,16 @@ public class SessionStudents implements Iterable<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof SessionStudents)) {
+        if (!(other instanceof StudentSet)) {
             return false;
         }
 
-        SessionStudents otherSessionStudents = (SessionStudents) other;
-        return students.equals(otherSessionStudents.students);
+        StudentSet otherStudentSet = (StudentSet) other;
+        return students.equals(otherStudentSet.students);
     }
 
     /**
-     * Returns the hash code of this SessionStudents object.
+     * Returns the hash code of this StudentSet object.
      *
      * @return The hash code of the session students.
      */
