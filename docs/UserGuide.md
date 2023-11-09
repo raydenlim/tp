@@ -128,14 +128,14 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 <br>
 
 
-| <center>**Convention**</center> | <center>**Description**</center>               |
-|---------------------------------|------------------------------------------------|
-| <center>📝</center>             | <center>Add <br/> Create</center>              |
-| <center>❌</center>              | <center>Delete <br/> Remove</center></center>  |
-| <center>🛠️</center>            | <center>Edit <br/> Modify <br/> Update         |
-| <center>🔎</center>             | <center>Find</center>                          |
-| <center>📆</center>             | <center>Take Attendance</center>               |
-| <center>👀</center>             | <center>View <br/> Display </br> List</center> |
+| <center>**Convention**</center> | <center>**Description**</center>                 |
+|---------------------------------|--------------------------------------------------|
+| <center>📝</center>             | <center>Add <br/> Create</center>                |
+| <center>❌</center>              | <center>Delete <br/> Remove</center>             |
+| <center>🛠️</center>            | <center>Edit <br/> Modify <br/> Update</center>  |
+| <center>🔎</center>             | <center>Find</center>                            |
+| <center>📆</center>             | <center>Take Attendance</center>                 |
+| <center>👀</center>             | <center>View <br/> Display </br> List</center>   |
 
 
 
