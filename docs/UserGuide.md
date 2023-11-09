@@ -3,19 +3,7 @@ layout: default.md
 title: "User Guide"
 pageNav: 3
 ---
-<style>
-    table {
-        width: 90%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 10px;
-        text-align: center;
-    }
-    info {
-        background: white;
-    }
-</style>
+
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
 ## Introduction
@@ -108,86 +96,34 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 <br>
 
-<div align="center">
 
-<table>
-    <tr>
-        <th><center><b>Convention</b></center></th>
-        <th><center><b>Description</b></center></th>
-    </tr>
-    <tr>
-        <td><center><code>Monospace</code></center></td>
-        <td>Used for command inputs, syntax, and file paths.</td>
-    </tr>
-    <tr>
-        <td><center><b>Bold text</b></center></td>
-        <td>Highlights important keywords.</td>
-    </tr>
-    <tr>
-        <td><center><a href="#">Hyperlink</a></center></td>
-        <td>Indicates hyperlinks to external websites or within the guide.</td>
-    </tr>
-</table>
+| <center>**Convention**</center> | <center>**Description**</center>                                                |
+|---------------------------------|---------------------------------------------------------------------------------|
+| <center>`Monospace`</center>    | <center>Used for command inputs, syntax, and file paths.</center>               |
+| <center>**Bold text**</center>  | <center>Highlights important keywords.</center>                                 |
+| <center>[Hyperlink](#)</center> | <center>Indicates hyperlinks to external websites or within the guide.</center> |
 
-</div>
 
 <br>
 
-<div align="center">
 
-<table>
-    <tr>
-        <th><center><b>Convention</b></center></th>
-        <th><center><b>Description</b></center></th>
-    </tr>
-    <tr>
-        <td><center><div markdown="span" class="alert alert-info">:information_source: Note</div></center></td>
-        <td>Provides information of special interest or importance.</td>
-    </tr>
-    <tr>
-        <td><center><div markdown="span" class="alert alert-warning">:bangbang: Warning</div></center></td>
-        <td>Alerts to potentially irreversible actions with data loss risk.</td>
-    </tr>
-</table>
+| <center>**Convention**</center>                                                                      | <center>**Description**</center>                                                 |
+|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| <center>**<div markdown="span" class="alert alert-info"> :information_source: Note </div>**</center> | <center>Provides information of special interest or importance.</center>         |
+| <center>**<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**</center>     | <center>Alerts to potentially irreversible actions with data loss risk.</center> |
 
-</div>
 
 <br>
 
-<div align="center">
 
-<table>
-    <tr>
-        <th><center><b>Convention</b></center></th>
-        <th><center><b>Description</b></center></th>
-    </tr>
-    <tr>
-        <td><center>📝</center></td>
-        <td>Add<br>Create</td>
-    </tr>
-    <tr>
-        <td><center>❌</center></td>
-        <td>Delete<br>Remove</td>
-    </tr>
-    <tr>
-        <td><center>🛠️</center></td>
-        <td>Edit<br>Modify<br>Update</td>
-    </tr>
-    <tr>
-        <td><center>🔎</center></td>
-        <td>Find</td>
-    </tr>
-    <tr>
-        <td><center>📆</center></td>
-        <td>Take Attendance</td>
-    </tr>
-    <tr>
-        <td><center>👀</center></td>
-        <td>View<br>Display<br>List</td>
-    </tr>
-</table>
-
-</div>
+| <center>**Convention**</center> | <center>**Description**</center>               |
+|---------------------------------|------------------------------------------------|
+| <center>📝</center>             | <center>Add <br/> Create</center>              |
+| <center>❌</center>              | <center>Delete <br/> Remove</center></center>  |
+| <center>🛠️</center>            | <center>Edit <br/> Modify <br/> Update         |
+| <center>🔎</center>             | <center>Find</center>                          |
+| <center>📆</center>             | <center>Take Attendance</center>               |
+| <center>👀</center>             | <center>View <br/> Display </br> List</center> |
 
 
 
