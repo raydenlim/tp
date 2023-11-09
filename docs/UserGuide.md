@@ -362,7 +362,7 @@ For the list of indexes to use:
 
 #### Viewing help : `help`
 
-You can view a message explaining how to access the help page.
+You can view a message explaining how to access the help page, if you require assistance in understanding the commands and their formats.
 
 ![help message](images/helpMessage.png)
 
@@ -373,7 +373,7 @@ Format: `help`
 
 #### Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
 
-You can exit the F.A.K.E.J.A.R.V.I.S. application.
+You can exit the F.A.K.E.J.A.R.V.I.S. application, if you're done using the application.
 
 Format: `exit`
 
@@ -414,7 +414,8 @@ This section describes commands that help you manage your students.
 
 #### 📝Adding a Student: `add`
 
-You can add a student to F.A.K.E.J.A.R.V.I.S.
+You can add a student to F.A.K.E.J.A.R.V.I.S., if you need to keep track of new students.
+
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
 
@@ -462,8 +463,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 #### 👀Listing All Students : `list`
 
-You can list out all students in F.A.K.E.J.A.R.V.I.S.
-
+You can list out all students in F.A.K.E.J.A.R.V.I.S., if you need to view the complete student roster.
 Format: `list`
 
 > **Example 1:**
@@ -481,7 +481,7 @@ Format: `list`
 
 #### 🛠️Editing a Student Field : `edit`
 
-You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S.
+You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S., if you need to make changes to a student's information.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
@@ -537,7 +537,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…
 
 #### 🔎Locating Student by Name: `find`
 
-You can find a student whose name contain any of the given keywords.
+You can find a student in F.A.K.E.J.A.R.V.I.S. if you're looking for certain students by their names.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -584,8 +584,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 #### ❌Deleting a Student : `delete`
 
-You can delete a specific student from F.A.K.E.J.A.R.V.I.S.
-
+You can delete a specific student from F.A.K.E.J.A.R.V.I.S. if you no longer require their information in the system.
 Format: `delete INDEX`
 
 | Parameter | Description                             |
@@ -630,7 +629,7 @@ Format: `delete INDEX`
 
 #### Clearing all Entries : `clear`
 
-You can clear all students from F.A.K.E.J.A.R.V.I.S.
+You can clear all students from F.A.K.E.J.A.R.V.I.S. if you need to reset the student database or remove all existing student records.
 
 Format: `clear`
 
@@ -659,7 +658,7 @@ This section describes commands that help you manage your tasks.
 
 #### 📝Adding a Task: `addtask`
 
-You can add a task to your task list.
+You can add a task to your task list if you have a new item to include in your list of things to do.
 
 Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 
@@ -696,7 +695,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 
 #### 👀Viewing Tasks: `viewtasks`
 
-You can view you list of tasks.
+You can view your list of tasks if you want to check and manage your current set of to-do list.
 
 Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
@@ -762,7 +761,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 
 #### 🛠️Updating a Task's Progress: `updateprogress`
 
-You can mark a task as completed.
+You can update a task's progress if there are changes to the status of a particular task on your list.
 
 Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
@@ -810,7 +809,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
 #### ❌Deleting a Task: `deletetask`
 
-Deletes a task from the task list.
+You can delete a task from your task list if you no longer need to keep it on your list of things to do.
 
 Format: `deletetask TASK_INDEX`
 
@@ -866,7 +865,7 @@ This section describes commands that help you manage your students' attendance.
 
 #### 📆Taking Attendance: `takeattendance`
 
-You can take the attendance of your student(s).
+You can take the attendance of your student(s) if you need to record their presence or absence for a particular session.
 
 Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
@@ -913,7 +912,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 #### 👀Viewing Attendance: `viewattendance`
 
-You can view the attendance list of your students.
+You can view the attendance list of your students if you want to check and review their attendance records.
 
 Format: `viewattendance n/STUDENT_NAME n/STUDENT_NAME …`
 
@@ -977,7 +976,7 @@ This section describes commands that help you manage your students' assignments.
 
 #### 👀Viewing a List of Assignments: `viewassignments`
 
-You can view a list of assignment grades and comments.
+You can view a list of assignment grades and comments if you want to assess and review the feedback provided for each assignment.
 
 Format: `viewassignments INDEX`
 
@@ -1022,7 +1021,7 @@ Format: `viewassignments INDEX`
 
 #### 🛠️Editing an Assignment Grade: `editgrade`
 
-You can edit your student’s assignment grade.
+You can edit your student's assignment grade if there is a need to make adjustments or corrections to the initially assigned grade.
 
 Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
@@ -1070,7 +1069,7 @@ Format: `editgrade INDEX as/ASSIGNMENT g/GRADE`
 
 #### ❌Deleting an Assignment Grade: `deletegrade`
 
-You can delete your student’s assignment grade.
+You can delete your student's assignment grade if you need to remove or reset the previously assigned grade for a particular assignment.
 
 Format: `deletegrade INDEX as/ASSIGNMENT`
 
@@ -1118,7 +1117,7 @@ Format: `deletegrade INDEX as/ASSIGNMENT`
 
 #### 🛠️Editing an Assignment Comment: `editcomment`
 
-You can edit the comment of your student’s assignment.
+You can edit the comment of your student's assignment if you need to make changes or additions to the feedback provided for a specific assignment.
 
 Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
@@ -1168,7 +1167,7 @@ Format: `editcomment INDEX as/ASSIGNMENT c/COMMENT`
 
 #### ❌Deleting an Assignment Comment: `deletecomment`
 
-You can delete the comment tagged to your student’s assignment.
+You can delete the comment tagged to your student's assignment if you want to remove or revise the feedback associated with that particular assignment.
 
 Format: `deletecomment INDEX as/ASSIGNMENT`
 
@@ -1225,7 +1224,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 #### 🛠️Editing a Graded Test Score: `editgradedtest`
 
-You can edit your student’s graded test scores.
+You can edit your student's graded test scores if there is a need to make adjustments or corrections to the initially recorded test scores.
 
 Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] 
 [pe/PRACTICALEXAM] `
@@ -1289,7 +1288,7 @@ This section describes commands that help you manage your sessions.
 
 #### 📝Creating a Session: `createsession`
 
-You can create a session for any upcoming or past sessions.
+You can create a session for any upcoming or past sessions if you need to schedule or document class sessions in the system.
 
 Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 
@@ -1335,7 +1334,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME n/STUDENT_NAME …`
 
 #### 🛠️Updating a Session's Remark: `updatesessionremark`
 
-You can update an existing session's remark.
+You can update an existing session's remark if there are changes or additional information that you want to include in the session notes or details.
 
 Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
@@ -1381,7 +1380,7 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
 #### ❌Deleting a Session: `deletesession`
 
-You can delete an existing session specified by its session number.
+You can delete an existing session specified by its session number if you need to remove or clear the session record from the system.
 
 Format: `deletesession s/SESSION_NUMBER`
 
@@ -1433,7 +1432,7 @@ This section describes commands that help you manage your consultations with stu
 
 #### 📝Creating a Consultation: `createconsult`
 
-You can create a consultation for any upcoming consultations.
+You can create a consultation for any upcoming consultations if you need to schedule or document consultations in the system.
 
 Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 
@@ -1479,7 +1478,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME n/STUDENT_NAME …`
 <br>
 
 #### 📝️Adding students to a consultation: `addtoconsult`
-You can add your student(s) into a consultation slot.
+You can add your student(s) into a consultation slot if you want to schedule or allocate specific individuals for the consultation.
 
 Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
@@ -1527,7 +1526,7 @@ Format: `addtoconsult INDEX n/STUDENT_NAME …`
 
 #### ❌Removing Students from a Consultation: `removefromconsult`
 
-You can remove your student(s) from a consultation.
+You can remove your student(s) from a consultation if there is a need to reschedule or cancel their participation in the scheduled consultation.
 
 Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
@@ -1564,7 +1563,7 @@ Format: `removefromconsult INDEX n/STUDENT_NAME …`
 
 #### ❌Deleting a Consultation: `deleteconsult`
 
-You can delete the consultation slot specified by an index.
+You can delete the consultation slot specified by an index if you need to remove or clear the scheduled consultation from the system.
 
 Format: `deleteconsult INDEX`
 
