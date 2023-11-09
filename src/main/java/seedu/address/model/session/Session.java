@@ -82,18 +82,19 @@ public class Session {
 
 
     /**
-     * Adds a student to the session.
+     * Adds a person to the StudentSet in a Session.
      *
-     * @param student The student to add.
+     * @param student The student to be added into the StudentSet.
      */
     public void addStudent(Person student) {
         this.students.add(student);
     }
 
     /**
-     * Removes a student from the session.
+     * Removes a person from the StudentSet in the session.
      *
-     * @param student The student to remove.
+     * @param student The student to be removed from the StudentSet.
+     * @return Returns itself after removing student.
      */
     public Session removeStudent(Person student) {
         this.students.remove(student);

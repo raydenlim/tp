@@ -33,8 +33,8 @@ public class Consultation {
     /**
      * Adds a person to the StudentSet in a Consultation.
      *
-     * @param student The student to be removed from the StudentSet.
-     * @return Returns itself after removing student.
+     * @param student The student to be added into the StudentSet.
+     * @return Returns itself after adding student.
      */
     public Consultation addStudent(Person student) {
         this.students.add(student);
