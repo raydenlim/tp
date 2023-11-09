@@ -433,6 +433,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 | <center>TELEGRAM_HANDLE</center> | <center>The Telegram handle of the student.</center>                     |
 | <center>TAG</center>             | <center>Tags associated with the student.</center>                       |
 | <center>GRADED_TESTS</center>    | <center>Scores of the graded tests associated with the student.</center> |
+
 <br>
 
 <div class="alert alert-info">
@@ -501,6 +502,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 | <center>TELEGRAM_HANDLE</center> | <center>The new Telegram handle for the student.</center>                |
 | <center>TAG</center>             | <center>New tags associated with the student.</center>                   |
 | <center>GRADED_TESTS</center>    | <center>Scores of the graded tests associated with the student.</center> |
+
 <br>
 
 <div class="alert alert-info"><md> :information_source: Note: 
@@ -551,6 +553,7 @@ Format: `find KEYWORD…`
 | <center>**Parameter**</center> | <center>**Description**</center>                 |
 |--------------------------------|--------------------------------------------------|
 | <center>KEYWORD</center>       | <center>The main keyword to search for.</center> |
+
 <br>
 
 
@@ -675,6 +678,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 | <center>TASK_DESCRIPTION</center> | <center>The description of the task.</center>                                        |
 | <center>DUE_DATE</center>         | <center>The due date or deadline of the task.</center>                               |
 | <center>TASK_PRIORITY</center>    | <center>The priority level of the task. Given as `high`, `medium` or `low`.</center> |
+
 <br>
 
 > **Example 1:**
@@ -713,6 +717,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 | <center>DUE_DATE</center>         | <center>The due date or deadline of the task.</center>                                        |
 | <center>TASK_PRIORITY</center>    | <center>The priority level of the task. Given as `high`, `medium` or `low`.</center>          |
 | <center>TASK_PROGRESS</center>    | <center>The progress level of the task. Given as `done`, `pending` or `not_started`.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -774,6 +779,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 |--------------------------------|----------------------------------------------------------------------------------------------------|
 | <center>TASK_INDEX</center>    | <center>The index of the task to update the progress.</center>                                     |
 | <center>NEW_PROGRESS</center>  | <center>The new progress level of the task. Given as `done`, `pending`, or `not_started`.</center> |
+
 <br>
 
 
@@ -821,6 +827,7 @@ Format: `deletetask TASK_INDEX`
 | <center>**Parameter**</center> | <center>**Description**</center>          |
 |--------------------------------|-------------------------------------------|
 | <center>TASK_INDEX</center>            | <center>The index of the task to delete.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -880,6 +887,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 | <center>STUDENT_NAME</center>   | <center>The name of the student.</center>                                              |
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center>                                    |
 | <center>PRESENCE</center>       | <center>The attendance status of the student. Given as `present` or `absent`.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -924,6 +932,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 | <center>**Parameter**</center> | <center>**Description**</center>                                                |
 |--------------------------------|---------------------------------------------------------------------------------|
 | <center>STUDENT_NAME</center>  | <center>The name of the student(s) you want to view the attendance of.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -988,6 +997,7 @@ Format: `viewassignments STUDENT_INDEX`
 | <center>**Parameter**</center> | <center>**Description**</center>           |
 |--------------------------------|--------------------------------------------|
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1035,6 +1045,7 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
 | <center>GRADE</center>         | <center>The score of the student.</center>   |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1082,21 +1093,19 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 |--------------------------------|----------------------------------------------|
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
+
 <br>
 
-<div class="wrapper">
-    <div class="alert alert-info"> 
-        <md>
-            :information_source: Note:
-        </md>
-    </div>
-    <div class="info">
-        <md>
-            * The student index refers to the index number shown in the displayed student list.
-            * The student index <b>must be a positive integer</b> 1, 2, 3, …​ that is within the range of the student list.
-            * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
-        </md>
-    </div>
+<div class="alert alert-info"> 
+<md>
+
+:information_source: Note:
+
+* The student index refers to the index number shown in the displayed student list.
+* The student index <b>must be a positive integer</b> 1, 2, 3, …​ that is within the range of the student list.
+* The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+
+</md>
 </div>
 
 
@@ -1134,6 +1143,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 | <center>TUDENT_INDEX</center>  | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
 | <center>COMMENT</center>       | <center>The new comment.</center>            |
+
 <br>
 
 
@@ -1183,6 +1193,7 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 |--------------------------------|----------------------------------------------|
 | <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
 | <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
+
 <br>
 
 
@@ -1245,6 +1256,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 | <center>MIDTERMS</center>             | <center>The score of the student's MidTerms.</center>             |
 | <center>FINALS</center>               | <center>The score of the student's Final Assessment.</center>     |
 | <center>PRACTICALEXAM</center>        | <center>The score of the student's Practical Exams.</center>      |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1304,6 +1316,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 |---------------------------------|-----------------------------------------------------|
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center> |
 | <center>STUDENT_NAME</center>   | <center>The name of the student(s).</center>        |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1350,6 +1363,7 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 |---------------------------------|----------------------------------------------------------------|
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center>            |
 | <center>REMARK</center>         | <center>The new remark to be updated for the session.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1395,6 +1409,7 @@ Format: `deletesession s/SESSION_NUMBER`
 | <center>**Parameter**</center>  | <center>**Description**</center>                    |
 |---------------------------------|-----------------------------------------------------|
 | <center>SESSION_NUMBER</center> | <center>The session number of the session.</center> |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1448,6 +1463,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 | <center>DATE</center>          | <center>The date of consultation.</center>   |
 | <center>TIME</center>          | <center>The time of consultation.</center>   |
 | <center>STUDENT_NAME</center>  | <center>The name of the student(s).</center> |
+
 <br>
 
 
@@ -1493,6 +1509,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 |-------------------------------------|-------------------------------------------------------------------------------|
 | <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming</center> consultations. |
 | <center>STUDENT_NAME</center>       | <center>The name of the student to be added to the consultation.</center>     |
+
 <br>
 
 
@@ -1541,6 +1558,7 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 |-------------------------------------|-------------------------------------------------------------------------------|
 | <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming consultations.</center> |
 | <center>STUDENT_NAME</center>       | <center>The name of the student to be added to the consultation.</center>     |
+
 <br>
 
 <div class="alert alert-info"> 
@@ -1577,6 +1595,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 | <center>**Parameter**</center>      | <center>**Description**</center>                                              |
 |-------------------------------------|-------------------------------------------------------------------------------|
 | <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming</center> consultations. |
+
 <br>
 
 <div class="alert alert-info"> 
