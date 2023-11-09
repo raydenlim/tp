@@ -42,10 +42,9 @@ import seedu.address.model.task.TaskProgress;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_DATE = "Date is needs to be in the format dd/MM/yyyy, "
-            + "or date provided does not exist.";
-    public static final String MESSAGE_INVALID_TIME = "Time is needs to be in the format HH:mm.";
+    public static final String MESSAGE_INVALID_INDEX = "Index not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DATE = "Date needs to be in the format dd/MM/yyyy.";
+    public static final String MESSAGE_INVALID_TIME = "Time needs to be in the format HH:mm.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
