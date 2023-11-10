@@ -120,7 +120,7 @@ public class Consultation {
         if (students != null) {
             studentNames = students.toStudentNames();
         }
-        return String.format("Date: %s, Time: %s, Students: %s", date, time, studentNames);
+        return String.format("Date: %s; Time: %s; Students: %s", date, time, studentNames);
     }
 
     @Override
