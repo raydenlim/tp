@@ -122,7 +122,7 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` objects respectively).
+* stores the F.A.K.E.J.A.R.V.I.S. data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` objects respectively).
 * stores the currently 'selected' `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (e.g., results of a search query) as separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<XYZ>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -325,7 +325,7 @@ The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 
 #### Delete Student Feature
 This section explains the implementation of the Delete Student feature via the `delete` command.
-The `DeleteCommand` causes the specified `Person` to be deleted from the application. This includes removing the student from any `consultatios` or `sessions` that the student might be in.
+The `DeleteCommand` causes the specified `Person` to be deleted from the application. This includes removing the student from any `consultations` or `sessions` that the student might be in.
 This process is summarised in the activity diagram below
 
 ![Delete Activity Diagram](images/DeleteStudentActivityDiagram.png)
@@ -426,10 +426,10 @@ Step 2:
 The `UpdateTaskProgressCommand::createTask` is invoked to create a new immutable Task object with the updated progress.
 
 Step 3:
-The `UpdateTaskProgressCommand` will call `setTask` in `Model` to replace the existing `Task` with the new `Task`.
+The `UpdateTaskProgressCommand` will call `setTask` in `Model` to replace the existing `Task` with the new `Task` object.
 
 Step 4:
-The `UpdateTaskProgressCommand` then invokes `updateFilteredTaskList` in `Model` to display all the tasks.
+The `UpdateTaskProgressCommand` will call its own `updateFilteredTaskList` method to update the model's filter and display all the tasks to the user.
 
 Step 4:
 The `UpdateTaskProgressCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
