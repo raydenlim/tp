@@ -347,6 +347,14 @@ Step 7:
 The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 
 
+#### Delete Student Feature
+This section explains the implementation of the Delete Student feature via the `delete` command.
+The `DeleteCommand` causes the specified `Person` to be deleted from the application. This includes removing the student from any `consultatios` or `sessions` that the student might be in.
+This process is summarised in the activity diagram below
+
+![Delete Activity Diagram](images/DeleteStudentActivityDiagram.png)
+
+
 #### Add Tasks Feature
 This section explains the implementation of the Add Task feature via the `addtask` command.
 The `AddTaskCommand` causes the specified `Task` to be added to the Task List in the application.
