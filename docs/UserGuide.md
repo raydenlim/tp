@@ -246,6 +246,7 @@ The following describes what each panel contains:
 
 6. Refer to the [Features](#features) below for details of each command and the [Command Format](#command-format) for the specifications of each command.
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -426,6 +427,8 @@ If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. 
 #### 💾Archiving Data Files `[coming in v2.0]`
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
+
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
