@@ -54,7 +54,7 @@ Below are my contributions to the project:
 
   * Developer Guide:
     * Added implementation details of the `editgrade`, `deletegrade`, `editcomment`, `deletecomment` and `viewassignments` features.
-    * Designed the class diagram for `Grade`, `Comment` and `AssignmentMap`.
+    * Designed the class diagram for `Grade`, `Comment` and `Assignment`.
 
 
 * **Review/mentoring contributions**:
