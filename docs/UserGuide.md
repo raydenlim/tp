@@ -144,7 +144,7 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ## Graphical User Interface
 
-![UI with Annotations](images/ui/UiWithAnnotations.png)
+![UI with Annotations](images/UiWithAnnotations.png)
 
 F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 6 main components:
 * Menu Bar
@@ -167,31 +167,31 @@ The following describes what each tab displays on the **Current Panel**:
 <br>
 
 ### Student Card
-![Student Card with Annotations](images/ui/StudentCardAnnotated.png)
+![Student Card with Annotations](images/StudentCardAnnotated.png)
 
 <br>
 <br>
 
 ### Task Card
-![Task Card with Annotations](images/ui/TaskCardAnnotated.png)
+![Task Card with Annotations](images/TaskCardAnnotated.png)
 
 <br>
 <br>
 
 ### Assignment Cards
-![Assignment Card with Annotations](images/ui/AssignmentsAnnotated.png)
+![Assignment Card with Annotations](images/AssignmentsAnnotated.png)
 
 <br>
 <br>
 
 ### Session Card
-![Session Card with Annotations](images/ui/SessionCardAnnotated.png)
+![Session Card with Annotations](images/SessionCardAnnotated.png)
 
 <br>
 <br>
 
 ### Consultation Card
-![Consultation Card with Annotations](images/ui/ConsultationCardAnnotated.png)
+![Consultation Card with Annotations](images/ConsultationCardAnnotated.png)
 
 <br>
 
@@ -210,7 +210,7 @@ The following describes what each tab displays on the **Current Panel**:
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
    A GUI similar to the image below should appear in a few seconds. <br>
 
-   ![Ui](images/ui/Ui.png)
+   ![Ui](images/Ui.png)
 
    Note that the app will contain some sample data initially. You can use the `clear` command for a blank state. <br>
     <div class="alert alert-warning">

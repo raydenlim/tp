@@ -8,7 +8,7 @@
 [![CI Status](https://github.com/AY2324S1-CS2103T-T15-1/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2324S1-CS2103T-T15-1/tp/actions)
 [![codecov](https://codecov.io/gh/AY2324S1-CS2103T-T15-1/tp/branch/master/graph/badge.svg)](https://codecov.io/gh/AY2324S1-CS2103T-T15-1/tp)
 
-![Ui](images/ui/Ui.png)
+![Ui](images/Ui.png)
 
 **F.A.K.E.J.A.R.V.I.S. is a desktop application for managing your responsibilities as a CS1101S Avenger.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
