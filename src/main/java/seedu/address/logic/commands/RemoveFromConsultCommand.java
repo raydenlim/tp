@@ -39,7 +39,7 @@ public class RemoveFromConsultCommand extends Command {
             + PREFIX_NAME + "NAME\n"
             + "Example: " + COMMAND_WORD + " 1" + PREFIX_NAME + "John Doe";
 
-    public static final String MESSAGE_SUCCESS = "Student(s) removed from consultation at index %1$s: %1$s";
+    public static final String MESSAGE_SUCCESS = "Student(s) removed from consultation at index %1$s: %2$s";
     public static final String MESSAGE_PERSON_NOT_FOUND = "No student(s) in address book matches given name(s)";
     public static final String MESSAGE_NOT_FOUND_IN_CONSULT = "No student(s) in consultation matches given name(s)";
     public static final String MESSAGE_NOT_EDITED = "At least one student is to be removed";
@@ -83,8 +83,8 @@ public class RemoveFromConsultCommand extends Command {
 
         model.setConsultation(targetConsultation, updatedConsultation);
         model.updateFilteredConsultationList(PREDICATE_SHOW_ALL_CONSULTATIONS);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(updatedConsultation)),
-                COMMAND_TYPE);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, index.getOneBased(),
+                Messages.format(updatedConsultation)), COMMAND_TYPE);
     }
 
     @Override

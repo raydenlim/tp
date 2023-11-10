@@ -17,9 +17,9 @@ _Say goodbye to chaos and hello to an organized and efficient classroom experien
 
 F.A.K.E.J.A.R.V.I.S. is your **friendly companion for efficient task and administrative management**, allowing you to excel as a CS1101S Avenger. With this tool, you can effortlessly track assignment gradings, monitor student participation, and seamlessly plan tutorials, consultations, and mastery checks.
 
-As Avengers ourselves, we understand the importance of managing both our time and our students effectively. F.A.K.E.J.A.R.V.I.S. is the one-stop solution to streamlining your workload, making your life easier. It is designed to empower you with the benefits of a Command-Line Interface(CLI), all while preserving the advantages of having a Graphical User Interface(GUI).
+As Avengers ourselves, we understand the importance of managing both our time and our students effectively. F.A.K.E.J.A.R.V.I.S. is the one-stop solution to streamlining your workload, making your life easier. It is designed to empower you with the benefits of a Command-Line Interface (CLI), all while preserving the advantages of having a Graphical User Interface (GUI).
 
-If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offers and need assistance, don't worry! This UserGuide is your trusted assistant, and will guide you through every step and ensure that you can unlock the full potential of F.A.K.E.J.A.R.V.I.S. Let's get started!
+If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offers and need assistance, don't worry! This User Guide is your trusted assistant, and will guide you through every step and ensure that you can unlock the full potential of F.A.K.E.J.A.R.V.I.S. Let's get started!
 
 <br>
 <br>
@@ -34,9 +34,11 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 [Table of Contents](#table-of-contents)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 [How to use the User Guide](#how-to-use-the-user-guide)  
 &nbsp;2 [Graphical User Interface](#graphical-user-interface)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 [Task Card](#task-card)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 [Consultation Card](#consultation-card)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.3 [Session Card](#session-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 [Student Card](#student-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 [Task Card](#task-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.3 [Assignment Cards](#assignment-cards)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.4 [Session Card](#session-card)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.5 [Consultation Card](#consultation-card)  
 &nbsp;3 [Quick Start](#quick-start)  
 &nbsp;4 [Command Format](#command-format)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 [Command Parameters](#command-parameters)  
@@ -142,23 +144,24 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ## Graphical User Interface
 
-![UI with Annotations](images/newUiWithAnnotations.png)
+![UI with Annotations](images/UiWithAnnotations.png)
 
-F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 4 main components:
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 6 main components:
+* Menu Bar
+* Tabs
 * Command Box
 * Command Result Display
+* Graphical Result Display
 * Current Panel
-* Tabs
 
-You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box.
+You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box, and in **Graphical Result Display** if needed.
 
-The following describes what each panel contains:
-* **Student List Panel:** Displays your students' details
-* **Task List Panel:** Displays your tasks' details
-* **Assignment List Panel:** Displays your students' assignment details
-* **Sessions Panel:** Displays your sessions' details
-* **Consultations Panel:** Displays your consultations' details
-
+The following describes what each tab displays on the **Current Panel**:
+* **Student Tab:** Displays your students list and students' details.
+* **Tasks Tab:** Displays your tasks list and tasks' details.
+* **Assignments Tab:** Displays your assignments list.
+* **Sessions Tab:** Displays your sessions list and sessions' details.
+* **Consultations Tab:** Displays your consultations list and consultations' details.
 
 <br>
 <br>
@@ -175,8 +178,8 @@ The following describes what each panel contains:
 <br>
 <br>
 
-### Assignment Card
-![Assignment Card with Annotations](images/AssignmentCardAnnotated.png)
+### Assignment Cards
+![Assignment Card with Annotations](images/AssignmentsAnnotated.png)
 
 <br>
 <br>
@@ -245,19 +248,19 @@ The following describes what each panel contains:
 
 **The commands in the user guide adopt the following conventions:**<br>
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+* Words in `UPPER_CASE` are the **parameters** to be supplied by the user.<br>
   e.g. in `addtask tn/TASK_NAME`, `TASK_NAME` is a parameter which can be specified, such as `addtask tn/Do User Guide`.
 
 
-* Items in square brackets are optional.<br>
+* Items in square brackets are **optional**.<br>
   e.g `tn/TASK_NAME [td/do before feedback]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
 
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…`​ after them can be used **multiple times** including zero times.<br>
   e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/ Foo Bar` etc.
 
 
-* Parameters can be in any order.<br>
+* Parameters can be **in any order**.<br>
   e.g. if the command specifies `tn/TASK_NAME td/TASK_DESCRIPTION`, `td/TASK_DESCRIPTION tn/TASK_NAME` is also acceptable.
 
 
@@ -324,7 +327,7 @@ This section describes commands that fit in no special category.
 
 #### 🔀Switching between different tabs: `tab`
 
-You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S.
+You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S. to view different lists on the current panel.
 
 Format: `tab TAB_INDEX`
 
@@ -473,7 +476,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 #### 👀Listing All Students : `list`
 
-You can list out all students in F.A.K.E.J.A.R.V.I.S. if you need to view the complete student roster.
+You can list out all students in F.A.K.E.J.A.R.V.I.S. if you need to view the complete student list.
+
 Format: `list`
 
 > **Example 1:**
@@ -992,7 +996,7 @@ This section describes commands that help you manage your students' assignments.
 
 #### 👀Viewing a List of Assignments: `viewassignments`
 
-You can view a list of assignment grades and comments if you want to assess and review the feedback provided for each assignment.
+You can view the list of assignment grades and comments of a student if you want to assess and review the feedback provided for each assignment.
 
 Format: `viewassignments STUDENT_INDEX`
 
@@ -1456,7 +1460,7 @@ This section describes commands that help you manage your consultations with stu
 <br>
 
 #### 📝Creating a Consultation: `createconsult`
-You can create a consultation for any upcoming consultations if you need to schedule or document consultations in the system.
+You can create a consultation with your students if you need to schedule or document consultations in the system.
 
 Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 
@@ -1484,7 +1488,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 > **Input:** `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh` Creates a consultation for Alex Yeoh on 2023-10-30 12:30.
 >
 > **Output:**
->`New consultation added: ; Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
+>`New consultation added: Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
 >
 > [IMAGE COMING SOON]
 
@@ -1494,7 +1498,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 > **Input:** `createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li` Creates a consultation for Alex Yeoh, Betsy Crower and David Li on 2023-09-30 15:30.
 >
 > **Output:**
->`New consultation added: ; Date: 2023-09-30; Time: 15:30; Students: Betsy CrowerDavid LiAlex Yeoh`
+>`New consultation added: Date: 2023-09-30; Time: 15:30; Students: Betsy Crower, David Li, Alex Yeoh`
 >
 > [IMAGE COMING SOON]
 
@@ -1503,7 +1507,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 <br>
 
 #### 📝️Adding students to a consultation: `addtoconsult`
-You can add your student(s) into a consultation slot if you need to schedule or allocate specific individuals for your consultation.
+You can add your student(s) into a consultation slot if you need to assign specific individuals for your consultation.
 
 Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
@@ -1532,7 +1536,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > **Input:** `addtoconsult 2 n/Betsy Crower` Adds Betsy Crower to the 2nd consultation on the list.
 >
 > **Output:**
->`New student(s) added to consultation at index ; Date: 2023-11-01; Time: 10:00; Students: Betsy CrowerAlex Yeoh: ; Date: 2023-11-01; Time: 10:00; Students: Betsy CrowerAlex Yeoh`
+>`New student(s) added to consultation at index 2: Date: 2023-11-01; Time: 10:00; Students: Betsy Crower, Alex Yeoh`
 >
 > [IMAGE COMING SOON]
 
@@ -1542,7 +1546,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > **Input:** `addtoconsult 1 n/David Li n/Roy Balakrishnan` Adds David Li and Roy Balakrishnan to the 1st consultation in the list.
 >
 > **Output:**
->`New student(s) added to consultation at index ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuDavid LiAlex YeohRoy Balakrishnan: ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuDavid LiAlex YeohRoy Balakrishnan`
+>`New student(s) added to consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, David Li, Alex Yeoh, Roy Balakrishnan`
 >
 > [IMAGE COMING SOON]
 
@@ -1552,7 +1556,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 #### ❌Removing Students from a Consultation: `removefromconsult`
 
-You can remove your student(s) from a consultation if you need to reschedule or cancel your student's participation in the scheduled consultation.
+You can remove your student(s) from a consultation if you need to cancel your student's participation in the scheduled consultation.
 
 Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
@@ -1580,7 +1584,7 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > **Input:** `removefromconsult 2 n/Betsy Crower` Removes Betsy Crower from the 2nd consultation in the list.
 >
 > **Output:**
->`Student(s) removed from consultation at index ; Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh: ; Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh`
+>`Student(s) removed from consultation at index 2: Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh`
 >
 > [IMAGE COMING SOON]
 
@@ -1616,7 +1620,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 > **Input:** `deleteconsult 1` Deletes the 1st consultation in the consultation list.
 >
 > **Output:**
->`Deleted Consultation: ; Date: 2023-11-11; Time: 11:11; Students: Bernice YuAlex YeohRoy Balakrishnan`
+>`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, Alex Yeoh, Roy Balakrishnan`
 >
 > [IMAGE COMING SOON]
 
