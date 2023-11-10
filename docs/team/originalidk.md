@@ -39,9 +39,8 @@ Below are my contributions to the project:
 
 * **Code contributed**: [RepoSense](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=Originalidk&breakdown=true)
 
-* **Project management**: To be added
+* **Project management**:
   * Managed release `v1.3b`
-  * Reviewed and approved pull requests
   * Created some GitHub issues
 
 
@@ -59,9 +58,15 @@ Below are my contributions to the project:
 
 
 * **Review/mentoring contributions**:
+  * Reviewed and approved pull requests
+
+* **Tools**:
+  * Java
+  * IntelliJ
+  * Git
+  * FXML
+  * PlantUML
+
+* **Contributions beyond the project team**:
   * Found 15 bugs during the PE-D which helped to improve another team's product.
-
-* **Tools**: To be added
-
-* **Contributions beyond the project team**: To be added
 
