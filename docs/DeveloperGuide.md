@@ -323,9 +323,39 @@ Step 7:
 The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 
 
+#### Students
+
+#### Edit Student Feature
+This section explains the implementation of the Edit Student feature via the `edit` command. The `EditCommand` updates the fields of the existing specified `Person`. There is 1 compulsory field, which is the Index of the `Person` to update. However, at least 1 optional field must also be provided. The optional fields are name, phone, telegram handle, tag and graded tests.
+
+Below is the sequence diagram outlining the execution of the `EditCommand`.
+
+![Edit Command Sequence Diagram](images/EditStudentSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `EditCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified `Person` to edit.
+
+Step 2:
+The `EditCommand::createEditedPerson` is invoked to create a new immutable `Person` object with the updated fields.
+
+Step 3:
+The `EditCommand` will call `setPerson` in `Model` to replace the original `Person` with the new `Person` object.
+
+Step 4:
+The `Model` will also call `setStudent` in the respective lists (denoted by `List<XYZ>`, where XYZ refers to `Consultation` and `Session`) to update the relevant lists containing the original `Person` to the new `Person` object.
+
+Step 5:
+The `EditCommand` will call its own `updateFilteredPersonList` method to update the model's filter and display all the students to the user.
+
+Step 4:
+The `EditCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+
 #### Delete Student Feature
 This section explains the implementation of the Delete Student feature via the `delete` command.
 The `DeleteCommand` causes the specified `Person` to be deleted from the application. This includes removing the student from any `consultations` or `sessions` that the student might be in.
+
 This process is summarised in the activity diagram below
 
 ![Delete Activity Diagram](images/DeleteStudentActivityDiagram.png)
