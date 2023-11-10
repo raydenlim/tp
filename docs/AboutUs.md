@@ -57,6 +57,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/wesho1107.png" width="200px">
 
+[[homepage](http://linkedin.com/in/wesleyhojiacheng/)]
 [[github](http://github.com/wesho1107)]
 [[portfolio](team/wesho1107.md)]
 
