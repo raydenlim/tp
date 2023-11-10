@@ -1620,7 +1620,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 > **Input:** `deleteconsult 1` Deletes the 1st consultation in the consultation list.
 >
 > **Output:**
->`Deleted consultation: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, Alex Yeoh, Roy Balakrishnan`
+>`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, Alex Yeoh, Roy Balakrishnan`
 >
 > [IMAGE COMING SOON]
 
