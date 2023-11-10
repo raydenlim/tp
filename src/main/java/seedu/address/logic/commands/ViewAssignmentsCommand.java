@@ -13,7 +13,7 @@ import seedu.address.model.person.Person;
 /**
  * Shows a list of assignment details belonging to a person.
  */
-public class ViewAssignmentsCommand extends Command {
+public class ViewAssignmentsCommand extends AssignmentCommand {
 
     public static final String COMMAND_WORD = "viewassignments";
 
@@ -54,6 +54,7 @@ public class ViewAssignmentsCommand extends Command {
         return COMMAND_TYPE;
     }
 
+    @Override
     public Index getIndex() {
         return this.index;
     }
