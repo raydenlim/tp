@@ -217,6 +217,11 @@ public class ModelManager implements Model {
         filteredSessions.setPredicate(predicate);
     }
 
+    @Override
+    public void setSessionList(ReadOnlySessionList sessionList) {
+        this.sessionList.resetData(sessionList);
+    }
+
     //=========== TaskListBook ================================================================================
 
     @Override
@@ -336,6 +341,11 @@ public class ModelManager implements Model {
         requireAllNonNull(target, updatedConsultation);
 
         consultationList.setConsultation(target, updatedConsultation);
+    }
+
+    @Override
+    public void setConsultationList(ReadOnlyConsultationList consultationList) {
+        this.consultationList.resetData(consultationList);
     }
 
     @Override

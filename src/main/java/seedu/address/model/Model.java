@@ -107,6 +107,16 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+    /** Returns an unmodifiable view of the filtered person list */
+    ObservableList<Person> getFilteredPersonList();
+
+    /**
+     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPersonList(Predicate<Person> predicate);
+
     //=========== SessionList =================================================================================
     Session findSessionBySessionNumber(SessionNumber sessionNumber);
 
@@ -145,9 +155,13 @@ public interface Model {
      */
     void updateFilteredSessionList(Predicate<Session> predicate);
 
+    /**
+     * Replaces session list data with the data in {@code sessionList}.
+     */
+    void setSessionList(ReadOnlySessionList sessionList);
+
 
     //=========== TaskList =================================================================================
-
 
     /**
      * Replaces task list data with the data in {@code taskList}.
@@ -187,11 +201,21 @@ public interface Model {
      */
     void setTask(Task target, Task editedTask);
 
-    /** Returns an unmodifiable view of the filtered person list */
-    ObservableList<Person> getFilteredPersonList();
+
+    /** Returns an unmodifiable view of the filtered task list */
+    ObservableList<Task> getFilteredTaskList();
 
     /**
-     * Replaces task list data with the data in {@code taskList}.
+     * Updates the filter of the filtered task list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredTaskList(Predicate<Task> predicate);
+
+
+    //=========== GradedTestList =================================================================================
+
+    /**
+     * Replaces graded test list data with the data in {@code gradedTestList}.
      */
     void setGradedTestList(ReadOnlyGradedTestList gradedTestList);
 
@@ -222,7 +246,7 @@ public interface Model {
     GradedTest getGradedTest(int index);
 
     /**
-     * Replaces the given task {@code target} with {@code editedGradedTest}.
+     * Replaces the given gradedTest {@code target} with {@code editedGradedTest}.
      * {@code target} must exist in the address book.
      * The gradedTest identity of {@code editedGradedTest} must not be the same
      * as another existing gradedTest in the gradedTest List.
@@ -236,12 +260,7 @@ public interface Model {
 
     void setGradedTestListFilePath(Path gradedTestListFilePath);
 
-    /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
-     *
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredPersonList(Predicate<Person> predicate);
+
 
     /**
      * Returns true if a consultation with the same identity as {@code task} exists in the consultation list.
@@ -279,16 +298,13 @@ public interface Model {
      */
     void updateFilteredConsultationList(Predicate<Consultation> predicate);
 
+    /**
+     * Replaces consultation list data with the data in {@code consultationList}.
+     */
+    void setConsultationList(ReadOnlyConsultationList consultationList);
+
 
     Person getMatchingStudentName(Name name);
 
-    /** Returns an unmodifiable view of the filtered task list */
-    ObservableList<Task> getFilteredTaskList();
-
-    /**
-     * Updates the filter of the filtered task list to filter by the given {@code predicate}.
-     * @throws NullPointerException if {@code predicate} is null.
-     */
-    void updateFilteredTaskList(Predicate<Task> predicate);
 
 }

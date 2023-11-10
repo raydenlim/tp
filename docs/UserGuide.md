@@ -33,15 +33,19 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;1 [Introduction](#introduction)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 [Table of Contents](#table-of-contents)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 [How to use the User Guide](#how-to-use-the-user-guide)  
+
 &nbsp;2 [Graphical User Interface](#graphical-user-interface)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 [Student Card](#student-card)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 [Task Card](#task-card)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.3 [Assignment Cards](#assignment-cards)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.4 [Session Card](#session-card)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.5 [Consultation Card](#consultation-card)  
+
 &nbsp;3 [Quick Start](#quick-start)  
+
 &nbsp;4 [Command Format](#command-format)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 [Command Parameters](#command-parameters)  
+
 &nbsp;5 [Features](#features)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1 [General Commands](#general-commands)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [🔀 Switching between different tabs : `tab`](#switching-between-different-tabs-tab)  
@@ -50,6 +54,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [💾 Saving the Data](#saving-the-data)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [🛠️ Editing the Data File](#editing-the-data-file)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.6 [💾 Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [📝 Adding a Student: `add`](#adding-a-student-add)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing All Students : `list`](#listing-all-students-list)  
@@ -57,34 +62,44 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [🔎 Locating Student by Name: `find`](#locating-student-by-name-find)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [❌ Deleting a Student : `delete`](#deleting-a-student-delete)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [🗑️ Clearing all Entries : `clear`](#clearing-all-entries-clear)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3 [Task Management](#task-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.1 [📝 Adding a Task: `addtask`](#adding-a-task-addtask)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.2 [👀 Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [🛠️ Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.4 [❌ Deleting a Task: `deletetask`](#deleting-a-task-deletetask)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4 [Attendance Management](#attendance-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [📆 Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.2 [👀 Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5 [Assignment Management](#assignment-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.1 [👀 Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.2 [🛠️ Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.3 [❌ Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.4 [🛠️ Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.5 [❌ Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6 [Graded Test Management](#graded-test-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6.1 [🛠️ Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7 [Session Management](#session-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.1 [📝 Creating a Session: `createsession`](#creating-a-session-createsession)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.2 [🛠️ Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.3 [❌ Deleting a Session: `deletesession`](#deleting-a-session-deletesession)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8 [Consultation Management](#consultation-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [📝 Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [📝 Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [❌ Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [❌ Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)  
+
 &nbsp;6 [FAQ](#faq)  
+
 &nbsp;7 [Known Issues](#known-issues)  
+
 &nbsp;8 [Command Summary](#command-summary)  
+
 &nbsp;9 [Encountering Errors](#encountering-errors)
 
 
@@ -234,6 +249,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 6. Refer to the [Features](#features) below for details of each command and the [Command Format](#command-format) for the specifications of each command.
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -277,7 +293,7 @@ The following describes what each tab displays on the **Current Panel**:
 Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. Their prefixes and their respective constraints are given in the table below.
 
 
-|      **Field**       | **Prefix** |                                                   **Commands**                                                    | **Description**                                                                                                                                                                                                                                    |
+|      **Field**       | **Prefix** |                                                   **Commands**                                                    | <center>**Description**</center>                                                                                                                                                                                                                   |
 |:--------------------:|:----------:|:-----------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |         NAME         |    `n/`    | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                         |
 |        PHONE         |    `p/`    |                                                   `add` `edit`                                                    | The Phone number of a student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                          |
@@ -350,6 +366,8 @@ For the list of tab indexes to use:
 
 </md> </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `tab 1` Switches to the student list tab.
@@ -413,6 +431,8 @@ If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. 
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
 
+<br>
+
 [Back to Table of Contents](#table-of-contents)
 
 <br>
@@ -451,6 +471,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 </md> </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01 gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. All his grades are also set to `0`.
@@ -479,6 +501,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 You can list out all students in F.A.K.E.J.A.R.V.I.S. if you need to view the complete student list.
 
 Format: `list`
+
+<br>
 
 > **Example 1:**
 >
@@ -525,7 +549,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 </md>
 </div>
 
-
+<br>
 
 > **Example 1:**
 >
@@ -573,6 +597,7 @@ Format: `find KEYWORD…`
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -620,6 +645,8 @@ Format: `delete STUDENT_INDEX`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `list` followed by `delete 2` Deletes the 2nd student in F.A.K.E.J.A.R.V.I.S.
@@ -648,6 +675,8 @@ Format: `delete STUDENT_INDEX`
 You can clear all students from F.A.K.E.J.A.R.V.I.S. if you need to reset the student database or remove all existing student records.
 
 Format: `clear`
+
+<br>
 
 > **Example 1:**
 >
@@ -740,6 +769,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -800,6 +830,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -847,6 +878,7 @@ Format: `deletetask TASK_INDEX`
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -906,6 +938,8 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `takeattendance n/Alex Yeoh s/5 ap/present` Marks Alex Yeoh as present on the 5th session.
@@ -952,6 +986,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -1017,6 +1052,8 @@ Format: `viewassignments STUDENT_INDEX`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `viewassignments 1` Shows a list of the 1st student's assignment names, grades and comments.
@@ -1066,6 +1103,8 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `editgrade 1 as/Functional Expressionism g/500` Edits the grade of the 1st student's Functional Expressionism assignment to 500.
@@ -1114,6 +1153,7 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -1165,6 +1205,8 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `editcomment 1 as/Functional Expressionism c/Decent` Changes the comment on the 1st student's Functional Expressionism assignment to “Decent”.
@@ -1214,6 +1256,8 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 
 </md>
 </div>
+
+<br>
 
 > **Example 1:**
 >
@@ -1277,6 +1321,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -1335,6 +1380,8 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `createsession s/3 n/Alex Yeoh` Creates a session, which has session number 3 with Alex Yeoh.
@@ -1382,6 +1429,8 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `updatesessionremark s/2 r/Teach Essence of Recursion` Updates the remark for session number 2 to "Teach Essence of Recursion".
@@ -1428,6 +1477,7 @@ Format: `deletesession s/SESSION_NUMBER`
 </md>
 </div>
 
+<br>
 
 > **Example 1:**
 >
@@ -1483,6 +1533,8 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh` Creates a consultation for Alex Yeoh on 2023-10-30 12:30.
@@ -1530,6 +1582,8 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 </md>
 </div>
+
+<br>
 
 > **Example 1:**
 >
@@ -1579,6 +1633,8 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 </md>
 </div>
 
+<br>
+
 > **Example 1:**
 >
 > **Input:** `removefromconsult 2 n/Betsy Crower` Removes Betsy Crower from the 2nd consultation in the list.
@@ -1614,6 +1670,8 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 </md>
 </div>
+
+<br>
 
 > **Example 1:**
 >
@@ -1656,7 +1714,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 ## Command summary
 
-|        **Action**         |                                                            **Format**                                                            | **Examples**                                                                                                                       |
+|        **Action**         |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
 |:-------------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
 |          **Add**          |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
 |         **Clear**         |                                                             `clear`                                                              | `clear`                                                                                                                            |
@@ -1697,7 +1755,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 ## Encountering Errors
 This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
 
-|                                      Error                                      | What it means                                                                                                                                       | How to resolve                                                                                                                                                 |
+|                                    **Error**                                    | <center>**What it means**</center>                                                                                                                  | <center>**How to resolve**</center>                                                                                                                            |
 |:-------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |                               **Unknown command**                               | You have supplied a command that was unrecognisable. <br/> E.g., Command word was given in upper case.                                              | 1. Double-check the spelling and case of the command. <br/> 2. Refer to the [features](#features) section above for the correct commands.                      |
 |                           **Invalid command format!**                           | You have supplied a command with the incorrect format. <br/> E.g., Command is missing the compulsory parameters.                                    | 1. Double-check the command format and the parameters required. <br/> 2. Refer to the [features](#features) section above for the correct command formats.     |
