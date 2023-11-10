@@ -357,15 +357,12 @@ Below is the sequence diagram outlining the execution of `AddTaskCommand`.
 ![AddTaskCommand sequence diagram](images/AddTaskSequenceDiagram.png)
 
 Step 1:
-The `LogicManager` invokes `AddTaskCommand::execute`, which in turn calls `Model::addTask`.
+The `LogicManager` invokes `AddTaskCommand::execute`, which in turn calls `Model::addTask` to add the new task into the task list.
 
 Step 2:
-The `Model` will invoke `addTask` in `TaskListBook`, which in turn calls `add` in `TaskList` to add it to the list.
+The `Model` will call its own `updateFilteredTaskList` method to update the model's filter and display all the tasks to the user.
 
 Step 3:
-The `Model` will call its own `updateFilteredTaskList` method in order to update the model's filter to display all tasks.
-
-Step 4:
 The `AddTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
 
@@ -374,6 +371,7 @@ The `AddTaskCommand` then continues its execution as defined by [this](#parser-c
 
 * **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
     * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
+
 
 * **Alternative 2:** Store the model in the `AddTaskCommand` itself.
     * Pros: Easier to debug.
@@ -388,10 +386,10 @@ Below is the sequence diagram outlining the execution of `DeleteTaskCommand`.
 ![DeleteTaskCommand Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
 
 Step 1:
-The `LogicManager` invokes `DeleteTaskCommand::execute`, which in turn calls `Model::deleteTask`.
+The `LogicManager` invokes `DeleteTaskCommand::execute`, which in turn calls `Model::getFilteredTaskList` and `List<Task>::get` to get the relevant task to be deleted.
 
 Step 2:
-The `Model` will invoke `removeTask` in `TaskListBook`, which in turn calls `remove` in `TaskList` to remove it from the list.
+The `Model` then calls `deleteTask` to remove the specified task from the task list.
 
 Step 3:
 The `DeleteTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
@@ -399,7 +397,7 @@ The `DeleteTaskCommand` then continues its execution as defined by [this](#parse
 
 ##### Design Considerations:
 **Aspect: How we execute the DeleteTaskCommand:**
-Similar to the `AddTaskCommand`, the main considerations for this command is related to the way that the model is stored.
+* Similar to the `AddTaskCommand`, the main considerations for this command is related to the way that the model is stored.
 
 
 
@@ -438,12 +436,15 @@ Below is the sequence diagram outlining the execution of `UpdateTasksProgressCom
 
 
 Step 1:
-The `LogicManager` invokes `UpdateTaskProgressCommand::execute`, which in turn calls `UpdateTaskProgressCommand::createTask` to create a new immutable Task object with the updated progress.
+The `LogicManager` invokes `UpdateTaskProgressCommand::execute`, which in turn calls `Model::getFilteredTaskList` and `List<Task>::get` to get the relevant task to be edited.
 
 Step 2:
-The `UpdateTaskProgressCommand` will invoke `setTask` in `Model`, which in turn calls `setTask` in `TaskListBook`. This finally calls `editTask` in `TaskList` to update the existing `Task` with the new `Task`.
+The `UpdateTaskProgressCommand::createTask` is invoked to create a new immutable Task object with the updated progress.
 
 Step 3:
+The `UpdateTaskProgressCommand` will call `setTask` in `Model` to replace the existing `Task` with the new `Task`.
+
+Step 4:
 The `UpdateTaskProgressCommand` then invokes `updateFilteredTaskList` in `Model` to display all the tasks.
 
 Step 4:
