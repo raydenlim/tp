@@ -373,7 +373,7 @@ For the list of tab indexes to use:
 
 <br>
 
-> **📖 📖Example 1:**
+> **📖Example 1:**
 >
 > **Input:** `tab 1` Switches to the student list tab.
 >
@@ -383,7 +383,7 @@ For the list of tab indexes to use:
 > [IMAGE COMING SOON]
 
 
-> **📖 📖Example 2:**
+> **📖Example 2:**
 >
 > **Input:** `tab 2` Switches to the tasks list tab.
 >
@@ -486,7 +486,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 <br>
 
-> **📖 📖Example 1:**
+> **📖Example 1:**
 >
 > **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01 gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. All his grades are also set to `0`.
 >
@@ -496,7 +496,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 > [IMAGE COMING SOON]
 
 
-> **📖 📖Example 2:**
+> **📖Example 2:**
 >
 > **Input:** `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/bestie gt/default` Adds a person called Betty Crowe into F.A.K.E.J.A.R.V.I.S. She has 1234567 as her phone number, betsycrowe@u.nus.edu as her email, itsybetsyspider as her telegram handle and bestie as tags. All her grades are also set to `-`.
 >
