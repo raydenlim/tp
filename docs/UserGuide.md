@@ -142,53 +142,54 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 ## Graphical User Interface
 
-![UI with Annotations](images/newUiWithAnnotations.png)
+![UI with Annotations](images/ui/UiWithAnnotations.png)
 
-F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 4 main components:
+F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 6 main components:
+* Menu Bar
+* Tabs
 * Command Box
 * Command Result Display
+* Graphical Result Display
 * Current Panel
-* Tabs
 
-You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box.
+You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box, and in **Graphical Result Display** if needed.
 
-The following describes what each panel contains:
-* **Student List Panel:** Displays your students' details
-* **Task List Panel:** Displays your tasks' details
-* **Assignment List Panel:** Displays your students' assignment details
-* **Sessions Panel:** Displays your sessions' details
-* **Consultations Panel:** Displays your consultations' details
-
+The following describes what each tab displays on the **Current Panel**:
+* **Student Tab:** Displays your students list and students' details.
+* **Tasks Tab:** Displays your tasks list and tasks' details.
+* **Assignments Tab:** Displays your assignments list.
+* **Sessions Tab:** Displays your sessions list and sessions' details.
+* **Consultations Tab:** Displays your consultations list and consultations' details.
 
 <br>
 <br>
 
 ### Student Card
-![Student Card with Annotations](images/StudentCardAnnotated.png)
+![Student Card with Annotations](images/ui/StudentCardAnnotated.png)
 
 <br>
 <br>
 
 ### Task Card
-![Task Card with Annotations](images/TaskCardAnnotated.png)
+![Task Card with Annotations](images/ui/TaskCardAnnotated.png)
 
 <br>
 <br>
 
-### Assignment Card
-![Assignment Card with Annotations](images/AssignmentCardAnnotated.png)
+### Assignment and Student's Assignment Cards
+![Assignment Card with Annotations](images/ui/AssignmentsAnnotated.png)
 
 <br>
 <br>
 
 ### Session Card
-![Session Card with Annotations](images/SessionCardAnnotated.png)
+![Session Card with Annotations](images/ui/SessionCardAnnotated.png)
 
 <br>
 <br>
 
 ### Consultation Card
-![Consultation Card with Annotations](images/ConsultationCardAnnotated.png)
+![Consultation Card with Annotations](images/ui/ConsultationCardAnnotated.png)
 
 <br>
 
@@ -207,7 +208,7 @@ The following describes what each panel contains:
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
    A GUI similar to the image below should appear in a few seconds. <br>
 
-   ![Ui](images/Ui.png)
+   ![Ui](images/ui/Ui.png)
 
    Note that the app will contain some sample data initially. You can use the `clear` command for a blank state. <br>
     <div class="alert alert-warning">
