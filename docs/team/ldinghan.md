@@ -4,7 +4,7 @@ title: "Ding Han's Project Portfolio Page"
 ---
 ### Project: F.A.K.E.J.A.R.V.I.S.
 
-F.A.K.E.J.A.R.V.I.S. is a project to help CS1101S Avengers manage their time and responsibilities more effectively.
+F.A.K.E.J.A.R.V.I.S. is a project that helps CS1101S Avengers manage their time and responsibilities more effectively.
 
 Given below are my contributions to the project:
 
@@ -49,9 +49,16 @@ Given below are my contributions to the project:
   * Developer Guide:
     * Designed the class diagram for `Session`.
 
-* **Review/mentoring contributions**: To be added
+* **Review/mentoring contributions**:
+  * [ldinghan's tp comments](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/tp-comments.html#47-lim-han-ldinghan-37-comments)
 
-* **Tools**: Java, IntelliJ, FXML, PlantUML
+* **Tools**: 
+  * Java
+  * IntelliJ
+  * Git
+  * FXML
+  * PlantUML
 
-* **Contributions beyond the project team**: To be added
+* **Contributions beyond the project team**: 
+  * Contributed to module forum page to answer queries on code coverage [here](https://github.com/nus-cs2103-AY2324S1/forum/issues/267#issuecomment-1767768888)
 

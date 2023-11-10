@@ -48,7 +48,7 @@ public class AddToConsultCommandTest {
         AddToConsultCommand command = new AddToConsultCommand(targetIndex, descriptor);
         Consultation updatedConsultation = createUpdatedConsultation(model, targetConsultation, descriptor);
 
-        String expectedMessage = String.format(AddToConsultCommand.MESSAGE_SUCCESS,
+        String expectedMessage = String.format(AddToConsultCommand.MESSAGE_SUCCESS, targetIndex.getOneBased(),
                 Messages.format(updatedConsultation));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()),

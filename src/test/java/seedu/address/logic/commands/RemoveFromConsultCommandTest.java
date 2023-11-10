@@ -49,7 +49,7 @@ public class RemoveFromConsultCommandTest {
         RemoveFromConsultCommand command = new RemoveFromConsultCommand(targetIndex, descriptor);
         Consultation updatedConsultation = createUpdatedConsultation(model, targetConsultation, descriptor);
 
-        String expectedMessage = String.format(RemoveFromConsultCommand.MESSAGE_SUCCESS,
+        String expectedMessage = String.format(RemoveFromConsultCommand.MESSAGE_SUCCESS, targetIndex.getOneBased(),
                 Messages.format(updatedConsultation));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),

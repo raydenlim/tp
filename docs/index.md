@@ -10,7 +10,7 @@
 
 ![Ui](images/Ui.png)
 
-**F.A.K.E.J.A.R.V.I.S. is a desktop application for managing your life as a CS1101S Avenger.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+**F.A.K.E.J.A.R.V.I.S. is a desktop application for managing your responsibilities as a CS1101S Avenger.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
 
 * If you are interested in using F.A.K.E.J.A.R.V.I.S., head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
 * If you are interested about developing F.A.K.E.J.A.R.V.I.S., the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
