@@ -3,19 +3,7 @@ layout: default.md
 title: "User Guide"
 pageNav: 3
 ---
-<style>
-    table {
-        width: 90%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 10px;
-        text-align: center;
-    }
-    info {
-        background: white;
-    }
-</style>
+
 # F.A.K.E.J.A.R.V.I.S. User Guide
 
 ## Introduction
@@ -40,7 +28,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 <br>
 
-### Table of Contents
+## Table of Contents
 
 &nbsp;1 [Introduction](#introduction)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 [Table of Contents](#table-of-contents)  
@@ -54,43 +42,44 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 [Command Parameters](#command-parameters)  
 &nbsp;5 [Features](#features)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1 [General Commands](#general-commands)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [Viewing help : `help`](#viewing-help-help)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [Saving the Data](#saving-the-data)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [Editing the Data File](#editing-the-data-file)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [🔀 Switching between different tabs : `tab`](#switching-between-different-tabs-tab)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [👀 Viewing help : `help`](#viewing-help-help)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [🏃🚪 Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [💾 Saving the Data](#saving-the-data)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [🛠️ Editing the Data File](#editing-the-data-file)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.6 [💾 Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [Adding a Student: `add`](#adding-a-student-add)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [Listing All Students : `list`](#listing-all-students-list)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [Editing a Student Field : `edit`](#editing-a-student-field-edit)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [Locating Student by Name: `find`](#locating-student-by-name-find)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [Deleting a Student : `delete`](#deleting-a-student-delete)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [Clearing all Entries : `clear`](#clearing-all-entries-clear)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [📝 Adding a Student: `add`](#adding-a-student-add)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing All Students : `list`](#listing-all-students-list)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [🛠️ Editing a Student Field : `edit`](#editing-a-student-field-edit)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [🔎 Locating Student by Name: `find`](#locating-student-by-name-find)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [❌ Deleting a Student : `delete`](#deleting-a-student-delete)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [🗑️ Clearing all Entries : `clear`](#clearing-all-entries-clear)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3 [Task Management](#task-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.1 [Adding a Task: `addtask`](#adding-a-task-addtask)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.2 [Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.4 [Deleting a Task: `deletetask`](#deleting-a-task-deletetask)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.1 [📝 Adding a Task: `addtask`](#adding-a-task-addtask)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.2 [👀 Viewing Tasks: `viewtasks`](#viewing-tasks-viewtasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [🛠️ Updating a Task's Progress: `updateprogress`](#updating-a-task-s-progress-updateprogress)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.4 [❌ Deleting a Task: `deletetask`](#deleting-a-task-deletetask)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4 [Attendance Management](#attendance-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.2 [Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [📆 Taking Attendance: `takeattendance`](#taking-attendance-takeattendance)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.2 [👀 Viewing Attendance: `viewattendance`](#viewing-attendance-viewattendance)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5 [Assignment Management](#assignment-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.1 [Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.2 [Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.3 [Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.4 [Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.5 [Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.1 [👀 Viewing a list of Assignments: `viewassignments`](#viewing-a-list-of-assignments-viewassignments)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.2 [🛠️ Editing an Assignment Grade: `editgrade`](#editing-an-assignment-grade-editgrade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.3 [❌ Deleting an Assignment Grade: `deletegrade`](#deleting-an-assignment-grade-deletegrade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.4 [🛠️ Editing an Assignment Comment: `editcomment`](#editing-an-assignment-comment-editcomment)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.5.5 [❌ Deleting an Assignment Comment: `deletecomment`](#deleting-an-assignment-comment-deletecomment)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6 [Graded Test Management](#graded-test-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6.1 [Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.6.1 [🛠️ Editing a Graded Test Score: `editgradedtest`](#editing-a-graded-test-score-editgradedtest)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7 [Session Management](#session-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.1 [Creating a Session: `createsession`](#creating-a-session-createsession)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.2 [Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.3 [Deleting a Session: `deletesession`](#deleting-a-session-deletesession)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.1 [📝 Creating a Session: `createsession`](#creating-a-session-createsession)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.2 [🛠️ Updating a Session's Remark: `updatesessionremark`](#updating-a-session-s-remark-updatesessionremark)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.7.3 [❌ Deleting a Session: `deletesession`](#deleting-a-session-deletesession)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8 [Consultation Management](#consultation-management)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [📝 Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [📝 Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [❌ Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [❌ Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)  
 &nbsp;6 [FAQ](#faq)  
 &nbsp;7 [Known Issues](#known-issues)  
 &nbsp;8 [Command Summary](#command-summary)  
@@ -101,7 +90,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 <br>
 <br>
 
-### How to use the User Guide
+## How to use the User Guide
 You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
@@ -109,33 +98,37 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 <br>
 
 
-| <center>**Convention**</center> | <center>**Description**</center>                                                |
-|---------------------------------|---------------------------------------------------------------------------------|
-| <center>`Monospace`</center>    | <center>Used for command inputs, syntax, and file paths.</center>               |
-| <center>**Bold text**</center>  | <center>Highlights important keywords.</center>                                 |
-| <center>[Hyperlink](#)</center> | <center>Indicates hyperlinks to external websites or within the guide.</center> |
+| **Convention** |                        **Description**                         |
+|:--------------:|:--------------------------------------------------------------:|
+|  `Monospace`   |        Used for command inputs, syntax, and file paths.        |
+| **Bold text**  |                 Highlights important keywords.                 |
+| [Hyperlink](#) | Indicates hyperlinks to external websites or within the guide. |
 
 
 <br>
 
 
-| <center>**Convention**</center>                                                                      | <center>**Description**</center>                                                 |
-|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| <center>**<div markdown="span" class="alert alert-info"> :information_source: Note </div>**</center> | <center>Provides information of special interest or importance.</center>         |
-| <center>**<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**</center>     | <center>Alerts to potentially irreversible actions with data loss risk.</center> |
+|                                   **Convention**                                    |                         **Description**                         |
+|:-----------------------------------------------------------------------------------:|:---------------------------------------------------------------:|
+| **<div markdown="span" class="alert alert-info"> :information_source: Note </div>** |     Provides information of special interest or importance.     |
+|   **<div markdown="span" class="alert alert-warning"> :bangbang: Warning </div>**   | Alerts to potentially irreversible actions with data loss risk. |
 
 
 <br>
 
 
-| <center>**Convention**</center> | <center>**Description**</center>               |
-|---------------------------------|------------------------------------------------|
-| <center>📝</center>             | <center>Add <br/> Create</center>              |
-| <center>❌</center>              | <center>Delete <br/> Remove</center></center>  |
-| <center>🛠️</center>            | <center>Edit <br/> Modify <br/> Update         |
-| <center>🔎</center>             | <center>Find</center>                          |
-| <center>📆</center>             | <center>Take Attendance</center>               |
-| <center>👀</center>             | <center>View <br/> Display </br> List</center> |
+| **Convention** |        **Description**         |
+|:--------------:|:------------------------------:|
+|      🏃🚪      |              Exit              |
+|       🔀       |          Switch Tabs           |
+|       💾       |  Save Data <br/>Archive Data   |
+|       📝       |        Add <br/> Create        |
+|       ❌        |      Delete <br/> Remove       |
+|      🛠️       | Edit <br/> Modify <br/> Update |
+|       🔎       |              Find              |
+|       📆       |        Take Attendance         |
+|       👀       | View <br/> Display </br> List  |
+|      🗑️       |             Clear              |
 
 
 
@@ -212,10 +205,18 @@ The following describes what each panel contains:
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar fakejarvis.jar` command to run the application.<br>
-   A GUI similar to the image below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the image below should appear in a few seconds. <br>
 
    ![Ui](images/Ui.png)
 
+   Note that the app will contain some sample data initially. You can use the `clear` command for a blank state. <br>
+    <div class="alert alert-warning">
+    <md>
+    :bangbang: Warning:
+    * This action is irreversible
+    </md> 
+   </div>
+    
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
@@ -273,31 +274,31 @@ The following describes what each panel contains:
 Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. Their prefixes and their respective constraints are given in the table below.
 
 
-| <center>**Field**</center>            | <center>**Prefix**</center> | <center>**Commands**</center>                                                                                     | <center>**Description**</center>                                                                                                                                                                                                                   |
-|---------------------------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <center>NAME</center>                 | <center>`n/`</center>       | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                         |
-| <center>PHONE</center>                | <center>`p/`</center>       | `add` `edit`                                                                                                      | The Phone number of a student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                          |
-| <center>EMAIL</center>                | <center>`e/`</center>       | `add` `edit`                                                                                                      | The Email of a student. <ul><li>Emails should be of the format `local-part@domain`</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`</li><li>The domain name must be `@u.nus.edu`.</li> </ul> |
-| <center>TELEGRAM_HANDLE</center>      | <center>`th/`</center>      | `add` `edit`                                                                                                      | The Telegram handle of a student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                        |
-| <center>TAG</center>                  | <center>`t/`</center>       | `add` `edit`                                                                                                      | The Tag belonging to a student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                               |
-| <center>GRADED_TEST</center>          | <center>`gt/`</center>      | `add` `edit`                                                                                                      | The scores of respective graded tests. <ul><li>Names should only contain alphanumeric characters and spaces. </li><li> Names should not be blank. </li></ul>                                                                                       |
-| <center>READING_ASSESSMENT_1</center> | <center>`ra1/`</center>     | `editgradedtest`                                                                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
-| <center>READING_ASSESSMENT_2</center> | <center>`ra2/`</center>     | `editgradedtest`                                                                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
-| <center>MIDTERMS</center>             | <center>`mt/`</center>      | `editgradedtest`                                                                                                  | The score of a Midterms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                 |
-| <center>FINALS</center>               | <center>`f/`</center>       | `editgradedtest`                                                                                                  | The score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                   |
-| <center>PRACTICAL_EXAM</center>       | <center>`pe/`</center>      | `editgradedtest`                                                                                                  | The score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                |
-| <center>ASSIGNMENT</center>           | <center>`as/`</center>      | `deletecomment` `editcomment` `editgrade`                                                                         | The name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                |
-| <center>GRADE</center>                | <center>`g/`</center>       | `editgrade`                                                                                                       | The grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                        |
-| <center>COMMENT</center>              | <center>`c/`</center>       | `editcomment`                                                                                                     | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                        |
-| <center>DATE</center>                 | <center>`d/`</center>       | `addtask` `viewtasks` `createconsult`                                                                             | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                        |
-| <center>TIME</center>                 | <center>`tt/`</center>      | `createconsult`                                                                                                   | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                 |
-| <center>SESSION</center>              | <center>`s/`</center>       | `createsession` `deletesession` `takeattendance` `updatesessionremark`                                            | The Session Number of a Tutorial. <ul><li> Session must only contain numbers. </li><li>Session should not be blank.</li> </ul>                                                                                                                     |
-| <center>SESSION_REMARK</center>       | <center>`r/`</center>       | `updatesessionremark`                                                                                             | The remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                         |
-| <center>ATTENDANCE_PRESENCE</center>  | <center>`ap/`</center>      | `takeattendance`                                                                                                  | The presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                            |
-| <center>TASK_NAME</center>            | <center>`tn/`</center>      | `addtask` `viewtasks`                                                                                             | The name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                             |
-| <center>TASK_DESCRIPTION</center>     | <center>`td/`</center>      | `addtask` `viewtasks`                                                                                             | The description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                     |
-| <center>TASK_PRIORITY</center>        | <center>`tp/`</center>      | `addtask` `viewtasks`                                                                                             | The priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                           |
-| <center>TASK_PROGRESS</center>        | <center>`tprog/`</center>   | `addtask` `viewtasks` `updateprogress`                                                                            | The progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                  |
+|      **Field**       | **Prefix** |                                                   **Commands**                                                    | **Description**                                                                                                                                                                                                                                    |
+|:--------------------:|:----------:|:-----------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         NAME         |    `n/`    | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                         |
+|        PHONE         |    `p/`    |                                                   `add` `edit`                                                    | The Phone number of a student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                          |
+|        EMAIL         |    `e/`    |                                                   `add` `edit`                                                    | The Email of a student. <ul><li>Emails should be of the format `local-part@domain`</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`</li><li>The domain name must be `@u.nus.edu`.</li> </ul> |
+|   TELEGRAM_HANDLE    |   `th/`    |                                                   `add` `edit`                                                    | The Telegram handle of a student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                        |
+|         TAG          |    `t/`    |                                                   `add` `edit`                                                    | The Tag belonging to a student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                               |
+|     GRADED_TEST      |   `gt/`    |                                                   `add` `edit`                                                    | The scores of respective graded tests. <ul><li>Names should only contain alphanumeric characters and spaces. </li><li> Names should not be blank. </li></ul>                                                                                       |
+| READING_ASSESSMENT_1 |   `ra1/`   |                                                 `editgradedtest`                                                  | The score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
+| READING_ASSESSMENT_2 |   `ra2/`   |                                                 `editgradedtest`                                                  | The score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                            |
+|       MIDTERMS       |   `mt/`    |                                                 `editgradedtest`                                                  | The score of a Midterms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                 |
+|        FINALS        |    `f/`    |                                                 `editgradedtest`                                                  | The score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                   |
+|    PRACTICAL_EXAM    |   `pe/`    |                                                 `editgradedtest`                                                  | The score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                |
+|      ASSIGNMENT      |   `as/`    |                                     `deletecomment` `editcomment` `editgrade`                                     | The name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                |
+|        GRADE         |    `g/`    |                                                    `editgrade`                                                    | The grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                        |
+|       COMMENT        |    `c/`    |                                                   `editcomment`                                                   | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                        |
+|         DATE         |    `d/`    |                                       `addtask` `viewtasks` `createconsult`                                       | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                        |
+|         TIME         |   `tt/`    |                                                  `createconsult`                                                  | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                 |
+|       SESSION        |    `s/`    |                      `createsession` `deletesession` `takeattendance` `updatesessionremark`                       | The Session Number of a Tutorial. <ul><li> Session must only contain numbers. </li><li>Session should not be blank.</li> </ul>                                                                                                                     |
+|    SESSION_REMARK    |    `r/`    |                                               `updatesessionremark`                                               | The remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                         |
+| ATTENDANCE_PRESENCE  |   `ap/`    |                                                 `takeattendance`                                                  | The presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                            |
+|      TASK_NAME       |   `tn/`    |                                               `addtask` `viewtasks`                                               | The name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                             |
+|   TASK_DESCRIPTION   |   `td/`    |                                               `addtask` `viewtasks`                                               | The description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                     |
+|    TASK_PRIORITY     |   `tp/`    |                                               `addtask` `viewtasks`                                               | The priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                           |
+|    TASK_PROGRESS     |  `tprog/`  |                                      `addtask` `viewtasks` `updateprogress`                                       | The progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                  |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -321,15 +322,16 @@ This section describes commands that fit in no special category.
 <br>
 <br>
 
-#### Switching between different tabs: `tab`
+#### 🔀Switching between different tabs: `tab`
 
 You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S.
 
 Format: `tab TAB_INDEX`
 
-| <center>**Parameter**</center> | <center>**Description**</center>                    |
-|--------------------------------|-----------------------------------------------------|
-| <center>TAB_INDEX</center>     | <center>The Index of the tab to switch to.</center> |
+| **Parameter** |          **Description**           |
+|:-------------:|:----------------------------------:|
+|   TAB_INDEX   | The Index of the tab to switch to. |
+
 <br>
 
 <div class="alert alert-info">
@@ -337,11 +339,11 @@ Format: `tab TAB_INDEX`
 :information_source: Note: 
 
 For the list of tab indexes to use:
-* **Students List:** 1
-* **Tasks List:** 2
-* **Assignments List:** 3
-* **Sessions List:** 4
-* **Consultations List:** 5
+* **Students List:** `1`
+* **Tasks List:** `2`
+* **Assignments List:** `3`
+* **Sessions List:** `4`
+* **Consultations List:** `5`
 
 </md> </div>
 
@@ -366,7 +368,7 @@ For the list of tab indexes to use:
 
 <br>
 
-#### Viewing help : `help`
+#### 👀Viewing help : `help`
 
 You can view a message explaining how to access the help page, if you require assistance in understanding the commands and their formats.
 
@@ -377,7 +379,7 @@ Format: `help`
 
 <br>
 
-#### Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
+#### 🏃🚪Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
 
 You can exit the F.A.K.E.J.A.R.V.I.S. application, if you're done using the application.
 
@@ -386,14 +388,14 @@ Format: `exit`
 
 <br>
 
-#### Saving the Data
+#### 💾Saving the Data
 
 F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save data manually.
 
 
 <br>
 
-#### Editing the Data File
+#### 🛠️Editing the Data File
 
 F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
 
@@ -404,7 +406,7 @@ If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. 
 
 <br>
 
-#### Archiving Data Files `[coming in v2.0]`
+#### 💾Archiving Data Files `[coming in v2.0]`
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
 
@@ -425,14 +427,14 @@ You can add a student to F.A.K.E.J.A.R.V.I.S. if you need to keep track of new s
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| <center>**Parameter**</center>   | <center>**Description**</center>                                         |
-|----------------------------------|--------------------------------------------------------------------------|
-| <center>NAME</center>            | <center>The name of the student to be added.</center>                    |
-| <center>PHONE_NUMBER</center>    | <center>The phone number of the student.</center>                        |
-| <center>EMAIL</center>           | <center>The email address of the student.</center>                       |
-| <center>TELEGRAM_HANDLE</center> | <center>The Telegram handle of the student.</center>                     |
-| <center>TAG</center>             | <center>Tags associated with the student.</center>                       |
-| <center>GRADED_TESTS</center>    | <center>Scores of the graded tests associated with the student.</center> |
+|  **Parameter**  |                     **Description**                     |
+|:---------------:|:-------------------------------------------------------:|
+|      NAME       |          The name of the student to be added.           |
+|  PHONE_NUMBER   |            The phone number of the student.             |
+|      EMAIL      |            The email address of the student.            |
+| TELEGRAM_HANDLE |           The Telegram handle of the student.           |
+|       TAG       |            Tags associated with the student.            |
+|  GRADED_TESTS   | Scores of the graded tests associated with the student. |
 
 <br>
 
@@ -493,15 +495,15 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S. if you need to
 
 Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
-| <center>**Parameter**</center>   | <center>**Description**</center>                                         |
-|----------------------------------|--------------------------------------------------------------------------|
-| <center>STUDENT_INDEX</center>   | <center>The index of the student to be edited.</center>                  |
-| <center>NAME</center>            | <center>The new name for the student.</center>                           |
-| <center>PHONE</center>           | <center>The new phone number for the student.</center>                   |
-| <center>EMAIL</center>           | <center>The new email address for the student.</center>                  |
-| <center>TELEGRAM_HANDLE</center> | <center>The new Telegram handle for the student.</center>                |
-| <center>TAG</center>             | <center>New tags associated with the student.</center>                   |
-| <center>GRADED_TESTS</center>    | <center>Scores of the graded tests associated with the student.</center> |
+|  **Parameter**  |                     **Description**                     |
+|:---------------:|:-------------------------------------------------------:|
+|  STUDENT_INDEX  |         The index of the student to be edited.          |
+|      NAME       |              The new name for the student.              |
+|      PHONE      |          The new phone number for the student.          |
+|      EMAIL      |         The new email address for the student.          |
+| TELEGRAM_HANDLE |        The new Telegram handle for the student.         |
+|       TAG       |          New tags associated with the student.          |
+|  GRADED_TESTS   | Scores of the graded tests associated with the student. |
 
 <br>
 
@@ -550,9 +552,9 @@ You can find a student in F.A.K.E.J.A.R.V.I.S. if you're looking for certain stu
 
 Format: `find KEYWORD…`
 
-| <center>**Parameter**</center> | <center>**Description**</center>                 |
-|--------------------------------|--------------------------------------------------|
-| <center>KEYWORD</center>       | <center>The main keyword to search for.</center> |
+| **Parameter** |         **Description**         |
+|:-------------:|:-------------------------------:|
+|    KEYWORD    | The main keyword to search for. |
 
 <br>
 
@@ -596,9 +598,9 @@ Format: `find KEYWORD…`
 You can delete a specific student from F.A.K.E.J.A.R.V.I.S. if you no longer require their information in the system.
 Format: `delete STUDENT_INDEX`
 
-| <center>**Parameter**</center> | <center>**Description**</center>                         |
-|--------------------------------|----------------------------------------------------------|
-| <center>STUDENT_INDEX</center> | <center>The index of the student to be deleted.</center> |
+| **Parameter** |             **Description**             |
+|:-------------:|:---------------------------------------:|
+| STUDENT_INDEX | The index of the student to be deleted. |
 
 <br>
 
@@ -672,12 +674,12 @@ You can add a task to your task list if you have a new item to include in your l
 
 Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 
-| <center>**Parameter**<center>     | <center>**Description**<center>                                                      |
-|-----------------------------------|--------------------------------------------------------------------------------------|
-| <center>TASK_NAME</center>        | <center>The name of the task.</center>                                               |
-| <center>TASK_DESCRIPTION</center> | <center>The description of the task.</center>                                        |
-| <center>DUE_DATE</center>         | <center>The due date or deadline of the task.</center>                               |
-| <center>TASK_PRIORITY</center>    | <center>The priority level of the task. Given as `high`, `medium` or `low`.</center> |
+|  **Parameter**   |                           **Description**                           |
+|:----------------:|:-------------------------------------------------------------------:|
+|    TASK_NAME     |                        The name of the task.                        |
+| TASK_DESCRIPTION |                    The description of the task.                     |
+|     DUE_DATE     |                The due date or deadline of the task.                |
+|  TASK_PRIORITY   | The priority level of the task. Given as `high`, `medium` or `low`. |
 
 <br>
 
@@ -710,13 +712,13 @@ You can view your list of tasks if you want to check and manage your current set
 
 Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
-| <center>**Parameter**</center>    | <center>**Description**</center>                                                              |
-|-----------------------------------|-----------------------------------------------------------------------------------------------|
-| <center>TASK_NAME</center>        | <center>The name of the task.</center>                                                        |
-| <center>TASK_DESCRIPTION</center> | <center>The description of the task.</center>                                                 |
-| <center>DUE_DATE</center>         | <center>The due date or deadline of the task.</center>                                        |
-| <center>TASK_PRIORITY</center>    | <center>The priority level of the task. Given as `high`, `medium` or `low`.</center>          |
-| <center>TASK_PROGRESS</center>    | <center>The progress level of the task. Given as `done`, `pending` or `not_started`.</center> |
+|  **Parameter**   |                               **Description**                                |
+|:----------------:|:----------------------------------------------------------------------------:|
+|    TASK_NAME     |                            The name of the task.                             |
+| TASK_DESCRIPTION |                         The description of the task.                         |
+|     DUE_DATE     |                    The due date or deadline of the task.                     |
+|  TASK_PRIORITY   |     The priority level of the task. Given as `high`, `medium` or `low`.      |
+|  TASK_PROGRESS   | The progress level of the task. Given as `done`, `pending` or `not_started`. |
 
 <br>
 
@@ -775,10 +777,10 @@ You can update a task's progress if there are changes to the status of a particu
 
 Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 
-| <center>**Parameter**</center> | <center>**Description**</center>                                                                   |
-|--------------------------------|----------------------------------------------------------------------------------------------------|
-| <center>TASK_INDEX</center>    | <center>The index of the task to update the progress.</center>                                     |
-| <center>NEW_PROGRESS</center>  | <center>The new progress level of the task. Given as `done`, `pending`, or `not_started`.</center> |
+| **Parameter** |                                  **Description**                                  |
+|:-------------:|:---------------------------------------------------------------------------------:|
+|  TASK_INDEX   |                   The index of the task to update the progress.                   |
+| NEW_PROGRESS  | The new progress level of the task. Given as `done`, `pending`, or `not_started`. |
 
 <br>
 
@@ -824,9 +826,9 @@ You can delete a task from your task list if you no longer need to keep it on yo
 
 Format: `deletetask TASK_INDEX`
 
-| <center>**Parameter**</center> | <center>**Description**</center>          |
-|--------------------------------|-------------------------------------------|
-| <center>TASK_INDEX</center>            | <center>The index of the task to delete.</center> |
+| **Parameter** |         **Description**          |
+|:-------------:|:--------------------------------:|
+|  TASK_INDEX   | The index of the task to delete. |
 
 <br>
 
@@ -882,11 +884,11 @@ You can take the attendance of your student(s) if you need to record their prese
 Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 
-| <center>**Parameter**</center>  | <center>**Description**</center>                                                       |
-|---------------------------------|----------------------------------------------------------------------------------------|
-| <center>STUDENT_NAME</center>   | <center>The name of the student.</center>                                              |
-| <center>SESSION_NUMBER</center> | <center>The session number of the session.</center>                                    |
-| <center>PRESENCE</center>       | <center>The attendance status of the student. Given as `present` or `absent`.</center> |
+| **Parameter**  |                            **Description**                            |
+|:--------------:|:---------------------------------------------------------------------:|
+|  STUDENT_NAME  |                       The name of the student.                        |
+| SESSION_NUMBER |                  The session number of the session.                   |
+|    PRESENCE    | The attendance status of the student. Given as `present` or `absent`. |
 
 <br>
 
@@ -929,9 +931,9 @@ You can view the attendance list of your students if you want to check and revie
 
 Format: `viewattendance [n/STUDENT_NAME]…`
 
-| <center>**Parameter**</center> | <center>**Description**</center>                                                |
-|--------------------------------|---------------------------------------------------------------------------------|
-| <center>STUDENT_NAME</center>  | <center>The name of the student(s) you want to view the attendance of.</center> |
+| **Parameter** |                        **Description**                         |
+|:-------------:|:--------------------------------------------------------------:|
+| STUDENT_NAME  | The name of the student(s) you want to view the attendance of. |
 
 <br>
 
@@ -994,9 +996,9 @@ You can view a list of assignment grades and comments if you want to assess and 
 
 Format: `viewassignments STUDENT_INDEX`
 
-| <center>**Parameter**</center> | <center>**Description**</center>           |
-|--------------------------------|--------------------------------------------|
-| <center>STUDENT_INDEX</center> | <center>The index of the student.</center> |
+| **Parameter** |      **Description**      |
+|:-------------:|:-------------------------:|
+| STUDENT_INDEX | The index of the student. |
 
 <br>
 
@@ -1040,11 +1042,11 @@ You can edit your student's assignment grade if there is a need to make adjustme
 
 Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 
-| <center>**Parameter**</center> | <center>**Description**</center>             |
-|--------------------------------|----------------------------------------------|
-| <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
-| <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
-| <center>GRADE</center>         | <center>The score of the student.</center>   |
+| **Parameter** |       **Description**       |
+|:-------------:|:---------------------------:|
+| STUDENT_INDEX |  The index of the student.  |
+|  ASSIGNMENT   | The name of the assignment. |
+|     GRADE     |  The score of the student.  |
 
 <br>
 
@@ -1089,10 +1091,10 @@ You can delete your student's assignment grade if you need to remove or reset th
 
 Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 
-| <center>**Parameter**</center> | <center>**Description**</center>             |
-|--------------------------------|----------------------------------------------|
-| <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
-| <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
+| **Parameter** |       **Description**       |
+|:-------------:|:---------------------------:|
+| STUDENT_INDEX |  The index of the student.  |
+|  ASSIGNMENT   | The name of the assignment. |
 
 <br>
 
@@ -1138,11 +1140,11 @@ You can edit the comment of your student's assignment if you need to make change
 
 Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 
-| <center>**Parameter**</center> | <center>**Description**</center>             |
-|--------------------------------|----------------------------------------------|
-| <center>TUDENT_INDEX</center>  | <center>The index of the student.</center>   |
-| <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
-| <center>COMMENT</center>       | <center>The new comment.</center>            |
+| **Parameter** |       **Description**       |
+|:-------------:|:---------------------------:|
+| TUDENT_INDEX  |  The index of the student.  |
+|  ASSIGNMENT   | The name of the assignment. |
+|    COMMENT    |      The new comment.       |
 
 <br>
 
@@ -1189,10 +1191,10 @@ You can delete the comment tagged to your student's assignment if you want to re
 
 Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 
-| <center>**Parameter**</center> | <center>**Description**</center>             |
-|--------------------------------|----------------------------------------------|
-| <center>STUDENT_INDEX</center> | <center>The index of the student.</center>   |
-| <center>ASSIGNMENT</center>    | <center>The name of the assignment.</center> |
+| **Parameter** |       **Description**       |
+|:-------------:|:---------------------------:|
+| STUDENT_INDEX |  The index of the student.  |
+|  ASSIGNMENT   | The name of the assignment. |
 
 <br>
 
@@ -1248,14 +1250,14 @@ You can edit your student's graded test scores if you need to make adjustments o
 Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
 [pe/PRACTICALEXAM] `
 
-| <center>**Parameter**</center>        | <center>**Description**</center>                                  |
-|---------------------------------------|-------------------------------------------------------------------|
-| <center>STUDENT_INDEX</center>        | <center>The index of the student.</center>                        |
-| <center>READING_ASSESSMENT_1</center> | <center>The score of the student's Reading Assessment 1.</center> |
-| <center>READING_ASSESSMENT_2</center> | <center>The score of the student's Reading Assessment 2.</center> |
-| <center>MIDTERMS</center>             | <center>The score of the student's MidTerms.</center>             |
-| <center>FINALS</center>               | <center>The score of the student's Final Assessment.</center>     |
-| <center>PRACTICALEXAM</center>        | <center>The score of the student's Practical Exams.</center>      |
+|    **Parameter**     |                 **Description**                  |
+|:--------------------:|:------------------------------------------------:|
+|    STUDENT_INDEX     |            The index of the student.             |
+| READING_ASSESSMENT_1 | The score of the student's Reading Assessment 1. |
+| READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
+|       MIDTERMS       |       The score of the student's MidTerms.       |
+|        FINALS        |   The score of the student's Final Assessment.   |
+|    PRACTICALEXAM     |   The score of the student's Practical Exams.    |
 
 <br>
 
@@ -1312,10 +1314,10 @@ You can create a session for any upcoming or past sessions if you need to schedu
 
 Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 
-| <center>**Parameter**</center>  | <center>**Description**</center>                    |
-|---------------------------------|-----------------------------------------------------|
-| <center>SESSION_NUMBER</center> | <center>The session number of the session.</center> |
-| <center>STUDENT_NAME</center>   | <center>The name of the student(s).</center>        |
+| **Parameter**  |          **Description**           |
+|:--------------:|:----------------------------------:|
+| SESSION_NUMBER | The session number of the session. |
+|  STUDENT_NAME  |    The name of the student(s).     |
 
 <br>
 
@@ -1359,10 +1361,10 @@ You can update an existing session's remark if you need to change or add additio
 
 Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 
-| <center>**Parameter**</center>  | <center>**Description**</center>                               |
-|---------------------------------|----------------------------------------------------------------|
-| <center>SESSION_NUMBER</center> | <center>The session number of the session.</center>            |
-| <center>REMARK</center>         | <center>The new remark to be updated for the session.</center> |
+| **Parameter**  |                **Description**                |
+|:--------------:|:---------------------------------------------:|
+| SESSION_NUMBER |      The session number of the session.       |
+|     REMARK     | The new remark to be updated for the session. |
 
 <br>
 
@@ -1406,9 +1408,9 @@ You can delete an existing session specified by its session number if you need t
 
 Format: `deletesession s/SESSION_NUMBER`
 
-| <center>**Parameter**</center>  | <center>**Description**</center>                    |
-|---------------------------------|-----------------------------------------------------|
-| <center>SESSION_NUMBER</center> | <center>The session number of the session.</center> |
+| **Parameter**  |          **Description**           |
+|:--------------:|:----------------------------------:|
+| SESSION_NUMBER | The session number of the session. |
 
 <br>
 
@@ -1458,11 +1460,11 @@ You can create a consultation for any upcoming consultations if you need to sche
 
 Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 
-| <center>**Parameter**</center> | <center>**Description**</center>             |
-|--------------------------------|----------------------------------------------|
-| <center>DATE</center>          | <center>The date of consultation.</center>   |
-| <center>TIME</center>          | <center>The time of consultation.</center>   |
-| <center>STUDENT_NAME</center>  | <center>The name of the student(s).</center> |
+| **Parameter**  |       **Description**       |
+|:--------------:|:---------------------------:|
+|      DATE      |  The date of consultation.  |
+|      TIME      |  The time of consultation.  |
+|  STUDENT_NAME  | The name of the student(s). |
 
 <br>
 
@@ -1505,10 +1507,10 @@ You can add your student(s) into a consultation slot if you need to schedule or 
 
 Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
-| <center>**Parameter**</center>      | <center>**Description**</center>                                              |
-|-------------------------------------|-------------------------------------------------------------------------------|
-| <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming</center> consultations. |
-| <center>STUDENT_NAME</center>       | <center>The name of the student to be added to the consultation.</center>     |
+|   **Parameter**    |                       **Description**                        |
+|:------------------:|:------------------------------------------------------------:|
+| CONSULTATION_INDEX | The index of the consultation in the upcoming consultations. |
+|    STUDENT_NAME    |   The name of the student to be added to the consultation.   |
 
 <br>
 
@@ -1554,10 +1556,10 @@ You can remove your student(s) from a consultation if you need to reschedule or 
 
 Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
-| <center>**Parameter**</center>      | <center>**Description**</center>                                              |
-|-------------------------------------|-------------------------------------------------------------------------------|
-| <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming consultations.</center> |
-| <center>STUDENT_NAME</center>       | <center>The name of the student to be added to the consultation.</center>     |
+|   **Parameter**    |                       **Description**                        |
+|:------------------:|:------------------------------------------------------------:|
+| CONSULTATION_INDEX | The index of the consultation in the upcoming consultations. |
+|    STUDENT_NAME    |   The name of the student to be added to the consultation.   |
 
 <br>
 
@@ -1592,9 +1594,9 @@ You can delete the consultation slot specified by an index if you need to remove
 
 Format: `deleteconsult CONSULTATION_INDEX`
 
-| <center>**Parameter**</center>      | <center>**Description**</center>                                              |
-|-------------------------------------|-------------------------------------------------------------------------------|
-| <center>CONSULTATION_INDEX</center> | <center>The index of the consultation in the upcoming</center> consultations. |
+|   **Parameter**    |                       **Description**                        |
+|:------------------:|:------------------------------------------------------------:|
+| CONSULTATION_INDEX | The index of the consultation in the upcoming consultations. |
 
 <br>
 
@@ -1650,33 +1652,33 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 ## Command summary
 
-| <center>**Action**</center>                | <center>**Format**</center>                                                                                                      | <center>**Examples**</center>                                                                                                      |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| <center>**Add**</center>                   | `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`      <br/>                                    | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
-| <center>**Clear**</center>                 | `clear`                                                                                                                          | `clear`                                                                                                                            |
-| <center>**Delete**</center>                | `delete STUDENT_INDEX`                                                      <br/>                                                | `delete 3`                                                                                                                         |
-| <center>**Edit**</center>                  | `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`                             | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
-| <center>**Find**</center>                  | `find KEYWORD [MORE_KEYWORDS]`                                                         <br/>                                     | `find John`<br> `find alex david`                                                                                                  |
-| <center>**List**</center>                  | `list`                                                                                                                           | `list`                                                                                                                             |
-| <center>**Add Task**</center>              | `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                                                           | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                          |
-| <center>**View Tasks**</center>            | `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`              | `viewtasks`,<br> `viewtasks tp/high`,<br> `viewtasks d/30/09/2023`                                                                 |
-| <center>**Update Progress**</center>       | `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                                                                   | `updateprogress 1 tprog/pending`,<br>`updateprogress 3 tprog/done`                                                                 |
-| <center>**Delete Task**</center>           | `deletetask TASK_INDEX`                                                                                                          | `deletetask 3`,<br>`deletetask 2`                                                                                                  |
-| <center>**View Grade**</center>            | `viewgrade STUDENT_INDEX as/ASSIGNMENT`                                                                                          | `viewgrade 1 as/Functional Expressionism`,<br>`viewgrade 2 as/Rune Reading`                                                        |
-| <center>**Edit Grade**</center>            | `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`                                                                                  | `editgrade 1 as/Functional Expressionism g/1200`,<br>`editgrade 2 as/Rune Reading g/1000`                                          |
-| <center>**Delete Grade**</center>          | `deletegrade STUDENT_INDEX as/ASSIGNMENT`                                                                                        | `deletegrade 1 as/Functional Expressionism`,<br>`deletegrade 2 as/Rune Reading`                                                    |
-| <center>**Edit Comment**</center>          | `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`                                                                              | `editcomment 1 as/Functional Expressionism c/Decent`,<br> `editcomment 2 as/Rune Reading c/Great`                                  |
-| <center>**Delete Comment**</center>        | `deletecomment STUDENT_INDEX as/ASSIGNMENT`                                                                                      | `deletecomment 1 as/Functional Expressionism`,<br> `deletecomment 2 as/Rune Reading`                                               |
-| <center>**Edit Graded Test**</center>      | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
-| <center>**Take Attendance**</center>       | `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                                                             | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
-| <center>**View Attendance**</center>       | `viewattendance [n/STUDENT_NAME]…`                                                                                               | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
-| <center>**Create Consultation**</center>   | `createconsult d/DATE tt/TIME n/STUDENT_NAME…`                                                                                   | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
-| <center>**Add To Consult**</center>        | `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`                               <br/>                                            | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
-| <center>**Remove From Consult**</center>   | `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                                                           | `removefromconsult 2 n/Betsy Crower`                                                                                               |
-| <center>**Delete Consult**</center>        | `deleteconsult CONSULTATION_INDEX`                                                                                               | `deleteconsult 1`                                                                                                                  |
-| <center>**Create Session**</center>        | `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                                                                 | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
-| <center>**Update Session Remark**</center> | `updatesessionremark s/SESSION_NUMBER r/REMARK`                                                                                  | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
-| <center>**Delete Session**</center>        | `deletesession s/SESSION_NUMBER`                                                                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
+|        **Action**         |                                                            **Format**                                                            | **Examples**                                                                                                                       |
+|:-------------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
+|          **Add**          |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
+|         **Clear**         |                                                             `clear`                                                              | `clear`                                                                                                                            |
+|        **Delete**         |                                                      `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
+|         **Edit**          |               `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`               | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
+|         **Find**          |                                                  `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
+|         **List**          |                                                              `list`                                                              | `list`                                                                                                                             |
+|       **Add Task**        |                              `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                              | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                          |
+|      **View Tasks**       |       `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`        | `viewtasks`,<br> `viewtasks tp/high`,<br> `viewtasks d/30/09/2023`                                                                 |
+|    **Update Progress**    |                                          `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                          | `updateprogress 1 tprog/pending`,<br>`updateprogress 3 tprog/done`                                                                 |
+|      **Delete Task**      |                                                     `deletetask TASK_INDEX`                                                      | `deletetask 3`,<br>`deletetask 2`                                                                                                  |
+|      **View Grade**       |                                             `viewgrade STUDENT_INDEX as/ASSIGNMENT`                                              | `viewgrade 1 as/Functional Expressionism`,<br>`viewgrade 2 as/Rune Reading`                                                        |
+|      **Edit Grade**       |                                         `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`                                          | `editgrade 1 as/Functional Expressionism g/1200`,<br>`editgrade 2 as/Rune Reading g/1000`                                          |
+|     **Delete Grade**      |                                            `deletegrade STUDENT_INDEX as/ASSIGNMENT`                                             | `deletegrade 1 as/Functional Expressionism`,<br>`deletegrade 2 as/Rune Reading`                                                    |
+|     **Edit Comment**      |                                       `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`                                        | `editcomment 1 as/Functional Expressionism c/Decent`,<br> `editcomment 2 as/Rune Reading c/Great`                                  |
+|    **Delete Comment**     |                                           `deletecomment STUDENT_INDEX as/ASSIGNMENT`                                            | `deletecomment 1 as/Functional Expressionism`,<br> `deletecomment 2 as/Rune Reading`                                               |
+|   **Edit Graded Test**    | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
+|    **Take Attendance**    |                                       `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                       | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
+|    **View Attendance**    |                                                `viewattendance [n/STUDENT_NAME]…`                                                | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
+|  **Create Consultation**  |                                          `createconsult d/DATE tt/TIME n/STUDENT_NAME…`                                          | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
+|    **Add To Consult**     |                                        `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                         | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
+|  **Remove From Consult**  |                                      `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                      | `removefromconsult 2 n/Betsy Crower`                                                                                               |
+|    **Delete Consult**     |                                                `deleteconsult CONSULTATION_INDEX`                                                | `deleteconsult 1`                                                                                                                  |
+|    **Create Session**     |                                         `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                         | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
+| **Update Session Remark** |                                         `updatesessionremark s/SESSION_NUMBER r/REMARK`                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
+|    **Delete Session**     |                                                 `deletesession s/SESSION_NUMBER`                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
 
 <br>
 
@@ -1691,14 +1693,14 @@ Format: `deleteconsult CONSULTATION_INDEX`
 ## Encountering Errors
 This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
 
-| <center>Error</center>                                                                           | <center>What it means</center>                                                                                                                      | <center>How to resolve</center>                                                                                                                               |
-|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <center>**Unknown command**</center>                                                             | You have supplied a command that was unrecognisable. <br/> E.g., Command word was given in upper case.                                              | 1. Double-check the spelling and case of the command. <br/> 2. Refer to the [features](#features) section above for the correct commands.                     |
-| <center>**Invalid command format!**</center>                                                     | You have supplied a command with the incorrect format. <br/> E.g., Command is missing the compulsory parameters.                                    | 1. Double-check the command format and the parameters required. <br/> 2. Refer to the [features](#features) section above for the correct command formats.    |
-| <center>**The Index provided is invalid**</center>                                               | You have provided an index that is out of the range of the items.                                                                                   | 1. Only provide Indexes that are within the range of the list. <br/> E.g., if there are 3 items in the list, the valid indexes that can be used are (1, 2, 3). |
-| <center>**At least one field to edit must be provided.**</center>                                | You have not provided a field to edit.                                                                                                              | 1. Double-check that a prefix and a field was provided together with the command.                                                                             |                                   
-| <center>**This `task` / `person` already exists in the `task list` / `students list`.**</center> | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                 |
-| <center>**Date needs to be in the format dd/MM/yyyy, or date has already crossed.**</center>     | You have either supplied the date in an unrecognisable format, or provided a date that is in the past.                                              | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023) <br /> 2. Choose a date from today or later.                             |
-| <center>**Time needs to be in the format HH:mm.**</center>                                       | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                    |
+|                                      Error                                      | What it means                                                                                                                                       | How to resolve                                                                                                                                                 |
+|:-------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                               **Unknown command**                               | You have supplied a command that was unrecognisable. <br/> E.g., Command word was given in upper case.                                              | 1. Double-check the spelling and case of the command. <br/> 2. Refer to the [features](#features) section above for the correct commands.                      |
+|                           **Invalid command format!**                           | You have supplied a command with the incorrect format. <br/> E.g., Command is missing the compulsory parameters.                                    | 1. Double-check the command format and the parameters required. <br/> 2. Refer to the [features](#features) section above for the correct command formats.     |
+|                        **The Index provided is invalid**                        | You have provided an index that is out of the range of the items.                                                                                   | 1. Only provide Indexes that are within the range of the list. <br/> E.g., if there are 3 items in the list, the valid indexes that can be used are (1, 2, 3). |
+|                **At least one field to edit must be provided.**                 | You have not provided a field to edit.                                                                                                              | 1. Double-check that a prefix and a field was provided together with the command.                                                                              |                                   
+| **This `task` / `person` already exists in the `task list` / `students list`.** | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                  |
+|   **Date needs to be in the format dd/MM/yyyy, or date has already crossed.**   | You have either supplied the date in an unrecognisable format, or provided a date that is in the past.                                              | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023) <br /> 2. Choose a date from today or later.                              |
+|                    **Time needs to be in the format HH:mm.**                    | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                     |
 
 [Back to Table of Contents](#table-of-contents)
