@@ -247,7 +247,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons: Requires additional parsing. Different constructor will give different error messages.
 
 
-### Consultations:
+### Consultations
 
 The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
 Student to a Consultation.
