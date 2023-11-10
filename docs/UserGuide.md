@@ -114,6 +114,7 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 <br>
 
+<div class = "tabler">
 
 | **Convention** |                        **Description**                         |
 |:--------------:|:--------------------------------------------------------------:|
@@ -149,7 +150,7 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 |      🗑️       |             Clear              |
 |       📖       |            Examples            |
 
-
+</div>
 
 [Back to Table of Contents](#table-of-contents)
 

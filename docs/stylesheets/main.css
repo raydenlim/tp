@@ -193,3 +193,11 @@ blockquote {
     border-color: #ffecb5;
     border-color: #badbcc;
 }
+
+.tabler.markbind-table {
+    width: 80%;
+}
+
+.markbind-table {
+    width: auto;
+}
