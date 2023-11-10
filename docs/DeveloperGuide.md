@@ -206,52 +206,28 @@ Below is a class diagram describing the implementation of `Task` and its respect
 **Alternative 2:** `isDone` Boolean for Task Completion.
 - Cons: Only allows for a binary state, i.e., either the task is done or not.
 
-### Grades
-The Grade component consists of the following set of features: Edit Grade, Delete Grade and View Grade.
+### Assignments
+The Assignment component consists of the following set of features: View Assignments, Edit Grade, Delete Grade, Edit Comment and Delete Comment.
 
-#### The Grade class
-The Grade Class is made up of an `actualGrade`, `maxGrade`, `isGraded`, and a set of getter methods that corresponds to most of these fields.
+#### The Assignment class
+The Assignment Class is made up of an `assignmentName`, `grade`, `comment`, and a set of getter methods that corresponds to most of these fields.
 
-Below is a class diagram describing the implementation of `Grade` and its respective fields.
+Below is a class diagram describing the implementation of `Assignment` and its respective fields.
 
-![Grade Class UML](images/GradeClass.png)
-
-#### Design Considerations:
-**Aspect: How the assignment a grade is being given to is determined:**
-
-**Alternative 1 (current choice):** `Grade` is a field in the `Assignment` it is being graded to.
-- Pros: This choice makes it easier to ensure that each assignment only has one grade, and also makes it easier to manage multiple features related to an assignment.
-- Cons: It requires additional time to add a grade to an assignment since the assignment needs to be obtained first.
-
-**Alternative 2:** `Assignment` is a field in the `Grade` being given to it.
-- Cons: It requires more checks to be done to ensure that each assignment only has one Grade.
-
-**Alternative 3:** `Assignment` is a field in the `Grade` being given to it and vice versa.
-- Cons: It increases coupling which increases the dependency of the classes.
-
-### Comments
-The Comment component consists of the following set of features: Edit Comment, Delete Comment and View Comment.
-
-#### The Comment class
-The Comment Class is made up of a `commentBody`, `isCommented`, and a set of getter methods that corresponds to most of these fields.
-
-Below is a class diagram describing the implementation of `Comment` and its respective fields.
-
-![Grade Class UML](images/CommentClass.png)
+![Assignment Class UML](images/AssignmentClass.png)
 
 #### Design Considerations:
-**Aspect: How the comment a grade is being given to is determined:**
+**Aspect: How an assignment in being assigned to a person:**
 
-**Alternative 1 (current choice):** `Comment` is a field in the `Assignment` it is being graded to.
-- Pros: This choice makes it easier to ensure that each assignment only has one comment, and also makes it easier to manage multiple features related to an assignment.
-- Cons: It requires additional time to add a comment to an assignment since the assignment needs to be obtained first.
+**Alternative 1 (current choice):** `AssignmentMap` is a field in `Person` that contains `Assignment` instances which are assigned to that person.
+- Pros: This choice makes it easier to ensure that each assignment is only being assigned to one person, and also makes it easier to manage multiple features related to an assignment.
+- Cons: It requires additional time to access an assignment since the assignment needs to be obtained from the correct person first.
 
-**Alternative 2:** `Assignment` is a field in the `Comment` being given to it.
-- Cons: It requires more checks to be done to ensure that each assignment only has one Comment.
+**Alternative 2:** Create a `PersonList` field in every `Assignment`, which contains `Person` instances.
+- Cons: Every person related command will have to update `PersonList` in every `Assignment` instance.
 
-**Alternative 3:** `Assignment` is a field in the `Comment` being given to it and vice versa.
+**Alternative 3:** Create a `PersonList` field in every `Assignment`, and an `AssignmentMap` field in every `Person`.
 - Cons: It increases coupling which increases the dependency of the classes.
-
 
 ### GradedTest
 The GradedTest component is responsible for tracking and managing graded test scores of individuals. It includes features such as creating and updating graded test scores.
