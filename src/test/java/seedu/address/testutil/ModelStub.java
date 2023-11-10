@@ -140,6 +140,11 @@ public class ModelStub implements Model {
     }
 
     @Override
+    public void setConsultationList(ReadOnlyConsultationList consultationList) {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
     public boolean hasConsultation(Consultation consultation) {
         throw new AssertionError("This method should not be called.");
     }
@@ -181,6 +186,11 @@ public class ModelStub implements Model {
 
     @Override
     public ObservableList<Task> getFilteredTaskList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public void setSessionList(ReadOnlySessionList sessionList) {
         throw new AssertionError("This method should not be called.");
     }
 
