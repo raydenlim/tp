@@ -28,7 +28,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Edits a grade to a person's assignment.
  */
-public class EditGradeCommand extends Command {
+public class EditGradeCommand extends AssignmentCommand {
 
     public static final String COMMAND_WORD = "editgrade";
 
@@ -87,6 +87,11 @@ public class EditGradeCommand extends Command {
     @Override
     public CommandType getCommandType() {
         return COMMAND_TYPE;
+    }
+
+    @Override
+    public Index getIndex() {
+        return this.index;
     }
 
     /**

@@ -26,7 +26,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Deletes the comment from a person's assignment.
  */
-public class DeleteCommentCommand extends Command {
+public class DeleteCommentCommand extends AssignmentCommand {
 
     public static final String COMMAND_WORD = "deletecomment";
 
@@ -84,6 +84,11 @@ public class DeleteCommentCommand extends Command {
     @Override
     public CommandType getCommandType() {
         return COMMAND_TYPE;
+    }
+
+    @Override
+    public Index getIndex() {
+        return this.index;
     }
 
     /**

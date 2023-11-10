@@ -27,7 +27,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Edits the comment given to a person's assignment.
  */
-public class EditCommentCommand extends Command {
+public class EditCommentCommand extends AssignmentCommand {
 
     public static final String COMMAND_WORD = "editcomment";
 
@@ -79,6 +79,11 @@ public class EditCommentCommand extends Command {
     @Override
     public CommandType getCommandType() {
         return COMMAND_TYPE;
+    }
+
+    @Override
+    public Index getIndex() {
+        return this.index;
     }
 
     /**
