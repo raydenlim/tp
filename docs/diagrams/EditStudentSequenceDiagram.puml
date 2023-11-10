@@ -11,7 +11,7 @@ participant ":List<Person>" as Persons MODEL_COLOR_T4
 
 participant "xyz:List<XYZ>" as List MODEL_COLOR_T2
 
-participant ":XYZ" as XYZ MODEL_COLOR_T3
+participant "entry:XYZ" as XYZ MODEL_COLOR_T3
 
 
 
