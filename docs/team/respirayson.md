@@ -39,8 +39,7 @@ Given below are my contributions to the project.
   * Set up the GitHub issues and different types
 
 
-* **Enhancements to existing features**: 
-  * Improved Regex for the phone number feature to test for valid phone numbers between 3 and 8 digits long
+* **Enhancements to existing features**:
 
 
 * **Documentation**:
