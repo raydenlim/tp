@@ -230,7 +230,7 @@ The GradedTest component is responsible for tracking and managing graded test sc
 The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`, `MidTerms`, `Finals`, and
 `PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also have a set of getter methods that corresponds to those fields.
 
-Below is a class diagram describing the implementation of `Task` and its respective fields.
+Below is a class diagram describing the implementation of `GradedTest` and its respective fields.
 
 ![GradedTest Class UML](images/GradedTest.png)
 
@@ -251,6 +251,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons: 
   * Lesser Flexibility and Customisation: Doesn't allow for special characters.
 
+<br>
 
 **Aspect 2: What should be the inputs for GradedTest Constructor:**
 
@@ -279,6 +280,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons:
   * Extra caution is needed to ensure that both these constructors are compatible with one another. 
 
+<br>
 
 **Aspect 3: How to store graded test scores for individuals:**
 
@@ -296,20 +298,20 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons:
   * Immutability: Any updates to Person Object will result in the GradedTest Object referencing the deleted person.
 
+<br>
 
 **Aspect 4: How to initialise a graded test instance for users:**
 
-**Alternative 1:** Piggy back on the Person methods via the `add` and `edit` function.
+**Alternative 1:** Piggy back on the Person methods via the `AddCommand` and `EditCommand` class, with `add` and `edit` respectively.
 - Pros:
   * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`.
   * Object safety: Building on Aspect 3, since all objects are `private final` and hence immutable, any edits/updates to the person's object will not cause issues to the graded test, as the Person parser logic will handle the new Person object creation.
 - Cons: 
   * Annoying: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
 
-- For the UML diagram of `add` or `edit` refer to Student. 
+- For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`. 
 
-
-**Alternative 2:** Make a separate function `editgradedtest` to update graded test scores.
+**Alternative 2:** Have a separate class `EditGradedTest` to update graded test scores.
 - Pros:
   * Dynamic: It enables users to dynamically update their graded test scores without having to use the String format.
 - Cons:
@@ -322,7 +324,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
-- UMl diagram for `editgradedtest`
+- Below is the UMl diagram for `EditGradedTest` class with the `editgradedtest` command:
   ![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
 
 ### Consultations

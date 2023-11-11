@@ -16,9 +16,9 @@ activate EditGradedTestCommandParser
 'Constructor for EditGradedTestCommand
 create EditGradedTestCommand
 
-EditGradedTestCommandParser -> EditGradedTestCommand : new EditGradedTestCommand(index,\n Optional.ofNullable(ra1), Optional.ofNullable(ra2),\n Optional.ofNullable(midTerms), Optional.ofNullable(finals),\n Optional.ofNullable(practicalExam))
+EditGradedTestCommandParser -> EditGradedTestCommand : EditGradedTestCommand(index,\n Optional.ofNullable(ra1), Optional.ofNullable(ra2),\n Optional.ofNullable(midTerms), Optional.ofNullable(finals),\n Optional.ofNullable(practicalExam))
 activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser : gradedtest
+EditGradedTestCommand --> EditGradedTestCommandParser : editgradedtest
 deactivate EditGradedTestCommand
 
 opt has ra1
