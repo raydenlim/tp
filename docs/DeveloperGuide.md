@@ -313,6 +313,9 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons: 
   * Annoying: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
 
+- For the UML diagram of `add` or `edit` refer to Student. 
+
+
 **Alternative 2:** Make a separate function `editgradedtest` to update graded test scores
 - Pros:
   * Dynamic: It enables users to dynamically update their graded test scores without having to use the String format.
@@ -326,6 +329,8 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
+- UMl diagram for `editgradedtest`
+  ![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
 
 ### Consultations:
 

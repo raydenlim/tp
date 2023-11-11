@@ -1,0 +1,59 @@
+@startuml
+!define LOGIC_COLOR #0000FF
+!define ACTIVATE_COLOR #00FF00
+
+!include style.puml
+skinparam ArrowFontStyle plain
+skinparam sequenceReferenceBackgroundColor white
+
+mainframe: **sd** Create EditGradedTestCommand from the graded test arguments
+
+participant ":EditGradedTestCommandParser" as EditGradedTestCommandParser LOGIC_COLOR
+participant "desc:EditGradedTestCommand" as EditGradedTestCommand LOGIC_COLOR
+
+activate EditGradedTestCommandParser
+
+'Constructor for EditGradedTestCommand
+create EditGradedTestCommand
+
+EditGradedTestCommandParser -> EditGradedTestCommand : new EditGradedTestCommand(index,\n Optional.ofNullable(ra1), Optional.ofNullable(ra2),\n Optional.ofNullable(midTerms), Optional.ofNullable(finals),\n Optional.ofNullable(practicalExam))
+activate EditGradedTestCommand
+EditGradedTestCommand --> EditGradedTestCommandParser : gradedtest
+deactivate EditGradedTestCommand
+
+opt has ra1
+EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(ra1)
+activate EditGradedTestCommand
+EditGradedTestCommand --> EditGradedTestCommandParser
+deactivate EditGradedTestCommand
+end opt
+
+opt has ra2
+EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(ra2)
+activate EditGradedTestCommand
+EditGradedTestCommand --> EditGradedTestCommandParser
+deactivate EditGradedTestCommand
+end opt
+
+opt has midterms
+EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(midTerms)
+activate EditGradedTestCommand
+EditGradedTestCommand --> EditGradedTestCommandParser
+deactivate EditGradedTestCommand
+end opt
+
+opt has finals
+EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(finals)
+activate EditGradedTestCommand
+EditGradedTestCommand --> EditGradedTestCommandParser
+deactivate EditGradedTestCommand
+end opt
+
+opt has pe
+EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(practicalExam)
+activate EditGradedTestCommand
+EditGradedTestCommand --> EditGradedTestCommandParser
+deactivate EditGradedTestCommand
+end opt
+
+@enduml
