@@ -242,15 +242,14 @@ Below is a class diagram describing the implementation of `Task` and its respect
   * Flexibility: This choice offers flexibility in representing the graded tests, allowing for customization (e.g. usage of default value, `-`).
   * Clarity: The string format of `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>` is self-explanatory.
 - Cons:
-  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average,
-    highest, lowest score).
+  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average, highest, lowest score).
   * Documentation Issues: The usage of `|` causes conflict with the table notation. Hence, more work is needed to get around this issue in markdown.
 
 **Alternative 2 :** Using floats for graded test score.
 - Pros:
   * Numeric Operations: Easier and more efficient numeric operations without the need for extensive parsing.
 - Cons: 
-  * Lesser Flexibility and Customisation: Doesn't allow for special characters
+  * Lesser Flexibility and Customisation: Doesn't allow for special characters.
 
 
 **Aspect 2: What should be the inputs for GradedTest Constructor:**
