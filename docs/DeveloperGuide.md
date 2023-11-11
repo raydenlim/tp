@@ -122,18 +122,11 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores the F.A.K.E.J.A.R.V.I.S. data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` objects respectively).
+* stores the currently 'selected' `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (e.g., results of a search query) as separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<XYZ>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<box type="info" seamless>
-
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
-
-</box>
 
 
 ### Storage component
@@ -143,9 +136,10 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
+* can save both F.A.K.E.J.A.R.V.I.S. data and user preference data in JSON format, and read them back into corresponding objects.
+* inherits from `AddressBookStorage`, `ConsultationListStorage`, `GradedTestListStorage`, `SessionListStorage`, `TaskListStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
+* contains data that is separated into distinct files, each catering to specific functionalities, which minimises the impact of potential corruption. Corruption in one set of data does not propagate to others, reinforcing the integrity of the data.
 
 ### Common classes
 
@@ -253,7 +247,7 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - Cons: Requires additional parsing. Different constructor will give different error messages.
 
 
-### Consultations:
+### Consultations
 
 The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
 Student to a Consultation.
@@ -329,6 +323,44 @@ Step 7:
 The `XYZCommand` creates a successful `CommandResult` and returns it to the UI.
 
 
+#### Students
+
+#### Edit Student Feature
+This section explains the implementation of the Edit Student feature via the `edit` command. The `EditCommand` updates the fields of the existing specified `Person`. There is 1 compulsory field, which is the Index of the `Person` to update. However, at least 1 optional field must also be provided. The optional fields are name, phone, telegram handle, tag and graded tests.
+
+Below is the sequence diagram outlining the execution of the `EditCommand`.
+
+![Edit Command Sequence Diagram](images/EditStudentSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `EditCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified `Person` to edit.
+
+Step 2:
+The `EditCommand::createEditedPerson` is invoked to create a new immutable `Person` object with the updated fields.
+
+Step 3:
+The `EditCommand` will call `setPerson` in `Model` to replace the original `Person` with the new `Person` object.
+
+Step 4:
+The `Model` will also call `setStudent` in the respective lists (denoted by `List<XYZ>`, where XYZ refers to `Consultation` and `Session`) to update the relevant lists containing the original `Person` to the new `Person` object.
+
+Step 5:
+The `EditCommand` will call its own `updateFilteredPersonList` method to update the model's filter and display all the students to the user.
+
+Step 4:
+The `EditCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+
+#### Delete Student Feature
+This section explains the implementation of the Delete Student feature via the `delete` command.
+The `DeleteCommand` causes the specified `Person` to be deleted from the application. This includes removing the student from any `consultations` or `sessions` that the student might be in.
+
+This process is summarised in the activity diagram below
+
+![Delete Activity Diagram](images/DeleteStudentActivityDiagram.png)
+
+
 #### Add Tasks Feature
 This section explains the implementation of the Add Task feature via the `addtask` command.
 The `AddTaskCommand` causes the specified `Task` to be added to the Task List in the application.
@@ -339,15 +371,12 @@ Below is the sequence diagram outlining the execution of `AddTaskCommand`.
 ![AddTaskCommand sequence diagram](images/AddTaskSequenceDiagram.png)
 
 Step 1:
-The `LogicManager` invokes `AddTaskCommand::execute`, which in turn calls `Model::addTask`.
+The `LogicManager` invokes `AddTaskCommand::execute`, which in turn calls `Model::addTask` to add the new task into the task list.
 
 Step 2:
-The `Model` will invoke `addTask` in `TaskListBook`, which in turn calls `add` in `TaskList` to add it to the list.
+The `Model` will call its own `updateFilteredTaskList` method to update the model's filter and display all the tasks to the user.
 
 Step 3:
-The `Model` will call its own `updateFilteredTaskList` method in order to update the model's filter to display all tasks.
-
-Step 4:
 The `AddTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
 
@@ -356,6 +385,7 @@ The `AddTaskCommand` then continues its execution as defined by [this](#parser-c
 
 * **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
     * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
+
 
 * **Alternative 2:** Store the model in the `AddTaskCommand` itself.
     * Pros: Easier to debug.
@@ -370,10 +400,10 @@ Below is the sequence diagram outlining the execution of `DeleteTaskCommand`.
 ![DeleteTaskCommand Sequence Diagram](images/DeleteTaskSequenceDiagram.png)
 
 Step 1:
-The `LogicManager` invokes `DeleteTaskCommand::execute`, which in turn calls `Model::deleteTask`.
+The `LogicManager` invokes `DeleteTaskCommand::execute`, which in turn calls `Model::getFilteredTaskList` and `List<Task>::get` to get the relevant task to be deleted.
 
 Step 2:
-The `Model` will invoke `removeTask` in `TaskListBook`, which in turn calls `remove` in `TaskList` to remove it from the list.
+The `Model` then calls `deleteTask` to remove the specified task from the task list.
 
 Step 3:
 The `DeleteTaskCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
@@ -381,7 +411,7 @@ The `DeleteTaskCommand` then continues its execution as defined by [this](#parse
 
 ##### Design Considerations:
 **Aspect: How we execute the DeleteTaskCommand:**
-Similar to the `AddTaskCommand`, the main considerations for this command is related to the way that the model is stored.
+* Similar to the `AddTaskCommand`, the main considerations for this command is related to the way that the model is stored.
 
 
 
@@ -420,13 +450,16 @@ Below is the sequence diagram outlining the execution of `UpdateTasksProgressCom
 
 
 Step 1:
-The `LogicManager` invokes `UpdateTaskProgressCommand::execute`, which in turn calls `UpdateTaskProgressCommand::createTask` to create a new immutable Task object with the updated progress.
+The `LogicManager` invokes `UpdateTaskProgressCommand::execute`, which in turn calls `Model::getFilteredTaskList` and `List<Task>::get` to get the relevant task to be edited.
 
 Step 2:
-The `UpdateTaskProgressCommand` will invoke `setTask` in `Model`, which in turn calls `setTask` in `TaskListBook`. This finally calls `editTask` in `TaskList` to update the existing `Task` with the new `Task`.
+The `UpdateTaskProgressCommand::createTask` is invoked to create a new immutable Task object with the updated progress.
 
 Step 3:
-The `UpdateTaskProgressCommand` then invokes `updateFilteredTaskList` in `Model` to display all the tasks.
+The `UpdateTaskProgressCommand` will call `setTask` in `Model` to replace the existing `Task` with the new `Task` object.
+
+Step 4:
+The `UpdateTaskProgressCommand` will call its own `updateFilteredTaskList` method to update the model's filter and display all the tasks to the user.
 
 Step 4:
 The `UpdateTaskProgressCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
