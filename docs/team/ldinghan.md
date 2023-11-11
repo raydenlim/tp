@@ -61,4 +61,4 @@ Given below are my contributions to the project:
 
 * **Contributions beyond the project team**: 
   * Contributed to module forum page to answer queries on code coverage [here](https://github.com/nus-cs2103-AY2324S1/forum/issues/267#issuecomment-1767768888)
-
+  * Found 9 bugs during the PE-D, some of which were highly severe bugs, which helped to point out areas for improvement for another team's product.
