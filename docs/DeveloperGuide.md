@@ -246,11 +246,11 @@ Below is a class diagram describing the implementation of `Task` and its respect
 **Alternative 1 (current choice):** Utilizing `String` for individual graded test score.
 - Pros:
   * Flexibility: This choice offers flexibility in representing the graded tests, allowing for customization (e.g. usage of default value, `-`).
-  * Clarity: It will be 
+  * Clarity: The string format of `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>` is self-explanatory.
 - Cons:
   * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average,
     highest, lowest score).
-  * Documentation Issues: Since the format for editing graded test follows: `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`
+  * Documentation Issues: The usage of `|` causes conflict with the table notation. Hence, more work is needed to get around this issue in markdown.
 
 **Alternative 2 :** Using floats for graded test score.
 - Pros:
@@ -287,9 +287,9 @@ Below is a class diagram describing the implementation of `Task` and its respect
   * Extra caution is needed to ensure that both these constructors are compatible with one another. 
 
 
-**Aspect 3: How to store graded test scores for individuals**
+**Aspect 3: How to store graded test scores for individuals:**
 
-**Alternative 1(current choice):** Piggy back on the Person Object
+**Alternative 1(current choice):** Piggy back on the Person Object.
 - Pros:
   * Coherence: Graded test information is closely associated with the person(student) it belongs to.
   * Simplicity: Simplifies the overall structure by leveraging the existing Person object.
@@ -297,18 +297,18 @@ Below is a class diagram describing the implementation of `Task` and its respect
   * Immutability: Any updates to graded test scores to the Person Objects may cause issues down stream on methods referencing to the old Person object.
   * Complex Handling of Person: More logic will have to be implemented to update the references of the new Person object.
 
-**Alternative 2:** Isolate the GradedTest Object as its own 
+**Alternative 2:** Isolate the GradedTest Object as its own.
 - Pros:
   * Easier to debug: Since the GradedTest Object is isolated.
 - Cons:
   * Immutability: Any updates to Person Object will result in the GradedTest Object referencing the deleted person.
 
 
-**Aspect 4: How to initialise a graded test instance for users**
+**Aspect 4: How to initialise a graded test instance for users:**
 
 **Alternative 1:** Piggy back on the Person methods via the `add` and `edit` function.
 - Pros:
-  * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`
+  * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`.
   * Object safety: Building on Aspect 3, since all objects are `private final` and hence immutable, any edits/updates to the person's object will not cause issues to the graded test, as the Person parser logic will handle the new Person object creation.
 - Cons: 
   * Annoying: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
@@ -316,13 +316,13 @@ Below is a class diagram describing the implementation of `Task` and its respect
 - For the UML diagram of `add` or `edit` refer to Student. 
 
 
-**Alternative 2:** Make a separate function `editgradedtest` to update graded test scores
+**Alternative 2:** Make a separate function `editgradedtest` to update graded test scores.
 - Pros:
   * Dynamic: It enables users to dynamically update their graded test scores without having to use the String format.
 - Cons:
   * Command Prefixes: Users will have to get used to the command prefix. 
 
-**Alternative 3 (current choice):** Implement both Alternative 1 and 2.
+**Alternative 3 (current choice):** Implement both Alternatives 1 and 2.
 - Pros:
   * Flexibility: Users are able to decide how the want to edit the graded test scores, be it dynamically, or as a whole.
   * Balance: Strikes a balance between the benefits of both alternatives by utilizing strings for flexibility and structured objects for type safety.
