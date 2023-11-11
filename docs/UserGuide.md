@@ -22,9 +22,6 @@ As Avengers ourselves, we understand the importance of managing both our time an
 If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offers and need assistance, don't worry! This User Guide is your trusted assistant, and will guide you through every step and ensure that you can unlock the full potential of F.A.K.E.J.A.R.V.I.S. Let's get started!
 
 <br>
-<br>
-<!-- * Table of Contents -->
-<page-nav-print />
 
 <br>
 
@@ -114,8 +111,6 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 <br>
 
-<div class = "tabler">
-
 | **Convention** |                        **Description**                         |
 |:--------------:|:--------------------------------------------------------------:|
 |  `Monospace`   |        Used for command inputs, syntax, and file paths.        |
@@ -150,7 +145,6 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 |      🗑️       |             Clear              |
 |       📖       |            Examples            |
 
-</div>
 
 [Back to Table of Contents](#table-of-contents)
 
