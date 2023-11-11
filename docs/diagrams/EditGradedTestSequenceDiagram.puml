@@ -6,10 +6,10 @@
 skinparam ArrowFontStyle plain
 skinparam sequenceReferenceBackgroundColor white
 
-mainframe: **sd** Create EditGradedTestCommand from the graded test arguments
+mainframe: **sd** execute EditGradedTestCommand
 
 participant ":EditGradedTestCommandParser" as EditGradedTestCommandParser LOGIC_COLOR
-participant "desc:EditGradedTestCommand" as EditGradedTestCommand LOGIC_COLOR
+participant "gradedtest:EditGradedTestCommand" as EditGradedTestCommand LOGIC_COLOR
 
 activate EditGradedTestCommandParser
 
