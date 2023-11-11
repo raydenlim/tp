@@ -56,7 +56,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [📝 Adding a Student: `add`](#adding-a-student-add)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing All Students : `list`](#listing-all-students-list)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [🛠️ Editing a Student Field : `edit`](#editing-a-student-field-edit)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [🔎 Locating Student by Name: `find`](#locating-student-by-name-find)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [🔎 Finding Student by Name: `find`](#finding-student-by-name-find)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [❌ Deleting a Student : `delete`](#deleting-a-student-delete)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [🗑️ Clearing all Entries : `clear`](#clearing-all-entries-clear)
 
@@ -589,7 +589,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 <br>
 <br>
 
-#### 🔎Locating Student by Name: `find`
+#### 🔎Finding Student by Name: `find`
 
 You can find a student in F.A.K.E.J.A.R.V.I.S. if you're looking for certain students by their names.
 
@@ -1740,6 +1740,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 |        **Action**         |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
 |:-------------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
+|         **Help**          |                                                              `help`                                                              | `help`                                                                                                                             |
 |          **Add**          |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
 |         **Clear**         |                                                             `clear`                                                              | `clear`                                                                                                                            |
 |        **Delete**         |                                                      `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
@@ -1756,12 +1757,12 @@ Format: `deleteconsult CONSULTATION_INDEX`
 |     **Edit Comment**      |                                       `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`                                        | `editcomment 1 as/Functional Expressionism c/Decent`,<br> `editcomment 2 as/Rune Reading c/Great`                                  |
 |    **Delete Comment**     |                                           `deletecomment STUDENT_INDEX as/ASSIGNMENT`                                            | `deletecomment 1 as/Functional Expressionism`,<br> `deletecomment 2 as/Rune Reading`                                               |
 |   **Edit Graded Test**    | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
-|    **Take Attendance**    |                                       `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                       | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
-|    **View Attendance**    |                                                `viewattendance [n/STUDENT_NAME]…`                                                | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
 |  **Create Consultation**  |                                          `createconsult d/DATE tt/TIME n/STUDENT_NAME…`                                          | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
 |    **Add To Consult**     |                                        `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                         | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
 |  **Remove From Consult**  |                                      `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                      | `removefromconsult 2 n/Betsy Crower`                                                                                               |
 |    **Delete Consult**     |                                                `deleteconsult CONSULTATION_INDEX`                                                | `deleteconsult 1`                                                                                                                  |
+|    **Take Attendance**    |                                       `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                       | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
+|    **View Attendance**    |                                                `viewattendance [n/STUDENT_NAME]…`                                                | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson n/Resley`                                              |
 |    **Create Session**     |                                         `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                         | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
 | **Update Session Remark** |                                         `updatesessionremark s/SESSION_NUMBER r/REMARK`                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
 |    **Delete Session**     |                                                 `deletesession s/SESSION_NUMBER`                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
