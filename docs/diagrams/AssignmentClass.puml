@@ -1,10 +1,8 @@
 @startuml
-skinparam arrowThickness 1.1
-skinparam classBackgroundColor LOGIC_COLOR
+hide circle
 skinparam classAttributeIconSize 0
 
 class AssignmentMap {
--assignments: ObservableMap<AssignmentName, Assignment>
 +setAssignmentMap(): void
 +createUpdatedMap(): AssignmentMap
 +contains(): boolean
@@ -12,9 +10,6 @@ class AssignmentMap {
 }
 
 class Assignment {
--assignmentName: AssignmentName
--grade: Grade
--comment: Comment
 +getName(): AssignmentName
 +getGrade(): Grade
 +maxGrade(): String
@@ -45,8 +40,8 @@ class Comment {
 +toString(): String
 }
 
-AssignmentMap o-- "*" Assignment: assignment
-Assignment o-- "1" AssignmentName: assignmentName
-Assignment o-- "1" Grade: grade
-Assignment o-- "1" Comment: comment
+AssignmentMap *-- "*" Assignment: assignment
+Assignment *-- "1" AssignmentName: assignmentName
+Assignment *-- "1" Grade: grade
+Assignment *-- "1" Comment: comment
 @enduml
