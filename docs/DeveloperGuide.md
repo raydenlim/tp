@@ -482,7 +482,7 @@ The `UpdateTaskProgressCommand` then continues its execution as defined by [this
 #### Create Consultation Feature
 This section explains the implementation of the Create Consultation feature via the `createconsult` command.
 The `CreateConsultCommand` creates a `Consultation` and adds it into the Consultation List in the application.
-There is are multiple compulsory field: date, time and name of students. 
+There are multiple compulsory field: date, time and name of students. 
 
 Below is the sequence diagram outlining the execution of `CreateConsultCommand`.
 
@@ -520,7 +520,7 @@ The `CreateConsultCommand` then continues its execution as defined by [this](#pa
 #### Add To Consultation Feature
 This section explains the implementation of the Add To Consultation feature via the `addtoconsult` command.
 The `AddToConsultCommand` adds a new student to the consultation identified using the Index.
-There is are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
+There are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
 
 Below is the sequence diagram outlining the execution of `AddToConsultCommand`.
 

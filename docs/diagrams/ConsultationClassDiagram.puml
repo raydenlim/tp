@@ -2,7 +2,7 @@
 hide circle
 skinparam classAttributeIconSize 0
 
-class Consultation {
+Class Consultation {
     -date: LocalDate
     -time: LocalTime
     +addStudent(Person): Consultation
@@ -15,7 +15,7 @@ class Consultation {
     +isSameConsultation(): boolean
 }
 
-class StudentSet {
+Class StudentSet {
     +<u>MESSAGE_CONSTRAINTS: String
     +add(Person)
     +addAll(Person)
@@ -26,7 +26,7 @@ class StudentSet {
     +contains(Person): boolean
 }
 
-class Person {
+Class Person {
     -name: Name
 }
 
