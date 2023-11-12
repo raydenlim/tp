@@ -16,6 +16,7 @@ AddToConsultCommand -> Model : getFilteredConsultationList()
 activate Model
 
 Model --> AddToConsultCommand
+deactivate Model
 
 AddToConsultCommand -> ConsultationList : get(targetIndex)
 activate ConsultationList
@@ -30,10 +31,13 @@ AddToConsultCommand ---> AddToConsultCommand
 deactivate AddToConsultCommand
 
 AddToConsultCommand -> Model : setConsultation(consultationToAddStudent, updatedConsultation)
+activate Model
 
 Model --> AddToConsultCommand
+deactivate Model
 
 AddToConsultCommand -> Model : updateFilteredConsultationList()
+activate Model
 
 Model ---> AddToConsultCommand
 deactivate Model

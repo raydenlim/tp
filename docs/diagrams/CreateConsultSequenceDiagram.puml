@@ -21,15 +21,27 @@ loop for all names
     CreateConsultCommand -> Model : getMatchingStudentName(name)
     activate Model
 
+    Model --> CreateConsultCommand
+    deactivate Model
+
     CreateConsultCommand -> StudentSet : add(studentsToAdd)
     activate StudentSet
+
+    StudentSet --> CreateConsultCommand
     deactivate StudentSet
     end
 
 create Consultation
 CreateConsultCommand -> Consultation : new Consultation(date, time, studentsToAdd)
+activate Consultation
+
+Consultation --> CreateConsultCommand
+deactivate Consultation
 
 CreateConsultCommand -> Model : addConsultation(consultationToAdd)
+activate Model
+
+Model --> CreateConsultCommand
 deactivate Model
 
 [<-- CreateConsultCommand
