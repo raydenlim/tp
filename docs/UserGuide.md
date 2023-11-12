@@ -1529,6 +1529,8 @@ Format: `deletesession s/SESSION_NUMBER`
 > [IMAGE COMING SOON]
 
 
+[Back to Table of Contents](#table-of-contents)
+
 <br>
 <br>
 <br>
@@ -1711,6 +1713,9 @@ Format: `deleteconsult CONSULTATION_INDEX`
 >`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, Alex Yeoh, Roy Balakrishnan`
 >
 > [IMAGE COMING SOON]
+
+
+[Back to Table of Contents](#table-of-contents)
 
 <br>
 
