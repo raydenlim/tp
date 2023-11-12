@@ -461,7 +461,7 @@ The `UpdateTaskProgressCommand` will call `setTask` in `Model` to replace the ex
 Step 4:
 The `UpdateTaskProgressCommand` will call its own `updateFilteredTaskList` method to update the model's filter and display all the tasks to the user.
 
-Step 4:
+Step 5:
 The `UpdateTaskProgressCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
 
@@ -514,6 +514,44 @@ The `CreateConsultCommand` then continues its execution as defined by [this](#pa
 * **Alternative 2:** Store the model in the `CreateConsultCommand` itself.
     * Pros: Easier to debug.
     * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
+
+
+
+#### Add To Consultation Feature
+This section explains the implementation of the Add To Consultation feature via the `addtoconsult` command.
+The `AddToConsultCommand` adds a new student to the consultation identified using the Index.
+There is are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
+
+Below is the sequence diagram outlining the execution of `AddToConsultCommand`.
+
+![AddToConsult sequence diagram](images/AddToConsultSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `AddToConsultCommand::execute`, which in turn calls `Model::getFilteredConsultationList` and `List<Consultation>::get` to get the relevant consultation to be edited.
+
+Step 2:
+The `AddToConsultCommand::createUpdatedConsultation` is invoked to create a new immutable Consultation object with the updated `StudentSet`.
+
+Step 3:
+The `AddToConsultCommand` will call `setConsultation` in `Model` to replace the existing `Consultation` with the new `Consultation` object.
+
+Step 4:
+The `AddToConsultCommand` will call its own `updateFilteredConsultationList` method to update the model's filter and display all the consultation to the user.
+
+Step 5:
+The `AddToConsultCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the AddToConsultCommand:**
+
+* **Alternative 1 (current choice):** Create a new immutable object of the updated Consultation and replace the previous Consultation.
+    * Pros: Easier to debug since the state of immutable objects cannot be changed.
+    * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+
+* **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
+    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
 --------------------------------------------------------------------------------------------------------------------
