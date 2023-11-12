@@ -360,6 +360,38 @@ This process is summarised in the activity diagram below
 
 ![Delete Activity Diagram](images/DeleteStudentActivityDiagram.png)
 
+#### Take Attendance Feature
+This section explains the implementation of the Take Attendance feature via the `takeattendance` command.
+The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session. 
+
+This process is shown in the sequence diagram below
+
+![Take Attendance Activity Diagram](images/TakeAttendanceSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `TakeAttendanceCommand::execute`, which then calls `Model::findSessionBySessionNumber` to retrieve the specified session to be updated.
+
+Step 2:
+The `TakeAttendanceCommand` then updates the attendance status based on the provided information, utilising the `Model::getMatchingStudentName` to obtain the corresponding `Person` object to be updated.
+
+Step 3:
+The `TakeAttendanceCommand` creates an updated `Session` object using the `createUpdatedSession` method, which is saved in the `Model` using `Model::setSession`.
+
+Step 4:
+Finally, the `TakeAttendanceCommand` triggers the `Model` to update the filtered session list using the `updateFilteredSessionList` to display all sessions.
+
+
+#### Design Considerations:
+**Aspect: How models are modified to store changes**
+
+* **Alternative 1 (current choice):** Cause updates to both `Session` and `Person` when updating the attendance status of a student to a specified session.
+    * Pros: Allows for ease of future enhancements since we can cause the same update from either `Session` or `Person` involved.
+
+
+* **Alternative 2:** Only update the `Session` to store the `Person`
+    * Pros: The same action is not performed twice.
+    * Cons: It may be difficult to add future enhancements without this method in place as a skeleton.
+
 
 #### Add Tasks Feature
 This section explains the implementation of the Add Task feature via the `addtask` command.
