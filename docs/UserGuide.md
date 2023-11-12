@@ -50,7 +50,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [🏃🚪 Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [💾 Saving the Data](#saving-the-data)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [🛠️ Editing the Data File](#editing-the-data-file)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.6 [💾 Archiving the Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.6 [💾 Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [📝 Adding a Student: `add`](#adding-a-student-add)  
@@ -443,7 +443,7 @@ If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. 
 
 <br>
 
-#### 💾Archiving the Data Files `[coming in v2.0]`
+#### 💾Archiving Data Files `[coming in v2.0]`
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
 
