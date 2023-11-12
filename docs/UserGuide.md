@@ -1401,7 +1401,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 :information_source: **Note**:
 
 * The name of the student must exist in F.A.K.E.J.A.R.V.I.S.
-* The session with the session number must not already exist in F.A.K.E.J.A.R.V.I.S.
+* The session with the session number must not exist in F.A.K.E.J.A.R.V.I.S.
 
 </md>
 </div>
