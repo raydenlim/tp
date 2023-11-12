@@ -131,19 +131,19 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 <br>
 
 
-| **Convention** |        **Description**         |
-|:--------------:|:------------------------------:|
-|      🏃🚪      |              Exit              |
-|       🔀       |          Switch Tabs           |
-|       💾       |  Save Data <br/>Archive Data   |
-|       📝       |        Add <br/> Create        |
-|       ❌        |      Delete <br/> Remove       |
-|      🛠️       | Edit <br/> Modify <br/> Update |
-|       🔎       |              Find              |
-|       📆       |        Take Attendance         |
-|       👀       | View <br/> Display </br> List  |
-|      🗑️       |             Clear              |
-|       📖       |            Examples            |
+| **Convention** |       **Description**       |
+|:--------------:|:---------------------------:|
+|      🏃🚪      |            Exit             |
+|       🔀       |         Switch Tabs         |
+|       💾       | Save Data <br/>Archive Data |
+|       📝       |      Add <br/> Create       |
+|       ❌        |     Delete <br/> Remove     |
+|      🛠️       |      Edit <br/> Update      |
+|       🔎       |            Find             |
+|       📆       |       Take Attendance       |
+|       👀       |       View <br/> List       |
+|      🗑️       |            Clear            |
+|       📖       |          Examples           |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -215,7 +215,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 1. Ensure you have [Java 11](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=406&field_operating_system_target_id=All&field_architecture_target_id=All&field_java_package_target_id=401) or above installed in your Computer.
 
-2. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases). _[Coming Soon]_
+2. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
@@ -282,14 +282,20 @@ The following describes what each tab displays on the **Current Panel**:
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+<div class="alert alert-info">
+<md>
+:information_source: **Note**: 
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+</md> </div>
+
 
 <br>
 <br>
 
 ### Command Parameters
-Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. Their prefixes and their respective constraints are given in the table below.
+Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. A list of prefixes and their respective constraints are given in the table below.
 
 
 |      **Field**       | **Prefix** |                                                   **Commands**                                                    | <center>**Description**</center>                                                                                                                                                                                                                                           |
@@ -1340,6 +1346,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
+* The order of the graded test field(s) does not matter.
 * At least 1 graded test field must be present after the `INDEX`.
 
 </md>
@@ -1359,7 +1366,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 > **📖Example 2:**
 >
-> **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st
+> **Input:** `editgradedtest 1 f/100 ra1/100 ` Edits the corresponding graded test scores for the 1st
 > person Alex Yeoh.
 >
 > **Output:**
