@@ -165,8 +165,12 @@ h6 {
   color: #003366;
 }
 
-.hljs.inline.no-lang, code {
+.hljs.inline.no-lang {
   color: #A46AFF; /* GUI purple */
+}
+
+code {
+       color: #A46AFF; /* GUI purple */
 }
 
 blockquote {
