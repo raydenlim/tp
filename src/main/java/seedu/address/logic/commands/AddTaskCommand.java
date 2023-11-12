@@ -28,9 +28,9 @@ public class AddTaskCommand extends Command {
             + "[" + PREFIX_DATE + "DATE]\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TASK_NAME + "Do laundry "
-            + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket"
-            + PREFIX_TASK_PRIORITY + "medium"
-            + PREFIX_DATE + "22/10/2023";
+            + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket "
+            + PREFIX_TASK_PRIORITY + "medium "
+            + PREFIX_DATE + "22/10/2023 ";
 
     public static final String MESSAGE_SUCCESS = "Task has been added: %1$s";
 
