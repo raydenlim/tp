@@ -386,7 +386,7 @@ Finally, the `TakeAttendanceCommand` triggers the `Model` to update the filtered
 
 * **Alternative 1 (current choice):** Cause updates to both `Session` and `Person` when updating the attendance status of a student to a specified session.
     * Pros: Allows for ease of future enhancements since we can cause the same update from either `Session` or `Person` involved.
-
+    * Cons: The same action is performed twice, but since the student is added to a `StudentSet`, only one instance of student is added.
 
 * **Alternative 2:** Only update the `Session` to store the `Person`
     * Pros: The same action is not performed twice.
