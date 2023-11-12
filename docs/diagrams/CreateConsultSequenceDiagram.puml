@@ -1,0 +1,38 @@
+@startuml
+!include style.puml
+
+mainframe **sd** execute CreateConsultCommand
+
+participant "x:CreateConsultCommand" as CreateConsultCommand LOGIC_COLOR
+
+participant ":Model" as Model MODEL_COLOR
+
+participant "studentsToAdd:StudentSet" as StudentSet MODEL_COLOR_T2
+
+participant "consultationToAdd:Consultation" as Consultation MODEL_COLOR_T1
+
+[-> CreateConsultCommand : execute()
+activate CreateConsultCommand
+
+create StudentSet
+CreateConsultCommand -> StudentSet
+
+loop for all names
+    CreateConsultCommand -> Model : getMatchingStudentName(name)
+    activate Model
+
+    CreateConsultCommand -> StudentSet : add(studentsToAdd)
+    activate StudentSet
+    deactivate StudentSet
+    end
+
+create Consultation
+CreateConsultCommand -> Consultation : new Consultation(date, time, studentsToAdd)
+
+CreateConsultCommand -> Model : addConsultation(consultationToAdd)
+deactivate Model
+
+[<-- CreateConsultCommand
+deactivate CreateConsultCommand
+
+@enduml

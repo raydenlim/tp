@@ -478,6 +478,44 @@ The `UpdateTaskProgressCommand` then continues its execution as defined by [this
     * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
+
+#### Create Consultation Feature
+This section explains the implementation of the Create Consultation feature via the `createconsult` command.
+The `CreateConsultCommand` creates a `Consultation` and adds it into the Consultation List in the application.
+There is are multiple compulsory field: date, time and name of students. 
+
+Below is the sequence diagram outlining the execution of `CreateConsultCommand`.
+
+![CreateConsultCommand sequence diagram](images/CreateConsultSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `CreateConsult::execute`, which in turn creates a new `StudentSet`.
+
+Step 2:
+Then, `Model::getMatchingStudentName` is called in a loop to add `Person` specified by name into the `StudentSet`.
+
+Step 3:
+A new `Consultation` is created with specified date, time and the new `StudentSet`.
+
+Step 4:
+`Model::addConsultation` is then called to add the newly created `Consultation`.
+
+Step 5:
+The `CreateConsultCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the CreateConsultCommand:**
+
+* **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
+    * Pros: Promotes information hiding since we do not need to expose the model to the `CreateConsultCommand`.
+
+
+* **Alternative 2:** Store the model in the `CreateConsultCommand` itself.
+    * Pros: Easier to debug.
+    * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
