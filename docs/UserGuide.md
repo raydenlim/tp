@@ -348,7 +348,7 @@ Format: `tab TAB_INDEX`
 
 | **Parameter** |          **Description**           |
 |:-------------:|:----------------------------------:|
-|   TAB_INDEX   | The Index of the tab to switch to. |
+|   TAB_INDEX   | The index of the tab to switch to. |
 
 <br>
 
@@ -449,14 +449,14 @@ You can add a student to F.A.K.E.J.A.R.V.I.S. if you need to keep track of new s
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
 
-|  **Parameter**  |                     **Description**                     |
-|:---------------:|:-------------------------------------------------------:|
-|      NAME       |          The name of the student to be added.           |
-|  PHONE_NUMBER   |            The phone number of the student.             |
-|      EMAIL      |            The email address of the student.            |
-| TELEGRAM_HANDLE |           The Telegram handle of the student.           |
-|       TAG       |            Tags associated with the student.            |
-|  GRADED_TESTS   | Scores of the graded tests associated with the student. |
+|  **Parameter**  |                       **Description**                       |
+|:---------------:|:-----------------------------------------------------------:|
+|      NAME       |            The name of the student to be added.             |
+|  PHONE_NUMBER   |              The phone number of the student.               |
+|      EMAIL      |              The email address of the student.              |
+| TELEGRAM_HANDLE |             The telegram handle of the student.             |
+|       TAG       |            The tags associated with the student.            |
+|  GRADED_TESTS   | The scores of the graded tests associated with the student. |
 
 <br>
 
@@ -530,15 +530,15 @@ You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S. if you need to
 
 Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
 
-|  **Parameter**  |                     **Description**                     |
-|:---------------:|:-------------------------------------------------------:|
-|  STUDENT_INDEX  |         The index of the student to be edited.          |
-|      NAME       |              The new name for the student.              |
-|      PHONE      |          The new phone number for the student.          |
-|      EMAIL      |         The new email address for the student.          |
-| TELEGRAM_HANDLE |        The new Telegram handle for the student.         |
-|       TAG       |          New tags associated with the student.          |
-|  GRADED_TESTS   | Scores of the graded tests associated with the student. |
+|  **Parameter**  |                         **Description**                         |
+|:---------------:|:---------------------------------------------------------------:|
+|  STUDENT_INDEX  |             The index of the student to be edited.              |
+|      NAME       |                  The new name for the student.                  |
+|      PHONE      |              The new phone number for the student.              |
+|      EMAIL      |             The new email address for the student.              |
+| TELEGRAM_HANDLE |            The new telegram handle for the student.             |
+|       TAG       |            The new tags associated with the student.            |
+|  GRADED_TESTS   | The new scores of the graded tests associated with the student. |
 
 <br>
 
@@ -595,9 +595,9 @@ You can find a student in F.A.K.E.J.A.R.V.I.S. if you're looking for certain stu
 
 Format: `find KEYWORD…`
 
-| **Parameter** |         **Description**         |
-|:-------------:|:-------------------------------:|
-|    KEYWORD    | The main keyword to search for. |
+| **Parameter** |        **Description**        |
+|:-------------:|:-----------------------------:|
+|    KEYWORD    | The keyword(s) to search for. |
 
 <br>
 
@@ -1107,11 +1107,11 @@ You can edit your student's assignment grade if there is a need to make adjustme
 
 Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 
-| **Parameter** |       **Description**       |
-|:-------------:|:---------------------------:|
-| STUDENT_INDEX |  The index of the student.  |
-|  ASSIGNMENT   | The name of the assignment. |
-|     GRADE     |  The score of the student.  |
+| **Parameter** |        **Description**        |
+|:-------------:|:-----------------------------:|
+| STUDENT_INDEX |   The index of the student.   |
+|  ASSIGNMENT   |  The name of the assignment.  |
+|     GRADE     | The new score of the student. |
 
 <br>
 
@@ -1210,7 +1210,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 
 | **Parameter** |       **Description**       |
 |:-------------:|:---------------------------:|
-| TUDENT_INDEX  |  The index of the student.  |
+| STUDENT_INDEX |  The index of the student.  |
 |  ASSIGNMENT   | The name of the assignment. |
 |    COMMENT    |      The new comment.       |
 
@@ -1322,14 +1322,14 @@ You can edit your student's graded test scores if you need to make adjustments o
 Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
 [pe/PRACTICAL_EXAM] `
 
-|    **Parameter**     |                 **Description**                  |
-|:--------------------:|:------------------------------------------------:|
-|    STUDENT_INDEX     |            The index of the student.             |
-| READING_ASSESSMENT_1 | The score of the student's Reading Assessment 1. |
-| READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
-|       MIDTERMS       |       The score of the student's MidTerms.       |
-|        FINALS        |   The score of the student's Final Assessment.   |
-|    PRACTICAL_EXAM    |   The score of the student's Practical Exams.    |
+|    **Parameter**     |                   **Description**                    |
+|:--------------------:|:----------------------------------------------------:|
+|    STUDENT_INDEX     |              The index of the student.               |
+| READING_ASSESSMENT_1 | The new score of the student's Reading Assessment 1. |
+| READING_ASSESSMENT_2 | The new score of the student's Reading Assessment 2. |
+|       MIDTERMS       |       The new score of the student's MidTerms.       |
+|        FINALS        |   The new score of the student's Final Assessment.   |
+|    PRACTICAL_EXAM    |   The new score of the student's Practical Exams.    |
 
 <br>
 
@@ -1340,7 +1340,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
-* At least 1 field must be present after the `INDEX`.
+* At least 1 graded test field must be present after the `INDEX`.
 
 </md>
 </div>
