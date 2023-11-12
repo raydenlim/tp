@@ -45,16 +45,16 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;5 [Features](#features)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1 [General Commands](#general-commands)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [🔀 Switching between different tabs : `tab`](#switching-between-different-tabs-tab)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [👀 Viewing help : `help`](#viewing-help-help)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [🔀 Switching between different Tabs : `tab`](#switching-between-different-tabs-tab)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [👀 Viewing Help : `help`](#viewing-help-help)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [🏃🚪 Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [💾 Saving the Data](#saving-the-data)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [🛠️ Editing the Data File](#editing-the-data-file)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.6 [💾 Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.6 [💾 Archiving the Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v2-0)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [📝 Adding a Student: `add`](#adding-a-student-add)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing All Students : `list`](#listing-all-students-list)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing all Students : `list`](#listing-all-students-list)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [🛠️ Editing a Student Field : `edit`](#editing-a-student-field-edit)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [🔎 Locating Student by Name: `find`](#locating-student-by-name-find)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [❌ Deleting a Student : `delete`](#deleting-a-student-delete)  
@@ -87,7 +87,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8 [Consultation Management](#consultation-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [📝 Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [📝 Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [📝 Adding Students to a Consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [❌ Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [❌ Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)
 
@@ -111,21 +111,21 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 <br>
 
-| **Convention** |                        **Description**                         |
-|:--------------:|:--------------------------------------------------------------:|
-|  `Monospace`   |        Used for command inputs, syntax, and file paths.        |
-| **Bold text**  |                 Highlights important keywords.                 |
-| [Hyperlink](#) | Indicates hyperlinks to external websites or within the guide. |
+| **Convention** |       **Description**       |
+|:--------------:|:---------------------------:|
+|  `Monospace`   |   Used for code syntax.     |
+| **Bold text**  | Used for important keywords |
+| [Hyperlink](#) |  Used for link references   |
 
 
 <br>
 
 
-|                                     **Convention**                                      |                         **Description**                         |
-|:---------------------------------------------------------------------------------------:|:---------------------------------------------------------------:|
-| **<div markdown="span" class="alert alert-info"> :information_source: **Note** </div>** |     Provides information of special interest or importance.     |
-|   **<div markdown="span" class="alert alert-warning"> :warning: **Warning** </div>**    | Alerts to potentially irreversible actions with data loss risk. |
-|        **<div markdown="span" class="alert alert-tip">  :bulb: **Tip** </div>**         |                           Useful Tips                           |
+|                                     **Convention**                                      |    **Description**     |
+|:---------------------------------------------------------------------------------------:|:----------------------:|
+| **<div markdown="span" class="alert alert-info"> :information_source: **Note** </div>** | Additional Information |
+|   **<div markdown="span" class="alert alert-warning"> :warning: **Warning** </div>**    |    Caution Warning     |
+|        **<div markdown="span" class="alert alert-tip">  :bulb: **Tip** </div>**         |      Useful Tips       |
 
 
 <br>
@@ -340,7 +340,7 @@ This section describes commands that fit in no special category.
 <br>
 <br>
 
-#### 🔀Switching between different tabs: `tab`
+#### 🔀Switching between different Tabs: `tab`
 
 You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S. to view different lists on the current panel.
 
@@ -388,7 +388,7 @@ For the list of tab indexes to use:
 
 <br>
 
-#### 👀Viewing help : `help`
+#### 👀Viewing Help : `help`
 
 You can view a message explaining how to access the help page, if you require assistance in understanding the commands and their formats.
 
@@ -426,7 +426,7 @@ If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. 
 
 <br>
 
-#### 💾Archiving Data Files `[coming in v2.0]`
+#### 💾Archiving the Data Files `[coming in v2.0]`
 
 _Stay tuned for more features and enhancements in `v2.0`, including archiving data files and more!_
 
@@ -503,7 +503,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 <br>
 <br>
 
-#### 👀Listing All Students : `list`
+#### 👀Listing all Students : `list`
 
 You can list out all students in F.A.K.E.J.A.R.V.I.S. if you need to view the complete student list.
 
@@ -1053,7 +1053,7 @@ This section describes commands that help you manage your students' assignments.
 
 <br>
 
-#### 👀Viewing a List of Assignments: `viewassignments`
+#### 👀Viewing a list of Assignments: `viewassignments`
 
 You can view the list of assignment grades and comments of a student if you want to assess and review the feedback provided for each assignment.
 
@@ -1320,7 +1320,7 @@ This section describes commands tht help you manage your students' graded tests.
 You can edit your student's graded test scores if you need to make adjustments or corrections to their initially recorded test scores.
 
 Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
-[pe/PRACTICALEXAM] `
+[pe/PRACTICAL_EXAM] `
 
 |    **Parameter**     |                 **Description**                  |
 |:--------------------:|:------------------------------------------------:|
@@ -1329,7 +1329,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 | READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
 |       MIDTERMS       |       The score of the student's MidTerms.       |
 |        FINALS        |   The score of the student's Final Assessment.   |
-|    PRACTICALEXAM     |   The score of the student's Practical Exams.    |
+|    PRACTICAL_EXAM    |   The score of the student's Practical Exams.    |
 
 <br>
 
@@ -1582,7 +1582,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 <br>
 <br>
 
-#### 📝️Adding students to a consultation: `addtoconsult`
+#### 📝️Adding Students to a Consultation: `addtoconsult`
 You can add your student(s) into a consultation slot if you need to assign specific individuals for your consultation.
 
 Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
@@ -1738,33 +1738,33 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 ## Command summary
 
-|        **Action**         |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
-|:-------------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
-|          **Add**          |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
-|         **Clear**         |                                                             `clear`                                                              | `clear`                                                                                                                            |
-|        **Delete**         |                                                      `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
-|         **Edit**          |               `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`               | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
-|         **Find**          |                                                  `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
-|         **List**          |                                                              `list`                                                              | `list`                                                                                                                             |
-|       **Add Task**        |                              `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                              | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                          |
-|      **View Tasks**       |       `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`        | `viewtasks`,<br> `viewtasks tp/high`,<br> `viewtasks d/30/09/2023`                                                                 |
-|    **Update Progress**    |                                          `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                          | `updateprogress 1 tprog/pending`,<br>`updateprogress 3 tprog/done`                                                                 |
-|      **Delete Task**      |                                                     `deletetask TASK_INDEX`                                                      | `deletetask 3`,<br>`deletetask 2`                                                                                                  |
-|      **View Grade**       |                                             `viewgrade STUDENT_INDEX as/ASSIGNMENT`                                              | `viewgrade 1 as/Functional Expressionism`,<br>`viewgrade 2 as/Rune Reading`                                                        |
-|      **Edit Grade**       |                                         `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`                                          | `editgrade 1 as/Functional Expressionism g/1200`,<br>`editgrade 2 as/Rune Reading g/1000`                                          |
-|     **Delete Grade**      |                                            `deletegrade STUDENT_INDEX as/ASSIGNMENT`                                             | `deletegrade 1 as/Functional Expressionism`,<br>`deletegrade 2 as/Rune Reading`                                                    |
-|     **Edit Comment**      |                                       `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`                                        | `editcomment 1 as/Functional Expressionism c/Decent`,<br> `editcomment 2 as/Rune Reading c/Great`                                  |
-|    **Delete Comment**     |                                           `deletecomment STUDENT_INDEX as/ASSIGNMENT`                                            | `deletecomment 1 as/Functional Expressionism`,<br> `deletecomment 2 as/Rune Reading`                                               |
-|   **Edit Graded Test**    | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
-|    **Take Attendance**    |                                       `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                       | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
-|    **View Attendance**    |                                                `viewattendance [n/STUDENT_NAME]…`                                                | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
-|  **Create Consultation**  |                                          `createconsult d/DATE tt/TIME n/STUDENT_NAME…`                                          | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
-|    **Add To Consult**     |                                        `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                         | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
-|  **Remove From Consult**  |                                      `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                      | `removefromconsult 2 n/Betsy Crower`                                                                                               |
-|    **Delete Consult**     |                                                `deleteconsult CONSULTATION_INDEX`                                                | `deleteconsult 1`                                                                                                                  |
-|    **Create Session**     |                                         `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                         | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
-| **Update Session Remark** |                                         `updatesessionremark s/SESSION_NUMBER r/REMARK`                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
-|    **Delete Session**     |                                                 `deletesession s/SESSION_NUMBER`                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
+|        **Action**         |                                                            **Format**                                                             | <center>**Examples**</center>                                                                                                      |
+|:-------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
+|          **Add**          |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                         | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
+|         **Clear**         |                                                              `clear`                                                              | `clear`                                                                                                                            |
+|        **Delete**         |                                                      `delete STUDENT_INDEX`                                                       | `delete 3`                                                                                                                         |
+|         **Edit**          |               `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`                | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
+|         **Find**          |                                                  `find KEYWORD [MORE_KEYWORDS]`                                                   | `find John`<br> `find alex david`                                                                                                  |
+|         **List**          |                                                              `list`                                                               | `list`                                                                                                                             |
+|       **Add Task**        |                              `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`                               | `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high`,<br> `addtask tn/Read Chapter 5`                                          |
+|      **View Tasks**       |        `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / <br/>[tprog/TASK_PROGRESS]`        | `viewtasks`,<br> `viewtasks tp/high`,<br> `viewtasks d/30/09/2023`                                                                 |
+|    **Update Progress**    |                                          `updateprogress TASK_INDEX tprog/NEW_PROGRESS`                                           | `updateprogress 1 tprog/pending`,<br>`updateprogress 3 tprog/done`                                                                 |
+|      **Delete Task**      |                                                      `deletetask TASK_INDEX`                                                      | `deletetask 3`,<br>`deletetask 2`                                                                                                  |
+|      **View Grade**       |                                              `viewgrade STUDENT_INDEX as/ASSIGNMENT`                                              | `viewgrade 1 as/Functional Expressionism`,<br>`viewgrade 2 as/Rune Reading`                                                        |
+|      **Edit Grade**       |                                          `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`                                          | `editgrade 1 as/Functional Expressionism g/1200`,<br>`editgrade 2 as/Rune Reading g/1000`                                          |
+|     **Delete Grade**      |                                             `deletegrade STUDENT_INDEX as/ASSIGNMENT`                                             | `deletegrade 1 as/Functional Expressionism`,<br>`deletegrade 2 as/Rune Reading`                                                    |
+|     **Edit Comment**      |                                        `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`                                        | `editcomment 1 as/Functional Expressionism c/Decent`,<br> `editcomment 2 as/Rune Reading c/Great`                                  |
+|    **Delete Comment**     |                                            `deletecomment STUDENT_INDEX as/ASSIGNMENT`                                            | `deletecomment 1 as/Functional Expressionism`,<br> `deletecomment 2 as/Rune Reading`                                               |
+|   **Edit Graded Test**    | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICAL_EXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
+|    **Take Attendance**    |                                       `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                        | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
+|    **View Attendance**    |                                                `viewattendance [n/STUDENT_NAME]…`                                                 | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson Resley`                                                |
+|  **Create Consultation**  |                                          `createconsult d/DATE tt/TIME n/STUDENT_NAME…`                                           | `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh`,<br>`createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li`  |
+|    **Add To Consult**     |                                         `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                         | `addtoconsult 2 n/Betsy Crower`,<br>`addtoconsult 1 n/David Li n/Roy Balakrishnan`                                                 |
+|  **Remove From Consult**  |                                      `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`                                       | `removefromconsult 2 n/Betsy Crower`                                                                                               |
+|    **Delete Consult**     |                                                `deleteconsult CONSULTATION_INDEX`                                                 | `deleteconsult 1`                                                                                                                  |
+|    **Create Session**     |                                         `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                          | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
+| **Update Session Remark** |                                          `updatesessionremark s/SESSION_NUMBER r/REMARK`                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
+|    **Delete Session**     |                                                 `deletesession s/SESSION_NUMBER`                                                  | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
 
 <br>
 
