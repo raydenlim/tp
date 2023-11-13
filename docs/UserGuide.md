@@ -258,7 +258,7 @@ The following describes what each tab displays on the **Current Panel**:
     * `viewtasks` : Lists all tasks.
     * `deletetask 3`: Deletes the 3rd task shown in the current task list.
 
-    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
+    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
     * `createsession s/3 n/John Doe` : Creates a session with session number 3 with the student `John Doe`.
 
@@ -293,7 +293,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
-  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/ Foo Bar` etc.
+  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/Foo Bar` etc.
 
 
 * Parameters can be **in any order**.<br>
