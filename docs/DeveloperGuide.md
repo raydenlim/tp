@@ -655,15 +655,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                                    | I want to …​                                     | So that I can…​                                                        |
 |----------|--------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------|
 | `* * *`  | new user                                   | see usage instructions                           | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person                                 |                                                                        |
-| `* * *`  | user                                       | delete a person                                  | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name                            | locate details of persons without having to go through the entire list |
-| `* * *`  | busy avenger                               | keep track of what needs to be done              | better guide my students.                                              |
-| `* * *`  | conscientious avenger                      | view my students' grades for their assignments   | better assess my students' competency.                                 |
-| `* * *`  | caring avenger                             | view my students' comments for their assignments | take note of my students' strengths and weaknesses.                    |
-| `* * *`  | user                                       | create a new consultation with students          | keep track of when and with who the consultation is held               |
-| `* * *`  | user                                       | add students to an existing consultation         | invite more students to join a consultation discussion                 |
-| `* *`    | user                                       | hide private contact details                     | minimize chance of someone else seeing them by accident                |
+| `* * *`  | organised Avenger                          | add a new person                                 |                                                                        |
+| `* * *`  | organised Avenger                          | delete a person                                  | remove entries that I no longer need                                   |
+| `* * *`  | curious Avenger                            | find a person by name                            | locate details of persons without having to go through the entire list |
+| `* * *`  | busy Avenger                               | keep track of what needs to be done              | better guide my students                                               |
+| `* * *`  | conscientious Avenger                      | view my students' grades for their assignments   | better assess my students' competency                                  |
+| `* * *`  | caring Avenger                             | view my students' comments for their assignments | take note of my students' strengths and weaknesses.                    |
+| `* * *`  | responsible Avenger                        | create a new consultation with students          | keep track of when and with who the consultation is held               |
+| `* * *`  | accommodating Avenger                      | add students to an existing consultation         | invite more students to join a consultation discussion                 |
+| `* * *`  | responsible Avenger                        | easily track and record my student's attendance  | conduct attendance taking more efficiently                             |
+| `* * *`  | conscientious Avenger                      | view my students' attendance                     | easily identify any sessions that they may have missed                 |
+| `* * *`  | organised Avenger                          | create tutorial sessions with students           | keep track of students who have attended each session                  |
+| `* * *`  | reflective Avenger                         | store insightful remarks on each session         | improve my teaching methods                                            |
+| `* *`    | responsible Avenger                        | store my students' Telegram contacts             | easily contact them                                                    |
+| `* *`    | careless Avenger                           | delete sessions that were wrongly created        | clean up my list of sessions                                           |
+| `* *`    | careful Avenger                            | hide private contact details                     | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name                             | locate a person easily                                                 |
 
 *{More to be added}*
@@ -1019,6 +1025,140 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case ends.
+
+
+**Use case: Create a session**
+
+**MSS**
+
+1.  User requests to create a session with session number and student name(s).
+2.  F.A.K.E.J.A.R.V.I.S. creates a session.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The session number has already been used.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1c. No matching name to students' names.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+**Use case: Update a session's remarks**
+
+**MSS**
+
+1.  User requests to update a session's remark.
+2.  F.A.K.E.J.A.R.V.I.S. updates the session's remark.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The session number input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The session remark input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+    
+**Use case: Delete a session**
+
+**MSS**
+
+1.  User requests to delete a session by a specified session number.
+2.  F.A.K.E.J.A.R.V.I.S. deletes the session.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The session number input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Taking the attendance of a student for a session**
+
+**MSS**
+
+1.  User requests to take the attendance of a student for a session by a specified session number.
+2.  F.A.K.E.J.A.R.V.I.S. updates the attendance status of that student for that session according to the specified attendance status.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The session number input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1c. No matching name to students' name found.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1d. The attendance status input is invalid.
+
+    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Viewing the overall attendance of a student**
+
+**MSS**
+
+1.  User requests to view the overall attendance of a student.
+2.  F.A.K.E.J.A.R.V.I.S. displays the sessions that have been attended by the student.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. No matching name to students' name found.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
 
 *{More to be added}*
 
