@@ -439,9 +439,8 @@ F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JavaScript Object Notatio
 
 <div class="alert alert-warning">
 <md>
-:warning: 
+:warning: **Warning**:
 
-**Caution**:
 * If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run. Hence, it is recommended to make a backup of the file before editing it.
 </md></div>
 
