@@ -117,12 +117,12 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-T15-1/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="600" />
 
 
 The `Model` component,
 
-* stores the F.A.K.E.J.A.R.V.I.S. data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` objects respectively).
+* stores the F.A.K.E.J.A.R.V.I.S. data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` object respectively. The `XYZ` here is used as a placeholder to denote the Components that handle `Person`, `Session` and `Consultation`).
 * stores the currently 'selected' `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (e.g., results of a search query) as separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<XYZ>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -136,7 +136,7 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both F.A.K.E.J.A.R.V.I.S. data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both F.A.K.E.J.A.R.V.I.S. data and user preference data in JSON format, and read them back into corresponding objects. (`XYZ` is a placeholder that denotes `ConsultationList`, `AddressBook` and `SessionList`)
 * inherits from `AddressBookStorage`, `ConsultationListStorage`, `GradedTestListStorage`, `SessionListStorage`, `TaskListStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 * contains data that is separated into distinct files, each catering to specific functionalities, which minimises the impact of potential corruption. Corruption in one set of data does not propagate to others, reinforcing the integrity of the data.
@@ -249,7 +249,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 **Alternative 2 :** Using floats for graded test score.
 - Pros:
   * Numeric Operations: Easier and more efficient numeric operations without the need for extensive parsing.
-- Cons: 
+- Cons:
   * Lesser Flexibility and Customisation: Doesn't allow for special characters.
 
 <br>
@@ -265,7 +265,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
   * Type Safety: The reliance on strings may lead to potential type-related issues during runtime.
   * Complexity: Since all the scores are in a single string, additional parsing will be needed to implement getters and setters.
   * Learning Curve: Users might need to adapt to a more structured input format, potentially increasing the learning curve.
-  
+
 **Alternative 2:** Using Structured Object for Graded Test Constructors.
 - Pros:
   * Type Safety: A structured object ensures type safety, reducing the risk of runtime errors related to data types.
@@ -278,7 +278,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 - Pros:
   * Type Safety Utilization: Ensures type safety with objects and allows the use of strings for flexibility. We can take advantage of the strings to enable the use of `default` values.
   * Robust Testing: Better bug identification, as the two constructors can check each other, since there are 2 constructors that creates the GradedTest Object.
-  
+
 <box type="definition" light>
   Example:
 
@@ -290,15 +290,15 @@ GradedTest testFromObjects = new GradedTest(
         );
 
 // Using String Constructor
-GradedTest testFromString = new GradedTest("RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95");
+        GradedTest testFromString = new GradedTest("RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95");
 
 // Check if both objects are equal
-assertEquals(testFromObjects, testFromString);
+        assertEquals(testFromObjects, testFromString);
 ```
 </box>
 
 - Cons:
-  * Extra caution is needed to ensure that both these constructors are compatible with one another. 
+  * Extra caution is needed to ensure that both these constructors are compatible with one another.
 
 <br>
 
@@ -326,16 +326,16 @@ assertEquals(testFromObjects, testFromString);
 - Pros:
   * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`.
   * Object safety: Building on Aspect 3, since all objects are `private final` and hence immutable, any edits/updates to the person's object will not cause issues to the graded test, as the Person parser logic will handle the new Person object creation.
-- Cons: 
+- Cons:
   * Inflexibility: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
 
-- For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`. 
+- For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`.
 
 **Alternative 2:** Have a separate class `EditGradedTest` to update graded test scores.
 - Pros:
   * Dynamic: It enables users to dynamically update their graded test scores without having to use the String format.
 - Cons:
-  * Command Prefixes: Users will have to get used to the command prefix. 
+  * Command Prefixes: Users will have to get used to the command prefix.
 
 **Alternative 3 (current choice):** Implement both Alternatives 1 and 2.
 - Pros:
@@ -351,37 +351,40 @@ assertEquals(testFromObjects, testFromString);
 ### Consultations
 
 The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
-Student to a Consultation.
+Student to a Consultation and Remove Student from a Consultation.
 
 #### The Consultation Class
 
-The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods
+The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `StudentSet` and a set of getter methods
 that corresponds to these fields.
 
 Below is a class diagram describing the implementation of `Consultation` and its respective fields.
 
-<p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
+<p align="center"><img src="images/ConsultationClassDiagram.png"></p>
 <p align="center">Consultation Class UML Diagram</p>
 
 #### Design Considerations:
 
-**Aspect: How the students are stored to a consultation:**
+**Aspect 1: How the students are stored to a consultation:**
 
-* **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
+* **Alternative 1:** Use Set<Person> to keep track of students in a consultation.
     * Pros: Stores only 1 instance of a unique person, no duplicates.
     * Cons: May have performance issues in terms of memory usage.
 
-
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
-    * Cons: We must ensure there are no duplicates with additional checks.
+  * Cons: We must ensure there are no duplicates with additional checks.
 
-**Aspect: Adding students to a new or existing consultation:**
+* **Alternative 3 (current choice):** Use a `StudentSet` class to keep track of students.
+    * Pros: Better abstraction and easier maintainability.
+    * Cons: Performance overhead related to creation and manipulation of new class.
 
-* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student list
+**Aspect 2: Adding or removing students to or from a consultation:**
+
+* **Alternative 1 (Current choice):** The `AddToConsult` and `RemoveFromConsult` features creates a new Consultation object with updated `StudentSet`
   * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
   * Cons: Require additional checking to inform exception cases.
 
-* **Alternative 2:** `AddToConsult` directly manipulate the attribute `students` in a Consultation object.
+* **Alternative 2:** `AddToConsult` or `RemoveFromConsult` directly manipulate the `StudentSet` in a Consultation object.
   * Cons: Poor abstraction and room for errors.
 
 
@@ -486,17 +489,17 @@ The final check ensures that there are no duplicate sessions being created, befo
 **Aspect: How to determine if a session is considered a duplicate**
 
 * **Alternative 1 (current choice):** Session is considered duplicate if another session with the same session number already exists in the session list.
-    * Pros: It is easier to manage the duplicate session situation if only session number is compared, making other features easier to implement by referring to the session number as the session's identity.
-    * Cons: User will not be able to have multiple sessions of the same session number.
+  * Pros: It is easier to manage the duplicate session situation if only session number is compared, making other features easier to implement by referring to the session number as the session's identity.
+  * Cons: User will not be able to have multiple sessions of the same session number.
 
 * **Alternative 2:** Session will be considered duplicate only if all of its fields, session number, students, and session remark are equal.
-    * Pros: It allows for multiple sessions of the same session number to be stored in the same session list.
-    * Cons: A small mistake in the inputs will cause two sessions to not be considered duplicate, which could unintentionally lead to multiple sessions with almost the same fields (which would have been considered duplicate otherwise).
+  * Pros: It allows for multiple sessions of the same session number to be stored in the same session list.
+  * Cons: A small mistake in the inputs will cause two sessions to not be considered duplicate, which could unintentionally lead to multiple sessions with almost the same fields (which would have been considered duplicate otherwise).
 
 
 #### Take Attendance Feature
 This section explains the implementation of the Take Attendance feature via the `takeattendance` command.
-The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session. 
+The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session.
 There are two compulsory fields, which are the session number of the session, as well as the names of the students involved.
 
 This process is shown in the sequence diagram below
@@ -520,12 +523,12 @@ Finally, the `TakeAttendanceCommand` triggers the `Model` to update the filtered
 **Aspect: How models are modified to store changes**
 
 * **Alternative 1 (current choice):** Cause updates to both `Session` and `Person` when updating the attendance status of a student to a specified session.
-    * Pros: Allows for ease of future enhancements since we can cause the same update from either `Session` or `Person` involved.
-    * Cons: The same action is performed twice, but since the student is added to a `StudentSet`, only one instance of student is added.
+  * Pros: Allows for ease of future enhancements since we can cause the same update from either `Session` or `Person` involved.
+  * Cons: The same action is performed twice, but since the student is added to a `StudentSet`, only one instance of student is added.
 
 * **Alternative 2:** Only update the `Session` to store the `Person`
-    * Pros: The same action is not performed twice.
-    * Cons: It may be difficult to add future enhancements without this method in place as a skeleton.
+  * Pros: The same action is not performed twice.
+  * Cons: It may be difficult to add future enhancements without this method in place as a skeleton.
 
 
 #### Add Tasks Feature
@@ -551,16 +554,16 @@ The `AddTaskCommand` then continues its execution as defined by [this](#parser-c
 **Aspect: How we execute the AddTaskCommand:**
 
 * **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
-    * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
+  * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
 
 
 * **Alternative 2:** Store the model in the `AddTaskCommand` itself.
-    * Pros: Easier to debug.
-    * Cons: The `AddTaskCommand` might be able to call other methods in the model.
+  * Pros: Easier to debug.
+  * Cons: The `AddTaskCommand` might be able to call other methods in the model.
 
 
 #### Delete Tasks Feature
-This section explains the implementation of the Delete Task feature via the `deletetask` command. The `DeleteTaskCommand` causes the specified `Task` identified using the `Index` to be deleted from the Task List in the application. There is one compulsory field which is the Index of the Task to delete. 
+This section explains the implementation of the Delete Task feature via the `deletetask` command. The `DeleteTaskCommand` causes the specified `Task` identified using the `Index` to be deleted from the Task List in the application. There is one compulsory field which is the Index of the Task to delete.
 
 Below is the sequence diagram outlining the execution of `DeleteTaskCommand`.
 
@@ -583,7 +586,7 @@ The `DeleteTaskCommand` then continues its execution as defined by [this](#parse
 
 
 #### View Tasks Feature
-This section explains the implementation of the View Tasks feature via the `viewtasks` command. The `ViewTasksCommand` displays the Tasks filtered using the `predicate` specified by the user. There are multiple optional fields that the user can use to filter the list by, such as the progress, priority, name, description and date. However, only one field is able to be applied as a filter at a specific time. 
+This section explains the implementation of the View Tasks feature via the `viewtasks` command. The `ViewTasksCommand` displays the Tasks filtered using the `predicate` specified by the user. There are multiple optional fields that the user can use to filter the list by, such as the progress, priority, name, description and date. However, only one field is able to be applied as a filter at a specific time.
 
 Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
 
@@ -600,12 +603,12 @@ The `ViewTasksCommand` then continues its execution as defined by [this](#parser
 **Aspect: How we execute the ViewTasksCommand:**
 
 * **Alternative 1 (current choice):** Combine the list and find functionality into one.
-    * Pros: Promotes user experience due to the reduction in the number of different commands.
-    * Cons: More checks need to be done to ensure that the correct predicate is applied and the correct field is being checked against. 
+  * Pros: Promotes user experience due to the reduction in the number of different commands.
+  * Cons: More checks need to be done to ensure that the correct predicate is applied and the correct field is being checked against.
 
 * **Alternative 2:** Separate out into 2 separate functions.
-    * Pros: Easier to debug since they're implemented independently of one another.
-    * Cons: More commands make the interface messier, negatively impacting user experience.
+  * Pros: Easier to debug since they're implemented independently of one another.
+  * Cons: More commands make the interface messier, negatively impacting user experience.
 
 
 #### Update Task Progress Feature
@@ -637,12 +640,12 @@ The `UpdateTaskProgressCommand` then continues its execution as defined by [this
 **Aspect: How we execute the UpdateTasksProgressCommand:**
 
 * **Alternative 1 (current choice):** Create a new immutable object of the Task and replace the previous Task with the new Task.
-    * Pros: Easier to debug since the state of immutable objects cannot be changed.
-    * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
 
 * **Alternative 2:** Mutate the existing Task in the Task list to reflect the new progress.
-    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
-    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
 
@@ -664,12 +667,12 @@ The `ViewAssignmentsCommand` then continues its execution as defined by [this](#
 **Aspect: How we execute the ViewAssignmentsCommand:**
 
 * **Alternative 1 (current choice):** Let LogicManager store the Index of the Student whose Assignments are going to be displayed.
-    * Pros: Enables the list of Assignments to automatically be updated every time the Assignment Grade or Comment is being edited or deleted.
-    * Cons: The command details are not fully handled inside ViewAssignmentsCommand, resulting in poor separation of concerns principle.
+  * Pros: Enables the list of Assignments to automatically be updated every time the Assignment Grade or Comment is being edited or deleted.
+  * Cons: The command details are not fully handled inside ViewAssignmentsCommand, resulting in poor separation of concerns principle.
 
 * **Alternative 2:** Let LogicManager store the list of Assignments belonging to the Student whose Assignments are going to be displayed.
-    * Pros: Abides by the separation of concerns principle better.
-    * Cons: When the user edits or deletes an Assignment's Grade or Comment, he has to keep typing `viewassignments` to see the list of Assignments getting updated. This negatively impacts the user experience.
+  * Pros: Abides by the separation of concerns principle better.
+  * Cons: When the user edits or deletes an Assignment's Grade or Comment, he has to keep typing `viewassignments` to see the list of Assignments getting updated. This negatively impacts the user experience.
 
 
 
@@ -792,7 +795,7 @@ The `EditGradedTestCommand` then continues its execution as defined by [this](#p
 #### Create Consultation Feature
 This section explains the implementation of the Create Consultation feature via the `createconsult` command.
 The `CreateConsultCommand` creates a `Consultation` and adds it into the Consultation List in the application.
-There are multiple compulsory field: date, time and name of students. 
+There are multiple compulsory field: date, time and name of students.
 
 Below is the sequence diagram outlining the execution of `CreateConsultCommand`.
 
@@ -818,19 +821,19 @@ The `CreateConsultCommand` then continues its execution as defined by [this](#pa
 **Aspect: How we execute the CreateConsultCommand:**
 
 * **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
-    * Pros: Promotes information hiding since we do not need to expose the model to the `CreateConsultCommand`.
+  * Pros: Promotes information hiding since we do not need to expose the model to the `CreateConsultCommand`.
 
 
 * **Alternative 2:** Store the model in the `CreateConsultCommand` itself.
-    * Pros: Easier to debug.
-    * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
+  * Pros: Easier to debug.
+  * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
 
 
 
 #### Add To Consultation Feature
 This section explains the implementation of the Add To Consultation feature via the `addtoconsult` command.
-The `AddToConsultCommand` adds a new student to the consultation identified using the Index.
-There are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
+The `AddToConsultCommand` adds a new student to the consultation identified using an Index.
+There are two compulsory field, which are the Index of the consultation to add student into, and the name of the student.
 
 Below is the sequence diagram outlining the execution of `AddToConsultCommand`.
 
@@ -856,13 +859,46 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
 **Aspect: How we execute the AddToConsultCommand:**
 
 * **Alternative 1 (current choice):** Create a new immutable object of the updated Consultation and replace the previous Consultation.
-    * Pros: Easier to debug since the state of immutable objects cannot be changed.
-    * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
 
 * **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
-    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
-    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
+
+
+#### Remove From Consultation Feature
+This section explains the implementation of the Remove From Consultation feature via the `removefromconsult` command.
+The `RemoveFromConsultCommand` removes a student specified by name from the consultation identified using an Index.
+There are two compulsory fields which are the index of the consultation to remove from, as well as the name of the students to be removed.
+
+Below is the activity diagram outlining the execution of `RemoveFromConsultCommand`.
+
+![RemoveFromConsultCommand activity diagram](images/RemoveFromConsultActivityDiagram.png)
+
+Step 1:
+The Avenger(user) enters the command `removefromconsult` and the command is parsed by the `RemoveFromConsultCommandParser`.
+
+Step 2:
+The Index parameter is checked for its validity, which will display an error message if invalid. Otherwise, the Consultation at that Index will be retrieved.
+
+Step 3:
+The given name of student is then checked if there is a matching person in the Address Book and the retrieved Consultation. If there are any invalid names, an error message indicating Student Not Found will be displayed.
+
+Step 4:
+If all checks are passed, the student will be removed from the Consultation.
+
+#### Design Considerations:
+**Aspect: How we execute the RemoveFromConsultCommand:**
+
+* **Alternative 1 (current choice):** Similar to `AddToConsult`, create a new immutable object of the updated Consultation and replace the previous Consultation.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+
+* **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -942,12 +978,36 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 
-**Use case 2: Delete a task**
+**Use case: Add a task**
+
+**MSS**
+
+1.  User requests to add task.
+2.  F.A.K.E.J.A.R.V.I.S. adds and displays the task.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The date input is invalid.
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1b. The task priority input is invalid.
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+
+**Use case: Delete a task**
 
 **MSS**
 
@@ -966,12 +1026,76 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
+
+**Use case: View list of tasks**
+
+**MSS**
+
+1.  User requests to view tasks
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of tasks matching search criteria.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. No fields provided
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows list of all tasks.
+
+    Use case ends.
+
+* 1b. Multiple fields provided
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1c. Invalid fields provided
+
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 2a. The list is empty.
+
+  Use case ends.
 
 
-**Use case 3: View a person's list of assignments**
+**Use case: Update task progress**
+
+**MSS**
+
+1.  User requests to update a task progress
+2.  F.A.K.E.J.A.R.V.I.S. updates task progress and displays updated progress.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Invalid index provided
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1b. Invalid task progress provided
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1c. Task progress provided is the same as current progress
+
+  * 1c1. F.A.K.E.J.A.R.V.I.S. displays success message.
+
+    Use case ends.
+
+
+
+**Use case: View a person's list of assignments**
 
 **MSS**
 
@@ -994,7 +1118,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case 4: Edit the grade of an assignment**
+
+**Use case: Edit the grade of an assignment**
 
 **MSS**
 
@@ -1013,21 +1138,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given grade is invalid.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 
 **Use case 5: Delete the grade of an assignment**
@@ -1049,21 +1174,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given assignment has not been commented on.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case 6: Edit the comment on an assignment**
 
@@ -1084,21 +1209,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given comment is invalid.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case 7: Delete the comment of an assignment**
 
@@ -1119,21 +1244,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given assignment has been commented on.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case 8: Find Student Profile**
 
@@ -1150,13 +1275,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-    Use case ends.
+  Use case ends.
 
 * 3a. No matching profiles.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-        Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case: Filter Results**
 
@@ -1177,9 +1302,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. No filtered results.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 
 **Use case 9: Create a consultation**
@@ -1195,21 +1320,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The date input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The time input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' names.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case 10: Delete a consultation**
@@ -1225,9 +1350,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The index input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case 11: Adding a student to a consultation**
@@ -1243,21 +1368,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The index input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
-  
+    Use case ends.
+
 * 1c. No matching name to students' name found.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case 12: Removing a student from a consultation**
@@ -1273,27 +1398,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The index input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' name found in consultation.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1d. No matching name to students' name found in address book.
 
-    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case 13: Create a session**
@@ -1309,21 +1434,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number has already been used.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' names.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 **Use case 14: Update a session's remarks**
 
@@ -1338,19 +1463,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The session remark input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
-    
-**Use case 15: Delete a session**
+
+**Use case: Delete a session**
 
 **MSS**
 
@@ -1363,9 +1488,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case 16: Taking the attendance of a student for a session**
@@ -1381,27 +1506,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' name found.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1d. The attendance status input is invalid.
 
-    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case 17: Viewing the overall attendance of a student**
@@ -1417,15 +1542,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. No matching name to students' name found.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 **Use case 18: Edit the score(s) of a graded test**
 
@@ -1544,33 +1669,29 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+2. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+3. Double-click the jar file Expected: Shows the GUI with a set of sample data. The window size will be maximised.
 
-1. Saving window preferences
-
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Students
+
+#### Deleting a student
 
 1. Deleting a person while all persons are being shown
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+  1. Test case: `delete 1`<br>
+     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+  1. Test case: `delete 0`<br>
+     Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+  1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+     Expected: Similar to previous.
 
 
 
@@ -1746,11 +1867,215 @@ testers are expected to do more *exploratory* testing.
    2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
 
+### Creating a consultation
+
+1. Creating a consultation with specified date, time and student(s).
+
+    1. Prerequisites: Date and time inputs must be valid and student names must exist in address book. There must not be a duplicate consultation (same date, time and students).
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
+       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+       Expected: No new consultation is created on the second command. Error details shown in the status message.
+    1. Other invalid create consultation commands to try: `createconsult` (missing fields), `createconsult n/Alex Yeoh`, `createconsult d/10/11/2023 tt/13:60 n/Bernice Yu` (invalid time), `createconsult d/40/11/2023 tt/13:00 n/Bernice Yu` (invalid date)<br>
+       Expected: Similar to previous.
+
+### Deleting a consultation
+
+1. Deleting a consultation by specifying index.
+    1. Prerequisites: Consultation must exist in the consultation list.
+    1. Test case: `deleteconsult 2`<br>
+       Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
+    1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
+       Expected: No consultation is deleted on the second command. Error details shown in the status message.
+    1. Other incorrect delete consultation commands to try: `deleteconsult`, `deleteconsult x` (where x is greater than the consultation list size or a non-positive integer)
+       Expected: Similar to previous.
+
+### Adding a student to a consultation
+
+1. Adding a student specified by name to a consultation at specified index.
+    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and not already in the consultation.
+    1. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
+       Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
+    1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
+       Expected: No consultation is updated on the second command. Error details shown in the status message.
+    1. Other incorrect add to consultation commands to try: `addtoconsult`, `addtoconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `addtoconsult 2 n/UNKNOWN` (name not found in address book), `addtoconsult 2 n/KNOWN` (name already found in the consultation).
+       Expected: Similar to previous.
+
+### Removing a student from a consultation
+
+1. Removing a student specified by name from a consultation at specified index.
+    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and the consultation.
+    1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
+       Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
+    1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
+       Expected: No consultation is updated on the second command. Error details shown in the status message.
+    1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
+       Expected: Similar to previous.
+
+
+### Task
+
+#### Adding tasks
+
+1. Adding a task with _valid parameters_
+   1. Prerequisites: 
+      1. There is no other task with the same name and description.
+   2. Test case: `addtask tn/finish up user guide td/please by tonight d/14/11/2023 tp/high` <br>
+   Expected: Task is added.
+
+2. Adding a task with _invalid name_
+   1. Test case: `addtask tn/--` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Name should only consist of alphanumeric characters.
+
+3. Adding a task with _invalid description_
+    1. Test case: `addtask tn/do up developer guide td/the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Description should be less than 100 characters.
+
+4. Adding a task with _invalid date_
+    1. Test case: `addtask tn/test number 4 td/test number 4 please work d/29/02/2023` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Date should be a valid date that exists in the calendar. 
+
+5. Adding a task with _invalid priority_
+    1. Test case: `addtask tn/test number 5 td/test number 5 please work d/27/02/2023 tp/asdasdsa` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Priority should only be `HIGH`, `MEDIUM`, or `LOW`.
+
+
+
+#### Viewing tasks
+
+1. Listing all tasks with _no filters_
+    1. Prerequisites:
+        1. There are multiple tasks in the task list which have been added using the `AddTask` command. 
+    2. Test case: `viewtasks` <br>
+       Expected: Displays all the tasks in the task list.
+
+2. Listing tasks filtered using _date filter_
+    1. Prerequisites:
+        1. There are tasks that have the date `22/10/2023`.
+    2. Test case: `viewtasks d/22/10/2023` <br>
+       Expected: Displays all the tasks in the task list that have the date `22/10/2023`.
+
+3. Listing tasks filtered using _name filter_
+    1. Prerequisites:
+        1. There are tasks that have the keywords `user guide` in the Task Name.
+    2. Test case: `viewtasks tn/user guide` <br>
+       Expected: Displays all the tasks in the task list that have `user guide` in the Task Name.
+
+4. Listing tasks filtered using _description filter_
+    1. Prerequisites:
+        1. There are tasks that have the keywords `homework` in the Task Description.
+    2. Test case: `viewtasks td/homework` <br>
+       Expected: Displays all the tasks in the task list that have `homework` in the Task Description.
+
+5. Listing tasks filtered using _priority filter_
+    1. Prerequisites:
+        1. There are tasks that have `HIGH` priority.
+    2. Test case: `viewtasks tp/HIGH` <br>
+       Expected: Displays all the tasks in the task list that have `HIGH` priority.
+
+6. Listing tasks filtered using _progress filter_
+    1. Prerequisites:
+        1. There are tasks that have `PENDING` progress.
+    2. Test case: `viewtasks tprog/PENDING` <br>
+       Expected: Displays all the tasks in the task list that have `PENDING` progress.
+
+7. Listing all tasks with no tasks in the task list
+    1. Prerequisites:
+        1. There are no tasks in the task list. 
+    2. Test case: `viewtasks tprog/PENDING` <br>
+       Expected: No tasks will be shown.
+
+8. Listing all tasks with _invalid parameters_
+    1. Test case: `viewtasks tprog/asdasdasd`
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
+
+
+#### Updating progress of tasks
+
+1. Updating progress of a task as _pending_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/PENDING` <br>
+       Expected: Updates the task's progress to `PENDING`. 
+
+2. Updating progress of a task as _not_started_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/NOT_STARTED` <br>
+       Expected: Updates the task's progress to `NOT_STARTED`.
+
+3. Updating progress of a task as _done_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/DONE` <br>
+       Expected: Updates the task's progress to `DONE`.
+
+4. Updating progress of a task as an _invalid parameter_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/asdasdasdsad` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Progress is not updated. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`.
+
+5. Updating progress of a task with a non-integer index.
+    1. Test case: `updateprogress abcd tprog/DONE` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be a positive integer.
+
+6. Updating progress of a task with a negative index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown. 
+    2. Test case: `updateprogress -1 tprog/DONE` <br>
+        Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be an integer.
+
+7. Updating progress of a task with an out-of-bounds index.
+    1. Prerequisite:
+       1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+    2. Test case: `updateprogress [X + 1] tprog/DONE` <br>
+          Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Progress is not updated. <br> Reason: Index must be within the range of the size of the task list.
+
+8. Updating progress of a task without an index.
+    1. Test case: `updateprogress tprog/DONE` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must not be blank.
+
+
+#### Deleting a task
+
+1. Deleting the first task currently shown in the task list.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask 1` <br>
+       Expected: First task is deleted.
+
+2. Deleting the task with a non-integer index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask wasd` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be an integer.
+
+3. Deleting the task with an out-of-bounds index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+    2. Test case: `deletetask [X + 1]` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Task is not deleted. <br> Reason: Index must be within the range of the size of the task list.
+
+4. Deleting the task with a negative index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask -1` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be a positive integer.
+
+5. Deleting the task without an index.
+    1. Test case: `deletetask` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must not be blank.
+
+
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+  1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
 
