@@ -357,37 +357,40 @@ GradedTest testFromObjects = new GradedTest(
 ### Consultations
 
 The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
-Student to a Consultation.
+Student to a Consultation and Remove Student from a Consultation.
 
 #### The Consultation Class
 
-The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods
+The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `StudentSet` and a set of getter methods
 that corresponds to these fields.
 
 Below is a class diagram describing the implementation of `Consultation` and its respective fields.
 
-<p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
+<p align="center"><img src="images/ConsultationClassDiagram.png"></p>
 <p align="center">Consultation Class UML Diagram</p>
 
 #### Design Considerations:
 
-**Aspect: How the students are stored to a consultation:**
+**Aspect 1: How the students are stored to a consultation:**
 
-* **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
-  * Pros: Stores only 1 instance of a unique person, no duplicates.
-  * Cons: May have performance issues in terms of memory usage.
-
+* **Alternative 1:** Use Set<Person> to keep track of students in a consultation.
+    * Pros: Stores only 1 instance of a unique person, no duplicates.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
   * Cons: We must ensure there are no duplicates with additional checks.
 
-**Aspect: Adding students to a new or existing consultation:**
+* **Alternative 3 (current choice):** Use a `StudentSet` class to keep track of students.
+    * Pros: Better abstraction and easier maintainability.
+    * Cons: Performance overhead related to creation and manipulation of new class.
 
-* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student list
+**Aspect 2: Adding or removing students to or from a consultation:**
+
+* **Alternative 1 (Current choice):** The `AddToConsult` and `RemoveFromConsult` features creates a new Consultation object with updated `StudentSet`
   * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
   * Cons: Require additional checking to inform exception cases.
 
-* **Alternative 2:** `AddToConsult` directly manipulate the attribute `students` in a Consultation object.
+* **Alternative 2:** `AddToConsult` or `RemoveFromConsult` directly manipulate the `StudentSet` in a Consultation object.
   * Cons: Poor abstraction and room for errors.
 
 
@@ -758,8 +761,8 @@ The `CreateConsultCommand` then continues its execution as defined by [this](#pa
 
 #### Add To Consultation Feature
 This section explains the implementation of the Add To Consultation feature via the `addtoconsult` command.
-The `AddToConsultCommand` adds a new student to the consultation identified using the Index.
-There are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
+The `AddToConsultCommand` adds a new student to the consultation identified using an Index.
+There are two compulsory field, which are the Index of the consultation to add student into, and the name of the student.
 
 Below is the sequence diagram outlining the execution of `AddToConsultCommand`.
 
@@ -792,6 +795,39 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
   * Cons: Risk of the state of mutable objects being changed by other methods or processes.
   * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
+
+
+#### Remove From Consultation Feature
+This section explains the implementation of the Remove From Consultation feature via the `removefromconsult` command.
+The `RemoveFromConsultCommand` removes a student specified by name from the consultation identified using an Index.
+There are two compulsory fields which are the index of the consultation to remove from, as well as the name of the students to be removed.
+
+Below is the activity diagram outlining the execution of `RemoveFromConsultCommand`.
+
+![RemoveFromConsultCommand activity diagram](images/RemoveFromConsultActivityDiagram.png)
+
+Step 1:
+The Avenger(user) enters the command `removefromconsult` and the command is parsed by the `RemoveFromConsultCommandParser`.
+
+Step 2:
+The Index parameter is checked for its validity, which will display an error message if invalid. Otherwise, the Consultation at that Index will be retrieved.
+
+Step 3:
+The given name of student is then checked if there is a matching person in the Address Book and the retrieved Consultation. If there are any invalid names, an error message indicating Student Not Found will be displayed.
+
+Step 4:
+If all checks are passed, the student will be removed from the Consultation.
+
+#### Design Considerations:
+**Aspect: How we execute the RemoveFromConsultCommand:**
+
+* **Alternative 1 (current choice):** Similar to `AddToConsult`, create a new immutable object of the updated Consultation and replace the previous Consultation.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+
+* **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1643,6 +1679,53 @@ testers are expected to do more *exploratory* testing.
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
 
 
+
+### Creating a consultation
+
+1. Creating a consultation with specified date, time and student(s).
+
+    1. Prerequisites: Date and time inputs must be valid and student names must exist in address book. There must not be a duplicate consultation (same date, time and students).
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
+       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+       Expected: No new consultation is created on the second command. Error details shown in the status message.
+    1. Other invalid create consultation commands to try: `createconsult` (missing fields), `createconsult n/Alex Yeoh`, `createconsult d/10/11/2023 tt/13:60 n/Bernice Yu` (invalid time), `createconsult d/40/11/2023 tt/13:00 n/Bernice Yu` (invalid date)<br>
+       Expected: Similar to previous.
+
+### Deleting a consultation
+
+1. Deleting a consultation by specifying index.
+    1. Prerequisites: Consultation must exist in the consultation list.
+    1. Test case: `deleteconsult 2`<br>
+       Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
+    1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
+       Expected: No consultation is deleted on the second command. Error details shown in the status message.
+    1. Other incorrect delete consultation commands to try: `deleteconsult`, `deleteconsult x` (where x is greater than the consultation list size or a non-positive integer)
+       Expected: Similar to previous.
+
+### Adding a student to a consultation
+
+1. Adding a student specified by name to a consultation at specified index.
+    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and not already in the consultation.
+    1. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
+       Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
+    1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
+       Expected: No consultation is updated on the second command. Error details shown in the status message.
+    1. Other incorrect add to consultation commands to try: `addtoconsult`, `addtoconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `addtoconsult 2 n/UNKNOWN` (name not found in address book), `addtoconsult 2 n/KNOWN` (name already found in the consultation).
+       Expected: Similar to previous.
+
+### Removing a student from a consultation
+
+1. Removing a student specified by name from a consultation at specified index.
+    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and the consultation.
+    1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
+       Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
+    1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
+       Expected: No consultation is updated on the second command. Error details shown in the status message.
+    1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
+       Expected: Similar to previous.
 
 ### Saving data
 
