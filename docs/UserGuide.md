@@ -410,19 +410,23 @@ Format: `exit`
 
 #### 💾Saving the Data
 
-F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save data manually.
+F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save the data manually.
 
 
 <br>
 
 #### 🛠️Editing the Data File
 
-F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
+F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JavaScript Object Notation (JSON) file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update the data directly by editing that data file.
 
-**Caution:**
-If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
-</box>
 
+<div class="alert alert-warning">
+<md>
+:warning: 
+
+**Caution**:
+* If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run. Hence, it is recommended to make a backup of the file before editing it.
+</md></div>
 
 <br>
 
