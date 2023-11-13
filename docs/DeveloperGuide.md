@@ -554,7 +554,7 @@ Below is the sequence diagram outlining the execution of `ViewAssignmentsCommand
 
 
 Step 1:
-The `LogicManager` invokes `ViewAssignmentsCommand::execute`, which in turn calls `Model::getFilteredPersonList` and List<Person>::get to get the specified Student.
+The `LogicManager` invokes `ViewAssignmentsCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
 
 Step 2:
 The `ViewAssignmentsCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.

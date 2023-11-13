@@ -22,6 +22,7 @@ EditGradeCommand -> Model : getFilteredPersonList()
 activate Model
 
 Model ---> EditGradeCommand
+deactivate Model
 
 EditGradeCommand -> Persons : get(targetIndex)
 activate Persons
@@ -36,6 +37,7 @@ EditGradeCommand ---> EditGradeCommand
 deactivate EditGradeCommand
 
 EditGradeCommand -> Model : setPerson(target, editedPerson)
+activate Model
 
 Model -> List : setStudent(target, editedPerson)
 activate List
