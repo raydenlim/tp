@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-* Referenced [linkytime, T13-3](https://github.com/zfs-old-crap/linkytime) for Sequence Diagram and Activities Diagram insights.
+* Referenced [linkytime, T13-3](https://github.com/zfs-old-crap/linkytime) for insights on Sequence Diagrams and Activity Diagrams.
 
 --------------------------------------------------------------------------------------------------------------------
 
