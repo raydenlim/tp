@@ -25,6 +25,9 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
 ## Table of Contents
 
 &nbsp;1 [Introduction](#introduction)  
@@ -104,6 +107,10 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 <br>
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
+
 ## How to use the User Guide
 You may refer to the [**Table of Contents**](#table-of-contents) for easy navigation of the User Guide.
 
@@ -154,6 +161,9 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
 ## Graphical User Interface
 
 ![UI with Annotations](images/UiWithAnnotations.png)
@@ -178,6 +188,8 @@ The following describes what each tab displays on the **Current Panel**:
 <br>
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Student Card
 ![Student Card with Annotations](images/StudentCardAnnotated.png)
 
@@ -189,6 +201,8 @@ The following describes what each tab displays on the **Current Panel**:
 
 <br>
 <br>
+
+<div style="page-break-after: always;"></div>
 
 ### Assignment Cards
 ![Assignment Card with Annotations](images/AssignmentsAnnotated.png)
@@ -202,6 +216,8 @@ The following describes what each tab displays on the **Current Panel**:
 <br>
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Consultation Card
 ![Consultation Card with Annotations](images/ConsultationCardAnnotated.png)
 
@@ -210,6 +226,8 @@ The following describes what each tab displays on the **Current Panel**:
 --------------------------------------------------------------------------------------------------------------------
 
 <br>
+
+<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -258,6 +276,9 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 <br>
+
+<div style="page-break-after: always;"></div>
+
 
 ## Command Format
 
@@ -335,8 +356,10 @@ Most commands given in the user guide utilise various parameters which are also 
 
 --------------------------------------------------------------------------------------------------------------------
 
-
 <br>
+
+<div style="page-break-after: always;"></div>
+
 
 ## Features
 This section describes each of the commands and features available in F.A.K.E.J.A.R.V.I.S.
