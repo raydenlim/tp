@@ -408,6 +408,35 @@ For the list of tab indexes to use:
 >
 > [IMAGE COMING SOON]
 
+<br>
+<br>
+
+#### Clearing all Entries : `clear`
+
+You can clear all students from F.A.K.E.J.A.R.V.I.S. if you need to reset the student database or remove all existing student records.
+
+Format: `clear`
+
+<br>
+
+<div class="alert alert-warning">
+<md>
+:warning: **Warning**:
+
+* This action is irreversible
+  </md> </div>
+
+<br>
+
+> **📖Example 1:**
+>
+> **Input:** `clear` Deletes all students in F.A.K.E.J.A.R.V.I.S.
+>
+> **Output:**
+>`Address book has been cleared!`
+>
+> [IMAGE COMING SOON]
+
 
 <br>
 
@@ -699,34 +728,7 @@ Format: `delete STUDENT_INDEX`
 > [IMAGE COMING SOON]
 
 
-<br>
-<br>
 
-#### Clearing all Entries : `clear`
-
-You can clear all students from F.A.K.E.J.A.R.V.I.S. if you need to reset the student database or remove all existing student records.
-
-Format: `clear`
-
-<br>
-
-<div class="alert alert-warning">
-<md>
-:warning: **Warning**:
-
-* This action is irreversible
-  </md> </div>
-
-<br>
-
-> **📖Example 1:**
->
-> **Input:** `clear` Deletes all students in F.A.K.E.J.A.R.V.I.S.
->
-> **Output:**
->`Address book has been cleared!`
->
-> [IMAGE COMING SOON]
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -764,7 +766,8 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 > **Output:**
 >`Task has been added: Prepare Lecture slides; Description: No Description Provided; Priority: HIGH; Date: 2023-09-30; Progress: NOT_STARTED`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of Add Task](images/addTask.png)
 
 
 > **📖Example 2:**
@@ -817,30 +820,21 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 > **Input:** `viewtasks` Displays all tasks in the user's task list.
 >
 > **Output:**
->`5 tasks listed!`
+>`4 tasks listed!`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of view tasks](images/viewtasks.png)
 
 
 > **📖Example 2:**
 >
-> **Input:** `viewtasks tp/high` Displays only high-priority tasks.
->
-> **Output:**
->`4 tasks listed!`
->
-> [IMAGE COMING SOON]
-
-
-> **📖Example 3:**
->
 > **Input:** `viewtasks d/30/09/2023` Displays tasks due on September 30, 2023.
 >
 > **Output:**
->`4 tasks listed!`
+>`1 tasks listed!`
 >
-> [IMAGE COMING SOON]
-
+> **Output Image:**
+> ![Screenshot of view tasks with date filter](images/viewtasksDate.png)
 
 
 <br>
@@ -880,8 +874,8 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 > **Output:**
 >`Updated Task: Do 2103T; Description: Homework assignment; Priority: HIGH; Date: 2023-10-22; Progress: PENDING`
 >
-> [IMAGE COMING SOON]
-
+> **Output Image:**
+> ![Screenshot of update task progress](images/updateprogress.png)
 
 > **📖Example 2:**
 >
@@ -928,7 +922,8 @@ Format: `deletetask TASK_INDEX`
 > **Output:**
 >`Deleted Task: Do cs2100; Description: Remember mips; Priority: HIGH; Date: 2023-10-22; Progress: DONE`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of delete task](images/deletetask.png)
 
 
 > **📖Example 2:**
@@ -984,12 +979,13 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 > **📖Example 1:**
 >
-> **Input:** `takeattendance n/Alex Yeoh s/5 ap/present` Marks Alex Yeoh as present on the 5th session.
+> **Input:** `takeattendance n/Alex Yeoh s/1 ap/present` Marks Alex Yeoh as present on the 1st session.
 >
 > **Output:**
 >`Attendance taken`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of take attendance](images/takeattendance.png)
 
 
 > **📖Example 2:**
@@ -1037,27 +1033,19 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 > **Output:**
 >`2 sessions listed!`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of view attendance](images/viewattendance.png)
 
 
 > **📖Example 2:**
 >
-> **Input:** `s n/Alex Yeoh` Displays all the sessions that Alex Yeoh has attended.
+> **Input:** `viewattendance n/David Li n/Alex Yeoh` Displays all the sessions that David Li and Alex Yeoh have attended.
 >
 > **Output:**
 >`2 sessions listed!`
 >
-> [IMAGE COMING SOON]
-
-
-> **📖Example 3:**
->
-> **Input:** `viewattendance n/Bernice Yu n/Alex Yeoh` Displays all the sessions that Bernice Yu and Alex Yeoh have attended.
->
-> **Output:**
->`2 sessions listed!`
->
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of view attendance with multiple names](images/viewattendanceMultiple.png)
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -1096,24 +1084,16 @@ Format: `viewassignments STUDENT_INDEX`
 
 <br>
 
+
 > **📖Example 1:**
->
-> **Input:** `viewassignments 1` Shows a list of the 1st student's assignment names, grades and comments.
->
-> **Output:**
->`Showing all assignment details of: Alex Yeoh`
->
-> [IMAGE COMING SOON]
-
-
-> **📖Example 2:**
 >
 > **Input:** `viewassignments 2` shows a list of the 2nd student's assignment names, grades and comments.
 >
 > **Output:**
->`Showing all assignment details of: Betsy Crower`
+>`Showing all assignment details of: Charlotte Oliveiro`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of viewing assignments](images/viewassignments.png)
 
 
 <br>
@@ -1151,12 +1131,13 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 
 > **📖Example 1:**
 >
-> **Input:** `editgrade 1 as/Functional Expressionism g/500` Edits the grade of the 1st student's Functional Expressionism assignment to 500.
+> **Input:** `editgrade 1 as/Rune Trials g/600` Edits the grade of the 1st student's Rune Trial assignment to 600.
 >
 > **Output:**
->`Edited grade to assignment: Functional Expressionism`
+>`Edited grade to assignment: Rune Trials`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of editing grade](images/editgrade.png)
 
 
 > **📖Example 2:**
@@ -1202,12 +1183,13 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 
 > **📖Example 1:**
 >
-> **Input:** `deletegrade 1 as/Functional Expressionism` deletes the 1st student's Functional Expressionism grade if its graded.
+> **Input:** `deletegrade 1 as/Rune Trials` deletes the 1st student's Rune Trials grade if its graded.
 >
 > **Output:**
->`Deleted grade from assignment: Functional Expressionism`
+>`Deleted grade from assignment: Rune Trials`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of delete grade](images/deletegrade.png)
 
 
 > **📖Example 2:**
@@ -1256,12 +1238,13 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 
 > **📖Example 1:**
 >
-> **Input:** `editcomment 1 as/Functional Expressionism c/Decent` Changes the comment on the 1st student's Functional Expressionism assignment to “Decent”.
+> **Input:** `editcomment 1 as/Rune Trials c/Decent` Changes the comment on the 1st student's Rune Trials assignment to “Decent”.
 >
 > **Output:**
->`Edited comment to assignment: Functional Expressionism`
+>`Edited comment to assignment: Rune Trials`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of edit comment](images/editcomment.png)
 
 
 > **📖Example 2:**
@@ -1309,12 +1292,13 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 
 > **📖Example 1:**
 >
-> **Input:** `deletecomment 1 as/Functional Expressionism` Deletes the comment on the 1st student's Functional Expressionism assignment if it exists.
+> **Input:** `deletecomment 1 as/Rune Trials` Deletes the comment on the 1st student's Rune Trials assignment if it exists.
 >
 > **Output:**
->`Deleted comment from assignment: Functional Expressionism`
+>`Deleted comment from assignment: Rune Trials`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of delete comment](images/deletecomment.png)
 
 
 > **📖Example 2:**
@@ -1379,7 +1363,8 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of edit graded test](images/editgradedtest.png)
 
 
 > **📖Example 2:**
@@ -1439,7 +1424,8 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 > **Output:**
 >`New session added: Session: 3; Students: Alex Yeoh; Remark: NA`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of create session](images/createsession.png)
 
 
 > **📖Example 2:**
@@ -1486,9 +1472,10 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 > **Input:** `updatesessionremark s/2 r/Teach Essence of Recursion` Updates the remark for session number 2 to "Teach Essence of Recursion".
 >
 > **Output:**
->`Session remarks updated: Session: 2; Students: Bernice YuCharlotte OliveiroAlex YeohIrfan IbrahimRoy Balakrishnan; Remark: Teach Essence of Recursion`
+>`Session remarks updated: Session: 2; Students: Charlotte Oliveiro David Li Alex Yeoh Irfan Ibrahim Roy Balakrishnan ; Remark: Teach Essence of Recursion`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of update session remark](images/updatesessionremark.png)
 
 
 > **📖Example 2:**
@@ -1534,9 +1521,10 @@ Format: `deletesession s/SESSION_NUMBER`
 > **Input:** `deletesession s/1` Deletes the session with session number 1 from the session list.
 >
 > **Output:**
->`Deleted Session: Session: 1; Students: Bernice YuCharlotte OliveiroDavid LiAlex YeohIrfan IbrahimRoy Balakrishnan; Remark: NA`
+>`Deleted Session: Session: 1; Students: Charlotte Oliveiro David Li Alex Yeoh Irfan Ibrahim Roy Balakrishnan ; Remark: NA`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of delete session](images/deletesession.png)
 
 
 > **📖Example 2:**
@@ -1594,7 +1582,8 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 > **Output:**
 >`New consultation added: Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of create consult](images/createconsult.png)
 
 
 > **📖Example 2:**
@@ -1639,22 +1628,13 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 > **📖Example 1:**
 >
-> **Input:** `addtoconsult 2 n/Betsy Crower` Adds Betsy Crower to the 2nd consultation on the list.
->
-> **Output:**
->`New student(s) added to consultation at index 2: Date: 2023-11-01; Time: 10:00; Students: Betsy Crower, Alex Yeoh`
->
-> [IMAGE COMING SOON]
-
-
-> **📖Example 2:**
->
 > **Input:** `addtoconsult 1 n/David Li n/Roy Balakrishnan` Adds David Li and Roy Balakrishnan to the 1st consultation in the list.
 >
 > **Output:**
 >`New student(s) added to consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, David Li, Alex Yeoh, Roy Balakrishnan`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of add to consult](images/addtoconsult.png)
 
 
 <br>
@@ -1689,12 +1669,13 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 > **📖Example 1:**
 >
-> **Input:** `removefromconsult 2 n/Betsy Crower` Removes Betsy Crower from the 2nd consultation in the list.
+> **Input:** `removefromconsult 1 n/David Li` Removes David Li from the 1st consultation in the list.
 >
 > **Output:**
->`Student(s) removed from consultation at index 2: Date: 2023-11-01; Time: 10:00; Students: Alex Yeoh`
+>`Student(s) removed from consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of remove from consult](images/removefromconsult.png)
 
 
 <br>
@@ -1730,9 +1711,10 @@ Format: `deleteconsult CONSULTATION_INDEX`
 > **Input:** `deleteconsult 1` Deletes the 1st consultation in the consultation list.
 >
 > **Output:**
->`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, Alex Yeoh, Roy Balakrishnan`
+>`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of delete consult](images/deleteconsult.png)
 
 
 [Back to Table of Contents](#table-of-contents)
