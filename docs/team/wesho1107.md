@@ -33,27 +33,42 @@ Below are my contributions to the project:
 
 
 * **Project management**:
+  * Managed release `v1.3 (trial)` and `v1.3.1`
   * Organised Git issues.
   * Reviewed and approved pull requests.
 
 
 * **Enhancements to existing features**:
-  * Changed the user interface for the overall application for better user experience.
-  * Updated commands to switch between corresponding tabs when invoked by user.
+  * Changed the user interface for the overall application for better user experience. ([#130](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/130))
+  * Updated commands to switch between corresponding tabs when invoked by user. ([#148](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/148))
+  * Updated `CommandResult` to store `CommandType` ([#130](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/130))
 
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the Consultation Management Session
-    * Redesigned annotated images for better representation of the UI of the product.
+    * Added documentation for the Consultation Management Session ([#91](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/91))
+    * Redesigned annotated images for better representation of the UI of the product. ([#287](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/287))
 
-  * Developer Guide: To be added
-    * Designed the class diagram for `Consultation`.
+  * Developer Guide:
+    * Designed the class diagram for `Consultation`. ([#91](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/91))
+    * Added implementation details for `createconsult` and `addtoconsult` commands. ([#287](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/287))
+    * Updated sequence diagrams for several features. ([#287](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/287))
 
 
-* **Review/mentoring contributions**: To be added
+* **Review/mentoring contributions**:
+  * PRs reviewed (with non-trivial review comments): [#54](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/54), [#78](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/78)
+  * All code reviews available [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/pulls?q=is%3Apr+reviewed-by%3Awesho1107).
 
-* **Tools**: Java, IntelliJ, FXML, PlantUML
 
-* **Contributions beyond the project team**: To be added
+* **Tools**: 
+  * Java
+  * CSS
+  * Git
+  * IntelliJ
+  * FXML
+  * PlantUML
+
+
+* **Contributions beyond the project team**: 
+  * Helped to identify 12 bugs during practical dry run. PED-Repo available [here](https://github.com/wesho1107/ped).
 
