@@ -1736,8 +1736,47 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 ## FAQ
 
-**Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous F.A.K.E.J.A.R.V.I.S. home folder.
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
+**QNS**: How do I transfer my data to another computer?<br>
+
+**ANS**: You can install the app in the other computer and replace the sample data files with the data files in your previous F.A.K.E.J.A.R.V.I.S. folder.
+
+</md>
+</box>
+
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
+**QNS**: How do I reset all the grades of my student?<br>
+
+**ANS**: You can use the `edit` command and simply input `edit STUDENT_INDEX gt/default`, and all the scores will be set to `-`.
+
+</md>
+</box>
+
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
+**QNS**: How can I efficiently edit my student's graded test score<br>
+
+**ANS**: You can use the `editgradedtest` command to dynamically update your student's graded test scores.
+
+<div class="alert alert-info">
+<md>
+:information_source: **Note**:
+
+* Please refer to [EditGradedTest Command](#editing-a-graded-test-score-editgradedtest) for more information.
+
+</md> 
+</div>
+
+</md>
+</box>
 
 <br>
 
@@ -1746,9 +1785,52 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 <br>
 
-## Known issues
+## Known Issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+<box light>
+<md>
+
+**Issue:** I cannot access F.A.K.E.J.A.R.V.I.S. after using multiple screens on my device. <br>
+* If you move the F.A.K.E.J.A.R.V.I.S. to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen.<br>
+
+**Fix:** 
+* To remedy this issue, simply delete the `preferences.json` file created by F.A.K.E.J.A.R.V.I.S. before running the application again.
+
+<div class="alert alert-info">
+<md>
+:information_source: **Note**: 
+
+* The `preferences.json` file can be found in the folder where you downloaded/saved F.A.K.E.J.A.R.V.I.S. 
+
+</md> </div>
+
+</md>
+</box>
+
+<box light>
+<md>
+
+**Issue:** I cannot add Names, Tags and TelegramHandles with special characters. <br>
+* Names, Tags and TelegramHandles are not able to accept special characters (e.g `Spencer O'Brian`, `Mohan S/O Rohan`, `façade`, `bob.the.best123`).<br>
+
+**Fix:** 
+* As a workaround, you may omit the special characters and input just the alphanumerics.
+* For TelegramHandles, you may replace `.`(dot) with `_`(underscore).
+
+</md>
+</box>
+
+<box light>
+<md>
+
+**Issue:** I cannot add other email domains to the list. <br>
+* Emails are only limited to NUS emails.
+
+**Fix:** 
+* Unfortunately, as of the current of F.A.K.E.J.A.R.V.I.S. we only support NUS emails ending with `@u.nus.edu`. 
+
+</md>
+</box>
 
 <br>
 
