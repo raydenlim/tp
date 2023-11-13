@@ -23,16 +23,22 @@ Given below are my contributions to the project.
   * **Highlights**: As the fields are optional, users can easily modify the scores for individual components of a student's graded test, without having to key in the scores for the unconcerned fields. Moreover, graded test scores can be edited  via the `edit` and `editgradedtest` command.
   * **Credits**: No reuse of code or third-party libraries used.
   
-|                                               **Type**                                               | **Justification**                                                                                                                                                                                                                                                                                 |
-|:----------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <md><code>edit INDEX gt/RA1:0 &#124; RA2:0 &#124; MidTerms:0 &#124; Finals:0 &#124; PE:0</code></md> | <ul><li> **Readability:** The command is more descriptive, making it clear that it is editing a person's graded test.</li><li>**Flexibility:** Users can potentially edit other person-related attributes if needed in the future by extending the command.</li><ul>                              |
-|                              `editgradedtest ra1/0 ra2/0 mt/0 f/0 pe/0`                              | <ul><li> **Conciseness:** It's shorter and easier to type, which can be beneficial if users need to edit graded test scores frequently.</li><li>**Consistency:** If the primary use case for this command is editing graded test scores, it might provide a more streamlined experience.</li><ul> |
+|                                                                **Type**                                                                | **Justification**                                                                                                                                                                                                                                                                                 |
+|:--------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <md><code>gt/RA1:&lt;SCORE> &#124; RA2:&lt;SCORE> &#124; MidTerms:&lt;SCORE> &#124; Finals:&lt;SCORE> &#124; PE:&lt;SCORE></code></md> | <ul><li> **Readability:** The command is more descriptive, making it clear that it is editing a person's graded test.</li><li>**Flexibility:** Users can potentially edit other person-related attributes if needed in the future by extending the command.</li><ul>                              |
+|                                   `editgradedtest ra1/<SCORE> ra2/<SCORE> mt/<SCORE> f/0 pe/<SCORE>`                                   | <ul><li> **Conciseness:** It's shorter and easier to type, which can be beneficial if users need to edit graded test scores frequently.</li><li>**Consistency:** If the primary use case for this command is editing graded test scores, it might provide a more streamlined experience.</li><ul> |
     
 <br>
 
 * **Code contributed**: [raydenlim's RepoSense](https://tinyurl.com/CS2103T15raydenlim)
   <br>
 
+* **Project management**:
+  * Reviewed and approved pull requests
+
+
+* **Enhancements to existing features**:
+  * Enhanced the GUI by appending images next to the email, phone number and telegram fields.
 
 * **Enhancements implemented**:
 
