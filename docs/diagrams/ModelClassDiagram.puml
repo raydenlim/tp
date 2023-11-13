@@ -12,6 +12,10 @@ Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
 Class "<<interface>>\nModel" as Model
 Class TaskListBook
 Class XYZListBook
+note right
+      XYZ denotes Consultation,
+      Person and Session
+end note
 Class GradedTestListBook
 Class ModelManager
 Class UserPrefs
@@ -75,13 +79,13 @@ TaskList -[hidden]right-> J
 
 GradedTestListBook *--> "1" GradedTestList
 GradedTestList --> "~* all" GradedTest
-GradedTest -[hidden]up--> K
-GradedTestList -[hidden]right-> K
+GradedTest -[hidden]up--> I
+GradedTestList -[hidden]right-> I
 
 XYZListBook *--> "1" XYZList
 XYZList --> "~* all" XYZ
 XYZ --> "*" Person
-XYZ -[hidden]up--> I
+XYZ -[hidden]up--> K
 XYZList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
