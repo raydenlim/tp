@@ -105,7 +105,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 <br>
 
 ## How to use the User Guide
-You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
+You may refer to the [**Table of Contents**](#table-of-contents) for easy navigation of the User Guide.
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
 
