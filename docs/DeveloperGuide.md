@@ -957,6 +957,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 
+**Use case: Update task progress**
+
+**MSS**
+
+1.  User requests to update a task progress
+2.  F.A.K.E.J.A.R.V.I.S. updates task progress and display updated progress.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Invalid index provided
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1b. Invalid task progress provided
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1c. Task progress provided is the same as current progress
+
+  * 1c1. F.A.K.E.J.A.R.V.I.S. displays success message.
+
+    Use case ends.
+
+
+
 **Use case: View a person's list of assignments**
 
 **MSS**
