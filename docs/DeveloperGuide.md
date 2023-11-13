@@ -1226,6 +1226,80 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+
+### Creating a session
+
+1. Creating a session with a new session number
+    
+    1. Prerequisites: Student names must exist in address book and no session with the session number given exists.
+    1. Test case: `createsession s/2 n/Alex Yeoh`<br>
+       Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the list of sessions.
+    1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
+       Expected: No new session is created on the second command. Error details shown in the status message.
+    1. Other incorrect create session commands to try: `createsession`, `createsession n/Alex Yeoh`<br>
+        Expected: Similar to previous
+
+### Updating a session remark
+
+1. Updating the remark field of a session
+    1. Prerequisites: Session must exist in the session list.
+    1. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br> 
+        Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
+    1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
+        Expected: No update to any session's remarks. Error details shown in the status message.
+   1. Other incorrect update session remark commands to try: `updatesessionremark`, `updatesessionremark s/1`
+        Expected: Similar to previous.
+
+
+### Deleting a session
+
+1. Deleting a session
+    1. Prerequisites: Session must exist in the session list.
+    1. Test case: `deletesession s/2`<br>
+        Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
+    1. Test case: `deletesession s/2` `deletesession s/2`<br>
+        Expected: No session is deleted on the second command. Error details shown in the status message.
+    1. Other incorrect delete session commands to try: `deletesession`, `deletesession s/x` (where x is a session number that does not exist in the session list)
+        Expected: Similar to previous.
+
+
+### Taking Attendance
+
+1. Taking attendance of a particular student
+    1. Prerequisites: Session must exist in the session list. Student name must exist in address book.
+    1. Test case: `takeattendance s/2 n/David Li ap/present`<br>
+        Expected: David Li is added to the session with session number 2, marking him as present.
+    1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
+        Expected: No attendance is taken. Error details shown in the status message.
+    1. Other incorrect take attendance commands to try: `takeattendance n/David Li ap/present`, `takeattendance n/David Li`
+        Expected: Similar to previous
+1. Taking attendance of multiple students
+    1. Prerequisites: Session must exist in the session list. Student names must exist in address book.
+    1. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
+        Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
+    1. 
+
+### Viewing Attendance
+
+1. Viewing attendance of a particular student
+    1. Prerequisites: Student name must exist in address book.
+    1. Test case: `viewattendance n/Bernice Yu`<br>
+        Expected: All sessions attended by Bernice Yu will be displayed.
+    1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
+        Expected: No filtering will be shown. Error details shown in the status message.
+1. Viewing attendance of multiple students
+    1. Prerequisites: Student names must exist in address book.
+    1. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
+        Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
+    1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+        Expected: No filtering will be shown. Error details shown in the status message.
+1. Viewing overall attendance across all students
+    1. Test case: `viewattendance`<br>
+        Expected: All sessions will be displayed.
+
+
+
+ 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
