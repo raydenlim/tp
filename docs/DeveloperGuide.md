@@ -158,7 +158,7 @@ The Session component consists of the following set of features: Create Session
 The Session Class encompasses several important attributes:
 * `SessionNumber`: This unique identifier helps distinguish one session from another. It is an integral part of the Session class and is a primary key when searching for or referencing sessions within the system.
 
-* `SessionStudents`: An essential component of every session is the list of students participating. The SessionStudents class keeps track of the students present in a particular session. This class allows for efficient management of attendance records and plays a vital role in generating attendance reports.
+* `StudentSet`: An essential component of every session is the list of students participating. The StudentSet class keeps track of the students present in a particular session. This class allows for efficient management of attendance records and plays a vital role in generating attendance reports.
 
 * `SessionRemark`: Sometimes, additional information about a session is necessary, such as special instructions, topics covered, or any other relevant remarks. The SessionRemark field offers the flexibility to include such notes.
 
@@ -174,7 +174,7 @@ Below is a class diagram describing the implementation of `Session` and its resp
 **Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
 - Pros:This choice offers a high degree of flexibility when it comes to adding students to a session. You can add any number of students when creating a session, which is essential for accommodating different class sizes and situations.
 
-**Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
+**Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `StudentSet`, and the other would take an entire `StudentSet` object as an argument.
 - Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach.
 
 By opting for the current choice (Alternative 1), the implementation remains straightforward and user-friendly, allowing for versatile usage scenarios. It ensures that users can efficiently create sessions and add students to them without unnecessary constraints or complications.
@@ -768,7 +768,7 @@ The `EditGradedTestCommand` then continues its execution as defined by [this](#p
   * Pros:
     * Decoupling: Details of interactions between the models are abstracted away.
   * Cons:
-    * Overkill: For a small project like F.A.K.E.J.A.R.V.I.S. this approach may be over-engineered.
+    * Excessive: For a small scaled project like F.A.K.E.J.A.R.V.I.S. this approach may be over-engineered, and adds additional complexity.
     * Overhead: Additional dispatcher class is needed, which may slow down the processing time.
 
 
@@ -781,7 +781,6 @@ The `EditGradedTestCommand` then continues its execution as defined by [this](#p
     
   * Cons:
     * Resource Intensive: Any edits to the Score(s) of a Graded Test will create new `Person` instances, this may be resource-intensive when done in large-scale.
-    * Limited Extensibility: 
 
 * **Alternative 2:** Dynamic Objects i.e update the `GradedTest` found in the `Person` object.
   * Pros:
@@ -789,7 +788,7 @@ The `EditGradedTestCommand` then continues its execution as defined by [this](#p
     * Reduce redundancy: Avoids creating new instance for every change to an Object.
   * Cons: 
     * Mutable Objects: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications during the integration process.
-    * Testing/Maintenance Challenges: Requires extra attention when making test cases, to prevent unintended side effects.
+    * Testing/Maintenance Challenges: Requires extra attention when making test cases to prevent unintended side effects.
 
 
 #### Create Consultation Feature
@@ -1354,7 +1353,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 15: Adding a student to a consultation**
+**Use case 15: Add a student to a consultation**
 
 **MSS**
 
@@ -1492,7 +1491,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 20: Taking the attendance of a student for a session**
+**Use case 20: Take the attendance of a student for a session**
 
 **MSS**
 
@@ -1528,7 +1527,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 21: Viewing the overall attendance of a student**
+**Use case 21: View the overall attendance of a student**
 
 **MSS**
 
@@ -1598,7 +1597,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 4.
 
-* 3f. The given score is invalid.
+* 3f. The given parameter is invalid. (e.g `editgradedtest 1 ra3/<SCORE> pee/<SCORE>`)
 
   * 3f1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
@@ -2096,21 +2095,20 @@ testers are expected to do more *exploratory* testing.
    
 2. **Phone Number Validation**
    * Current Implementation: Currently, any number that is longer than 3 digits are considered valid. It doesn't allow for special characters too.
-   * Enhancement: Introduce a validation mechanism for phone numbers to ensure that entered phone numbers adhere to a specified format. (e.g SG phone number starts with 8 or 9 and have)
+   * Enhancement: Introduce a validation mechanism for phone numbers to ensure that entered phone numbers adhere to a specified format. (e.g SG phone number starts with 8 or 9 and have 8 digits)
    * Reason: To enhance the accuracy of the phone numbers by validating them according to a standard format.
    * Suggested Fixes:
-     * Have a validation regex to check for starting number = 8 or 9 (For SG phone numbers).
+     * Have a validation regex to check for starting number = 8 or 9 and phone number length = 8 (For SG phone numbers).
      * Allow some special characters such as `+` to enable the adding of country codes in the phone number field.
 
 <br>
 
-3. **CSV File to Json Conversion and Vice Versa**
-   * Current Implementation: Currently, data can only be added/edited via the F.A.K.E.J.A.R.V.I.S. app, or directly editing the `.json` file.
-   * Enhancement: Implement the functionality to convert data to and from CSV files, enabling users to conveniently import/export data without manual editing.
-   * Reason: To enhance user convenience and data interchangeability, allowing for seamless integration with external applications that support CSV formats.
+3. **CSV File and Json File Download**
+   * Current Implementation: Currently, there is no download function of `.csv` or `.json` files.
+   * Enhancement: Implement the function to download the data in either a `.csv` or `.json` format, enabling users to conveniently import/export data.
+   * Reason: To enhance user convenience and data interchangeability, allowing for seamless integration with external applications that support `.csv` formats.
    * Suggested Fixes:
-     * Have a `convertCsvToJson` and `convertJsonToCsv` method to convert the files accordingly.
-     * Have a `convertCsvToJson` and `convertJsonToCsv` button on the GUI to convert files with ease.
+     * Have a `downloadCsvDataFile` and `downloadJsonDataFile` method to enable the download of the respectively files.
      
 <br>
 
@@ -2149,15 +2147,6 @@ testers are expected to do more *exploratory* testing.
    * Reason: To allow the Avengers to have a better overview of the student's scores.
    * Suggested Fixes:
      * Have a `getMean`, `getMedian`, `getMode` command to return the Avenger's session's mean, median and mode for the graded tests.
-
-<br>
-
-8. **Dynamic Session Number**
-   * Current Implementation: Session numbers are immutable. (e.g a Session 5 will remain as Session 5 even though Sessions 1-4 are deleted)
-   * Enhancement: Make the session number dynamic, updating automatically to reflect the current session number even after deleting previous sessions.
-   * Reason: To improve the user experience by ensuring that the session number remains accurate and reflective of the current state of the application.
-   * Suggested Fixes: 
-     * Use a similar approach to `STUDENT_INDEX`.
 
 
 ## **Appendix: Effort**
