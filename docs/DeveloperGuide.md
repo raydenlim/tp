@@ -243,7 +243,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
   * Flexibility: This choice offers flexibility in representing the graded tests, allowing for customization (e.g. usage of default value, `-`).
   * Clarity: The string format of `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>` is self-explanatory.
 - Cons:
-  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average, highest, lowest score).
+  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g. average, highest, lowest score).
   * Documentation Issues: The usage of `|` causes conflict with the table notation. Hence, more work is needed to get around this issue in markdown.
 
 **Alternative 2 :** Using floats for graded test score.
