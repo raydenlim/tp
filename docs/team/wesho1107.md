@@ -51,8 +51,10 @@ Below are my contributions to the project:
 
   * Developer Guide:
     * Designed the class diagram for `Consultation`. ([#91](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/91))
-    * Added implementation details for `createconsult` and `addtoconsult` commands. ([#287](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/287))
+    * Added implementation details for `createconsult`, `addtoconsult` and `removefromconsult` commands. ([#287](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/287), [#391](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/391))
     * Updated sequence diagrams for several features. ([#287](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/287))
+    * Added developer guide glossary. ([#325](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/325))
+    * Added use cases for Task Management and Consultation Management. ([#302](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/302), [#323](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/323))
 
 
 * **Review/mentoring contributions**:

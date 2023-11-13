@@ -57,6 +57,9 @@ Below are my contributions to the project:
   * Developer Guide:
     * Added implementation details of the `editgrade`, `deletegrade`, `editcomment`, `deletecomment` and `viewassignments` features.
     * Designed the class diagram for `Assignment`.
+    * Designed the sequence diagram for `viewassignments` and `editgrade`.
+    * Update mistake in `EditCommand` UML sequence diagram
+    * Added some use cases
 
 
 * **Review/mentoring contributions**:
