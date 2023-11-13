@@ -408,16 +408,6 @@ For the list of tab indexes to use:
 >
 > [IMAGE COMING SOON]
 
-<br>
-
-#### 👀Viewing Help : `help`
-
-You can view a message explaining how to access the help page, if you require assistance in understanding the commands and their formats.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
-
 
 <br>
 
