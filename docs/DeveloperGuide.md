@@ -117,12 +117,12 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-T15-1/tp/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="600" />
 
 
 The `Model` component,
 
-* stores the F.A.K.E.J.A.R.V.I.S. data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` objects respectively).
+* stores the F.A.K.E.J.A.R.V.I.S. data i.e., all `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (which are contained in a `UniquePersonList`, `TaskList`, `SessionList`, `GradedTestList` and `ConsultationList` object respectively. The `XYZ` here is used as a placeholder to denote the Components that handle `Person`, `Session` and `Consultation`).
 * stores the currently 'selected' `Person`, `Task`, `Session`, `GradedTest` and `Consultation` objects (e.g., results of a search query) as separate _filtered_ lists which are exposed to outsiders as unmodifiable `ObservableList<XYZ>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` object.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
@@ -136,7 +136,7 @@ The `Model` component,
 <puml src="diagrams/StorageClassDiagram.puml" width="550" />
 
 The `Storage` component,
-* can save both F.A.K.E.J.A.R.V.I.S. data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both F.A.K.E.J.A.R.V.I.S. data and user preference data in JSON format, and read them back into corresponding objects. (`XYZ` is a placeholder that denotes `ConsultationList`, `AddressBook` and `SessionList`)
 * inherits from `AddressBookStorage`, `ConsultationListStorage`, `GradedTestListStorage`, `SessionListStorage`, `TaskListStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 * contains data that is separated into distinct files, each catering to specific functionalities, which minimises the impact of potential corruption. Corruption in one set of data does not propagate to others, reinforcing the integrity of the data.
@@ -1540,20 +1540,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-  1. Download the jar file and copy into an empty folder
+2. Download the jar file and copy into an empty folder
 
-  1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+3. Double-click the jar file Expected: Shows the GUI with a set of sample data. The window size will be maximised.
 
-1. Saving window preferences
-
-  1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-  1. Re-launch the app by double-clicking the jar file.<br>
-     Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Students
+
+#### Deleting a student
 
 1. Deleting a person while all persons are being shown
 
@@ -1726,6 +1722,163 @@ testers are expected to do more *exploratory* testing.
        Expected: No consultation is updated on the second command. Error details shown in the status message.
     1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
        Expected: Similar to previous.
+
+
+### Task
+
+#### Adding tasks
+
+1. Adding a task with _valid parameters_
+   1. Prerequisites: 
+      1. There is no other task with the same name and description.
+   2. Test case: `addtask tn/finish up user guide td/please by tonight d/14/11/2023 tp/high` <br>
+   Expected: Task is added.
+
+2. Adding a task with _invalid name_
+   1. Test case: `addtask tn/--` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Name should only consist of alphanumeric characters.
+
+3. Adding a task with _invalid description_
+    1. Test case: `addtask tn/do up developer guide td/the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Description should be less than 100 characters.
+
+4. Adding a task with _invalid date_
+    1. Test case: `addtask tn/test number 4 td/test number 4 please work d/29/02/2023` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Date should be a valid date that exists in the calendar. 
+
+5. Adding a task with _invalid priority_
+    1. Test case: `addtask tn/test number 5 td/test number 5 please work d/27/02/2023 tp/asdasdsa` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Priority should only be `HIGH`, `MEDIUM`, or `LOW`.
+
+
+
+#### Viewing tasks
+
+1. Listing all tasks with _no filters_
+    1. Prerequisites:
+        1. There are multiple tasks in the task list which have been added using the `AddTask` command. 
+    2. Test case: `viewtasks` <br>
+       Expected: Displays all the tasks in the task list.
+
+2. Listing tasks filtered using _date filter_
+    1. Prerequisites:
+        1. There are tasks that have the date `22/10/2023`.
+    2. Test case: `viewtasks d/22/10/2023` <br>
+       Expected: Displays all the tasks in the task list that have the date `22/10/2023`.
+
+3. Listing tasks filtered using _name filter_
+    1. Prerequisites:
+        1. There are tasks that have the keywords `user guide` in the Task Name.
+    2. Test case: `viewtasks tn/user guide` <br>
+       Expected: Displays all the tasks in the task list that have `user guide` in the Task Name.
+
+4. Listing tasks filtered using _description filter_
+    1. Prerequisites:
+        1. There are tasks that have the keywords `homework` in the Task Description.
+    2. Test case: `viewtasks td/homework` <br>
+       Expected: Displays all the tasks in the task list that have `homework` in the Task Description.
+
+5. Listing tasks filtered using _priority filter_
+    1. Prerequisites:
+        1. There are tasks that have `HIGH` priority.
+    2. Test case: `viewtasks tp/HIGH` <br>
+       Expected: Displays all the tasks in the task list that have `HIGH` priority.
+
+6. Listing tasks filtered using _progress filter_
+    1. Prerequisites:
+        1. There are tasks that have `PENDING` progress.
+    2. Test case: `viewtasks tprog/PENDING` <br>
+       Expected: Displays all the tasks in the task list that have `PENDING` progress.
+
+7. Listing all tasks with no tasks in the task list
+    1. Prerequisites:
+        1. There are no tasks in the task list. 
+    2. Test case: `viewtasks tprog/PENDING` <br>
+       Expected: No tasks will be shown.
+
+8. Listing all tasks with _invalid parameters_
+    1. Test case: `viewtasks tprog/asdasdasd`
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
+
+
+#### Updating progress of tasks
+
+1. Updating progress of a task as _pending_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/PENDING` <br>
+       Expected: Updates the task's progress to `PENDING`. 
+
+2. Updating progress of a task as _not_started_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/NOT_STARTED` <br>
+       Expected: Updates the task's progress to `NOT_STARTED`.
+
+3. Updating progress of a task as _done_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/DONE` <br>
+       Expected: Updates the task's progress to `DONE`.
+
+4. Updating progress of a task as an _invalid parameter_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/asdasdasdsad` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Progress is not updated. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`.
+
+5. Updating progress of a task with a non-integer index.
+    1. Test case: `updateprogress abcd tprog/DONE` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be a positive integer.
+
+6. Updating progress of a task with a negative index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown. 
+    2. Test case: `updateprogress -1 tprog/DONE` <br>
+        Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be an integer.
+
+7. Updating progress of a task with an out-of-bounds index.
+    1. Prerequisite:
+       1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+    2. Test case: `updateprogress [X + 1] tprog/DONE` <br>
+          Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Progress is not updated. <br> Reason: Index must be within the range of the size of the task list.
+
+8. Updating progress of a task without an index.
+    1. Test case: `updateprogress tprog/DONE` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must not be blank.
+
+
+#### Deleting a task
+
+1. Deleting the first task currently shown in the task list.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask 1` <br>
+       Expected: First task is deleted.
+
+2. Deleting the task with a non-integer index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask wasd` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be an integer.
+
+3. Deleting the task with an out-of-bounds index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+    2. Test case: `deletetask [X + 1]` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Task is not deleted. <br> Reason: Index must be within the range of the size of the task list.
+
+4. Deleting the task with a negative index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask -1` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be a positive integer.
+
+5. Deleting the task without an index.
+    1. Test case: `deletetask` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must not be blank.
+
+
 
 ### Saving data
 
