@@ -1463,7 +1463,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Creating a consultation with specified date, time and student(s).
 
-    1. Prerequisites: Date and time inputs must be valid and student names must exist in address book. There must not be a duplicate consultations (same date, time and students).
+    1. Prerequisites: Date and time inputs must be valid and student names must exist in address book. There must not be a duplicate consultation (same date, time and students).
     1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
        Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
     1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
