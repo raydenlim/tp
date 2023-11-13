@@ -1378,12 +1378,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Attendance**: Feature for tracking and recording student attendance in Sessions.
 * **Avenger**: A tutor or teacher of the module CS1101S: Programming Methodology.
 * **Command**: An instruction given by an Avenger to perform specific actions within the application.
+* **Command Line Interface (CLI)**: A text-based user interface (UI) used to run programs, manage computer files and interact with the computer.
 * **Consultation**: A scheduled meeting between an Avenger and students for academic discussions.
 * **Graded Test**: An assessment or test assigned to students with a score.
+* **Graphical User Interface (GUI)**: A digital interface in which a user interacts with graphical components.
 * **Logic Component**: Manages the execution of commands and the application's logic processing.
 * **MainWindow**: The primary window of the UI, containing other UI parts.
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Model Component**: Manages and stores the application data in memory.
+* **NUS**: National University of Singapore.
 * **Private contact detail**: A contact detail that is not meant to be shared with others.
 * **Session**: A class or tutorial organized by an Avenger.
 * **Session Number**: A unique identifier for each Session, used for organising and referencing Sessions.
