@@ -60,6 +60,8 @@ Below are my contributions to the project:
     * Designed the sequence diagram for `viewassignments` and `editgrade`.
     * Update mistake in `EditCommand` UML sequence diagram
     * Added some use cases
+    * Added tests for assignment related features into the Instructions for Manual Testing section
+    * Added the Appendix: Effort section
 
 
 * **Review/mentoring contributions**:
