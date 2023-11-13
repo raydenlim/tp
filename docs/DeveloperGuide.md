@@ -271,12 +271,31 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
   * Clarity and Readability: A well-defined object provides clarity and improves the readability of the code, making it easier to understand.
 - Cons:
   * Less Flexibility: All 5 fields, `ra1, ra2, midterms, finals, pe` needs to be present at all times. Need to create 5 objects for 1 graded test.
-  * Logging/Documentation: Additional parsing is needed to properly store these fields in the json file properly.
+  * Logging/Documentation: Additional parsing is needed to store these fields in the json file properly.
 
 **Alternative 3 (current choice):** Use both Strings and Structured Objects for Graded Test Calculators.
 - Pros:
   * Type Safety Utilization: Ensures type safety with objects and allows the use of strings for flexibility. We can take advantage of the strings to enable the use of `default` values.
-  * Robust Testing: Better bug identification, as the two constructors check each other.
+  * Robust Testing: Better bug identification, as the two constructors can check each other, since there are 2 constructors that creates the GradedTest Object.
+  
+<box type="definition" light>
+  Example:
+
+```java
+// Using Structured Object Constructor
+GradedTest testFromObjects = new GradedTest(
+        new ReadingAssessment1("90"), new ReadingAssessment2("85"),
+        new MidTerms("75"), new Finals("80"), new PracticalExam("95")
+        );
+
+// Using String Constructor
+GradedTest testFromString = new GradedTest("RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95");
+
+// Check if both objects are equal
+assertEquals(testFromObjects, testFromString);
+```
+</box>
+
 - Cons:
   * Extra caution is needed to ensure that both these constructors are compatible with one another. 
 
@@ -284,7 +303,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 
 **Aspect 3: How to store graded test scores for individuals:**
 
-**Alternative 1(current choice):** Piggy back on the Person Object.
+**Alternative 1(current choice):** Edit the graded test field directly on the Person Object.
 - Pros:
   * Coherence: Graded test information is closely associated with the person(student) it belongs to.
   * Simplicity: Simplifies the overall structure by leveraging the existing Person object.
@@ -302,12 +321,12 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 
 **Aspect 4: How to initialise a graded test instance for users:**
 
-**Alternative 1:** Piggy back on the Person methods via the `AddCommand` and `EditCommand` class, with `add` and `edit` respectively.
+**Alternative 1:** Use the Person methods via the `AddCommand` and `EditCommand` class, with `add` and `edit` respectively.
 - Pros:
   * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`.
   * Object safety: Building on Aspect 3, since all objects are `private final` and hence immutable, any edits/updates to the person's object will not cause issues to the graded test, as the Person parser logic will handle the new Person object creation.
 - Cons: 
-  * Annoying: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
+  * Inflexibility: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
 
 - For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`. 
 

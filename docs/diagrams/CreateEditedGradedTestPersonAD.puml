@@ -4,6 +4,10 @@
 start
 if () then ([existingGradedTest is null])
     :Create new GradedTest;
+    note left
+      The new GradedTest
+      has default values of `-`
+    end note
 else ([else])
     :Use existingGradedTest;
 endif
