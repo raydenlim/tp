@@ -58,6 +58,8 @@ Given below are my contributions to the project.
         * Fixed bugs located after the Practical dry run ([#214](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/214))
         * Updated the User Guide to be more user-centric ([#238](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/238))
         * Fixed a bug where the user guide was unable to render markdown within the div elements ([#152](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/152))
+        * Took screenshots of the outputs and formatted the entire user guide by adding page breaks in relevant locations ([#309](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/309))
+        * Fixed general bugs related to the User Guide ([#295](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/295))
 
     * Developer Guide:
         * Added implementation details of the `addtask`, `deletetask`, `viewtasks` and `updatetaskprogress` features. ([#128](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/128))
@@ -67,6 +69,7 @@ Given below are my contributions to the project.
         * Added UML sequence diagram for `EditCommand`. ([#252](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/252))
         * Updated the common sections like the `Model` inherited from AB3. ([#252](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/252))
         * Added some non-functional requirements and use cases ([#47](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/47), [#31](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/31))
+        * Updated the Manual Testing section in the appendix, Model and Storage class diagrams ([#311](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/311))
 
 
 * Some examples of UML diagrams:
@@ -87,6 +90,7 @@ Given below are my contributions to the project.
     * Git
     * CSS
     * Markdown
+    * MarkBind
 
 
 * **Contributions beyond the project team**:
