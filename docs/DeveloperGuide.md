@@ -983,7 +983,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case: Add a task**
+**Use case 2: Add a task**
 
 **MSS**
 
@@ -1007,7 +1007,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Delete a task**
+**Use case 3: Delete a task**
 
 **MSS**
 
@@ -1030,7 +1030,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: View list of tasks**
+**Use case 4: View list of tasks**
 
 **MSS**
 
@@ -1064,7 +1064,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 
-**Use case: Update task progress**
+**Use case 5: Update task progress**
 
 **MSS**
 
@@ -1095,7 +1095,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-**Use case: View a person's list of assignments**
+**Use case 6: View a person's list of assignments**
 
 **MSS**
 
@@ -1119,7 +1119,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case: Edit the grade of an assignment**
+**Use case 7: Edit the grade of an assignment**
 
 **MSS**
 
@@ -1155,7 +1155,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case 5: Delete the grade of an assignment**
+**Use case 8: Delete the grade of an assignment**
 
 **MSS**
 
@@ -1190,7 +1190,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case 6: Edit the comment on an assignment**
+**Use case 9: Edit the comment on an assignment**
 
 **MSS**
 
@@ -1225,7 +1225,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case 7: Delete the comment of an assignment**
+**Use case 10: Delete the comment of an assignment**
 
 **MSS**
 
@@ -1260,7 +1260,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case 8: Find Student Profile**
+**Use case 11: Find Student Profile**
 
 **MSS**
 
@@ -1283,7 +1283,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: Filter Results**
+**Use case 12: Filter Results**
 
 **MSS**
 
@@ -1307,7 +1307,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case 9: Create a consultation**
+**Use case 13: Create a consultation**
 
 **MSS**
 
@@ -1337,7 +1337,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 10: Delete a consultation**
+**Use case 14: Delete a consultation**
 
 **MSS**
 
@@ -1355,7 +1355,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 11: Adding a student to a consultation**
+**Use case 15: Adding a student to a consultation**
 
 **MSS**
 
@@ -1385,7 +1385,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 12: Removing a student from a consultation**
+**Use case 16: Removing a student from a consultation**
 
 **MSS**
 
@@ -1421,7 +1421,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 13: Create a session**
+**Use case 17: Create a session**
 
 **MSS**
 
@@ -1450,7 +1450,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case 14: Update a session's remarks**
+**Use case 18: Update a session's remarks**
 
 **MSS**
 
@@ -1475,7 +1475,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-**Use case: Delete a session**
+**Use case 19: Delete a session**
 
 **MSS**
 
@@ -1493,7 +1493,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 16: Taking the attendance of a student for a session**
+**Use case 20: Taking the attendance of a student for a session**
 
 **MSS**
 
@@ -1529,7 +1529,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 17: Viewing the overall attendance of a student**
+**Use case 21: Viewing the overall attendance of a student**
 
 **MSS**
 
@@ -1552,7 +1552,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case 18: Edit the score(s) of a graded test**
+**Use case 22: Edit the score(s) of a graded test**
 
 **MSS**
 
@@ -1862,10 +1862,10 @@ testers are expected to do more *exploratory* testing.
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given score is invalid.
 
 10. Edit the score(s) of a graded test with _multiple invalid scores_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
+    1. Prerequisites:
+       1. There is at least 1 student being displayed in the students list.
+    2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
 
 ### Creating a consultation
 
