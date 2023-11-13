@@ -105,7 +105,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 <br>
 
 ## How to use the User Guide
-You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
+You may refer to the [**Table of Contents**](#table-of-contents) for easy navigation of the User Guide.
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
 
@@ -268,7 +268,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 * Items in square brackets are **optional**.<br>
-  e.g `tn/TASK_NAME [td/do before feedback]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
+  e.g `tn/TASK_NAME [td/TASK_DESCRIPTION]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
 
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
@@ -348,7 +348,7 @@ This section describes commands that fit in no special category.
 
 #### 👀Viewing help : `help`
 
-You can view a message explaining how to access the help page if you require assistance in understanding the commands and their formats.
+You can view a message detailing how to access the user guide if you require assistance in understanding the different commands and their formats.
 
 ![help message](images/helpMessage.png)
 
@@ -427,19 +427,23 @@ Format: `exit`
 
 #### 💾Saving the Data
 
-F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save data manually.
+F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save the data manually.
 
 
 <br>
 
 #### 🛠️Editing the Data File
 
-F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
+F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JavaScript Object Notation (JSON) file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update the data directly by editing that data file.
 
-**Caution:**
-If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
-</box>
 
+<div class="alert alert-warning">
+<md>
+:warning: 
+
+**Caution**:
+* If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run. Hence, it is recommended to make a backup of the file before editing it.
+</md></div>
 
 <br>
 
@@ -464,7 +468,7 @@ This section describes commands that help you manage your students.
 You can add a student to F.A.K.E.J.A.R.V.I.S. if you need to keep track of new students.
 
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TEST]`
 
 |  **Parameter**  |                       **Description**                       |
 |:---------------:|:-----------------------------------------------------------:|
@@ -473,7 +477,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 |      EMAIL      |              The email address of the student.              |
 | TELEGRAM_HANDLE |             The telegram handle of the student.             |
 |       TAG       |            The tags associated with the student.            |
-|  GRADED_TESTS   | The scores of the graded tests associated with the student. |
+|   GRADED_TEST   | The scores of the graded tests associated with the student. |
 
 <br>
 
@@ -545,7 +549,7 @@ Format: `list`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S. if you need to make changes to a student's information.
 
-Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
+Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TEST]`
 
 |  **Parameter**  |                         **Description**                         |
 |:---------------:|:---------------------------------------------------------------:|
@@ -555,7 +559,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 |      EMAIL      |              The new email address of the student.              |
 | TELEGRAM_HANDLE |             The new telegram handle of the student.             |
 |       TAG       |            The new tags associated with the student.            |
-|  GRADED_TESTS   | The new scores of the graded tests associated with the student. |
+|   GRADED_TEST   | The new scores of the graded tests associated with the student. |
 
 <br>
 
@@ -564,7 +568,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 * Edits the person at the specified `STUDENT_INDEX`.
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
+* At least one of the optional fields must be provided. (i.e `NAME`, `PHONE`, `EMAIL`, `TELEGRAM_HANDLE`, `TAG`, `GRADED_TEST`)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * The format for `gt/` is `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>`, where `<SCORE>` **must be a positive float**.
@@ -753,7 +757,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 |    TASK_NAME     |                        The name of the task.                        |
 | TASK_DESCRIPTION |                    The description of the task.                     |
 |     DUE_DATE     |                The due date or deadline of the task.                |
-|  TASK_PRIORITY   | The priority level of the task. Given as `high`, `medium` or `low`. |
+|  TASK_PRIORITY   | The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`. |
 
 <br>
 
@@ -791,8 +795,8 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 |    TASK_NAME     |                            The name of the task.                             |
 | TASK_DESCRIPTION |                         The description of the task.                         |
 |     DUE_DATE     |                    The due date or deadline of the task.                     |
-|  TASK_PRIORITY   |     The priority level of the task. Given as `high`, `medium` or `low`.      |
-|  TASK_PROGRESS   | The progress level of the task. Given as `done`, `pending` or `not_started`. |
+|  TASK_PRIORITY   |     The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`.      |
+|  TASK_PROGRESS   | The progress level of the task. Given as `DONE`, `PENDING` or `NOT_STARTED`. |
 
 <br>
 
@@ -855,7 +859,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 | **Parameter** |                                  **Description**                                  |
 |:-------------:|:---------------------------------------------------------------------------------:|
 |  TASK_INDEX   |                   The index of the task to update the progress.                   |
-| NEW_PROGRESS  | The new progress level of the task. Given as `done`, `pending`, or `not_started`. |
+| NEW_PROGRESS  | The new progress level of the task. Given as `DONE`, `PENDING`, or `NOT_STARTED`. |
 
 <br>
 
@@ -965,7 +969,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 |:--------------:|:---------------------------------------------------------------------:|
 |  STUDENT_NAME  |                       The name of the student.                        |
 | SESSION_NUMBER |                  The session number of the session.                   |
-|    PRESENCE    | The attendance status of the student. Given as `present` or `absent`. |
+|    PRESENCE    | The attendance status of the student. Given as `PRESENT` or `ABSENT`. |
 
 <br>
 
@@ -1337,7 +1341,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 You can edit your student's graded test scores if you need to make adjustments or corrections to their initially recorded test scores.
 
-Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
+Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
 [pe/PRACTICAL_EXAM] `
 
 |    **Parameter**     |                   **Description**                    |
@@ -1359,7 +1363,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The order of the graded test field(s) does not matter.
-* At least 1 graded test field must be present after the `INDEX`.
+* At least one of the optional fields must be provided. (i.e `READING_ASSESSMENT_1`, `READING_ASSESSMENT_2`, `MIDTERMS`, `FINALS`, `PRACTICAL_EXAM`)
 
 </md>
 </div>
@@ -1736,8 +1740,47 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 ## FAQ
 
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous F.A.K.E.J.A.R.V.I.S. home folder.
+
+**A**: You can install the app in the other computer and replace the sample data files with the data files in your previous F.A.K.E.J.A.R.V.I.S. folder.
+
+</md>
+</box>
+
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
+**Q**: How do I reset all the grades of my student?<br>
+
+**A**: You can use the `edit` command and enter the following: `edit STUDENT_INDEX gt/default`, and all the scores will be set to `-`.
+
+</md>
+</box>
+
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
+**Q**: How can I efficiently edit my student's graded test score<br>
+
+**A**: You can use the `editgradedtest` command to dynamically update your student's graded test scores.
+
+<div class="alert alert-info">
+<md>
+:information_source: **Note**:
+
+* Please refer to [EditGradedTest Command](#editing-a-graded-test-score-editgradedtest) for more information.
+
+</md> 
+</div>
+
+</md>
+</box>
 
 <br>
 
@@ -1746,9 +1789,52 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 <br>
 
-## Known issues
+## Known Issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+<box light>
+<md>
+
+**Issue:** I cannot access F.A.K.E.J.A.R.V.I.S. after using multiple screens on my device. <br>
+* If you move the F.A.K.E.J.A.R.V.I.S. to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen.<br>
+
+**Fix:** 
+* To solve this issue, simply delete the `preferences.json` file created by F.A.K.E.J.A.R.V.I.S. before running the application again.
+
+<div class="alert alert-info">
+<md>
+:information_source: **Note**: 
+
+* The `preferences.json` file can be found in the folder where you downloaded/saved F.A.K.E.J.A.R.V.I.S. 
+
+</md> </div>
+
+</md>
+</box>
+
+<box light>
+<md>
+
+**Issue:** I cannot add Names, Tags and TelegramHandles with special characters. <br>
+* Names, Tags and TelegramHandles are not able to accept special characters (e.g `Spencer O'Brian`, `Mohan S/O Rohan`, `façade`, `bob.the.best123`).<br>
+
+**Fix:** 
+* As a workaround, you may omit the special characters and input just the alphanumeric characters.
+* For TelegramHandles, you may replace `.`(dot) with `_`(underscore).
+
+</md>
+</box>
+
+<box light>
+<md>
+
+**Issue:** I cannot add other email domains to the list. <br>
+* Emails are only limited to NUS emails.
+
+**Fix:** 
+* Unfortunately, as of the current version of F.A.K.E.J.A.R.V.I.S. we only support NUS emails ending with `@u.nus.edu`. 
+
+</md>
+</box>
 
 <br>
 
@@ -1770,13 +1856,13 @@ Format: `deleteconsult CONSULTATION_INDEX`
 <br>
 
 ### Student commands
-|     **Action**     |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
-|:------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
-|  **Add Student**   |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
-| **List Students**  |                                                              `list`                                                              | `list`                                                                                                                             |
-|  **Edit Student**  |               `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`               | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
-|  **Find Student**  |                                                  `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
-| **Delete Student** |                                                      `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
+|     **Action**     |                                                           **Format**                                                            | <center>**Examples**</center>                                                                                                      |
+|:------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
+|  **Add Student**   |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TEST]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
+| **List Students**  |                                                             `list`                                                              | `list`                                                                                                                             |
+|  **Edit Student**  |              `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`               | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
+|  **Find Student**  |                                                 `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
+| **Delete Student** |                                                     `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
 
 <br>
 
@@ -1846,7 +1932,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 <br>
 
 ## Encountering Errors
-This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
+If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to this section for troubleshooting advice. This section aims to help you better understand the messages that you may receive and what it means to you. If the issue persists, please contact support (see next section).
 
 |                                    **Error**                                    | <center>**What it means**</center>                                                                                                                  | <center>**How to resolve**</center>                                                                                                                           |
 |:-------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1859,3 +1945,7 @@ This section outlines a list of error messages that you may encounter during you
 |                    **Time needs to be in the format HH:mm.**                    | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                    |
 
 [Back to Table of Contents](#table-of-contents)
+
+
+## Contacting Support
+If you need further assistance with F.A.K.E.J.A.R.V.I.S. please contact our support team at `support@fakejarvis.org`.
