@@ -173,6 +173,7 @@ Below is a class diagram describing the implementation of `Session` and its resp
 
 **Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
 - Pros:This choice offers a high degree of flexibility when it comes to adding students to a session. You can add any number of students when creating a session, which is essential for accommodating different class sizes and situations.
+
 **Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
 - Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach.
 
@@ -895,25 +896,26 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                                                 | So that I can…​                                                        |
-|----------|--------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions                                       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | organised Avenger                          | add a new person                                             |                                                                        |
-| `* * *`  | organised Avenger                          | delete a person                                              | remove entries that I no longer need                                   |
-| `* * *`  | curious Avenger                            | find a person by name                                        | locate details of persons without having to go through the entire list |
-| `* * *`  | busy Avenger                               | keep track of what needs to be done                          | better guide my students                                               |
-| `* * *`  | conscientious avenger                      | view my students' grades and comments for their assignments  | better assess my students' competency.                                 |
-| `* * *`  | unorganised avenger                        | edit or delete my student's assignment grades and comments   | organise their progress better.                                        |
-| `* * *`  | responsible Avenger                        | create a new consultation with students                      | keep track of when and with who the consultation is held               |
-| `* * *`  | accommodating Avenger                      | add students to an existing consultation                     | invite more students to join a consultation discussion                 |
-| `* * *`  | responsible Avenger                        | easily track and record my student's attendance              | conduct attendance taking more efficiently                             |
-| `* * *`  | conscientious Avenger                      | view my students' attendance                                 | easily identify any sessions that they may have missed                 |
-| `* * *`  | organised Avenger                          | create tutorial sessions with students                       | keep track of students who have attended each session                  |
-| `* * *`  | reflective Avenger                         | store insightful remarks on each session                     | improve my teaching methods                                            |
-| `* *`    | responsible Avenger                        | store my students' Telegram contacts                         | easily contact them                                                    |
-| `* *`    | careless Avenger                           | delete sessions that were wrongly created                    | clean up my list of sessions                                           |
-| `* *`    | careful Avenger                            | hide private contact details                                 | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                                         | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                                | So that I can…​                                                         |
+|----------|--------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                                      | refer to instructions when I forget how to use the App.                 |
+| `* * *`  | organised Avenger                          | add a new person                                            | keep track of my student's details.                                     |
+| `* * *`  | organised Avenger                          | delete a person                                             | remove entries that I no longer need.                                   |
+| `* * *`  | curious Avenger                            | find a person by name                                       | locate details of persons without having to go through the entire list. |
+| `* * *`  | busy Avenger                               | keep track of what needs to be done                         | better guide my students.                                               |
+| `* * *`  | conscientious avenger                      | view my students' grades and comments for their assignments | better assess my students' competency.                                  |
+| `* * *`  | unorganised avenger                        | edit or delete my student's assignment grades and comments  | organise their progress better.                                         |
+| `* * *`  | responsible Avenger                        | create a new consultation with students                     | keep track of when and with who the consultation is held.               |
+| `* * *`  | accommodating Avenger                      | add students to an existing consultation                    | invite more students to join a consultation discussion.                 |
+| `* * *`  | responsible Avenger                        | easily track and record my student's attendance             | conduct attendance taking more efficiently.                             |
+| `* * *`  | conscientious Avenger                      | view my students' attendance                                | easily identify any sessions that they may have missed.                 |
+| `* * *`  | organised Avenger                          | create tutorial sessions with students                      | keep track of students who have attended each session.                  |
+| `* * *`  | efficient Avenger                          | view my student's Graded Test at a glance                   | more effectively keep track of their performance.                       |
+| `* * *`  | reflective Avenger                         | store insightful remarks on each session                    | improve my teaching methods.                                            |
+| `* *`    | responsible Avenger                        | store my students' Telegram contacts                        | easily contact them.                                                    |
+| `* *`    | careless Avenger                           | delete sessions that were wrongly created                   | clean up my list of sessions.                                           |
+| `* *`    | careful Avenger                            | hide private contact details                                | minimize chance of someone else seeing them by accident.                |
+| `*`      | user with many persons in the address book | sort persons by name                                        | locate a person easily.                                                 |
 
 *{More to be added}*
 
@@ -921,7 +923,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `F.A.K.E.J.A.R.V.I.S.` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case 1: Delete a person**
 
 **MSS**
 
@@ -945,7 +947,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Delete a task**
+**Use case 2: Delete a task**
 
 **MSS**
 
@@ -969,7 +971,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: View a person's list of assignments**
+**Use case 3: View a person's list of assignments**
 
 **MSS**
 
@@ -992,7 +994,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: Edit the grade of an assignment**
+**Use case 4: Edit the grade of an assignment**
 
 **MSS**
 
@@ -1028,7 +1030,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Delete the grade of an assignment**
+**Use case 5: Delete the grade of an assignment**
 
 **MSS**
 
@@ -1063,7 +1065,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Edit the comment on an assignment**
+**Use case 6: Edit the comment on an assignment**
 
 **MSS**
 
@@ -1098,7 +1100,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Delete the comment of an assignment**
+**Use case 7: Delete the comment of an assignment**
 
 **MSS**
 
@@ -1133,7 +1135,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Find Student Profile**
+**Use case 8: Find Student Profile**
 
 **MSS**
 
@@ -1180,7 +1182,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Create a consultation**
+**Use case 9: Create a consultation**
 
 **MSS**
 
@@ -1210,7 +1212,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Delete a consultation**
+**Use case 10: Delete a consultation**
 
 **MSS**
 
@@ -1228,7 +1230,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Adding a student to a consultation**
+**Use case 11: Adding a student to a consultation**
 
 **MSS**
 
@@ -1258,7 +1260,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Removing a student from a consultation**
+**Use case 12: Removing a student from a consultation**
 
 **MSS**
 
@@ -1294,7 +1296,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Create a session**
+**Use case 13: Create a session**
 
 **MSS**
 
@@ -1323,7 +1325,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: Update a session's remarks**
+**Use case 14: Update a session's remarks**
 
 **MSS**
 
@@ -1348,7 +1350,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
     
-**Use case: Delete a session**
+**Use case 15: Delete a session**
 
 **MSS**
 
@@ -1366,7 +1368,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Taking the attendance of a student for a session**
+**Use case 16: Taking the attendance of a student for a session**
 
 **MSS**
 
@@ -1402,7 +1404,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: Viewing the overall attendance of a student**
+**Use case 17: Viewing the overall attendance of a student**
 
 **MSS**
 
@@ -1425,6 +1427,64 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+**Use case 8: Edit the score(s) of a graded test**
+
+**MSS**
+
+1.  User requests to list persons.
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons.
+3.  User requests to edit the score(s) of a graded test for a specific person in the list.
+4.  F.A.K.E.J.A.R.V.I.S. edits score(s) of the person's graded test.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3b. The parameter(s) given is/are invalid.
+
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3c. Extra parameter(s) is/are given (e.g `editgradedtest 1 ra1/<SCORE> ra2/<SCORE> mt/<SCORE> f/<SCORE> pe/<SCORE> ra1/<SCORE>`)
+
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3d. Fewer parameter(s) is/are given (e.g `editgradedtest 1 ra1/<SCORE> ra2/<SCORE>`)
+
+  * 3d1. F.A.K.E.J.A.R.V.I.S. shows an success message.
+
+    Use case resumes at step 4.
+
+* 3e. The parameter(s) are in different order (e.g `editgradedtest 1 ra1/<SCORE> pe/<SCORE> f/<SCORE> ra2/<SCORE> mt/<SCORE>`)
+
+  * 3e1. F.A.K.E.J.A.R.V.I.S. shows an success message.
+
+    Use case resumes at step 4.
+
+* 3f. The given score is invalid.
+
+  * 3f1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3g. The given score is invalid.
+
+  * 3g1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
 
 
 *{More to be added}*
