@@ -1226,6 +1226,53 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Creating a consultation
+
+1. Creating a consultation with specified date, time and student(s).
+
+    1. Prerequisites: Date and time inputs must be valid and student names must exist in address book. There must not be a duplicate consultations (same date, time and students).
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
+       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
+    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+       Expected: No new consultation is created on the second command. Error details shown in the status message.
+    1. Other invalid create consultation commands to try: `createconsult` (missing fields), `createconsult n/Alex Yeoh`, `createconsult d/10/11/2023 tt/13:60 n/Bernice Yu` (invalid time), `createconsult d/40/11/2023 tt/13:00 n/Bernice Yu` (invalid date)<br>
+       Expected: Similar to previous.
+
+### Deleting a consultation
+
+1. Deleting a consultation by specifying index.
+    1. Prerequisites: Consultation must exist in the consultation list.
+    1. Test case: `deleteconsult 2`<br>
+       Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
+    1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
+       Expected: No consultation is deleted on the second command. Error details shown in the status message.
+    1. Other incorrect delete consultation commands to try: `deleteconsult`, `deleteconsult x` (where x is greater than the consultation list size or a non-positive integer)
+       Expected: Similar to previous.
+
+### Adding a student to a consultation
+
+1. Adding a student specified by name to a consultation at specified index.
+    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and not already in the consultation.
+    1. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
+       Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
+    1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
+       Expected: No consultation is updated on the second command. Error details shown in the status message.
+    1. Other incorrect add to consultation commands to try: `addtoconsult`, `addtoconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `addtoconsult 2 n/UNKNOWN` (name not found in address book), `addtoconsult 2 n/KNOWN` (name already found in the consultation).
+       Expected: Similar to previous.
+
+### Removing a student from a consultation
+
+1. Removing a student specified by name from a consultation at specified index.
+    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and the consultation.
+    1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
+       Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
+    1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
+       Expected: No consultation is updated on the second command. Error details shown in the status message.
+    1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
+       Expected: Similar to previous.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
