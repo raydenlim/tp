@@ -58,7 +58,7 @@ Given below are my contributions to the project.
 * **Community**:
   * **Contributions to team-based tasks**:
     * Updated User Guide and Error Messages to be more lucid.
-    * Set up an Excel Sheet for PE-D bugs for enhanced clarity.
+    * Set up a Google SpreadSheet for PE-D [PE-D Excelsheet](https://docs.google.com/spreadsheets/d/1O9mGiqRIjbg8E9W5kGl0biqmFpexlLQspCeSyn15r_Q/edit?usp=sharing)
     * Made the logo for F.A.K.E.J.A.R.V.I.S.
     * Update the logo of the UI.
     * Bug Hunting.
