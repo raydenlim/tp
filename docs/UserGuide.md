@@ -171,7 +171,7 @@ F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 6 main compone
 You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box, and in **Graphical Result Display** if needed.
 
 The following describes what each tab displays on the **Current Panel**:
-* **Student Tab:** Displays your students list and students' details.
+* **Students Tab:** Displays your students list and students' details.
 * **Tasks Tab:** Displays your tasks list and tasks' details.
 * **Assignments Tab:** Displays your assignments list.
 * **Sessions Tab:** Displays your sessions list and sessions' details.
@@ -242,7 +242,7 @@ The following describes what each tab displays on the **Current Panel**:
     * `viewtasks` : Lists all tasks.
     * `deletetask 3`: Deletes the 3rd task shown in the current task list.
 
-    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
+    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
     * `createsession s/3 n/John Doe` : Creates a session with session number 3 with the student `John Doe`.
 
@@ -274,7 +274,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
-  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/ Foo Bar` etc.
+  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/Foo Bar` etc.
 
 
 * Parameters can be **in any order**.<br>
