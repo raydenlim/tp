@@ -1709,23 +1709,23 @@ testers are expected to do more *exploratory* testing.
 
 ### Edit grades
 
-1. Edit an assignment grade with _valid parameters_
+1. Editing an assignment grade with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Functional Expressionism g/500`
       Expected: Grade of the specified assignment has been edited to 500/500.
 
-2. Edit an assignment grade with _invalid index_
+2. Editing an assignment grade with _invalid index_
    1. Test case: `editgrade 0 as/Functional Expressionism g/500`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The person index provided does not exist.
 
-3. Edit an assignment grade with _invalid assignment name_
+3. Editing an assignment grade with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Finding Boyd g/500`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The assignment name does not exist.
 
-4. Edit an assignment grade with _invalid grade_
+4. Editing an assignment grade with _invalid grade_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Functional Expressionism g/700`
@@ -1735,18 +1735,18 @@ testers are expected to do more *exploratory* testing.
 
 ### Delete grades
 
-1. Delete an assignment grade with _valid parameters_
+1. Deleting an assignment grade with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
       2. The assignment has already been graded.
    2. Test case: `deletegrade 1 as/Functional Expressionism`
       Expected: Grade of the specified assignment has been deleted.
 
-2. Delete an assignment grade with _invalid index_
+2. Deleting an assignment grade with _invalid index_
    1. Test case: `deletegrade 0 as/Functional Expressionism`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The person index provided does not exist.
 
-3. Delete an assignment grade with _invalid assignment name_
+3. Deleting an assignment grade with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletegrade 1 as/Finding Boyd`
@@ -1756,23 +1756,23 @@ testers are expected to do more *exploratory* testing.
 
 ### Edit comments
 
-1. Edit an assignment comment with _valid parameters_
+1. Editing an assignment comment with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Functional Expressionism c/Good job!`
       Expected: Comment of the specified assignment has been edited to "Good job!".
 
-2. Edit an assignment comment with _invalid index_
+2. Editing an assignment comment with _invalid index_
    1. Test case: `editcomment 0 as/Functional Expressionism c/Good job!`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The person index provided does not exist.
 
-3. Edit an assignment comment with _invalid assignment name_
+3. Editing an assignment comment with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Finding Boyd c/Good job!`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The assignment name does not exist.
 
-4. Edit an assignment comment with _invalid comment_
+4. Editing an assignment comment with _invalid comment_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Functional Expressionism c/`
@@ -1782,18 +1782,18 @@ testers are expected to do more *exploratory* testing.
 
 ### Delete comments
 
-1. Delete an assignment comment with _valid parameters_
+1. Deleting an assignment comment with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
       2. The assignment has already been commented on.
    2. Test case: `deletecomment 1 as/Functional Expressionism`
       Expected: Comment of the specified assignment has been deleted.
 
-2. Delete an assignment comment with _invalid index_
+2. Deleting an assignment comment with _invalid index_
    1. Test case: `deletecomment 0 as/Functional Expressionism`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The person index provided does not exist.
 
-3. Delete an assignment comment with _invalid assignment name_
+3. Deleting an assignment comment with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletecomment 1 as/Finding Boyd`
@@ -1803,61 +1803,61 @@ testers are expected to do more *exploratory* testing.
 
 ### Edit graded test scores
 
-1. Edit the score(s) of a graded test with _valid parameters_
+1. Editing the score(s) of a graded test with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
       Expected: F.A.K.E.J.A.R.V.I.S. successfully edits the scores for the specified person's graded test.
 
-2. Edit the score(s) of a graded test with an _empty list_
+2. Editing the score(s) of a graded test with an _empty list_
    1. Prerequisites:
       1. The list of persons is empty.
    2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
       F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited <br> Reason: The student list is empty.
 
-3. Edit the score(s) of a graded test with an _invalid index_
+3. Editing the score(s) of a graded test with an _invalid index_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 0 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given index is invalid.
 
-4. Edit the score(s) of a graded test with _empty parameter(s)_
+4. Editing the score(s) of a graded test with _empty parameter(s)_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 1`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is empty.
 
-5. Edit the score(s) of a graded test with _invalid parameter(s)_
+5. Editing the score(s) of a graded test with _invalid parameter(s)_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 1 ra3/90 pee/100`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is/are invalid.
 
-6. Edit the score(s) of a graded test with _extra parameter(s)_
+6. Editing the score(s) of a graded test with _extra parameter(s)_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88 ra2/75`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: Extra parameter(s) is/are given.
 
-7. Edit the score(s) of a graded test with _fewer parameter(s)_
+7. Editing the score(s) of a graded test with _fewer parameter(s)_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95`
       Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: Graded Test fields are optional.
 
-8. Edit the score(s) of a graded test with _parameters in different order_
+8. Editing the score(s) of a graded test with _parameters in different order_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 1 ra1/90 pe/75 f/80 ra2/85 mt/95`
       Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: The order of Graded Test fields does not matter.
 
-9. Edit the score(s) of a graded test with _an invalid score_
+9. Editing the score(s) of a graded test with _an invalid score_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgradedtest 1 ra1/-100 ra2/85 mt/105 f/80 pe/75 ra1/88`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given score is invalid.
 
-10. Edit the score(s) of a graded test with _multiple invalid scores_
+10. Editing the score(s) of a graded test with _multiple invalid scores_
     1. Prerequisites:
        1. There is at least 1 student being displayed in the students list.
     2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
