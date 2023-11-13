@@ -342,7 +342,7 @@ This section describes commands that fit in no special category.
 
 #### 👀Viewing help : `help`
 
-You can view a message explaining how to access the help page if you require assistance in understanding the commands and their formats.
+You can view a message detailing how to access the user guide if you require assistance in understanding the different commands and their formats.
 
 ![help message](images/helpMessage.png)
 
