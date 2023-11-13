@@ -360,6 +360,29 @@ This process is summarised in the activity diagram below
 
 ![Delete Activity Diagram](images/DeleteStudentActivityDiagram.png)
 
+#### Create Session Feature
+This section explains the implementation of the Create Session feature via the `createsession` command.
+The `CreateSessionCommand` causes the specified `Session` to be added to the Session List in the application.
+There are two compulsory fields which are the session number of the session, as well as the names of the students involved.
+
+Below is the activity diagram outlining the execution of `CreateSessionCommand`.
+
+![CreateSessionCommand activity diagram](images/CreateSessionActivityDiagram.png)
+
+Step 1:
+The Avenger(user) enters the command `createsession` and the command is parsed by the `CreateSessionCommandParser`.
+
+Step 2:
+The Session Number parameter is checked for its validity, which will display an error message if invalid. Otherwise, a Session with that session number is temporarily created.
+
+Step 3:
+The given name(s) of students are then checked if they exist in the Address Book. If there are any invalid names, an error message indicating Student Not Found will be displayed. Otherwise, another check follows.
+
+Step 4:
+The final check ensures that there are no duplicate sessions being created, before finally adding the created session to the model. If a duplicate session is detected, an error message will be displayed to alert the Avenger that a duplicate session will be created.
+
+
+
 #### Take Attendance Feature
 This section explains the implementation of the Take Attendance feature via the `takeattendance` command.
 The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session. 
