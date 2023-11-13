@@ -1089,13 +1089,24 @@ testers are expected to do more *exploratory* testing.
 1. Adding a task with _valid parameters_
    1. Prerequisites: 
       1. There is no other task with the same name and description.
-   2. Test case: `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` <br>
+   2. Test case: `addtask tn/finish up user guide td/please by tonight d/14/11/2023 tp/high` <br>
    Expected: Task is added.
 
-2. Adding a task with _incorrect name_
-   1. Test case: `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` <br>
-       Expected: Task is added.
+2. Adding a task with _invalid name_
+   1. Test case: `addtask tn/--` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Name should only consist of alphanumeric characters.
 
+3. Adding a task with _invalid description_
+    1. Test case: `addtask tn/do up developer guide td/the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Description should be less than 100 characters.
+
+4. Adding a task with _invalid date_
+    1. Test case: `addtask tn/test number 4 td/test number 4 please work d/29/02/2023` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Date should be a valid date that exists in the calendar. 
+
+5. Adding a task with _invalid priority_
+    1. Test case: `addtask tn/test number 5 td/test number 5 please work d/27/02/2023 tp/asdasdsa` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Priority should only be `HIGH`, `MEDIUM`, or `LOW`.
 
 ### Saving data
 
