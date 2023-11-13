@@ -1791,7 +1791,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 ## Known Issues
 
-<box light no-background>
+<box light background-color="#FDFDFD">
 <md>
 
 **Issue:** I cannot access F.A.K.E.J.A.R.V.I.S. after using multiple screens on my device. <br>
@@ -1811,7 +1811,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 </md>
 </box>
 
-<box light no-background>
+<box light background-color="#FDFDFD">
 <md>
 
 **Issue:** I cannot add Names, Tags and TelegramHandles with special characters. <br>
@@ -1824,7 +1824,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 </md>
 </box>
 
-<box light no-background>
+<box light background-color="#FDFDFD">
 <md>
 
 **Issue:** I cannot add other email domains to the list. <br>
