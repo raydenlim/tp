@@ -43,8 +43,8 @@ import seedu.address.model.task.TaskProgress;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index not a non-zero unsigned integer.";
-    public static final String MESSAGE_INVALID_DATE = "Date needs to be in the format dd/MM/yyyy.";
-    public static final String MESSAGE_INVALID_TIME = "Time needs to be in the format HH:mm.";
+    public static final String MESSAGE_INVALID_DATE = "Date needs to be a valid date and in the format dd/MM/yyyy";
+    public static final String MESSAGE_INVALID_TIME = "Time needs to be valid time and in the format HH:mm.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
