@@ -953,7 +953,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | careful Avenger                            | hide private contact details                                | minimize chance of someone else seeing them by accident.                |
 | `*`      | user with many persons in the address book | sort persons by name                                        | locate a person easily.                                                 |
 
-*{More to be added}*
 
 ### Use cases
 
@@ -1612,8 +1611,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-*{More to be added}*
-
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
@@ -1624,7 +1621,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6.  The system should be user-friendly, with a clean and intuitive interface.
 7.  Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
 
-*{More to be added}*
 
 ### Glossary
 
