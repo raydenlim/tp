@@ -962,7 +962,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to update a task progress
-2.  F.A.K.E.J.A.R.V.I.S. updates task progress and display updated progress.
+2.  F.A.K.E.J.A.R.V.I.S. updates task progress and displays updated progress.
 
     Use case ends.
 
