@@ -556,7 +556,7 @@ Format: `list`
 > **Input:** `list` Shows all the students currently in F.A.K.E.J.A.R.V.I.S.
 >
 > **Output:**
->`Listed all persons`
+> `Listed all persons`
 >
 > **Output Image:**
 > ![Screenshot of List Students](images/listStudents.png)
@@ -611,7 +611,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 > **Input:** `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu`.
 >
 > **Output:**
->`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 10; RA2: 10; MidTerms: 3; Final: 4; PE: 5`
+> `Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 10; RA2: 10; MidTerms: 3; Final: 4; PE: 5`
 >
 > **Output Image:**
 > ![Screenshot of Edit Student 1](images/editStudent.png)
@@ -649,7 +649,7 @@ Format: `find KEYWORD…`
 > **Input:** `find John` Finds students who have the `john` in their name.
 >
 > **Output:**
->`1 persons listed!`
+> `1 persons listed!`
 >
 > **Output Image:**
 > ![Screenshot of Find Student](images/findStudent.png)
@@ -687,7 +687,7 @@ Format: `delete STUDENT_INDEX`
 > **Input:** `list` followed by `delete 2` Deletes the 2nd student in F.A.K.E.J.A.R.V.I.S.
 >
 > **Output:**
->`Deleted Person: Name: Bernice Yu; Phone: 99272758; Email: berniceyu@u.nus.edu; Telegram Handle: berrynice123; Tags: [colleagues][friends]; Graded Test: RA1: -; RA2: -; MidTerms: 3; Final: 4; PE: 5`
+> `Deleted Person: Name: Bernice Yu; Phone: 99272758; Email: berniceyu@u.nus.edu; Telegram Handle: berrynice123; Tags: [colleagues][friends]; Graded Test: RA1: -; RA2: -; MidTerms: 3; Final: 4; PE: 5`
 >
 > **Output Image:**
 > ![Screenshot of Delete Student](images/deleteStudent.png)
@@ -729,7 +729,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 > **Input:** `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` Creates a task to prepare lecture slides with a high priority due on September 30, 2023.
 >
 > **Output:**
->`Task has been added: Prepare Lecture slides; Description: No Description Provided; Priority: HIGH; Date: 2023-09-30; Progress: NOT_STARTED`
+> `Task has been added: Prepare Lecture slides; Description: No Description Provided; Priority: HIGH; Date: 2023-09-30; Progress: NOT_STARTED`
 >
 > **Output Image:**
 > ![Screenshot of Add Task](images/addTask.png)
@@ -774,7 +774,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 > **Input:** `viewtasks` Displays all tasks in the user's task list.
 >
 > **Output:**
->`4 tasks listed!`
+> `4 tasks listed!`
 >
 > **Output Image:**
 > ![Screenshot of view tasks](images/viewtasks.png)
@@ -785,7 +785,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 > **Input:** `viewtasks d/30/09/2023` Displays tasks due on September 30, 2023.
 >
 > **Output:**
->`1 tasks listed!`
+> `1 tasks listed!`
 >
 > **Output Image:**
 > ![Screenshot of view tasks with date filter](images/viewtasksDate.png)
@@ -826,7 +826,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 > **Input:** `updateprogress 1 tprog/pending` Updates the progress of the 1st task as pending.
 >
 > **Output:**
->`Updated Task: Do 2103T; Description: Homework assignment; Priority: HIGH; Date: 2023-10-22; Progress: PENDING`
+> `Updated Task: Do 2103T; Description: Homework assignment; Priority: HIGH; Date: 2023-10-22; Progress: PENDING`
 >
 > **Output Image:**
 > ![Screenshot of update task progress](images/updateprogress.png)
@@ -865,7 +865,7 @@ Format: `deletetask TASK_INDEX`
 > **Input:** `deletetask 3` Deletes the 3rd task from the task list.
 >
 > **Output:**
->`Deleted Task: Do cs2100; Description: Remember mips; Priority: HIGH; Date: 2023-10-22; Progress: DONE`
+> `Deleted Task: Do cs2100; Description: Remember mips; Priority: HIGH; Date: 2023-10-22; Progress: DONE`
 >
 > **Output Image:**
 > ![Screenshot of delete task](images/deletetask.png)
@@ -919,7 +919,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 > **Input:** `takeattendance n/Alex Yeoh s/1 ap/present` Marks Alex Yeoh as present on the 1st session.
 >
 > **Output:**
->`Attendance taken`
+> `Attendance taken`
 >
 > **Output Image:**
 > ![Screenshot of take attendance](images/takeattendance.png)
@@ -957,7 +957,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 > **Input:** `viewattendance` Displays the overall attendance across all students and sessions.
 >
 > **Output:**
->`2 sessions listed!`
+> `2 sessions listed!`
 >
 > **Output Image:**
 > ![Screenshot of view attendance](images/viewattendance.png)
@@ -968,7 +968,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 > **Input:** `viewattendance n/David Li n/Alex Yeoh` Displays all the sessions that David Li and Alex Yeoh have attended.
 >
 > **Output:**
->`2 sessions listed!`
+> `2 sessions listed!`
 >
 > **Output Image:**
 > ![Screenshot of view attendance with multiple names](images/viewattendanceMultiple.png)
@@ -1018,7 +1018,7 @@ Format: `viewassignments STUDENT_INDEX`
 > **Input:** `viewassignments 2` shows a list of the 2nd student's assignment names, grades and comments.
 >
 > **Output:**
->`Showing all assignment details of: Charlotte Oliveiro`
+> `Showing all assignment details of: Charlotte Oliveiro`
 >
 > **Output Image:**
 > ![Screenshot of viewing assignments](images/viewassignments.png)
@@ -1062,7 +1062,7 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 > **Input:** `editgrade 1 as/Rune Trials g/600` Edits the grade of the 1st student's Rune Trial assignment to 600.
 >
 > **Output:**
->`Edited grade to assignment: Rune Trials`
+> `Edited grade to assignment: Rune Trials`
 >
 > **Output Image:**
 > ![Screenshot of editing grade](images/editgrade.png)
@@ -1103,7 +1103,7 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 > **Input:** `deletegrade 1 as/Rune Trials` deletes the 1st student's Rune Trials grade if its graded.
 >
 > **Output:**
->`Deleted grade from assignment: Rune Trials`
+> `Deleted grade from assignment: Rune Trials`
 >
 > **Output Image:**
 > ![Screenshot of delete grade](images/deletegrade.png)
@@ -1147,7 +1147,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 > **Input:** `editcomment 1 as/Rune Trials c/Decent` Changes the comment on the 1st student's Rune Trials assignment to “Decent”.
 >
 > **Output:**
->`Edited comment to assignment: Rune Trials`
+> `Edited comment to assignment: Rune Trials`
 >
 > **Output Image:**
 > ![Screenshot of edit comment](images/editcomment.png)
@@ -1247,7 +1247,7 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 > **Input:** `editgradedtest 1 ra1/1 ra2/2 mt/3 f/4 pe/5` Edits the corresponding graded test scores for the 1st person Alex Yeoh.
 >
 > **Output:**
->`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
+> `Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 1; RA2: 2; MidTerms: 3; Final: 4; PE: 5`
 >
 > **Output Image:**
 > ![Screenshot of edit graded test](images/editgradedtest.png)
@@ -1298,7 +1298,7 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 > **Input:** `createsession s/3 n/Alex Yeoh` Creates a session, which has session number 3 with Alex Yeoh.
 >
 > **Output:**
->`New session added: Session: 3; Students: Alex Yeoh; Remark: NA`
+> `New session added: Session: 3; Students: Alex Yeoh; Remark: NA`
 >
 > **Output Image:**
 > ![Screenshot of create session](images/createsession.png)
@@ -1375,7 +1375,7 @@ Format: `deletesession s/SESSION_NUMBER`
 > **Input:** `deletesession s/1` Deletes the session with session number 1 from the session list.
 >
 > **Output:**
->`Deleted Session: Session: 1; Students: Charlotte Oliveiro David Li Alex Yeoh Irfan Ibrahim Roy Balakrishnan ; Remark: NA`
+> `Deleted Session: Session: 1; Students: Charlotte Oliveiro David Li Alex Yeoh Irfan Ibrahim Roy Balakrishnan ; Remark: NA`
 >
 > **Output Image:**
 > ![Screenshot of delete session](images/deletesession.png)
@@ -1427,7 +1427,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 > **Input:** `createconsult d/30/10/2023 tt/12:30 n/Alex Yeoh` Creates a consultation for Alex Yeoh on 2023-10-30 12:30.
 >
 > **Output:**
->`New consultation added: Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
+> `New consultation added: Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
 >
 > **Output Image:**
 > ![Screenshot of create consult](images/createconsult.png)
@@ -1468,7 +1468,7 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > **Input:** `addtoconsult 1 n/David Li n/Roy Balakrishnan` Adds David Li and Roy Balakrishnan to the 1st consultation in the list.
 >
 > **Output:**
->`New student(s) added to consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, David Li, Alex Yeoh, Roy Balakrishnan`
+> `New student(s) added to consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, David Li, Alex Yeoh, Roy Balakrishnan`
 >
 > **Output Image:**
 > ![Screenshot of add to consult](images/addtoconsult.png)
@@ -1509,7 +1509,7 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > **Input:** `removefromconsult 1 n/David Li` Removes David Li from the 1st consultation in the list.
 >
 > **Output:**
->`Student(s) removed from consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
+> `Student(s) removed from consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
 >
 > **Output Image:**
 > ![Screenshot of remove from consult](images/removefromconsult.png)
@@ -1548,7 +1548,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 > **Input:** `deleteconsult 1` Deletes the 1st consultation in the consultation list.
 >
 > **Output:**
->`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
+> `Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
 >
 > **Output Image:**
 > ![Screenshot of delete consult](images/deleteconsult.png)
