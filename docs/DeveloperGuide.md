@@ -1421,7 +1421,117 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+
+
+### Assignments
+
+### Viewing assignments
+
+1. Viewing assignments with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `viewasssignments 1` <br>
+      Expected: List of assignments belonging to the student of index 1 is shown.
+
+2. Viewing assignments with _invalid index_
+   1. Test case: `viewasssignments 0` <br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignments are not shown. <br> Reason: The person index provided does not exist.
+
+
+
+### Edit grades
+
+1. Edit an assignment grade with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgrade 1 as/Functional Expressionism g/500`
+      Expected: Grade of the specified assignment has been edited to 500/500.
+
+2. Edit an assignment grade with _invalid index_
+   1. Test case: `editgrade 0 as/Functional Expressionism g/500`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The person index provided does not exist.
+
+3. Edit an assignment grade with _invalid assignment name_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgrade 1 as/Finding Boyd g/500`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The assignment name does not exist.
+
+4. Edit an assignment grade with _invalid grade_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgrade 1 as/Functional Expressionism g/700`
+    Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The grade exceeds the maximum grade by more than 75.
+
+
+
+### Delete grades
+
+1. Delete an assignment grade with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+      2. The assignment has already been graded.
+   2. Test case: `deletegrade 1 as/Functional Expressionism`
+      Expected: Grade of the specified assignment has been deleted.
+
+2. Delete an assignment grade with _invalid index_
+   1. Test case: `deletegrade 0 as/Functional Expressionism`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The person index provided does not exist.
+
+3. Edit an assignment grade with _invalid assignment name_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `deletegrade 1 as/Finding Boyd`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The assignment name does not exist.
+
+
+
+### Edit comments
+
+1. Edit an assignment comment with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editcomment 1 as/Functional Expressionism c/Good job!`
+      Expected: Comment of the specified assignment has been edited to "Good job!".
+
+2. Edit an assignment comment with _invalid index_
+   1. Test case: `editcomment 0 as/Functional Expressionism c/Good job!`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The person index provided does not exist.
+
+3. Edit an assignment comment with _invalid assignment name_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editcomment 1 as/Finding Boyd c/Good job!`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The assignment name does not exist.
+
+4. Edit an assignment comment with _invalid comment_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editcomment 1 as/Functional Expressionism c/`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The comment cannot be empty.
+
+
+
+### Delete comments
+
+1. Delete an assignment comment with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+      2. The assignment has already been commented on.
+   2. Test case: `deletecomment 1 as/Functional Expressionism`
+      Expected: Comment of the specified assignment has been deleted.
+
+2. Delete an assignment comment with _invalid index_
+   1. Test case: `deletecomment 0 as/Functional Expressionism`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The person index provided does not exist.
+
+3. Delete an assignment comment with _invalid assignment name_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `deletecomment 1 as/Finding Boyd`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
+
+
 
 ### Saving data
 
@@ -1430,3 +1540,39 @@ testers are expected to do more *exploratory* testing.
     1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+
+
+## **Appendix: Instructions for manual testing**
+
+If the effort required to create AB3 is 100, the amount of effort our group placed into F.A.K.E.J.A.R.V.I.S. would be a 500.
+
+Our group has put in a significant amount of effort into our tP. AB3 has a total of 8 commands (2 of which are just help and exit commands) and 1 file to store all of the data. F.A.K.E.J.A.R.V.I.S. has a total of 28 commands and 4 different files to store different data. We have also made significant changes to the GUI, enabling users to toggle the information being displayed.
+As testament to our effort, among all the teams in this module, our team has the [second-highest](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=totalCommits%20dsc&sortWithin=totalCommits%20dsc&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2023-09-22) lines of code added.
+This is inclusive of our 981 automated test cases which covers more than 80% of our code.
+
+
+
+### Notable Changes
+
+* Added many new features
+  * In total, we added 20 new features to F.A.K.E.J.A.R.V.I.S.
+  * Compared to AB3, F.A.K.E.J.A.R.V.I.S. has a lot more information being stored and managed.
+  * We created many command classes to support each of the features being added.
+  * To better support features related to the UI, we had to edit existing classes (LogicManager, CommandResult etc.) while following the architecture diagram used for AB3.
+* Updated GUI
+  * Compared to the GUI components found in AB3, F.A.K.E.J.A.R.V.I.S. has more GUI components to support its additional features and data. Each of the GUI components were added to enhance user experience.
+  * In AB3, the panel containing the list of persons is found below the command result display (refer to UG to see what it means). For F.A.K.E.J.A.R.V.I.S., this panel is placed on the left side and has 5 tabs which users can toggle between to show different information. This creates space below the command result display to show even more information.
+  * To ensure that our GUI is intuitive and user-friendly, we asked family members and friends to help test our application and give feedback.
+  * We also changed the color scheme of the GUI components to enhance the visuals.
+* Unit Testing
+  * Compared to AB3's 300 test cases, F.A.K.E.J.A.R.V.I.S. has a total of 981 test cases. This enabled us to cove more than 80% of our code.
+  * Some test cases check for multiple cases as we wanted to be thorough with our tests.
+  * As we had to edit some existing components in AB3, we had to edit some existing test cases found in AB3 to suit our product.
+* Adding new models
+  * To support the new features implemented in F.A.K.E.J.A.R.V.I.S., we had to create multiple new model classes to represent the information required.
+  * For assignment and graded test features, we had to edit the Person class to contain information regarding both and also create new model classes on top of the changes.
+* Storing data
+  * To better manage the additional data being stored and handled by F.A.K.E.J.A.R.V.I.S., we are using 4 JSON files to store information related to different features.
+  * To support the additional data being stored, we had to create many additional classes to store and retrieve different types of data in JSON format.
+  * We had to edit each of the sample AddressBook JSON files to contain assignment and graded test details to support those features.
