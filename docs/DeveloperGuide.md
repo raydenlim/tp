@@ -1427,7 +1427,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case 8: Edit the score(s) of a graded test**
+**Use case 18: Edit the score(s) of a graded test**
 
 **MSS**
 
@@ -1682,7 +1682,69 @@ testers are expected to do more *exploratory* testing.
    2. Test case: `deletecomment 1 as/Finding Boyd`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
 
+### Graded Test
 
+### Edit graded test scores
+
+1. Edit the score(s) of a graded test with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
+      Expected: F.A.K.E.J.A.R.V.I.S. successfully edits the scores for the specified person's graded test.
+
+2. Edit the score(s) of a graded test with an _empty list_
+   1. Prerequisites:
+      1. The list of persons is empty.
+   2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
+      F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited <br> Reason: The student list is empty.
+
+3. Edit the score(s) of a graded test with an _invalid index_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 0 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given index is invalid.
+
+4. Edit the score(s) of a graded test with _empty parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is empty.
+
+5. Edit the score(s) of a graded test with _invalid parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra3/90 pee/100`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is/are invalid.
+
+6. Edit the score(s) of a graded test with _extra parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88 ra2/75`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: Extra parameter(s) is/are given.
+
+7. Edit the score(s) of a graded test with _fewer parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: Graded Test fields are optional.
+
+8. Edit the score(s) of a graded test with _parameters in different order_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/90 pe/75 f/80 ra2/85 mt/95`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: The order of Graded Test fields does not matter.
+
+9. Edit the score(s) of a graded test with _an invalid score_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/-100 ra2/85 mt/105 f/80 pe/75 ra1/88`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given score is invalid.
+
+10. Edit the score(s) of a graded test with _multiple invalid scores_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
 
 ### Saving data
 
