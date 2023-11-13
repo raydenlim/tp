@@ -173,7 +173,7 @@ Below is a class diagram describing the implementation of `Session` and its resp
 
 **Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
 - Pros:This choice offers a high degree of flexibility when it comes to adding students to a session. You can add any number of students when creating a session, which is essential for accommodating different class sizes and situations.
-**Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
+  **Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
 - Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach.
 
 By opting for the current choice (Alternative 1), the implementation remains straightforward and user-friendly, allowing for versatile usage scenarios. It ensures that users can efficiently create sessions and add students to them without unnecessary constraints or complications.
@@ -248,7 +248,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 **Alternative 2 :** Using floats for graded test score.
 - Pros:
   * Numeric Operations: Easier and more efficient numeric operations without the need for extensive parsing.
-- Cons: 
+- Cons:
   * Lesser Flexibility and Customisation: Doesn't allow for special characters.
 
 <br>
@@ -264,7 +264,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
   * Type Safety: The reliance on strings may lead to potential type-related issues during runtime.
   * Complexity: Since all the scores are in a single string, additional parsing will be needed to implement getters and setters.
   * Learning Curve: Users might need to adapt to a more structured input format, potentially increasing the learning curve.
-  
+
 **Alternative 2:** Using Structured Object for Graded Test Constructors.
 - Pros:
   * Type Safety: A structured object ensures type safety, reducing the risk of runtime errors related to data types.
@@ -277,7 +277,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 - Pros:
   * Type Safety Utilization: Ensures type safety with objects and allows the use of strings for flexibility. We can take advantage of the strings to enable the use of `default` values.
   * Robust Testing: Better bug identification, as the two constructors can check each other, since there are 2 constructors that creates the GradedTest Object.
-  
+
 <box type="definition" light>
   Example:
 
@@ -289,15 +289,15 @@ GradedTest testFromObjects = new GradedTest(
         );
 
 // Using String Constructor
-GradedTest testFromString = new GradedTest("RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95");
+        GradedTest testFromString = new GradedTest("RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95");
 
 // Check if both objects are equal
-assertEquals(testFromObjects, testFromString);
+        assertEquals(testFromObjects, testFromString);
 ```
 </box>
 
 - Cons:
-  * Extra caution is needed to ensure that both these constructors are compatible with one another. 
+  * Extra caution is needed to ensure that both these constructors are compatible with one another.
 
 <br>
 
@@ -325,16 +325,16 @@ assertEquals(testFromObjects, testFromString);
 - Pros:
   * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`.
   * Object safety: Building on Aspect 3, since all objects are `private final` and hence immutable, any edits/updates to the person's object will not cause issues to the graded test, as the Person parser logic will handle the new Person object creation.
-- Cons: 
+- Cons:
   * Inflexibility: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
 
-- For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`. 
+- For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`.
 
 **Alternative 2:** Have a separate class `EditGradedTest` to update graded test scores.
 - Pros:
   * Dynamic: It enables users to dynamically update their graded test scores without having to use the String format.
 - Cons:
-  * Command Prefixes: Users will have to get used to the command prefix. 
+  * Command Prefixes: Users will have to get used to the command prefix.
 
 **Alternative 3 (current choice):** Implement both Alternatives 1 and 2.
 - Pros:
@@ -346,13 +346,13 @@ assertEquals(testFromObjects, testFromString);
 - Below is the Sequence diagram and Activity Diagram for `EditGradedTest` class with the `editgradedtest` command:
 
 **EditGradedTest Sequence Diagram:**<br>
-  ![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
+![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
 
 <br>
 
 **createEditedGradedTestPerson Activity Diagram:**<br>
 ![CreateEditedGradedTestPersonAD](images/CreateEditedGradedTestPersonAD.png)
-  
+
 
 ### Consultations
 
@@ -374,12 +374,12 @@ Below is a class diagram describing the implementation of `Consultation` and its
 **Aspect: How the students are stored to a consultation:**
 
 * **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
-    * Pros: Stores only 1 instance of a unique person, no duplicates.
-    * Cons: May have performance issues in terms of memory usage.
+  * Pros: Stores only 1 instance of a unique person, no duplicates.
+  * Cons: May have performance issues in terms of memory usage.
 
 
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
-    * Cons: We must ensure there are no duplicates with additional checks.
+  * Cons: We must ensure there are no duplicates with additional checks.
 
 **Aspect: Adding students to a new or existing consultation:**
 
@@ -492,17 +492,17 @@ The final check ensures that there are no duplicate sessions being created, befo
 **Aspect: How to determine if a session is considered a duplicate**
 
 * **Alternative 1 (current choice):** Session is considered duplicate if another session with the same session number already exists in the session list.
-    * Pros: It is easier to manage the duplicate session situation if only session number is compared, making other features easier to implement by referring to the session number as the session's identity.
-    * Cons: User will not be able to have multiple sessions of the same session number.
+  * Pros: It is easier to manage the duplicate session situation if only session number is compared, making other features easier to implement by referring to the session number as the session's identity.
+  * Cons: User will not be able to have multiple sessions of the same session number.
 
 * **Alternative 2:** Session will be considered duplicate only if all of its fields, session number, students, and session remark are equal.
-    * Pros: It allows for multiple sessions of the same session number to be stored in the same session list.
-    * Cons: A small mistake in the inputs will cause two sessions to not be considered duplicate, which could unintentionally lead to multiple sessions with almost the same fields (which would have been considered duplicate otherwise).
+  * Pros: It allows for multiple sessions of the same session number to be stored in the same session list.
+  * Cons: A small mistake in the inputs will cause two sessions to not be considered duplicate, which could unintentionally lead to multiple sessions with almost the same fields (which would have been considered duplicate otherwise).
 
 
 #### Take Attendance Feature
 This section explains the implementation of the Take Attendance feature via the `takeattendance` command.
-The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session. 
+The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session.
 There are two compulsory fields, which are the session number of the session, as well as the names of the students involved.
 
 This process is shown in the sequence diagram below
@@ -526,12 +526,12 @@ Finally, the `TakeAttendanceCommand` triggers the `Model` to update the filtered
 **Aspect: How models are modified to store changes**
 
 * **Alternative 1 (current choice):** Cause updates to both `Session` and `Person` when updating the attendance status of a student to a specified session.
-    * Pros: Allows for ease of future enhancements since we can cause the same update from either `Session` or `Person` involved.
-    * Cons: The same action is performed twice, but since the student is added to a `StudentSet`, only one instance of student is added.
+  * Pros: Allows for ease of future enhancements since we can cause the same update from either `Session` or `Person` involved.
+  * Cons: The same action is performed twice, but since the student is added to a `StudentSet`, only one instance of student is added.
 
 * **Alternative 2:** Only update the `Session` to store the `Person`
-    * Pros: The same action is not performed twice.
-    * Cons: It may be difficult to add future enhancements without this method in place as a skeleton.
+  * Pros: The same action is not performed twice.
+  * Cons: It may be difficult to add future enhancements without this method in place as a skeleton.
 
 
 #### Add Tasks Feature
@@ -557,16 +557,16 @@ The `AddTaskCommand` then continues its execution as defined by [this](#parser-c
 **Aspect: How we execute the AddTaskCommand:**
 
 * **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
-    * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
+  * Pros: Promotes information hiding since we do not need to expose the model to the `AddTaskCommand`.
 
 
 * **Alternative 2:** Store the model in the `AddTaskCommand` itself.
-    * Pros: Easier to debug.
-    * Cons: The `AddTaskCommand` might be able to call other methods in the model.
+  * Pros: Easier to debug.
+  * Cons: The `AddTaskCommand` might be able to call other methods in the model.
 
 
 #### Delete Tasks Feature
-This section explains the implementation of the Delete Task feature via the `deletetask` command. The `DeleteTaskCommand` causes the specified `Task` identified using the `Index` to be deleted from the Task List in the application. There is one compulsory field which is the Index of the Task to delete. 
+This section explains the implementation of the Delete Task feature via the `deletetask` command. The `DeleteTaskCommand` causes the specified `Task` identified using the `Index` to be deleted from the Task List in the application. There is one compulsory field which is the Index of the Task to delete.
 
 Below is the sequence diagram outlining the execution of `DeleteTaskCommand`.
 
@@ -589,7 +589,7 @@ The `DeleteTaskCommand` then continues its execution as defined by [this](#parse
 
 
 #### View Tasks Feature
-This section explains the implementation of the View Tasks feature via the `viewtasks` command. The `ViewTasksCommand` displays the Tasks filtered using the `predicate` specified by the user. There are multiple optional fields that the user can use to filter the list by, such as the progress, priority, name, description and date. However, only one field is able to be applied as a filter at a specific time. 
+This section explains the implementation of the View Tasks feature via the `viewtasks` command. The `ViewTasksCommand` displays the Tasks filtered using the `predicate` specified by the user. There are multiple optional fields that the user can use to filter the list by, such as the progress, priority, name, description and date. However, only one field is able to be applied as a filter at a specific time.
 
 Below is the sequence diagram outlining the execution of `ViewTasksCommand`.
 
@@ -606,12 +606,12 @@ The `ViewTasksCommand` then continues its execution as defined by [this](#parser
 **Aspect: How we execute the ViewTasksCommand:**
 
 * **Alternative 1 (current choice):** Combine the list and find functionality into one.
-    * Pros: Promotes user experience due to the reduction in the number of different commands.
-    * Cons: More checks need to be done to ensure that the correct predicate is applied and the correct field is being checked against. 
+  * Pros: Promotes user experience due to the reduction in the number of different commands.
+  * Cons: More checks need to be done to ensure that the correct predicate is applied and the correct field is being checked against.
 
 * **Alternative 2:** Separate out into 2 separate functions.
-    * Pros: Easier to debug since they're implemented independently of one another.
-    * Cons: More commands make the interface messier, negatively impacting user experience.
+  * Pros: Easier to debug since they're implemented independently of one another.
+  * Cons: More commands make the interface messier, negatively impacting user experience.
 
 
 #### Update Task Progress Feature
@@ -643,12 +643,12 @@ The `UpdateTaskProgressCommand` then continues its execution as defined by [this
 **Aspect: How we execute the UpdateTasksProgressCommand:**
 
 * **Alternative 1 (current choice):** Create a new immutable object of the Task and replace the previous Task with the new Task.
-    * Pros: Easier to debug since the state of immutable objects cannot be changed.
-    * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
 
 * **Alternative 2:** Mutate the existing Task in the Task list to reflect the new progress.
-    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
-    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
 
@@ -670,12 +670,12 @@ The `ViewAssignmentsCommand` then continues its execution as defined by [this](#
 **Aspect: How we execute the ViewAssignmentsCommand:**
 
 * **Alternative 1 (current choice):** Let LogicManager store the Index of the Student whose Assignments are going to be displayed.
-    * Pros: Enables the list of Assignments to automatically be updated every time the Assignment Grade or Comment is being edited or deleted.
-    * Cons: The command details are not fully handled inside ViewAssignmentsCommand, resulting in poor separation of concerns principle.
+  * Pros: Enables the list of Assignments to automatically be updated every time the Assignment Grade or Comment is being edited or deleted.
+  * Cons: The command details are not fully handled inside ViewAssignmentsCommand, resulting in poor separation of concerns principle.
 
 * **Alternative 2:** Let LogicManager store the list of Assignments belonging to the Student whose Assignments are going to be displayed.
-    * Pros: Abides by the separation of concerns principle better.
-    * Cons: When the user edits or deletes an Assignment's Grade or Comment, he has to keep typing `viewassignments` to see the list of Assignments getting updated. This negatively impacts the user experience.
+  * Pros: Abides by the separation of concerns principle better.
+  * Cons: When the user edits or deletes an Assignment's Grade or Comment, he has to keep typing `viewassignments` to see the list of Assignments getting updated. This negatively impacts the user experience.
 
 
 
@@ -721,7 +721,7 @@ The `EditGradeCommand` then continues its execution as defined by [this](#parser
 #### Create Consultation Feature
 This section explains the implementation of the Create Consultation feature via the `createconsult` command.
 The `CreateConsultCommand` creates a `Consultation` and adds it into the Consultation List in the application.
-There are multiple compulsory field: date, time and name of students. 
+There are multiple compulsory field: date, time and name of students.
 
 Below is the sequence diagram outlining the execution of `CreateConsultCommand`.
 
@@ -747,12 +747,12 @@ The `CreateConsultCommand` then continues its execution as defined by [this](#pa
 **Aspect: How we execute the CreateConsultCommand:**
 
 * **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
-    * Pros: Promotes information hiding since we do not need to expose the model to the `CreateConsultCommand`.
+  * Pros: Promotes information hiding since we do not need to expose the model to the `CreateConsultCommand`.
 
 
 * **Alternative 2:** Store the model in the `CreateConsultCommand` itself.
-    * Pros: Easier to debug.
-    * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
+  * Pros: Easier to debug.
+  * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
 
 
 
@@ -785,12 +785,12 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
 **Aspect: How we execute the AddToConsultCommand:**
 
 * **Alternative 1 (current choice):** Create a new immutable object of the updated Consultation and replace the previous Consultation.
-    * Pros: Easier to debug since the state of immutable objects cannot be changed.
-    * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
 
 * **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
-    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
-    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -870,9 +870,33 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
+
+
+**Use case: Add a task**
+
+**MSS**
+
+1.  User requests to add task.
+2.  F.A.K.E.J.A.R.V.I.S. adds and displays the task.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The date input is invalid.
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1b. The task priority input is invalid.
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
 
 
 **Use case: Delete a task**
@@ -894,9 +918,74 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
+
+
+**Use case: View list of tasks**
+
+**MSS**
+
+1.  User requests to view tasks
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of tasks matching search criteria.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. No fields provided
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows list of all tasks.
+
+    Use case ends.
+
+* 1b. Multiple fields provided
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1c. Invalid fields provided
+
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+
+**Use case: Update task progress**
+
+**MSS**
+
+1.  User requests to update a task progress
+2.  F.A.K.E.J.A.R.V.I.S. updates task progress and displays updated progress.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Invalid index provided
+
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1b. Invalid task progress provided
+
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case ends.
+
+* 1c. Task progress provided is the same as current progress
+
+  * 1c1. F.A.K.E.J.A.R.V.I.S. displays success message.
+
+    Use case ends.
+
 
 
 **Use case: View a person's list of assignments**
@@ -922,6 +1011,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
+
 **Use case: Edit the grade of an assignment**
 
 **MSS**
@@ -941,21 +1031,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given grade is invalid.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 
 **Use case: Delete the grade of an assignment**
@@ -977,21 +1067,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given assignment has not been commented on.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case: Edit the comment on an assignment**
 
@@ -1012,21 +1102,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given comment is invalid.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case: Delete the comment of an assignment**
 
@@ -1047,21 +1137,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3b. The given assignment name is invalid.
 
-    * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 * 3c. The given assignment has been commented on.
 
-    * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case: Find Student Profile**
 
@@ -1078,13 +1168,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. The list is empty.
 
-    Use case ends.
+  Use case ends.
 
 * 3a. No matching profiles.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-        Use case resumes at step 2.
+    Use case resumes at step 2.
 
 **Use case: Filter Results**
 
@@ -1105,9 +1195,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. No filtered results.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case resumes at step 2.
+    Use case resumes at step 2.
 
 
 **Use case: Create a consultation**
@@ -1123,21 +1213,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The date input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The time input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' names.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case: Delete a consultation**
@@ -1153,9 +1243,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The index input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case: Adding a student to a consultation**
@@ -1171,21 +1261,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The index input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
-  
+    Use case ends.
+
 * 1c. No matching name to students' name found.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case: Removing a student from a consultation**
@@ -1201,27 +1291,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The index input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' name found in consultation.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1d. No matching name to students' name found in address book.
 
-    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case: Create a session**
@@ -1237,21 +1327,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number has already been used.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' names.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 **Use case: Update a session's remarks**
 
@@ -1266,18 +1356,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The session remark input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
-    
+
 **Use case: Delete a session**
 
 **MSS**
@@ -1291,9 +1381,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case: Taking the attendance of a student for a session**
@@ -1309,27 +1399,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The session number input is invalid.
 
-    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1c. No matching name to students' name found.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1d. The attendance status input is invalid.
 
-    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 **Use case: Viewing the overall attendance of a student**
@@ -1345,15 +1435,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The student name input is invalid.
 
-    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 1b. No matching name to students' name found.
 
-    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+  * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 
 
@@ -1414,16 +1504,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+  1. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+  1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+  1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+  1. Re-launch the app by double-clicking the jar file.<br>
+     Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
 
@@ -1431,16 +1521,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+  1. Test case: `delete 1`<br>
+     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+  1. Test case: `delete 0`<br>
+     Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
+  1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+     Expected: Similar to previous.
 
 
 
@@ -1558,7 +1648,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+  1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
 
