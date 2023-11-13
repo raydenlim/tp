@@ -344,7 +344,7 @@ GradedTest testFromObjects = new GradedTest(
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
-- For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#).
+- For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#edit-graded-test-feature).
 
   
 
@@ -736,17 +736,9 @@ The `EditGradedTestCommand` will call its own `updateFilteredPersonList` method 
 Step 5:
 The `EditGradedTestCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
-
-<div class="alert alert-info"> 
-<md>
-
-:information_source: **Note**:
-
 * The process of `createEditedGradedTestPerson` is summarised in the activity diagram below:
 
 ![CreateEditedGradedTestPerson Activity Diagram](images/CreateEditedGradedTestPersonAD.png)
-
-</md>
 
 
 <br>
