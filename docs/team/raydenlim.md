@@ -74,6 +74,7 @@ Given below are my contributions to the project.
     * [raydenlim's forum post](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/forum-activities.html#60-lim-song-raydenlim-6-posts)
     * Contributed to forum discussions, and shared some unusual bugs and how to resolve them. (examples: [Assisting](https://github.com/nus-cs2103-AY2324S1/forum/issues/122#issuecomment-1711100005),
       [Unusual Bugs](https://github.com/nus-cs2103-AY2324S1/forum/issues/274#issuecomment-1770647394))
+    * Helped to identify 12 bugs during practical dry run. PED-Repo available [here](https://github.com/raydenlim/ped/issues).
 
 <br>
 
