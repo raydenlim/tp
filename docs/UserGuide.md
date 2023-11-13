@@ -105,7 +105,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 <br>
 
 ## How to use the User Guide
-You may refer to the **Table of Contents** on the right for easy navigation of the User Guide.
+You may refer to the [**Table of Contents**](#table-of-contents) for easy navigation of the User Guide.
 
 The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance the information it presents. The table below offers an overview of the typographical conventions used.
 
@@ -268,7 +268,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 * Items in square brackets are **optional**.<br>
-  e.g `tn/TASK_NAME [td/do before feedback]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
+  e.g `tn/TASK_NAME [td/TASK_DESCRIPTION]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
 
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
@@ -348,7 +348,7 @@ This section describes commands that fit in no special category.
 
 #### 👀Viewing help : `help`
 
-You can view a message explaining how to access the help page if you require assistance in understanding the commands and their formats.
+You can view a message detailing how to access the user guide if you require assistance in understanding the different commands and their formats.
 
 ![help message](images/helpMessage.png)
 
@@ -427,19 +427,23 @@ Format: `exit`
 
 #### 💾Saving the Data
 
-F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save data manually.
+F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save the data manually.
 
 
 <br>
 
 #### 🛠️Editing the Data File
 
-F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JSON file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update data directly by editing that data file.
+F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JavaScript Object Notation (JSON) file `[JAR file location]/data/fakejarvis.json`. Advanced users are welcome to update the data directly by editing that data file.
 
-**Caution:**
-If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.
-</box>
 
+<div class="alert alert-warning">
+<md>
+:warning: 
+
+**Caution**:
+* If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run. Hence, it is recommended to make a backup of the file before editing it.
+</md></div>
 
 <br>
 
@@ -753,7 +757,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 |    TASK_NAME     |                        The name of the task.                        |
 | TASK_DESCRIPTION |                    The description of the task.                     |
 |     DUE_DATE     |                The due date or deadline of the task.                |
-|  TASK_PRIORITY   | The priority level of the task. Given as `high`, `medium` or `low`. |
+|  TASK_PRIORITY   | The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`. |
 
 <br>
 
@@ -791,8 +795,8 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 |    TASK_NAME     |                            The name of the task.                             |
 | TASK_DESCRIPTION |                         The description of the task.                         |
 |     DUE_DATE     |                    The due date or deadline of the task.                     |
-|  TASK_PRIORITY   |     The priority level of the task. Given as `high`, `medium` or `low`.      |
-|  TASK_PROGRESS   | The progress level of the task. Given as `done`, `pending` or `not_started`. |
+|  TASK_PRIORITY   |     The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`.      |
+|  TASK_PROGRESS   | The progress level of the task. Given as `DONE`, `PENDING` or `NOT_STARTED`. |
 
 <br>
 
@@ -855,7 +859,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 | **Parameter** |                                  **Description**                                  |
 |:-------------:|:---------------------------------------------------------------------------------:|
 |  TASK_INDEX   |                   The index of the task to update the progress.                   |
-| NEW_PROGRESS  | The new progress level of the task. Given as `done`, `pending`, or `not_started`. |
+| NEW_PROGRESS  | The new progress level of the task. Given as `DONE`, `PENDING`, or `NOT_STARTED`. |
 
 <br>
 
@@ -965,7 +969,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 |:--------------:|:---------------------------------------------------------------------:|
 |  STUDENT_NAME  |                       The name of the student.                        |
 | SESSION_NUMBER |                  The session number of the session.                   |
-|    PRESENCE    | The attendance status of the student. Given as `present` or `absent`. |
+|    PRESENCE    | The attendance status of the student. Given as `PRESENT` or `ABSENT`. |
 
 <br>
 
@@ -1846,7 +1850,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 <br>
 
 ## Encountering Errors
-This section outlines a list of error messages that you may encounter during your usage of the application. It aims to help you better understand the messages that you may receive and what it means to you.
+If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to this section for troubleshooting advice. This section aims to help you better understand the messages that you may receive and what it means to you. If the issue persists, please contact support (see next section).
 
 |                                    **Error**                                    | <center>**What it means**</center>                                                                                                                  | <center>**How to resolve**</center>                                                                                                                           |
 |:-------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1859,3 +1863,7 @@ This section outlines a list of error messages that you may encounter during you
 |                    **Time needs to be in the format HH:mm.**                    | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                    |
 
 [Back to Table of Contents](#table-of-contents)
+
+
+## Contacting Support
+If you need further assistance with F.A.K.E.J.A.R.V.I.S. please contact our support team at `support@fakejarvis.org`.
