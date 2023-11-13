@@ -268,7 +268,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 * Items in square brackets are **optional**.<br>
-  e.g `tn/TASK_NAME [td/do before feedback]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
+  e.g `tn/TASK_NAME [td/TASK_DESCRIPTION]` can be used as `tn/Do User Guide td/do before feedback` or as `tn/Do user Guide`.
 
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
