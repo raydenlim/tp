@@ -52,6 +52,11 @@ Given below are my contributions to the project:
     * Designed the sequence diagram for `TakeAttendanceCommand`.
     * Designed the activity diagram for `CreateSessionCommand`.
 
+* Some examples of UML diagrams:
+  * Class diagram: ![Session Class Diagram](../images/SessionClassUML.png)
+  * Sequence diagram: ![TakeAttendance Sequence Diagram](../images/TakeAttendanceSequenceDiagram.png)
+
+
 * **Review/mentoring contributions**:
   * [ldinghan's tp comments](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/tp-comments.html#47-lim-han-ldinghan-37-comments)
 
