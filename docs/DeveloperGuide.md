@@ -1084,7 +1084,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Task
 
-#### Adding a task
+#### Adding tasks
 
 1. Adding a task with _valid parameters_
    1. Prerequisites: 
@@ -1107,6 +1107,58 @@ testers are expected to do more *exploratory* testing.
 5. Adding a task with _invalid priority_
     1. Test case: `addtask tn/test number 5 td/test number 5 please work d/27/02/2023 tp/asdasdsa` <br>
        Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Priority should only be `HIGH`, `MEDIUM`, or `LOW`.
+
+
+
+#### Viewing tasks
+
+1. Listing all tasks with _no filters_
+    1. Prerequisites:
+        1. There are multiple tasks in the task list which have been added using the `AddTask` command. 
+    2. Test case: `viewtasks` <br>
+       Expected: Displays all the tasks in the task list.
+
+2. Listing tasks filtered using _date filter_
+    1. Prerequisites:
+        1. There are tasks that have the date `22/10/2023`.
+    2. Test case: `viewtasks d/22/10/2023` <br>
+       Expected: Displays all the tasks in the task list that have the date `22/10/2023`.
+
+3. Listing tasks filtered using _name filter_
+    1. Prerequisites:
+        1. There are tasks that have the keywords `user guide` in the Task Name.
+    2. Test case: `viewtasks tn/user guide` <br>
+       Expected: Displays all the tasks in the task list that have `user guide` in the Task Name.
+
+4. Listing tasks filtered using _description filter_
+    1. Prerequisites:
+        1. There are tasks that have the keywords `homework` in the Task Description.
+    2. Test case: `viewtasks td/homework` <br>
+       Expected: Displays all the tasks in the task list that have `homework` in the Task Description.
+
+5. Listing tasks filtered using _priority filter_
+    1. Prerequisites:
+        1. There are tasks that have `HIGH` priority.
+    2. Test case: `viewtasks tp/high` <br>
+       Expected: Displays all the tasks in the task list that have `HIGH` priority.
+
+6. Listing tasks filtered using _progress filter_
+    1. Prerequisites:
+        1. There are tasks that have `PENDING` progress.
+    2. Test case: `viewtasks tprog/pending` <br>
+       Expected: Displays all the tasks in the task list that have `PENDING` progress.
+
+7. Listing all tasks with no tasks in the task list
+    1. Prerequisites:
+        1. There are no tasks in the task list. 
+    2. Test case: `viewtasks tprog/pending` <br>
+       Expected: No tasks will be shown.
+
+8. Listing all tasks with _invalid parameters_
+    1. Test case: `viewtasks tprog/asdasdasd`
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
+   
+
 
 ### Saving data
 
