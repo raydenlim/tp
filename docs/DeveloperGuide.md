@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+* Referenced [linkytime, T13-3](https://github.com/zfs-old-crap/linkytime) for Sequence diagram and activities diagram
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1750,7 +1750,7 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `deletegrade 0 as/Functional Expressionism`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The person index provided does not exist.
 
-3. Edit an assignment grade with _invalid assignment name_
+3. Delete an assignment grade with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletegrade 1 as/Finding Boyd`
@@ -2073,22 +2073,104 @@ testers are expected to do more *exploratory* testing.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Dealing with corrupted data files
+   1. Prerequisite:
+      1. F.A.K.E.J.A.R.V.I.S. has been initialized.
+   2. Test case: Delete a part of any `.json` file in `data` folder, or add some random symbols (e.g `@#$%^&*()`. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. recognizes the corrupted data file. The corresponding tabs will be empty (i.e if `tasklist.json` is corrupted, `Task List` will be empty).
 
-  1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+2. Dealing with missing data files
+   1. Prerequisite:
+      1. F.A.K.E.J.A.R.V.I.S. has been initialized.
+   2. Test case: Delete the whole `.json` file in `data` folder. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. recognizes the missing data file and add a sample data file inplace of the missing file.
 
-1. _{ more test cases …​ }_
+
+## **Appendix: Planned Enhancements**
+
+1. **Text Overflow Handling**
+   * Current Implementation: Currently, long emails, long task descriptions or names may extend beyond the allocated space, making it challenging for users to view the complete information. The enhancement will truncate or wrap the text appropriately, maintaining a clean and organized display.
+   * Enhancement: Implement a mechanism to handle text overflow, to ensure that lengthy text entries do not disrupt the user interface.
+   * Reason: To improve the readability and visual clarity of GUI.
+   * Suggested Fixes:
+     * Have character limits on certain fields (e.g `Email`, `Name`, `TaskName`).
+     * Have a character length checker that auto wraps the text when it "overflowed".
+   
+<br>
+   
+2. **Phone Number Validation**
+   * Current Implementation: Currently, any number that is longer than 3 digits are considered valid. It doesn't allow for special characters too.
+   * Enhancement: Introduce a validation mechanism for phone numbers to ensure that entered phone numbers adhere to a specified format. (e.g SG phone number starts with 8 or 9 and have)
+   * Reason: To enhance the accuracy of the phone numbers by validating them according to a standard format.
+   * Suggested Fixes:
+     * Have a validation regex to check for starting number = 8 or 9 (For SG phone numbers).
+     * Allow some special characters such as `+` to enable the adding of country codes in the phone number field.
+
+<br>
+
+3. **CSV File to Json Conversion and Vice Versa**
+   * Current Implementation: Currently, data can only be added/edited via the F.A.K.E.J.A.R.V.I.S. app, or directly editing the `.json` file.
+   * Enhancement: Implement the functionality to convert data to and from CSV files, enabling users to conveniently import/export data without manual editing.
+   * Reason: To enhance user convenience and data interchangeability, allowing for seamless integration with external applications that support CSV formats.
+   * Suggested Fixes:
+     * Have a `convertCsvToJson` and `convertJsonToCsv` method to convert the files accordingly.
+     * Have a `convertCsvToJson` and `convertJsonToCsv` button on the GUI to convert files with ease.
+     
+<br>
 
 
+4. **Better Name Validation**
+  * Current Implementation: Currently, names can only contain alphanumeric characters and spaces. (e.g Names such as `Shaquille O'Neal` or `Rohan s/o Mohan` are considered invalid)
+  * Enhancement: Allow special characters such as `'` or `/` to be allowed in the name field.
+  * Reason: To accommodate to more users, and be more inclusive.
+  * Suggested Fixes: 
+    * Update the validation regex to enable special characters specific to names.
 
-## **Appendix: Instructions for manual testing**
+<br>
+
+5. **Task Alert Functionality**
+   * Current Implementation: Currently, although the deadlines of tasks are tracked and color coded, there is no notification function to alert users of upcoming tasks.
+   * Enhancement: Introduce an alert function for tasks, allowing users to set reminders or receive notifications for specific tasks.
+   * Reason: To enhance task management by providing users with timely alerts and reminders for important tasks or deadlines.
+   * Suggested Fixes: 
+     * Have a `setAlert` command for users to set an alarm for their tasks.
+     * Have a `notification` feature to alert users of their upcoming tasks/deadlines. 
+
+<br>
+
+6. **Max Score Function for Graded Tests**
+   * Current Implementation: Currently, users can input any score for any graded test field, and there is no specified upperbound for the Max Score.
+   * Enhancement: Implement a function to set a maximum score for each component of graded tests, ensuring that scores adhere to predefined limits.
+   * Reason: To standardize grading practices and prevent errors or discrepancies in scored assessments.
+   * Suggested Fixes: 
+     * Have a `setMaxScore` command to specify the maximum score for each component of graded tests, preventing entry of scores that exceed these limits.
+
+<br>
+
+7. **Statistics function for Graded Tests**
+   * Current Implementation: Currently, users can only view the graded test scores for their student, with no other features.
+   * Enhancement: Implement a function to calculate the statistics of the graded test field.
+   * Reason: To allow the Avengers to have a better overview of the student's scores.
+   * Suggested Fixes:
+     * Have a `getMean`, `getMedian`, `getMode` command to return the Avenger's session's mean, median and mode for the graded tests.
+
+<br>
+
+8. **Dynamic Session Number**
+   * Current Implementation: Session numbers are immutable. (e.g a Session 5 will remain as Session 5 even though Sessions 1-4 are deleted)
+   * Enhancement: Make the session number dynamic, updating automatically to reflect the current session number even after deleting previous sessions.
+   * Reason: To improve the user experience by ensuring that the session number remains accurate and reflective of the current state of the application.
+   * Suggested Fixes: 
+     * Use a similar approach to `STUDENT_INDEX`.
+
+
+## **Appendix: Effort**
 
 If the effort required to create AB3 is 100, the amount of effort our group placed into F.A.K.E.J.A.R.V.I.S. would be a 500.
 
 Our group has put in a significant amount of effort into our tP. AB3 has a total of 8 commands (2 of which are just help and exit commands) and 1 file to store all of the data. F.A.K.E.J.A.R.V.I.S. has a total of 28 commands and 4 different files to store different data. We have also made significant changes to the GUI, enabling users to toggle the information being displayed.
 As testament to our effort, among all the teams in this module, our team has the [second-highest](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=totalCommits%20dsc&sortWithin=totalCommits%20dsc&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2023-09-22) lines of code added.
 This is inclusive of our 981 automated test cases which covers more than 80% of our code.
-
 
 
 ### Notable Changes
