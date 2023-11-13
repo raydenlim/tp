@@ -269,6 +269,7 @@ public class MainWindow extends UiPart<Stage> {
             case EDIT_COMMENT:
             case EDIT_GRADE:
             case VIEW_ASSIGNMENTS:
+                selectTab(TAB_PERSONS_INDEX);
                 handleViewAssignments();
                 break;
             case EDIT_GRADED_TEST:
