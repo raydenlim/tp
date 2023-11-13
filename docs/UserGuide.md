@@ -1740,20 +1740,9 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 <md>
 
-**QNS**: How do I transfer my data to another computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 
-**ANS**: You can install the app in the other computer and replace the sample data files with the data files in your previous F.A.K.E.J.A.R.V.I.S. folder.
-
-</md>
-</box>
-
-<box type="info" seamless icon=":fas-question:">
-
-<md>
-
-**QNS**: How do I reset all the grades of my student?<br>
-
-**ANS**: You can use the `edit` command and simply input `edit STUDENT_INDEX gt/default`, and all the scores will be set to `-`.
+**A**: You can install the app in the other computer and replace the sample data files with the data files in your previous F.A.K.E.J.A.R.V.I.S. folder.
 
 </md>
 </box>
@@ -1762,9 +1751,20 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 <md>
 
-**QNS**: How can I efficiently edit my student's graded test score<br>
+**Q**: How do I reset all the grades of my student?<br>
 
-**ANS**: You can use the `editgradedtest` command to dynamically update your student's graded test scores.
+**A**: You can use the `edit` command and enter the following: `edit STUDENT_INDEX gt/default`, and all the scores will be set to `-`.
+
+</md>
+</box>
+
+<box type="info" seamless icon=":fas-question:">
+
+<md>
+
+**Q**: How can I efficiently edit my student's graded test score<br>
+
+**A**: You can use the `editgradedtest` command to dynamically update your student's graded test scores.
 
 <div class="alert alert-info">
 <md>
@@ -1794,7 +1794,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 * If you move the F.A.K.E.J.A.R.V.I.S. to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen.<br>
 
 **Fix:** 
-* To remedy this issue, simply delete the `preferences.json` file created by F.A.K.E.J.A.R.V.I.S. before running the application again.
+* To solve this issue, simply delete the `preferences.json` file created by F.A.K.E.J.A.R.V.I.S. before running the application again.
 
 <div class="alert alert-info">
 <md>
@@ -1814,7 +1814,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 * Names, Tags and TelegramHandles are not able to accept special characters (e.g `Spencer O'Brian`, `Mohan S/O Rohan`, `façade`, `bob.the.best123`).<br>
 
 **Fix:** 
-* As a workaround, you may omit the special characters and input just the alphanumerics.
+* As a workaround, you may omit the special characters and input just the alphanumeric characters.
 * For TelegramHandles, you may replace `.`(dot) with `_`(underscore).
 
 </md>
@@ -1827,7 +1827,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 * Emails are only limited to NUS emails.
 
 **Fix:** 
-* Unfortunately, as of the current of F.A.K.E.J.A.R.V.I.S. we only support NUS emails ending with `@u.nus.edu`. 
+* Unfortunately, as of the current version of F.A.K.E.J.A.R.V.I.S. we only support NUS emails ending with `@u.nus.edu`. 
 
 </md>
 </box>
