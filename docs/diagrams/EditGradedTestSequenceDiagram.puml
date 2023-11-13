@@ -17,6 +17,7 @@ EditGradedTestCommand -> Model : getFilteredPersonList
 activate Model
 
 Model ---> EditGradedTestCommand
+deactivate Model
 
 EditGradedTestCommand -> Persons : get(targetIndex)
 activate Persons
@@ -31,6 +32,7 @@ EditGradedTestCommand ---> EditGradedTestCommand
 deactivate EditGradedTestCommand
 
 EditGradedTestCommand -> Model : setPerson(target, editedPerson)
+activate Model
 
 Model -> Model : updateFilteredPersonList()
 activate Model
