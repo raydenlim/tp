@@ -323,6 +323,10 @@ Most commands given in the user guide utilise various parameters which are also 
 |   TASK_DESCRIPTION   |   `td/`    |                                               `addtask` `viewtasks`                                               | The Description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                                       |
 |    TASK_PRIORITY     |   `tp/`    |                                               `addtask` `viewtasks`                                               | The Priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                                             |
 |    TASK_PROGRESS     |  `tprog/`  |                                      `addtask` `viewtasks` `updateprogress`                                       | The Progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                                    |
+|      TAB_INDEX       |            |                                                       `tab`                                                       | The Index of a Tab. <ul><li> Only 5 possible values are allowed: `1`, `2`, `3`, `4`, `5`. </li></ul>                                                                                                                                                                 |
+|    STUDENT_INDEX     |            |    `edit` `delete` `viewassignments` `editgrade` `deletegrade` `editcomment` `deletecomment` `editgradedtest`     | The Index of a Student shown in the Student list. <ul><li> Only positive integers are allowed.</li><li>Student Index should exist in the Student list.</li></ul>                                                                                                     |
+|      TASK_INDEX      |            |                                           `updateprogress` `deletetask`                                           | The Index of a Task. <ul><li> Only positive integers are allowed.</li><li>Task Index should exist.</li></ul>                                                                                                                                                         |
+|  CONSULTATION_INDEX  |            |                                `addtoconsult` `removefromconsult` `deleteconsult`                                 | The Index of a Consultation. <ul><li> Only positive integers are allowed.</li><li>Consultation Index should exist.</li></ul>                                                                                                                                         |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -1145,6 +1149,8 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+* The grade **must not be a negative integer**.
+* The grade **must not be greater than** the maximum grade of the assignment by more than 75.
 
 </md>
 </div>
@@ -1195,6 +1201,7 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 * The student index refers to the index number shown in the displayed student list.
 * The student index <b>must be a positive integer</b> 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+* The assignment **must have already been graded**.
 
 </md>
 </div>
@@ -1247,6 +1254,8 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+* The comment **must not be empty**
+* The comment **must be within 200 characters**.
 
 </md>
 </div>
@@ -1299,6 +1308,7 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The name of the assignment must exist in F.A.K.E.J.A.R.V.I.S.
+* The assignment **must have already been commented on**.
 
 </md>
 </div>
@@ -1547,6 +1557,8 @@ Format: `deletesession s/SESSION_NUMBER`
 > [IMAGE COMING SOON]
 
 
+[Back to Table of Contents](#table-of-contents)
+
 <br>
 <br>
 <br>
@@ -1729,6 +1741,9 @@ Format: `deleteconsult CONSULTATION_INDEX`
 >`Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, Alex Yeoh, Roy Balakrishnan`
 >
 > [IMAGE COMING SOON]
+
+
+[Back to Table of Contents](#table-of-contents)
 
 <br>
 

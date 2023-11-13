@@ -33,7 +33,7 @@ public class EditCommentCommand extends AssignmentCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the comment given to a person's assignment, "
             + "identified by the index number used in the displayed person list. "
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: STUDENT_INDEX (must be a positive integer) "
             + PREFIX_ASSIGNMENT + "ASSIGNMENT "
             + PREFIX_COMMENT + "COMMENT ";
 
