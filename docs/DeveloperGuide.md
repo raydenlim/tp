@@ -371,7 +371,7 @@ Below is a class diagram describing the implementation of `Consultation` and its
 
 #### Design Considerations:
 
-**Aspect: How the students are stored to a consultation:**
+**Aspect 1: How the students are stored to a consultation:**
 
 * **Alternative 1:** Use Set<Person> to keep track of students in a consultation.
     * Pros: Stores only 1 instance of a unique person, no duplicates.
@@ -384,7 +384,7 @@ Below is a class diagram describing the implementation of `Consultation` and its
     * Pros: Better abstraction and easier maintainability.
     * Cons: Performance overhead related to creation and manipulation of new class.
 
-**Aspect: Adding or removing students to or from a consultation:**
+**Aspect 2: Adding or removing students to or from a consultation:**
 
 * **Alternative 1 (Current choice):** The `AddToConsult` and `RemoveFromConsult` features creates a new Consultation object with updated `StudentSet`
   * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
@@ -785,7 +785,7 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
 
 
 ##### Design Considerations:
-**Aspect: How we execute the AddToConsultCommand**
+**Aspect: How we execute the AddToConsultCommand:**
 
 * **Alternative 1 (current choice):** Create a new immutable object of the updated Consultation and replace the previous Consultation.
     * Pros: Easier to debug since the state of immutable objects cannot be changed.
@@ -819,7 +819,7 @@ Step 4:
 If all checks are passed, the student will be removed from the Consultation.
 
 #### Design Considerations:
-**Aspect: How we execute the RemoveFromConsultCommand**
+**Aspect: How we execute the RemoveFromConsultCommand:**
 
 * **Alternative 1 (current choice):** Similar to `AddToConsult`, create a new immutable object of the updated Consultation and replace the previous Consultation.
   * Pros: Easier to debug since the state of immutable objects cannot be changed.
