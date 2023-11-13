@@ -64,12 +64,14 @@ Below are my contributions to the project:
 
 <br>
 
-  * Developer Guide:
-    * Added implementation details of the `editgrade`, `deletegrade`, `editcomment`, `deletecomment` and `viewassignments` features.
-    * Designed the class diagram for `Assignment`.
-    * Designed the sequence diagram for `viewassignments` and `editgrade`.
-    * Update mistake in `EditCommand` UML sequence diagram
-    * Added some use cases
+* Developer Guide:
+  * Added implementation details of the `editgrade`, `deletegrade`, `editcomment`, `deletecomment` and `viewassignments` features.
+  * Designed the class diagram for `Assignment`.
+  * Designed the sequence diagram for `viewassignments` and `editgrade`.
+  * Update mistake in `EditCommand` UML sequence diagram
+  * Added some use cases
+  * Added tests for assignment related features into the Instructions for Manual Testing section
+  * Added the Appendix: Effort section
 
 <br>
 
