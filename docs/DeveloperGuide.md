@@ -343,15 +343,8 @@ assertEquals(testFromObjects, testFromString);
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
-- Below is the Sequence diagram and Activity Diagram for `EditGradedTest` class with the `editgradedtest` command:
+- For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#).
 
-**EditGradedTest Sequence Diagram:**<br>
-  ![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
-
-<br>
-
-**createEditedGradedTestPerson Activity Diagram:**<br>
-![CreateEditedGradedTestPersonAD](images/CreateEditedGradedTestPersonAD.png)
   
 
 ### Consultations
@@ -688,7 +681,7 @@ Below is the sequence diagram outlining the execution of `EditGradeCommand`.
 
 
 Step 1:
-The `LogicManager` invokes `ViewAssignmentsCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
+The `LogicManager` invokes `EditGradeCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
 
 Step 2:
 The `EditGradeCommand::createGradedPerson` is invoked to create a new immutable Person object with the updated Assignment Grade.
@@ -716,6 +709,83 @@ The `EditGradeCommand` then continues its execution as defined by [this](#parser
   * Pros: Simplifies the process of editing the Grade.
   * Cons: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications.
 
+
+#### Edit Graded Test Feature
+This section explains the implementation of the Edit Grade Test feature via the `editgradedtest` command. The `EditGradeTestCommand` edits the Scores of a Graded Test belonging to a Student identified using the `STUDENT_INDEX` field. The Graded Test is identified using the 5 optional graded test fields, namely `Reading_Assessment_1`, `Reading_Assessment_2`, `MidTerms`, `Finals` and `Practical_Exam`. At least one of these optional fields must be included after the Student Index of the Student to be selected.
+
+Below is the sequence diagram outlining the execution of `EditGradeTestCommand`.
+
+![EditGradedTestCommand Sequence Diagram](images/EditGradedTestSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `EditGradedTestCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
+
+Step 2:
+The `EditGradeTestCommand::createEditedGradedTestPerson` is invoked to create a new immutable Person object with the updated Graded Test Score(s).
+
+Step 3:
+The `EditGradedTestCommand` will call `setPerson` in `Model` to replace the original `Person` with the new `Person` object.
+
+Step 4:
+The `EditGradedTestCommand` will call its own `updateFilteredPersonList` method to update the model's filter and display all the students to the user.
+
+Step 5:
+The `EditGradedTestCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+<div class="alert alert-info"> 
+<md>
+
+:information_source: **Note**:
+
+* The process of `createEditedGradedTestPerson` is summarised in the activity diagram below:
+
+![CreateEditedGradedTestPerson Activity Diagram](images/CreateEditedGradedTestPersonAD.png)
+
+</md>
+
+
+<br>
+
+##### Design Considerations:
+**Aspect 1: How we execute the EditGradedTestCommand:**
+
+* **Alternative 1 (current choice):** Direct Model Interaction via LogicManager.
+  * Pros:
+    * Immutability: Enables the `Person` object to remain immutable.
+    * Assurance: Since the objects are immutable, there will be little to no side effects on the objects.
+    * Readability: Straightforward logic execution. Clear on UML diagrams.
+
+  * Cons:
+    * Limited Extensibility: Additional modifications may be needed if there are changes in any data storage mechanisms. (i.e the json files of (sample) data MUST be compatible with one another. Any mismatch will cause compilation error.)
+    * Tight Coupling: The strong dependencies between the models make it difficult for alterations without affecting the other components, especially when the objects are immutable.
+
+* **Alternative 2:** Command Dispatcher via LogicManager.
+  * Pros:
+    * Decoupling: Details of interactions between the models are abstracted away.
+  * Cons:
+    * Overkill: For a small project like F.A.K.E.J.A.R.V.I.S. this approach may be over-engineered.
+    * Overhead: Additional dispatcher class is needed, which may slow down the processing time.
+
+
+**Aspect 2: How we edit the Graded Test Scores of a `Person` object's Assignment:**
+
+* **Alternative 1 (current choice):** Immutable Objects i.e create a completely new instance of `Person`.
+  * Pros: 
+    * Immutability: Enables the `Person` object to remain immutable.
+    * Assurance: Since the objects are immutable, there will be little to no side effects on the objects. 
+    
+  * Cons:
+    * Resource Intensive: Any edits to the Score(s) of a Graded Test will create new `Person` instances, this may be resource-intensive when done in large-scale.
+    * Limited Extensibility: 
+
+* **Alternative 2:** Dynamic Objects i.e update the `GradedTest` found in the `Person` object.
+  * Pros:
+    * Simplicity: Simplifies the process of editing the Grade.
+    * Reduce redundancy: Avoids creating new instance for every change to an Object.
+  * Cons: 
+    * Mutable Objects: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications during the integration process.
+    * Testing/Maintenance Challenges: Requires extra attention when making test cases, to prevent unintended side effects.
 
 
 #### Create Consultation Feature
