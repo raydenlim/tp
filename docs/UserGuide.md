@@ -503,7 +503,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 > **Output:**
 >`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags: ; GradedTest: `
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of Add Student 1](images/addStudent.png)
 
 
 > **📖Example 2:**
@@ -534,8 +535,8 @@ Format: `list`
 > **Output:**
 >`Listed all persons`
 >
-> [IMAGE COMING SOON]
-
+> **Output Image:**
+> ![Screenshot of List Students](images/listStudents.png)
 
 <br>
 <br>
@@ -589,8 +590,8 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 > **Output:**
 >`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags: [friends]; Graded Test: RA1: 10; RA2: 10; MidTerms: 3; Final: 4; PE: 5`
 >
-> [IMAGE COMING SOON]
-
+> **Output Image:**
+> ![Screenshot of Edit Student 1](images/editStudent.png)
 
 > **📖Example 2:**
 >
@@ -637,8 +638,8 @@ Format: `find KEYWORD…`
 > **Output:**
 >`1 persons listed!`
 >
-> [IMAGE COMING SOON]
-
+> **Output Image:**
+> ![Screenshot of Find Student](images/findStudent.png)
 
 > **📖Example 2:**
 >
@@ -685,8 +686,8 @@ Format: `delete STUDENT_INDEX`
 > **Output:**
 >`Deleted Person: Name: Bernice Yu; Phone: 99272758; Email: berniceyu@u.nus.edu; Telegram Handle: berrynice123; Tags: [colleagues][friends]; Graded Test: RA1: -; RA2: -; MidTerms: 3; Final: 4; PE: 5`
 >
-> [IMAGE COMING SOON]
-
+> **Output Image:**
+> ![Screenshot of Delete Student](images/deleteStudent.png)
 
 > **📖Example 2:**
 >
