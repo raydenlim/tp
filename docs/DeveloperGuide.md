@@ -1373,8 +1373,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
+* **API (Application Programming Interface)**: A set of protocols and tools for building software applications, specifying how software components should interact.
+* **Assignment**: A work or task assigned to students.
+* **Attendance**: Feature for tracking and recording student attendance in Sessions.
+* **Avenger**: A teaching assistant or teacher of the module CS1101S: Programming Methodology.
+* **Command**: An instruction given by an Avenger to perform specific actions within the application.
+* **Command Line Interface (CLI)**: A text-based user interface (UI) used to run programs, manage computer files and interact with the computer.
+* **Consultation**: A scheduled meeting between an Avenger and students for academic discussions.
+* **Graded Test**: An assessment or test assigned to students with a score.
+* **Graphical User Interface (GUI)**: A digital interface in which a user interacts with graphical components.
+* **Logic Component**: Manages the execution of commands and the application's logic processing.
+* **MainWindow**: The primary window of the UI, containing other UI parts.
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Model Component**: Manages and stores the application data in memory.
+* **NUS**: National University of Singapore.
+* **Private contact detail**: A contact detail that is not meant to be shared with others.
+* **Session**: A class or tutorial organized by an Avenger.
+* **Session Number**: A unique identifier for each Session, used for organising and referencing Sessions.
+* **Storage Component**: Manages reading from and writing data to the hard disk.
+* **Task**: An activity that needs to be completed, often with specific characteristics like deadlines, priority, and progress status.
+* **UI (User Interface) Component**: Manages the graphical interface of the application.
+* **UML (Unified Modeling Language)**: A standardized modeling language in the field of software engineering.
+* **User Pref (User Preferences)**: Settings and preferences customized by the user to enhance their experience with the application.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
