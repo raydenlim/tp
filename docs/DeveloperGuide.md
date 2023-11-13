@@ -1376,7 +1376,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **API (Application Programming Interface)**: A set of protocols and tools for building software applications, specifying how software components should interact.
 * **Assignment**: A work or task assigned to students.
 * **Attendance**: Feature for tracking and recording student attendance in Sessions.
-* **Avenger**: A tutor or teacher of the module CS1101S: Programming Methodology.
+* **Avenger**: A teaching assistant or teacher of the module CS1101S: Programming Methodology.
 * **Command**: An instruction given by an Avenger to perform specific actions within the application.
 * **Command Line Interface (CLI)**: A text-based user interface (UI) used to run programs, manage computer files and interact with the computer.
 * **Consultation**: A scheduled meeting between an Avenger and students for academic discussions.
