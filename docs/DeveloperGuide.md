@@ -1429,7 +1429,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Viewing assignments with _valid parameters_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `viewasssignments 1` <br>
       Expected: List of assignments belonging to the student of index 1 is shown.
 
@@ -1443,7 +1443,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Edit an assignment grade with _valid parameters_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Functional Expressionism g/500`
       Expected: Grade of the specified assignment has been edited to 500/500.
 
@@ -1453,13 +1453,13 @@ testers are expected to do more *exploratory* testing.
 
 3. Edit an assignment grade with _invalid assignment name_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Finding Boyd g/500`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The assignment name does not exist.
 
 4. Edit an assignment grade with _invalid grade_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Functional Expressionism g/700`
     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The grade exceeds the maximum grade by more than 75.
 
@@ -1469,7 +1469,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Delete an assignment grade with _valid parameters_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
       2. The assignment has already been graded.
    2. Test case: `deletegrade 1 as/Functional Expressionism`
       Expected: Grade of the specified assignment has been deleted.
@@ -1480,7 +1480,7 @@ testers are expected to do more *exploratory* testing.
 
 3. Edit an assignment grade with _invalid assignment name_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletegrade 1 as/Finding Boyd`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The assignment name does not exist.
 
@@ -1490,7 +1490,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Edit an assignment comment with _valid parameters_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Functional Expressionism c/Good job!`
       Expected: Comment of the specified assignment has been edited to "Good job!".
 
@@ -1500,13 +1500,13 @@ testers are expected to do more *exploratory* testing.
 
 3. Edit an assignment comment with _invalid assignment name_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Finding Boyd c/Good job!`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The assignment name does not exist.
 
 4. Edit an assignment comment with _invalid comment_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Functional Expressionism c/`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The comment cannot be empty.
 
@@ -1516,7 +1516,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Delete an assignment comment with _valid parameters_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
       2. The assignment has already been commented on.
    2. Test case: `deletecomment 1 as/Functional Expressionism`
       Expected: Comment of the specified assignment has been deleted.
@@ -1527,7 +1527,7 @@ testers are expected to do more *exploratory* testing.
 
 3. Delete an assignment comment with _invalid assignment name_
    1. Prerequisites:
-      1. There exists at least 1 student.
+      1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletecomment 1 as/Finding Boyd`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
 
