@@ -906,32 +906,117 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+
 **Use case: Create a consultation**
 
 **MSS**
 
-1.  User requests to create a consultation with specified date, time and student name(s)
+1.  User requests to create a consultation with specified date, time and student name(s).
 2.  F.A.K.E.J.A.R.V.I.S. creates a consultation.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The date input is invalid.
+* 1a. The date input is invalid.
 
-    * 2a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
-
-      Use case ends.
-
-* 3a. The time input is invalid.
-
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case ends.
 
-* 3a. No matching name to students' names.
+* 1b. The time input is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1c. No matching name to students' names.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Delete a consultation**
+
+**MSS**
+
+1.  User requests to delete a consultation at a specified index.
+2.  F.A.K.E.J.A.R.V.I.S. deletes the consultation.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The index input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Adding a student to a consultation**
+
+**MSS**
+
+1.  User requests to add a student into a consultation at a specified index.
+2.  F.A.K.E.J.A.R.V.I.S. updates the consultation.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The index input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+  
+* 1c. No matching name to students' name found.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Removing a student from a consultation**
+
+**MSS**
+
+1.  User requests to remove a student from a consultation at a specified index.
+2.  F.A.K.E.J.A.R.V.I.S. updates the consultation.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The index input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1c. No matching name to students' name found in consultation.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1d. No matching name to students' name found in address book.
+
+    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case ends.
 
@@ -942,10 +1027,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4. System should respond within 2 seconds to ensure smooth and efficient user interactions.
-5. The system should be able to handle an increasing number of users and data without a significant decrease in performance.
-6. The system should be user-friendly, with a clean and intuitive interface.
-7. Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
+4.  The system should respond within 2 seconds to ensure smooth and efficient user interactions.
+5.  The system should be able to handle an increasing number of users and data without a significant decrease in performance.
+6.  The system should be user-friendly, with a clean and intuitive interface.
+7.  Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
 
 *{More to be added}*
 
