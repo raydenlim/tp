@@ -357,37 +357,40 @@ assertEquals(testFromObjects, testFromString);
 ### Consultations
 
 The Consultation component consists fo the following set of features: Create Consultation, Delete Consultation, Add
-Student to a Consultation.
+Student to a Consultation and Remove Student from a Consultation.
 
 #### The Consultation Class
 
-The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `HashSet` of `Person` and a set of getter methods
+The Consultation Class is made up of a `LocalDate`, `LocalTime`, a `StudentSet` and a set of getter methods
 that corresponds to these fields.
 
 Below is a class diagram describing the implementation of `Consultation` and its respective fields.
 
-<p align="center"><img src="images/ConsultationClassUMLDiagram.png"></p>
+<p align="center"><img src="images/ConsultationClassDiagram.png"></p>
 <p align="center">Consultation Class UML Diagram</p>
 
 #### Design Considerations:
 
 **Aspect: How the students are stored to a consultation:**
 
-* **Alternative 1 (Current choice):** Use Set<Person> to keep track of students in a consultation.
+* **Alternative 1:** Use Set<Person> to keep track of students in a consultation.
     * Pros: Stores only 1 instance of a unique person, no duplicates.
     * Cons: May have performance issues in terms of memory usage.
-
 
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
     * Cons: We must ensure there are no duplicates with additional checks.
 
-**Aspect: Adding students to a new or existing consultation:**
+* **Alternative 3 (current choice):** Use a `StudentSet` class to keep track of students.
+    * Pros: Better abstraction and easier maintainability.
+    * Cons: Performance overhead related to creation and manipulation of new class.
 
-* **Alternative 1 (Current choice):** The `AddToConsult` feature creates a new Consultation object with updated student list
+**Aspect: Adding or removing students to or from a consultation:**
+
+* **Alternative 1 (Current choice):** The `AddToConsult` and `RemoveFromConsult` features creates a new Consultation object with updated `StudentSet`
   * Pros: Defensive programming when entirely creating a new Consultation object without modifying previous object.
   * Cons: Require additional checking to inform exception cases.
 
-* **Alternative 2:** `AddToConsult` directly manipulate the attribute `students` in a Consultation object.
+* **Alternative 2:** `AddToConsult` or `RemoveFromConsult` directly manipulate the `StudentSet` in a Consultation object.
   * Cons: Poor abstraction and room for errors.
 
 
@@ -758,8 +761,8 @@ The `CreateConsultCommand` then continues its execution as defined by [this](#pa
 
 #### Add To Consultation Feature
 This section explains the implementation of the Add To Consultation feature via the `addtoconsult` command.
-The `AddToConsultCommand` adds a new student to the consultation identified using the Index.
-There are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
+The `AddToConsultCommand` adds a new student to the consultation identified using an Index.
+There are two compulsory field, which are the Index of the consultation to add student into, and the name of the student.
 
 Below is the sequence diagram outlining the execution of `AddToConsultCommand`.
 
@@ -782,7 +785,7 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
 
 
 ##### Design Considerations:
-**Aspect: How we execute the AddToConsultCommand:**
+**Aspect: How we execute the AddToConsultCommand**
 
 * **Alternative 1 (current choice):** Create a new immutable object of the updated Consultation and replace the previous Consultation.
     * Pros: Easier to debug since the state of immutable objects cannot be changed.
@@ -792,6 +795,39 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
     * Cons: Risk of the state of mutable objects being changed by other methods or processes.
     * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
+
+
+#### Remove From Consultation Feature
+This section explains the implementation of the Remove From Consultation feature via the `removefromconsult` command.
+The `RemoveFromConsultCommand` removes a student specified by name from the consultation identified using an Index.
+There are two compulsory fields which are the index of the consultation to remove from, as well as the name of the students to be removed.
+
+Below is the activity diagram outlining the execution of `RemoveFromConsultCommand`.
+
+![RemoveFromConsultCommand activity diagram](images/RemoveFromConsultActivityDiagram.png)
+
+Step 1:
+The Avenger(user) enters the command `removefromconsult` and the command is parsed by the `RemoveFromConsultCommandParser`.
+
+Step 2:
+The Index parameter is checked for its validity, which will display an error message if invalid. Otherwise, the Consultation at that Index will be retrieved.
+
+Step 3:
+The given name of student is then checked if there is a matching person in the Address Book and the retrieved Consultation. If there are any invalid names, an error message indicating Student Not Found will be displayed.
+
+Step 4:
+If all checks are passed, the student will be removed from the Consultation.
+
+#### Design Considerations:
+**Aspect: How we execute the RemoveFromConsultCommand**
+
+* **Alternative 1 (current choice):** Similar to `AddToConsult`, create a new immutable object of the updated Consultation and replace the previous Consultation.
+  * Pros: Easier to debug since the state of immutable objects cannot be changed.
+  * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+
+* **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
+  * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+  * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
 --------------------------------------------------------------------------------------------------------------------
 
