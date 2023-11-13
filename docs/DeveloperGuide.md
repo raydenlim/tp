@@ -1279,25 +1279,103 @@ testers are expected to do more *exploratory* testing.
 5. Listing tasks filtered using _priority filter_
     1. Prerequisites:
         1. There are tasks that have `HIGH` priority.
-    2. Test case: `viewtasks tp/high` <br>
+    2. Test case: `viewtasks tp/HIGH` <br>
        Expected: Displays all the tasks in the task list that have `HIGH` priority.
 
 6. Listing tasks filtered using _progress filter_
     1. Prerequisites:
         1. There are tasks that have `PENDING` progress.
-    2. Test case: `viewtasks tprog/pending` <br>
+    2. Test case: `viewtasks tprog/PENDING` <br>
        Expected: Displays all the tasks in the task list that have `PENDING` progress.
 
 7. Listing all tasks with no tasks in the task list
     1. Prerequisites:
         1. There are no tasks in the task list. 
-    2. Test case: `viewtasks tprog/pending` <br>
+    2. Test case: `viewtasks tprog/PENDING` <br>
        Expected: No tasks will be shown.
 
 8. Listing all tasks with _invalid parameters_
     1. Test case: `viewtasks tprog/asdasdasd`
        Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
-   
+
+
+#### Updating progress of tasks
+
+1. Updating progress of a task as _pending_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/PENDING` <br>
+       Expected: Updates the task's progress to `PENDING`. 
+
+2. Updating progress of a task as _not_started_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/NOT_STARTED` <br>
+       Expected: Updates the task's progress to `NOT_STARTED`.
+
+3. Updating progress of a task as _done_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/DONE` <br>
+       Expected: Updates the task's progress to `DONE`.
+
+4. Updating progress of a task as an _invalid parameter_
+    1. Prerequisites:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `updateprogress 1 tprog/asdasdasdsad` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Progress is not updated. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`.
+
+5. Updating progress of a task with a non-integer index.
+    1. Test case: `updateprogress abcd tprog/DONE` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be a positive integer.
+
+6. Updating progress of a task with a negative index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown. 
+    2. Test case: `updateprogress -1 tprog/DONE` <br>
+        Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be an integer.
+
+7. Updating progress of a task with an out-of-bounds index.
+    1. Prerequisite:
+       1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+    2. Test case: `updateprogress [X + 1] tprog/DONE` <br>
+          Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Progress is not updated. <br> Reason: Index must be within the range of the size of the task list.
+
+8. Updating progress of a task without an index.
+    1. Test case: `updateprogress tprog/DONE` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must not be blank.
+
+
+#### Deleting a task
+
+1. Deleting the first task currently shown in the task list.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask 1` <br>
+       Expected: First task is deleted.
+
+2. Deleting the task with a non-integer index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask wasd` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be an integer.
+
+3. Deleting the task with an out-of-bounds index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+    2. Test case: `deletetask [X + 1]` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Task is not deleted. <br> Reason: Index must be within the range of the size of the task list.
+
+4. Deleting the task with a negative index.
+    1. Prerequisite:
+        1. There is at least one task in the task list currently shown.
+    2. Test case: `deletetask -1` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be a positive integer.
+
+5. Deleting the task without an index.
+    1. Test case: `deletetask` <br>
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must not be blank.
+
 
 
 ### Saving data
