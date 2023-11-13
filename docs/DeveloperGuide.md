@@ -1058,18 +1058,13 @@ testers are expected to do more *exploratory* testing.
 
     1. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
-
-1. Saving window preferences
-
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+    2. Double-click the jar file Expected: Shows the GUI with a set of sample data. The window size will be maximised.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Students
+
+#### Deleting a student
 
 1. Deleting a person while all persons are being shown
 
@@ -1085,6 +1080,22 @@ testers are expected to do more *exploratory* testing.
        Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
+
+
+### Task
+
+#### Adding a task
+
+1. Adding a task with _valid parameters_
+   1. Prerequisites: 
+      1. There is no other task with the same name and description.
+   2. Test case: `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` <br>
+   Expected: Task is added.
+
+2. Adding a task with _incorrect name_
+   1. Test case: `addtask tn/Prepare Lecture slides d/30/09/2023 tp/high` <br>
+       Expected: Task is added.
+
 
 ### Saving data
 
