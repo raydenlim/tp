@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTENDANCE_PRESENCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SESSION;
 
+import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TakeAttendanceCommand;
@@ -38,11 +39,11 @@ public class TakeAttendanceCommandParser implements Parser<TakeAttendanceCommand
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_SESSION);
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ATTENDANCE_PRESENCE);
         SessionNumber sessionNumber = ParserUtil.parseSessionNumber(argMultimap.getValue(PREFIX_SESSION).get());
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Set<Name> names = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
         AttendancePresence attendancePresence =
                 ParserUtil.parseAttendancePresence(argMultimap.getValue(PREFIX_ATTENDANCE_PRESENCE).get());
 
-        return new TakeAttendanceCommand(sessionNumber, name, attendancePresence);
+        return new TakeAttendanceCommand(sessionNumber, names, attendancePresence);
     }
 
     /**
