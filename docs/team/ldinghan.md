@@ -35,6 +35,7 @@ Given below are my contributions to the project:
 
 * **Project management**: 
   * Reviewed and approved pull requests
+  * Organised and created GitHub issues
 
 
 * **Enhancements to existing features**:
@@ -45,9 +46,16 @@ Given below are my contributions to the project:
   * User Guide:
     * Added documentation for the Session Management Section.
     * Designed the annotated images displaying the different sections of the UI of the product.
-
+    * Reorganised the order of sections in a more logical order.
   * Developer Guide:
     * Designed the class diagram for `Session`.
+    * Designed the sequence diagram for `TakeAttendanceCommand`.
+    * Designed the activity diagram for `CreateSessionCommand`.
+
+* Some examples of UML diagrams:
+  * Class diagram: ![Session Class Diagram](../images/SessionClassUML.png)
+  * Sequence diagram: ![TakeAttendance Sequence Diagram](../images/TakeAttendanceSequenceDiagram.png)
+
 
 * **Review/mentoring contributions**:
   * [ldinghan's tp comments](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/tp-comments.html#47-lim-han-ldinghan-37-comments)
@@ -61,4 +69,4 @@ Given below are my contributions to the project:
 
 * **Contributions beyond the project team**: 
   * Contributed to module forum page to answer queries on code coverage [here](https://github.com/nus-cs2103-AY2324S1/forum/issues/267#issuecomment-1767768888)
-
+  * Found 9 bugs during the PE-D, some of which were highly severe bugs, which helped to point out areas for improvement for another team's product.

@@ -44,7 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private ConsultationListPanel consultationListPanel;
     private SessionListPanel sessionListPanel;
     private ResultDisplay resultDisplay;
-    private ResultGraphicalDisplay resultGraphicalDisplay;
+    private GraphicalResultDisplay graphicalResultDisplay;
     private HelpWindow helpWindow;
     private AssignmentNameListPanel assignmentNameListPanel;
     private AssignmentListPanel assignmentListPanel;
@@ -163,8 +163,8 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        resultGraphicalDisplay = new ResultGraphicalDisplay();
-        resultGraphicalDisplayPlaceholder.getChildren().add(resultGraphicalDisplay.getRoot());
+        graphicalResultDisplay = new GraphicalResultDisplay();
+        resultGraphicalDisplayPlaceholder.getChildren().add(graphicalResultDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
