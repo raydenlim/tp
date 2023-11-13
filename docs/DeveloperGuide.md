@@ -347,7 +347,7 @@ The `Model` will also call `setStudent` in the respective lists (denoted by `Lis
 Step 5:
 The `EditCommand` will call its own `updateFilteredPersonList` method to update the model's filter and display all the students to the user.
 
-Step 4:
+Step 6:
 The `EditCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
 
@@ -545,6 +545,72 @@ The `UpdateTaskProgressCommand` then continues its execution as defined by [this
 
 
 
+#### View Assignments Feature
+This section explains the implementation of the View Assignments feature via the `viewassignments` command. The `ViewAssignmentsCommand` displays a list of Assignments belonging to a Student identified using the `STUDENT_INDEX` field. There is one compulsory field which is the Index of the Student to be selected.
+
+Below is the sequence diagram outlining the execution of `ViewAssignmentsCommand`.
+
+![ViewAssignmentsCommand Sequence Diagram](images/ViewAssignmentsSequenceDiagram.png)
+
+
+Step 1:
+The `LogicManager` invokes `ViewAssignmentsCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
+
+Step 2:
+The `ViewAssignmentsCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+##### Design Considerations:
+**Aspect: How we execute the ViewAssignmentsCommand:**
+
+* **Alternative 1 (current choice):** Let LogicManager store the Index of the Student whose Assignments are going to be displayed.
+    * Pros: Enables the list of Assignments to automatically be updated every time the Assignment Grade or Comment is being edited or deleted.
+    * Cons: The command details are not fully handled inside ViewAssignmentsCommand, resulting in poor separation of concerns principle.
+
+* **Alternative 2:** Let LogicManager store the list of Assignments belonging to the Student whose Assignments are going to be displayed.
+    * Pros: Abides by the separation of concerns principle better.
+    * Cons: When the user edits or deletes an Assignment's Grade or Comment, he has to keep typing `viewassignments` to see the list of Assignments getting updated. This negatively impacts the user experience.
+
+
+
+#### Edit Grade Feature
+This section explains the implementation of the Edit Grade feature via the `editgrade` command. The `EditGradeCommand` edits the Grade of an Assignment belonging to a Student identified using the `STUDENT_INDEX` field. The Assignment is identified using the `ASSIGNMENT_NAME` field. There are three compulsory fields which are the Index of the Student to be selected, the name of the Assignment and the new Grade of the Assignment.
+
+Below is the sequence diagram outlining the execution of `EditGradeCommand`.
+
+![EditGradeCommand Sequence Diagram](images/EditGradeSequenceDiagram.png)
+
+
+Step 1:
+The `LogicManager` invokes `ViewAssignmentsCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
+
+Step 2:
+The `EditGradeCommand::createGradedPerson` is invoked to create a new immutable Person object with the updated Assignment Grade.
+
+Step 3:
+The `EditGradeCommand` will call `setPerson` in `Model` to replace the original `Person` with the new `Person` object.
+
+Step 4:
+The `Model` will also call `setStudent` in the respective lists (denoted by `List<XYZ>`, where XYZ refers to `Consultation` and `Session`) to update the relevant lists containing the original `Person` to the new `Person` object.
+
+Step 5:
+The `EditGradeCommand` will call its own `updateFilteredPersonList` method to update the model's filter and display all the students to the user.
+
+Step 6:
+The `EditGradeCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+##### Design Considerations:
+**Aspect: How we edit the Grade of a `Person` object's Assignment:**
+
+* **Alternative 1 (current choice):** Create a completely new instance of `Person`.
+  * Pros: Enables the `Person` object to remain immutable.
+  * Cons: Editing the Grade of an Assignment will keep changing the `Person` found in the Model.
+
+* **Alternative 2:** Update the `Assignment` found in the `Person` object.
+  * Pros: Simplifies the process of editing the Grade.
+  * Cons: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications.
+
+
+
 #### Create Consultation Feature
 This section explains the implementation of the Create Consultation feature via the `createconsult` command.
 The `CreateConsultCommand` creates a `Consultation` and adds it into the Consultation List in the application.
@@ -652,25 +718,25 @@ The `AddToConsultCommand` then continues its execution as defined by [this](#par
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                                     | So that I can…​                                                        |
-|----------|--------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions                           | refer to instructions when I forget how to use the App                 |
-| `* * *`  | organised Avenger                          | add a new person                                 |                                                                        |
-| `* * *`  | organised Avenger                          | delete a person                                  | remove entries that I no longer need                                   |
-| `* * *`  | curious Avenger                            | find a person by name                            | locate details of persons without having to go through the entire list |
-| `* * *`  | busy Avenger                               | keep track of what needs to be done              | better guide my students                                               |
-| `* * *`  | conscientious Avenger                      | view my students' grades for their assignments   | better assess my students' competency                                  |
-| `* * *`  | caring Avenger                             | view my students' comments for their assignments | take note of my students' strengths and weaknesses.                    |
-| `* * *`  | responsible Avenger                        | create a new consultation with students          | keep track of when and with who the consultation is held               |
-| `* * *`  | accommodating Avenger                      | add students to an existing consultation         | invite more students to join a consultation discussion                 |
-| `* * *`  | responsible Avenger                        | easily track and record my student's attendance  | conduct attendance taking more efficiently                             |
-| `* * *`  | conscientious Avenger                      | view my students' attendance                     | easily identify any sessions that they may have missed                 |
-| `* * *`  | organised Avenger                          | create tutorial sessions with students           | keep track of students who have attended each session                  |
-| `* * *`  | reflective Avenger                         | store insightful remarks on each session         | improve my teaching methods                                            |
-| `* *`    | responsible Avenger                        | store my students' Telegram contacts             | easily contact them                                                    |
-| `* *`    | careless Avenger                           | delete sessions that were wrongly created        | clean up my list of sessions                                           |
-| `* *`    | careful Avenger                            | hide private contact details                     | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                             | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                                 | So that I can…​                                                        |
+|----------|--------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                                       | refer to instructions when I forget how to use the App                 |
+| `* * *`  | organised Avenger                          | add a new person                                             |                                                                        |
+| `* * *`  | organised Avenger                          | delete a person                                              | remove entries that I no longer need                                   |
+| `* * *`  | curious Avenger                            | find a person by name                                        | locate details of persons without having to go through the entire list |
+| `* * *`  | busy Avenger                               | keep track of what needs to be done                          | better guide my students                                               |
+| `* * *`  | conscientious avenger                      | view my students' grades and comments for their assignments  | better assess my students' competency.                                 |
+| `* * *`  | unorganised avenger                        | edit or delete my student's assignment grades and comments   | organise their progress better.                                        |
+| `* * *`  | responsible Avenger                        | create a new consultation with students                      | keep track of when and with who the consultation is held               |
+| `* * *`  | accommodating Avenger                      | add students to an existing consultation                     | invite more students to join a consultation discussion                 |
+| `* * *`  | responsible Avenger                        | easily track and record my student's attendance              | conduct attendance taking more efficiently                             |
+| `* * *`  | conscientious Avenger                      | view my students' attendance                                 | easily identify any sessions that they may have missed                 |
+| `* * *`  | organised Avenger                          | create tutorial sessions with students                       | keep track of students who have attended each session                  |
+| `* * *`  | reflective Avenger                         | store insightful remarks on each session                     | improve my teaching methods                                            |
+| `* *`    | responsible Avenger                        | store my students' Telegram contacts                         | easily contact them                                                    |
+| `* *`    | careless Avenger                           | delete sessions that were wrongly created                    | clean up my list of sessions                                           |
+| `* *`    | careful Avenger                            | hide private contact details                                 | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book | sort persons by name                                         | locate a person easily                                                 |
 
 *{More to be added}*
 
@@ -706,10 +772,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list persons
-2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. deletes the person
+1.  User requests to list tasks
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of tasks
+3.  User requests to delete a specific task in the list
+4.  F.A.K.E.J.A.R.V.I.S. deletes the task
 
     Use case ends.
 
@@ -726,14 +792,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes at step 2.
 
 
-**Use case: Edit grade of an assignment**
+**Use case: View a person's list of assignments**
+
+**MSS**
+
+1.  User requests to list persons
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
+3.  User requests to view the assignments of a specific person in the list
+4.  F.A.K.E.J.A.R.V.I.S. displays the assignments of the selected person
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+**Use case: Edit the grade of an assignment**
 
 **MSS**
 
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to edit the grade of an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. edits grade of the student's assignment
+4.  F.A.K.E.J.A.R.V.I.S. edits grade of the person's assignment
 
     Use case ends.
 
@@ -761,6 +850,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+
 **Use case: Delete the grade of an assignment**
 
 **MSS**
@@ -768,7 +858,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to delete the grade of an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. deletes the grade of the student's assignment
+4.  F.A.K.E.J.A.R.V.I.S. deletes the grade of the person's assignment
 
     Use case ends.
 
@@ -796,14 +886,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use case: Edit comment on an assignment**
+**Use case: Edit the comment on an assignment**
 
 **MSS**
 
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to edit comment on an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. edits the comment of the student's assignment
+4.  F.A.K.E.J.A.R.V.I.S. edits the comment of the person's assignment
 
     Use case ends.
 
@@ -838,7 +928,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to list persons
 2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons
 3.  User requests to delete the comment of an assignment for a specific person in the list
-4.  F.A.K.E.J.A.R.V.I.S. deletes the comment of the student's assignment
+4.  F.A.K.E.J.A.R.V.I.S. deletes the comment of the person's assignment
 
     Use case ends.
 
