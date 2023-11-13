@@ -395,7 +395,8 @@ For the list of tab indexes to use:
 > **Output:**
 >`Switched to tab 1`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of Tab 1](images/tab1.png)
 
 
 > **📖Example 2:**
