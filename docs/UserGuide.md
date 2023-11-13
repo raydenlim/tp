@@ -468,7 +468,7 @@ This section describes commands that help you manage your students.
 You can add a student to F.A.K.E.J.A.R.V.I.S. if you need to keep track of new students.
 
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TEST]`
 
 |  **Parameter**  |                       **Description**                       |
 |:---------------:|:-----------------------------------------------------------:|
@@ -477,7 +477,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 |      EMAIL      |              The email address of the student.              |
 | TELEGRAM_HANDLE |             The telegram handle of the student.             |
 |       TAG       |            The tags associated with the student.            |
-|  GRADED_TESTS   | The scores of the graded tests associated with the student. |
+|   GRADED_TEST   | The scores of the graded tests associated with the student. |
 
 <br>
 
@@ -549,7 +549,7 @@ Format: `list`
 
 You can edit an existing student's fields in F.A.K.E.J.A.R.V.I.S. if you need to make changes to a student's information.
 
-Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TESTS]`
+Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t/TAG]…​ [gt/GRADED_TEST]`
 
 |  **Parameter**  |                         **Description**                         |
 |:---------------:|:---------------------------------------------------------------:|
@@ -559,7 +559,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 |      EMAIL      |              The new email address of the student.              |
 | TELEGRAM_HANDLE |             The new telegram handle of the student.             |
 |       TAG       |            The new tags associated with the student.            |
-|  GRADED_TESTS   | The new scores of the graded tests associated with the student. |
+|   GRADED_TEST   | The new scores of the graded tests associated with the student. |
 
 <br>
 
@@ -568,7 +568,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 * Edits the person at the specified `STUDENT_INDEX`.
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided. (i.e NAME, PHONE, EMAIL, TELEGRAM_HANDLE, TAG, GRADED_TESTS)
+* At least one of the optional fields must be provided. (i.e `NAME`, `PHONE`, `EMAIL`, `TELEGRAM_HANDLE`, `TAG`, `GRADED_TEST`)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
@@ -1341,7 +1341,7 @@ This section describes commands tht help you manage your students' graded tests.
 
 You can edit your student's graded test scores if you need to make adjustments or corrections to their initially recorded test scores.
 
-Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
+Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
 [pe/PRACTICAL_EXAM] `
 
 |    **Parameter**     |                   **Description**                    |
@@ -1363,7 +1363,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
 * The order of the graded test field(s) does not matter.
-* At least 1 graded test field must be present after the `INDEX`.
+* At least one of the optional fields must be provided. (i.e `READING_ASSESSMENT_1`, `READING_ASSESSMENT_2`, `MIDTERMS`, `FINALS`, `PRACTICAL_EXAM`)
 
 </md>
 </div>
@@ -1774,13 +1774,13 @@ Format: `deleteconsult CONSULTATION_INDEX`
 <br>
 
 ### Student commands
-|     **Action**     |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
-|:------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
-|  **Add Student**   |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TESTS]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
-| **List Students**  |                                                              `list`                                                              | `list`                                                                                                                             |
-|  **Edit Student**  |               `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`               | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
-|  **Find Student**  |                                                  `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
-| **Delete Student** |                                                      `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
+|     **Action**     |                                                           **Format**                                                            | <center>**Examples**</center>                                                                                                      |
+|:------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
+|  **Add Student**   |                        `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TEST]`                        | `add n/James Ho p/12345678 e/jamesho@u.nus.edu th/james03 t/friend t/colleague gt/default`                                         |
+| **List Students**  |                                                             `list`                                                              | `list`                                                                                                                             |
+|  **Edit Student**  |              `edit STUDENT_INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [th/TELGRAM_HANDLE] [t/TAG]…[gt/GRADEDTEST]`               | `edit 2 n/James Lee e/jameslee@u.nus.edu gt/default`                                                                               |
+|  **Find Student**  |                                                 `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
+| **Delete Student** |                                                     `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
 
 <br>
 
