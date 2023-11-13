@@ -1234,6 +1234,8 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: Student names must exist in address book and no session with the session number given exists.
     1. Test case: `createsession s/2 n/Alex Yeoh`<br>
        Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the list of sessions.
+    1. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
+        Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the list of sessions.
     1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
        Expected: No new session is created on the second command. Error details shown in the status message.
     1. Other incorrect create session commands to try: `createsession`, `createsession n/Alex Yeoh`<br>
@@ -1277,7 +1279,9 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: Session must exist in the session list. Student names must exist in address book.
     1. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
         Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
-    1. 
+    1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
+        Expected: No attendance is taken. Error details shown in the status message.
+   
 
 ### Viewing Attendance
 
