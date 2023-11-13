@@ -99,6 +99,8 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;9 [Encountering Errors](#encountering-errors)
 
+&nbsp;10 [Contacting Support](#contacting-support)
+
 
 
 <br>
@@ -332,10 +334,11 @@ Most commands given in the user guide utilise various parameters which are also 
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
-
+<br>
 <br>
 
 ## Features
@@ -457,6 +460,11 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 <br>
 
 [Back to Table of Contents](#table-of-contents)
+
+<br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 
 <br>
 <br>
@@ -740,6 +748,10 @@ Format: `clear`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 <br>
 
 ### Task Management
@@ -952,6 +964,10 @@ Format: `deletetask TASK_INDEX`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 <br>
 
 ### Attendance Management
@@ -1070,6 +1086,10 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 <br>
 
@@ -1339,6 +1359,10 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 <br>
 
 ### Graded Test Management
@@ -1404,6 +1428,10 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 <br>
 
@@ -1560,6 +1588,9 @@ Format: `deletesession s/SESSION_NUMBER`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Consultation Management
@@ -1745,9 +1776,9 @@ Format: `deleteconsult CONSULTATION_INDEX`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
-
 
 <br>
 <br>
@@ -1960,6 +1991,13 @@ If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to th
 
 [Back to Table of Contents](#table-of-contents)
 
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 
 ## Contacting Support
 If you need further assistance with F.A.K.E.J.A.R.V.I.S. please contact our support team at `support@fakejarvis.org`.
+
+<br>
