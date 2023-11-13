@@ -1909,70 +1909,76 @@ testers are expected to do more *exploratory* testing.
 #### Creating a session
 
 1. Creating a session with a single student with _valid parameters_
-  1. Prerequisites: Student name must exist in the address book and no session with the session number given exists in the session list.
-  1. Test case: `createsession s/2 n/Alex Yeoh`<br>
-     Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the session list.
+   1. Prerequisites: 
+      1. Student name must exist in the student list.
+      2. No session with the session number given exists in the session list.
+   2. Test case: `createsession s/2 n/Alex Yeoh`<br>
+      Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the session list.
 
-1. Creating a session with multiple students with _valid parameters_
-  1. Prerequisites: All student names must exist in the address book and no session with the session number given exists in the session list.
-  1. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
-     Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the session list.
+2. Creating a session with multiple students with _valid parameters_
+   1. Prerequisites: 
+      1. All student names must exist in the student list.
+      2. No session with the session number given exists in the session list.
+   2. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the session list.
 
-1. Creating a session with a single student with _invalid parameters_
-  1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created on the second command. <br>
-     Reason: There cannot exist two sessions with the same session number in the session list.
-  1. Test case: `createsession s/2 n/fakenamethatdoesnotexist`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-     Reason: Student name must exist in the address book.
+3. Creating a session with a single student with _invalid parameters_
+   1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created on the second command. <br>
+      Reason: There cannot exist two sessions with the same session number in the session list.
+   2. Test case: `createsession s/2 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Student name must exist in the student list.
 
-1. Creating a session with _mix of valid and invalid students_
-  1. Test case: `createsession s/2 n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-     Reason: All student names must exist in the address book.
+4. Creating a session with _mix of valid and invalid students_
+   1. Test case: `createsession s/2 n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: All student names must exist in the student list.
 
-1. Creating a session with _missing parameters_
-  1. Test case: `createsession s/2`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-     Reason: Student name argument is missing.
-  1. Test case: `createsession n/Alex Yeoh`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-     Reason: Session number argument is missing.
+5. Creating a session with _missing parameters_
+   1. Test case: `createsession s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Student name argument is missing.
+   2. Test case: `createsession n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Session number argument is missing.
 
 
 #### Updating a session remark
 
 1. Updating a session remark with _valid parameters_
-  1. Prerequisites: Session must exist in the session list.
-  1. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br>
-     Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
+   1. Prerequisites: 
+      1. Session must exist in the session list.
+   2. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br>
+      Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
 
-1. Updating a session remark with _missing parameters_
-  1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-     Reason: Session number argument is missing.
-  1. Test case: `updatesessionremark s/2`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-     Reason: Session remark argument is missing.
-  1. Test case: `updatesessionremark`
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-     Reason: Session number and session remark arguments are missing.
+2. Updating a session remark with _missing parameters_
+   1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session number argument is missing.
+   2. Test case: `updatesessionremark s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session remark argument is missing.
+   3. Test case: `updatesessionremark`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session number and session remark arguments are missing.
 
 
 
 #### Deleting a session
 
 1. Deleting a session with _valid parameters_
-  1. Prerequisites: Session must exist in the session list.
-  1. Test case: `deletesession s/2`<br>
-     Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
+   1. Prerequisites: 
+      1. Session must exist in the session list.
+   2. Test case: `deletesession s/2`<br>
+      Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
 
-1. Deleting a session with _invalid parameters_
-  1. Test case: `deletesession s/2` `deletesession s/2`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No session is deleted on the second command. <br>
-     Reason: The session with the given session number must exist in the session list.
+2. Deleting a session with _invalid parameters_
+   1. Test case: `deletesession s/2` `deletesession s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No session is deleted on the second command. <br>
+      Reason: The session with the given session number must exist in the session list.
 
-1. Deleting sessions with _missing parameters_
+3. Deleting sessions with _missing parameters_
    1. Test case: `deletesession`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
       Reason: Session number argument is missing.
@@ -1981,65 +1987,71 @@ testers are expected to do more *exploratory* testing.
 #### Taking Attendance
 
 1. Taking attendance of a _valid student_
-  1. Prerequisites: Session must exist in the session list. Student name must exist in address book.
-  1. Test case: `takeattendance s/2 n/David Li ap/present`<br>
-     Expected: David Li is added to the session with session number 2, marking him as present.
+   1. Prerequisites: 
+      1. Session must exist in the session list. 
+      2. Student name must exist in the student list.
+   2. Test case: `takeattendance s/2 n/David Li ap/present`<br>
+      Expected: David Li is added to the session with session number 2, marking him as present.
 
-1. Taking attendance of an _invalid student_
-  1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-     Reason: Student name must exist in address book.
+2. Taking attendance of an _invalid student_
+   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Student name must exist in the student list.
 
-1. Taking attendance with _missing parameters_
-  1. Test case: `takeattendance n/David Li ap/present`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-     Reason: Session number argument is missing.
-  1. Test case: `takeattendance s/2 n/David Li`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-     Reason: Attendance presence argument is missing.
-  1. Test case: `takeattendance s/2 ap/present`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-     Reason: Student name argument is missing.
-  1. Test case: `takeattendance`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-     Reason: Session number, student name and attendance presence arguments are missing.
+3. Taking attendance with _missing parameters_
+   1. Test case: `takeattendance n/David Li ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number argument is missing.
+   2. Test case: `takeattendance s/2 n/David Li`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Attendance presence argument is missing.
+   3. Test case: `takeattendance s/2 ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Student name argument is missing.
+   4. Test case: `takeattendance`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number, student name and attendance presence arguments are missing.
 
-1. Taking attendance of _multiple valid students_
-  1. Prerequisites: Session must exist in the session list. Student names must exist in address book.
-  1. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
-     Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
+4. Taking attendance of _multiple valid students_
+   1. Prerequisites: 
+      1. Session must exist in the session list. 
+      2. All student names must exist in the student list.
+   2. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
+      Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
 
-1. Taking attendance of _mix of valid and invalid students_
-  1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
-     Reason: The name of all students must exist in the address book.
+5. Taking attendance of _mix of valid and invalid students_
+   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The name of all students must exist in the student list.
 
 
 #### Viewing Attendance
 
 1. Viewing attendance of a _valid student_
-  1. Prerequisites: Student name must exist in address book.
-  1. Test case: `viewattendance n/Bernice Yu`<br>
-     Expected: All sessions attended by Bernice Yu will be displayed.
+   1. Prerequisites: 
+      1. Student name must exist in the student list.
+   2. Test case: `viewattendance n/Bernice Yu`<br>
+      Expected: All sessions attended by Bernice Yu will be displayed.
 
-1. Viewing attendance of an _invalid student_ 
-  1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
-     Reason: The name of the student must exist in the address book.
+2. Viewing attendance of an _invalid student_ 
+   1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The name of the student must exist in the student list.
 
-1. Viewing attendance of _multiple valid students_
-  1. Prerequisites: Student names must exist in address book.
-  1. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
-     Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
+3. Viewing attendance of _multiple valid students_
+   1. Prerequisites: 
+      1. Student names must exist in the student list.
+   2. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
 
-1. Viewing attendance of _mix of valid and invalid students_
-  1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
-     Reason: The name of all students must exist in the address book.
+4. Viewing attendance of _mix of valid and invalid students_
+   1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The names of all students must exist in the student list.
 
-1. Viewing overall attendance across all students
-  1. Test case: `viewattendance`<br>
-     Expected: All sessions will be displayed.
+5. Viewing overall attendance across all students
+   1. Test case: `viewattendance`<br>
+      Expected: All sessions will be displayed.
 
 
 ### Task
