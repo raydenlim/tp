@@ -283,11 +283,12 @@ public class MainWindow extends UiPart<Stage> {
             case EDIT:
             case FIND:
             case LIST:
+                selectTab(TAB_PERSONS_INDEX);
+                break;
             // Tasks
             case ADD_TASK:
             case DELETE_TASK:
             case UPDATE_TASK_PROGRESS:
-                break;
             case VIEW_TASKS:
                 selectTab(TAB_TASKS_INDEX);
                 clearGraphicalResultDisplay();
