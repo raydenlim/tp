@@ -230,22 +230,129 @@ The GradedTest component is responsible for tracking and managing graded test sc
 The GradedTest Class is made up of a `ReadingAssessment1`, `ReadingAssessment2`, `MidTerms`, `Finals`, and
 `PracticalExam`, each representing a different aspect of an individual's graded test scores. GradedTest Class also have a set of getter methods that corresponds to those fields.
 
-Below is a class diagram describing the implementation of `Task` and its respective fields.
+Below is a class diagram describing the implementation of `GradedTest` and its respective fields.
 
 ![GradedTest Class UML](images/GradedTest.png)
 
 #### Design Considerations:
-**Aspect: How to represent the scores of individuals:**
+**Aspect 1: How to represent the scores of individuals:**
 
 **Alternative 1 (current choice):** Utilizing `String` for individual graded test score.
-- Pros: This choice offers flexibility in representing graded tests (e.g Default value of `-`).
-- Cons: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average,
-  highest, lowest score).
+- Pros:
+  * Flexibility: This choice offers flexibility in representing the graded tests, allowing for customization (e.g. usage of default value, `-`).
+  * Clarity: The string format of `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>` is self-explanatory.
+- Cons:
+  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average, highest, lowest score).
+  * Documentation Issues: The usage of `|` causes conflict with the table notation. Hence, more work is needed to get around this issue in markdown.
 
-**Alternative 2:** Multiple constructors for `GradedTest`.
-- Pros: Provides flexibility in how users can create a `GradedTest` object.
-- Cons: Requires additional parsing. Different constructor will give different error messages.
+**Alternative 2 :** Using floats for graded test score.
+- Pros:
+  * Numeric Operations: Easier and more efficient numeric operations without the need for extensive parsing.
+- Cons: 
+  * Lesser Flexibility and Customisation: Doesn't allow for special characters.
 
+<br>
+
+**Aspect 2: What should be the inputs for GradedTest Constructor:**
+
+**Alternative 1:** Using Strings for Graded Test Constructor.
+- Pros:
+  * Versatility: Utilizing strings allows for versatile inputs, accommodating various formats and representations.
+  * Customization: Users can input graded test scores in a way that suits their preferences, including default values or special symbols.
+- Cons:
+  * Parsing Overhead: The need for additional parsing introduces complexity, especially when validating inputs.
+  * Type Safety: The reliance on strings may lead to potential type-related issues during runtime.
+  * Complexity: Since all the scores are in a single string, additional parsing will be needed to implement getters and setters.
+  * Learning Curve: Users might need to adapt to a more structured input format, potentially increasing the learning curve.
+  
+**Alternative 2:** Using Structured Object for Graded Test Constructors.
+- Pros:
+  * Type Safety: A structured object ensures type safety, reducing the risk of runtime errors related to data types.
+  * Clarity and Readability: A well-defined object provides clarity and improves the readability of the code, making it easier to understand.
+- Cons:
+  * Less Flexibility: All 5 fields, `ra1, ra2, midterms, finals, pe` needs to be present at all times. Need to create 5 objects for 1 graded test.
+  * Logging/Documentation: Additional parsing is needed to store these fields in the json file properly.
+
+**Alternative 3 (current choice):** Use both Strings and Structured Objects for Graded Test Calculators.
+- Pros:
+  * Type Safety Utilization: Ensures type safety with objects and allows the use of strings for flexibility. We can take advantage of the strings to enable the use of `default` values.
+  * Robust Testing: Better bug identification, as the two constructors can check each other, since there are 2 constructors that creates the GradedTest Object.
+  
+<box type="definition" light>
+  Example:
+
+```java
+// Using Structured Object Constructor
+GradedTest testFromObjects = new GradedTest(
+        new ReadingAssessment1("90"), new ReadingAssessment2("85"),
+        new MidTerms("75"), new Finals("80"), new PracticalExam("95")
+        );
+
+// Using String Constructor
+GradedTest testFromString = new GradedTest("RA1:90 | RA2:85 | MidTerms:75 | Finals:80 | PE:95");
+
+// Check if both objects are equal
+assertEquals(testFromObjects, testFromString);
+```
+</box>
+
+- Cons:
+  * Extra caution is needed to ensure that both these constructors are compatible with one another. 
+
+<br>
+
+**Aspect 3: How to store graded test scores for individuals:**
+
+**Alternative 1(current choice):** Edit the graded test field directly on the Person Object.
+- Pros:
+  * Coherence: Graded test information is closely associated with the person(student) it belongs to.
+  * Simplicity: Simplifies the overall structure by leveraging the existing Person object.
+- Cons:
+  * Immutability: Any updates to graded test scores to the Person Objects may cause issues down stream on methods referencing to the old Person object.
+  * Complex Handling of Person: More logic will have to be implemented to update the references of the new Person object.
+
+**Alternative 2:** Isolate the GradedTest Object as its own.
+- Pros:
+  * Easier to debug: Since the GradedTest Object is isolated.
+- Cons:
+  * Immutability: Any updates to Person Object will result in the GradedTest Object referencing the deleted person.
+
+<br>
+
+**Aspect 4: How to initialise a graded test instance for users:**
+
+**Alternative 1:** Use the Person methods via the `AddCommand` and `EditCommand` class, with `add` and `edit` respectively.
+- Pros:
+  * Convenience: Building on Aspect 2, it enables users to easily set graded test scores to the default values with `gt/default`.
+  * Object safety: Building on Aspect 3, since all objects are `private final` and hence immutable, any edits/updates to the person's object will not cause issues to the graded test, as the Person parser logic will handle the new Person object creation.
+- Cons: 
+  * Inflexibility: The strict GradedTest string constructor does not allow the dynamic edits/updates of scores. (i.e If a person just wants to update a specific test score, they will still have to type out all the scores as input).
+
+- For the UML diagram of `EditCommand` refer to [Edit Student Feature](#edit-student-feature). `AddCommand` is similar to `EditCommand`. 
+
+**Alternative 2:** Have a separate class `EditGradedTest` to update graded test scores.
+- Pros:
+  * Dynamic: It enables users to dynamically update their graded test scores without having to use the String format.
+- Cons:
+  * Command Prefixes: Users will have to get used to the command prefix. 
+
+**Alternative 3 (current choice):** Implement both Alternatives 1 and 2.
+- Pros:
+  * Flexibility: Users are able to decide how the want to edit the graded test scores, be it dynamically, or as a whole.
+  * Balance: Strikes a balance between the benefits of both alternatives by utilizing strings for flexibility and structured objects for type safety.
+- Cons:
+  * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
+
+- Below is the Sequence diagram and Activity Diagram for `EditGradedTest` class with the `editgradedtest` command:
+
+**EditGradedTest Sequence Diagram:**<br>
+  ![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
+
+<br>
+
+**createEditedGradedTestPerson Activity Diagram:**<br>
+![CreateEditedGradedTestPersonAD](images/CreateEditedGradedTestPersonAD.png)
+  
 
 ### Consultations
 

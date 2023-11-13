@@ -99,6 +99,8 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;9 [Encountering Errors](#encountering-errors)
 
+&nbsp;10 [Contacting Support](#contacting-support)
+
 
 
 <br>
@@ -169,7 +171,7 @@ F.A.K.E.J.A.R.V.I.S.'s graphical user interface (GUI) consists of 6 main compone
 You may enter your commands in the **Command Box** and then press Enter to execute them. The resulting message will be shown in the **Command Result Display** box, and in **Graphical Result Display** if needed.
 
 The following describes what each tab displays on the **Current Panel**:
-* **Student Tab:** Displays your students list and students' details.
+* **Students Tab:** Displays your students list and students' details.
 * **Tasks Tab:** Displays your tasks list and tasks' details.
 * **Assignments Tab:** Displays your assignments list.
 * **Sessions Tab:** Displays your sessions list and sessions' details.
@@ -234,13 +236,13 @@ The following describes what each tab displays on the **Current Panel**:
   </md> </div>
 
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
     * `viewtasks` : Lists all tasks.
     * `deletetask 3`: Deletes the 3rd task shown in the current task list.
 
-    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/ Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
+    * `createconsult d/10/10/2023 tt/15:00 n/John Doe n/Foo Bar` : Creates a consultation with the students `John Doe` and `Foo Bar`.
 
     * `createsession s/3 n/John Doe` : Creates a session with session number 3 with the student `John Doe`.
 
@@ -272,7 +274,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
-  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/ Foo Bar` etc.
+  e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/Foo Bar` etc.
 
 
 * Parameters can be **in any order**.<br>
@@ -298,44 +300,45 @@ The following describes what each tab displays on the **Current Panel**:
 Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. A list of prefixes and their respective constraints are given in the table below.
 
 
-|      **Field**       | **Prefix** |                                                   **Commands**                                                    | <center>**Description**</center>                                                                                                                                                                                                                                     |
-|:--------------------:|:----------:|:-----------------------------------------------------------------------------------------------------------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|         NAME         |    `n/`    | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a Student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                                           |
-|        PHONE         |    `p/`    |                                                   `add` `edit`                                                    | The Phone Number of a Student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                                            |
-|        EMAIL         |    `e/`    |                                                   `add` `edit`                                                    | The Email of a Student. <ul><li>Emails should be of the format `local-part@domain`.</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`.</li><li>The domain name must be `@u.nus.edu`.</li> </ul>                 |
-|   TELEGRAM_HANDLE    |   `th/`    |                                                   `add` `edit`                                                    | The Telegram Handle of a Student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                                          |
-|         TAG          |    `t/`    |                                                   `add` `edit`                                                    | The Tag belonging to a Student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                                                 |
-|     GRADED_TEST      |   `gt/`    |                                                   `add` `edit`                                                    | The Scores of respective Graded Tests. <ul><li>Graded Test should only contain alphanumeric characters and spaces. </li><li>Graded Test field should follow this format: <code>gt/RA1:0 &#124; RA2:0 &#124; MidTerms:0 &#124; Finals:0 &#124; PE:0</code>.</li></ul> |
-| READING_ASSESSMENT_1 |   `ra1/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                              |
-| READING_ASSESSMENT_2 |   `ra2/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                              |
-|       MIDTERMS       |   `mt/`    |                                                 `editgradedtest`                                                  | The Score of a MidTerms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                   |
-|        FINALS        |    `f/`    |                                                 `editgradedtest`                                                  | The Score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                     |
-|    PRACTICAL_EXAM    |   `pe/`    |                                                 `editgradedtest`                                                  | The Score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                  |
-|      ASSIGNMENT      |   `as/`    |                                     `deletecomment` `editcomment` `editgrade`                                     | The Name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                                  |
-|        GRADE         |    `g/`    |                                                    `editgrade`                                                    | The Grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                                          |
-|       COMMENT        |    `c/`    |                                                   `editcomment`                                                   | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                                          |
-|         DATE         |    `d/`    |                                       `addtask` `viewtasks` `createconsult`                                       | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                                          |
-|         TIME         |   `tt/`    |                                                  `createconsult`                                                  | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                                   |
-|    SESSION_NUMBER    |    `s/`    |                      `createsession` `deletesession` `takeattendance` `updatesessionremark`                       | The Session Number of a Session. <ul><li> Session Number must only contain numbers. </li><li>Session Number should not be blank.</li> </ul>                                                                                                                          |
-|    SESSION_REMARK    |    `r/`    |                                               `updatesessionremark`                                               | The Remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                                           |
-| ATTENDANCE_PRESENCE  |   `ap/`    |                                                 `takeattendance`                                                  | The Presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                                              |
-|      TASK_NAME       |   `tn/`    |                                               `addtask` `viewtasks`                                               | The Name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                                               |
-|   TASK_DESCRIPTION   |   `td/`    |                                               `addtask` `viewtasks`                                               | The Description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                                       |
-|    TASK_PRIORITY     |   `tp/`    |                                               `addtask` `viewtasks`                                               | The Priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                                             |
-|    TASK_PROGRESS     |  `tprog/`  |                                      `addtask` `viewtasks` `updateprogress`                                       | The Progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                                    |
-|      TAB_INDEX       |            |                                                       `tab`                                                       | The Index of a Tab. <ul><li> Only 5 possible values are allowed: `1`, `2`, `3`, `4`, `5`. </li></ul>                                                                                                                                                                 |
-|    STUDENT_INDEX     |            |    `edit` `delete` `viewassignments` `editgrade` `deletegrade` `editcomment` `deletecomment` `editgradedtest`     | The Index of a Student shown in the Student list. <ul><li> Only positive integers are allowed.</li><li>Student Index should exist in the Student list.</li></ul>                                                                                                     |
-|      TASK_INDEX      |            |                                           `updateprogress` `deletetask`                                           | The Index of a Task. <ul><li> Only positive integers are allowed.</li><li>Task Index should exist.</li></ul>                                                                                                                                                         |
-|  CONSULTATION_INDEX  |            |                                `addtoconsult` `removefromconsult` `deleteconsult`                                 | The Index of a Consultation. <ul><li> Only positive integers are allowed.</li><li>Consultation Index should exist.</li></ul>                                                                                                                                         |
+|      **Field**       | **Prefix** |                                                   **Commands**                                                    | <center>**Description**</center>                                                                                                                                                                                                                                                                                                                                 |
+|:--------------------:|:----------:|:-----------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         NAME         |    `n/`    | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a Student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                                                                                                                                       |
+|        PHONE         |    `p/`    |                                                   `add` `edit`                                                    | The Phone Number of a Student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                                                                                                                                        |
+|        EMAIL         |    `e/`    |                                                   `add` `edit`                                                    | The Email of a Student. <ul><li>Emails should be of the format `local-part@domain`.</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`.</li><li>The domain name must be `@u.nus.edu`.</li> </ul>                                                                                                             |
+|   TELEGRAM_HANDLE    |   `th/`    |                                                   `add` `edit`                                                    | The Telegram Handle of a Student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                                                                                                                                      |
+|         TAG          |    `t/`    |                                                   `add` `edit`                                                    | The Tag belonging to a Student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                                                                                                                                             |
+|     GRADED_TEST      |   `gt/`    |                                                   `add` `edit`                                                    | The Scores of respective Graded Tests. <ul><li>Graded Test should only contain alphanumeric characters and spaces. </li><li>Graded Test field should follow this format: <code>gt/RA1:&lt;SCORE> &#124; RA2:&lt;SCORE> &#124; MidTerms:&lt;SCORE> &#124; Finals:&lt;SCORE> &#124; PE:&lt;SCORE></code>, where `<SCORE>` **must be a positive float**. </li></ul> |
+| READING_ASSESSMENT_1 |   `ra1/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                          |
+| READING_ASSESSMENT_2 |   `ra2/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                          |
+|       MIDTERMS       |   `mt/`    |                                                 `editgradedtest`                                                  | The Score of a MidTerms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                               |
+|        FINALS        |    `f/`    |                                                 `editgradedtest`                                                  | The Score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                                 |
+|    PRACTICAL_EXAM    |   `pe/`    |                                                 `editgradedtest`                                                  | The Score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                              |
+|      ASSIGNMENT      |   `as/`    |                                     `deletecomment` `editcomment` `editgrade`                                     | The Name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                                                                                                                              |
+|        GRADE         |    `g/`    |                                                    `editgrade`                                                    | The Grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                                                                                                                                      |
+|       COMMENT        |    `c/`    |                                                   `editcomment`                                                   | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                                                                                                                                      |
+|         DATE         |    `d/`    |                                       `addtask` `viewtasks` `createconsult`                                       | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                                                                                                                                      |
+|         TIME         |   `tt/`    |                                                  `createconsult`                                                  | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                                                                                                                               |
+|    SESSION_NUMBER    |    `s/`    |                      `createsession` `deletesession` `takeattendance` `updatesessionremark`                       | The Session Number of a Session. <ul><li> Session Number must only contain numbers. </li><li>Session Number should not be blank.</li> </ul>                                                                                                                                                                                                                      |
+|    SESSION_REMARK    |    `r/`    |                                               `updatesessionremark`                                               | The Remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                                                                                                                                       |
+| ATTENDANCE_PRESENCE  |   `ap/`    |                                                 `takeattendance`                                                  | The Presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                                                                                                                                          |
+|      TASK_NAME       |   `tn/`    |                                               `addtask` `viewtasks`                                               | The Name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                                                                                                                                           |
+|   TASK_DESCRIPTION   |   `td/`    |                                               `addtask` `viewtasks`                                               | The Description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                                                                                                                                   |
+|    TASK_PRIORITY     |   `tp/`    |                                               `addtask` `viewtasks`                                               | The Priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                                                                                                                                         |
+|    TASK_PROGRESS     |  `tprog/`  |                                      `addtask` `viewtasks` `updateprogress`                                       | The Progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                                                                                                                                |
+|      TAB_INDEX       |            |                                                       `tab`                                                       | The Index of a Tab. <ul><li> Only 5 possible values are allowed: `1`, `2`, `3`, `4`, `5`. </li></ul>                                                                                                                                                                                                                                                             |
+|    STUDENT_INDEX     |            |    `edit` `delete` `viewassignments` `editgrade` `deletegrade` `editcomment` `deletecomment` `editgradedtest`     | The Index of a Student shown in the Student list. <ul><li> Only positive integers are allowed.</li><li>Student Index should exist in the Student list.</li></ul>                                                                                                                                                                                                 |
+|      TASK_INDEX      |            |                                           `updateprogress` `deletetask`                                           | The Index of a Task. <ul><li> Only positive integers are allowed.</li><li>Task Index should exist.</li></ul>                                                                                                                                                                                                                                                     |
+|  CONSULTATION_INDEX  |            |                                `addtoconsult` `removefromconsult` `deleteconsult`                                 | The Index of a Consultation. <ul><li> Only positive integers are allowed.</li><li>Consultation Index should exist.</li></ul>                                                                                                                                                                                                                                     |
 
 
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
-
+<br>
 <br>
 
 ## Features
@@ -443,9 +446,8 @@ F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JavaScript Object Notatio
 
 <div class="alert alert-warning">
 <md>
-:warning: 
+:warning: **Warning**:
 
-**Caution**:
 * If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run. Hence, it is recommended to make a backup of the file before editing it.
 </md></div>
 
@@ -458,6 +460,11 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 <br>
 
 [Back to Table of Contents](#table-of-contents)
+
+<br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
 
 <br>
 <br>
@@ -490,7 +497,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 :information_source: **Note**: 
 
 * You can add any number of tags to a student! (including 0)
-* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* The format for `gt/` is `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>`, where `<SCORE>` **must be a positive float**.
 
 </md> </div>
 
@@ -575,7 +582,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 * At least one of the optional fields must be provided. (i.e `NAME`, `PHONE`, `EMAIL`, `TELEGRAM_HANDLE`, `TAG`, `GRADED_TEST`)
 * Editing tags overwrites existing tags; it's not cumulative.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
-* The format for `gt/` is `gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0`.
+* The format for `gt/` is `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>`, where `<SCORE>` **must be a positive float**.
 
 </md>
 </div>
@@ -740,6 +747,10 @@ Format: `clear`
 
 
 <br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 <br>
 
@@ -953,6 +964,10 @@ Format: `deletetask TASK_INDEX`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 <br>
 
 ### Attendance Management
@@ -1071,6 +1086,10 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 <br>
 
@@ -1340,6 +1359,10 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 <br>
 
 ### Graded Test Management
@@ -1405,6 +1428,10 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 <br>
 
@@ -1561,6 +1588,9 @@ Format: `deletesession s/SESSION_NUMBER`
 
 <br>
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Consultation Management
@@ -1746,9 +1776,9 @@ Format: `deleteconsult CONSULTATION_INDEX`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+<br>
 
 --------------------------------------------------------------------------------------------------------------------
-
 
 <br>
 <br>
@@ -1961,6 +1991,13 @@ If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to th
 
 [Back to Table of Contents](#table-of-contents)
 
+<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+<br>
 
 ## Contacting Support
 If you need further assistance with F.A.K.E.J.A.R.V.I.S. please contact our support team at `support@fakejarvis.org`.
+
+<br>
