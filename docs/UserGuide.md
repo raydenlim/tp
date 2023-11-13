@@ -45,8 +45,8 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;5 [Features](#features)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1 [General Commands](#general-commands)   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [👀 Viewing help : `help`](#viewing-help-help)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [🔀 Switching between different tabs : `tab`](#switching-between-different-tabs-tab)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.1 [👀 Viewing Help : `help`](#viewing-help-help)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.2 [🔀 Switching between different Tabs : `tab`](#switching-between-different-tabs-tab)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.3 [🏃🚪 Exiting F.A.K.E.J.A.R.V.I.S. : `exit`](#exiting-f-a-k-e-j-a-r-v-i-s-exit)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.4 [💾 Saving the Data](#saving-the-data)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.1.5 [🛠️ Editing the Data File](#editing-the-data-file)  
@@ -54,7 +54,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2 [Student Management](#student-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [📝 Adding a Student: `add`](#adding-a-student-add)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing All Students : `list`](#listing-all-students-list)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [👀 Listing all Students : `list`](#listing-all-students-list)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [🛠️ Editing a Student Field : `edit`](#editing-a-student-field-edit)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [🔎 Finding Student by Name: `find`](#finding-student-by-name-find)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [❌ Deleting a Student : `delete`](#deleting-a-student-delete)  
@@ -87,7 +87,7 @@ If you are new to CLI, or unfamiliar with the commands F.A.K.E.J.A.R.V.I.S. offe
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8 [Consultation Management](#consultation-management)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.1 [📝 Creating a Consultation: `createconsult`](#creating-a-consultation-createconsult)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [📝 Adding students to a consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.2 [📝 Adding Students to a Consultation: `addtoconsult`](#adding-students-to-a-consultation-addtoconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.3 [❌ Removing Students from a Consultation: `removefromconsult`](#removing-students-from-a-consultation-removefromconsult)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.8.4 [❌ Deleting a Consultation: `deleteconsult`](#deleting-a-consultation-deleteconsult)
 
@@ -111,39 +111,39 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 
 <br>
 
-| **Convention** |                        **Description**                         |
-|:--------------:|:--------------------------------------------------------------:|
-|  `Monospace`   |        Used for command inputs, syntax, and file paths.        |
-| **Bold text**  |                 Highlights important keywords.                 |
-| [Hyperlink](#) | Indicates hyperlinks to external websites or within the guide. |
+| **Convention** |       **Description**       |
+|:--------------:|:---------------------------:|
+|  `Monospace`   |    Used for code syntax     |
+| **Bold text**  | Used for important keywords |
+| [Hyperlink](#) |  Used for link references   |
 
 
 <br>
 
 
-|                                     **Convention**                                      |                         **Description**                         |
-|:---------------------------------------------------------------------------------------:|:---------------------------------------------------------------:|
-| **<div markdown="span" class="alert alert-info"> :information_source: **Note** </div>** |     Provides information of special interest or importance.     |
-|   **<div markdown="span" class="alert alert-warning"> :warning: **Warning** </div>**    | Alerts to potentially irreversible actions with data loss risk. |
-|        **<div markdown="span" class="alert alert-tip">  :bulb: **Tip** </div>**         |                          Useful Tips.                           |
+|                                     **Convention**                                      |    **Description**     |
+|:---------------------------------------------------------------------------------------:|:----------------------:|
+| **<div markdown="span" class="alert alert-info"> :information_source: **Note** </div>** | Additional Information |
+|   **<div markdown="span" class="alert alert-warning"> :warning: **Warning** </div>**    |    Caution Warning     |
+|        **<div markdown="span" class="alert alert-tip">  :bulb: **Tip** </div>**         |      Useful Tips       |
 
 
 <br>
 
 
-| **Convention** |        **Description**         |
-|:--------------:|:------------------------------:|
-|      🏃🚪      |              Exit              |
-|       🔀       |          Switch Tabs           |
-|       💾       |  Save Data <br/>Archive Data   |
-|       📝       |        Add <br/> Create        |
-|       ❌        |      Delete <br/> Remove       |
-|      🛠️       | Edit <br/> Modify <br/> Update |
-|       🔎       |              Find              |
-|       📆       |        Take Attendance         |
-|       👀       | View <br/> Display </br> List  |
-|      🗑️       |             Clear              |
-|       📖       |            Examples            |
+| **Convention** |       **Description**       |
+|:--------------:|:---------------------------:|
+|      🏃🚪      |            Exit             |
+|       🔀       |         Switch Tabs         |
+|       💾       | Save Data <br/>Archive Data |
+|       📝       |      Add <br/> Create       |
+|       ❌        |     Delete <br/> Remove     |
+|      🛠️       |      Edit <br/> Update      |
+|       🔎       |            Find             |
+|       📆       |       Take Attendance       |
+|       👀       |       View <br/> List       |
+|      🗑️       |            Clear            |
+|       📖       |          Examples           |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -215,7 +215,7 @@ The following describes what each tab displays on the **Current Panel**:
 
 1. Ensure you have [Java 11](https://www.openlogic.com/openjdk-downloads?field_java_parent_version_target_id=406&field_operating_system_target_id=All&field_architecture_target_id=All&field_java_package_target_id=401) or above installed in your Computer.
 
-2. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases). _[Coming Soon]_
+2. Download the latest `fakejarvis.jar` from [here](https://github.com/AY2324S1-CS2103T-T15-1/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ for your F.A.K.E.J.A.R.V.I.S..
 
@@ -282,41 +282,47 @@ The following describes what each tab displays on the **Current Panel**:
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+<div class="alert alert-info">
+<md>
+:information_source: **Note**: 
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+
+</md> </div>
+
 
 <br>
 <br>
 
 ### Command Parameters
-Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. Their prefixes and their respective constraints are given in the table below.
+Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. A list of prefixes and their respective constraints are given in the table below.
 
 
-|      **Field**       | **Prefix** |                                                   **Commands**                                                    | <center>**Description**</center>                                                                                                                                                                                                                                                                                                                                      |
-|:--------------------:|:----------:|:-----------------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|         NAME         |    `n/`    | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a Student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                                                                                                                                            |
-|        PHONE         |    `p/`    |                                                   `add` `edit`                                                    | The Phone Number of a Student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                                                                                                                                             |
-|        EMAIL         |    `e/`    |                                                   `add` `edit`                                                    | The Email of a Student. <ul><li>Emails should be of the format `local-part@domain`.</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`.</li><li>The domain name must be `@u.nus.edu`.</li> </ul>                                                                                                                  |
-|   TELEGRAM_HANDLE    |   `th/`    |                                                   `add` `edit`                                                    | The Telegram Handle of a Student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                                                                                                                                           |
-|         TAG          |    `t/`    |                                                   `add` `edit`                                                    | The Tag belonging to a Student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                                                                                                                                                  |
-|     GRADED_TEST      |   `gt/`    |                                                   `add` `edit`                                                    | The Scores of respective Graded Tests. <ul><li>Graded Test should only contain alphanumeric characters and spaces. </li><li>Graded Test field should follow this format: <code>gt/RA1:&lt;SCORE> &#124; RA2:&lt;SCORE> &#124; MidTerms:&lt;SCORE> &#124; Finals:&lt;SCORE> &#124; PE:&lt;SCORE></code>, where `<SCORE>` **must be a positive float**. </li></md></ul> |
-| READING_ASSESSMENT_1 |   `ra1/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                               |
-| READING_ASSESSMENT_2 |   `ra2/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                               |
-|       MIDTERMS       |   `mt/`    |                                                 `editgradedtest`                                                  | The Score of a MidTerms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                                    |
-|        FINALS        |    `f/`    |                                                 `editgradedtest`                                                  | The Score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                                      |
-|    PRACTICAL_EXAM    |   `pe/`    |                                                 `editgradedtest`                                                  | The Score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                                   |
-|      ASSIGNMENT      |   `as/`    |                                     `deletecomment` `editcomment` `editgrade`                                     | The Name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                                                                                                                                   |
-|        GRADE         |    `g/`    |                                                    `editgrade`                                                    | The Grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                                                                                                                                           |
-|       COMMENT        |    `c/`    |                                                   `editcomment`                                                   | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                                                                                                                                           |
-|         DATE         |    `d/`    |                                       `addtask` `viewtasks` `createconsult`                                       | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                                                                                                                                           |
-|         TIME         |   `tt/`    |                                                  `createconsult`                                                  | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                                                                                                                                    |
-|    SESSION_NUMBER    |    `s/`    |                      `createsession` `deletesession` `takeattendance` `updatesessionremark`                       | The Session Number of a Session. <ul><li> Session Number must only contain numbers. </li><li>Session Number should not be blank.</li> </ul>                                                                                                                                                                                                                           |
-|    SESSION_REMARK    |    `r/`    |                                               `updatesessionremark`                                               | The Remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                                                                                                                                            |
-| ATTENDANCE_PRESENCE  |   `ap/`    |                                                 `takeattendance`                                                  | The Presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                                                                                                                                               |
-|      TASK_NAME       |   `tn/`    |                                               `addtask` `viewtasks`                                               | The Name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                                                                                                                                                |
-|   TASK_DESCRIPTION   |   `td/`    |                                               `addtask` `viewtasks`                                               | The Description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                                                                                                                                        |
-|    TASK_PRIORITY     |   `tp/`    |                                               `addtask` `viewtasks`                                               | The Priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                                                                                                                                              |
-|    TASK_PROGRESS     |  `tprog/`  |                                      `addtask` `viewtasks` `updateprogress`                                       | The Progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                                                                                                                                     |
+|      **Field**       | **Prefix** |                                                   **Commands**                                                    | <center>**Description**</center>                                                                                                                                                                                                                                                                                                                                |
+|:--------------------:|:----------:|:-----------------------------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         NAME         |    `n/`    | `add` `edit` `addtoconsult` `createconsult` `removefromconsult` `createsession` `takeattendance` `viewattendance` | The Name of a Student. <ul><li>Names should only contain alphanumeric characters and spaces.</li><li> Names should not be blank.</li></ul>                                                                                                                                                                                                                      |
+|        PHONE         |    `p/`    |                                                   `add` `edit`                                                    | The Phone Number of a Student. <ul><li>Phone numbers should only contain numbers.</li><li> Numbers should be at least 3 digits.</li></ul>                                                                                                                                                                                                                       |
+|        EMAIL         |    `e/`    |                                                   `add` `edit`                                                    | The Email of a Student. <ul><li>Emails should be of the format `local-part@domain`.</li><li>The local-part should only contain alphanumeric characters and these special characters `+_.-`.</li><li>The domain name must be `@u.nus.edu`.</li> </ul>                                                                                                            |
+|   TELEGRAM_HANDLE    |   `th/`    |                                                   `add` `edit`                                                    | The Telegram Handle of a Student. <ul><li>Telegram Handles can only use a-z, 0-9 and underscores.</li></ul>                                                                                                                                                                                                                                                     |
+|         TAG          |    `t/`    |                                                   `add` `edit`                                                    | The Tag belonging to a Student. <ul><li>Tags should only contain alphanumeric characters. </li></ul>                                                                                                                                                                                                                                                            |
+|     GRADED_TEST      |   `gt/`    |                                                   `add` `edit`                                                    | The Scores of respective Graded Tests. <ul><li>Graded Test should only contain alphanumeric characters and spaces. </li><li>Graded Test field should follow this format: <code>gt/RA1:&lt;SCORE> &#124; RA2:&lt;SCORE> &#124; MidTerms:&lt;SCORE> &#124; Finals:&lt;SCORE> &#124; PE:&lt;SCORE></code>, where `<SCORE>` **must be a positive float**.</li></ul> |
+| READING_ASSESSMENT_1 |   `ra1/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 1. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                         |
+| READING_ASSESSMENT_2 |   `ra2/`   |                                                 `editgradedtest`                                                  | The Score of Reading Assessment 2. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                         |
+|       MIDTERMS       |   `mt/`    |                                                 `editgradedtest`                                                  | The Score of a MidTerms exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                              |
+|        FINALS        |    `f/`    |                                                 `editgradedtest`                                                  | The Score of a Finals exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                                |
+|    PRACTICAL_EXAM    |   `pe/`    |                                                 `editgradedtest`                                                  | The Score of a Practical exam. <ul><li>Score should be a positive number.</li></ul>                                                                                                                                                                                                                                                                             |
+|      ASSIGNMENT      |   `as/`    |                                     `deletecomment` `editcomment` `editgrade`                                     | The Name of an Assignment. <ul><li>Name should exist in the list of possible assignments.</li></ul>                                                                                                                                                                                                                                                             |
+|        GRADE         |    `g/`    |                                                    `editgrade`                                                    | The Grade of an Assignment. <ul><li>Grade should be a positive number.</li><li>Grade should be less than or equal to (max grade + 75).</li><li>Grade should not have leading 0's.</li></ul>                                                                                                                                                                     |
+|       COMMENT        |    `c/`    |                                                   `editcomment`                                                   | The Comment of an Assignment. <ul><li>Comment should be less than 200 characters.</li><li>Comment should not be empty.</ul>                                                                                                                                                                                                                                     |
+|         DATE         |    `d/`    |                                       `addtask` `viewtasks` `createconsult`                                       | The Date.  <ul><li>The format must be dd/MM/yyyy.</li></ul>                                                                                                                                                                                                                                                                                                     |
+|         TIME         |   `tt/`    |                                                  `createconsult`                                                  | The Time. <ul><li>The format must be HH:mm.</li><li>Time must also be in 24-hour format.</li></ul>                                                                                                                                                                                                                                                              |
+|    SESSION_NUMBER    |    `s/`    |                      `createsession` `deletesession` `takeattendance` `updatesessionremark`                       | The Session Number of a Session. <ul><li> Session Number must only contain numbers. </li><li>Session Number should not be blank.</li> </ul>                                                                                                                                                                                                                     |
+|    SESSION_REMARK    |    `r/`    |                                               `updatesessionremark`                                               | The Remarks of a Session. <ul><li> Remark must only contain alphanumeric characters and spaces. </li></ul>                                                                                                                                                                                                                                                      |
+| ATTENDANCE_PRESENCE  |   `ap/`    |                                                 `takeattendance`                                                  | The Presence of a student. <ul><li> Only 2 possible values are allowed: `PRESENT`, `ABSENT`. </li></ul>                                                                                                                                                                                                                                                         |
+|      TASK_NAME       |   `tn/`    |                                               `addtask` `viewtasks`                                               | The Name of a Task. <ul><li> Name should only contain alphanumeric characters and spaces. </li><li>Name should not be blank.</li></ul>                                                                                                                                                                                                                          |
+|   TASK_DESCRIPTION   |   `td/`    |                                               `addtask` `viewtasks`                                               | The Description of a Task. <ul><li> Description should be less than 100 characters. </li></ul>                                                                                                                                                                                                                                                                  |
+|    TASK_PRIORITY     |   `tp/`    |                                               `addtask` `viewtasks`                                               | The Priority of a Task. <ul><li> Only 3 possible values are allowed: `HIGH`, `MEDIUM`, `LOW`. </li></ul>                                                                                                                                                                                                                                                        |
+|    TASK_PROGRESS     |  `tprog/`  |                                      `addtask` `viewtasks` `updateprogress`                                       | The Progress of a Task. <ul><li> Only 3 possible values are allowed: `NOT_STARTED`, `PENDING`, `DONE`. </li></ul>                                                                                                                                                                                                                                               |
 
 
 [Back to Table of Contents](#table-of-contents)
@@ -351,7 +357,7 @@ Format: `help`
 
 <br>
 
-#### 🔀Switching between different tabs: `tab`
+#### 🔀Switching between different Tabs: `tab`
 
 You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S. to view different lists on the current panel.
 
@@ -359,7 +365,7 @@ Format: `tab TAB_INDEX`
 
 | **Parameter** |          **Description**           |
 |:-------------:|:----------------------------------:|
-|   TAB_INDEX   | The Index of the tab to switch to. |
+|   TAB_INDEX   | The index of the tab to switch to. |
 
 <br>
 
@@ -396,6 +402,17 @@ For the list of tab indexes to use:
 >`Switched to tab 2`
 >
 > [IMAGE COMING SOON]
+
+<br>
+
+#### 👀Viewing Help : `help`
+
+You can view a message explaining how to access the help page, if you require assistance in understanding the commands and their formats.
+
+![help message](images/helpMessage.png)
+
+Format: `help`
+
 
 <br>
 
@@ -454,7 +471,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 |      NAME       |                  The name of the student.                   |
 |  PHONE_NUMBER   |              The phone number of the student.               |
 |      EMAIL      |              The email address of the student.              |
-| TELEGRAM_HANDLE |             The Telegram handle of the student.             |
+| TELEGRAM_HANDLE |             The telegram handle of the student.             |
 |       TAG       |            The tags associated with the student.            |
 |  GRADED_TESTS   | The scores of the graded tests associated with the student. |
 
@@ -503,7 +520,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 <br>
 <br>
 
-#### 👀Listing All Students : `list`
+#### 👀Listing all Students : `list`
 
 You can list out all students in F.A.K.E.J.A.R.V.I.S. if you need to view the complete student list.
 
@@ -536,7 +553,7 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 |      NAME       |                  The new name of the student.                   |
 |      PHONE      |              The new phone number of the student.               |
 |      EMAIL      |              The new email address of the student.              |
-| TELEGRAM_HANDLE |             The new Telegram handle of the student.             |
+| TELEGRAM_HANDLE |             The new telegram handle of the student.             |
 |       TAG       |            The new tags associated with the student.            |
 |  GRADED_TESTS   | The new scores of the graded tests associated with the student. |
 
@@ -595,9 +612,9 @@ You can find a student in F.A.K.E.J.A.R.V.I.S. if you're looking for certain stu
 
 Format: `find KEYWORD…`
 
-| **Parameter** |         **Description**         |
-|:-------------:|:-------------------------------:|
-|    KEYWORD    | The main keyword to search for. |
+| **Parameter** |        **Description**        |
+|:-------------:|:-----------------------------:|
+|    KEYWORD    | The keyword(s) to search for. |
 
 <br>
 
@@ -1054,7 +1071,7 @@ This section describes commands that help you manage your students' assignments.
 
 <br>
 
-#### 👀Viewing a List of Assignments: `viewassignments`
+#### 👀Viewing a list of Assignments: `viewassignments`
 
 You can view the list of assignment grades and comments of a student if you want to assess and review the feedback provided for each assignment.
 
@@ -1108,11 +1125,11 @@ You can edit your student's assignment grade if there is a need to make adjustme
 
 Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 
-| **Parameter** |       **Description**       |
-|:-------------:|:---------------------------:|
-| STUDENT_INDEX |  The index of the student.  |
-|  ASSIGNMENT   | The name of the assignment. |
-|     GRADE     |  The score of the student.  |
+| **Parameter** |        **Description**        |
+|:-------------:|:-----------------------------:|
+| STUDENT_INDEX |   The index of the student.   |
+|  ASSIGNMENT   |  The name of the assignment.  |
+|     GRADE     | The new score of the student. |
 
 <br>
 
@@ -1211,7 +1228,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 
 | **Parameter** |       **Description**       |
 |:-------------:|:---------------------------:|
-| TUDENT_INDEX  |  The index of the student.  |
+| STUDENT_INDEX |  The index of the student.  |
 |  ASSIGNMENT   | The name of the assignment. |
 |    COMMENT    |      The new comment.       |
 
@@ -1321,16 +1338,16 @@ This section describes commands tht help you manage your students' graded tests.
 You can edit your student's graded test scores if you need to make adjustments or corrections to their initially recorded test scores.
 
 Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS]
-[pe/PRACTICALEXAM] `
+[pe/PRACTICAL_EXAM] `
 
-|    **Parameter**     |                 **Description**                  |
-|:--------------------:|:------------------------------------------------:|
-|    STUDENT_INDEX     |            The index of the student.             |
-| READING_ASSESSMENT_1 | The score of the student's Reading Assessment 1. |
-| READING_ASSESSMENT_2 | The score of the student's Reading Assessment 2. |
-|       MIDTERMS       |       The score of the student's MidTerms.       |
-|        FINALS        |   The score of the student's Final Assessment.   |
-|    PRACTICALEXAM     |    The score of the student's Practical Exam.    |
+|    **Parameter**     |                   **Description**                    |
+|:--------------------:|:----------------------------------------------------:|
+|    STUDENT_INDEX     |              The index of the student.               |
+| READING_ASSESSMENT_1 | The new score of the student's Reading Assessment 1. |
+| READING_ASSESSMENT_2 | The new score of the student's Reading Assessment 2. |
+|       MIDTERMS       |       The new score of the student's MidTerms.       |
+|        FINALS        |   The new score of the student's Final Assessment.   |
+|    PRACTICAL_EXAM    |    The new score of the student's Practical Exam.    |
 
 <br>
 
@@ -1341,7 +1358,8 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 * The student index refers to the index number shown in the displayed student list.
 * The student index **must be a positive integer** 1, 2, 3, …​ that is within the range of the student list.
-* At least 1 field must be present after the `INDEX`.
+* The order of the graded test field(s) does not matter.
+* At least 1 graded test field must be present after the `INDEX`.
 
 </md>
 </div>
@@ -1360,7 +1378,7 @@ Format: `editgradedtest INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT
 
 > **📖Example 2:**
 >
-> **Input:** `editgradedtest 1 ra1/100 f/100 ` Edits the corresponding graded test scores for the 1st
+> **Input:** `editgradedtest 1 f/100 ra1/100 ` Edits the corresponding graded test scores for the 1st
 > person Alex Yeoh.
 >
 > **Output:**
@@ -1584,7 +1602,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 <br>
 <br>
 
-#### 📝️Adding students to a consultation: `addtoconsult`
+#### 📝️Adding Students to a Consultation: `addtoconsult`
 You can add your student(s) into a consultation slot if you need to assign specific individuals for your consultation.
 
 Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
@@ -1792,9 +1810,9 @@ Format: `deleteconsult CONSULTATION_INDEX`
 <br>
 
 ### Graded Test commands
-|          **Action**          |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
-|:----------------------------:|:--------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------|
-|     **Edit Graded Test**     | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICALEXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 ra1/88 ra2/92 mt/78 f/80 pe/89`                            |
+|          **Action**          |                                                            **Format**                                                             | <center>**Examples**</center>                                                               |
+|:----------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------|
+|     **Edit Graded Test**     | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICAL_EXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 mt/78 ra1/33 f/80`  |
 
 <br>
 
