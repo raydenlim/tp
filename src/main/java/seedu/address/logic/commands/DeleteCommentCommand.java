@@ -32,7 +32,7 @@ public class DeleteCommentCommand extends AssignmentCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the comment from a person’s assignment "
             + "identified by the index number used in the displayed person list. "
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: STUDENT_INDEX (must be a positive integer) "
             + PREFIX_ASSIGNMENT + "ASSIGNMENT ";
 
     public static final String MESSAGE_SUCCESS = "Deleted comment from assignment: %1$s";

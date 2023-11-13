@@ -19,7 +19,7 @@ public class ViewAssignmentsCommand extends AssignmentCommand {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows a list of assignment details belonging to a "
             + "person, identified by the index number used in the displayed person list. "
-            + "Parameters: INDEX (must be a positive integer) ";
+            + "Parameters: STUDENT_INDEX (must be a positive integer) ";
 
     public static final String MESSAGE_SUCCESS = "Showing all assignment details of: %1$s";
 

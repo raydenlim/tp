@@ -7,13 +7,13 @@ import javafx.scene.layout.VBox;
 /**
  * A ui to display graphical results of a command.
  */
-public class ResultGraphicalDisplay extends UiPart<Region> {
+public class GraphicalResultDisplay extends UiPart<Region> {
     private static final String FXML = "ResultGraphicalDisplay.fxml";
 
     @FXML
     private VBox graphicalResultDisplay;
 
-    public ResultGraphicalDisplay() {
+    public GraphicalResultDisplay() {
         super(FXML);
     }
 

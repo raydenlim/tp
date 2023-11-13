@@ -607,7 +607,7 @@ The `UpdateTaskProgressCommand` will call `setTask` in `Model` to replace the ex
 Step 4:
 The `UpdateTaskProgressCommand` will call its own `updateFilteredTaskList` method to update the model's filter and display all the tasks to the user.
 
-Step 4:
+Step 5:
 The `UpdateTaskProgressCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
 
@@ -620,6 +620,82 @@ The `UpdateTaskProgressCommand` then continues its execution as defined by [this
     * Cons: Performance degradation due to the need to create new objects everytime the Task is updated.
 
 * **Alternative 2:** Mutate the existing Task in the Task list to reflect the new progress.
+    * Cons: Risk of the state of mutable objects being changed by other methods or processes.
+    * Cons: Reduced maintainability as state of object can keep changing throughout the code.
+
+
+
+#### Create Consultation Feature
+This section explains the implementation of the Create Consultation feature via the `createconsult` command.
+The `CreateConsultCommand` creates a `Consultation` and adds it into the Consultation List in the application.
+There are multiple compulsory field: date, time and name of students. 
+
+Below is the sequence diagram outlining the execution of `CreateConsultCommand`.
+
+![CreateConsultCommand sequence diagram](images/CreateConsultSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `CreateConsult::execute`, which in turn creates a new `StudentSet`.
+
+Step 2:
+Then, `Model::getMatchingStudentName` is called in a loop to add `Person` specified by name into the `StudentSet`.
+
+Step 3:
+A new `Consultation` is created with specified date, time and the new `StudentSet`.
+
+Step 4:
+`Model::addConsultation` is then called to add the newly created `Consultation`.
+
+Step 5:
+The `CreateConsultCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the CreateConsultCommand:**
+
+* **Alternative 1 (current choice):** Let the `LogicManager` pass the model to the command to execute.
+    * Pros: Promotes information hiding since we do not need to expose the model to the `CreateConsultCommand`.
+
+
+* **Alternative 2:** Store the model in the `CreateConsultCommand` itself.
+    * Pros: Easier to debug.
+    * Cons: The `CreateConsultCommand` might be able to call other methods in the model.
+
+
+
+#### Add To Consultation Feature
+This section explains the implementation of the Add To Consultation feature via the `addtoconsult` command.
+The `AddToConsultCommand` adds a new student to the consultation identified using the Index.
+There are 2 compulsory field, which are the Index of the consultation to add student into, and the name of the student.
+
+Below is the sequence diagram outlining the execution of `AddToConsultCommand`.
+
+![AddToConsult sequence diagram](images/AddToConsultSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `AddToConsultCommand::execute`, which in turn calls `Model::getFilteredConsultationList` and `List<Consultation>::get` to get the relevant consultation to be edited.
+
+Step 2:
+The `AddToConsultCommand::createUpdatedConsultation` is invoked to create a new immutable Consultation object with the updated `StudentSet`.
+
+Step 3:
+The `AddToConsultCommand` will call `setConsultation` in `Model` to replace the existing `Consultation` with the new `Consultation` object.
+
+Step 4:
+The `AddToConsultCommand` will call its own `updateFilteredConsultationList` method to update the model's filter and display all the consultation to the user.
+
+Step 5:
+The `AddToConsultCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+
+##### Design Considerations:
+**Aspect: How we execute the AddToConsultCommand:**
+
+* **Alternative 1 (current choice):** Create a new immutable object of the updated Consultation and replace the previous Consultation.
+    * Pros: Easier to debug since the state of immutable objects cannot be changed.
+    * Cons: Performance overhead due creating new objects everytime the Consultation is edited.
+
+* **Alternative 2:** Mutate the existing Consultation in the Consultation list to reflect the new students added.
     * Cons: Risk of the state of mutable objects being changed by other methods or processes.
     * Cons: Reduced maintainability as state of object can keep changing throughout the code.
 
@@ -910,32 +986,117 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+
 **Use case: Create a consultation**
 
 **MSS**
 
-1.  User requests to create a consultation with specified date, time and student name(s)
+1.  User requests to create a consultation with specified date, time and student name(s).
 2.  F.A.K.E.J.A.R.V.I.S. creates a consultation.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The date input is invalid.
+* 1a. The date input is invalid.
 
-    * 2a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
-
-      Use case ends.
-
-* 3a. The time input is invalid.
-
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case ends.
 
-* 3a. No matching name to students' names.
+* 1b. The time input is invalid.
 
-    * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1c. No matching name to students' names.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Delete a consultation**
+
+**MSS**
+
+1.  User requests to delete a consultation at a specified index.
+2.  F.A.K.E.J.A.R.V.I.S. deletes the consultation.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The index input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Adding a student to a consultation**
+
+**MSS**
+
+1.  User requests to add a student into a consultation at a specified index.
+2.  F.A.K.E.J.A.R.V.I.S. updates the consultation.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The index input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+  
+* 1c. No matching name to students' name found.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+
+**Use case: Removing a student from a consultation**
+
+**MSS**
+
+1.  User requests to remove a student from a consultation at a specified index.
+2.  F.A.K.E.J.A.R.V.I.S. updates the consultation.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The index input is invalid.
+
+    * 1a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1b. The student name input is invalid.
+
+    * 1b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1c. No matching name to students' name found in consultation.
+
+    * 1c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+      Use case ends.
+
+* 1d. No matching name to students' name found in address book.
+
+    * 1d1. F.A.K.E.J.A.R.V.I.S. shows an error message.
 
       Use case ends.
 
@@ -946,10 +1107,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4. System should respond within 2 seconds to ensure smooth and efficient user interactions.
-5. The system should be able to handle an increasing number of users and data without a significant decrease in performance.
-6. The system should be user-friendly, with a clean and intuitive interface.
-7. Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
+4.  The system should respond within 2 seconds to ensure smooth and efficient user interactions.
+5.  The system should be able to handle an increasing number of users and data without a significant decrease in performance.
+6.  The system should be user-friendly, with a clean and intuitive interface.
+7.  Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
 
 *{More to be added}*
 
