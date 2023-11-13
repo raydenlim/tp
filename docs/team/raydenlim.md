@@ -35,6 +35,8 @@ Given below are my contributions to the project.
 
 * **Project management**:
   * Reviewed and approved pull requests
+  * Organised Git Issues
+  * Maintained team weekly [meeting notes](https://docs.google.com/document/d/1QKJGL88ciMlyb5MfS2XyThnuUBGdwFIULFgP9MLTFEA/edit)
 
 
 * **Enhancements to existing features**:
@@ -51,7 +53,12 @@ Given below are my contributions to the project.
 
     <br>
   * **Contributions Developer Guide**:
-    * Designed the class diagram for `GradedTest`
+    * Designed the class diagram for `GradedTest`.
+    * Designed the sequence diagram for `EditGradedTestCommand`.
+    * Designed the activity diagram for `createEditedGradedTestPerson`.
+    * Added the Use cases for edit graded test.
+    * Added the Planned Enhancement Appendix.
+    * Organised the Use cases.
 
 <br>
 
