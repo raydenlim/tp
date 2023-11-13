@@ -65,7 +65,7 @@ Given below are my contributions to the project.
         * Added implementation details of the `addtask`, `deletetask`, `viewtasks` and `updatetaskprogress` features. ([#128](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/128))
         * Designed the class diagram for `Task`. ([#107](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/107))
         * Designed the sequence diagram for `CommandParser` and the reference frames for `AddTaskCommand`, `DeleteTaskCommand`, `ViewTasksCommand` and `UpdateTaskProgressCommand`. ([#107](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/107))
-        * Added UML activity diagram for `DeleteCommand`. ([#252](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/252)))
+        * Added UML activity diagram for `DeleteCommand`. ([#252](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/252))
         * Added UML sequence diagram for `EditCommand`. ([#252](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/252))
         * Updated the common sections like the `Model` inherited from AB3. ([#252](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/252))
         * Added some non-functional requirements and use cases ([#47](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/47), [#31](https://github.com/AY2324S1-CS2103T-T15-1/tp/pull/31))
