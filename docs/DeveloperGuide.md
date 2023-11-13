@@ -381,11 +381,22 @@ The given name(s) of students are then checked if they exist in the Address Book
 Step 4:
 The final check ensures that there are no duplicate sessions being created, before finally adding the created session to the model. If a duplicate session is detected, an error message will be displayed to alert the Avenger that a duplicate session will be created.
 
+#### Design Considerations:
+**Aspect: How to determine if a session is considered a duplicate**
+
+* **Alternative 1 (current choice):** Session is considered duplicate if another session with the same session number already exists in the session list.
+    * Pros: It is easier to manage the duplicate session situation if only session number is compared, making other features easier to implement by referring to the session number as the session's identity.
+    * Cons: User will not be able to have multiple sessions of the same session number.
+
+* **Alternative 2:** Session will be considered duplicate only if all of its fields, session number, students, and session remark are equal.
+    * Pros: It allows for multiple sessions of the same session number to be stored in the same session list.
+    * Cons: A small mistake in the inputs will cause two sessions to not be considered duplicate, which could unintentionally lead to multiple sessions with almost the same fields (which would have been considered duplicate otherwise).
 
 
 #### Take Attendance Feature
 This section explains the implementation of the Take Attendance feature via the `takeattendance` command.
 The `TakeAttendanceCommand` causes the specified `Person` to be added to the specified session. 
+There are two compulsory fields, which are the session number of the session, as well as the names of the students involved.
 
 This process is shown in the sequence diagram below
 
