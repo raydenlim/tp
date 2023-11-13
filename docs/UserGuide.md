@@ -354,11 +354,19 @@ This section describes commands that fit in no special category.
 
 You can view a message detailing how to access the user guide if you require assistance in understanding the different commands and their formats.
 
-![help message](images/helpMessage.png)
-
 Format: `help`
 
+> **📖Example 1:**
+>
+> **Input:** `help` Opens up the help window.
+>
+> **Output:**
+> `Opened help window.`
+>
+> **Output Image:**
+> ![help message](images/helpMessage.png)
 
+<br>
 <br>
 
 #### 🔀Switching between different Tabs: `tab`
@@ -393,27 +401,17 @@ For the list of tab indexes to use:
 > **Input:** `tab 1` Switches to the student list tab.
 >
 > **Output:**
->`Switched to tab 1`
+> `Switched to tab 1`
 >
 > **Output Image:**
 > ![Screenshot of Tab 1](images/tab1.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `tab 2` Switches to the tasks list tab.
->
-> **Output:**
->`Switched to tab 2`
->
-> [IMAGE COMING SOON]
 
 <br>
 <br>
 
 #### Clearing all Entries : `clear`
 
-You can clear all students from F.A.K.E.J.A.R.V.I.S. if you need to reset the student database or remove all existing student records.
+You can clear all data from F.A.K.E.J.A.R.V.I.S. if you need to delete the database.
 
 Format: `clear`
 
@@ -430,14 +428,16 @@ Format: `clear`
 
 > **📖Example 1:**
 >
-> **Input:** `clear` Deletes all students in F.A.K.E.J.A.R.V.I.S.
+> **Input:** `clear` Deletes all data in F.A.K.E.J.A.R.V.I.S.
 >
 > **Output:**
->`Address book has been cleared!`
+> `Address book has been cleared!`
 >
-> [IMAGE COMING SOON]
+> **Output Image:**
+> ![Screenshot of Clear](images/clear.png)
 
 
+<br>
 <br>
 
 #### 🏃🚪Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
@@ -446,14 +446,14 @@ You can exit the F.A.K.E.J.A.R.V.I.S. application if you're done using the appli
 
 Format: `exit`
 
-
+<br>
 <br>
 
 #### 💾Saving the Data
 
 F.A.K.E.J.A.R.V.I.S. data are saved in the hard disk automatically after any command that changes the data. There is no need to save the data manually.
 
-
+<br>
 <br>
 
 #### 🛠️Editing the Data File
@@ -463,12 +463,12 @@ F.A.K.E.J.A.R.V.I.S. data are saved automatically as a JavaScript Object Notatio
 
 <div class="alert alert-warning">
 <md>
-:warning: 
+:warning: **Caution**:
 
-**Caution**:
 * If your changes to the data file makes its format invalid, F.A.K.E.J.A.R.V.I.S. will discard all data and start with an empty data file at the next run. Hence, it is recommended to make a backup of the file before editing it.
 </md></div>
 
+<br>
 <br>
 
 #### 💾Archiving Data Files `[coming in v2.0]`
@@ -480,6 +480,10 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 [Back to Table of Contents](#table-of-contents)
 
 <br>
+
+--------------------------------------------------------------------------------------------------------------------
+
+
 <br>
 
 ### Student Management
@@ -530,20 +534,10 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 > **Input:** `add n/John Doe p/98765432 e/johnd@u.nus.edu th/johnny01 gt/RA1:0 | RA2:0 | MidTerms:0 | Finals:0 | PE:0` Adds a person called John Doe into F.A.K.E.J.A.R.V.I.S. He has 98765432 as his phone number, johnd@u.nus.edu as his email and johnny01 as his telegram handle. All his grades are also set to `0`.
 >
 > **Output:**
->`New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags: ; GradedTest: `
+> `New person added: Name: John Doe; Phone: 98765432; Email: johnd@u.nus.edu; Telegram Handle: johnny01; Tags: ; GradedTest: `
 >
 > **Output Image:**
 > ![Screenshot of Add Student 1](images/addStudent.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `add n/Betsy Crowe t/friend e/betsycrowe@u.nus.edu th/itsybetsyspider p/1234567 t/bestie gt/default` Adds a person called Betty Crowe into F.A.K.E.J.A.R.V.I.S. She has 1234567 as her phone number, betsycrowe@u.nus.edu as her email, itsybetsyspider as her telegram handle and bestie as tags. All her grades are also set to `-`.
->
-> **Output:**
->`New person added: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: [bestie]; Graded Test: RA1: -; RA2: -; MidTerms: -; Final: -; PE: -`
->
-> [IMAGE COMING SOON]
 
 
 <br>
@@ -622,16 +616,6 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 > **Output Image:**
 > ![Screenshot of Edit Student 1](images/editStudent.png)
 
-> **📖Example 2:**
->
-> **Input:** `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
->
-> **Output:**
->`Edited Person: Name: Betsy Crower; Phone: 99272758; Email: berniceyu@u.nus.edu; Telegram Handle: berrynice123; Tags: ; Graded Test: RA1: -; RA2: -; MidTerms: 3; Final: 4; PE: 5`
->
-> [IMAGE COMING SOON]
-
-
 <br>
 <br>
 
@@ -669,16 +653,6 @@ Format: `find KEYWORD…`
 >
 > **Output Image:**
 > ![Screenshot of Find Student](images/findStudent.png)
-
-> **📖Example 2:**
->
-> **Input:** `find alex david` Finds the students who have `alex` or `david` in their name.
->
-> **Output:**
->`2 persons listed!`
->
-> [IMAGE COMING SOON]
-
 
 <br>
 <br>
@@ -718,23 +692,14 @@ Format: `delete STUDENT_INDEX`
 > **Output Image:**
 > ![Screenshot of Delete Student](images/deleteStudent.png)
 
-> **📖Example 2:**
->
-> **Input:** `find Betsy` followed by `delete 1` Deletes the 1st student in the results of the `find` command.
->
-> **Output:**
->`Deleted Person: Name: Betsy Crowe; Phone: 1234567; Email: betsycrowe@u.nus.edu; Telegram Handle: itsybetsyspider; Tags: [friend][criminal]`
->
-> [IMAGE COMING SOON]
-
-
-
 
 [Back to Table of Contents](#table-of-contents)
 
 
 <br>
-<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Task Management
@@ -768,17 +733,6 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 >
 > **Output Image:**
 > ![Screenshot of Add Task](images/addTask.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `addtask tn/Read Chapter 5` creates a task to read Chapter 5 without specifying a due date or priority.
->
-> **Output:**
->`Task has been added: Read Chapter 5; Description: No Description Provided; Priority: LOW; Date: null; Progress: NOT_STARTED`
->
-> [IMAGE COMING SOON]
-
 
 <br>
 <br>
@@ -877,15 +831,6 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 > **Output Image:**
 > ![Screenshot of update task progress](images/updateprogress.png)
 
-> **📖Example 2:**
->
-> **Input:** `updateprogress 3 tprog/done` Updates the progress of the 3rd task as done.
->
-> **Output:**
->`Updated Task: Do cs2100; Description: Remember mips; Priority: HIGH; Date: 2023-10-22; Progress: DONE`
->
-> [IMAGE COMING SOON]
-
 
 <br>
 <br>
@@ -926,20 +871,12 @@ Format: `deletetask TASK_INDEX`
 > ![Screenshot of delete task](images/deletetask.png)
 
 
-> **📖Example 2:**
->
-> **Input:** `deletetask 2` Deletes the 2nd task from the task list.
->
-> **Output:**
->`Deleted Task: Do cs2101; Description: Practice script; Priority: HIGH; Date: 2023-10-22; Progress: NOT_STARTED`
->
-> [IMAGE COMING SOON]
-
-
 [Back to Table of Contents](#table-of-contents)
 
 <br>
-<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Attendance Management
@@ -986,17 +923,6 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 >
 > **Output Image:**
 > ![Screenshot of take attendance](images/takeattendance.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `takeattendance n/David Li s/2 ap/absent` Marks David Li as absent on the 2nd session.
->
-> **Output:**
->`Attendance taken`
->
-> [IMAGE COMING SOON]
-
 
 <br>
 <br>
@@ -1051,7 +977,9 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 [Back to Table of Contents](#table-of-contents)
 
 <br>
-<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Assignment Management
@@ -1139,17 +1067,6 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 > **Output Image:**
 > ![Screenshot of editing grade](images/editgrade.png)
 
-
-> **📖Example 2:**
->
-> **Input:** `editgrade 2 as/Rune Reading g/300` edits the grade of the 2nd student's Rune Reading assignment to 300.
->
-> **Output:**
->`Edited grade to assignment: Rune Reading`
->
-> [IMAGE COMING SOON]
-
-
 <br>
 <br>
 
@@ -1190,17 +1107,6 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 >
 > **Output Image:**
 > ![Screenshot of delete grade](images/deletegrade.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `deletegrade 2 as/Rune Reading` deletes the 2nd student's Rune Reading grade if its graded.
->
-> **Output:**
->`Deleted grade from assignment: Rune Reading`
->
-> [IMAGE COMING SOON]
-
 
 <br>
 <br>
@@ -1247,17 +1153,6 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 > ![Screenshot of edit comment](images/editcomment.png)
 
 
-> **📖Example 2:**
->
-> **Input:** `editcomment 2 as/Rune Reading c/Great` Changes the comment on the 2nd student's Rune Reading assignment to “Great”.
->
-> **Output:**
->`Edited comment to assignment: Rune Reading`
->
-> [IMAGE COMING SOON]
-
-
-
 <br>
 <br>
 
@@ -1295,27 +1190,18 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 > **Input:** `deletecomment 1 as/Rune Trials` Deletes the comment on the 1st student's Rune Trials assignment if it exists.
 >
 > **Output:**
->`Deleted comment from assignment: Rune Trials`
+> `Deleted comment from assignment: Rune Trials`
 >
 > **Output Image:**
 > ![Screenshot of delete comment](images/deletecomment.png)
 
 
-> **📖Example 2:**
->
-> **Input:** `deletecomment 2 as/Rune Reading` Deletes the comment on the 2nd student's Rune Reading assignment if it exists.
->
-> **Output:**
->`Deleted comment from assignment: Rune Reading`
->
-> [IMAGE COMING SOON]
-
-
-
 [Back to Table of Contents](#table-of-contents)
 
 <br>
-<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Graded Test Management
@@ -1367,22 +1253,12 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 > ![Screenshot of edit graded test](images/editgradedtest.png)
 
 
-> **📖Example 2:**
->
-> **Input:** `editgradedtest 1 f/100 ra1/100 ` Edits the corresponding graded test scores for the 1st
-> person Alex Yeoh.
->
-> **Output:**
->`Edited Person: Name: Alex Yeoh; Phone: 91234567; Email: johndoe@u.nus.edu; Telegram Handle: alexYeohh; Tags:
-> [friends]; Graded Test: RA1: 100; RA2: 2; MidTerms: 3; Final: 4; PE: 100`
->
-> [IMAGE COMING SOON]
-
-
 [Back to Table of Contents](#table-of-contents)
 
 <br>
-<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Session Management
@@ -1427,17 +1303,6 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 > **Output Image:**
 > ![Screenshot of create session](images/createsession.png)
 
-
-> **📖Example 2:**
->
-> **Input:** `createsession s/4 n/Betsy Crower n/David Li` Creates a session, which has session number 3, with Betsy Crower and David Li.
->
-> **Output:**
->`New session added: Session: 4; Students: Betsy Crower David Li; Remark: NA`
->
-> [IMAGE COMING SOON]
-
-
 <br>
 <br>
 
@@ -1476,17 +1341,6 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 >
 > **Output Image:**
 > ![Screenshot of update session remark](images/updatesessionremark.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `updatesessionremark s/4 r/Taught streams and metacircular evalutator` Updates the remark for session 4 to "Taught streams and metacircular evaluator".
->
-> **Output:**
->`Session remarks updated: Session: 4; Students: Betsy CrowerDavid Li; Remark: Taught streams and metacircular evalutator`
->
-> [IMAGE COMING SOON]
-
 
 <br>
 <br>
@@ -1527,20 +1381,13 @@ Format: `deletesession s/SESSION_NUMBER`
 > ![Screenshot of delete session](images/deletesession.png)
 
 
-> **📖Example 2:**
->
-> **Input:** `deletesession s/4` Deletes the session with session number 4 from the session list.
->
-> **Output:**
->`Deleted Session: Session: 4; Students: Betsy CrowerDavid Li; Remark: Taught streams and metacircular evalutator`
->
-> [IMAGE COMING SOON]
-
 
 [Back to Table of Contents](#table-of-contents)
 
 <br>
-<br>
+
+--------------------------------------------------------------------------------------------------------------------
+
 <br>
 
 ### Consultation Management
@@ -1584,16 +1431,6 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 >
 > **Output Image:**
 > ![Screenshot of create consult](images/createconsult.png)
-
-
-> **📖Example 2:**
->
-> **Input:** `createconsult d/30/09/2023 tt/15:30 n/Alex Yeoh n/Betsy Crower n/David Li` Creates a consultation for Alex Yeoh, Betsy Crower and David Li on 2023-09-30 15:30.
->
-> **Output:**
->`New consultation added: Date: 2023-09-30; Time: 15:30; Students: Betsy Crower, David Li, Alex Yeoh`
->
-> [IMAGE COMING SOON]
 
 
 <br>
