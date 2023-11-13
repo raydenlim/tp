@@ -317,6 +317,9 @@ The following describes what each tab displays on the **Current Panel**:
 <br>
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
 ### Command Parameters
 Most commands given in the user guide utilise various parameters which are also known as prefixes. To add a prefix to your command, follow this format: `PREFIX/MESSAGE`. A list of prefixes and their respective constraints are given in the table below.
 
@@ -396,9 +399,11 @@ Format: `help`
 <br>
 <br>
 
+<div style="page-break-after: always;"></div>
+
 #### 🔀Switching between different Tabs: `tab`
 
-You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S. to view different lists on the current panel.
+You can navigate between different tabs in F.A.K.E.J.A.R.V.I.S. to view different lists on the panel.
 
 Format: `tab TAB_INDEX`
 
@@ -406,7 +411,6 @@ Format: `tab TAB_INDEX`
 |:-------------:|:----------------------------------:|
 |   TAB_INDEX   | The index of the tab to switch to. |
 
-<br>
 
 <div class="alert alert-info">
 <md>
@@ -418,7 +422,6 @@ For the list of tab indexes to use:
 * **Assignments List:** `3`
 * **Sessions List:** `4`
 * **Consultations List:** `5`
-
 </md> </div>
 
 <br>
@@ -433,8 +436,6 @@ For the list of tab indexes to use:
 > **Output Image:**
 > ![Screenshot of Tab 1](images/tab1.png)
 
-<br>
-<br>
 
 #### Clearing all Entries : `clear`
 
@@ -466,6 +467,9 @@ Format: `clear`
 
 <br>
 <br>
+
+<div style="page-break-after: always;"></div>
+
 
 #### 🏃🚪Exiting F.A.K.E.J.A.R.V.I.S. : `exit`
 
@@ -506,17 +510,12 @@ _Stay tuned for more features and enhancements in `v2.0`, including archiving da
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-
---------------------------------------------------------------------------------------------------------------------
-
-
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
 <br>
 <br>
+
+<div style="page-break-after: always;"></div>
 
 ### Student Management
 This section describes commands that help you manage your students.
@@ -560,6 +559,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
   </md> </div>
 
 <br>
+<div style="page-break-after: always;"></div>
+
 
 > **📖Example 1:**
 >
@@ -574,6 +575,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/
 
 <br>
 <br>
+
+<div style="page-break-after: always;"></div>
 
 #### 👀Listing all Students : `list`
 
@@ -595,6 +598,9 @@ Format: `list`
 
 <br>
 <br>
+
+<div style="page-break-after: always;"></div>
+
 
 #### 🛠️Editing a Student Field : `edit`
 
@@ -638,6 +644,9 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
 > **📖Example 1:**
 >
 > **Input:** `edit 1 p/91234567 e/johndoe@u.nus.edu` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@u.nus.edu`.
@@ -651,6 +660,9 @@ Format: `edit STUDENT_INDEX [n/NAME] [p/PHONE] [e/EMAIL] [th/TELEGRAM_HANDLE] [t
 <br>
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
 #### 🔎Finding Student by Name: `find`
 
 You can find a student in F.A.K.E.J.A.R.V.I.S. if you're looking for certain students by their names.
@@ -662,7 +674,6 @@ Format: `find KEYWORD…`
 |    KEYWORD    | The keyword(s) to search for. |
 
 <br>
-
 
 <div class="alert alert-info"> <md> :information_source: **Note**: 
 
@@ -686,19 +697,17 @@ Format: `find KEYWORD…`
 > **Output Image:**
 > ![Screenshot of Find Student](images/findStudent.png)
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
 
 #### ❌Deleting a Student : `delete`
 
-You can delete a specific student from F.A.K.E.J.A.R.V.I.S. if you no longer require their information in the system.
+You can delete a specific student from F.A.K.E.J.A.R.V.I.S. if they're no longer your student.
+
 Format: `delete STUDENT_INDEX`
 
 | **Parameter** |             **Description**             |
 |:-------------:|:---------------------------------------:|
 | STUDENT_INDEX | The index of the student to be deleted. |
-
-<br>
 
 <div class="alert alert-info"> 
 <md>
@@ -722,26 +731,17 @@ Format: `delete STUDENT_INDEX`
 > `Deleted Person: Name: Bernice Yu; Phone: 99272758; Email: berniceyu@u.nus.edu; Telegram Handle: berrynice123; Tags: [colleagues][friends]; Graded Test: RA1: -; RA2: -; MidTerms: 3; Final: 4; PE: 5`
 >
 > **Output Image:**
-> ![Screenshot of Delete Student](images/deleteStudent.png)
-
+> <p class="center"> <img src="images/deleteStudent.png" alt="deleteStudent" height="325" /> </p>
 
 [Back to Table of Contents](#table-of-contents)
 
-
-<br>
-
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
-<br>
 
 ### Task Management
 
 This section describes commands that help you manage your tasks.
 
-<br>
 <br>
 
 #### 📝Adding a Task: `addtask`
@@ -767,10 +767,8 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 > `Task has been added: Prepare Lecture slides; Description: No Description Provided; Priority: HIGH; Date: 2023-09-30; Progress: NOT_STARTED`
 >
 > **Output Image:**
-> ![Screenshot of Add Task](images/addTask.png)
+> <p class="center"> <img src="images/addTask.png" alt="addTask" height="325" /> </p>
 
-<br>
-<br>
 
 #### 👀Viewing Tasks: `viewtasks`
 
@@ -804,6 +802,9 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
+
 > **📖Example 1:**
 >
 > **Input:** `viewtasks` Displays all tasks in the user's task list.
@@ -812,7 +813,7 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 > `4 tasks listed!`
 >
 > **Output Image:**
-> ![Screenshot of view tasks](images/viewtasks.png)
+> <p class="center"> <img src="images/viewtasks.png" alt="viewtasks" height="325" /> </p>
 
 
 > **📖Example 2:**
@@ -823,11 +824,10 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 > `1 tasks listed!`
 >
 > **Output Image:**
-> ![Screenshot of view tasks with date filter](images/viewtasksDate.png)
+> <p class="center"> <img src="images/viewtasksDate.png" alt="viewtasksDate" height="325"/> </p>
 
+<div style="page-break-after: always;"></div>
 
-<br>
-<br>
 
 #### 🛠️Updating a Task's Progress: `updateprogress`
 
@@ -864,11 +864,9 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 > `Updated Task: Do 2103T; Description: Homework assignment; Priority: HIGH; Date: 2023-10-22; Progress: PENDING`
 >
 > **Output Image:**
-> ![Screenshot of update task progress](images/updateprogress.png)
+> <p class="center"> <img src="images/updateprogress.png" alt="updatetaskprogress" height="325" /> </p>
 
 
-<br>
-<br>
 
 #### ❌Deleting a Task: `deletetask`
 
@@ -903,29 +901,23 @@ Format: `deletetask TASK_INDEX`
 > `Deleted Task: Do cs2100; Description: Remember mips; Priority: HIGH; Date: 2023-10-22; Progress: DONE`
 >
 > **Output Image:**
-> ![Screenshot of delete task](images/deletetask.png)
+> <p class="center"> <img src="images/deletetask.png" alt="deletetask" height="325" /> </p>
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
-<br>
 
 ### Attendance Management
 This section describes commands that help you manage your students' attendance.
 
-
-<br>
 <br>
 
 #### 📆Taking Attendance: `takeattendance`
 
-You can take the attendance of your student(s) if you need to record their presence or absence for a particular session.
+You can take the attendance of your student(s) if you need to record their presence for a session.
 
 Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
@@ -949,7 +941,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 > **📖Example 1:**
 >
@@ -959,10 +951,11 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 > `Attendance taken`
 >
 > **Output Image:**
-> ![Screenshot of take attendance](images/takeattendance.png)
+> <p class="center"> <img src="images/takeattendance.png" alt="takeattendance" height="325" /> </p>
 
-<br>
-<br>
+
+<div style="page-break-after: always;"></div>
+
 
 #### 👀Viewing Attendance: `viewattendance`
 
@@ -997,7 +990,9 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 > `2 sessions listed!`
 >
 > **Output Image:**
-> ![Screenshot of view attendance](images/viewattendance.png)
+> <p class="center"> <img src="images/viewattendance.png" alt="viewattendance" height="325" /> </p>
+
+<div style="page-break-after: always;"></div>
 
 
 > **📖Example 2:**
@@ -1008,18 +1003,15 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 > `2 sessions listed!`
 >
 > **Output Image:**
-> ![Screenshot of view attendance with multiple names](images/viewattendanceMultiple.png)
+>  <p class="center"> <img src="images/viewattendanceMultiple.png" alt="viewattendanceMultiple" height="325" /> </p>
 
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Assignment Management
 This section describes commands that help you manage your students' assignments.
@@ -1036,7 +1028,6 @@ Format: `viewassignments STUDENT_INDEX`
 |:-------------:|:-------------------------:|
 | STUDENT_INDEX | The index of the student. |
 
-<br>
 
 <div class="alert alert-info"> 
 <md>
@@ -1049,22 +1040,19 @@ Format: `viewassignments STUDENT_INDEX`
 </md>
 </div>
 
-<br>
-
-
 > **📖Example 1:**
 >
-> **Input:** `viewassignments 2` shows a list of the 2nd student's assignment names, grades and comments.
+> **Input:** `viewassignments 2` shows the 2nd student's assignment grades and comments.
 >
 > **Output:**
 > `Showing all assignment details of: Charlotte Oliveiro`
 >
 > **Output Image:**
-> ![Screenshot of viewing assignments](images/viewassignments.png)
+> <p class="center"> <img src="images/viewassignments.png" alt="viewassignments" height="325" /> </p>
 
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
+
 
 #### 🛠️Editing an Assignment Grade: `editgrade`
 
@@ -1094,7 +1082,8 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
+
 
 > **📖Example 1:**
 >
@@ -1104,10 +1093,10 @@ Format: `editgrade STUDENT_INDEX as/ASSIGNMENT g/GRADE`
 > `Edited grade to assignment: Rune Trials`
 >
 > **Output Image:**
-> ![Screenshot of editing grade](images/editgrade.png)
+> <p class="center"> <img src="images/editgrade.png" alt="editgrade" height="325" /> </p>
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
+
 
 #### ❌Deleting an Assignment Grade: `deletegrade`
 
@@ -1139,16 +1128,14 @@ Format: `deletegrade STUDENT_INDEX as/ASSIGNMENT`
 
 > **📖Example 1:**
 >
-> **Input:** `deletegrade 1 as/Rune Trials` deletes the 1st student's Rune Trials grade if its graded.
+> **Input:** `deletegrade 1 as/Rune Trials` deletes the 1st student's Rune Trials grade.
 >
 > **Output:**
 > `Deleted grade from assignment: Rune Trials`
 >
 > **Output Image:**
-> ![Screenshot of delete grade](images/deletegrade.png)
+> <p class="center"> <img src="images/deletegrade.png" alt="deletegrade" height="310" /> </p>
 
-<br>
-<br>
 
 #### 🛠️Editing an Assignment Comment: `editcomment`
 
@@ -1179,7 +1166,7 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 > **📖Example 1:**
 >
@@ -1189,11 +1176,11 @@ Format: `editcomment STUDENT_INDEX as/ASSIGNMENT c/COMMENT`
 > `Edited comment to assignment: Rune Trials`
 >
 > **Output Image:**
-> ![Screenshot of edit comment](images/editcomment.png)
+> <p class="center"> <img src="images/editcomment.png" alt="editcomment" height="325" /> </p>
 
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
+
 
 #### ❌Deleting an Assignment Comment: `deletecomment`
 
@@ -1222,7 +1209,8 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
+
 
 > **📖Example 1:**
 >
@@ -1232,18 +1220,14 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 > `Deleted comment from assignment: Rune Trials`
 >
 > **Output Image:**
-> ![Screenshot of delete comment](images/deletecomment.png)
+> <p class="center"> <img src="images/deletecomment.png" alt="deletecomment" height="325" /> </p>
 
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Graded Test Management
 This section describes commands tht help you manage your students' graded tests.
@@ -1281,7 +1265,8 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
+
 
 > **📖Example 1:**
 >
@@ -1296,17 +1281,12 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Session Management
 This section describes commands that help you manage your sessions.
-
 
 <br>
 
@@ -1334,20 +1314,19 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 > **📖Example 1:**
 >
-> **Input:** `createsession s/3 n/Alex Yeoh` Creates a session, which has session number 3 with Alex Yeoh.
+> **Input:** `createsession s/3 n/Alex Yeoh` Creates a session with session no. 3 with Alex Yeoh.
 >
 > **Output:**
 > `New session added: Session: 3; Students: Alex Yeoh; Remark: NA`
 >
 > **Output Image:**
-> ![Screenshot of create session](images/createsession.png)
+> <p class="center"> <img src="images/createsession.png" alt="createsession" height="325" /> </p>
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
 
 
 #### 🛠️Updating a Session's Remark: `updatesessionremark`
@@ -1383,10 +1362,9 @@ Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
 >`Session remarks updated: Session: 2; Students: Charlotte Oliveiro David Li Alex Yeoh Irfan Ibrahim Roy Balakrishnan ; Remark: Teach Essence of Recursion`
 >
 > **Output Image:**
-> ![Screenshot of update session remark](images/updatesessionremark.png)
+> <p class="center"> <img src="images/updatesessionremark.png" alt="updatesessionremark" height="325" /> </p>
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
 
 
 #### ❌Deleting a Session: `deletesession`
@@ -1421,14 +1399,10 @@ Format: `deletesession s/SESSION_NUMBER`
 > `Deleted Session: Session: 1; Students: Charlotte Oliveiro David Li Alex Yeoh Irfan Ibrahim Roy Balakrishnan ; Remark: NA`
 >
 > **Output Image:**
-> ![Screenshot of delete session](images/deletesession.png)
-
+> <p class="center"> <img src="images/deletesession.png" alt="deletesession" height="325" /> </p>
 
 
 [Back to Table of Contents](#table-of-contents)
-
-<br>
-<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -1464,7 +1438,7 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
 
 > **📖Example 1:**
 >
@@ -1474,14 +1448,13 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 > `New consultation added: Date: 2023-10-30; Time: 12:30; Students: Alex Yeoh`
 >
 > **Output Image:**
-> ![Screenshot of create consult](images/createconsult.png)
+> <p class="center"> <img src="images/createconsult.png" alt="createconsult" height="325" /> </p>
 
+<div style="page-break-after: always;"></div>
 
-<br>
-<br>
 
 #### 📝️Adding Students to a Consultation: `addtoconsult`
-You can add your student(s) into a consultation slot if you need to assign specific individuals for your consultation.
+You can add your student(s) into a consultation slot if you need to track students in your consultations.
 
 Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
@@ -1505,7 +1478,8 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
+
 
 > **📖Example 1:**
 >
@@ -1515,11 +1489,11 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > `New student(s) added to consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Bernice Yu, David Li, Alex Yeoh, Roy Balakrishnan`
 >
 > **Output Image:**
-> ![Screenshot of add to consult](images/addtoconsult.png)
+> <p class="center"> <img src="images/addtoconsult.png" alt="addtoconsult" height="310" /> </p>
 
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
+
 
 #### ❌Removing Students from a Consultation: `removefromconsult`
 
@@ -1546,7 +1520,8 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 </md>
 </div>
 
-<br>
+<div style="page-break-after: always;"></div>
+
 
 > **📖Example 1:**
 >
@@ -1556,11 +1531,10 @@ Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 > `Student(s) removed from consultation at index 1: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
 >
 > **Output Image:**
-> ![Screenshot of remove from consult](images/removefromconsult.png)
+> <p class="center"> <img src="images/removefromconsult.png" alt="removefromconsult" height="310" /> </p>
 
 
-<br>
-<br>
+<div style="page-break-after: always;"></div>
 
 #### ❌Deleting a Consultation: `deleteconsult`
 
@@ -1595,18 +1569,12 @@ Format: `deleteconsult CONSULTATION_INDEX`
 > `Deleted Consultation: Date: 2023-11-11; Time: 11:11; Students: Alex Yeoh, Roy Balakrishnan`
 >
 > **Output Image:**
-> ![Screenshot of delete consult](images/deleteconsult.png)
+> <p class="center"> <img src="images/deleteconsult.png" alt="deleteconsult" height="325" /> </p>
 
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
-
-<br>
-<br>
 
 ## FAQ
 
@@ -1654,10 +1622,11 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 <br>
 
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ## Known Issues
 
@@ -1706,11 +1675,13 @@ Format: `deleteconsult CONSULTATION_INDEX`
 </md>
 </box>
 
-<br>
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
+<div style="page-break-after: always;"></div>
+
+<div class="command-summary">
 
 ## Command summary
 
@@ -1734,7 +1705,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 |  **Find Student**  |                                                 `find KEYWORD [MORE_KEYWORDS]`                                                  | `find John`<br> `find alex david`                                                                                                  |
 | **Delete Student** |                                                     `delete STUDENT_INDEX`                                                      | `delete 3`                                                                                                                         |
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Task commands
 |          **Action**          |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
@@ -1752,7 +1723,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 |     **Take Attendance**      |                                       `takeattendance n/STUDENT_NAME s/SESSION p/PRESENCE`                                       | `takeattendance n/John Doe s/5 present`,<br>`takeattendance n/Foo Bar s/2 absent`                                                  |
 |     **View Attendance**      |                                                `viewattendance [n/STUDENT_NAME]…`                                                | `viewattendance`,<br>`viewattendance n/Rayan`,<br> `viewattendance n/Jayson n/Resley`                                              |
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Assignment commands
 |          **Action**          |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
@@ -1770,7 +1741,7 @@ Format: `deleteconsult CONSULTATION_INDEX`
 |:----------------------------:|:---------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------|
 |     **Edit Graded Test**     | `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_ASSESSMENT_2] [mt/MIDTERMS] [f/FINALS] [pe/PRACTICAL_EXAM]` | `editgradedtest 1 ra1/90 ra2/80 mt/85 f/88 pe/95`,<br>`editgradedtest 2 mt/78 ra1/33 f/80`  |
 
-<br>
+<div style="page-break-after: always;"></div>
 
 ### Session commands
 |          **Action**          |                                                            **Format**                                                            | <center>**Examples**</center>                                                                                                      |
@@ -1778,7 +1749,6 @@ Format: `deleteconsult CONSULTATION_INDEX`
 |      **Create Session**      |                                         `createsession s/SESSION_NUMBER n/STUDENT_NAME…`                                         | `createsession s/4 n/Betsy Crower n/David Li`                                                                                      |
 |  **Update Session Remark**   |                                         `updatesessionremark s/SESSION_NUMBER r/REMARK`                                          | `updatesessionremark s/2 r/Teach Essence of Recursion`,<br> `updatesessionremark s/4 r/Taught streams and metacircular evalutator` |
 |      **Delete Session**      |                                                 `deletesession s/SESSION_NUMBER`                                                 | `deletesession s/1`,<br>`deletesession s/4`                                                                                        |
-
 
 <br>
 
@@ -1795,11 +1765,10 @@ Format: `deleteconsult CONSULTATION_INDEX`
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ## Encountering Errors
 If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to this section for troubleshooting advice. This section aims to help you better understand the messages that you may receive and what it means to you. If the issue persists, please contact support (see next section).
@@ -1813,6 +1782,7 @@ If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to th
 | **This `task` / `person` already exists in the `task list` / `students list`.** | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                 |
 |   **Date needs to be in the format dd/MM/yyyy, or date has already crossed.**   | You have either supplied the date in an unrecognisable format, or provided a date that is in the past.                                              | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023) <br /> 2. Choose a date from today or later.                             |
 |                    **Time needs to be in the format HH:mm.**                    | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                    |
+</div>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -1824,5 +1794,3 @@ If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to th
 
 ## Contacting Support
 If you need further assistance with F.A.K.E.J.A.R.V.I.S. please contact our support team at `support@fakejarvis.org`.
-
-<br>
