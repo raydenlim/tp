@@ -757,7 +757,7 @@ Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
 |    TASK_NAME     |                        The name of the task.                        |
 | TASK_DESCRIPTION |                    The description of the task.                     |
 |     DUE_DATE     |                The due date or deadline of the task.                |
-|  TASK_PRIORITY   | The priority level of the task. Given as `high`, `medium` or `low`. |
+|  TASK_PRIORITY   | The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`. |
 
 <br>
 
@@ -795,8 +795,8 @@ Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/T
 |    TASK_NAME     |                            The name of the task.                             |
 | TASK_DESCRIPTION |                         The description of the task.                         |
 |     DUE_DATE     |                    The due date or deadline of the task.                     |
-|  TASK_PRIORITY   |     The priority level of the task. Given as `high`, `medium` or `low`.      |
-|  TASK_PROGRESS   | The progress level of the task. Given as `done`, `pending` or `not_started`. |
+|  TASK_PRIORITY   |     The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`.      |
+|  TASK_PROGRESS   | The progress level of the task. Given as `DONE`, `PENDING` or `NOT_STARTED`. |
 
 <br>
 
@@ -859,7 +859,7 @@ Format: `updateprogress TASK_INDEX tprog/NEW_PROGRESS`
 | **Parameter** |                                  **Description**                                  |
 |:-------------:|:---------------------------------------------------------------------------------:|
 |  TASK_INDEX   |                   The index of the task to update the progress.                   |
-| NEW_PROGRESS  | The new progress level of the task. Given as `done`, `pending`, or `not_started`. |
+| NEW_PROGRESS  | The new progress level of the task. Given as `DONE`, `PENDING`, or `NOT_STARTED`. |
 
 <br>
 
@@ -969,7 +969,7 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 |:--------------:|:---------------------------------------------------------------------:|
 |  STUDENT_NAME  |                       The name of the student.                        |
 | SESSION_NUMBER |                  The session number of the session.                   |
-|    PRESENCE    | The attendance status of the student. Given as `present` or `absent`. |
+|    PRESENCE    | The attendance status of the student. Given as `PRESENT` or `ABSENT`. |
 
 <br>
 
