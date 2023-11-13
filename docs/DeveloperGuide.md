@@ -324,8 +324,9 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
-- Below is the UMl diagram for `EditGradedTest` class with the `editgradedtest` command:
+- Below is the UMl diagram and Activity Diagram for `EditGradedTest` class with the `editgradedtest` command:
   ![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
+  ![CreateEditedGradedTestPersonAD](images/CreateEditedGradedTestPersonAD.png)
 
 ### Consultations
 

@@ -1,59 +1,47 @@
 @startuml
-!define LOGIC_COLOR #0000FF
-!define ACTIVATE_COLOR #00FF00
-
 !include style.puml
-skinparam ArrowFontStyle plain
-skinparam sequenceReferenceBackgroundColor white
 
-mainframe: **sd** execute EditGradedTestCommand
+mainframe **sd** execute EditGradedTestCommand
 
-participant ":EditGradedTestCommandParser" as EditGradedTestCommandParser LOGIC_COLOR
-participant "gradedtest:EditGradedTestCommand" as EditGradedTestCommand LOGIC_COLOR
+participant "e:EditGradedTestCommand" as EditGradedTestCommand LOGIC_COLOR
 
-activate EditGradedTestCommandParser
+participant "model:Model" as Model MODEL_COLOR
 
-'Constructor for EditGradedTestCommand
-create EditGradedTestCommand
+participant ":List<Person>" as Persons MODEL_COLOR_T4
 
-EditGradedTestCommandParser -> EditGradedTestCommand : EditGradedTestCommand(index,\n Optional.ofNullable(ra1), Optional.ofNullable(ra2),\n Optional.ofNullable(midTerms), Optional.ofNullable(finals),\n Optional.ofNullable(practicalExam))
+
+[-> EditGradedTestCommand : execute()
 activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser : editgradedtest
+
+EditGradedTestCommand -> Model : getFilteredPersonList
+activate Model
+
+Model ---> EditGradedTestCommand
+
+EditGradedTestCommand -> Persons : get(targetIndex)
+activate Persons
+
+Persons ---> EditGradedTestCommand
+deactivate Persons
+
+EditGradedTestCommand -> EditGradedTestCommand : createEditedGradedTestPerson(personToEdit)
+activate EditGradedTestCommand
+
+EditGradedTestCommand ---> EditGradedTestCommand
 deactivate EditGradedTestCommand
 
-opt has ra1
-EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(ra1)
-activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser
-deactivate EditGradedTestCommand
-end opt
+EditGradedTestCommand -> Model : setPerson(target, editedPerson)
 
-opt has ra2
-EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(ra2)
-activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser
-deactivate EditGradedTestCommand
-end opt
+Model -> Model : updateFilteredPersonList()
+activate Model
 
-opt has midterms
-EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(midTerms)
-activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser
-deactivate EditGradedTestCommand
-end opt
+Model ---> Model
+deactivate Model
 
-opt has finals
-EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(finals)
-activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser
-deactivate EditGradedTestCommand
-end opt
+Model ---> EditGradedTestCommand
+deactivate Model
 
-opt has pe
-EditGradedTestCommandParser -> EditGradedTestCommand : Optional.ofNullable(practicalExam)
-activate EditGradedTestCommand
-EditGradedTestCommand --> EditGradedTestCommandParser
+[<-- EditGradedTestCommand
 deactivate EditGradedTestCommand
-end opt
 
 @enduml
