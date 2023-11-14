@@ -14,20 +14,24 @@ Given below are my contributions to the project:
   * Highlights: There was some design thought given to how information is stored in the model. To prevent cyclic-reference between students and sessions, we decided to only store student models in sessions, and not sessions in students.
   * Credits: No reuse of code or third-party libraries.
 
+
 * **New Feature**: Added the ability to update a session's remark.
   * What it does: Allows Avengers to update a session's remark, leaving insightful comments for reflection purposes, as well as tracking of what was already covered in past sessions.
   * Justification: This feature greatly complements the attendance features as Avengers may combine the use of this feature, as well as the attendance features, to easily identify what topic each student has been taught and not taught.
   * Credits: No reuse of code or third-party libraries.
+
 
 * **New Feature**: Added the ability to delete created sessions.
   * What it does: Allows Avengers to delete previously created sessions, allowing for errors to be corrected when sessions are accidentally created.
   * Justification: This is an important feature enhancement for our product because given the nature of our CLI product, mistakes in inputs are likely, and the ability to delete a wrongly-created session will be important to correct these possibly frequently-occurring situations.
   * Credits: No reuse of code or third-party libraries.
 
+
 * **New Feature**: Added the ability to take attendance of students for each session.
   * What it does: Enables Avengers to easily record the attendance of their students for each session, allowing for easy tracking of the Avenger's students' attendance.
   * Justification: This feature greatly complements the session feature as each session can now store information regarding students' attendance to identify studio tutorial sessions that they have attended.
   * Credits: No reuse of code or third-party libraries.
+
 
 * **New Feature**: Added the ability to view the attendance of particular student(s).
   * What it does: Allows Avengers to retrieve an instant overview of their students' attendance to easily identify any studio tutorial sessions that they may have missed.
@@ -38,6 +42,7 @@ Given below are my contributions to the project:
 
 * **Code contributed**: [RepoSense](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=ldinghan&breakdown=true).
 
+
 * **Project management**: 
   * Reviewed and approved pull requests.
   * Organised and created GitHub issues.
@@ -45,7 +50,7 @@ Given below are my contributions to the project:
 
 
 * **Enhancements to existing features**:
-* Converted `address` fields to `teleHandle` fields since address is not as relevant for our product's use case and Telegram Chat is the primary form of communication.
+  * Converted `address` fields to `teleHandle` fields since address is not as relevant for our product's use case and Telegram Chat is the primary form of communication.
 
 
 * **Documentation**:
@@ -60,6 +65,7 @@ Given below are my contributions to the project:
     * Added the use cases for sessions.
     * Enhanced the user stories.
 
+
 * Some examples of UML diagrams:
   * Class diagram: ![Session Class Diagram](../images/SessionClassUML.png)
   * Sequence diagram: ![TakeAttendance Sequence Diagram](../images/TakeAttendanceSequenceDiagram.png)
@@ -68,12 +74,14 @@ Given below are my contributions to the project:
 * **Review/mentoring contributions**:
   * [ldinghan's tp comments](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/tp-comments.html#47-lim-han-ldinghan-37-comments)
 
+
 * **Tools**: 
   * Java
   * IntelliJ
   * Git
   * FXML
   * PlantUML
+
 
 * **Contributions beyond the project team**: 
   * Contributed to module forum page to answer queries on code coverage [here](https://github.com/nus-cs2103-AY2324S1/forum/issues/267#issuecomment-1767768888).
