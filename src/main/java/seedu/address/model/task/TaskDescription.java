@@ -26,7 +26,7 @@ public class TaskDescription {
     }
 
     /**
-     * Returns true if a given string is a valid tag name.
+     * Returns true if a given string is a valid task description.
      */
     public static boolean isValidDescription(String test) {
         return test.matches(VALIDATION_REGEX);

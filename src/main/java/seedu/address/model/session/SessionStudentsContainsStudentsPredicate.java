@@ -7,7 +7,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.person.Person;
 
 /**
- * Tests that a {@code Session}'s {@code SessionStudents} matches any of the keywords given.
+ * Tests that a {@code Session}'s {@code StudentSet} matches any of the keywords given.
  */
 public class SessionStudentsContainsStudentsPredicate implements Predicate<Session> {
     private final Set<Person> students;

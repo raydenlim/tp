@@ -38,7 +38,7 @@ import seedu.address.model.task.TaskPriority;
 import seedu.address.model.task.TaskProgress;
 
 /**
- * Contains utility methods used for parsing strings in the various *Parser classes.
+ * Contains utility methods used for parsing strings in the various Parser classes.
  */
 public class ParserUtil {
 
@@ -244,7 +244,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String taskName} into a {@code TaskName}.
+     * Parses a {@code String name} into a {@code TaskName}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -259,7 +259,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String taskDescription} into a {@code TaskDescription}.
+     * Parses a {@code String name} into a {@code TaskDescription}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -378,7 +378,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> gradedTest} into a {@code Set<GradedTest>}.
+     * Parses {@code Collection<String> gradedTests} into a {@code Set<GradedTest>}.
      */
     public static Set<GradedTest> parseGradedTests(Collection<String> gradedTests) throws ParseException {
         requireNonNull(gradedTests);
@@ -390,7 +390,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String readingAssessment} into a {@code readingAssessment}.
+     * Parses a {@code String name} into a {@code readingAssessment}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -405,7 +405,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String readingAssessment} into a {@code readingAssessment}.
+     * Parses a {@code String name} into a {@code readingAssessment}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -420,7 +420,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String readingAssessment} into a {@code readingAssessment}.
+     * Parses a {@code String name} into a {@code readingAssessment}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -435,7 +435,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String finals} into a {@code finals}.
+     * Parses a {@code String name} into a {@code finals}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -450,7 +450,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String practicalExam} into a {@code practicalExam}.
+     * Parses a {@code String name} into a {@code practicalExam}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
@@ -465,7 +465,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String priority} into a {@code TaskPriority}.
+     * Parses a {@code String name} into a {@code TaskPriority}.
      * Leading and trailing whitespaces will be trimmed.
      * String will be uppercase.
      *
@@ -483,7 +483,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String progress} into a {@code TaskProgress}.
+     * Parses a {@code String name} into a {@code TaskProgress}.
      * Leading and trailing whitespaces will be trimmed.
      * String will be uppercase.
      *
@@ -501,7 +501,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String assignmentName} into a {@code AssignmentName}.
+     * Parses a {@code String name} into a {@code AssignmentName}.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
