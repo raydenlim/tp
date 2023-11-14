@@ -1938,10 +1938,10 @@ testers are expected to do more *exploratory* testing.
 5. Creating a session with _missing parameters_
    1. Test case: `createsession s/2`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-      Reason: Student name argument is missing.
+      Reason: Student name parameter is missing.
    2. Test case: `createsession n/Alex Yeoh`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-      Reason: Session number argument is missing.
+      Reason: Session number parameter is missing.
 
 
 #### Updating a session remark
@@ -1955,13 +1955,13 @@ testers are expected to do more *exploratory* testing.
 2. Updating a session remark with _missing parameters_
    1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-      Reason: Session number argument is missing.
+      Reason: Session number parameter is missing.
    2. Test case: `updatesessionremark s/2`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-      Reason: Session remark argument is missing.
+      Reason: Session remark parameter is missing.
    3. Test case: `updatesessionremark`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-      Reason: Session number and session remark arguments are missing.
+      Reason: Session number and session remark parameters are missing.
 
 
 
@@ -1981,7 +1981,7 @@ testers are expected to do more *exploratory* testing.
 3. Deleting sessions with _missing parameters_
    1. Test case: `deletesession`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Session number argument is missing.
+      Reason: Session number parameter is missing.
 
 
 #### Taking Attendance
@@ -2001,16 +2001,16 @@ testers are expected to do more *exploratory* testing.
 3. Taking attendance with _missing parameters_
    1. Test case: `takeattendance n/David Li ap/present`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Session number argument is missing.
+      Reason: Session number parameter is missing.
    2. Test case: `takeattendance s/2 n/David Li`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Attendance presence argument is missing.
+      Reason: Attendance presence parameter is missing.
    3. Test case: `takeattendance s/2 ap/present`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Student name argument is missing.
+      Reason: Student name parameter is missing.
    4. Test case: `takeattendance`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Session number, student name and attendance presence arguments are missing.
+      Reason: Session number, student name and attendance presence parameters are missing.
 
 4. Taking attendance of _multiple valid students_
    1. Prerequisites: 
