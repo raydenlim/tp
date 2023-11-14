@@ -1858,7 +1858,7 @@ testers are expected to do more *exploratory* testing.
 
 #### Creating a consultation
 
-1. Creating a consultation with a single student and _valid_ parameters.
+1. Creating a consultation with a single student and _valid parameters_.
   1. Prerequisites:
      1. Date and time inputs must be valid
      2. Student name must exist in student list.
@@ -1867,7 +1867,7 @@ testers are expected to do more *exploratory* testing.
   2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
      Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
 
-2. Creating a consultation with multiple students and _valid_ parameters.
+2. Creating a consultation with multiple students and _valid parameters_.
    1. Prerequisites:
       1. Date and time inputs must be valid
       2. Student names must exist in student list.
@@ -1876,10 +1876,10 @@ testers are expected to do more *exploratory* testing.
    2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
 
-3. Creating a consultation with multiple students and _invalid_ parameters.
+3. Creating a consultation with multiple students and _invalid parameters_.
    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created on the second command.<br>
-      Reason: There must not be duplicated consultations with same date, time and students when creating.
+      Reason: There must not be duplicated consultations with same date, time and students when creating consultations.
    2. Test case: `createconsult d/60/11/2023 tt/13:00 n/Alex Yeoh`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Date input must be valid.
@@ -1895,7 +1895,7 @@ testers are expected to do more *exploratory* testing.
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: All student names must exist in the student list.
 
-5. Creating a consultation with _missing_ parameters.
+5. Creating a consultation with _missing parameters_.
    1. Test case: `createconsult tt/13:00 n/Alex Yeoh`.<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Date parameter is missing.
@@ -1907,18 +1907,18 @@ testers are expected to do more *exploratory* testing.
       Reason: Student names parameter is missing.
    4. Test case: `createconsult`.<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
-      Reason: There are no parameters inputted.
+      Reason: All three parameters are missing.
 
 #### Deleting a consultation
 
-1. Deleting a consultation with _valid_ parameters.
+1. Deleting a consultation with _valid parameters_.
   1. Prerequisites: 
      1. Consultation must exist in the consultation list.
      2. Index must be a positive integer.
   2. Test case: `deleteconsult 2`<br>
      Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
 
-2. Deleting a consultation with _invalid_ parameters.
+2. Deleting a consultation with _invalid parameters_.
   1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted on the second command.<br>
      Reason: There is no consultation found with the given index in the consultation list.
@@ -1926,14 +1926,14 @@ testers are expected to do more *exploratory* testing.
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is created.<br>
      Reason: Index must be a positive integer.
 
-3. Deleting a consultation with _missing_ parameters.
+3. Deleting a consultation with _missing parameters_.
   1. Test case: `deleteconsult`<br>
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted.<br>
-     Reason: There are no parameters inputted.
+     Reason: Index is missing.
 
 #### Adding a student to a consultation
 
-1. Adding to a consultation with _valid_ parameters.
+1. Adding to a consultation with _valid parameters_.
   1. Prerequisites: 
      1. Consultation must exist in the consultation list.
      2. Index must be a positive integer.
@@ -1942,7 +1942,7 @@ testers are expected to do more *exploratory* testing.
   2. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
      Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
 
-2. Adding to a consultation with _invalid_ parameters.
+2. Adding to a consultation with _invalid parameters_.
    1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.<br>
       Reason: Student must not already in the consultation.
@@ -1956,14 +1956,14 @@ testers are expected to do more *exploratory* testing.
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
       Reason: Consultation must exist in the consultation list.
 
-3. Adding to a consultation with _missing_ parameters.
+3. Adding to a consultation with _missing parameters_.
    1. Test case: `addtoconsult`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
-      Reason: There are no parameters inputted.
+      Reason: Both parameters are missing.
 
 #### Removing a student from a consultation
 
-1. Removing a student with _valid_ parameters.
+1. Removing a student with _valid parameters_.
   1. Prerequisites: 
      1. Consultation must exist in the consultation list.
      2. Index must be a positive integer.
@@ -1972,7 +1972,7 @@ testers are expected to do more *exploratory* testing.
   1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
      Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
 
-2. Removing a student with _invalid_ parameters.
+2. Removing a student with _invalid parameters_.
   1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.<br>
      Reason: Student must exist in the consultation.
@@ -1986,6 +1986,10 @@ testers are expected to do more *exploratory* testing.
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
      Reason: Consultation must exist in the consultation list.
 
+3. Removing a student with _missing parameters_.
+  1. Test case: `removefromconsult`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+     Reason: Both parameters are missing.
 
 ### Session
 
