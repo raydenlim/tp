@@ -22,6 +22,14 @@ public class SessionNumberContainsKeywordsPredicate implements Predicate<Session
                         session.getSessionNumber().sessionNumber, keyword));
     }
 
+    /**
+     * Checks if the specified string contains a substring, performing a case-insensitive match.
+     *
+     * @param str        The main string to check.
+     * @param substring  The substring to search for in the main string.
+     * @return {@code true} if the main string contains the substring (ignoring case), {@code false} otherwise.
+     * @throws NullPointerException if either {@code str} or {@code substring} is {@code null}.
+     */
     private boolean containsSubstringIgnoreCase(String str, String substring) {
         // Convert both the main string and substring to lowercase for a case-insensitive match
         String lowerCaseStr = str.toLowerCase();
@@ -30,6 +38,7 @@ public class SessionNumberContainsKeywordsPredicate implements Predicate<Session
         // Check if the main string contains the substring
         return lowerCaseStr.contains(lowerCaseSubstring);
     }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
