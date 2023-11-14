@@ -465,7 +465,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String priority} into a {@code TaskPriority}.
+     * Parses a {@code String name} into a {@code TaskPriority}.
      * Leading and trailing whitespaces will be trimmed.
      * String will be uppercase.
      *
@@ -483,7 +483,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String progress} into a {@code TaskProgress}.
+     * Parses a {@code String name} into a {@code TaskProgress}.
      * Leading and trailing whitespaces will be trimmed.
      * String will be uppercase.
      *
@@ -501,7 +501,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String assignmentName} into a {@code AssignmentName}.
+     * Parses a {@code String name} into a {@code AssignmentName}.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
