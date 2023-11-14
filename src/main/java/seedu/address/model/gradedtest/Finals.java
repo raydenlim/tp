@@ -17,7 +17,7 @@ public class Finals {
     /**
      * Constructs a {@code Finals}.
      *
-     * @param finalResults A valid phone number.
+     * @param finalResults A valid finals result.
      */
     public Finals(String finalResults) {
         requireNonNull(finalResults);

@@ -182,7 +182,7 @@ public class GradedTest {
     }
 
     /**
-     * Returns true if both tasks have the same name and description.
+     * Returns true if both gradedtest have the same name and description.
      */
     public boolean isSameGradedTest(GradedTest otherGradedTest) {
         if (otherGradedTest == this) {
