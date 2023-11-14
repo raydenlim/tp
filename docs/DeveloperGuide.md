@@ -243,7 +243,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
   * Flexibility: This choice offers flexibility in representing the graded tests, allowing for customization (e.g. usage of default value, `-`).
   * Clarity: The string format of `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>` is self-explanatory.
 - Cons:
-  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average, highest, lowest score).
+  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g. average, highest, lowest score).
   * Documentation Issues: The usage of `|` causes conflict with the table notation. Hence, more work is needed to get around this issue in markdown.
 
 **Alternative 2 :** Using floats for graded test score.
@@ -344,7 +344,7 @@ GradedTest testFromObjects = new GradedTest(
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
-- For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#).
+- For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#edit-graded-test-feature).
 
   
 
@@ -736,17 +736,9 @@ The `EditGradedTestCommand` will call its own `updateFilteredPersonList` method 
 Step 5:
 The `EditGradedTestCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
 
-
-<div class="alert alert-info"> 
-<md>
-
-:information_source: **Note**:
-
 * The process of `createEditedGradedTestPerson` is summarised in the activity diagram below:
 
 ![CreateEditedGradedTestPerson Activity Diagram](images/CreateEditedGradedTestPersonAD.png)
-
-</md>
 
 
 <br>
@@ -1671,7 +1663,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Students
+### Student
 
 #### Deleting a student
 
@@ -1690,9 +1682,9 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Assignments
+### Assignment
 
-### Viewing assignments
+#### Viewing assignments
 
 1. Viewing assignments with _valid parameters_
    1. Prerequisites:
@@ -1706,7 +1698,7 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Edit grades
+#### Editing grades
 
 1. Editing an assignment grade with _valid parameters_
    1. Prerequisites:
@@ -1732,7 +1724,7 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Delete grades
+#### Deleting grades
 
 1. Deleting an assignment grade with _valid parameters_
    1. Prerequisites:
@@ -1753,7 +1745,7 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Edit comments
+#### Editing comments
 
 1. Editing an assignment comment with _valid parameters_
    1. Prerequisites:
@@ -1779,7 +1771,7 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Delete comments
+#### Deleting comments
 
 1. Deleting an assignment comment with _valid parameters_
    1. Prerequisites:
@@ -1800,7 +1792,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Graded Test
 
-### Edit graded test scores
+#### Editing graded test scores
 
 1. Editing the score(s) of a graded test with _valid parameters_
    1. Prerequisites:
@@ -1862,7 +1854,9 @@ testers are expected to do more *exploratory* testing.
     2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
        Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
 
-### Creating a consultation
+### Consultation
+
+#### Creating a consultation
 
 1. Creating a consultation with specified date, time and student(s).
 
@@ -1876,7 +1870,7 @@ testers are expected to do more *exploratory* testing.
     1. Other invalid create consultation commands to try: `createconsult` (missing fields), `createconsult n/Alex Yeoh`, `createconsult d/10/11/2023 tt/13:60 n/Bernice Yu` (invalid time), `createconsult d/40/11/2023 tt/13:00 n/Bernice Yu` (invalid date)<br>
        Expected: Similar to previous.
 
-### Deleting a consultation
+#### Deleting a consultation
 
 1. Deleting a consultation by specifying index.
     1. Prerequisites: Consultation must exist in the consultation list.
@@ -1887,7 +1881,7 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect delete consultation commands to try: `deleteconsult`, `deleteconsult x` (where x is greater than the consultation list size or a non-positive integer)
        Expected: Similar to previous.
 
-### Adding a student to a consultation
+#### Adding a student to a consultation
 
 1. Adding a student specified by name to a consultation at specified index.
     1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and not already in the consultation.
@@ -1898,7 +1892,7 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect add to consultation commands to try: `addtoconsult`, `addtoconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `addtoconsult 2 n/UNKNOWN` (name not found in address book), `addtoconsult 2 n/KNOWN` (name already found in the consultation).
        Expected: Similar to previous.
 
-### Removing a student from a consultation
+#### Removing a student from a consultation
 
 1. Removing a student specified by name from a consultation at specified index.
     1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and the consultation.
@@ -1908,6 +1902,156 @@ testers are expected to do more *exploratory* testing.
        Expected: No consultation is updated on the second command. Error details shown in the status message.
     1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
        Expected: Similar to previous.
+
+
+### Session
+
+#### Creating a session
+
+1. Creating a session with a single student with _valid parameters_
+   1. Prerequisites: 
+      1. Student name must exist in the student list.
+      2. No session with the session number given exists in the session list.
+   2. Test case: `createsession s/2 n/Alex Yeoh`<br>
+      Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the session list.
+
+2. Creating a session with multiple students with _valid parameters_
+   1. Prerequisites: 
+      1. All student names must exist in the student list.
+      2. No session with the session number given exists in the session list.
+   2. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the session list.
+
+3. Creating a session with a single student with _invalid parameters_
+   1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created on the second command. <br>
+      Reason: There cannot exist two sessions with the same session number in the session list.
+   2. Test case: `createsession s/2 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Student name must exist in the student list.
+
+4. Creating a session with _mix of valid and invalid students_
+   1. Test case: `createsession s/2 n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: All student names must exist in the student list.
+
+5. Creating a session with _missing parameters_
+   1. Test case: `createsession s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Student name parameter is missing.
+   2. Test case: `createsession n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Session number parameter is missing.
+
+
+#### Updating a session remark
+
+1. Updating a session remark with _valid parameters_
+   1. Prerequisites: 
+      1. Session must exist in the session list.
+   2. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br>
+      Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
+
+2. Updating a session remark with _missing parameters_
+   1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session number parameter is missing.
+   2. Test case: `updatesessionremark s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session remark parameter is missing.
+   3. Test case: `updatesessionremark`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session number and session remark parameters are missing.
+
+
+
+#### Deleting a session
+
+1. Deleting a session with _valid parameters_
+   1. Prerequisites: 
+      1. Session must exist in the session list.
+   2. Test case: `deletesession s/2`<br>
+      Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
+
+2. Deleting a session with _invalid parameters_
+   1. Test case: `deletesession s/2` `deletesession s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No session is deleted on the second command. <br>
+      Reason: The session with the given session number must exist in the session list.
+
+3. Deleting sessions with _missing parameters_
+   1. Test case: `deletesession`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number parameter is missing.
+
+
+#### Taking Attendance
+
+1. Taking attendance of a _valid student_
+   1. Prerequisites: 
+      1. Session must exist in the session list. 
+      2. Student name must exist in the student list.
+   2. Test case: `takeattendance s/2 n/David Li ap/present`<br>
+      Expected: David Li is added to the session with session number 2, marking him as present.
+
+2. Taking attendance of an _invalid student_
+   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Student name must exist in the student list.
+
+3. Taking attendance with _missing parameters_
+   1. Test case: `takeattendance n/David Li ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number parameter is missing.
+   2. Test case: `takeattendance s/2 n/David Li`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Attendance presence parameter is missing.
+   3. Test case: `takeattendance s/2 ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Student name parameter is missing.
+   4. Test case: `takeattendance`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number, student name and attendance presence parameters are missing.
+
+4. Taking attendance of _multiple valid students_
+   1. Prerequisites: 
+      1. Session must exist in the session list. 
+      2. All student names must exist in the student list.
+   2. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
+      Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
+
+5. Taking attendance of _mix of valid and invalid students_
+   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The name of all students must exist in the student list.
+
+
+#### Viewing Attendance
+
+1. Viewing attendance of a _valid student_
+   1. Prerequisites: 
+      1. Student name must exist in the student list.
+   2. Test case: `viewattendance n/Bernice Yu`<br>
+      Expected: All sessions attended by Bernice Yu will be displayed.
+
+2. Viewing attendance of an _invalid student_ 
+   1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The name of the student must exist in the student list.
+
+3. Viewing attendance of _multiple valid students_
+   1. Prerequisites: 
+      1. Student names must exist in the student list.
+   2. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
+
+4. Viewing attendance of _mix of valid and invalid students_
+   1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The names of all students must exist in the student list.
+
+5. Viewing overall attendance across all students
+   1. Test case: `viewattendance`<br>
+      Expected: All sessions will be displayed.
 
 
 ### Task
@@ -1983,7 +2127,7 @@ testers are expected to do more *exploratory* testing.
        Expected: No tasks will be shown.
 
 8. Listing all tasks with _invalid parameters_
-    1. Test case: `viewtasks tprog/asdasdasd`
+    1. Test case: `viewtasks tprog/asdasdasd`<br>
        Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
 
 
@@ -2066,6 +2210,8 @@ testers are expected to do more *exploratory* testing.
 
 
 
+
+ 
 ### Saving data
 
 1. Dealing with corrupted data files
