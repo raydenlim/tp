@@ -1907,7 +1907,7 @@ testers are expected to do more *exploratory* testing.
       Reason: Student names parameter is missing.
    4. Test case: `createconsult`.<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
-      Reason: All 2 parameters are missing.
+      Reason: All three parameters are missing.
 
 #### Deleting a consultation
 
@@ -1929,7 +1929,7 @@ testers are expected to do more *exploratory* testing.
 3. Deleting a consultation with _missing parameters_.
   1. Test case: `deleteconsult`<br>
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted.<br>
-     Reason: All 2 parameters are missing.
+     Reason: Index is missing.
 
 #### Adding a student to a consultation
 
@@ -1959,7 +1959,7 @@ testers are expected to do more *exploratory* testing.
 3. Adding to a consultation with _missing parameters_.
    1. Test case: `addtoconsult`<br>
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
-      Reason: All 2 parameters are missing.
+      Reason: Both parameters are missing.
 
 #### Removing a student from a consultation
 
@@ -1986,6 +1986,10 @@ testers are expected to do more *exploratory* testing.
      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
      Reason: Consultation must exist in the consultation list.
 
+3. Removing a student with _missing parameters_.
+  1. Test case: `removefromconsult`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+     Reason: Both parameters are missing.
 
 ### Session
 
