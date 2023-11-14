@@ -233,7 +233,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Select the tab of the TabPane listTabs by an integer index tabIndex.
+     * Selects the tab of the TabPane listTabs by an integer index tabIndex.
      *
      * @param tabIndex The index of tab to be switched to.
      */
