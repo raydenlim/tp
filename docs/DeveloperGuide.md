@@ -346,7 +346,7 @@ GradedTest testFromObjects = new GradedTest(
 
 - For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#edit-graded-test-feature).
 
-  
+
 
 ### Consultations
 
@@ -368,15 +368,15 @@ Below is a class diagram describing the implementation of `Consultation` and its
 **Aspect 1: How the students are stored to a consultation:**
 
 * **Alternative 1:** Use Set<Person> to keep track of students in a consultation.
-    * Pros: Stores only 1 instance of a unique person, no duplicates.
-    * Cons: May have performance issues in terms of memory usage.
+  * Pros: Stores only 1 instance of a unique person, no duplicates.
+  * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Use ArrayList<Person> to keep track of students.
   * Cons: We must ensure there are no duplicates with additional checks.
 
 * **Alternative 3 (current choice):** Use a `StudentSet` class to keep track of students.
-    * Pros: Better abstraction and easier maintainability.
-    * Cons: Performance overhead related to creation and manipulation of new class.
+  * Pros: Better abstraction and easier maintainability.
+  * Cons: Performance overhead related to creation and manipulation of new class.
 
 **Aspect 2: Adding or removing students to or from a consultation:**
 
@@ -767,10 +767,10 @@ The `EditGradedTestCommand` then continues its execution as defined by [this](#p
 **Aspect 2: How we edit the Graded Test Scores of a `Person` object's Assignment:**
 
 * **Alternative 1 (current choice):** Immutable Objects i.e create a completely new instance of `Person`.
-  * Pros: 
+  * Pros:
     * Immutability: Enables the `Person` object to remain immutable.
-    * Assurance: Since the objects are immutable, there will be little to no side effects on the objects. 
-    
+    * Assurance: Since the objects are immutable, there will be little to no side effects on the objects.
+
   * Cons:
     * Resource Intensive: Any edits to the Score(s) of a Graded Test will create new `Person` instances, this may be resource-intensive when done in large-scale.
 
@@ -778,7 +778,7 @@ The `EditGradedTestCommand` then continues its execution as defined by [this](#p
   * Pros:
     * Simplicity: Simplifies the process of editing the Grade.
     * Reduce redundancy: Avoids creating new instance for every change to an Object.
-  * Cons: 
+  * Cons:
     * Mutable Objects: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications during the integration process.
     * Testing/Maintenance Challenges: Requires extra attention when making test cases to prevent unintended side effects.
 
@@ -1669,16 +1669,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-  1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-  1. Test case: `delete 1`<br>
-     Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Test case: `delete 1`<br>
+   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-  1. Test case: `delete 0`<br>
-     Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+1. Test case: `delete 0`<br>
+   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-  1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-     Expected: Similar to previous.
+1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   Expected: Similar to previous.
 
 
 
@@ -1687,371 +1687,458 @@ testers are expected to do more *exploratory* testing.
 #### Viewing assignments
 
 1. Viewing assignments with _valid parameters_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `viewasssignments 1` <br>
-      Expected: List of assignments belonging to the student of index 1 is shown.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `viewasssignments 1` <br>
+     Expected: List of assignments belonging to the student of index 1 is shown.
 
 2. Viewing assignments with _invalid index_
-   1. Test case: `viewasssignments 0` <br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignments are not shown. <br> Reason: The person index provided does not exist.
+  1. Test case: `viewasssignments 0` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignments are not shown. <br> Reason: The person index provided does not exist.
 
 
 
 #### Editing grades
 
 1. Editing an assignment grade with _valid parameters_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgrade 1 as/Functional Expressionism g/500`
-      Expected: Grade of the specified assignment has been edited to 500/500.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgrade 1 as/Functional Expressionism g/500`
+     Expected: Grade of the specified assignment has been edited to 500/500.
 
 2. Editing an assignment grade with _invalid index_
-   1. Test case: `editgrade 0 as/Functional Expressionism g/500`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The person index provided does not exist.
+  1. Test case: `editgrade 0 as/Functional Expressionism g/500`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The person index provided does not exist.
 
 3. Editing an assignment grade with _invalid assignment name_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgrade 1 as/Finding Boyd g/500`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The assignment name does not exist.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgrade 1 as/Finding Boyd g/500`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The assignment name does not exist.
 
 4. Editing an assignment grade with _invalid grade_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgrade 1 as/Functional Expressionism g/700`
-    Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The grade exceeds the maximum grade by more than 75.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgrade 1 as/Functional Expressionism g/700`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The grade exceeds the maximum grade by more than 75.
 
 
 
 #### Deleting grades
 
 1. Deleting an assignment grade with _valid parameters_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-      2. The assignment has already been graded.
-   2. Test case: `deletegrade 1 as/Functional Expressionism`
-      Expected: Grade of the specified assignment has been deleted.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+    2. The assignment has already been graded.
+  2. Test case: `deletegrade 1 as/Functional Expressionism`
+     Expected: Grade of the specified assignment has been deleted.
 
 2. Deleting an assignment grade with _invalid index_
-   1. Test case: `deletegrade 0 as/Functional Expressionism`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The person index provided does not exist.
+  1. Test case: `deletegrade 0 as/Functional Expressionism`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The person index provided does not exist.
 
 3. Deleting an assignment grade with _invalid assignment name_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `deletegrade 1 as/Finding Boyd`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The assignment name does not exist.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `deletegrade 1 as/Finding Boyd`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The assignment name does not exist.
 
 
 
 #### Editing comments
 
 1. Editing an assignment comment with _valid parameters_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editcomment 1 as/Functional Expressionism c/Good job!`
-      Expected: Comment of the specified assignment has been edited to "Good job!".
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editcomment 1 as/Functional Expressionism c/Good job!`
+     Expected: Comment of the specified assignment has been edited to "Good job!".
 
 2. Editing an assignment comment with _invalid index_
-   1. Test case: `editcomment 0 as/Functional Expressionism c/Good job!`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The person index provided does not exist.
+  1. Test case: `editcomment 0 as/Functional Expressionism c/Good job!`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The person index provided does not exist.
 
 3. Editing an assignment comment with _invalid assignment name_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editcomment 1 as/Finding Boyd c/Good job!`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The assignment name does not exist.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editcomment 1 as/Finding Boyd c/Good job!`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The assignment name does not exist.
 
 4. Editing an assignment comment with _invalid comment_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editcomment 1 as/Functional Expressionism c/`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The comment cannot be empty.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editcomment 1 as/Functional Expressionism c/`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The comment cannot be empty.
 
 
 
 #### Deleting comments
 
 1. Deleting an assignment comment with _valid parameters_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-      2. The assignment has already been commented on.
-   2. Test case: `deletecomment 1 as/Functional Expressionism`
-      Expected: Comment of the specified assignment has been deleted.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+    2. The assignment has already been commented on.
+  2. Test case: `deletecomment 1 as/Functional Expressionism`
+     Expected: Comment of the specified assignment has been deleted.
 
 2. Deleting an assignment comment with _invalid index_
-   1. Test case: `deletecomment 0 as/Functional Expressionism`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The person index provided does not exist.
+  1. Test case: `deletecomment 0 as/Functional Expressionism`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The person index provided does not exist.
 
 3. Deleting an assignment comment with _invalid assignment name_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `deletecomment 1 as/Finding Boyd`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `deletecomment 1 as/Finding Boyd`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
 
 ### Graded Test
 
 #### Editing graded test scores
 
 1. Editing the score(s) of a graded test with _valid parameters_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
-      Expected: F.A.K.E.J.A.R.V.I.S. successfully edits the scores for the specified person's graded test.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
+     Expected: F.A.K.E.J.A.R.V.I.S. successfully edits the scores for the specified person's graded test.
 
 2. Editing the score(s) of a graded test with an _empty list_
-   1. Prerequisites:
-      1. The list of persons is empty.
-   2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
-      F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited <br> Reason: The student list is empty.
+  1. Prerequisites:
+    1. The list of persons is empty.
+  2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
+     F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited <br> Reason: The student list is empty.
 
 3. Editing the score(s) of a graded test with an _invalid index_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 0 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given index is invalid.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 0 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given index is invalid.
 
 4. Editing the score(s) of a graded test with _empty parameter(s)_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is empty.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is empty.
 
 5. Editing the score(s) of a graded test with _invalid parameter(s)_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1 ra3/90 pee/100`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is/are invalid.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1 ra3/90 pee/100`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is/are invalid.
 
 6. Editing the score(s) of a graded test with _extra parameter(s)_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88 ra2/75`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: Extra parameter(s) is/are given.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88 ra2/75`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: Extra parameter(s) is/are given.
 
 7. Editing the score(s) of a graded test with _fewer parameter(s)_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: Graded Test fields are optional.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: Graded Test fields are optional.
 
 8. Editing the score(s) of a graded test with _parameters in different order_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1 ra1/90 pe/75 f/80 ra2/85 mt/95`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: The order of Graded Test fields does not matter.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1 ra1/90 pe/75 f/80 ra2/85 mt/95`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: The order of Graded Test fields does not matter.
 
 9. Editing the score(s) of a graded test with _an invalid score_
-   1. Prerequisites:
-      1. There is at least 1 student being displayed in the students list.
-   2. Test case: `editgradedtest 1 ra1/-100 ra2/85 mt/105 f/80 pe/75 ra1/88`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given score is invalid.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1 ra1/-100 ra2/85 mt/105 f/80 pe/75 ra1/88`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given score is invalid.
 
 10. Editing the score(s) of a graded test with _multiple invalid scores_
-    1. Prerequisites:
-       1. There is at least 1 student being displayed in the students list.
-    2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
+  1. Prerequisites:
+    1. There is at least 1 student being displayed in the students list.
+  2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
 
 ### Consultation
 
 #### Creating a consultation
 
-1. Creating a consultation with specified date, time and student(s).
+1. Creating a consultation with a single student and _valid parameters_.
+  1. Prerequisites:
+     1. Date and time inputs must be valid
+     2. Student name must exist in student list.
+     3. There must not be a duplicate consultation (same date, time and students).
 
-    1. Prerequisites: Date and time inputs must be valid and student names must exist in address book. There must not be a duplicate consultation (same date, time and students).
-    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
-       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
-    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
-       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
-    1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
-       Expected: No new consultation is created on the second command. Error details shown in the status message.
-    1. Other invalid create consultation commands to try: `createconsult` (missing fields), `createconsult n/Alex Yeoh`, `createconsult d/10/11/2023 tt/13:60 n/Bernice Yu` (invalid time), `createconsult d/40/11/2023 tt/13:00 n/Bernice Yu` (invalid date)<br>
-       Expected: Similar to previous.
+  2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+     Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
+
+2. Creating a consultation with multiple students and _valid parameters_.
+   1. Prerequisites:
+      1. Date and time inputs must be valid
+      2. Student names must exist in student list.
+      3. There must not be a duplicate consultation (same date, time and students).
+   
+   2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
+
+3. Creating a consultation with multiple students and _invalid parameters_.
+   1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created on the second command.<br>
+      Reason: There must not be duplicated consultations with same date, time and students when creating consultations.
+   2. Test case: `createconsult d/60/11/2023 tt/13:00 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: Date input must be valid.
+   3. Test case: `createconsult d/10/11/2023 tt/13:70 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: Time input must be valid.
+   4. Test case: `createconsult d/10/11/2023 tt/13:00 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: Student name must exist in the student list.
+
+4. Creating a consultation with _mix of valid and invalid students_.
+   1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/fakenamethatdoesnotexist`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: All student names must exist in the student list.
+
+5. Creating a consultation with _missing parameters_.
+   1. Test case: `createconsult tt/13:00 n/Alex Yeoh`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: Date parameter is missing.
+   2. Test case: `createconsult d/10/11/2023 n/Alex Yeoh`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: Time parameter is missing.
+   3. Test case: `createconsult d/10/11/2023 tt/13:00`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: Student names parameter is missing.
+   4. Test case: `createconsult`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
+      Reason: All three parameters are missing.
 
 #### Deleting a consultation
 
-1. Deleting a consultation by specifying index.
-    1. Prerequisites: Consultation must exist in the consultation list.
-    1. Test case: `deleteconsult 2`<br>
-       Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
-    1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
-       Expected: No consultation is deleted on the second command. Error details shown in the status message.
-    1. Other incorrect delete consultation commands to try: `deleteconsult`, `deleteconsult x` (where x is greater than the consultation list size or a non-positive integer)
-       Expected: Similar to previous.
+1. Deleting a consultation with _valid parameters_.
+  1. Prerequisites: 
+     1. Consultation must exist in the consultation list.
+     2. Index must be a positive integer.
+  2. Test case: `deleteconsult 2`<br>
+     Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
+
+2. Deleting a consultation with _invalid parameters_.
+  1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted on the second command.<br>
+     Reason: There is no consultation found with the given index in the consultation list.
+  2. Test case: `deleteconsult -1` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is created.<br>
+     Reason: Index must be a positive integer.
+
+3. Deleting a consultation with _missing parameters_.
+  1. Test case: `deleteconsult`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted.<br>
+     Reason: Index is missing.
 
 #### Adding a student to a consultation
 
-1. Adding a student specified by name to a consultation at specified index.
-    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and not already in the consultation.
-    1. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
-       Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
-    1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
-       Expected: No consultation is updated on the second command. Error details shown in the status message.
-    1. Other incorrect add to consultation commands to try: `addtoconsult`, `addtoconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `addtoconsult 2 n/UNKNOWN` (name not found in address book), `addtoconsult 2 n/KNOWN` (name already found in the consultation).
-       Expected: Similar to previous.
+1. Adding to a consultation with _valid parameters_.
+  1. Prerequisites: 
+     1. Consultation must exist in the consultation list.
+     2. Index must be a positive integer.
+     3. Student must exist in the address book.
+     4. Student must not already in the consultation.
+  2. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
+     Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
+
+2. Adding to a consultation with _invalid parameters_.
+   1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.<br>
+      Reason: Student must not already in the consultation.
+   2. Test case: `addtoconsult 2 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+      Reason: Student must exist in the address book.
+   3. Test case: `addtoconsult -1 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+      Reason: Index must be a positive integer.
+   4. Test case: `addtoconsult x n/Alex Yeoh` (where x is greater than consultation list size)<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+      Reason: Consultation must exist in the consultation list.
+
+3. Adding to a consultation with _missing parameters_.
+   1. Test case: `addtoconsult`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+      Reason: Both parameters are missing.
 
 #### Removing a student from a consultation
 
-1. Removing a student specified by name from a consultation at specified index.
-    1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and the consultation.
-    1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
-       Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
-    1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
-       Expected: No consultation is updated on the second command. Error details shown in the status message.
-    1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
-       Expected: Similar to previous.
+1. Removing a student with _valid parameters_.
+  1. Prerequisites: 
+     1. Consultation must exist in the consultation list.
+     2. Index must be a positive integer.
+     2. Student must exist in the student list.
+     3. Student must exist in the consultation.
+  1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
+     Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
 
+2. Removing a student with _invalid parameters_.
+  1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.<br>
+     Reason: Student must exist in the consultation.
+  2. Test case: `removefromconsult 2 n/fakenamethatdoesnotexist`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+     Reason: Student must exist in the student list and the consultation.
+  3. Test case: `removefromconsult -1 n/Alex Yeoh`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+     Reason: Index must be a positive integer.
+  4. Test case: `removefromconsult x n/Alex Yeoh` (where x is greater than consultation list size)<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+     Reason: Consultation must exist in the consultation list.
+
+3. Removing a student with _missing parameters_.
+  1. Test case: `removefromconsult`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
+     Reason: Both parameters are missing.
 
 ### Session
 
 #### Creating a session
 
 1. Creating a session with a single student with _valid parameters_
-   1. Prerequisites: 
-      1. Student name must exist in the student list.
-      2. No session with the session number given exists in the session list.
-   2. Test case: `createsession s/2 n/Alex Yeoh`<br>
-      Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the session list.
+  1. Prerequisites:
+    1. Student name must exist in the student list.
+    2. No session with the session number given exists in the session list.
+  2. Test case: `createsession s/2 n/Alex Yeoh`<br>
+     Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the session list.
 
 2. Creating a session with multiple students with _valid parameters_
-   1. Prerequisites: 
-      1. All student names must exist in the student list.
-      2. No session with the session number given exists in the session list.
-   2. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
-      Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the session list.
+  1. Prerequisites:
+    1. All student names must exist in the student list.
+    2. No session with the session number given exists in the session list.
+  2. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
+     Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the session list.
 
 3. Creating a session with a single student with _invalid parameters_
-   1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created on the second command. <br>
-      Reason: There cannot exist two sessions with the same session number in the session list.
-   2. Test case: `createsession s/2 n/fakenamethatdoesnotexist`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-      Reason: Student name must exist in the student list.
+  1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created on the second command. <br>
+     Reason: There cannot exist two sessions with the same session number in the session list.
+  2. Test case: `createsession s/2 n/fakenamethatdoesnotexist`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+     Reason: Student name must exist in the student list.
 
 4. Creating a session with _mix of valid and invalid students_
-   1. Test case: `createsession s/2 n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-      Reason: All student names must exist in the student list.
+  1. Test case: `createsession s/2 n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+     Reason: All student names must exist in the student list.
 
 5. Creating a session with _missing parameters_
-   1. Test case: `createsession s/2`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-      Reason: Student name parameter is missing.
-   2. Test case: `createsession n/Alex Yeoh`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
-      Reason: Session number parameter is missing.
+  1. Test case: `createsession s/2`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+     Reason: Student name parameter is missing.
+  2. Test case: `createsession n/Alex Yeoh`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+     Reason: Session number parameter is missing.
 
 
 #### Updating a session remark
 
 1. Updating a session remark with _valid parameters_
-   1. Prerequisites: 
-      1. Session must exist in the session list.
-   2. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br>
-      Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
+  1. Prerequisites:
+    1. Session must exist in the session list.
+  2. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br>
+     Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
 
 2. Updating a session remark with _missing parameters_
-   1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-      Reason: Session number parameter is missing.
-   2. Test case: `updatesessionremark s/2`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-      Reason: Session remark parameter is missing.
-   3. Test case: `updatesessionremark`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
-      Reason: Session number and session remark parameters are missing.
+  1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+     Reason: Session number parameter is missing.
+  2. Test case: `updatesessionremark s/2`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+     Reason: Session remark parameter is missing.
+  3. Test case: `updatesessionremark`
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+     Reason: Session number and session remark parameters are missing.
 
 
 
 #### Deleting a session
 
 1. Deleting a session with _valid parameters_
-   1. Prerequisites: 
-      1. Session must exist in the session list.
-   2. Test case: `deletesession s/2`<br>
-      Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
+  1. Prerequisites:
+    1. Session must exist in the session list.
+  2. Test case: `deletesession s/2`<br>
+     Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
 
 2. Deleting a session with _invalid parameters_
-   1. Test case: `deletesession s/2` `deletesession s/2`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No session is deleted on the second command. <br>
-      Reason: The session with the given session number must exist in the session list.
+  1. Test case: `deletesession s/2` `deletesession s/2`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No session is deleted on the second command. <br>
+     Reason: The session with the given session number must exist in the session list.
 
 3. Deleting sessions with _missing parameters_
-   1. Test case: `deletesession`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Session number parameter is missing.
+  1. Test case: `deletesession`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+     Reason: Session number parameter is missing.
 
 
 #### Taking Attendance
 
 1. Taking attendance of a _valid student_
-   1. Prerequisites: 
-      1. Session must exist in the session list. 
-      2. Student name must exist in the student list.
-   2. Test case: `takeattendance s/2 n/David Li ap/present`<br>
-      Expected: David Li is added to the session with session number 2, marking him as present.
+  1. Prerequisites:
+    1. Session must exist in the session list.
+    2. Student name must exist in the student list.
+  2. Test case: `takeattendance s/2 n/David Li ap/present`<br>
+     Expected: David Li is added to the session with session number 2, marking him as present.
 
 2. Taking attendance of an _invalid student_
-   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Student name must exist in the student list.
+  1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+     Reason: Student name must exist in the student list.
 
 3. Taking attendance with _missing parameters_
-   1. Test case: `takeattendance n/David Li ap/present`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Session number parameter is missing.
-   2. Test case: `takeattendance s/2 n/David Li`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Attendance presence parameter is missing.
-   3. Test case: `takeattendance s/2 ap/present`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Student name parameter is missing.
-   4. Test case: `takeattendance`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
-      Reason: Session number, student name and attendance presence parameters are missing.
+  1. Test case: `takeattendance n/David Li ap/present`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+     Reason: Session number parameter is missing.
+  2. Test case: `takeattendance s/2 n/David Li`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+     Reason: Attendance presence parameter is missing.
+  3. Test case: `takeattendance s/2 ap/present`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+     Reason: Student name parameter is missing.
+  4. Test case: `takeattendance`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+     Reason: Session number, student name and attendance presence parameters are missing.
 
 4. Taking attendance of _multiple valid students_
-   1. Prerequisites: 
-      1. Session must exist in the session list. 
-      2. All student names must exist in the student list.
-   2. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
-      Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
+  1. Prerequisites:
+    1. Session must exist in the session list.
+    2. All student names must exist in the student list.
+  2. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
+     Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
 
 5. Taking attendance of _mix of valid and invalid students_
-   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
-      Reason: The name of all students must exist in the student list.
+  1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+     Reason: The name of all students must exist in the student list.
 
 
 #### Viewing Attendance
 
 1. Viewing attendance of a _valid student_
-   1. Prerequisites: 
-      1. Student name must exist in the student list.
-   2. Test case: `viewattendance n/Bernice Yu`<br>
-      Expected: All sessions attended by Bernice Yu will be displayed.
+  1. Prerequisites:
+    1. Student name must exist in the student list.
+  2. Test case: `viewattendance n/Bernice Yu`<br>
+     Expected: All sessions attended by Bernice Yu will be displayed.
 
-2. Viewing attendance of an _invalid student_ 
-   1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
-      Reason: The name of the student must exist in the student list.
+2. Viewing attendance of an _invalid student_
+  1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+     Reason: The name of the student must exist in the student list.
 
 3. Viewing attendance of _multiple valid students_
-   1. Prerequisites: 
-      1. Student names must exist in the student list.
-   2. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
-      Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
+  1. Prerequisites:
+    1. Student names must exist in the student list.
+  2. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
+     Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
 
 4. Viewing attendance of _mix of valid and invalid students_
-   1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
-      Reason: The names of all students must exist in the student list.
+  1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+     Reason: The names of all students must exist in the student list.
 
 5. Viewing overall attendance across all students
-   1. Test case: `viewattendance`<br>
-      Expected: All sessions will be displayed.
+  1. Test case: `viewattendance`<br>
+     Expected: All sessions will be displayed.
 
 
 ### Task
@@ -2059,240 +2146,240 @@ testers are expected to do more *exploratory* testing.
 #### Adding tasks
 
 1. Adding a task with _valid parameters_
-   1. Prerequisites: 
-      1. There is no other task with the same name and description.
-   2. Test case: `addtask tn/finish up user guide td/please by tonight d/14/11/2023 tp/high` <br>
-   Expected: Task is added.
+  1. Prerequisites:
+    1. There is no other task with the same name and description.
+  2. Test case: `addtask tn/finish up user guide td/please by tonight d/14/11/2023 tp/high` <br>
+     Expected: Task is added.
 
 2. Adding a task with _invalid name_
-   1. Test case: `addtask tn/--` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Name should only consist of alphanumeric characters.
+  1. Test case: `addtask tn/--` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Name should only consist of alphanumeric characters.
 
 3. Adding a task with _invalid description_
-    1. Test case: `addtask tn/do up developer guide td/the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Description should be less than 100 characters.
+  1. Test case: `addtask tn/do up developer guide td/the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog the quick brown fox jumped over the lazy dog` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Description should be less than 100 characters.
 
 4. Adding a task with _invalid date_
-    1. Test case: `addtask tn/test number 4 td/test number 4 please work d/29/02/2023` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Date should be a valid date that exists in the calendar. 
+  1. Test case: `addtask tn/test number 4 td/test number 4 please work d/29/02/2023` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Date should be a valid date that exists in the calendar.
 
 5. Adding a task with _invalid priority_
-    1. Test case: `addtask tn/test number 5 td/test number 5 please work d/27/02/2023 tp/asdasdsa` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Priority should only be `HIGH`, `MEDIUM`, or `LOW`.
+  1. Test case: `addtask tn/test number 5 td/test number 5 please work d/27/02/2023 tp/asdasdsa` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Task is not added. <br> Reason: Priority should only be `HIGH`, `MEDIUM`, or `LOW`.
 
 
 
 #### Viewing tasks
 
 1. Listing all tasks with _no filters_
-    1. Prerequisites:
-        1. There are multiple tasks in the task list which have been added using the `AddTask` command. 
-    2. Test case: `viewtasks` <br>
-       Expected: Displays all the tasks in the task list.
+  1. Prerequisites:
+    1. There are multiple tasks in the task list which have been added using the `AddTask` command.
+  2. Test case: `viewtasks` <br>
+     Expected: Displays all the tasks in the task list.
 
 2. Listing tasks filtered using _date filter_
-    1. Prerequisites:
-        1. There are tasks that have the date `22/10/2023`.
-    2. Test case: `viewtasks d/22/10/2023` <br>
-       Expected: Displays all the tasks in the task list that have the date `22/10/2023`.
+  1. Prerequisites:
+    1. There are tasks that have the date `22/10/2023`.
+  2. Test case: `viewtasks d/22/10/2023` <br>
+     Expected: Displays all the tasks in the task list that have the date `22/10/2023`.
 
 3. Listing tasks filtered using _name filter_
-    1. Prerequisites:
-        1. There are tasks that have the keywords `user guide` in the Task Name.
-    2. Test case: `viewtasks tn/user guide` <br>
-       Expected: Displays all the tasks in the task list that have `user guide` in the Task Name.
+  1. Prerequisites:
+    1. There are tasks that have the keywords `user guide` in the Task Name.
+  2. Test case: `viewtasks tn/user guide` <br>
+     Expected: Displays all the tasks in the task list that have `user guide` in the Task Name.
 
 4. Listing tasks filtered using _description filter_
-    1. Prerequisites:
-        1. There are tasks that have the keywords `homework` in the Task Description.
-    2. Test case: `viewtasks td/homework` <br>
-       Expected: Displays all the tasks in the task list that have `homework` in the Task Description.
+  1. Prerequisites:
+    1. There are tasks that have the keywords `homework` in the Task Description.
+  2. Test case: `viewtasks td/homework` <br>
+     Expected: Displays all the tasks in the task list that have `homework` in the Task Description.
 
 5. Listing tasks filtered using _priority filter_
-    1. Prerequisites:
-        1. There are tasks that have `HIGH` priority.
-    2. Test case: `viewtasks tp/HIGH` <br>
-       Expected: Displays all the tasks in the task list that have `HIGH` priority.
+  1. Prerequisites:
+    1. There are tasks that have `HIGH` priority.
+  2. Test case: `viewtasks tp/HIGH` <br>
+     Expected: Displays all the tasks in the task list that have `HIGH` priority.
 
 6. Listing tasks filtered using _progress filter_
-    1. Prerequisites:
-        1. There are tasks that have `PENDING` progress.
-    2. Test case: `viewtasks tprog/PENDING` <br>
-       Expected: Displays all the tasks in the task list that have `PENDING` progress.
+  1. Prerequisites:
+    1. There are tasks that have `PENDING` progress.
+  2. Test case: `viewtasks tprog/PENDING` <br>
+     Expected: Displays all the tasks in the task list that have `PENDING` progress.
 
 7. Listing all tasks with no tasks in the task list
-    1. Prerequisites:
-        1. There are no tasks in the task list. 
-    2. Test case: `viewtasks tprog/PENDING` <br>
-       Expected: No tasks will be shown.
+  1. Prerequisites:
+    1. There are no tasks in the task list.
+  2. Test case: `viewtasks tprog/PENDING` <br>
+     Expected: No tasks will be shown.
 
 8. Listing all tasks with _invalid parameters_
-    1. Test case: `viewtasks tprog/asdasdasd`<br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
+  1. Test case: `viewtasks tprog/asdasdasd`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here.
 
 
 #### Updating progress of tasks
 
 1. Updating progress of a task as _pending_
-    1. Prerequisites:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `updateprogress 1 tprog/PENDING` <br>
-       Expected: Updates the task's progress to `PENDING`. 
+  1. Prerequisites:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `updateprogress 1 tprog/PENDING` <br>
+     Expected: Updates the task's progress to `PENDING`.
 
 2. Updating progress of a task as _not_started_
-    1. Prerequisites:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `updateprogress 1 tprog/NOT_STARTED` <br>
-       Expected: Updates the task's progress to `NOT_STARTED`.
+  1. Prerequisites:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `updateprogress 1 tprog/NOT_STARTED` <br>
+     Expected: Updates the task's progress to `NOT_STARTED`.
 
 3. Updating progress of a task as _done_
-    1. Prerequisites:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `updateprogress 1 tprog/DONE` <br>
-       Expected: Updates the task's progress to `DONE`.
+  1. Prerequisites:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `updateprogress 1 tprog/DONE` <br>
+     Expected: Updates the task's progress to `DONE`.
 
 4. Updating progress of a task as an _invalid parameter_
-    1. Prerequisites:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `updateprogress 1 tprog/asdasdasdsad` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Progress is not updated. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`.
+  1. Prerequisites:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `updateprogress 1 tprog/asdasdasdsad` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Progress is not updated. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`.
 
 5. Updating progress of a task with a non-integer index.
-    1. Test case: `updateprogress abcd tprog/DONE` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be a positive integer.
+  1. Test case: `updateprogress abcd tprog/DONE` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be a positive integer.
 
 6. Updating progress of a task with a negative index.
-    1. Prerequisite:
-        1. There is at least one task in the task list currently shown. 
-    2. Test case: `updateprogress -1 tprog/DONE` <br>
-        Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be an integer.
+  1. Prerequisite:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `updateprogress -1 tprog/DONE` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must be an integer.
 
 7. Updating progress of a task with an out-of-bounds index.
-    1. Prerequisite:
-       1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
-    2. Test case: `updateprogress [X + 1] tprog/DONE` <br>
-          Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Progress is not updated. <br> Reason: Index must be within the range of the size of the task list.
+  1. Prerequisite:
+    1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+  2. Test case: `updateprogress [X + 1] tprog/DONE` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Progress is not updated. <br> Reason: Index must be within the range of the size of the task list.
 
 8. Updating progress of a task without an index.
-    1. Test case: `updateprogress tprog/DONE` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must not be blank.
+  1. Test case: `updateprogress tprog/DONE` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Progress is not updated. <br> Reason: Index must not be blank.
 
 
 #### Deleting a task
 
 1. Deleting the first task currently shown in the task list.
-    1. Prerequisite:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `deletetask 1` <br>
-       Expected: First task is deleted.
+  1. Prerequisite:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `deletetask 1` <br>
+     Expected: First task is deleted.
 
 2. Deleting the task with a non-integer index.
-    1. Prerequisite:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `deletetask wasd` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be an integer.
+  1. Prerequisite:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `deletetask wasd` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be an integer.
 
 3. Deleting the task with an out-of-bounds index.
-    1. Prerequisite:
-        1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
-    2. Test case: `deletetask [X + 1]` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Task is not deleted. <br> Reason: Index must be within the range of the size of the task list.
+  1. Prerequisite:
+    1. There is at least one task in the task list currently shown. For this test, assume there are `X` number of tasks in the task list.
+  2. Test case: `deletetask [X + 1]` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid index. Task is not deleted. <br> Reason: Index must be within the range of the size of the task list.
 
 4. Deleting the task with a negative index.
-    1. Prerequisite:
-        1. There is at least one task in the task list currently shown.
-    2. Test case: `deletetask -1` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be a positive integer.
+  1. Prerequisite:
+    1. There is at least one task in the task list currently shown.
+  2. Test case: `deletetask -1` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must be a positive integer.
 
 5. Deleting the task without an index.
-    1. Test case: `deletetask` <br>
-       Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must not be blank.
+  1. Test case: `deletetask` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error invalid command format. Task is not deleted. <br> Reason: Index must not be blank.
 
 
 
 
- 
+
 ### Saving data
 
 1. Dealing with corrupted data files
-   1. Prerequisite:
-      1. F.A.K.E.J.A.R.V.I.S. has been initialized.
-   2. Test case: Delete a part of any `.json` file in `data` folder, or add some random symbols (e.g `@#$%^&*()`. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. recognizes the corrupted data file. The corresponding tabs will be empty (i.e if `tasklist.json` is corrupted, `Task List` will be empty).
+  1. Prerequisite:
+    1. F.A.K.E.J.A.R.V.I.S. has been initialized.
+  2. Test case: Delete a part of any `.json` file in `data` folder, or add some random symbols (e.g `@#$%^&*()`. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. recognizes the corrupted data file. The corresponding tabs will be empty (i.e if `tasklist.json` is corrupted, `Task List` will be empty).
 
 2. Dealing with missing data files
-   1. Prerequisite:
-      1. F.A.K.E.J.A.R.V.I.S. has been initialized.
-   2. Test case: Delete the whole `.json` file in `data` folder. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. recognizes the missing data file and add a sample data file inplace of the missing file.
+  1. Prerequisite:
+    1. F.A.K.E.J.A.R.V.I.S. has been initialized.
+  2. Test case: Delete the whole `.json` file in `data` folder. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. recognizes the missing data file and add a sample data file inplace of the missing file.
 
 
 ## **Appendix: Planned Enhancements**
 
 1. **Text Overflow Handling**
-   * Current Implementation: Currently, long emails, long task descriptions or names may extend beyond the allocated space, making it challenging for users to view the complete information. The enhancement will truncate or wrap the text appropriately, maintaining a clean and organized display.
-   * Enhancement: Implement a mechanism to handle text overflow, to ensure that lengthy text entries do not disrupt the user interface.
-   * Reason: To improve the readability and visual clarity of GUI.
-   * Suggested Fixes:
-     * Have character limits on certain fields (e.g `Email`, `Name`, `TaskName`).
-     * Have a character length checker that auto wraps the text when it "overflowed".
-   
+  * Current Implementation: Currently, long emails, long task descriptions or names may extend beyond the allocated space, making it challenging for users to view the complete information. The enhancement will truncate or wrap the text appropriately, maintaining a clean and organized display.
+  * Enhancement: Implement a mechanism to handle text overflow, to ensure that lengthy text entries do not disrupt the user interface.
+  * Reason: To improve the readability and visual clarity of GUI.
+  * Suggested Fixes:
+    * Have character limits on certain fields (e.g `Email`, `Name`, `TaskName`).
+    * Have a character length checker that auto wraps the text when it "overflowed".
+
 <br>
-   
+
 2. **Phone Number Validation**
-   * Current Implementation: Currently, any number that is longer than 3 digits are considered valid. It doesn't allow for special characters too.
-   * Enhancement: Introduce a validation mechanism for phone numbers to ensure that entered phone numbers adhere to a specified format. (e.g SG phone number starts with 8 or 9 and have 8 digits)
-   * Reason: To enhance the accuracy of the phone numbers by validating them according to a standard format.
-   * Suggested Fixes:
-     * Have a validation regex to check for starting number = 8 or 9 and phone number length = 8 (For SG phone numbers).
-     * Allow some special characters such as `+` to enable the adding of country codes in the phone number field.
+  * Current Implementation: Currently, any number that is longer than 3 digits are considered valid. It doesn't allow for special characters too.
+  * Enhancement: Introduce a validation mechanism for phone numbers to ensure that entered phone numbers adhere to a specified format. (e.g SG phone number starts with 8 or 9 and have 8 digits)
+  * Reason: To enhance the accuracy of the phone numbers by validating them according to a standard format.
+  * Suggested Fixes:
+    * Have a validation regex to check for starting number = 8 or 9 and phone number length = 8 (For SG phone numbers).
+    * Allow some special characters such as `+` to enable the adding of country codes in the phone number field.
 
 <br>
 
 3. **CSV File and Json File Download**
-   * Current Implementation: Currently, there is no download function of `.csv` or `.json` files.
-   * Enhancement: Implement the function to download the data in either a `.csv` or `.json` format, enabling users to conveniently import/export data.
-   * Reason: To enhance user convenience and data interchangeability, allowing for seamless integration with external applications that support `.csv` formats.
-   * Suggested Fixes:
-     * Have a `downloadCsvDataFile` and `downloadJsonDataFile` method to enable the download of the respectively files.
-     
+  * Current Implementation: Currently, there is no download function of `.csv` or `.json` files.
+  * Enhancement: Implement the function to download the data in either a `.csv` or `.json` format, enabling users to conveniently import/export data.
+  * Reason: To enhance user convenience and data interchangeability, allowing for seamless integration with external applications that support `.csv` formats.
+  * Suggested Fixes:
+    * Have a `downloadCsvDataFile` and `downloadJsonDataFile` method to enable the download of the respectively files.
+
 <br>
 
 
 4. **Better Name Validation**
-  * Current Implementation: Currently, names can only contain alphanumeric characters and spaces. (e.g Names such as `Shaquille O'Neal` or `Rohan s/o Mohan` are considered invalid)
-  * Enhancement: Allow special characters such as `'` or `/` to be allowed in the name field.
-  * Reason: To accommodate to more users, and be more inclusive.
-  * Suggested Fixes: 
-    * Update the validation regex to enable special characters specific to names.
+* Current Implementation: Currently, names can only contain alphanumeric characters and spaces. (e.g Names such as `Shaquille O'Neal` or `Rohan s/o Mohan` are considered invalid)
+* Enhancement: Allow special characters such as `'` or `/` to be allowed in the name field.
+* Reason: To accommodate to more users, and be more inclusive.
+* Suggested Fixes:
+  * Update the validation regex to enable special characters specific to names.
 
 <br>
 
 5. **Task Alert Functionality**
-   * Current Implementation: Currently, although the deadlines of tasks are tracked and color coded, there is no notification function to alert users of upcoming tasks.
-   * Enhancement: Introduce an alert function for tasks, allowing users to set reminders or receive notifications for specific tasks.
-   * Reason: To enhance task management by providing users with timely alerts and reminders for important tasks or deadlines.
-   * Suggested Fixes: 
-     * Have a `setAlert` command for users to set an alarm for their tasks.
-     * Have a `notification` feature to alert users of their upcoming tasks/deadlines. 
+  * Current Implementation: Currently, although the deadlines of tasks are tracked and color coded, there is no notification function to alert users of upcoming tasks.
+  * Enhancement: Introduce an alert function for tasks, allowing users to set reminders or receive notifications for specific tasks.
+  * Reason: To enhance task management by providing users with timely alerts and reminders for important tasks or deadlines.
+  * Suggested Fixes:
+    * Have a `setAlert` command for users to set an alarm for their tasks.
+    * Have a `notification` feature to alert users of their upcoming tasks/deadlines.
 
 <br>
 
 6. **Max Score Function for Graded Tests**
-   * Current Implementation: Currently, users can input any score for any graded test field, and there is no specified upperbound for the Max Score.
-   * Enhancement: Implement a function to set a maximum score for each component of graded tests, ensuring that scores adhere to predefined limits.
-   * Reason: To standardize grading practices and prevent errors or discrepancies in scored assessments.
-   * Suggested Fixes: 
-     * Have a `setMaxScore` command to specify the maximum score for each component of graded tests, preventing entry of scores that exceed these limits.
+  * Current Implementation: Currently, users can input any score for any graded test field, and there is no specified upperbound for the Max Score.
+  * Enhancement: Implement a function to set a maximum score for each component of graded tests, ensuring that scores adhere to predefined limits.
+  * Reason: To standardize grading practices and prevent errors or discrepancies in scored assessments.
+  * Suggested Fixes:
+    * Have a `setMaxScore` command to specify the maximum score for each component of graded tests, preventing entry of scores that exceed these limits.
 
 <br>
 
 7. **Statistics function for Graded Tests**
-   * Current Implementation: Currently, users can only view the graded test scores for their student, with no other features.
-   * Enhancement: Implement a function to calculate the statistics of the graded test field.
-   * Reason: To allow the Avengers to have a better overview of the student's scores.
-   * Suggested Fixes:
-     * Have a `getMean`, `getMedian`, `getMode` command to return the Avenger's session's mean, median and mode for the graded tests.
+  * Current Implementation: Currently, users can only view the graded test scores for their student, with no other features.
+  * Enhancement: Implement a function to calculate the statistics of the graded test field.
+  * Reason: To allow the Avengers to have a better overview of the student's scores.
+  * Suggested Fixes:
+    * Have a `getMean`, `getMedian`, `getMode` command to return the Avenger's session's mean, median and mode for the graded tests.
 
 
 ## **Appendix: Effort**
