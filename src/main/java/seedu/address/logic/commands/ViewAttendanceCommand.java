@@ -26,7 +26,7 @@ public class ViewAttendanceCommand extends Command {
     public static final String COMMAND_WORD = "viewattendance";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views the attendance of a student. "
             + "Parameters: "
-            + "[" + PREFIX_NAME + "STUDENT_NAME]...\n"
+            + "[" + PREFIX_NAME + "NAME]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe Alice";
 

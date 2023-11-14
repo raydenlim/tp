@@ -22,15 +22,15 @@ public class AddTaskCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Adds a new task with the specified description.\n"
             + "Parameters: "
-            + PREFIX_TASK_NAME + "NAME "
-            + "[" + PREFIX_TASK_DESCRIPTION + "DESCRIPTION] "
-            + "[" + PREFIX_TASK_PRIORITY + "PRIORITY] "
+            + PREFIX_TASK_NAME + "TASK_NAME "
+            + "[" + PREFIX_TASK_DESCRIPTION + "TASK_DESCRIPTION] "
             + "[" + PREFIX_DATE + "DATE]\n"
+            + "[" + PREFIX_TASK_PRIORITY + "TASK_PRIORITY] "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TASK_NAME + "Do laundry "
             + PREFIX_TASK_DESCRIPTION + "Wash the clothes and pants in basket "
-            + PREFIX_TASK_PRIORITY + "medium "
-            + PREFIX_DATE + "22/10/2023 ";
+            + PREFIX_DATE + "22/10/2023 "
+            + PREFIX_TASK_PRIORITY + "medium ";
 
     public static final String MESSAGE_SUCCESS = "Task has been added: %1$s";
 

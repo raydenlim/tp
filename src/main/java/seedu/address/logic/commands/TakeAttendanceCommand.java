@@ -34,13 +34,13 @@ public class TakeAttendanceCommand extends Command {
     public static final String COMMAND_WORD = "takeattendance";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Takes the attendance of student(s). "
             + "Parameters: "
-            + PREFIX_SESSION + "SESSION_NUMBER "
             + PREFIX_NAME + "NAME... "
+            + PREFIX_SESSION + "SESSION_NUMBER "
             + PREFIX_ATTENDANCE_PRESENCE + "ATTENDANCE_PRESENCE\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_SESSION + "3 "
             + PREFIX_NAME + "John Doe "
             + PREFIX_NAME + "Foo Bar "
+            + PREFIX_SESSION + "3 "
             + PREFIX_ATTENDANCE_PRESENCE + "present";
     public static final String MESSAGE_SUCCESS = "Attendance taken";
 

@@ -35,7 +35,7 @@ public class RemoveFromConsultCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes a person identified using his/her name from the specified consultation. "
             + "The consultation is specified by its index in the displayed consultation list.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: CONSULTATION_INDEX (must be a positive integer) "
             + PREFIX_NAME + "NAME\n"
             + "Example: " + COMMAND_WORD + " 1" + PREFIX_NAME + "John Doe";
 

@@ -751,13 +751,13 @@ This section describes commands that help you manage your tasks.
 
 You can add a task to your task list if you have a new item to include in your list of things to do.
 
-Format: `addtask tn/TASK_NAME [td/TASK_DESCRIPTION] [d/DUE_DATE] [tp/TASK_PRIORITY]`
+Format: `addtask tn/TASK_NAME [td/TASK_DESCRIPTION] [d/DATE] [tp/TASK_PRIORITY]`
 
 |  **Parameter**   |                           **Description**                           |
 |:----------------:|:-------------------------------------------------------------------:|
 |    TASK_NAME     |                        The name of the task.                        |
 | TASK_DESCRIPTION |                    The description of the task.                     |
-|     DUE_DATE     |                The due date or deadline of the task.                |
+|       DATE       |                The due date or deadline of the task.                |
 |  TASK_PRIORITY   | The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`. |
 
 <br>
@@ -777,13 +777,13 @@ Format: `addtask tn/TASK_NAME [td/TASK_DESCRIPTION] [d/DUE_DATE] [tp/TASK_PRIORI
 
 You can view your list of tasks if you want to check and manage your current set of to-do list.
 
-Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DUE_DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
+Format: `viewtasks [tn/TASK_NAME] / [td/TASK_DESCRIPTION] / [d/DATE] / [tp/TASK_PRIORITY] / [tprog/TASK_PROGRESS]`
 
 |  **Parameter**   |                               **Description**                                |
 |:----------------:|:----------------------------------------------------------------------------:|
 |    TASK_NAME     |                            The name of the task.                             |
 | TASK_DESCRIPTION |                         The description of the task.                         |
-|     DUE_DATE     |                    The due date or deadline of the task.                     |
+|       DATE       |                    The due date or deadline of the task.                     |
 |  TASK_PRIORITY   |     The priority level of the task. Given as `HIGH`, `MEDIUM` or `LOW`.      |
 |  TASK_PROGRESS   | The progress level of the task. Given as `DONE`, `PENDING` or `NOT_STARTED`. |
 
@@ -922,7 +922,7 @@ This section describes commands that help you manage your students' attendance.
 
 You can take the attendance of your student(s) if you need to record their presence for a session.
 
-Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
+Format: `takeattendance n/NAME s/SESSION_NUMBER ap/PRESENCE`
 
 
 | **Parameter**  |                            **Description**                            |
@@ -964,11 +964,11 @@ Format: `takeattendance n/STUDENT_NAME s/SESSION_NUMBER ap/PRESENCE`
 
 You can view the attendance list of your students if you want to check and review their attendance records.
 
-Format: `viewattendance [n/STUDENT_NAME]…`
+Format: `viewattendance [n/NAME]…`
 
 | **Parameter** |                        **Description**                         |
 |:-------------:|:--------------------------------------------------------------:|
-| STUDENT_NAME  | The name of the student(s) you want to view the attendance of. |
+|     NAME      | The name of the student(s) you want to view the attendance of. |
 
 <br>
 
@@ -1300,12 +1300,12 @@ This section describes commands that help you manage your sessions.
 
 You can create a session for any upcoming or past sessions if you need to schedule or document your class sessions in the system.
 
-Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
+Format: `createsession s/SESSION_NUMBER [n/NAME]…`
 
 | **Parameter**  |          **Description**           |
 |:--------------:|:----------------------------------:|
 | SESSION_NUMBER | The session number of the session. |
-|  STUDENT_NAME  |    The name of the student(s).     |
+|      NAME      |    The name of the student(s).     |
 
 <br>
 
@@ -1339,12 +1339,12 @@ Format: `createsession s/SESSION_NUMBER n/STUDENT_NAME…`
 
 You can update an existing session's remark if you need to change or add additional information to the session notes or details.
 
-Format: `updatesessionremark s/SESSION_NUMBER r/REMARK`
+Format: `updatesessionremark s/SESSION_NUMBER r/SESSION_REMARK`
 
 | **Parameter**  |                **Description**                |
 |:--------------:|:---------------------------------------------:|
 | SESSION_NUMBER |      The session number of the session.       |
-|     REMARK     | The new remark to be updated for the session. |
+| SESSION_REMARK | The new remark to be updated for the session. |
 
 <br>
 
@@ -1424,13 +1424,13 @@ This section describes commands that help you manage your consultations with stu
 #### 📝Creating a Consultation: `createconsult`
 You can create a consultation with your students if you need to schedule or document consultations in the system.
 
-Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
+Format: `createconsult d/DATE tt/TIME [n/NAME]…`
 
-| **Parameter**  |       **Description**       |
-|:--------------:|:---------------------------:|
-|      DATE      |  The date of consultation.  |
-|      TIME      |  The time of consultation.  |
-|  STUDENT_NAME  | The name of the student(s). |
+| **Parameter** |       **Description**       |
+|:-------------:|:---------------------------:|
+|     DATE      |  The date of consultation.  |
+|     TIME      |  The time of consultation.  |
+|     NAME      | The name of the student(s). |
 
 <br>
 
@@ -1463,12 +1463,12 @@ Format: `createconsult d/DATE tt/TIME n/STUDENT_NAME…`
 #### 📝️Adding Students to a Consultation: `addtoconsult`
 You can add your student(s) into a consultation slot if you need to track students in your consultations.
 
-Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
+Format: `addtoconsult CONSULTATION_INDEX [n/NAME]…`
 
 |   **Parameter**    |                           **Description**                            |
 |:------------------:|:--------------------------------------------------------------------:|
 | CONSULTATION_INDEX | The index of the consultation in the list of upcoming consultations. |
-|    STUDENT_NAME    |       The name of the student to be added to the consultation.       |
+|        NAME        |       The name of the student to be added to the consultation.       |
 
 <br>
 
@@ -1506,12 +1506,12 @@ Format: `addtoconsult CONSULTATION_INDEX n/STUDENT_NAME…`
 
 You can remove your student(s) from a consultation if you need to cancel your student's participation in the scheduled consultation.
 
-Format: `removefromconsult CONSULTATION_INDEX n/STUDENT_NAME…`
+Format: `removefromconsult CONSULTATION_INDEX n/NAME…`
 
 |   **Parameter**    |                           **Description**                            |
 |:------------------:|:--------------------------------------------------------------------:|
 | CONSULTATION_INDEX | The index of the consultation in the list of upcoming consultations. |
-|    STUDENT_NAME    |     The name of the student to be removed from the consultation.     |
+|        NAME        |     The name of the student to be removed from the consultation.     |
 
 <br>
 

@@ -28,9 +28,9 @@ public class ViewTasksCommand extends Command {
             + "Example: " + COMMAND_WORD
             + "[" + PREFIX_TASK_NAME + "cs2101 cs2100] "
             + "[" + PREFIX_TASK_DESCRIPTION + "homework assignment] "
+            + "[" + PREFIX_DATE + "22/10/2023] "
             + "[" + PREFIX_TASK_PRIORITY + "high] "
-            + "[" + PREFIX_TASK_PROGRESS + "pending] "
-            + "[" + PREFIX_DATE + "22/10/2023] ";
+            + "[" + PREFIX_TASK_PROGRESS + "pending] ";
 
     public static final CommandType COMMAND_TYPE = CommandType.VIEW_TASKS;
 
