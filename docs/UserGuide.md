@@ -298,7 +298,7 @@ The following describes what each tab displays on the **Current Panel**:
   e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/Foo Bar` etc.
 
 * Items with `/` can only be used **one time**. <br>
-  e.g. `viewtasks tn/user guide / td/developer guide` has to be used as `viewtasks tn/user guide` or `viewtasks td/developer guide`. 
+  e.g. `tn/user guide / td/developer guide` has to be used as `tn/user guide` or `td/developer guide`. 
 
 
 * Parameters can be **in any order**.<br>
