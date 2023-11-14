@@ -527,12 +527,12 @@ This section describes commands that help you manage your students.
 You can add a student to F.A.K.E.J.A.R.V.I.S. if you need to keep track of new students.
 
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TEST]`
+Format: `add n/NAME p/PHONE e/EMAIL th/TELEGRAM_HANDLE [t/TAG]…​ [gt/GRADED_TEST]`
 
 |  **Parameter**  |                       **Description**                       |
 |:---------------:|:-----------------------------------------------------------:|
 |      NAME       |                  The name of the student.                   |
-|  PHONE_NUMBER   |              The phone number of the student.               |
+|      PHONE      |              The phone number of the student.               |
 |      EMAIL      |              The email address of the student.              |
 | TELEGRAM_HANDLE |             The telegram handle of the student.             |
 |       TAG       |            The tags associated with the student.            |
