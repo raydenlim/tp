@@ -23,10 +23,10 @@ Given below are my contributions to the project.
   * **Highlights**: As the fields are optional, users can easily modify the scores for individual components of a student's graded test, without having to key in the scores for the unconcerned fields. Moreover, graded test scores can be edited  via the `edit` and `editgradedtest` command.
   * **Credits**: No reuse of code or third-party libraries used.
   
-|                                                                **Type**                                                                | **Justification**                                                                                                                                                                                                                                                                                 |
-|:--------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <md><code>gt/RA1:&lt;SCORE> &#124; RA2:&lt;SCORE> &#124; MidTerms:&lt;SCORE> &#124; Finals:&lt;SCORE> &#124; PE:&lt;SCORE></code></md> | <ul><li> **Readability:** The command is more descriptive, making it clear that it is editing a person's graded test.</li><li>**Flexibility:** Users can potentially edit other person-related attributes if needed in the future by extending the command.</li><ul>                              |
-|                                   `editgradedtest ra1/<SCORE> ra2/<SCORE> mt/<SCORE> f/0 pe/<SCORE>`                                   | <ul><li> **Conciseness:** It's shorter and easier to type, which can be beneficial if users need to edit graded test scores frequently.</li><li>**Consistency:** If the primary use case for this command is editing graded test scores, it might provide a more streamlined experience.</li><ul> |
+|                                                                            **Type**                                                                             | **Justification**                                                                                                                                                                                                                                                                                 |
+|:---------------------------------------------------------------------------------------------------------------------------------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <md><code style="color: #A46AFF;"> gt/RA1:&lt;SCORE> &#124; RA2:&lt;SCORE> &#124; MidTerms:&lt;SCORE> &#124; Finals:&lt;SCORE> &#124; PE:&lt;SCORE></code></md> | <ul><li> **Readability:** The command is more descriptive, making it clear that it is editing a person's graded test.</li><li>**Flexibility:** Users can potentially edit other person-related attributes if needed in the future by extending the command.</li><ul>                              |
+|                                               `editgradedtest ra1/<SCORE> ra2/<SCORE> mt/<SCORE> f/0 pe/<SCORE>`                                                | <ul><li> **Conciseness:** It's shorter and easier to type, which can be beneficial if users need to edit graded test scores frequently.</li><li>**Consistency:** If the primary use case for this command is editing graded test scores, it might provide a more streamlined experience.</li><ul> |
     
 <br>
 
@@ -34,7 +34,9 @@ Given below are my contributions to the project.
   <br>
 
 * **Project management**:
-  * Reviewed and approved pull requests
+  * Reviewed and approved pull requests.
+  * Organised Git Issues.
+  * Updated team [weekly meeting notes](https://docs.google.com/document/d/1QKJGL88ciMlyb5MfS2XyThnuUBGdwFIULFgP9MLTFEA/edit).
 
 
 * **Enhancements to existing features**:
@@ -51,14 +53,18 @@ Given below are my contributions to the project.
 
     <br>
   * **Contributions Developer Guide**:
-    * Designed the class diagram for `GradedTest`
+    * Designed the class diagram for `GradedTest`.
+    * Designed the sequence diagram for `EditGradedTestCommand`.
+    * Designed the activity diagram for `createEditedGradedTestPerson`.
+    * Added the Use cases for edit graded test.
+    * Added the Planned Enhancement Appendix.
+    * Organised the Use cases.
 
-<br>
 
 * **Community**:
   * **Contributions to team-based tasks**:
     * Updated User Guide and Error Messages to be more lucid.
-    * Set up a Google SpreadSheet for PE-D [PE-D Excelsheet](https://docs.google.com/spreadsheets/d/1O9mGiqRIjbg8E9W5kGl0biqmFpexlLQspCeSyn15r_Q/edit?usp=sharing)
+    * Set up a Google SpreadSheet for PE-D [PE-D Excelsheet](https://docs.google.com/spreadsheets/d/1O9mGiqRIjbg8E9W5kGl0biqmFpexlLQspCeSyn15r_Q/edit?usp=sharing).
     * Made the logo for F.A.K.E.J.A.R.V.I.S.
     * Update the logo of the UI.
     * Bug Hunting.
@@ -66,14 +72,14 @@ Given below are my contributions to the project.
     <br>
 
   * **Review/mentoring contributions**:
-    * [raydenlim's tp comments](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/tp-comments.html#9-lim-song-raydenlim-73-comments)
+    * [raydenlim's tp comments](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/tp-comments.html#9-lim-song-raydenlim-73-comments).
 
   <br>
 
   * **Contributions beyond the project team**:
     * [raydenlim's forum post](https://nus-cs2103-ay2324s1.github.io/dashboards/contents/forum-activities.html#60-lim-song-raydenlim-6-posts)
-    * Contributed to forum discussions, and shared some unusual bugs and how to resolve them. (examples: [Assisting](https://github.com/nus-cs2103-AY2324S1/forum/issues/122#issuecomment-1711100005),
-      [Unusual Bugs](https://github.com/nus-cs2103-AY2324S1/forum/issues/274#issuecomment-1770647394))
+    * Contributed to forum discussions, and shared some unusual bugs and how to resolve them (examples: [Assisting](https://github.com/nus-cs2103-AY2324S1/forum/issues/122#issuecomment-1711100005),
+      [Unusual Bugs](https://github.com/nus-cs2103-AY2324S1/forum/issues/274#issuecomment-1770647394)).
     * Helped to identify 12 bugs during practical dry run. PED-Repo available [here](https://github.com/raydenlim/ped/issues).
 
 <br>
