@@ -24,7 +24,7 @@ import seedu.address.model.task.TaskPriorityContainsKeywordsPredicate;
 import seedu.address.model.task.TaskProgressContainsKeywordsPredicate;
 
 /**
- * Parses input arguments and creates a new FindCommand object
+ * Parses input arguments and creates a new ViewTasksCommand object
  */
 public class ViewTasksCommandParser implements Parser<ViewTasksCommand> {
 
