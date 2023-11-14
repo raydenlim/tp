@@ -1864,10 +1864,8 @@ testers are expected to do more *exploratory* testing.
      2. Student name must exist in student list.
      3. There must not be a duplicate consultation (same date, time and students).
 
-  2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`
+  2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
      Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh, is created and stored in the list of consultations.
-
-<br>
 
 2. Creating a consultation with multiple students and _valid_ parameters.
    1. Prerequisites:
@@ -1875,49 +1873,41 @@ testers are expected to do more *exploratory* testing.
       2. Student names must exist in student list.
       3. There must not be a duplicate consultation (same date, time and students).
    
-   2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`
+   2. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/Bernice Yu`<br>
       Expected: A consultation on 10/11/2023 at 13:00 with student Alex Yeoh and Bernice Yu, is created and stored in the list of consultations.
 
-<br>
-
 3. Creating a consultation with multiple students and _invalid_ parameters.
-   1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created on the second command.
+   1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh` `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created on the second command.<br>
       Reason: There must not be duplicated consultations with same date, time and students when creating.
-   2. Test case: `createconsult d/60/11/2023 tt/13:00 n/Alex Yeoh`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   2. Test case: `createconsult d/60/11/2023 tt/13:00 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Date input must be valid.
-   3. Test case: `createconsult d/10/11/2023 tt/13:70 n/Alex Yeoh`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   3. Test case: `createconsult d/10/11/2023 tt/13:70 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Time input must be valid.
-   4. Test case: `createconsult d/10/11/2023 tt/13:00 n/fakenamethatdoesnotexist`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   4. Test case: `createconsult d/10/11/2023 tt/13:00 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Student name must exist in the student list.
 
-<br>
-
 4. Creating a consultation with _mix of valid and invalid students_.
-   1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/fakenamethatdoesnotexist`.
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   1. Test case: `createconsult d/10/11/2023 tt/13:00 n/Alex Yeoh n/fakenamethatdoesnotexist`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: All student names must exist in the student list.
 
-<br>
-
 5. Creating a consultation with _missing_ parameters.
-   1. Test case: `createconsult tt/13:00 n/Alex Yeoh`.
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   1. Test case: `createconsult tt/13:00 n/Alex Yeoh`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Date parameter is missing.
-   2. Test case: `createconsult d/10/11/2023 n/Alex Yeoh`.
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   2. Test case: `createconsult d/10/11/2023 n/Alex Yeoh`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Time parameter is missing.
-   3. Test case: `createconsult d/10/11/2023 tt/13:00`.
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   3. Test case: `createconsult d/10/11/2023 tt/13:00`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: Student names parameter is missing.
-   4. Test case: `createconsult`.
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.
+   4. Test case: `createconsult`.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new consultation is created.<br>
       Reason: There are no parameters inputted.
-
-<br>
 
 #### Deleting a consultation
 
@@ -1925,24 +1915,20 @@ testers are expected to do more *exploratory* testing.
   1. Prerequisites: 
      1. Consultation must exist in the consultation list.
      2. Index must be a positive integer.
-  2. Test case: `deleteconsult 2`
+  2. Test case: `deleteconsult 2`<br>
      Expected: Consultation at index 2 is deleted from the consultation list. Details of the deleted consultation is shown in the status message.
 
-<br>
-
 2. Deleting a consultation with _invalid_ parameters.
-  1. Test case: `deleteconsult 2` `deleteconsult 2`
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted on the second command.
+  1. Test case: `deleteconsult 2` `deleteconsult 2`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted on the second command.<br>
      Reason: There is no consultation found with the given index in the consultation list.
-  2. Test case: `deleteconsult -1` 
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is created.
+  2. Test case: `deleteconsult -1` <br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is created.<br>
      Reason: Index must be a positive integer.
 
-<br>
-
 3. Deleting a consultation with _missing_ parameters.
-  1. Test case: `deleteconsult`
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted.
+  1. Test case: `deleteconsult`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is deleted.<br>
      Reason: There are no parameters inputted.
 
 #### Adding a student to a consultation
@@ -1956,30 +1942,24 @@ testers are expected to do more *exploratory* testing.
   2. Test case: `addtoconsult 2 n/Alex Yeoh`<br>
      Expected: Alex Yeoh is added to the consultation at index 2. Details of the updated consultation is shown in the status message.
 
-<br>
-
 2. Adding to a consultation with _invalid_ parameters.
    1. Test case: `addtoconsult 2 n/Alex Yeoh` `addtoconsult 2 n/Alex Yeoh`<br>
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.<br>
       Reason: Student must not already in the consultation.
-   2. Test case: `addtoconsult 2 n/fakenamethatdoesnotexist`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+   2. Test case: `addtoconsult 2 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
       Reason: Student must exist in the address book.
-   3. Test case: `addtoconsult -1 n/Alex Yeoh`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+   3. Test case: `addtoconsult -1 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
       Reason: Index must be a positive integer.
-   4. Test case: `addtoconsult x n/Alex Yeoh` (where x is greater than consultation list size)
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+   4. Test case: `addtoconsult x n/Alex Yeoh` (where x is greater than consultation list size)<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
       Reason: Consultation must exist in the consultation list.
 
-<br>
-
 3. Adding to a consultation with _missing_ parameters.
-   1. Test case: `addtoconsult`
-      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+   1. Test case: `addtoconsult`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
       Reason: There are no parameters inputted.
-
-<br>
 
 #### Removing a student from a consultation
 
@@ -1989,26 +1969,22 @@ testers are expected to do more *exploratory* testing.
      2. Index must be a positive integer.
      2. Student must exist in the student list.
      3. Student must exist in the consultation.
-  1. Test case: `removefromconsult 2 n/Alex Yeoh`
+  1. Test case: `removefromconsult 2 n/Alex Yeoh`<br>
      Expected: Alex Yeoh is removed from the consultation at index 2. Details of the updated consultation is shown in the status message.
 
-<br>
-
 2. Removing a student with _invalid_ parameters.
-  1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.
+  1. Test case: `removefromconsult 2 n/Alex Yeoh` `removefromconsult 2 n/Alex Yeoh`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated on the second command.<br>
      Reason: Student must exist in the consultation.
-  2. Test case: `removefromconsult 2 n/fakenamethatdoesnotexist`
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+  2. Test case: `removefromconsult 2 n/fakenamethatdoesnotexist`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
      Reason: Student must exist in the student list and the consultation.
-  3. Test case: `removefromconsult -1 n/Alex Yeoh`
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+  3. Test case: `removefromconsult -1 n/Alex Yeoh`<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
      Reason: Index must be a positive integer.
-  4. Test case: `removefromconsult x n/Alex Yeoh` (where x is greater than consultation list size)
-     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.
+  4. Test case: `removefromconsult x n/Alex Yeoh` (where x is greater than consultation list size)<br>
+     Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No consultation is updated.<br>
      Reason: Consultation must exist in the consultation list.
-
-<br>
 
 
 ### Session
