@@ -1463,7 +1463,7 @@ Format: `createconsult d/DATE tt/TIME [n/NAME]…`
 #### 📝️Adding Students to a Consultation: `addtoconsult`
 You can add your student(s) into a consultation slot if you need to track students in your consultations.
 
-Format: `addtoconsult CONSULTATION_INDEX [n/NAME]…`
+Format: `addtoconsult CONSULTATION_INDEX n/NAME…`
 
 |   **Parameter**    |                           **Description**                            |
 |:------------------:|:--------------------------------------------------------------------:|
