@@ -38,7 +38,7 @@ import seedu.address.model.task.TaskPriority;
 import seedu.address.model.task.TaskProgress;
 
 /**
- * Contains utility methods used for parsing strings in the various *Parser classes.
+ * Contains utility methods used for parsing strings in the various Parser classes.
  */
 public class ParserUtil {
 
