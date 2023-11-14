@@ -33,8 +33,8 @@ public class AddToConsultCommand extends Command {
     public static final String COMMAND_WORD = "addtoconsult";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a student to a consultation at INDEX."
-        + "Parameters: INDEX (must be a positive integer) "
-        + "[" + PREFIX_NAME + "NAME]...\n"
+        + "Parameters: CONSULTATION_INDEX (must be a positive integer) "
+        + PREFIX_NAME + "NAME...\n"
         + "Example: " + COMMAND_WORD + " "
         + PREFIX_NAME + "John Doe ";
 

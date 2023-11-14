@@ -26,7 +26,7 @@ public class UpdateTaskProgressCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Updates the task's progress identified by the index number used in the displayed task list.\n"
             + "Parameters: "
-            + "INDEX (must be a positive integer) "
+            + "TASK_INDEX (must be a positive integer) "
             + PREFIX_TASK_PROGRESS + "PROGRESS\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_TASK_PROGRESS + "PENDING";
 
