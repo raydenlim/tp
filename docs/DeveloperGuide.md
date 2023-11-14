@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+* Referenced [linkytime, T13-3](https://github.com/zfs-old-crap/linkytime) for insights on Sequence Diagrams and Activity Diagrams.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -158,7 +158,7 @@ The Session component consists of the following set of features: Create Session
 The Session Class encompasses several important attributes:
 * `SessionNumber`: This unique identifier helps distinguish one session from another. It is an integral part of the Session class and is a primary key when searching for or referencing sessions within the system.
 
-* `SessionStudents`: An essential component of every session is the list of students participating. The SessionStudents class keeps track of the students present in a particular session. This class allows for efficient management of attendance records and plays a vital role in generating attendance reports.
+* `StudentSet`: An essential component of every session is the list of students participating. The StudentSet class keeps track of the students present in a particular session. This class allows for efficient management of attendance records and plays a vital role in generating attendance reports.
 
 * `SessionRemark`: Sometimes, additional information about a session is necessary, such as special instructions, topics covered, or any other relevant remarks. The SessionRemark field offers the flexibility to include such notes.
 
@@ -173,7 +173,8 @@ Below is a class diagram describing the implementation of `Session` and its resp
 
 **Alternative 1 (current choice):** The `CreateSession` feature takes in arguments of varying number of student names.
 - Pros:This choice offers a high degree of flexibility when it comes to adding students to a session. You can add any number of students when creating a session, which is essential for accommodating different class sizes and situations.
-  **Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `SessionStudents`, and the other would take an entire `SessionStudents` object as an argument.
+
+**Alternative 2:** An alternative design could involve creating two separate constructor methods within the `CreateSession` class. One constructor would be responsible for adding a student to an existing `StudentSet`, and the other would take an entire `StudentSet` object as an argument.
 - Cons: This alternative introduces additional complexity in terms of validating user input and checking for null values upon execution. It may be less intuitive than the current approach.
 
 By opting for the current choice (Alternative 1), the implementation remains straightforward and user-friendly, allowing for versatile usage scenarios. It ensures that users can efficiently create sessions and add students to them without unnecessary constraints or complications.
@@ -242,7 +243,7 @@ Below is a class diagram describing the implementation of `GradedTest` and its r
   * Flexibility: This choice offers flexibility in representing the graded tests, allowing for customization (e.g. usage of default value, `-`).
   * Clarity: The string format of `gt/RA1:<SCORE> | RA2:<SCORE> | MidTerms:<SCORE> | Finals:<SCORE> | PE:<SCORE>` is self-explanatory.
 - Cons:
-  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g average, highest, lowest score).
+  * Parsing Overhead: It requires additional parsing to generate statistics of how the Avenger's students are doing (e.g. average, highest, lowest score).
   * Documentation Issues: The usage of `|` causes conflict with the table notation. Hence, more work is needed to get around this issue in markdown.
 
 **Alternative 2 :** Using floats for graded test score.
@@ -343,16 +344,9 @@ GradedTest testFromObjects = new GradedTest(
 - Cons:
   * Testing Overhead: The implementation of both alternatives increases testing complexity, requiring thorough testing to ensure compatibility and proper functionality.
 
-- Below is the Sequence diagram and Activity Diagram for `EditGradedTest` class with the `editgradedtest` command:
+- For the UML diagram of `EditGradedTest` refer to [Edit Graded Test](#edit-graded-test-feature).
 
-**EditGradedTest Sequence Diagram:**<br>
-![EditGradedTestUML](images/EditGradedTestSequenceDiagram.png)
-
-<br>
-
-**createEditedGradedTestPerson Activity Diagram:**<br>
-![CreateEditedGradedTestPersonAD](images/CreateEditedGradedTestPersonAD.png)
-
+  
 
 ### Consultations
 
@@ -691,7 +685,7 @@ Below is the sequence diagram outlining the execution of `EditGradeCommand`.
 
 
 Step 1:
-The `LogicManager` invokes `ViewAssignmentsCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
+The `LogicManager` invokes `EditGradeCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
 
 Step 2:
 The `EditGradeCommand::createGradedPerson` is invoked to create a new immutable Person object with the updated Assignment Grade.
@@ -719,6 +713,74 @@ The `EditGradeCommand` then continues its execution as defined by [this](#parser
   * Pros: Simplifies the process of editing the Grade.
   * Cons: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications.
 
+
+#### Edit Graded Test Feature
+This section explains the implementation of the Edit Grade Test feature via the `editgradedtest` command. The `EditGradeTestCommand` edits the Scores of a Graded Test belonging to a Student identified using the `STUDENT_INDEX` field. The Graded Test is identified using the 5 optional graded test fields, namely `Reading_Assessment_1`, `Reading_Assessment_2`, `MidTerms`, `Finals` and `Practical_Exam`. At least one of these optional fields must be included after the Student Index of the Student to be selected.
+
+Below is the sequence diagram outlining the execution of `EditGradeTestCommand`.
+
+![EditGradedTestCommand Sequence Diagram](images/EditGradedTestSequenceDiagram.png)
+
+Step 1:
+The `LogicManager` invokes `EditGradedTestCommand::execute`, which in turn calls `Model::getFilteredPersonList` and `List<Person>::get` to get the specified Student.
+
+Step 2:
+The `EditGradeTestCommand::createEditedGradedTestPerson` is invoked to create a new immutable Person object with the updated Graded Test Score(s).
+
+Step 3:
+The `EditGradedTestCommand` will call `setPerson` in `Model` to replace the original `Person` with the new `Person` object.
+
+Step 4:
+The `EditGradedTestCommand` will call its own `updateFilteredPersonList` method to update the model's filter and display all the students to the user.
+
+Step 5:
+The `EditGradedTestCommand` then continues its execution as defined by [this](#parser-commands) sequence diagram.
+
+* The process of `createEditedGradedTestPerson` is summarised in the activity diagram below:
+
+![CreateEditedGradedTestPerson Activity Diagram](images/CreateEditedGradedTestPersonAD.png)
+
+
+<br>
+
+##### Design Considerations:
+**Aspect 1: How we execute the EditGradedTestCommand:**
+
+* **Alternative 1 (current choice):** Direct Model Interaction via LogicManager.
+  * Pros:
+    * Immutability: Enables the `Person` object to remain immutable.
+    * Assurance: Since the objects are immutable, there will be little to no side effects on the objects.
+    * Readability: Straightforward logic execution. Clear on UML diagrams.
+
+  * Cons:
+    * Limited Extensibility: Additional modifications may be needed if there are changes in any data storage mechanisms. (i.e the json files of (sample) data MUST be compatible with one another. Any mismatch will cause compilation error.)
+    * Tight Coupling: The strong dependencies between the models make it difficult for alterations without affecting the other components, especially when the objects are immutable.
+
+* **Alternative 2:** Command Dispatcher via LogicManager.
+  * Pros:
+    * Decoupling: Details of interactions between the models are abstracted away.
+  * Cons:
+    * Excessive: For a small scaled project like F.A.K.E.J.A.R.V.I.S. this approach may be over-engineered, and adds additional complexity.
+    * Overhead: Additional dispatcher class is needed, which may slow down the processing time.
+
+
+**Aspect 2: How we edit the Graded Test Scores of a `Person` object's Assignment:**
+
+* **Alternative 1 (current choice):** Immutable Objects i.e create a completely new instance of `Person`.
+  * Pros: 
+    * Immutability: Enables the `Person` object to remain immutable.
+    * Assurance: Since the objects are immutable, there will be little to no side effects on the objects. 
+    
+  * Cons:
+    * Resource Intensive: Any edits to the Score(s) of a Graded Test will create new `Person` instances, this may be resource-intensive when done in large-scale.
+
+* **Alternative 2:** Dynamic Objects i.e update the `GradedTest` found in the `Person` object.
+  * Pros:
+    * Simplicity: Simplifies the process of editing the Grade.
+    * Reduce redundancy: Avoids creating new instance for every change to an Object.
+  * Cons: 
+    * Mutable Objects: Causes the `Person` object to no longer be immutable, giving rise to potential bugs or complications during the integration process.
+    * Testing/Maintenance Challenges: Requires extra attention when making test cases to prevent unintended side effects.
 
 
 #### Create Consultation Feature
@@ -861,33 +923,33 @@ If all checks are passed, the student will be removed from the Consultation.
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                                                 | So that I can…​                                                        |
-|----------|--------------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions                                       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | organised Avenger                          | add a new person                                             |                                                                        |
-| `* * *`  | organised Avenger                          | delete a person                                              | remove entries that I no longer need                                   |
-| `* * *`  | curious Avenger                            | find a person by name                                        | locate details of persons without having to go through the entire list |
-| `* * *`  | busy Avenger                               | keep track of what needs to be done                          | better guide my students                                               |
-| `* * *`  | conscientious avenger                      | view my students' grades and comments for their assignments  | better assess my students' competency.                                 |
-| `* * *`  | unorganised avenger                        | edit or delete my student's assignment grades and comments   | organise their progress better.                                        |
-| `* * *`  | responsible Avenger                        | create a new consultation with students                      | keep track of when and with who the consultation is held               |
-| `* * *`  | accommodating Avenger                      | add students to an existing consultation                     | invite more students to join a consultation discussion                 |
-| `* * *`  | responsible Avenger                        | easily track and record my student's attendance              | conduct attendance taking more efficiently                             |
-| `* * *`  | conscientious Avenger                      | view my students' attendance                                 | easily identify any sessions that they may have missed                 |
-| `* * *`  | organised Avenger                          | create tutorial sessions with students                       | keep track of students who have attended each session                  |
-| `* * *`  | reflective Avenger                         | store insightful remarks on each session                     | improve my teaching methods                                            |
-| `* *`    | responsible Avenger                        | store my students' Telegram contacts                         | easily contact them                                                    |
-| `* *`    | careless Avenger                           | delete sessions that were wrongly created                    | clean up my list of sessions                                           |
-| `* *`    | careful Avenger                            | hide private contact details                                 | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name                                         | locate a person easily                                                 |
+| Priority | As a …​                                    | I want to …​                                                | So that I can…​                                                         |
+|----------|--------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| `* * *`  | new user                                   | see usage instructions                                      | refer to instructions when I forget how to use the App.                 |
+| `* * *`  | organised Avenger                          | add a new person                                            | keep track of my student's details.                                     |
+| `* * *`  | organised Avenger                          | delete a person                                             | remove entries that I no longer need.                                   |
+| `* * *`  | curious Avenger                            | find a person by name                                       | locate details of persons without having to go through the entire list. |
+| `* * *`  | busy Avenger                               | keep track of what needs to be done                         | better guide my students.                                               |
+| `* * *`  | conscientious avenger                      | view my students' grades and comments for their assignments | better assess my students' competency.                                  |
+| `* * *`  | unorganised avenger                        | edit or delete my student's assignment grades and comments  | organise their progress better.                                         |
+| `* * *`  | responsible Avenger                        | create a new consultation with students                     | keep track of when and with who the consultation is held.               |
+| `* * *`  | accommodating Avenger                      | add students to an existing consultation                    | invite more students to join a consultation discussion.                 |
+| `* * *`  | responsible Avenger                        | easily track and record my student's attendance             | conduct attendance taking more efficiently.                             |
+| `* * *`  | conscientious Avenger                      | view my students' attendance                                | easily identify any sessions that they may have missed.                 |
+| `* * *`  | organised Avenger                          | create tutorial sessions with students                      | keep track of students who have attended each session.                  |
+| `* * *`  | efficient Avenger                          | view my student's Graded Test at a glance                   | more effectively keep track of their performance.                       |
+| `* * *`  | reflective Avenger                         | store insightful remarks on each session                    | improve my teaching methods.                                            |
+| `* *`    | responsible Avenger                        | store my students' Telegram contacts                        | easily contact them.                                                    |
+| `* *`    | careless Avenger                           | delete sessions that were wrongly created                   | clean up my list of sessions.                                           |
+| `* *`    | careful Avenger                            | hide private contact details                                | minimize chance of someone else seeing them by accident.                |
+| `*`      | user with many persons in the address book | sort persons by name                                        | locate a person easily.                                                 |
 
-*{More to be added}*
 
 ### Use cases
 
 (For all use cases below, the **System** is the `F.A.K.E.J.A.R.V.I.S.` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case 1: Delete a person**
 
 **MSS**
 
@@ -911,7 +973,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case: Add a task**
+**Use case 2: Add a task**
 
 **MSS**
 
@@ -935,7 +997,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Delete a task**
+**Use case 3: Delete a task**
 
 **MSS**
 
@@ -958,8 +1020,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-
-**Use case: View list of tasks**
+**Use case 4: View list of tasks**
 
 **MSS**
 
@@ -993,7 +1054,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 
-**Use case: Update task progress**
+**Use case 5: Update task progress**
 
 **MSS**
 
@@ -1024,7 +1085,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-**Use case: View a person's list of assignments**
+**Use case 6: View a person's list of assignments**
 
 **MSS**
 
@@ -1048,7 +1109,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case: Edit the grade of an assignment**
+**Use case 7: Edit the grade of an assignment**
 
 **MSS**
 
@@ -1084,7 +1145,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case: Delete the grade of an assignment**
+**Use case 8: Delete the grade of an assignment**
 
 **MSS**
 
@@ -1119,7 +1180,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: Edit the comment on an assignment**
+**Use case 9: Edit the comment on an assignment**
 
 **MSS**
 
@@ -1154,7 +1215,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: Delete the comment of an assignment**
+**Use case 10: Delete the comment of an assignment**
 
 **MSS**
 
@@ -1189,7 +1250,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: Find Student Profile**
+**Use case 11: Find Student Profile**
 
 **MSS**
 
@@ -1212,7 +1273,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
 
-**Use case: Filter Results**
+**Use case 12: Filter Results**
 
 **MSS**
 
@@ -1236,7 +1297,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case resumes at step 2.
 
 
-**Use case: Create a consultation**
+**Use case 13: Create a consultation**
 
 **MSS**
 
@@ -1266,7 +1327,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Delete a consultation**
+**Use case 14: Delete a consultation**
 
 **MSS**
 
@@ -1284,7 +1345,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Adding a student to a consultation**
+**Use case 15: Add a student to a consultation**
 
 **MSS**
 
@@ -1314,7 +1375,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Removing a student from a consultation**
+**Use case 16: Removing a student from a consultation**
 
 **MSS**
 
@@ -1350,7 +1411,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Create a session**
+**Use case 17: Create a session**
 
 **MSS**
 
@@ -1379,7 +1440,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case: Update a session's remarks**
+**Use case 18: Update a session's remarks**
 
 **MSS**
 
@@ -1404,7 +1465,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-**Use case: Delete a session**
+**Use case 19: Delete a session**
 
 **MSS**
 
@@ -1422,7 +1483,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Taking the attendance of a student for a session**
+**Use case 20: Take the attendance of a student for a session**
 
 **MSS**
 
@@ -1458,7 +1519,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case: Viewing the overall attendance of a student**
+**Use case 21: View the overall attendance of a student**
 
 **MSS**
 
@@ -1481,9 +1542,65 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+**Use case 22: Edit the score(s) of a graded test**
 
+**MSS**
 
-*{More to be added}*
+1.  User requests to list persons.
+2.  F.A.K.E.J.A.R.V.I.S. shows a list of persons.
+3.  User requests to edit the score(s) of a graded test for a specific person in the list.
+4.  F.A.K.E.J.A.R.V.I.S. edits score(s) of the person's graded test.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+  * 3a1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3b. The parameter(s) given is/are invalid.
+
+  * 3b1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3c. Extra parameter(s) is/are given (e.g `editgradedtest 1 ra1/<SCORE> ra2/<SCORE> mt/<SCORE> f/<SCORE> pe/<SCORE> ra1/<SCORE>`)
+
+  * 3c1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3d. Fewer parameter(s) is/are given (e.g `editgradedtest 1 ra1/<SCORE> ra2/<SCORE>`)
+
+  * 3d1. F.A.K.E.J.A.R.V.I.S. shows an success message.
+
+    Use case resumes at step 4.
+
+* 3e. The parameter(s) are in different order (e.g `editgradedtest 1 ra1/<SCORE> pe/<SCORE> f/<SCORE> ra2/<SCORE> mt/<SCORE>`)
+
+  * 3e1. F.A.K.E.J.A.R.V.I.S. shows an success message.
+
+    Use case resumes at step 4.
+
+* 3f. The given parameter is invalid. (e.g `editgradedtest 1 ra3/<SCORE> pee/<SCORE>`)
+
+  * 3f1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
+* 3g. The given score is invalid.
+
+  * 3g1. F.A.K.E.J.A.R.V.I.S. shows an error message.
+
+    Use case resumes at step 2.
+
 
 ### Non-Functional Requirements
 
@@ -1495,7 +1612,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6.  The system should be user-friendly, with a clean and intuitive interface.
 7.  Regular automated backups of data should be performed, and there should be a clear disaster recovery plan in place.
 
-*{More to be added}*
 
 ### Glossary
 
@@ -1547,7 +1663,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Students
+### Student
 
 #### Deleting a student
 
@@ -1566,9 +1682,9 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Assignments
+### Assignment
 
-### Viewing assignments
+#### Viewing assignments
 
 1. Viewing assignments with _valid parameters_
    1. Prerequisites:
@@ -1582,25 +1698,25 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Edit grades
+#### Editing grades
 
-1. Edit an assignment grade with _valid parameters_
+1. Editing an assignment grade with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Functional Expressionism g/500`
       Expected: Grade of the specified assignment has been edited to 500/500.
 
-2. Edit an assignment grade with _invalid index_
+2. Editing an assignment grade with _invalid index_
    1. Test case: `editgrade 0 as/Functional Expressionism g/500`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The person index provided does not exist.
 
-3. Edit an assignment grade with _invalid assignment name_
+3. Editing an assignment grade with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Finding Boyd g/500`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not edited. <br> Reason: The assignment name does not exist.
 
-4. Edit an assignment grade with _invalid grade_
+4. Editing an assignment grade with _invalid grade_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editgrade 1 as/Functional Expressionism g/700`
@@ -1608,20 +1724,20 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Delete grades
+#### Deleting grades
 
-1. Delete an assignment grade with _valid parameters_
+1. Deleting an assignment grade with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
       2. The assignment has already been graded.
    2. Test case: `deletegrade 1 as/Functional Expressionism`
       Expected: Grade of the specified assignment has been deleted.
 
-2. Delete an assignment grade with _invalid index_
+2. Deleting an assignment grade with _invalid index_
    1. Test case: `deletegrade 0 as/Functional Expressionism`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment grade is not deleted. <br> Reason: The person index provided does not exist.
 
-3. Edit an assignment grade with _invalid assignment name_
+3. Deleting an assignment grade with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletegrade 1 as/Finding Boyd`
@@ -1629,25 +1745,25 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Edit comments
+#### Editing comments
 
-1. Edit an assignment comment with _valid parameters_
+1. Editing an assignment comment with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Functional Expressionism c/Good job!`
       Expected: Comment of the specified assignment has been edited to "Good job!".
 
-2. Edit an assignment comment with _invalid index_
+2. Editing an assignment comment with _invalid index_
    1. Test case: `editcomment 0 as/Functional Expressionism c/Good job!`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The person index provided does not exist.
 
-3. Edit an assignment comment with _invalid assignment name_
+3. Editing an assignment comment with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Finding Boyd c/Good job!`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not edited. <br> Reason: The assignment name does not exist.
 
-4. Edit an assignment comment with _invalid comment_
+4. Editing an assignment comment with _invalid comment_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `editcomment 1 as/Functional Expressionism c/`
@@ -1655,28 +1771,92 @@ testers are expected to do more *exploratory* testing.
 
 
 
-### Delete comments
+#### Deleting comments
 
-1. Delete an assignment comment with _valid parameters_
+1. Deleting an assignment comment with _valid parameters_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
       2. The assignment has already been commented on.
    2. Test case: `deletecomment 1 as/Functional Expressionism`
       Expected: Comment of the specified assignment has been deleted.
 
-2. Delete an assignment comment with _invalid index_
+2. Deleting an assignment comment with _invalid index_
    1. Test case: `deletecomment 0 as/Functional Expressionism`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The person index provided does not exist.
 
-3. Delete an assignment comment with _invalid assignment name_
+3. Deleting an assignment comment with _invalid assignment name_
    1. Prerequisites:
       1. There is at least 1 student being displayed in the students list.
    2. Test case: `deletecomment 1 as/Finding Boyd`
       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Assignment comment is not deleted. <br> Reason: The assignment name does not exist.
 
+### Graded Test
 
+#### Editing graded test scores
 
-### Creating a consultation
+1. Editing the score(s) of a graded test with _valid parameters_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
+      Expected: F.A.K.E.J.A.R.V.I.S. successfully edits the scores for the specified person's graded test.
+
+2. Editing the score(s) of a graded test with an _empty list_
+   1. Prerequisites:
+      1. The list of persons is empty.
+   2. Test case: editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88
+      F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited <br> Reason: The student list is empty.
+
+3. Editing the score(s) of a graded test with an _invalid index_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 0 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given index is invalid.
+
+4. Editing the score(s) of a graded test with _empty parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is empty.
+
+5. Editing the score(s) of a graded test with _invalid parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra3/90 pee/100`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The parameter(s) given is/are invalid.
+
+6. Editing the score(s) of a graded test with _extra parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95 f/80 pe/75 ra1/88 ra2/75`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: Extra parameter(s) is/are given.
+
+7. Editing the score(s) of a graded test with _fewer parameter(s)_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/90 ra2/85 mt/95`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: Graded Test fields are optional.
+
+8. Editing the score(s) of a graded test with _parameters in different order_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/90 pe/75 f/80 ra2/85 mt/95`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays a success message. Graded Test scores are edited. Reason: The order of Graded Test fields does not matter.
+
+9. Editing the score(s) of a graded test with _an invalid score_
+   1. Prerequisites:
+      1. There is at least 1 student being displayed in the students list.
+   2. Test case: `editgradedtest 1 ra1/-100 ra2/85 mt/105 f/80 pe/75 ra1/88`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given score is invalid.
+
+10. Editing the score(s) of a graded test with _multiple invalid scores_
+    1. Prerequisites:
+       1. There is at least 1 student being displayed in the students list.
+    2. Test case: `editgradedtest 1 ra1/-90 ra2/-85 mt/-100 f/invalid pe/-75 ra1/-88`
+       Expected: F.A.K.E.J.A.R.V.I.S. displays an error. Graded Test scores are not edited. <br> Reason: The given scores are invalid.
+
+### Consultation
+
+#### Creating a consultation
 
 1. Creating a consultation with specified date, time and student(s).
 
@@ -1690,7 +1870,7 @@ testers are expected to do more *exploratory* testing.
     1. Other invalid create consultation commands to try: `createconsult` (missing fields), `createconsult n/Alex Yeoh`, `createconsult d/10/11/2023 tt/13:60 n/Bernice Yu` (invalid time), `createconsult d/40/11/2023 tt/13:00 n/Bernice Yu` (invalid date)<br>
        Expected: Similar to previous.
 
-### Deleting a consultation
+#### Deleting a consultation
 
 1. Deleting a consultation by specifying index.
     1. Prerequisites: Consultation must exist in the consultation list.
@@ -1701,7 +1881,7 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect delete consultation commands to try: `deleteconsult`, `deleteconsult x` (where x is greater than the consultation list size or a non-positive integer)
        Expected: Similar to previous.
 
-### Adding a student to a consultation
+#### Adding a student to a consultation
 
 1. Adding a student specified by name to a consultation at specified index.
     1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and not already in the consultation.
@@ -1712,7 +1892,7 @@ testers are expected to do more *exploratory* testing.
     1. Other incorrect add to consultation commands to try: `addtoconsult`, `addtoconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `addtoconsult 2 n/UNKNOWN` (name not found in address book), `addtoconsult 2 n/KNOWN` (name already found in the consultation).
        Expected: Similar to previous.
 
-### Removing a student from a consultation
+#### Removing a student from a consultation
 
 1. Removing a student specified by name from a consultation at specified index.
     1. Prerequisites: Consultation specified by index must exist in the consultation list. Student must exist in the address book and the consultation.
@@ -1722,6 +1902,156 @@ testers are expected to do more *exploratory* testing.
        Expected: No consultation is updated on the second command. Error details shown in the status message.
     1. Other incorrect remove from consultation commands to try: `removefromconsult`, `removefromconsult x n/Alex Yeoh` (where x is greater than the consultation list size or a non-positive integer), `removefromconsult 2 n/UNKNOWN` (name not found in address book or consultation).
        Expected: Similar to previous.
+
+
+### Session
+
+#### Creating a session
+
+1. Creating a session with a single student with _valid parameters_
+   1. Prerequisites: 
+      1. Student name must exist in the student list.
+      2. No session with the session number given exists in the session list.
+   2. Test case: `createsession s/2 n/Alex Yeoh`<br>
+      Expected: A session with session number 2, containing the student Alex Yeoh, is created and stored in the session list.
+
+2. Creating a session with multiple students with _valid parameters_
+   1. Prerequisites: 
+      1. All student names must exist in the student list.
+      2. No session with the session number given exists in the session list.
+   2. Test case: `createsession s/2 n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: A session with session number 2, containing the students Alex Yeoh and Bernice Yu, is created and stored in the session list.
+
+3. Creating a session with a single student with _invalid parameters_
+   1. Test case: `createsession s/2 n/Alex Yeoh` `createsession s/2 n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created on the second command. <br>
+      Reason: There cannot exist two sessions with the same session number in the session list.
+   2. Test case: `createsession s/2 n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Student name must exist in the student list.
+
+4. Creating a session with _mix of valid and invalid students_
+   1. Test case: `createsession s/2 n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: All student names must exist in the student list.
+
+5. Creating a session with _missing parameters_
+   1. Test case: `createsession s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Student name parameter is missing.
+   2. Test case: `createsession n/Alex Yeoh`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No new session is created. <br>
+      Reason: Session number parameter is missing.
+
+
+#### Updating a session remark
+
+1. Updating a session remark with _valid parameters_
+   1. Prerequisites: 
+      1. Session must exist in the session list.
+   2. Test case: `updatesessionremark s/2 r/Update the remark to this text`<br>
+      Expected: The session with session number 2 has its remark field updated to "Update the remark to this text".
+
+2. Updating a session remark with _missing parameters_
+   1. Test case: `updatesessionremark r/Valid remark, but missing session number`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session number parameter is missing.
+   2. Test case: `updatesessionremark s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session remark parameter is missing.
+   3. Test case: `updatesessionremark`
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No update to any session's remarks. <br>
+      Reason: Session number and session remark parameters are missing.
+
+
+
+#### Deleting a session
+
+1. Deleting a session with _valid parameters_
+   1. Prerequisites: 
+      1. Session must exist in the session list.
+   2. Test case: `deletesession s/2`<br>
+      Expected: Session with session number 2 is deleted from the session list. Details of the deleted session is shown in the status message.
+
+2. Deleting a session with _invalid parameters_
+   1. Test case: `deletesession s/2` `deletesession s/2`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No session is deleted on the second command. <br>
+      Reason: The session with the given session number must exist in the session list.
+
+3. Deleting sessions with _missing parameters_
+   1. Test case: `deletesession`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number parameter is missing.
+
+
+#### Taking Attendance
+
+1. Taking attendance of a _valid student_
+   1. Prerequisites: 
+      1. Session must exist in the session list. 
+      2. Student name must exist in the student list.
+   2. Test case: `takeattendance s/2 n/David Li ap/present`<br>
+      Expected: David Li is added to the session with session number 2, marking him as present.
+
+2. Taking attendance of an _invalid student_
+   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist ap/absent`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Student name must exist in the student list.
+
+3. Taking attendance with _missing parameters_
+   1. Test case: `takeattendance n/David Li ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number parameter is missing.
+   2. Test case: `takeattendance s/2 n/David Li`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Attendance presence parameter is missing.
+   3. Test case: `takeattendance s/2 ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Student name parameter is missing.
+   4. Test case: `takeattendance`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. No attendance is taken. <br>
+      Reason: Session number, student name and attendance presence parameters are missing.
+
+4. Taking attendance of _multiple valid students_
+   1. Prerequisites: 
+      1. Session must exist in the session list. 
+      2. All student names must exist in the student list.
+   2. Test case: `takeattendance s/2 n/Bernice Yu n/David Li ap/absent`<br>
+      Expected: Bernice Yu and David Li are removed from the session with session number 2, marking them as absent.
+
+5. Taking attendance of _mix of valid and invalid students_
+   1. Test case: `takeattendance s/2 n/fakenamethatdoesnotexist n/Alex Yeoh ap/present`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The name of all students must exist in the student list.
+
+
+#### Viewing Attendance
+
+1. Viewing attendance of a _valid student_
+   1. Prerequisites: 
+      1. Student name must exist in the student list.
+   2. Test case: `viewattendance n/Bernice Yu`<br>
+      Expected: All sessions attended by Bernice Yu will be displayed.
+
+2. Viewing attendance of an _invalid student_ 
+   1. Test case: `viewattendance n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The name of the student must exist in the student list.
+
+3. Viewing attendance of _multiple valid students_
+   1. Prerequisites: 
+      1. Student names must exist in the student list.
+   2. Test case: `viewattendance n/Alex Yeoh n/Bernice Yu`<br>
+      Expected: All sessions attended by either Alex Yeoh or Bernice Yu, or both, will be displayed.
+
+4. Viewing attendance of _mix of valid and invalid students_
+   1. Test case: `viewattendance n/Alex Yeoh n/fakenamethatdoesnotexist`<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br>
+      Reason: The names of all students must exist in the student list.
+
+5. Viewing overall attendance across all students
+   1. Test case: `viewattendance`<br>
+      Expected: All sessions will be displayed.
 
 
 ### Task
@@ -1797,7 +2127,7 @@ testers are expected to do more *exploratory* testing.
        Expected: No tasks will be shown.
 
 8. Listing all tasks with _invalid parameters_
-    1. Test case: `viewtasks tprog/asdasdasd`
+    1. Test case: `viewtasks tprog/asdasdasd`<br>
        Expected: F.A.K.E.J.A.R.V.I.S. displays an error. <br> Reason: Progress should only be `NOT_STARTED`, `PENDING`, or `DONE`. Furthermore, the constraints of the parameters detailed in `AddTask` also apply here. 
 
 
@@ -1880,24 +2210,98 @@ testers are expected to do more *exploratory* testing.
 
 
 
+
+ 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Dealing with corrupted data files
+   1. Prerequisite:
+      1. F.A.K.E.J.A.R.V.I.S. has been initialized.
+   2. Test case: Delete a part of any `.json` file in `data` folder, or add some random symbols (e.g `@#$%^&*()`. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. recognizes the corrupted data file. The corresponding tabs will be empty (i.e if `tasklist.json` is corrupted, `Task List` will be empty).
 
-  1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+2. Dealing with missing data files
+   1. Prerequisite:
+      1. F.A.K.E.J.A.R.V.I.S. has been initialized.
+   2. Test case: Delete the whole `.json` file in `data` folder. Then relaunch F.A.K.E.J.A.R.V.I.S.<br>
+      Expected: F.A.K.E.J.A.R.V.I.S. recognizes the missing data file and add a sample data file inplace of the missing file.
 
-1. _{ more test cases …​ }_
+
+## **Appendix: Planned Enhancements**
+
+1. **Text Overflow Handling**
+   * Current Implementation: Currently, long emails, long task descriptions or names may extend beyond the allocated space, making it challenging for users to view the complete information. The enhancement will truncate or wrap the text appropriately, maintaining a clean and organized display.
+   * Enhancement: Implement a mechanism to handle text overflow, to ensure that lengthy text entries do not disrupt the user interface.
+   * Reason: To improve the readability and visual clarity of GUI.
+   * Suggested Fixes:
+     * Have character limits on certain fields (e.g `Email`, `Name`, `TaskName`).
+     * Have a character length checker that auto wraps the text when it "overflowed".
+   
+<br>
+   
+2. **Phone Number Validation**
+   * Current Implementation: Currently, any number that is longer than 3 digits are considered valid. It doesn't allow for special characters too.
+   * Enhancement: Introduce a validation mechanism for phone numbers to ensure that entered phone numbers adhere to a specified format. (e.g SG phone number starts with 8 or 9 and have 8 digits)
+   * Reason: To enhance the accuracy of the phone numbers by validating them according to a standard format.
+   * Suggested Fixes:
+     * Have a validation regex to check for starting number = 8 or 9 and phone number length = 8 (For SG phone numbers).
+     * Allow some special characters such as `+` to enable the adding of country codes in the phone number field.
+
+<br>
+
+3. **CSV File and Json File Download**
+   * Current Implementation: Currently, there is no download function of `.csv` or `.json` files.
+   * Enhancement: Implement the function to download the data in either a `.csv` or `.json` format, enabling users to conveniently import/export data.
+   * Reason: To enhance user convenience and data interchangeability, allowing for seamless integration with external applications that support `.csv` formats.
+   * Suggested Fixes:
+     * Have a `downloadCsvDataFile` and `downloadJsonDataFile` method to enable the download of the respectively files.
+     
+<br>
 
 
+4. **Better Name Validation**
+  * Current Implementation: Currently, names can only contain alphanumeric characters and spaces. (e.g Names such as `Shaquille O'Neal` or `Rohan s/o Mohan` are considered invalid)
+  * Enhancement: Allow special characters such as `'` or `/` to be allowed in the name field.
+  * Reason: To accommodate to more users, and be more inclusive.
+  * Suggested Fixes: 
+    * Update the validation regex to enable special characters specific to names.
 
-## **Appendix: Instructions for manual testing**
+<br>
+
+5. **Task Alert Functionality**
+   * Current Implementation: Currently, although the deadlines of tasks are tracked and color coded, there is no notification function to alert users of upcoming tasks.
+   * Enhancement: Introduce an alert function for tasks, allowing users to set reminders or receive notifications for specific tasks.
+   * Reason: To enhance task management by providing users with timely alerts and reminders for important tasks or deadlines.
+   * Suggested Fixes: 
+     * Have a `setAlert` command for users to set an alarm for their tasks.
+     * Have a `notification` feature to alert users of their upcoming tasks/deadlines. 
+
+<br>
+
+6. **Max Score Function for Graded Tests**
+   * Current Implementation: Currently, users can input any score for any graded test field, and there is no specified upperbound for the Max Score.
+   * Enhancement: Implement a function to set a maximum score for each component of graded tests, ensuring that scores adhere to predefined limits.
+   * Reason: To standardize grading practices and prevent errors or discrepancies in scored assessments.
+   * Suggested Fixes: 
+     * Have a `setMaxScore` command to specify the maximum score for each component of graded tests, preventing entry of scores that exceed these limits.
+
+<br>
+
+7. **Statistics function for Graded Tests**
+   * Current Implementation: Currently, users can only view the graded test scores for their student, with no other features.
+   * Enhancement: Implement a function to calculate the statistics of the graded test field.
+   * Reason: To allow the Avengers to have a better overview of the student's scores.
+   * Suggested Fixes:
+     * Have a `getMean`, `getMedian`, `getMode` command to return the Avenger's session's mean, median and mode for the graded tests.
+
+
+## **Appendix: Effort**
 
 If the effort required to create AB3 is 100, the amount of effort our group placed into F.A.K.E.J.A.R.V.I.S. would be a 500.
 
 Our group has put in a significant amount of effort into our tP. AB3 has a total of 8 commands (2 of which are just help and exit commands) and 1 file to store all of the data. F.A.K.E.J.A.R.V.I.S. has a total of 28 commands and 4 different files to store different data. We have also made significant changes to the GUI, enabling users to toggle the information being displayed.
 As testament to our effort, among all the teams in this module, our team has the [second-highest](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=totalCommits%20dsc&sortWithin=totalCommits%20dsc&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2023-09-22) lines of code added.
 This is inclusive of our 981 automated test cases which covers more than 80% of our code.
-
 
 
 ### Notable Changes

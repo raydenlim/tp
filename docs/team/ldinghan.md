@@ -14,6 +14,11 @@ Given below are my contributions to the project:
   * Highlights: There was some design thought given to how information is stored in the model. To prevent cyclic-reference between students and sessions, we decided to only store student models in sessions, and not sessions in students.
   * Credits: No reuse of code or third-party libraries.
 
+* **New Feature**: Added the ability to update a session's remark.
+  * What it does: Allows Avengers to update a session's remark, leaving insightful comments for reflection purposes, as well as tracking of what was already covered in past sessions.
+  * Justification: This feature greatly complements the attendance features as Avengers may combine the use of this feature, as well as the attendance features, to easily identify what topic each student has been taught and not taught.
+  * Credits: No reuse of code or third-party libraries.
+
 * **New Feature**: Added the ability to delete created sessions.
   * What it does: Allows Avengers to delete previously created sessions, allowing for errors to be corrected when sessions are accidentally created.
   * Justification: This is an important feature enhancement for our product because given the nature of our CLI product, mistakes in inputs are likely, and the ability to delete a wrongly-created session will be important to correct these possibly frequently-occurring situations.
@@ -31,11 +36,12 @@ Given below are my contributions to the project:
   * Credits: No reuse of code or third-party libraries.
 
 
-* **Code contributed**: [RepoSense](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=ldinghan&breakdown=true)
+* **Code contributed**: [RepoSense](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=ldinghan&breakdown=true).
 
 * **Project management**: 
-  * Reviewed and approved pull requests
-  * Organised and created GitHub issues
+  * Reviewed and approved pull requests.
+  * Organised and created GitHub issues.
+  * Updated team [weekly meeting notes](https://docs.google.com/document/d/1QKJGL88ciMlyb5MfS2XyThnuUBGdwFIULFgP9MLTFEA/edit).
 
 
 * **Enhancements to existing features**:
@@ -51,6 +57,8 @@ Given below are my contributions to the project:
     * Designed the class diagram for `Session`.
     * Designed the sequence diagram for `TakeAttendanceCommand`.
     * Designed the activity diagram for `CreateSessionCommand`.
+    * Added the use cases for sessions.
+    * Enhanced the user stories.
 
 * Some examples of UML diagrams:
   * Class diagram: ![Session Class Diagram](../images/SessionClassUML.png)
@@ -68,5 +76,5 @@ Given below are my contributions to the project:
   * PlantUML
 
 * **Contributions beyond the project team**: 
-  * Contributed to module forum page to answer queries on code coverage [here](https://github.com/nus-cs2103-AY2324S1/forum/issues/267#issuecomment-1767768888)
+  * Contributed to module forum page to answer queries on code coverage [here](https://github.com/nus-cs2103-AY2324S1/forum/issues/267#issuecomment-1767768888).
   * Found 9 bugs during the PE-D, some of which were highly severe bugs, which helped to point out areas for improvement for another team's product.

@@ -30,7 +30,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/raydenlim.md)]
 
 * Role: Morale Booster, Debugger
-* Responsibilities: *
+* Responsibilities: Documentation, Review PR
 
 ### Ding Han
 
