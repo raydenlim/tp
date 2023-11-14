@@ -16,9 +16,9 @@ public class MidTerms {
     public final String value;
 
     /**
-     * Constructs a {@code Finals}.
+     * Constructs a {@code MidTerms}.
      *
-     * @param midTermResults A valid phone number.
+     * @param midTermResults A valid midterms result.
      */
     public MidTerms(String midTermResults) {
         requireNonNull(midTermResults);
@@ -27,7 +27,7 @@ public class MidTerms {
     }
 
     /**
-     * Returns true if a given string is a valid PE result.
+     * Returns true if a given string is a valid Midterms result.
      */
     public static boolean isValidMidTermResult(String test) {
         return test.matches(VALIDATION_REGEX);

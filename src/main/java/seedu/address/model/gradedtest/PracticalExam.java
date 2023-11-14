@@ -16,9 +16,9 @@ public class PracticalExam {
     public final String value;
 
     /**
-     * Constructs a {@code Finals}.
+     * Constructs a {@code PracticalExam}.
      *
-     * @param peResults A valid phone number.
+     * @param peResults A valid practical exam result.
      */
     public PracticalExam(String peResults) {
         requireNonNull(peResults);

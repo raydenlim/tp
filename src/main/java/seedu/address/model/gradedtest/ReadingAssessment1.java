@@ -16,9 +16,9 @@ public class ReadingAssessment1 {
     public final String value;
 
     /**
-     * Constructs a {@code Finals}.
+     * Constructs a {@code ReadingAssessment1}.
      *
-     * @param raResult A valid raResult number.
+     * @param raResult A valid ra1 Result.
      */
     public ReadingAssessment1(String raResult) {
         requireNonNull(raResult);
@@ -27,7 +27,7 @@ public class ReadingAssessment1 {
     }
 
     /**
-     * Returns true if a given string is a valid RA result.
+     * Returns true if a given string is a valid RA1 result.
      */
     public static boolean isValidRaResult(String test) {
         return test.matches(VALIDATION_REGEX);
