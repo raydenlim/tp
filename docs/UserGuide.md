@@ -154,10 +154,9 @@ The F.A.K.E.J.A.R.V.I.S. User Guide employs a variety of visual cues to enhance 
 |      🗑️       |            Clear            |
 |       📖       |          Examples           |
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
-
-<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -223,7 +222,10 @@ The following describes what each tab displays on the **Current Panel**:
 ### Consultation Card
 ![Consultation Card with Annotations](images/ConsultationCardAnnotated.png)
 
+
 <br>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -272,8 +274,6 @@ The following describes what each tab displays on the **Current Panel**:
 
 [Back to Table of Contents](#table-of-contents)
 
-<br>
-
 --------------------------------------------------------------------------------------------------------------------
 
 
@@ -296,6 +296,9 @@ The following describes what each tab displays on the **Current Panel**:
 
 * Items with `…`​ after them can be used **multiple times** including zero times.<br>
   e.g. `[n/NAME]…​` can be used as ` ` (i.e. 0 times), `n/John Doe`, `n/John Doe n/Foo Bar` etc.
+
+* Items with `/` can only be used **one time**. <br>
+  e.g. `tn/user guide / td/developer guide` has to be used as `tn/user guide` or `td/developer guide`. 
 
 
 * Parameters can be **in any order**.<br>
@@ -354,11 +357,9 @@ Most commands given in the user guide utilise various parameters which are also 
 |      TASK_INDEX      |            |                                           `updateprogress` `deletetask`                                           | The Index of a Task. <ul><li> Only positive integers are allowed.</li><li>Task Index should exist.</li></ul>                                                                                                                                                                                                                                                   |
 |  CONSULTATION_INDEX  |            |                                `addtoconsult` `removefromconsult` `deleteconsult`                                 | The Index of a Consultation. <ul><li> Only positive integers are allowed.</li><li>Consultation Index should exist.</li></ul>                                                                                                                                                                                                                                   |
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
-
-<br>
-<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -733,6 +734,8 @@ Format: `delete STUDENT_INDEX`
 > **Output Image:**
 > <p class="center"> <img src="images/deleteStudent.png" alt="deleteStudent" height="325" /> </p>
 
+<br>
+
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -748,7 +751,7 @@ This section describes commands that help you manage your tasks.
 
 You can add a task to your task list if you have a new item to include in your list of things to do.
 
-Format: `addtask tn/TASK_NAME td/TASK_DESCRIPTION d/DUE_DATE tp/TASK_PRIORITY`
+Format: `addtask tn/TASK_NAME [td/TASK_DESCRIPTION] [d/DUE_DATE] [tp/TASK_PRIORITY]`
 
 |  **Parameter**   |                           **Description**                           |
 |:----------------:|:-------------------------------------------------------------------:|
@@ -1005,6 +1008,7 @@ Format: `viewattendance [n/STUDENT_NAME]…`
 > **Output Image:**
 >  <p class="center"> <img src="images/viewattendanceMultiple.png" alt="viewattendanceMultiple" height="325" /> </p>
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -1222,6 +1226,7 @@ Format: `deletecomment STUDENT_INDEX as/ASSIGNMENT`
 > **Output Image:**
 > <p class="center"> <img src="images/deletecomment.png" alt="deletecomment" height="325" /> </p>
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -1278,6 +1283,7 @@ Format: `editgradedtest STUDENT_INDEX [ra1/READING_ASSESSMENT_1] [ra2/READING_AS
 > **Output Image:**
 > ![Screenshot of edit graded test](images/editgradedtest.png)
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -1401,6 +1407,7 @@ Format: `deletesession s/SESSION_NUMBER`
 > **Output Image:**
 > <p class="center"> <img src="images/deletesession.png" alt="deletesession" height="325" /> </p>
 
+<br>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -1675,6 +1682,8 @@ Format: `deleteconsult CONSULTATION_INDEX`
 </md>
 </box>
 
+<br>
+
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
@@ -1773,20 +1782,20 @@ Format: `deleteconsult CONSULTATION_INDEX`
 ## Encountering Errors
 If you encounter any issues while using F.A.K.E.J.A.R.V.I.S., please refer to this section for troubleshooting advice. This section aims to help you better understand the messages that you may receive and what it means to you. If the issue persists, please contact support (see next section).
 
-|                                          **Error**                                           | <center>**What it means**</center>                                                                                                                  | <center>**How to resolve**</center>                                                                                                                           |
-|:--------------------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                                     **Unknown command**                                      | You have supplied a command that was unrecognisable. <br/> e.g. Command word was given in upper case.                                               | 1. Double-check the spelling and case of the command. <br/> 2. Refer to the [features](#features) section above for the correct commands.                     |
-|                                 **Invalid command format!**                                  | You have supplied a command with the incorrect format. <br/> e.g. Command is missing the compulsory parameters.                                     | 1. Double-check the command format and the parameters required. <br/> 2. Refer to the [features](#features) section above for the correct command formats.    |
-|                              **The Index provided is invalid**                               | You have provided an index that is out of the range of the items.                                                                                   | 1. Only provide Indexes that are within the range of the list. <br/> e.g. if there are 3 items in the list, the valid indexes that can be used are (1, 2, 3). |
-|                       **At least one field to edit must be provided.**                       | You have not provided a field to edit.                                                                                                              | 1. Double-check that a prefix and a field was provided together with the command.                                                                             |                                   
-|       **This `task` / `person` already exists in the `task list` / `students list`.**        | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                 |
-| **Date needs to be a valid date and in the format dd/MM/yyyy, or date has already crossed.** | You have either supplied the date in an unrecognisable format, or provided a date that is in the past.                                              | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023) <br /> 2. Choose a date from today or later.                             |
-|                  **Time needs to be a valid time and in the format HH:mm.**                  | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                    |
+|                                    **Error**                                    | <center>**What it means**</center>                                                                                                                  | <center>**How to resolve**</center>                                                                                                                           |
+|:-------------------------------------------------------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                               **Unknown command**                               | You have supplied a command that was unrecognisable. <br/> e.g. Command word was given in upper case.                                               | 1. Double-check the spelling and case of the command. <br/> 2. Refer to the [features](#features) section above for the correct commands.                     |
+|                           **Invalid command format!**                           | You have supplied a command with the incorrect format. <br/> e.g. Command is missing the compulsory parameters.                                     | 1. Double-check the command format and the parameters required. <br/> 2. Refer to the [features](#features) section above for the correct command formats.    |
+|                        **The Index provided is invalid**                        | You have provided an index that is out of the range of the number of items.                                                                         | 1. Only provide Indexes that are within the range of the list. <br/> e.g. if there are 3 items in the list, the valid indexes that can be used are (1, 2, 3). |
+|                **At least one field to edit must be provided.**                 | You have not provided a field to edit.                                                                                                              | 1. Double-check that a prefix and a field were provided together with the command.                                                                            |                                   
+| **This `task` / `person` already exists in the `task list` / `students list`.** | You have tried to either add a duplicate entry with the same fields, or edit an entry such that all the fields are duplicates of an existing entry. | 1. Double-check that the fields supplied are correct. <br/> 2. Remove the old entry from F.A.K.E.J.A.R.V.I.S.                                                 |
+|         **Date needs to be a valid date and in the format dd/MM/yyyy.**         | You have supplied the date in an unrecognisable format.                                                                                             | 1. Double-check that the format of the date provided is dd/MM/yyyy (e.g. 28/10/2023)                                                                          |
+|           **Time needs to be a valid time and in the format HH:mm.**            | You have supplied the time in an unrecognisable format.                                                                                             | 1. Double-check that the format of the time provided is HH:mm (e.g. 22:00)                                                                                    |
 </div>
 
-[Back to Table of Contents](#table-of-contents)
-
 <br>
+
+[Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
