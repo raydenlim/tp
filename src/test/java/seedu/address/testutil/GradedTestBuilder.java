@@ -83,7 +83,7 @@ public class GradedTestBuilder {
     }
 
     /**
-     * Sets the {@code PracticalExam} of the {@code Task} that we are building.
+     * Sets the {@code PracticalExam} of the {@code GradedTest} that we are building.
      */
     public GradedTestBuilder withPe(String pE) {
         this.pE = new PracticalExam(pE);
